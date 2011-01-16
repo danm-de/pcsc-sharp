@@ -1,2 +1,5 @@
 2010-11-10
 To Dr. Ludovic Rousseau for reporting the incorrect string termination problem.
+
+2011-01-16
+To Dariusz Marzoch for reporting the UIntPtr/IntPtr problem on Windows 7 64bit.
