@@ -13,14 +13,17 @@ Currently supported systems (tested):
               <description>System library</description>
             </listheader>
             <item>
-              <term>Windows XP/Vista (32bit)</term>
+              <term>Windows 7 (64bit) Professional</term>
               <description>Winscard.dll</description>
             </item>
 	    <item>
-		<term>Ubuntu Linux (32bit/64bit)</term>
+		<term>Ubuntu Linux 10.10 (32bit/64bit)</term>
 		<description>libpcsclite.so.1</description>
 	    </item>
 </list>
+</para>
+<para>
+Windows XP/Vista (32bit) has not been tested and is therefore currently not supported!
 </para>
 </remarks>
   </Docs>

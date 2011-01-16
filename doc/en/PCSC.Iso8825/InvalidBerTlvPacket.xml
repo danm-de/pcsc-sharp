@@ -3,7 +3,6 @@
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>PCSC.Iso8825.InvalidTlvData</BaseTypeName>
