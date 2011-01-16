@@ -1,0 +1,1191 @@
+<html>
+  <head>
+    <title>PCSC.SCardMonitor</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">pcsc-sharp</a> : <a href="index.html">PCSC Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:PCSC.SCardMonitor">Overview</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.SCardMonitor:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.SCardMonitor:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.SCardMonitor:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:PCSC.SCardMonitor">SCardMonitor  Class</h1>
+    <p class="Summary" id="T:PCSC.SCardMonitor:Summary">Monitors a Smart Card reader and triggers events on status changes.</p>
+    <div id="T:PCSC.SCardMonitor:Signature">
+      <div class="Signature">public class  <b>SCardMonitor</b> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IDisposable">IDisposable</a></div>
+    </div>
+    <div class="Remarks" id="T:PCSC.SCardMonitor:Docs">
+      <h4 class="Subsection">
+        <a href="javascript:toggle_display('T:PCSC.SCardMonitor:Docs:Remarks')">
+          <span id="T:PCSC.SCardMonitor:Docs:Remarks:toggle">⊟</span> Remarks</a>
+      </h4>
+      <blockquote class="SubsectionBox" id="T:PCSC.SCardMonitor:Docs:Remarks">Creates a new thread and calls the <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])">SCardContext.GetStatusChange(IntPtr, SCardReaderState[])</a> of the given <a href="../PCSC/SCardContext.html">PCSC.SCardContext</a> object.</blockquote>
+      <h4 class="Subsection">
+        <a href="javascript:toggle_display('T:PCSC.SCardMonitor:Docs:Version Information')">
+          <span id="T:PCSC.SCardMonitor:Docs:Version Information:toggle">⊟</span> Requirements</a>
+      </h4>
+      <blockquote class="SubsectionBox" id="T:PCSC.SCardMonitor:Docs:Version Information">
+        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+      <h2 class="Section" id="Members">
+        <a href="javascript:toggle_display('_Members')">
+          <span id="_Members:toggle">⊟</span> Members</a>
+      </h2>
+      <blockquote class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h3>
+          <a href="javascript:toggle_display('Public Constructors')">
+            <span id="Public Constructors:toggle">⊟</span> Public Constructors</a>
+        </h3>
+        <blockquote id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:PCSC.SCardMonitor(PCSC.SCardContext)">SCardMonitor</a>
+                    </b>(<a href="../PCSC/SCardContext.html">SCardContext</a>)</div>
+                </td>
+                <td>Creates a new SCardMonitor object that is able to listen for certain Smart Card / reader changes.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope)">SCardMonitor</a>
+                    </b>(<a href="../PCSC/SCardContext.html">SCardContext</a>, <a href="../PCSC/SCardScope.html">SCardScope</a>)</div>
+                </td>
+                <td>Creates a new SCardMonitor object that is able to listen for certain Smart Card / reader changes.</td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Properties')">
+            <span id="Public Properties:toggle">⊟</span> Public Properties</a>
+        </h3>
+        <blockquote id="Public Properties">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.SCardMonitor.Monitoring">Monitoring</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. Indicates if there are readers currently monitored.</td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.SCardMonitor.ReaderCount">ReaderCount</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. The number of readers that currently being monitored.</td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.SCardMonitor.ReaderNames">ReaderNames</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[]</i>. All readers that are currently being monitored.</td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Methods')">
+            <span id="Public Methods:toggle">⊟</span> Public Methods</a>
+        </h3>
+        <blockquote id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardMonitor.Cancel">Cancel</a>
+                  </b>()<blockquote>Cancels the monitoring of all readers that are currently being monitored.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardMonitor.Dispose">Dispose</a>
+                  </b>()<blockquote>Disposes the object.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardMonitor.Finalize">Finalize</a>
+                  </b>()<blockquote></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardMonitor.GetCurrentState(System.Int32)">GetCurrentState</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../PCSC/SCRState.html">SCRState</a></nobr><blockquote>Returns the current state of a reader that is currently being monitored.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32)">GetCurrentStateValue</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a></nobr><blockquote>Returns the current state of a reader that is currently being monitored.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardMonitor.GetReaderName(System.Int32)">GetReaderName</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a></nobr><blockquote>Returns the reader name of a given <i>index</i>.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardMonitor.Start(System.String)">Start</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<blockquote>Starts to monitor a single Smart Card reader for status changes.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardMonitor.Start(System.String[])">Start</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[])<blockquote>Starts to monitor a range Smart Card readers for status changes.</blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Events')">
+            <span id="Public Events:toggle">⊟</span> Public Events</a>
+        </h3>
+        <blockquote id="Public Events">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#E:PCSC.SCardMonitor.CardInserted">CardInserted</a>
+                  </b>
+                </td>
+                <td>A new card has been inserted.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#E:PCSC.SCardMonitor.CardRemoved">CardRemoved</a>
+                  </b>
+                </td>
+                <td>A card has been removed.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#E:PCSC.SCardMonitor.Initialized">Initialized</a>
+                  </b>
+                </td>
+                <td>The monitor object has been initialized.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#E:PCSC.SCardMonitor.MonitorException">MonitorException</a>
+                  </b>
+                </td>
+                <td>An PC/SC error occurred during monitoring.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#E:PCSC.SCardMonitor.StatusChanged">StatusChanged</a>
+                  </b>
+                </td>
+                <td>A general reader status change.</td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+      </blockquote>
+    </div>
+    <div class="Members" id="T:PCSC.SCardMonitor:Members">
+      <h2 class="Section" id="MemberDetails">
+        <a href="javascript:toggle_display('_MemberDetails')">
+          <span id="_MemberDetails:toggle">⊟</span> Member Details</a>
+      </h2>
+      <blockquote class="SectionBox" id="_MemberDetails">
+        <h3 id="C:PCSC.SCardMonitor(PCSC.SCardContext)">
+          <a href="javascript:toggle_display('C:PCSC.SCardMonitor(PCSC.SCardContext):member')">
+            <span id="C:PCSC.SCardMonitor(PCSC.SCardContext):member:toggle">⊟</span> SCardMonitor Constructor</a>
+        </h3>
+        <blockquote id="C:PCSC.SCardMonitor(PCSC.SCardContext):member">
+          <p class="Summary">Creates a new SCardMonitor object that is able to listen for certain Smart Card / reader changes.</p>
+          <div class="Signature">public  <b>SCardMonitor</b> (<a href="../PCSC/SCardContext.html">SCardContext</a> hContext)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.SCardMonitor(PCSC.SCardContext):Parameters')">
+              <span id="C:PCSC.SCardMonitor(PCSC.SCardContext):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.SCardMonitor(PCSC.SCardContext):Parameters">
+            <dl>
+              <dt>
+                <i>hContext</i>
+              </dt>
+              <dd>A new Application Context to the PC/SC Resource Manager.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.SCardMonitor(PCSC.SCardContext):Remarks')">
+              <span id="C:PCSC.SCardMonitor(PCSC.SCardContext):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.SCardMonitor(PCSC.SCardContext):Remarks">The monitor object should use its own Application Context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.SCardMonitor(PCSC.SCardContext):Version Information')">
+              <span id="C:PCSC.SCardMonitor(PCSC.SCardContext):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.SCardMonitor(PCSC.SCardContext):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope)">
+          <a href="javascript:toggle_display('C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):member')">
+            <span id="C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):member:toggle">⊟</span> SCardMonitor Constructor</a>
+        </h3>
+        <blockquote id="C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):member">
+          <p class="Summary">Creates a new SCardMonitor object that is able to listen for certain Smart Card / reader changes.</p>
+          <div class="Signature">public  <b>SCardMonitor</b> (<a href="../PCSC/SCardContext.html">SCardContext</a> hContext, <a href="../PCSC/SCardScope.html">SCardScope</a> scope)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):Parameters')">
+              <span id="C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):Parameters">
+            <dl>
+              <dt>
+                <i>hContext</i>
+              </dt>
+              <dd>A new Application Context to the PC/SC Resource Manager.</dd>
+              <dt>
+                <i>scope</i>
+              </dt>
+              <dd>Scope of the establishment. This can either be a local or remote connection.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):Remarks')">
+              <span id="C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):Remarks">The monitor object should use its own Application Context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):Version Information')">
+              <span id="C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.SCardMonitor(PCSC.SCardContext,PCSC.SCardScope):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardMonitor.Cancel">
+          <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Cancel:member')">
+            <span id="M:PCSC.SCardMonitor.Cancel:member:toggle">⊟</span> Cancel Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardMonitor.Cancel:member">
+          <p class="Summary">Cancels the monitoring of all readers that are currently being monitored.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Cancel</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Cancel:Remarks')">
+              <span id="M:PCSC.SCardMonitor.Cancel:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Cancel:Remarks">This will end the monitoring. The method calls the <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.Cancel()">SCardContext.Cancel()</a> method of its Application Context to the PC/SC Resource Manager.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Cancel:Version Information')">
+              <span id="M:PCSC.SCardMonitor.Cancel:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Cancel:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="E:PCSC.SCardMonitor.CardInserted">
+          <a href="javascript:toggle_display('E:PCSC.SCardMonitor.CardInserted:member')">
+            <span id="E:PCSC.SCardMonitor.CardInserted:member:toggle">⊟</span> CardInserted Event</a>
+        </h3>
+        <blockquote id="E:PCSC.SCardMonitor.CardInserted:member">
+          <p class="Summary">A new card has been inserted.</p>
+          <div class="Signature">public event <a href="../PCSC/CardInsertedEvent.html">CardInsertedEvent</a> <b>CardInserted</b> </div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.CardInserted:Remarks')">
+              <span id="E:PCSC.SCardMonitor.CardInserted:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.CardInserted:Remarks">
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Create a monitor object with its own PC/SC context.
+SCardMonitor monitor = new SCardMonitor(
+	new SCardContext(),
+	SCardScope.System);
+
+// Point the callback function(s) to the pre-defined method MyCardInsertedMethod.
+monitor.CardInserted += new CardInsertedEvent(MyCardInsertedMethod);
+
+// Start to monitor the reader
+monitor.Start("OMNIKEY CardMan 5x21 00 01");
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.CardInserted:Version Information')">
+              <span id="E:PCSC.SCardMonitor.CardInserted:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.CardInserted:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="E:PCSC.SCardMonitor.CardRemoved">
+          <a href="javascript:toggle_display('E:PCSC.SCardMonitor.CardRemoved:member')">
+            <span id="E:PCSC.SCardMonitor.CardRemoved:member:toggle">⊟</span> CardRemoved Event</a>
+        </h3>
+        <blockquote id="E:PCSC.SCardMonitor.CardRemoved:member">
+          <p class="Summary">A card has been removed.</p>
+          <div class="Signature">public event <a href="../PCSC/CardRemovedEvent.html">CardRemovedEvent</a> <b>CardRemoved</b> </div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.CardRemoved:Remarks')">
+              <span id="E:PCSC.SCardMonitor.CardRemoved:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.CardRemoved:Remarks">
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Create a monitor object with its own PC/SC context.
+SCardMonitor monitor = new SCardMonitor(
+	new SCardContext(),
+	SCardScope.System);
+
+// Point the callback function(s) to the pre-defined method MyCardRemovedMethod.
+monitor.CardRemoved += new CardRemovedEvent(MyCardRemovedMethod);
+
+// Start to monitor the reader
+monitor.Start("OMNIKEY CardMan 5x21 00 01");
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.CardRemoved:Version Information')">
+              <span id="E:PCSC.SCardMonitor.CardRemoved:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.CardRemoved:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardMonitor.Dispose">
+          <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Dispose:member')">
+            <span id="M:PCSC.SCardMonitor.Dispose:member:toggle">⊟</span> Dispose Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardMonitor.Dispose:member">
+          <p class="Summary">Disposes the object.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Dispose</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Dispose:Remarks')">
+              <span id="M:PCSC.SCardMonitor.Dispose:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Dispose:Remarks">Dispose will call <a href="../PCSC/SCardMonitor.html#M:PCSC.SCardMonitor.Cancel()">SCardMonitor.Cancel()</a>.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Dispose:Version Information')">
+              <span id="M:PCSC.SCardMonitor.Dispose:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Dispose:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardMonitor.Finalize">
+          <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Finalize:member')">
+            <span id="M:PCSC.SCardMonitor.Finalize:member:toggle">⊟</span> Finalize Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardMonitor.Finalize:member">
+          <p class="Summary">
+          </p>
+          <div class="Signature">
+            <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Finalize</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Finalize:Remarks')">
+              <span id="M:PCSC.SCardMonitor.Finalize:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Finalize:Remarks">
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Finalize:Version Information')">
+              <span id="M:PCSC.SCardMonitor.Finalize:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Finalize:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32)">
+          <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentState(System.Int32):member')">
+            <span id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):member:toggle">⊟</span> GetCurrentState Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):member">
+          <p class="Summary">Returns the current state of a reader that is currently being monitored.</p>
+          <div class="Signature">public <a href="../PCSC/SCRState.html">SCRState</a> <b>GetCurrentState</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> index)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Parameters')">
+              <span id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>index</i>
+              </dt>
+              <dd>The number of the desired reader. The index must be between 0 and (<a href="../PCSC/SCardMonitor.html#P:PCSC.SCardMonitor.ReaderCount">SCardMonitor.ReaderCount</a> - 1).</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Returns')">
+              <span id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Returns">The current state of reader with index number <i>index</i>.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Remarks')">
+              <span id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Remarks">This method will throw an <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.ArgumentOutOfRangeException">ArgumentOutOfRangeException</a> if the specified <i>index</i> is invalid. You can enumerate all readers currently monitored with the <a href="../PCSC/SCardMonitor.html#P:PCSC.SCardMonitor.ReaderNames">SCardMonitor.ReaderNames</a> property.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Version Information')">
+              <span id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetCurrentState(System.Int32):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32)">
+          <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):member')">
+            <span id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):member:toggle">⊟</span> GetCurrentStateValue Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):member">
+          <p class="Summary">Returns the current state of a reader that is currently being monitored.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>GetCurrentStateValue</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> index)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Parameters')">
+              <span id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>index</i>
+              </dt>
+              <dd>The number of the desired reader. The index must be between 0 and (<a href="../PCSC/SCardMonitor.html#P:PCSC.SCardMonitor.ReaderCount">SCardMonitor.ReaderCount</a> - 1).</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Returns')">
+              <span id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Returns">The current state of reader with index number <i>index</i>.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Remarks')">
+              <span id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Remarks">This method will throw an <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.ArgumentOutOfRangeException">ArgumentOutOfRangeException</a> if the specified <i>index</i> is invalid. You can enumerate all readers currently monitored with the <a href="../PCSC/SCardMonitor.html#P:PCSC.SCardMonitor.ReaderNames">SCardMonitor.ReaderNames</a> property.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Version Information')">
+              <span id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetCurrentStateValue(System.Int32):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardMonitor.GetReaderName(System.Int32)">
+          <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetReaderName(System.Int32):member')">
+            <span id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):member:toggle">⊟</span> GetReaderName Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):member">
+          <p class="Summary">Returns the reader name of a given <i>index</i>.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>GetReaderName</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> index)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetReaderName(System.Int32):Parameters')">
+              <span id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>index</i>
+              </dt>
+              <dd>The number of the desired reader. The index must be between 0 and (<a href="../PCSC/SCardMonitor.html#P:PCSC.SCardMonitor.ReaderCount">SCardMonitor.ReaderCount</a> - 1).</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetReaderName(System.Int32):Returns')">
+              <span id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):Returns">A reader name.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetReaderName(System.Int32):Remarks')">
+              <span id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):Remarks">This method will throw an <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.ArgumentOutOfRangeException">ArgumentOutOfRangeException</a> if the specified <i>index</i> is invalid. You can enumerate all readers currently monitored with the <a href="../PCSC/SCardMonitor.html#P:PCSC.SCardMonitor.ReaderNames">SCardMonitor.ReaderNames</a> property.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.GetReaderName(System.Int32):Version Information')">
+              <span id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.GetReaderName(System.Int32):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="E:PCSC.SCardMonitor.Initialized">
+          <a href="javascript:toggle_display('E:PCSC.SCardMonitor.Initialized:member')">
+            <span id="E:PCSC.SCardMonitor.Initialized:member:toggle">⊟</span> Initialized Event</a>
+        </h3>
+        <blockquote id="E:PCSC.SCardMonitor.Initialized:member">
+          <p class="Summary">The monitor object has been initialized.</p>
+          <div class="Signature">public event <a href="../PCSC/CardInitializedEvent.html">CardInitializedEvent</a> <b>Initialized</b> </div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.Initialized:Remarks')">
+              <span id="E:PCSC.SCardMonitor.Initialized:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.Initialized:Remarks">
+            <p>
+This event appears only once for each reader after calling <a href="../PCSC/SCardMonitor.html#M:PCSC.SCardMonitor.Start(string)">SCardMonitor.Start(string)</a> or <a href="../PCSC/SCardMonitor.html#M:PCSC.SCardMonitor.Start(string[])">SCardMonitor.Start(string[])</a>.
+</p>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Create a monitor object with its own PC/SC context.
+SCardMonitor monitor = new SCardMonitor(
+	new SCardContext(),
+	SCardScope.System);
+
+// Point the callback function(s) to the pre-defined method MyCardInitializedMethod.
+monitor.Initialized += new CardInitializedEvent(MyCardInitializedMethod);
+
+// Start to monitor the reader
+monitor.Start("OMNIKEY CardMan 5x21 00 01");
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.Initialized:Version Information')">
+              <span id="E:PCSC.SCardMonitor.Initialized:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.Initialized:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="E:PCSC.SCardMonitor.MonitorException">
+          <a href="javascript:toggle_display('E:PCSC.SCardMonitor.MonitorException:member')">
+            <span id="E:PCSC.SCardMonitor.MonitorException:member:toggle">⊟</span> MonitorException Event</a>
+        </h3>
+        <blockquote id="E:PCSC.SCardMonitor.MonitorException:member">
+          <p class="Summary">An PC/SC error occurred during monitoring.</p>
+          <div class="Signature">public event <a href="../PCSC/MonitorExceptionEvent.html">MonitorExceptionEvent</a> <b>MonitorException</b> </div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.MonitorException:Remarks')">
+              <span id="E:PCSC.SCardMonitor.MonitorException:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.MonitorException:Remarks">
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Create a monitor object with its own PC/SC context.
+SCardMonitor monitor = new SCardMonitor(
+	new SCardContext(),
+	SCardScope.System);
+
+// Point the callback function(s) to the pre-defined method MyMonitorExceptionMethod.
+monitor.MonitorException += new MonitorExceptionEvent(MyMonitorExceptionMethod);
+
+// Start to monitor the reader
+monitor.Start("OMNIKEY CardMan 5x21 00 01");
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.MonitorException:Version Information')">
+              <span id="E:PCSC.SCardMonitor.MonitorException:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.MonitorException:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.SCardMonitor.Monitoring">
+          <a href="javascript:toggle_display('P:PCSC.SCardMonitor.Monitoring:member')">
+            <span id="P:PCSC.SCardMonitor.Monitoring:member:toggle">⊟</span> Monitoring Property</a>
+        </h3>
+        <blockquote id="P:PCSC.SCardMonitor.Monitoring:member">
+          <p class="Summary">Indicates if there are readers currently monitored.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>Monitoring</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardMonitor.Monitoring:Value')">
+              <span id="P:PCSC.SCardMonitor.Monitoring:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardMonitor.Monitoring:Value">
+            <table class="Documentation">
+              <tr>
+                <th>Value</th>
+                <th>Description</th>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <tt>true</tt>
+                </td>
+                <td>Monitoring process ongoing.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <tt>false</tt>
+                </td>
+                <td>No monitoring.</td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardMonitor.Monitoring:Remarks')">
+              <span id="P:PCSC.SCardMonitor.Monitoring:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardMonitor.Monitoring:Remarks">
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardMonitor.Monitoring:Version Information')">
+              <span id="P:PCSC.SCardMonitor.Monitoring:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardMonitor.Monitoring:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.SCardMonitor.ReaderCount">
+          <a href="javascript:toggle_display('P:PCSC.SCardMonitor.ReaderCount:member')">
+            <span id="P:PCSC.SCardMonitor.ReaderCount:member:toggle">⊟</span> ReaderCount Property</a>
+        </h3>
+        <blockquote id="P:PCSC.SCardMonitor.ReaderCount:member">
+          <p class="Summary">The number of readers that currently being monitored.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>ReaderCount</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardMonitor.ReaderCount:Value')">
+              <span id="P:PCSC.SCardMonitor.ReaderCount:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardMonitor.ReaderCount:Value">Return 0 if no reader is being monitored.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardMonitor.ReaderCount:Remarks')">
+              <span id="P:PCSC.SCardMonitor.ReaderCount:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardMonitor.ReaderCount:Remarks">
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardMonitor.ReaderCount:Version Information')">
+              <span id="P:PCSC.SCardMonitor.ReaderCount:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardMonitor.ReaderCount:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.SCardMonitor.ReaderNames">
+          <a href="javascript:toggle_display('P:PCSC.SCardMonitor.ReaderNames:member')">
+            <span id="P:PCSC.SCardMonitor.ReaderNames:member:toggle">⊟</span> ReaderNames Property</a>
+        </h3>
+        <blockquote id="P:PCSC.SCardMonitor.ReaderNames:member">
+          <p class="Summary">All readers that are currently being monitored.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[] <b>ReaderNames</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardMonitor.ReaderNames:Value')">
+              <span id="P:PCSC.SCardMonitor.ReaderNames:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardMonitor.ReaderNames:Value">A <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> array of reader names. <tt>null</tt> if no readers is being monitored.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardMonitor.ReaderNames:Remarks')">
+              <span id="P:PCSC.SCardMonitor.ReaderNames:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardMonitor.ReaderNames:Remarks">
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardMonitor.ReaderNames:Version Information')">
+              <span id="P:PCSC.SCardMonitor.ReaderNames:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardMonitor.ReaderNames:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardMonitor.Start(System.String)">
+          <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Start(System.String):member')">
+            <span id="M:PCSC.SCardMonitor.Start(System.String):member:toggle">⊟</span> Start Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardMonitor.Start(System.String):member">
+          <p class="Summary">Starts to monitor a single Smart Card reader for status changes.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Start</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> readername)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Start(System.String):Parameters')">
+              <span id="M:PCSC.SCardMonitor.Start(System.String):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Start(System.String):Parameters">
+            <dl>
+              <dt>
+                <i>readername</i>
+              </dt>
+              <dd>The Smart Card reader that shall be monitored.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Start(System.String):Remarks')">
+              <span id="M:PCSC.SCardMonitor.Start(System.String):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Start(System.String):Remarks">
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Create a new monitor object with its own PC/SC context.
+SCardMonitor monitor = new SCardMonitor(
+	new SCardContext(),
+	SCardScope.System);
+
+// Start to monitor a single reader.
+monitor.Start("OMNIKEY CardMan 5x21 00 00");
+
+  </pre>
+                </td>
+              </tr>
+            </table>
+            <p>
+Do not forget to register for at least one event:
+
+<table class="Documentation"><tr><th>Event</th><th>Description</th></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.CardInserted">SCardMonitor.CardInserted</a></td><td>A new card has been inserted.</td></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.CardRemoved">SCardMonitor.CardRemoved</a></td><td>A card has been removed.</td></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.Initialized">SCardMonitor.Initialized</a></td><td>Initial status.</td></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.StatusChanged">SCardMonitor.StatusChanged</a></td><td>A general status change.</td></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.MonitorException">SCardMonitor.MonitorException</a></td><td>An error occurred.</td></tr></table></p>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Start(System.String):Version Information')">
+              <span id="M:PCSC.SCardMonitor.Start(System.String):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Start(System.String):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardMonitor.Start(System.String[])">
+          <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Start(System.String[]):member')">
+            <span id="M:PCSC.SCardMonitor.Start(System.String[]):member:toggle">⊟</span> Start Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardMonitor.Start(System.String[]):member">
+          <p class="Summary">Starts to monitor a range Smart Card readers for status changes.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Start</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[] readernames)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Start(System.String[]):Parameters')">
+              <span id="M:PCSC.SCardMonitor.Start(System.String[]):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Start(System.String[]):Parameters">
+            <dl>
+              <dt>
+                <i>readernames</i>
+              </dt>
+              <dd>A <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> array of reader names that shall be monitored.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Start(System.String[]):Remarks')">
+              <span id="M:PCSC.SCardMonitor.Start(System.String[]):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Start(System.String[]):Remarks">
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+SCardContext ctx = new SCardContext();
+ctx.Establish(SCardScope.System);
+
+// Retrieve the names of all installed readers.
+string[] readernames = ctx.GetReaders();
+
+ctx.Release();
+
+// Create a new monitor object with its own PC/SC context.
+SCardMonitor monitor = new SCardMonitor(
+	new SCardContext(),
+	SCardScope.System);
+
+foreach (string reader in readernames)
+	Console.WriteLine("Start monitoring for reader " + reader + ".");
+        
+// Start monitoring multiple readers.
+monitor.Start(readernames);
+</pre>
+                </td>
+              </tr>
+            </table>
+            <p>
+Do not forget to register for at least one event:
+
+<table class="Documentation"><tr><th>Event</th><th>Description</th></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.CardInserted">SCardMonitor.CardInserted</a></td><td>A new card has been inserted.</td></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.CardRemoved">SCardMonitor.CardRemoved</a></td><td>A card has been removed.</td></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.Initialized">SCardMonitor.Initialized</a></td><td>Initial status.</td></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.StatusChanged">SCardMonitor.StatusChanged</a></td><td>A general status change.</td></tr><tr valign="top"><td><a href="../PCSC/SCardMonitor.html#E:PCSC.SCardMonitor.MonitorException">SCardMonitor.MonitorException</a></td><td>An error occurred.</td></tr></table></p>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardMonitor.Start(System.String[]):Version Information')">
+              <span id="M:PCSC.SCardMonitor.Start(System.String[]):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardMonitor.Start(System.String[]):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="E:PCSC.SCardMonitor.StatusChanged">
+          <a href="javascript:toggle_display('E:PCSC.SCardMonitor.StatusChanged:member')">
+            <span id="E:PCSC.SCardMonitor.StatusChanged:member:toggle">⊟</span> StatusChanged Event</a>
+        </h3>
+        <blockquote id="E:PCSC.SCardMonitor.StatusChanged:member">
+          <p class="Summary">A general reader status change.</p>
+          <div class="Signature">public event <a href="../PCSC/StatusChangeEvent.html">StatusChangeEvent</a> <b>StatusChanged</b> </div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.StatusChanged:Remarks')">
+              <span id="E:PCSC.SCardMonitor.StatusChanged:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.StatusChanged:Remarks">
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Create a monitor object with its own PC/SC context.
+SCardMonitor monitor = new SCardMonitor(
+	new SCardContext(),
+	SCardScope.System);
+
+// Point the callback function(s) to the pre-defined method MyStatusChangedMethod.
+monitor.StatusChanged += new StatusChangeEvent(MyStatusChangedMethod);
+
+// Start to monitor the reader
+monitor.Start("OMNIKEY CardMan 5x21 00 01");
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('E:PCSC.SCardMonitor.StatusChanged:Version Information')">
+              <span id="E:PCSC.SCardMonitor.StatusChanged:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="E:PCSC.SCardMonitor.StatusChanged:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+      </blockquote>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

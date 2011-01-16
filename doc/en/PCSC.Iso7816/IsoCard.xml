@@ -1,0 +1,202 @@
+<Type Name="IsoCard" FullName="PCSC.Iso7816.IsoCard">
+  <TypeSignature Language="C#" Value="public class IsoCard" />
+  <AssemblyInfo>
+    <AssemblyName>pcsc-sharp</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public IsoCard (PCSC.ISCardReader reader);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="reader" Type="PCSC.ISCardReader" />
+      </Parameters>
+      <Docs>
+        <param name="reader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public IsoCard (PCSC.ISCardReader reader, string readerName, PCSC.SCardShareMode mode, PCSC.SCardProtocol proto);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="reader" Type="PCSC.ISCardReader" />
+        <Parameter Name="readerName" Type="System.String" />
+        <Parameter Name="mode" Type="PCSC.SCardShareMode" />
+        <Parameter Name="proto" Type="PCSC.SCardProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="reader">To be added.</param>
+        <param name="readerName">To be added.</param>
+        <param name="mode">To be added.</param>
+        <param name="proto">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ActiveProtocol">
+      <MemberSignature Language="C#" Value="public PCSC.SCardProtocol ActiveProtocol { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardProtocol</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Connect">
+      <MemberSignature Language="C#" Value="public virtual void Connect (string readerName, PCSC.SCardShareMode mode, PCSC.SCardProtocol proto);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="readerName" Type="System.String" />
+        <Parameter Name="mode" Type="PCSC.SCardShareMode" />
+        <Parameter Name="proto" Type="PCSC.SCardProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="readerName">To be added.</param>
+        <param name="mode">To be added.</param>
+        <param name="proto">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConstructCommandApdu">
+      <MemberSignature Language="C#" Value="public PCSC.Iso7816.CommandApdu ConstructCommandApdu (PCSC.Iso7816.IsoCase isoCase);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.Iso7816.CommandApdu</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="isoCase" Type="PCSC.Iso7816.IsoCase" />
+      </Parameters>
+      <Docs>
+        <param name="isoCase">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentShareMode">
+      <MemberSignature Language="C#" Value="public PCSC.SCardShareMode CurrentShareMode { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardShareMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxReceiveSize">
+      <MemberSignature Language="C#" Value="public virtual int MaxReceiveSize { protected set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RetransmitWaitTime">
+      <MemberSignature Language="C#" Value="public int RetransmitWaitTime { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ThrowExceptionOnSCardError">
+      <MemberSignature Language="C#" Value="protected void ThrowExceptionOnSCardError (PCSC.SCardError sc);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sc" Type="PCSC.SCardError" />
+      </Parameters>
+      <Docs>
+        <param name="sc">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transmit">
+      <MemberSignature Language="C#" Value="public virtual PCSC.Iso7816.Response Transmit (PCSC.Iso7816.CommandApdu cmdApdu);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.Iso7816.Response</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cmdApdu" Type="PCSC.Iso7816.CommandApdu" />
+      </Parameters>
+      <Docs>
+        <param name="cmdApdu">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

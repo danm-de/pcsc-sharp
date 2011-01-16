@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{459E0FB4-AF42-4123-9923-7EA68CA01B09}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PCSC</RootNamespace>
+    <AssemblyName>pcsc-sharp</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PCSC</RootNamespace>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>Library</OutputType>
+    <DebugSymbols>true</DebugSymbols>
+    <RootNamespace>PCSC</RootNamespace>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exceptions\CommunicationErrorException.cs" />
+    <Compile Include="Exceptions\InsufficientBufferException.cs" />
+    <Compile Include="Exceptions\InternalErrorException.cs" />
+    <Compile Include="Exceptions\InvalidParameterException.cs" />
+    <Compile Include="Exceptions\InvalidProtocolException.cs" />
+    <Compile Include="Exceptions\InvalidValueException.cs" />
+    <Compile Include="Exceptions\RemovedCardException.cs" />
+    <Compile Include="Exceptions\UnknownReaderException.cs" />
+    <Compile Include="Exceptions\InvalidShareModeException.cs" />
+    <Compile Include="Exceptions\NotReadyException.cs" />
+    <Compile Include="Exceptions\NoServiceException.cs" />
+    <Compile Include="Exceptions\NoSmartcardException.cs" />
+    <Compile Include="Exceptions\ReaderUnavailableException.cs" />
+    <Compile Include="Exceptions\SharingViolationException.cs" />
+    <Compile Include="Exceptions\UnpoweredCardException.cs" />
+    <Compile Include="Exceptions\UnresponsiveCardException.cs" />
+    <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
+    <Compile Include="Iso8825\Asn1\Asn1Boolean.cs" />
+    <Compile Include="Iso8825\Asn1\Asn1Integer.cs" />
+    <Compile Include="Iso8825\Asn1\Exceptions\InvalidAsn1BooleanException.cs" />
+    <Compile Include="Iso8825\DataObjectFactory.cs" />
+    <Compile Include="Iso8825\Asn1\Asn1Types.cs" />
+    <Compile Include="Iso8825\Asn1\Asn1IA5String.cs" />
+    <Compile Include="Iso8825\Asn1\IAsn1Type.cs" />
+    <Compile Include="Iso8825\DataObject.cs" />
+    <Compile Include="Iso8825\BasicEncodingRules\BerTlvPacket.cs" />
+    <Compile Include="Iso7816\ClassByte.cs" />
+    <Compile Include="Exceptions\InvalidContextException.cs" />
+    <Compile Include="Exceptions\InvalidScopeTypeException.cs" />
+    <Compile Include="Exceptions\PCSCException.cs" />
+    <Compile Include="Interop\ISCardAPI.cs" />
+    <Compile Include="Interop\Platform\WinSCardAPI.cs" />
+    <Compile Include="Interop\Platform\PCSCliteAPI.cs" />
+    <Compile Include="Interop\SCardAPI.cs" />
+    <Compile Include="ISCardReader.cs" />
+    <Compile Include="Iso7816\Exceptions\InvalidApduException.cs" />
+    <Compile Include="Iso8825\BasicEncodingRules\BerTypes.cs" />
+    <Compile Include="Iso8825\Exceptions\InvalidBerTlvPacketException.cs" />
+    <Compile Include="Iso8825\Exceptions\InvalidSimpleTlvPacketException.cs" />
+    <Compile Include="Iso8825\Exceptions\InvalidTlvDataException.cs" />
+    <Compile Include="Iso7816\FileDescriptor.cs" />
+    <Compile Include="Iso7816\FileStructureInfo.cs" />
+    <Compile Include="Iso7816\InstructionByte.cs" />
+    <Compile Include="Iso7816\RecordInfo.cs" />
+    <Compile Include="Iso7816\Response.cs" />
+    <Compile Include="Iso7816\IsoCard.cs" />
+    <Compile Include="Iso7816\SimpleTlvPacket.cs" />
+    <Compile Include="Iso7816\SimpleTlvPacketBuilder.cs" />
+    <Compile Include="Iso8825\TlvData.cs" />
+    <Compile Include="Iso8825\Iso8825Types.cs" />
+    <Compile Include="SCardContext.cs" />
+    <Compile Include="SCardHelper.cs" />
+    <Compile Include="SCardMonitor.cs" />
+    <Compile Include="SCardPCI.cs" />
+    <Compile Include="SCardReader.cs" />
+    <Compile Include="SCardReaderState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="app.config" />
+    <Compile Include="Iso7816\APDU.cs" />
+    <Compile Include="Iso7816\CommandAPDU.cs" />
+    <Compile Include="Iso7816\ISO7816Types.cs" />
+    <Compile Include="Iso7816\ResponseAPDU.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="pcsc-sharp.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

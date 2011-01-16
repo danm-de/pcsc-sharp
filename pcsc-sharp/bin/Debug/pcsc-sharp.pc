@@ -1,0 +1,6 @@
+Name: pcsc-sharp
+Description: PC/SC bindings for .NET
+Version: 1.0.0.0
+
+Requires: 
+Libs: -r:/usr/local/lib/pcsc-sharp/pcsc-sharp.dll

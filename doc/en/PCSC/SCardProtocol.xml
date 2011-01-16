@@ -1,0 +1,136 @@
+<Type Name="SCardProtocol" FullName="PCSC.SCardProtocol">
+  <TypeSignature Language="C#" Value="public enum SCardProtocol" />
+  <AssemblyInfo>
+    <AssemblyName>pcsc-sharp</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Communication protocol use with the Smart Card.</summary>
+    <remarks>This is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Any">
+      <MemberSignature Language="C#" Value="Any" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("IFD determines protocol")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardProtocol</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>(<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />). IFD determines prot.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Raw">
+      <MemberSignature Language="C#" Value="Raw" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Raw active protocol")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardProtocol</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Raw active protocol. Use with memory type cards.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="T0">
+      <MemberSignature Language="C#" Value="T0" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("T=0 active protocol")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardProtocol</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>T=0 active protocol.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="T1">
+      <MemberSignature Language="C#" Value="T1" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("T=1 active protocol")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardProtocol</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>T=1 active protocol.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="T15">
+      <MemberSignature Language="C#" Value="T15" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("T=15 protocol")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardProtocol</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>T=15 protocol.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Unset">
+      <MemberSignature Language="C#" Value="Unset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Protocol not set")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardProtocol</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Protocol not defined.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

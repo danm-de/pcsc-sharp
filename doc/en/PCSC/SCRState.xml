@@ -1,0 +1,250 @@
+<Type Name="SCRState" FullName="PCSC.SCRState">
+  <TypeSignature Language="C#" Value="public enum SCRState" />
+  <AssemblyInfo>
+    <AssemblyName>pcsc-sharp</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Reader state.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="ATRMatch">
+      <MemberSignature Language="C#" Value="ATRMatch" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("ATR matches card")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>There is a card in the reader with an ATR matching one of the target cards. If this bit is set, <see cref="F:PCSC.SCRState.Present" /> will also be set. This bit is only returned on the SCardLocateCards() function. (SCARD_STATE_ATRMATCH)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Changed">
+      <MemberSignature Language="C#" Value="Changed" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("State has changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>There is a difference between the state believed by the application, and the state known by the resource manager. When this bit is set, the application may assume a significant state change has occurred on this reader. (SCARD_STATE_CHANGED)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Empty">
+      <MemberSignature Language="C#" Value="Empty" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Card removed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>There is no card in the reader. If this bit is set, all the following bits will be clear. (SCARD_STATE_EMPTY)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Exclusive">
+      <MemberSignature Language="C#" Value="Exclusive" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Exclusive Mode")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The card in the reader is allocated for exclusive use by another application. If this bit is set, <see cref="F:PCSC.SCRState.Present" /> will also be set. (SCARD_STATE_EXCLUSIVE)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Ignore">
+      <MemberSignature Language="C#" Value="Ignore" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Ignore this reader")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This reader should be ignored. (SCARD_STATE_IGNORE)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="InUse">
+      <MemberSignature Language="C#" Value="InUse" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Shared Mode")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The card in the reader is in use by one or more other applications, but may be connected to in shared mode. If this bit is set, <see cref="F:PCSC.SCRState.Present" />  will also be set. (SCARD_STATE_INUSE)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Mute">
+      <MemberSignature Language="C#" Value="Mute" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Unresponsive card")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>There is an unresponsive card in the reader. (SCARD_STATE_MUTE)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Present">
+      <MemberSignature Language="C#" Value="Present" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Card inserted")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>There is a card in the reader. (SCARD_STATE_PRESENT)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Unavailable">
+      <MemberSignature Language="C#" Value="Unavailable" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Status unavailable")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The actual state of this reader is not available. If this bit is set, then all the following bits are clear. (SCARD_STATE_UNAVAILABLE)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Unaware">
+      <MemberSignature Language="C#" Value="Unaware" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Application wants status")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The application is unaware of the current state, and would like to know. The use of this value results in an immediate return from state transition monitoring services. This is represented by all bits set to zero. (SCARD_STATE_UNAWARE)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Unknown">
+      <MemberSignature Language="C#" Value="Unknown" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Reader unknown")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The given reader name is not recognized by the resource manager. If this bit is set, then <see cref="F:PCSC.SCRState.Changed" />  and <see cref="F:PCSC.SCRState.Ignore" /> will also be set. (SCARD_STATE_UNKNOWN)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Unpowered">
+      <MemberSignature Language="C#" Value="Unpowered" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Unpowered card")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCRState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The card is unpowered. (SCARD_STATE_UNPOWERED)</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,645 @@
+<html>
+  <head>
+    <title>PCSC.Iso7816.Apdu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">pcsc-sharp</a> : <a href="index.html">PCSC.Iso7816 Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:PCSC.Iso7816.Apdu">Overview</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.Iso7816.Apdu:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.Iso7816.Apdu:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.Iso7816.Apdu:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:PCSC.Iso7816.Apdu">Apdu  Class</h1>
+    <p class="Summary" id="T:PCSC.Iso7816.Apdu:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div id="T:PCSC.Iso7816.Apdu:Signature">
+      <div class="Signature">public abstract class  <b>Apdu</b></div>
+    </div>
+    <div class="Remarks" id="T:PCSC.Iso7816.Apdu:Docs">
+      <h4 class="Subsection">
+        <a href="javascript:toggle_display('T:PCSC.Iso7816.Apdu:Docs:Remarks')">
+          <span id="T:PCSC.Iso7816.Apdu:Docs:Remarks:toggle">⊟</span> Remarks</a>
+      </h4>
+      <blockquote class="SubsectionBox" id="T:PCSC.Iso7816.Apdu:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </blockquote>
+      <h4 class="Subsection">
+        <a href="javascript:toggle_display('T:PCSC.Iso7816.Apdu:Docs:Version Information')">
+          <span id="T:PCSC.Iso7816.Apdu:Docs:Version Information:toggle">⊟</span> Requirements</a>
+      </h4>
+      <blockquote class="SubsectionBox" id="T:PCSC.Iso7816.Apdu:Docs:Version Information">
+        <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+      <h2 class="Section" id="Members">
+        <a href="javascript:toggle_display('_Members')">
+          <span id="_Members:toggle">⊟</span> Members</a>
+      </h2>
+      <blockquote class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h3>
+          <a href="javascript:toggle_display('Protected Constructors')">
+            <span id="Protected Constructors:toggle">⊟</span> Protected Constructors</a>
+        </h3>
+        <blockquote id="Protected Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:PCSC.Iso7816.Apdu">Apdu</a>
+                    </b>()</div>
+                </td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Protected Fields')">
+            <span id="Protected Fields:toggle">⊟</span> Protected Fields</a>
+        </h3>
+        <blockquote id="Protected Fields">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:PCSC.Iso7816.Apdu.isocase">isocase</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:PCSC.Iso7816.Apdu.proto">proto</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Properties')">
+            <span id="Public Properties:toggle">⊟</span> Public Properties</a>
+        </h3>
+        <blockquote id="Public Properties">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.Apdu.Case">Case</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>abstract </div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.Apdu.IsValid">IsValid</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.Apdu.Protocol">Protocol</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Methods')">
+            <span id="Public Methods:toggle">⊟</span> Public Methods</a>
+        </h3>
+        <blockquote id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>abstract </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.Apdu.ToArray">ToArray</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Operators')">
+            <span id="Public Operators:toggle">⊟</span> Public Operators</a>
+        </h3>
+        <blockquote id="Public Operators">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]">Conversion to System.Byte[]</a>
+                  </b>(Explicit)</td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+      </blockquote>
+    </div>
+    <div class="Members" id="T:PCSC.Iso7816.Apdu:Members">
+      <h2 class="Section" id="MemberDetails">
+        <a href="javascript:toggle_display('_MemberDetails')">
+          <span id="_MemberDetails:toggle">⊟</span> Member Details</a>
+      </h2>
+      <blockquote class="SectionBox" id="_MemberDetails">
+        <h3 id="C:PCSC.Iso7816.Apdu">
+          <a href="javascript:toggle_display('C:PCSC.Iso7816.Apdu:member')">
+            <span id="C:PCSC.Iso7816.Apdu:member:toggle">⊟</span> Apdu Constructor</a>
+        </h3>
+        <blockquote id="C:PCSC.Iso7816.Apdu:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">protected  <b>Apdu</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.Iso7816.Apdu:Remarks')">
+              <span id="C:PCSC.Iso7816.Apdu:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.Iso7816.Apdu:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.Iso7816.Apdu:Version Information')">
+              <span id="C:PCSC.Iso7816.Apdu:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.Iso7816.Apdu:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.Apdu.Case">
+          <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.Case:member')">
+            <span id="P:PCSC.Iso7816.Apdu.Case:member:toggle">⊟</span> Case Property</a>
+        </h3>
+        <blockquote id="P:PCSC.Iso7816.Apdu.Case:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public virtual <a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a> <b>Case</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.Case:Value')">
+              <span id="P:PCSC.Iso7816.Apdu.Case:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Apdu.Case:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.Case:Remarks')">
+              <span id="P:PCSC.Iso7816.Apdu.Case:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Apdu.Case:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.Case:Version Information')">
+              <span id="P:PCSC.Iso7816.Apdu.Case:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Apdu.Case:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:PCSC.Iso7816.Apdu.isocase">
+          <a href="javascript:toggle_display('F:PCSC.Iso7816.Apdu.isocase:member')">
+            <span id="F:PCSC.Iso7816.Apdu.isocase:member:toggle">⊟</span> isocase Field</a>
+        </h3>
+        <blockquote id="F:PCSC.Iso7816.Apdu.isocase:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">protected <a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a> <b>isocase</b> </div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('F:PCSC.Iso7816.Apdu.isocase:Remarks')">
+              <span id="F:PCSC.Iso7816.Apdu.isocase:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="F:PCSC.Iso7816.Apdu.isocase:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('F:PCSC.Iso7816.Apdu.isocase:Version Information')">
+              <span id="F:PCSC.Iso7816.Apdu.isocase:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="F:PCSC.Iso7816.Apdu.isocase:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.Apdu.IsValid">
+          <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.IsValid:member')">
+            <span id="P:PCSC.Iso7816.Apdu.IsValid:member:toggle">⊟</span> IsValid Property</a>
+        </h3>
+        <blockquote id="P:PCSC.Iso7816.Apdu.IsValid:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public abstract <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>IsValid</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.IsValid:Value')">
+              <span id="P:PCSC.Iso7816.Apdu.IsValid:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Apdu.IsValid:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.IsValid:Remarks')">
+              <span id="P:PCSC.Iso7816.Apdu.IsValid:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Apdu.IsValid:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.IsValid:Version Information')">
+              <span id="P:PCSC.Iso7816.Apdu.IsValid:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Apdu.IsValid:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]">
+          <a href="javascript:toggle_display('M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:member')">
+            <span id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:member:toggle">⊟</span> Conversion Method</a>
+        </h3>
+        <blockquote id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public static explicit operator <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] (<a href="../PCSC.Iso7816/Apdu.html">Apdu</a> apdu)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Parameters')">
+              <span id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Parameters">
+            <dl>
+              <dt>
+                <i>apdu</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Returns')">
+              <span id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Remarks')">
+              <span id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Version Information')">
+              <span id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:PCSC.Iso7816.Apdu.proto">
+          <a href="javascript:toggle_display('F:PCSC.Iso7816.Apdu.proto:member')">
+            <span id="F:PCSC.Iso7816.Apdu.proto:member:toggle">⊟</span> proto Field</a>
+        </h3>
+        <blockquote id="F:PCSC.Iso7816.Apdu.proto:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">protected <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> <b>proto</b> </div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('F:PCSC.Iso7816.Apdu.proto:Remarks')">
+              <span id="F:PCSC.Iso7816.Apdu.proto:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="F:PCSC.Iso7816.Apdu.proto:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('F:PCSC.Iso7816.Apdu.proto:Version Information')">
+              <span id="F:PCSC.Iso7816.Apdu.proto:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="F:PCSC.Iso7816.Apdu.proto:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.Apdu.Protocol">
+          <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.Protocol:member')">
+            <span id="P:PCSC.Iso7816.Apdu.Protocol:member:toggle">⊟</span> Protocol Property</a>
+        </h3>
+        <blockquote id="P:PCSC.Iso7816.Apdu.Protocol:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public virtual <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> <b>Protocol</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.Protocol:Value')">
+              <span id="P:PCSC.Iso7816.Apdu.Protocol:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Apdu.Protocol:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.Protocol:Remarks')">
+              <span id="P:PCSC.Iso7816.Apdu.Protocol:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Apdu.Protocol:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.Apdu.Protocol:Version Information')">
+              <span id="P:PCSC.Iso7816.Apdu.Protocol:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Apdu.Protocol:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.Apdu.ToArray">
+          <a href="javascript:toggle_display('M:PCSC.Iso7816.Apdu.ToArray:member')">
+            <span id="M:PCSC.Iso7816.Apdu.ToArray:member:toggle">⊟</span> ToArray Method</a>
+        </h3>
+        <blockquote id="M:PCSC.Iso7816.Apdu.ToArray:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public abstract <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] <b>ToArray</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.Apdu.ToArray:Returns')">
+              <span id="M:PCSC.Iso7816.Apdu.ToArray:Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Apdu.ToArray:Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.Apdu.ToArray:Remarks')">
+              <span id="M:PCSC.Iso7816.Apdu.ToArray:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Apdu.ToArray:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.Apdu.ToArray:Version Information')">
+              <span id="M:PCSC.Iso7816.Apdu.ToArray:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Apdu.ToArray:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+      </blockquote>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

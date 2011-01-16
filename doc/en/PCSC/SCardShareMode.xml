@@ -1,0 +1,75 @@
+<Type Name="SCardShareMode" FullName="PCSC.SCardShareMode">
+  <TypeSignature Language="C#" Value="public enum SCardShareMode" />
+  <AssemblyInfo>
+    <AssemblyName>pcsc-sharp</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>Mode of connection type: exclusive or shared.</summary>
+    <remarks>
+      <see cref="F:PCSC.SCardShareMode.Direct" /> can be used before using <see cref="M:PCSC.ISCardReader.Control(System.IntPtr,System.Byte[],System.Byte[]@)" />  to send control commands to the reader even if a card is not present in the reader. Contrary to Windows winscard behavior, the reader is accessed in shared mode and not exclusive mode. </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Direct">
+      <MemberSignature Language="C#" Value="Direct" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Raw mode only")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardShareMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Direct control of the reader, even without a card. (SCARD_SHARE_DIRECT)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Exclusive">
+      <MemberSignature Language="C#" Value="Exclusive" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Exclusive mode only")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardShareMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Shared">
+      <MemberSignature Language="C#" Value="Shared" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.Description("Shared mode only")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardShareMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

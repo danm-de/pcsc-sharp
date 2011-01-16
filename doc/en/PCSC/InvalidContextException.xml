@@ -1,0 +1,72 @@
+<Type Name="InvalidContextException" FullName="PCSC.InvalidContextException">
+  <TypeSignature Language="C#" Value="public class InvalidContextException : PCSC.PCSCException" />
+  <AssemblyInfo>
+    <AssemblyName>pcsc-sharp</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>PCSC.PCSCException</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Invalid PC/SC context exception.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public InvalidContextException (PCSC.SCardError serr);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="serr" Type="PCSC.SCardError" />
+      </Parameters>
+      <Docs>
+        <param name="serr">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public InvalidContextException (PCSC.SCardError serr, string message);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="serr" Type="PCSC.SCardError" />
+        <Parameter Name="message" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="serr">To be added.</param>
+        <param name="message">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public InvalidContextException (PCSC.SCardError serr, string message, PCSC.PCSCException innerEx);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="serr" Type="PCSC.SCardError" />
+        <Parameter Name="message" Type="System.String" />
+        <Parameter Name="innerEx" Type="PCSC.PCSCException" />
+      </Parameters>
+      <Docs>
+        <param name="serr">To be added.</param>
+        <param name="message">To be added.</param>
+        <param name="innerEx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

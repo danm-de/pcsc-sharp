@@ -1,0 +1,85 @@
+Version numbering info: a.b.c.d
+a = Major API change
+b = Minor API change (subcomponents like Iso7816 or Iso8825)
+c = Feature enhancement
+d = Bug fix
+
+2011-01-16  Daniel Mueller <daniel@danm.de>
+
+    * New version 2.0.0.0
+      Tested with Windows 7 64bit edition
+      Tested with Ubuntu 10.10 64bit edition
+
+2011-01-12  Daniel Mueller <daniel@danm.de>
+
+    * New major version 2.0.0.0 and GUID because of API change.
+    * Changed 'UIntPtr' to 'IntPtr', 'UInt32' to 'Int32'.
+    * Changed value types of various enums from 'long' to 'int'.
+    * Tested with Windows 7 64bit Professional. Linux tests needed.
+
+2010-11-10  Daniel Mueller <daniel@danm.de>
+
+    * Corrected string termination for SCardConnect() calls.
+      Thanks to Dr. Ludovic Rousseau!
+    * Removed IsValid()-checks from some context specific methods.
+    * PCSCliteAPI.cs: changed pszReader in SCARD_READERSTATE to IntPtr
+      after getting various segmentation faults because of Mono's strange
+      IntPtr/UIntPtr conversion. What Am I doing wrong?? ;-(
+
+2010-11-05  Daniel Mueller <daniel@danm.de>
+
+    * Added new classes for ISO8825 / not ready to use!
+
+2010-11-01  Daniel Mueller <daniel@danm.de>
+    * Added a few new classes for ISO7816 and ISO8825
+      WARNING: Iso7816/Iso8825 is experimental / not ready to use!
+
+2010-10-18  Daniel Mueller <daniel@danm.de>
+    * CommandApdu.cs: ExpectedResponseLength -> fix: returned size with two
+      additional bytes for SW1 and SW2.
+    * ResponseApdu.cs: Removed locking.
+    * Added new class Response.cs
+
+2010-10-13  Daniel Mueller <daniel@danm.de>
+    * Camal Case renaming of Apdu, CommandApdu and various methods.
+    * First implementation of ResponseApdu
+    * Added a few new Transmit() methods in ISCardReader and SCardReader
+
+2010-10-12  Daniel Mueller <daniel@danm.de>
+    * Formated the source code with Visual Studio
+
+2010-10-11  Daniel Mueller <daniel@danm.de>
+    * Changed the SCardReader.Transmit method, some
+      parameters do not need the 'ref' statement.
+    * Added documentation and examples.
+
+2010-10-08  Daniel Mueller <daniel@danm.de>
+    * Added two more SetAttrib methods in SCardReader.
+    * Added a lot more documentation.
+
+2010-10-07  Daniel Mueller <daniel@danm.de>
+    * Added a public member 'Handle' in SCardContext.
+    * Added a lot more documentation.
+
+2010-10-06  Daniel Mueller <daniel@danm.de>
+    * Added new/missing members in SCardError.
+    * Added a lot more documentation.
+
+2010-10-05  Daniel Mueller <daniel@danm.de>
+    * Corrected spelling in PCSC.SCRState
+      Anavailable -> Unavailable
+    * Added more documentation.
+    * Corrected ISCardReader
+
+2010-09-30  Daniel Mueller <daniel@danm.de>
+
+    * Try to fix the "library not found" issue on OSX.
+    * Added some more ISO7816 classes (CommandAPDU).
+
+2010-01-24  Daniel Mueller <daniel@danm.de>
+
+    * Initial release pcsc-sharp
+
+2007-06-04  Daniel Mueller <daniel@danm.de>
+
+    * Initial release Mono-PCSClite

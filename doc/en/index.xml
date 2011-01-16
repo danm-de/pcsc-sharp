@@ -1,0 +1,141 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="pcsc-sharp" Version="2.0.0.0">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyConfiguration("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright © 2007-2011 by Daniel Mueller")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("PC/SC wrapper classes for .NET")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyFileVersion("2.0.0.0")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyProduct("PCSC Test")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("PC/SC Sharp")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTrademark("")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.Guid("8f2ed04d-e1d6-446d-a99f-357a366c33f4")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+  <Remarks>Wrapper classes for PC/SC written in C#</Remarks>
+  <Copyright>Daniel Mueller</Copyright>
+  <Types>
+    <Namespace Name="PCSC">
+      <Type Name="CardInitializedEvent" Kind="Delegate" />
+      <Type Name="CardInsertedEvent" Kind="Delegate" />
+      <Type Name="CardRemovedEvent" Kind="Delegate" />
+      <Type Name="CardStatusEventArgs" Kind="Class" />
+      <Type Name="CommunicationErrorException" Kind="Class" />
+      <Type Name="InsufficientBufferException" Kind="Class" />
+      <Type Name="InternalErrorException" Kind="Class" />
+      <Type Name="InvalidContextException" Kind="Class" />
+      <Type Name="InvalidParameterException" Kind="Class" />
+      <Type Name="InvalidProtocolException" Kind="Class" />
+      <Type Name="InvalidScopeTypeException" Kind="Class" />
+      <Type Name="InvalidShareModeException" Kind="Class" />
+      <Type Name="InvalidValueException" Kind="Class" />
+      <Type Name="ISCardReader" Kind="Interface" />
+      <Type Name="MonitorExceptionEvent" Kind="Delegate" />
+      <Type Name="NoServiceException" Kind="Class" />
+      <Type Name="NoSmartcardException" Kind="Class" />
+      <Type Name="NotReadyException" Kind="Class" />
+      <Type Name="PCSCException" Kind="Class" />
+      <Type Name="ReaderUnavailableException" Kind="Class" />
+      <Type Name="RemovedCardException" Kind="Class" />
+      <Type Name="SCardAttr" Kind="Enumeration" />
+      <Type Name="SCardClass" Kind="Enumeration" />
+      <Type Name="SCardContext" Kind="Class" />
+      <Type Name="SCardError" Kind="Enumeration" />
+      <Type Name="SCardHelper" Kind="Class" />
+      <Type Name="SCardMonitor" Kind="Class" />
+      <Type Name="SCardPCI" Kind="Class" />
+      <Type Name="SCardProtocol" Kind="Enumeration" />
+      <Type Name="SCardReader" Kind="Class" />
+      <Type Name="SCardReaderDisposition" Kind="Enumeration" />
+      <Type Name="SCardReaderState" Kind="Class" />
+      <Type Name="SCardScope" Kind="Enumeration" />
+      <Type Name="SCardShareMode" Kind="Enumeration" />
+      <Type Name="SCardState" Kind="Enumeration" />
+      <Type Name="SCRState" Kind="Enumeration" />
+      <Type Name="SharingViolationException" Kind="Class" />
+      <Type Name="StatusChangeEvent" Kind="Delegate" />
+      <Type Name="StatusChangeEventArgs" Kind="Class" />
+      <Type Name="UnknownReaderException" Kind="Class" />
+      <Type Name="UnpoweredCardException" Kind="Class" />
+      <Type Name="UnresponsiveCardException" Kind="Class" />
+      <Type Name="UnsupportedFeatureException" Kind="Class" />
+    </Namespace>
+    <Namespace Name="PCSC.Iso7816">
+      <Type Name="Apdu" Kind="Class" />
+      <Type Name="ClaHighPart" Kind="Enumeration" />
+      <Type Name="ClassByte" Kind="Class" />
+      <Type Name="CommandApdu" Kind="Class" />
+      <Type Name="ExtendedFileType" Kind="Enumeration" />
+      <Type Name="FileDescriptor" Kind="Class" />
+      <Type Name="FileShareMode" Kind="Enumeration" />
+      <Type Name="FileStructureInfo" Kind="Class" />
+      <Type Name="FileStructureType" Kind="Enumeration" />
+      <Type Name="FileType" Kind="Enumeration" />
+      <Type Name="InstructionByte" Kind="Class" />
+      <Type Name="InstructionCode" Kind="Enumeration" />
+      <Type Name="IsoCard" Kind="Class" />
+      <Type Name="IsoCase" Kind="Enumeration" />
+      <Type Name="RecordInfo" Kind="Class" />
+      <Type Name="Response" Kind="Class" />
+      <Type Name="ResponseApdu" Kind="Class" />
+      <Type Name="ResponseApduList" Kind="Class" />
+      <Type Name="SecureMessagingFormat" Kind="Enumeration" />
+      <Type Name="SimpleTlvPacket" Kind="Class" />
+      <Type Name="SimpleTlvPacketBuilder" Kind="Class" />
+      <Type Name="SW1Code" Kind="Enumeration" />
+      <Type Name="TlvDataType" Kind="Enumeration" />
+    </Namespace>
+    <Namespace Name="PCSC.Iso8825">
+      <Type Name="DataObject" Kind="Class" />
+      <Type Name="DataObjectFactory" Kind="Class" />
+      <Type Name="InvalidBerTlvPacket" Kind="Class" />
+      <Type Name="InvalidBerTlvPacketException" Kind="Class" />
+      <Type Name="InvalidSimpleTlvPacket" Kind="Class" />
+      <Type Name="InvalidSimpleTlvPacketException" Kind="Class" />
+      <Type Name="InvalidTlvData" Kind="Class" />
+      <Type Name="InvalidTlvDataException" Kind="Class" />
+      <Type Name="TlvData" Kind="Class" />
+    </Namespace>
+    <Namespace Name="PCSC.Iso8825.Asn1">
+      <Type Name="Asn1Boolean" Kind="Class" />
+      <Type Name="Asn1IA5String" Kind="Class" />
+      <Type Name="Asn1Integer" Kind="Class" />
+      <Type Name="Asn1Type" Kind="Enumeration" />
+      <Type Name="IAsn1Type" Kind="Interface" />
+      <Type Name="InvalidAsn1BooleanException" Kind="Class" />
+    </Namespace>
+    <Namespace Name="PCSC.Iso8825.BasicEncodingRules">
+      <Type Name="BerClassType" Kind="Enumeration" />
+      <Type Name="BerLengthEncoding" Kind="Enumeration" />
+      <Type Name="BerStructureType" Kind="Enumeration" />
+      <Type Name="BerTlvPacket" Kind="Class" />
+    </Namespace>
+  </Types>
+  <Title>PC/SC Class Library</Title>
+</Overview>

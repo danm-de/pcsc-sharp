@@ -1,0 +1,1459 @@
+<html>
+  <head>
+    <title>PCSC.SCardContext</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">pcsc-sharp</a> : <a href="index.html">PCSC Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:PCSC.SCardContext">Overview</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.SCardContext:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.SCardContext:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.SCardContext:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:PCSC.SCardContext">SCardContext  Class</h1>
+    <p class="Summary" id="T:PCSC.SCardContext:Summary">Manages an Application Context to the PC/SC Resource Manager.</p>
+    <div id="T:PCSC.SCardContext:Signature">
+      <div class="Signature">public class  <b>SCardContext</b> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IDisposable">IDisposable</a></div>
+    </div>
+    <div class="Remarks" id="T:PCSC.SCardContext:Docs">
+      <h4 class="Subsection">
+        <a href="javascript:toggle_display('T:PCSC.SCardContext:Docs:Remarks')">
+          <span id="T:PCSC.SCardContext:Docs:Remarks:toggle">⊟</span> Remarks</a>
+      </h4>
+      <blockquote class="SubsectionBox" id="T:PCSC.SCardContext:Docs:Remarks">
+      </blockquote>
+      <h4 class="Subsection">
+        <a href="javascript:toggle_display('T:PCSC.SCardContext:Docs:Version Information')">
+          <span id="T:PCSC.SCardContext:Docs:Version Information:toggle">⊟</span> Requirements</a>
+      </h4>
+      <blockquote class="SubsectionBox" id="T:PCSC.SCardContext:Docs:Version Information">
+        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+      <h2 class="Section" id="Members">
+        <a href="javascript:toggle_display('_Members')">
+          <span id="_Members:toggle">⊟</span> Members</a>
+      </h2>
+      <blockquote class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h3>
+          <a href="javascript:toggle_display('Public Constructors')">
+            <span id="Public Constructors:toggle">⊟</span> Public Constructors</a>
+        </h3>
+        <blockquote id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:PCSC.SCardContext">SCardContext</a>
+                    </b>()</div>
+                </td>
+                <td>Creates a new SCardContext object.</td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Fields')">
+            <span id="Public Fields:toggle">⊟</span> Public Fields</a>
+        </h3>
+        <blockquote id="Public Fields">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>const </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#F:PCSC.SCardContext.Infinite">Infinite</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a>
+                  </i> (4294967295). Infinite timeout.</td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Properties')">
+            <span id="Public Properties:toggle">⊟</span> Public Properties</a>
+        </h3>
+        <blockquote id="Public Properties">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.SCardContext.Handle">Handle</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a>
+                  </i>. A pointer (Application Context) that can be used for C API calls.</td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.SCardContext.Infinite">Infinite</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div>static </div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.SCardContext.MaxATRSize">MaxATRSize</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. Maximum ATR size.</td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Methods')">
+            <span id="Public Methods:toggle">⊟</span> Public Methods</a>
+        </h3>
+        <blockquote id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.Cancel">Cancel</a>
+                  </b>()<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Cancels all pending blocking requests on the <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])">SCardContext.GetStatusChange(IntPtr, SCardReaderState[])</a> method. </blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.CheckValidity">CheckValidity</a>
+                  </b>()<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Checks the validity of the current context. </blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.Dispose">Dispose</a>
+                  </b>()<blockquote>Disposes a PC/SC context.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.Establish(PCSC.SCardScope)">Establish</a>
+                  </b>(<a href="../PCSC/SCardScope.html">SCardScope</a>)<blockquote>Creates an Application Context to the PC/SC Resource Manager.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.Finalize">Finalize</a>
+                  </b>()<blockquote></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.GetReaderGroups">GetReaderGroups</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[]</nobr><blockquote>Returns a list of currently available reader groups on the system. </blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.GetReaders">GetReaders</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[]</nobr><blockquote>Returns a list of currently available readers on the system.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.GetReaders(System.String[])">GetReaders</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[])<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[]</nobr><blockquote>Returns a list of currently available readers on the system.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.GetReaderStatus(System.String)">GetReaderStatus</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)<nobr> : <a href="../PCSC/SCardReaderState.html">SCardReaderState</a></nobr><blockquote>Returns the current reader status.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.GetReaderStatus(System.String[])">GetReaderStatus</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[])<nobr> : <a href="../PCSC/SCardReaderState.html">SCardReaderState</a>[]</nobr><blockquote>Returns the current reader status of all requested readers.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])">GetStatusChange</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a>, <a href="../PCSC/SCardReaderState.html">SCardReaderState</a>[])<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Blocks execution until the current availability of the cards in a specific set of readers changes.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.IsValid">IsValid</a>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a></nobr><blockquote>Checks the validity of the current context. </blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.ReEstablish">ReEstablish</a>
+                  </b>()<blockquote>Re-Establishes an Application Context to the PC/SC Resource Manager with the last used <a href="../PCSC/SCardScope.html">PCSC.SCardScope</a>. </blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardContext.Release">Release</a>
+                  </b>()<blockquote>Destroys a communication context to the PC/SC Resource Manager.</blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+      </blockquote>
+    </div>
+    <div class="Members" id="T:PCSC.SCardContext:Members">
+      <h2 class="Section" id="MemberDetails">
+        <a href="javascript:toggle_display('_MemberDetails')">
+          <span id="_MemberDetails:toggle">⊟</span> Member Details</a>
+      </h2>
+      <blockquote class="SectionBox" id="_MemberDetails">
+        <h3 id="C:PCSC.SCardContext">
+          <a href="javascript:toggle_display('C:PCSC.SCardContext:member')">
+            <span id="C:PCSC.SCardContext:member:toggle">⊟</span> SCardContext Constructor</a>
+        </h3>
+        <blockquote id="C:PCSC.SCardContext:member">
+          <p class="Summary">Creates a new SCardContext object.</p>
+          <div class="Signature">public  <b>SCardContext</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.SCardContext:Remarks')">
+              <span id="C:PCSC.SCardContext:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.SCardContext:Remarks">Each thread of an application shall use its own SCardContext.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.SCardContext:Version Information')">
+              <span id="C:PCSC.SCardContext:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.SCardContext:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.Cancel">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.Cancel:member')">
+            <span id="M:PCSC.SCardContext.Cancel:member:toggle">⊟</span> Cancel Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.Cancel:member">
+          <p class="Summary">Cancels all pending blocking requests on the <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])">SCardContext.GetStatusChange(IntPtr, SCardReaderState[])</a> method. </p>
+          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>Cancel</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Cancel:Returns')">
+              <span id="M:PCSC.SCardContext.Cancel:Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Cancel:Returns">
+            <table class="Documentation">
+              <tr>
+                <th>Return value</th>
+                <th>Description</th>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.Success">SCardError.Success</a>
+                </td>
+                <td>Successful (SCARD_S_SUCCESS)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.InvalidHandle">SCardError.InvalidHandle</a>
+                </td>
+                <td>Invalid context (SCARD_E_INVALID_HANDLE)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.NoService">SCardError.NoService</a>
+                </td>
+                <td>Server is not running (SCARD_E_NO_SERVICE)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.CommunicationError">SCardError.CommunicationError</a>
+                </td>
+                <td>An internal communications error has been detected (SCARD_F_COMM_ERROR)</td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Cancel:Remarks')">
+              <span id="M:PCSC.SCardContext.Cancel:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Cancel:Remarks">
+This method calls the API function SCardCancel().
+</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Cancel:Version Information')">
+              <span id="M:PCSC.SCardContext.Cancel:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Cancel:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.CheckValidity">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.CheckValidity:member')">
+            <span id="M:PCSC.SCardContext.CheckValidity:member:toggle">⊟</span> CheckValidity Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.CheckValidity:member">
+          <p class="Summary">Checks the validity of the current context. </p>
+          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>CheckValidity</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.CheckValidity:Returns')">
+              <span id="M:PCSC.SCardContext.CheckValidity:Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.CheckValidity:Returns">
+            <table class="Documentation">
+              <tr>
+                <th>Return value</th>
+                <th>Description</th>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.Success">SCardError.Success</a>
+                </td>
+                <td>The context is valid. (SCARD_S_SUCCESS)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.InvalidHandle">SCardError.InvalidHandle</a>
+                </td>
+                <td>The context is invalid. (SCARD_E_INVALID_HANDLE)</td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.CheckValidity:Remarks')">
+              <span id="M:PCSC.SCardContext.CheckValidity:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.CheckValidity:Remarks">
+            <p>
+Call this function to determine whether a smart card context handle is still valid. After a smart card context handle has been set by <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.Establish(PCSC.SCardScope)">SCardContext.Establish(SCardScope)</a>, it may become not valid if the resource manager service has been shut down.
+</p>
+            <p>
+This method calls the API function SCardIsValidContext().
+</p>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.CheckValidity:Version Information')">
+              <span id="M:PCSC.SCardContext.CheckValidity:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.CheckValidity:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.Dispose">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.Dispose:member')">
+            <span id="M:PCSC.SCardContext.Dispose:member:toggle">⊟</span> Dispose Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.Dispose:member">
+          <p class="Summary">Disposes a PC/SC context.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Dispose</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Dispose:Remarks')">
+              <span id="M:PCSC.SCardContext.Dispose:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Dispose:Remarks">If a context to the PC/SC Resource Manager is established, Dispose() will call the <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.Release()">SCardContext.Release()</a> method silently.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Dispose:Version Information')">
+              <span id="M:PCSC.SCardContext.Dispose:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Dispose:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.Establish(PCSC.SCardScope)">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.Establish(PCSC.SCardScope):member')">
+            <span id="M:PCSC.SCardContext.Establish(PCSC.SCardScope):member:toggle">⊟</span> Establish Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.Establish(PCSC.SCardScope):member">
+          <p class="Summary">Creates an Application Context to the PC/SC Resource Manager.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Establish</b> (<a href="../PCSC/SCardScope.html">SCardScope</a> scope)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Establish(PCSC.SCardScope):Parameters')">
+              <span id="M:PCSC.SCardContext.Establish(PCSC.SCardScope):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Establish(PCSC.SCardScope):Parameters">
+            <dl>
+              <dt>
+                <i>scope</i>
+              </dt>
+              <dd>Scope of the establishment. This can either be a local or remote connection.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Establish(PCSC.SCardScope):Remarks')">
+              <span id="M:PCSC.SCardContext.Establish(PCSC.SCardScope):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Establish(PCSC.SCardScope):Remarks">
+            <p>
+Creates an Application Context for a client. This must be the first WinSCard function called in a PC/SC application. Each thread of an application shall use its own <a href="../PCSC/SCardContext.html">PCSC.SCardContext</a>.</p>
+            <p>This method calls the API function SCardEstablishContext().
+</p>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+SCardContext context = new SCardContext();
+context.Establish(SCardScope.System);
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Establish(PCSC.SCardScope):Version Information')">
+              <span id="M:PCSC.SCardContext.Establish(PCSC.SCardScope):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Establish(PCSC.SCardScope):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.Finalize">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.Finalize:member')">
+            <span id="M:PCSC.SCardContext.Finalize:member:toggle">⊟</span> Finalize Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.Finalize:member">
+          <p class="Summary">
+          </p>
+          <div class="Signature">
+            <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Finalize</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Finalize:Remarks')">
+              <span id="M:PCSC.SCardContext.Finalize:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Finalize:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Finalize:Version Information')">
+              <span id="M:PCSC.SCardContext.Finalize:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Finalize:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.GetReaderGroups">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderGroups:member')">
+            <span id="M:PCSC.SCardContext.GetReaderGroups:member:toggle">⊟</span> GetReaderGroups Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.GetReaderGroups:member">
+          <p class="Summary">Returns a list of currently available reader groups on the system. </p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[] <b>GetReaderGroups</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderGroups:Returns')">
+              <span id="M:PCSC.SCardContext.GetReaderGroups:Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderGroups:Returns">An array of <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>s containing all Smart Card reader groups found by the PC/SC Resource Manager.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderGroups:Remarks')">
+              <span id="M:PCSC.SCardContext.GetReaderGroups:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderGroups:Remarks">
+            <p>
+This method calls the API function SCardListReaderGroups().
+</p>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+SCardContext context = new SCardContext();
+context.Establish(SCardScope.System);
+
+// list all configured reader groups
+Console.Out.WriteLine("\nCurrently configured readers groups: ");
+string[] groups = context.GetReaderGroups();
+foreach (string group in groups)
+	Console.WriteLine("\t" + group);
+
+context.Release();
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderGroups:Version Information')">
+              <span id="M:PCSC.SCardContext.GetReaderGroups:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderGroups:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.GetReaders">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaders:member')">
+            <span id="M:PCSC.SCardContext.GetReaders:member:toggle">⊟</span> GetReaders Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.GetReaders:member">
+          <p class="Summary">Returns a list of currently available readers on the system.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[] <b>GetReaders</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaders:Returns')">
+              <span id="M:PCSC.SCardContext.GetReaders:Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaders:Returns">An array of <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>s containing all Smart Card readers found by the PC/SC Resource Manager.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaders:Remarks')">
+              <span id="M:PCSC.SCardContext.GetReaders:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaders:Remarks">
+            <p>
+This method calls the API function SCardListReaders().
+</p>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+SCardContext context = new SCardContext();
+context.Establish(SCardScope.System);
+
+// list all (smart card) readers
+Console.Out.WriteLine("Currently connected readers: ");
+string[] readers = context.GetReaders();
+foreach (string reader in readers)
+	Console.WriteLine("\t" + reader);
+
+context.Release();
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaders:Version Information')">
+              <span id="M:PCSC.SCardContext.GetReaders:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaders:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.GetReaders(System.String[])">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaders(System.String[]):member')">
+            <span id="M:PCSC.SCardContext.GetReaders(System.String[]):member:toggle">⊟</span> GetReaders Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.GetReaders(System.String[]):member">
+          <p class="Summary">Returns a list of currently available readers on the system.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[] <b>GetReaders</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[] Groups)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaders(System.String[]):Parameters')">
+              <span id="M:PCSC.SCardContext.GetReaders(System.String[]):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaders(System.String[]):Parameters">
+            <dl>
+              <dt>
+                <i>Groups</i>
+              </dt>
+              <dd>List of groups to list readers.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaders(System.String[]):Returns')">
+              <span id="M:PCSC.SCardContext.GetReaders(System.String[]):Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaders(System.String[]):Returns">An array of <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>s containing all Smart Card readers found by the PC/SC Resource Manager.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaders(System.String[]):Remarks')">
+              <span id="M:PCSC.SCardContext.GetReaders(System.String[]):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaders(System.String[]):Remarks">
+            <p>
+Groups is not used on Linux/UNIX machines using the PC/SC Lite daemon.
+</p>
+            <p>
+This method calls the API function SCardListReaders().
+</p>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+SCardContext context = new SCardContext();
+context.Establish(SCardScope.System);
+
+// list all configured reader groups
+Console.Out.WriteLine("\nCurrently configured readers groups: ");
+string[] groups = context.GetReaderGroups();
+foreach (string group in groups)
+	Console.WriteLine("\t" + group);
+
+// list readers for each group
+foreach (string group in groups)
+{
+	Console.WriteLine("\nGroup " + group + " contains ");
+	foreach (string reader in context.GetReaders(new string[] {group}))
+		Console.WriteLine("\t" + reader);
+}
+
+context.Release();
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaders(System.String[]):Version Information')">
+              <span id="M:PCSC.SCardContext.GetReaders(System.String[]):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaders(System.String[]):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.GetReaderStatus(System.String)">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String):member')">
+            <span id="M:PCSC.SCardContext.GetReaderStatus(System.String):member:toggle">⊟</span> GetReaderStatus Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.GetReaderStatus(System.String):member">
+          <p class="Summary">Returns the current reader status.</p>
+          <div class="Signature">public <a href="../PCSC/SCardReaderState.html">SCardReaderState</a> <b>GetReaderStatus</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> readername)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String):Parameters')">
+              <span id="M:PCSC.SCardContext.GetReaderStatus(System.String):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderStatus(System.String):Parameters">
+            <dl>
+              <dt>
+                <i>readername</i>
+              </dt>
+              <dd>The requested reader.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String):Returns')">
+              <span id="M:PCSC.SCardContext.GetReaderStatus(System.String):Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderStatus(System.String):Returns">A <a href="../PCSC/SCardReaderState.html">PCSC.SCardReaderState</a> that contains the current reader status.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String):Remarks')">
+              <span id="M:PCSC.SCardContext.GetReaderStatus(System.String):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderStatus(System.String):Remarks">
+            <p>
+This method uses the <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])">SCardContext.GetStatusChange(IntPtr, SCardReaderState[])</a> method with a <i>timeout</i> of zero.
+</p>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Helper function to display the ATR
+static string StringAtr(byte[] atr)
+{
+	if (atr == null)
+		return null;
+
+	StringBuilder sb = new StringBuilder();
+	foreach (byte b in atr)
+		sb.AppendFormat("{0:X2}", b);
+
+	return sb.ToString();
+}
+  </pre>
+                </td>
+              </tr>
+            </table>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Retrieve the names of all installed readers.
+SCardContext ctx = new SCardContext();
+ctx.Establish(SCardScope.System);
+string[] readernames = ctx.GetReaders();
+
+// Get the current status of the first reader in "readernames".
+SCardReaderState state = ctx.GetReaderStatus(readernames[0]);
+
+Console.WriteLine("Reader: " + state.ReaderName);
+Console.WriteLine("CurrentState: " + state.CurrentState 
+	+ " EventState: " + state.EventState + "\n"
+	+ "CurrentStateValue: " + state.CurrentStateValue 
+	+ " EventStateValue: " + state.EventStateValue);
+Console.WriteLine("UserData: " + state.UserData.ToString()
+	+ " CardChangeEventCnt: " + state.CardChangeEventCnt);
+Console.WriteLine("ATR: " + StringAtr(state.ATR));
+            
+ctx.Release();
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String):Version Information')">
+              <span id="M:PCSC.SCardContext.GetReaderStatus(System.String):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderStatus(System.String):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.GetReaderStatus(System.String[])">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String[]):member')">
+            <span id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):member:toggle">⊟</span> GetReaderStatus Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):member">
+          <p class="Summary">Returns the current reader status of all requested readers.</p>
+          <div class="Signature">public <a href="../PCSC/SCardReaderState.html">SCardReaderState</a>[] <b>GetReaderStatus</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>[] readernames)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String[]):Parameters')">
+              <span id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):Parameters">
+            <dl>
+              <dt>
+                <i>readernames</i>
+              </dt>
+              <dd>Requested reader names.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String[]):Returns')">
+              <span id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):Returns">An array of <a href="../PCSC/SCardReaderState.html">PCSC.SCardReaderState</a>s that contains the current reader status of each requested reader.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String[]):Remarks')">
+              <span id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):Remarks">
+            <p>
+This method uses the <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])">SCardContext.GetStatusChange(IntPtr, SCardReaderState[])</a> method with a <i>timeout</i> of zero.
+</p>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Helper function to display the ATR.
+static string StringAtr(byte[] atr)
+{
+	if (atr == null)
+		return null;
+
+	StringBuilder sb = new StringBuilder();
+	foreach (byte b in atr)
+		sb.AppendFormat("{0:X2}", b);
+
+	return sb.ToString();
+}
+  </pre>
+                </td>
+              </tr>
+            </table>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+// Retrieve the names of all installed readers.
+SCardContext ctx = new SCardContext();
+ctx.Establish(SCardScope.System);
+string[] readernames = ctx.GetReaders();
+
+// Get the current status of each reader in "readernames".
+SCardReaderState[] states = ctx.GetReaderStatus(readernames);
+
+foreach (SCardReaderState state in states)
+{
+	Console.WriteLine("&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;");
+	Console.WriteLine("Reader: " + state.ReaderName);
+	Console.WriteLine("CurrentState: " + state.CurrentState 
+		+ " EventState: " + state.EventState + "\n"
+		+ "CurrentStateValue: " + state.CurrentStateValue 
+		+ " EventStateValue: " + state.EventStateValue);
+	Console.WriteLine("UserData: " + state.UserData.ToString()
+		+ " CardChangeEventCnt: " + state.CardChangeEventCnt);
+	Console.WriteLine("ATR: " + StringAtr(state.ATR));
+}
+            
+ctx.Release();
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetReaderStatus(System.String[]):Version Information')">
+              <span id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetReaderStatus(System.String[]):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):member')">
+            <span id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):member:toggle">⊟</span> GetStatusChange Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):member">
+          <p class="Summary">Blocks execution until the current availability of the cards in a specific set of readers changes.</p>
+          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>GetStatusChange</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> timeout, <a href="../PCSC/SCardReaderState.html">SCardReaderState</a>[] readerstates)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Parameters')">
+              <span id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Parameters">
+            <dl>
+              <dt>
+                <i>timeout</i>
+              </dt>
+              <dd>Maximum waiting time (in milliseconds) for status change, zero or <a href="../PCSC/SCardContext.html#F:PCSC.SCardContext.Infinite">SCardContext.Infinite</a> for infinite.</dd>
+              <dt>
+                <i>readerstates</i>
+              </dt>
+              <dd>Structures of readers with current states. </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Returns')">
+              <span id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Returns">
+            <p>
+A <a href="../PCSC/SCardError.html">PCSC.SCardError</a> indicating an error or the success.The caller receives status changes through the <a href="../PCSC/SCardReaderState.html">PCSC.SCardReaderState</a> array.</p>
+            <table class="Documentation">
+              <tr>
+                <th>Return value</th>
+                <th>Description</th>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.Success">SCardError.Success</a>
+                </td>
+                <td>Successful (SCARD_S_SUCCESS)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.NoService">SCardError.NoService</a>
+                </td>
+                <td>Server is not running (SCARD_E_NO_SERVICE)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.InvalidParameter">SCardError.InvalidParameter</a>
+                </td>
+                <td>
+                  <i>readerstates</i> is invalid or <tt>null</tt> (SCARD_E_INVALID_PARAMETER)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.InvalidValue">SCardError.InvalidValue</a>
+                </td>
+                <td>Invalid States, reader name, etc (SCARD_E_INVALID_VALUE)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.InvalidHandle">SCardError.InvalidHandle</a>
+                </td>
+                <td>Invalid context (SCARD_E_INVALID_HANDLE)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.ReaderUnavailable">SCardError.ReaderUnavailable</a>
+                </td>
+                <td>The reader is unavailable (SCARD_E_READER_UNAVAILABLE)</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="../PCSC/SCardError.html#F:PCSC.SCardError.Timeout">SCardError.Timeout</a>
+                </td>
+                <td>The user-specified timeout value has expired (SCARD_E_TIMEOUT)</td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Remarks')">
+              <span id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Remarks">
+            <p>
+This method receives a structure or list of structures containing reader names. It then blocks for a change in state to occur for a maximum blocking time of <i>timeout</i> or forever if <a href="../PCSC/SCardContext.html#F:PCSC.SCardContext.Infinite">SCardContext.Infinite</a> is used.
+</p>
+            <p>
+The new event state will be contained in <a href="../PCSC/SCardReaderState.html#P:PCSC.SCardReaderState.EventState">SCardReaderState.EventState</a>. A status change might be a card insertion or removal event, a change in ATR, etc.
+</p>
+            <p>
+To wait for a reader event (reader added or removed) you may use the special reader name "\\?PnP?\Notification". If a reader event occurs the state of this reader will change and the bit <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Changed">SCRState.Changed</a> will be set.
+</p>
+            <p>
+This method calls the API function SCardGetStatusChange().
+
+</p>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Version Information')">
+              <span id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[]):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.SCardContext.Handle">
+          <a href="javascript:toggle_display('P:PCSC.SCardContext.Handle:member')">
+            <span id="P:PCSC.SCardContext.Handle:member:toggle">⊟</span> Handle Property</a>
+        </h3>
+        <blockquote id="P:PCSC.SCardContext.Handle:member">
+          <p class="Summary">A pointer (Application Context) that can be used for C API calls.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>Handle</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardContext.Handle:Value')">
+              <span id="P:PCSC.SCardContext.Handle:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardContext.Handle:Value">The returned Application Context handle. Is 0 if not context has been established.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardContext.Handle:Remarks')">
+              <span id="P:PCSC.SCardContext.Handle:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardContext.Handle:Remarks">
+This is the Application Context handle that is returned when calling the C API function SCardEstablishContext().
+</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardContext.Handle:Version Information')">
+              <span id="P:PCSC.SCardContext.Handle:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardContext.Handle:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="F:PCSC.SCardContext.Infinite">
+          <a href="javascript:toggle_display('F:PCSC.SCardContext.Infinite:member')">
+            <span id="F:PCSC.SCardContext.Infinite:member:toggle">⊟</span> Infinite Field</a>
+        </h3>
+        <blockquote id="F:PCSC.SCardContext.Infinite:member">
+          <p class="Summary">Infinite timeout.</p>
+          <p>
+            <b>Value: </b>4294967295</p>
+          <div class="Signature">public const <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>Infinite</b> </div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('F:PCSC.SCardContext.Infinite:Remarks')">
+              <span id="F:PCSC.SCardContext.Infinite:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="F:PCSC.SCardContext.Infinite:Remarks">
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('F:PCSC.SCardContext.Infinite:Version Information')">
+              <span id="F:PCSC.SCardContext.Infinite:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="F:PCSC.SCardContext.Infinite:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.SCardContext.Infinite">
+          <a href="javascript:toggle_display('P:PCSC.SCardContext.Infinite:member')">
+            <span id="P:PCSC.SCardContext.Infinite:member:toggle">⊟</span> Infinite Property</a>
+        </h3>
+        <blockquote id="P:PCSC.SCardContext.Infinite:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>Infinite</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardContext.Infinite:Value')">
+              <span id="P:PCSC.SCardContext.Infinite:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardContext.Infinite:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardContext.Infinite:Remarks')">
+              <span id="P:PCSC.SCardContext.Infinite:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardContext.Infinite:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardContext.Infinite:Version Information')">
+              <span id="P:PCSC.SCardContext.Infinite:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardContext.Infinite:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.IsValid">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.IsValid:member')">
+            <span id="M:PCSC.SCardContext.IsValid:member:toggle">⊟</span> IsValid Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.IsValid:member">
+          <p class="Summary">Checks the validity of the current context. </p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>IsValid</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.IsValid:Returns')">
+              <span id="M:PCSC.SCardContext.IsValid:Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.IsValid:Returns">
+            <tt>true</tt> if the context is valid.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.IsValid:Remarks')">
+              <span id="M:PCSC.SCardContext.IsValid:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.IsValid:Remarks">
+            <p>
+Call this function to determine whether a smart card context handle is still valid. After a smart card context handle has been set by <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.Establish(PCSC.SCardScope)">SCardContext.Establish(SCardScope)</a>, it may become not valid if the resource manager service has been shut down.
+</p>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+SCardContext context = new SCardContext();
+context.Establish(SCardScope.System);
+
+Console.Out.WriteLine("Context is valid? -&gt; " + context.IsValid());
+
+context.Release();
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.IsValid:Version Information')">
+              <span id="M:PCSC.SCardContext.IsValid:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.IsValid:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.SCardContext.MaxATRSize">
+          <a href="javascript:toggle_display('P:PCSC.SCardContext.MaxATRSize:member')">
+            <span id="P:PCSC.SCardContext.MaxATRSize:member:toggle">⊟</span> MaxATRSize Property</a>
+        </h3>
+        <blockquote id="P:PCSC.SCardContext.MaxATRSize:member">
+          <p class="Summary">Maximum ATR size.</p>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>MaxATRSize</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardContext.MaxATRSize:Value')">
+              <span id="P:PCSC.SCardContext.MaxATRSize:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardContext.MaxATRSize:Value">
+            <table class="Documentation">
+              <tr>
+                <th>Platform</th>
+                <th>
+                  <i>MaxATRSize</i>
+                </th>
+              </tr>
+              <tr valign="top">
+                <td>Windows (Winscard.dll)</td>
+                <td>36</td>
+              </tr>
+              <tr valign="top">
+                <td>UNIX/Linux (PC/SClite)</td>
+                <td>33</td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardContext.MaxATRSize:Remarks')">
+              <span id="P:PCSC.SCardContext.MaxATRSize:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardContext.MaxATRSize:Remarks">Attention: Size depends on platform.</blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.SCardContext.MaxATRSize:Version Information')">
+              <span id="P:PCSC.SCardContext.MaxATRSize:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardContext.MaxATRSize:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.ReEstablish">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.ReEstablish:member')">
+            <span id="M:PCSC.SCardContext.ReEstablish:member:toggle">⊟</span> ReEstablish Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.ReEstablish:member">
+          <p class="Summary">Re-Establishes an Application Context to the PC/SC Resource Manager with the last used <a href="../PCSC/SCardScope.html">PCSC.SCardScope</a>. </p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ReEstablish</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.ReEstablish:Remarks')">
+              <span id="M:PCSC.SCardContext.ReEstablish:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.ReEstablish:Remarks">This method must not be called before <a href="../PCSC/SCardContext.html#F:PCSC.SCardContext.Establish(PCSC.SCardScope)">SCardContext.Establish(SCardScope)</a></blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.ReEstablish:Version Information')">
+              <span id="M:PCSC.SCardContext.ReEstablish:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.ReEstablish:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardContext.Release">
+          <a href="javascript:toggle_display('M:PCSC.SCardContext.Release:member')">
+            <span id="M:PCSC.SCardContext.Release:member:toggle">⊟</span> Release Method</a>
+        </h3>
+        <blockquote id="M:PCSC.SCardContext.Release:member">
+          <p class="Summary">Destroys a communication context to the PC/SC Resource Manager.</p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Release</b> ()</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Release:Remarks')">
+              <span id="M:PCSC.SCardContext.Release:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Release:Remarks">
+            <p>
+This must be the last method called in a PC/SC application.
+</p>
+            <p>
+This method calls the API function SCardReleaseContext().
+</p>
+            <table class="CodeExampleTable">
+              <tr>
+                <td>
+                  <b>
+                    <font size="-1">C# Example</font>
+                  </b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <pre class="code-csharp">
+SCardContext context = new SCardContext();
+
+// establish context
+context.Establish(SCardScope.System);
+// release context
+context.Release();
+  </pre>
+                </td>
+              </tr>
+            </table>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.SCardContext.Release:Version Information')">
+              <span id="M:PCSC.SCardContext.Release:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardContext.Release:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+      </blockquote>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

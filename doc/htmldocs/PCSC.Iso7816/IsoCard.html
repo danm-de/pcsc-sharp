@@ -1,0 +1,812 @@
+<html>
+  <head>
+    <title>PCSC.Iso7816.IsoCard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">pcsc-sharp</a> : <a href="index.html">PCSC.Iso7816 Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:PCSC.Iso7816.IsoCard">Overview</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.Iso7816.IsoCard:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.Iso7816.IsoCard:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.Iso7816.IsoCard:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:PCSC.Iso7816.IsoCard">IsoCard  Class</h1>
+    <p class="Summary" id="T:PCSC.Iso7816.IsoCard:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div id="T:PCSC.Iso7816.IsoCard:Signature">
+      <div class="Signature">public class  <b>IsoCard</b></div>
+    </div>
+    <div class="Remarks" id="T:PCSC.Iso7816.IsoCard:Docs">
+      <h4 class="Subsection">
+        <a href="javascript:toggle_display('T:PCSC.Iso7816.IsoCard:Docs:Remarks')">
+          <span id="T:PCSC.Iso7816.IsoCard:Docs:Remarks:toggle">⊟</span> Remarks</a>
+      </h4>
+      <blockquote class="SubsectionBox" id="T:PCSC.Iso7816.IsoCard:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </blockquote>
+      <h4 class="Subsection">
+        <a href="javascript:toggle_display('T:PCSC.Iso7816.IsoCard:Docs:Version Information')">
+          <span id="T:PCSC.Iso7816.IsoCard:Docs:Version Information:toggle">⊟</span> Requirements</a>
+      </h4>
+      <blockquote class="SubsectionBox" id="T:PCSC.Iso7816.IsoCard:Docs:Version Information">
+        <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+      <h2 class="Section" id="Members">
+        <a href="javascript:toggle_display('_Members')">
+          <span id="_Members:toggle">⊟</span> Members</a>
+      </h2>
+      <blockquote class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h3>
+          <a href="javascript:toggle_display('Public Constructors')">
+            <span id="Public Constructors:toggle">⊟</span> Public Constructors</a>
+        </h3>
+        <blockquote id="Public Constructors">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader)">IsoCard</a>
+                    </b>(<a href="../PCSC/ISCardReader.html">PCSC.ISCardReader</a>)</div>
+                </td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b>
+                      <a href="#C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">IsoCard</a>
+                    </b>(<a href="../PCSC/ISCardReader.html">PCSC.ISCardReader</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a>, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>)</div>
+                </td>
+                <td>
+                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Properties')">
+            <span id="Public Properties:toggle">⊟</span> Public Properties</a>
+        </h3>
+        <blockquote id="Public Properties">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IsoCard.ActiveProtocol">ActiveProtocol</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IsoCard.CurrentShareMode">CurrentShareMode</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IsoCard.MaxReceiveSize">MaxReceiveSize</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IsoCard.RetransmitWaitTime">RetransmitWaitTime</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Public Methods')">
+            <span id="Public Methods:toggle">⊟</span> Public Methods</a>
+        </h3>
+        <blockquote id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">Connect</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a>, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase)">ConstructCommandApdu</a>
+                  </b>(<a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a>)<nobr> : <a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu)">Transmit</a>
+                  </b>(<a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a>)<nobr> : <a href="../PCSC.Iso7816/Response.html">Response</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+        <h3>
+          <a href="javascript:toggle_display('Protected Methods')">
+            <span id="Protected Methods:toggle">⊟</span> Protected Methods</a>
+        </h3>
+        <blockquote id="Protected Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError)">ThrowExceptionOnSCardError</a>
+                  </b>(<a href="../PCSC/SCardError.html">PCSC.SCardError</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </blockquote>
+      </blockquote>
+    </div>
+    <div class="Members" id="T:PCSC.Iso7816.IsoCard:Members">
+      <h2 class="Section" id="MemberDetails">
+        <a href="javascript:toggle_display('_MemberDetails')">
+          <span id="_MemberDetails:toggle">⊟</span> Member Details</a>
+      </h2>
+      <blockquote class="SectionBox" id="_MemberDetails">
+        <h3 id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader)">
+          <a href="javascript:toggle_display('C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):member')">
+            <span id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):member:toggle">⊟</span> IsoCard Constructor</a>
+        </h3>
+        <blockquote id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public  <b>IsoCard</b> (<a href="../PCSC/ISCardReader.html">PCSC.ISCardReader</a> reader)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):Parameters')">
+              <span id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):Parameters">
+            <dl>
+              <dt>
+                <i>reader</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):Remarks')">
+              <span id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):Version Information')">
+              <span id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">
+          <a href="javascript:toggle_display('C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):member')">
+            <span id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):member:toggle">⊟</span> IsoCard Constructor</a>
+        </h3>
+        <blockquote id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public  <b>IsoCard</b> (<a href="../PCSC/ISCardReader.html">PCSC.ISCardReader</a> reader, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> readerName, <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a> mode, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> proto)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Parameters')">
+              <span id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Parameters">
+            <dl>
+              <dt>
+                <i>reader</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>readerName</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>mode</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>proto</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Remarks')">
+              <span id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Version Information')">
+              <span id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.Iso7816.IsoCard(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IsoCard.ActiveProtocol">
+          <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.ActiveProtocol:member')">
+            <span id="P:PCSC.Iso7816.IsoCard.ActiveProtocol:member:toggle">⊟</span> ActiveProtocol Property</a>
+        </h3>
+        <blockquote id="P:PCSC.Iso7816.IsoCard.ActiveProtocol:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> <b>ActiveProtocol</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.ActiveProtocol:Value')">
+              <span id="P:PCSC.Iso7816.IsoCard.ActiveProtocol:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.ActiveProtocol:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.ActiveProtocol:Remarks')">
+              <span id="P:PCSC.Iso7816.IsoCard.ActiveProtocol:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.ActiveProtocol:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.ActiveProtocol:Version Information')">
+              <span id="P:PCSC.Iso7816.IsoCard.ActiveProtocol:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.ActiveProtocol:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">
+          <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):member')">
+            <span id="M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):member:toggle">⊟</span> Connect Method</a>
+        </h3>
+        <blockquote id="M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public virtual <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Connect</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> readerName, <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a> mode, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> proto)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Parameters')">
+              <span id="M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Parameters">
+            <dl>
+              <dt>
+                <i>readerName</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>mode</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>proto</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Remarks')">
+              <span id="M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Version Information')">
+              <span id="M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase)">
+          <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):member')">
+            <span id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):member:toggle">⊟</span> ConstructCommandApdu Method</a>
+        </h3>
+        <blockquote id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public <a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a> <b>ConstructCommandApdu</b> (<a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a> isoCase)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Parameters')">
+              <span id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Parameters">
+            <dl>
+              <dt>
+                <i>isoCase</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Returns')">
+              <span id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Remarks')">
+              <span id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Version Information')">
+              <span id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IsoCard.CurrentShareMode">
+          <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.CurrentShareMode:member')">
+            <span id="P:PCSC.Iso7816.IsoCard.CurrentShareMode:member:toggle">⊟</span> CurrentShareMode Property</a>
+        </h3>
+        <blockquote id="P:PCSC.Iso7816.IsoCard.CurrentShareMode:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a> <b>CurrentShareMode</b>  { get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.CurrentShareMode:Value')">
+              <span id="P:PCSC.Iso7816.IsoCard.CurrentShareMode:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.CurrentShareMode:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.CurrentShareMode:Remarks')">
+              <span id="P:PCSC.Iso7816.IsoCard.CurrentShareMode:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.CurrentShareMode:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.CurrentShareMode:Version Information')">
+              <span id="P:PCSC.Iso7816.IsoCard.CurrentShareMode:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.CurrentShareMode:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IsoCard.MaxReceiveSize">
+          <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.MaxReceiveSize:member')">
+            <span id="P:PCSC.Iso7816.IsoCard.MaxReceiveSize:member:toggle">⊟</span> MaxReceiveSize Property</a>
+        </h3>
+        <blockquote id="P:PCSC.Iso7816.IsoCard.MaxReceiveSize:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public virtual <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>MaxReceiveSize</b>  { protected set; get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.MaxReceiveSize:Value')">
+              <span id="P:PCSC.Iso7816.IsoCard.MaxReceiveSize:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.MaxReceiveSize:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.MaxReceiveSize:Remarks')">
+              <span id="P:PCSC.Iso7816.IsoCard.MaxReceiveSize:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.MaxReceiveSize:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.MaxReceiveSize:Version Information')">
+              <span id="P:PCSC.Iso7816.IsoCard.MaxReceiveSize:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.MaxReceiveSize:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IsoCard.RetransmitWaitTime">
+          <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:member')">
+            <span id="P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:member:toggle">⊟</span> RetransmitWaitTime Property</a>
+        </h3>
+        <blockquote id="P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>RetransmitWaitTime</b>  { set; get; }</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:Value')">
+              <span id="P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:Value:toggle">⊟</span> Value</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:Remarks')">
+              <span id="P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:Version Information')">
+              <span id="P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IsoCard.RetransmitWaitTime:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError)">
+          <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):member')">
+            <span id="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):member:toggle">⊟</span> ThrowExceptionOnSCardError Method</a>
+        </h3>
+        <blockquote id="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">protected <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>ThrowExceptionOnSCardError</b> (<a href="../PCSC/SCardError.html">PCSC.SCardError</a> sc)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):Parameters')">
+              <span id="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):Parameters">
+            <dl>
+              <dt>
+                <i>sc</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):Remarks')">
+              <span id="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):Version Information')">
+              <span id="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu)">
+          <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):member')">
+            <span id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):member:toggle">⊟</span> Transmit Method</a>
+        </h3>
+        <blockquote id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <div class="Signature">public virtual <a href="../PCSC.Iso7816/Response.html">Response</a> <b>Transmit</b> (<a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a> cmdApdu)</div>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Parameters')">
+              <span id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Parameters:toggle">⊟</span> Parameters</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Parameters">
+            <dl>
+              <dt>
+                <i>cmdApdu</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Returns')">
+              <span id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Returns:toggle">⊟</span> Returns</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Remarks')">
+              <span id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Remarks:toggle">⊟</span> Remarks</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h4 class="Subsection">
+            <a href="javascript:toggle_display('M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Version Information')">
+              <span id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Version Information:toggle">⊟</span> Requirements</a>
+          </h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IsoCard.Transmit(PCSC.Iso7816.CommandApdu):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0</blockquote>
+          <hr size="1" />
+        </blockquote>
+      </blockquote>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

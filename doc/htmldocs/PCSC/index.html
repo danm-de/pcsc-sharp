@@ -1,0 +1,480 @@
+<html>
+  <head>
+    <title>PC/SC Class Library: PCSC</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">PC/SC Class Library</a>
+    </div>
+    <h1 class="PageTitle">PCSC Namespace</h1>
+    <p class="Summary">
+    </p>
+    <div>
+    </div>
+    <div class="Remarks">
+      <h2 class="Section"> Namespace</h2>
+      <p>
+<p>
+This class library uses P/Invoke to call the native PC/SC API functions and wraps them into .Net objects. The wrapper classes are written in C#.
+</p>
+<p>
+Currently supported systems (tested):
+ <table class="Documentation"><tr><th>Operating System</th><th>System library</th></tr><tr valign="top"><td>Windows XP/Vista (32bit)</td><td>Winscard.dll</td></tr><tr valign="top"><td>Ubuntu Linux (32bit/64bit)</td><td>libpcsclite.so.1</td></tr></table>
+</p>
+</p>
+      <table class="TypesListing" style="margin-top: 1em">
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./CardInitializedEvent.html">CardInitializedEvent</a>
+          </td>
+          <td>The reader has been Initialized.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./CardInsertedEvent.html">CardInsertedEvent</a>
+          </td>
+          <td>A new card has been inserted.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./CardRemovedEvent.html">CardRemovedEvent</a>
+          </td>
+          <td>A card has been removed.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./CardStatusEventArgs.html">CardStatusEventArgs</a>
+          </td>
+          <td>Information about a smart card reader status.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./CommunicationErrorException.html">CommunicationErrorException</a>
+          </td>
+          <td>A communication error occurred.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./InsufficientBufferException.html">InsufficientBufferException</a>
+          </td>
+          <td>A supplied buffer is insufficient.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./InternalErrorException.html">InternalErrorException</a>
+          </td>
+          <td>An internal error occurred.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./InvalidContextException.html">InvalidContextException</a>
+          </td>
+          <td>Invalid PC/SC context exception.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./InvalidParameterException.html">InvalidParameterException</a>
+          </td>
+          <td>One or more arguments contain invalid parameters.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./InvalidProtocolException.html">InvalidProtocolException</a>
+          </td>
+          <td>An invalid protocol has been requested.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./InvalidScopeTypeException.html">InvalidScopeTypeException</a>
+          </td>
+          <td>Invalid PC/SC scope exception.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./InvalidShareModeException.html">InvalidShareModeException</a>
+          </td>
+          <td>The share mode is invalid.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./InvalidValueException.html">InvalidValueException</a>
+          </td>
+          <td>One or more arguments contain invalid values.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./ISCardReader.html">ISCardReader</a>
+          </td>
+          <td>Common functions that are needed to operate on Smart Card readers.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./MonitorExceptionEvent.html">MonitorExceptionEvent</a>
+          </td>
+          <td>An PC/SC error occurred during monitoring.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./NoServiceException.html">NoServiceException</a>
+          </td>
+          <td>The PC/SC service is not running.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./NoSmartcardException.html">NoSmartcardException</a>
+          </td>
+          <td>No smart card is currently inserted.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./NotReadyException.html">NotReadyException</a>
+          </td>
+          <td>The reader or the smart card is not ready.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./PCSCException.html">PCSCException</a>
+          </td>
+          <td>A general PC/SC exception.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./ReaderUnavailableException.html">ReaderUnavailableException</a>
+          </td>
+          <td>The requested reader is unavailable.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./RemovedCardException.html">RemovedCardException</a>
+          </td>
+          <td>A smart card has been removed.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardAttr.html">SCardAttr</a>
+          </td>
+          <td>Smart card reader attribute enumeration.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardClass.html">SCardClass</a>
+          </td>
+          <td>
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardContext.html">SCardContext</a>
+          </td>
+          <td>Manages an Application Context to the PC/SC Resource Manager.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardError.html">SCardError</a>
+          </td>
+          <td>Error and return codes.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardHelper.html">SCardHelper</a>
+          </td>
+          <td>Helper class that offers methods to convert various values into strings.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardMonitor.html">SCardMonitor</a>
+          </td>
+          <td>Monitors a Smart Card reader and triggers events on status changes.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardPCI.html">SCardPCI</a>
+          </td>
+          <td>Structure of protocol information.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardProtocol.html">SCardProtocol</a>
+          </td>
+          <td>Communication protocol use with the Smart Card.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardReader.html">SCardReader</a>
+          </td>
+          <td>Operates on a Smart Card reader.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardReaderDisposition.html">SCardReaderDisposition</a>
+          </td>
+          <td>Action to be taken on the reader.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardReaderState.html">SCardReaderState</a>
+          </td>
+          <td>A structures that contains the old and the new Smart Card reader status.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardScope.html">SCardScope</a>
+          </td>
+          <td>Scope of the establishment.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardShareMode.html">SCardShareMode</a>
+          </td>
+          <td>Mode of connection type: exclusive or shared.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCardState.html">SCardState</a>
+          </td>
+          <td>State of a reader.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SCRState.html">SCRState</a>
+          </td>
+          <td>Reader state.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./SharingViolationException.html">SharingViolationException</a>
+          </td>
+          <td>A sharing violation occurred.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./StatusChangeEvent.html">StatusChangeEvent</a>
+          </td>
+          <td>A general reader status change.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./StatusChangeEventArgs.html">StatusChangeEventArgs</a>
+          </td>
+          <td>Information about a smart card reader status change.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./UnknownReaderException.html">UnknownReaderException</a>
+          </td>
+          <td>The requested reader name is unknown.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./UnpoweredCardException.html">UnpoweredCardException</a>
+          </td>
+          <td>The smart card is unpowered.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./UnresponsiveCardException.html">UnresponsiveCardException</a>
+          </td>
+          <td>The smart card is unresponsive.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./UnsupportedFeatureException.html">UnsupportedFeatureException</a>
+          </td>
+          <td>The requested feature is unsupported.</td>
+        </tr>
+      </table>
+    </div>
+    <div class="Members">
+    </div>
+    <hr size="1" />
+    <div class="Copyright">Daniel Mueller</div>
+  </body>
+</html>

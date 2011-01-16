@@ -1,0 +1,20 @@
+pcsc-sharp:
+-----------------------------------------------------------
+Author:
+- Daniel Mueller <daniel@danm.de>
+
+Monodoc help files and attribute description for pcsc-sharp
+-----------------------------------------------------------
+- Daniel Mueller <daniel@danm.de>
+
+Mostly taken / copied from PC/SC-Lite:
+
+Main authors:
+- David Corcoran <corcoran@linuxnet.com>
+- Ludovic Rousseau <ludovic.rousseau@free.fr>
+- Damien Sauveron <sauveron@labri.fr>
+
+Additional code by:
+- Carlos Prados <cprados@yahoo.com>
+- Antti Tapaninen <aet@cc.hut.fi>
+- and some others
