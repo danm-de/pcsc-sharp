@@ -4,6 +4,7 @@
     <AssemblyName>pcsc-sharp</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.1</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -24,6 +25,7 @@
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="hContext" Type="PCSC.SCardContext" />
@@ -40,6 +42,7 @@
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="hContext" Type="PCSC.SCardContext" />
@@ -58,6 +61,7 @@
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -74,6 +78,7 @@
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.CardInsertedEvent</ReturnType>
@@ -104,6 +109,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.CardRemovedEvent</ReturnType>
@@ -134,6 +140,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -150,6 +157,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -166,6 +174,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCRState</ReturnType>
@@ -186,6 +195,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
@@ -206,6 +216,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -226,6 +237,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.CardInitializedEvent</ReturnType>
@@ -259,6 +271,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.MonitorExceptionEvent</ReturnType>
@@ -289,6 +302,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -324,6 +338,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -340,6 +355,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
@@ -356,6 +372,7 @@ monitor.Start("OMNIKEY CardMan 5x21 00 01");
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -392,6 +409,7 @@ Do not forget to register for at least one event:
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -438,6 +456,7 @@ Do not forget to register for at least one event:
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.StatusChangeEvent</ReturnType>

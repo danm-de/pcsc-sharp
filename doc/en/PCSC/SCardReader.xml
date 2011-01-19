@@ -4,6 +4,7 @@
     <AssemblyName>pcsc-sharp</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <AssemblyVersion>2.0.0.1</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -24,6 +25,7 @@
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="context" Type="PCSC.SCardContext" />
@@ -55,6 +57,7 @@ SCardError rc = myReader.Connect(
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardProtocol</ReturnType>
@@ -72,6 +75,7 @@ SCardError rc = myReader.Connect(
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -139,6 +143,7 @@ This method calls the API function SCardBeginTransaction().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
@@ -159,6 +164,7 @@ This is the card handle that is returned when calling the C API function SCardCo
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -206,6 +212,7 @@ SCardError serr = reader.Connect("OMNIKEY CardMan 5x21 00 00",
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -323,6 +330,7 @@ This method calls the API function SCardControl().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardContext</ReturnType>
@@ -340,6 +348,7 @@ This method calls the API function SCardControl().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardShareMode</ReturnType>
@@ -356,6 +365,7 @@ This method calls the API function SCardControl().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -439,6 +449,7 @@ reader.Disconnect(SCardReaderDisposition.Reset);
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -520,6 +531,7 @@ The disposition action is not currently used in PC/SC Lite on UNIX/Linux machine
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -681,6 +693,7 @@ ctx.Release();
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -775,6 +788,7 @@ This method calls the API function SCardGetAttrib().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -881,6 +895,7 @@ This method calls the API function SCardGetAttrib().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -984,6 +999,7 @@ This method calls the API function SCardGetAttrib().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
@@ -1000,6 +1016,7 @@ This method calls the API function SCardGetAttrib().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -1016,6 +1033,7 @@ This method calls the API function SCardGetAttrib().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -1051,6 +1069,7 @@ This method calls the API function SCardReconnect().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -1135,6 +1154,7 @@ This method calls the API function SCardSetAttrib().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -1219,6 +1239,7 @@ This method calls the API function SCardSetAttrib().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -1305,6 +1326,7 @@ This method calls the API function SCardSetAttrib().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -1391,6 +1413,7 @@ This method calls the API function SCardSetAttrib().
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -1563,6 +1586,7 @@ if (readernames != null)
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -1679,6 +1703,7 @@ This method will only work if the reader has been connected with one of the foll
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -1797,6 +1822,7 @@ This method will only work if the reader has been connected with one of the foll
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -1911,6 +1937,7 @@ This method calls the API function SCardTransmit(). The pointers to the pre-defi
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -2034,6 +2061,7 @@ This method calls the API function SCardTransmit(). The pointers to the pre-defi
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -2154,6 +2182,7 @@ This method will only work if the reader has been connected with one of the foll
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>
@@ -2337,6 +2366,7 @@ RFIDReader.Disconnect(SCardReaderDisposition.Reset);
       <AssemblyInfo>
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyVersion>2.0.0.0</AssemblyVersion>
+        <AssemblyVersion>2.0.0.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCardError</ReturnType>

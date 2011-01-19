@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="pcsc-sharp" Version="2.0.0.0">
+    <Assembly Name="pcsc-sharp" Version="2.0.0.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>
@@ -15,7 +15,7 @@
           <AttributeName>System.Reflection.AssemblyDescription("PC/SC wrapper classes for .NET")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("2.0.0.0")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("2.0.0.1")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("PCSC Test")</AttributeName>
