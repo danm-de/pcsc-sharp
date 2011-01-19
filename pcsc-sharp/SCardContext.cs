@@ -262,7 +262,7 @@ namespace PCSC
         }
         public static IntPtr Infinite
         {
-            get { return (IntPtr)0xFFFFFFFF; }
+            get { return unchecked((IntPtr)0xFFFFFFFF); }
         }
     }
 }

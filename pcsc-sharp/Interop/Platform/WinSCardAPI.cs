@@ -435,7 +435,7 @@ namespace PCSC.Interop
 
             SCardError rc = SCardHelper.ToSCardError(SCardControl(
                 (IntPtr)hCard,
-                // On a 64-bit platforms IntPtr.ToInt32() will throw an OverflowException 
+                // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException 
                 unchecked((Int32)dwControlCode.ToInt64()),
                 pbSendBuffer,
                 sendbuflen,
@@ -606,7 +606,7 @@ namespace PCSC.Interop
 
             SCardError rc = SCardHelper.ToSCardError(SCardGetAttrib(
                 (IntPtr)hCard,
-                // On a 64-bit platforms IntPtr.ToInt32() will throw an OverflowException 
+                // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException 
                 unchecked((Int32)dwAttrId.ToInt64()),
                 pbAttr,
                 ref attrlen));

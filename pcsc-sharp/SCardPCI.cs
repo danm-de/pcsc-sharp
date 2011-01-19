@@ -70,8 +70,8 @@ namespace PCSC
 
             if (SCardAPI.IsWindows)
             {
-                iomem = (IntPtr)((long)Marshal.AllocCoTaskMem(buflength
-                    + Marshal.SizeOf(typeof(WinSCardAPI.SCARD_IO_REQUEST))));
+                iomem = unchecked((IntPtr)((long)Marshal.AllocCoTaskMem(buflength
+                    + Marshal.SizeOf(typeof(WinSCardAPI.SCARD_IO_REQUEST)))));
 
                 winscard_iorequest.dwProtocol = (Int32)protocol;
                 winscard_iorequest.cbPciLength = (Int32)buflength;
@@ -79,14 +79,14 @@ namespace PCSC
                 {
                     Marshal.StructureToPtr(
                         winscard_iorequest,
-                        (IntPtr)((long)iomem), // ugly hack because Mono has problems with IntPtr & 64bit
+                        iomem,
                         false);
                 }
             }
             else
             {
-                iomem = (IntPtr)((long)Marshal.AllocCoTaskMem(buflength
-                    + Marshal.SizeOf(typeof(PCSCliteAPI.SCARD_IO_REQUEST))));
+                iomem = unchecked((IntPtr)((long)Marshal.AllocCoTaskMem(buflength
+                    + Marshal.SizeOf(typeof(PCSCliteAPI.SCARD_IO_REQUEST)))));
 
                 pcsclite_iorequest.dwProtocol = (IntPtr)protocol;
                 pcsclite_iorequest.cbPciLength = (IntPtr)buflength;
@@ -94,7 +94,7 @@ namespace PCSC
                 {
                     Marshal.StructureToPtr(
                         pcsclite_iorequest,
-                        (IntPtr)((long)iomem), // ugly hack because Mono has problems with IntPtr & 64bit
+                        iomem, 
                         false);
                 }
             }
@@ -110,13 +110,13 @@ namespace PCSC
                 if (SCardAPI.IsWindows)
                 {
                     Marshal.Copy(pcidata, 0,
-                        (IntPtr)((long)BufferStartAddr), // ugly hack because Mono has problems with IntPtr & 64bit
+                        BufferStartAddr, 
                         pcidata.Length);
                 }
                 else
                 {
                     Marshal.Copy(pcidata, 0,
-                        (IntPtr)((long)BufferStartAddr), // ugly hack because Mono has problems with IntPtr & 64bit
+                        BufferStartAddr, 
                         pcidata.Length);
                 }
             }
@@ -131,7 +131,7 @@ namespace PCSC
             if (iomem != IntPtr.Zero)
             {
                 Marshal.FreeCoTaskMem(
-                    (IntPtr)((long)iomem));
+                    iomem);
             }
         }
 
@@ -179,13 +179,13 @@ namespace PCSC
             if (SCardAPI.IsWindows)
             {
                 winscard_iorequest = (WinSCardAPI.SCARD_IO_REQUEST)Marshal.PtrToStructure(
-                    (IntPtr)((long)iomem), // ugly hack because Mono has problems with IntPtr & 64bit
+                    iomem, 
                     typeof(WinSCardAPI.SCARD_IO_REQUEST));
             }
             else
             {
                 pcsclite_iorequest = (PCSCliteAPI.SCARD_IO_REQUEST)Marshal.PtrToStructure(
-                    (IntPtr)((long)iomem), // ugly hack because Mono has problems with IntPtr & 64bit
+                    iomem, 
                     typeof(PCSCliteAPI.SCARD_IO_REQUEST));
             }
         }
@@ -209,7 +209,7 @@ namespace PCSC
                         {
                             data = new byte[(int)winscard_iorequest.cbPciLength];
                             Marshal.Copy(
-                                (IntPtr)((long)BufferStartAddr), // ugly hack because Mono has problems with IntPtr & 64bit
+                                BufferStartAddr, 
                                 data,
                                 0,
                                 (int)winscard_iorequest.cbPciLength);
@@ -222,7 +222,7 @@ namespace PCSC
                         {
                             data = new byte[(int)pcsclite_iorequest.cbPciLength];
                             Marshal.Copy(
-                                (IntPtr)((long)BufferStartAddr), // ugly hack because Mono has problems with IntPtr & 64bit
+                                BufferStartAddr, // ugly hack because Mono has problems with IntPtr & 64bit
                                 data,
                                 0,
                                 (int)pcsclite_iorequest.cbPciLength);
@@ -239,13 +239,13 @@ namespace PCSC
             {
                 if (SCardAPI.IsWindows)
                 {
-                    return (IntPtr)((long)iomem +
-                        (long)Marshal.SizeOf(typeof(WinSCardAPI.SCARD_IO_REQUEST)));
+                    return unchecked((IntPtr)((long)iomem +
+                        (long)Marshal.SizeOf(typeof(WinSCardAPI.SCARD_IO_REQUEST))));
                 }
                 else
                 {
-                    return (IntPtr)((long)iomem +
-                        (long)Marshal.SizeOf(typeof(PCSCliteAPI.SCARD_IO_REQUEST)));
+                    return unchecked((IntPtr)((long)iomem +
+                        (long)Marshal.SizeOf(typeof(PCSCliteAPI.SCARD_IO_REQUEST))));
                 }
             }
         }

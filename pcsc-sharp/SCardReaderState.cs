@@ -135,17 +135,29 @@ namespace PCSC
         {
             get
             {
+                return (long)UserDataPointer;
+            }
+            set
+            {
+                UserDataPointer = unchecked((IntPtr)value);
+            }
+        }
+
+        public IntPtr UserDataPointer
+        {
+            get
+            {
                 if (SCardAPI.IsWindows)
-                    return (long)winscard_rstate.pvUserData;
+                    return winscard_rstate.pvUserData;
                 else
-                    return (long)pcsclite_rstate.pvUserData;
+                    return pcsclite_rstate.pvUserData;
             }
             set
             {
                 if (SCardAPI.IsWindows)
-                    winscard_rstate.pvUserData = (IntPtr)value;
+                    winscard_rstate.pvUserData = value;
                 else
-                    pcsclite_rstate.pvUserData = (IntPtr)value;
+                    pcsclite_rstate.pvUserData = value;
             }
         }
 
@@ -225,7 +237,7 @@ namespace PCSC
             set
             {
                 if (SCardAPI.IsWindows)
-                    // On a 64-bit platforms .ToInt32() will throw an OverflowException 
+                    // On a 64-bit platform .ToInt32() will throw an OverflowException 
                     winscard_rstate.dwCurrentState = unchecked((Int32)value.ToInt64()); 
                 else
                     pcsclite_rstate.dwCurrentState = (IntPtr)value;
@@ -247,11 +259,11 @@ namespace PCSC
             {
                 long e = (long)EventState; // save event state
                 if (SCardAPI.IsWindows)
-                    winscard_rstate.dwEventState = (Int32)
-                        (((long)(value & _CHCOUNT_RANGE) << 16) | e);
+                    winscard_rstate.dwEventState = unchecked((Int32)
+                        (((long)(value & _CHCOUNT_RANGE) << 16) | e));
                 else
-                    pcsclite_rstate.dwEventState = (IntPtr)
-                        (((long)(value & _CHCOUNT_RANGE) << 16) | e);
+                    pcsclite_rstate.dwEventState = unchecked((IntPtr)
+                        (((long)(value & _CHCOUNT_RANGE) << 16) | e));
             }
         }
 
@@ -290,9 +302,8 @@ namespace PCSC
                 }
 
                 if (SCardAPI.IsWindows)
-                    winscard_rstate.pszReader = (IntPtr)((long)pReaderName);
+                    winscard_rstate.pszReader = pReaderName;
                 else
-                    //pcsclite_rstate.pszReader = (IntPtr)((long)pReaderName);
 					pcsclite_rstate.pszReader = pReaderName;
             }
         }
