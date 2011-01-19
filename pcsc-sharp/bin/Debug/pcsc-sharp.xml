@@ -1125,7 +1125,6 @@ This method calls the API function SCardGetAttrib().
         </member>
         <member name="M:PCSC.ISCardReader.Reconnect(PCSC.SCardShareMode,PCSC.SCardProtocol,PCSC.SCardReaderDisposition)">
             <param name="mode">Mode of connection type: exclusive/shared. 
-
 <list type="table"><listheader><term>Value</term><description>Description</description></listheader><item><term><see cref="F:PCSC.SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item><item><term><see cref="F:PCSC.SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item></list></param>
             <param name="prefProto">Desired protocol use.</param>
             <param name="initExec">Desired action taken on the card/reader.</param>
@@ -3061,9 +3060,9 @@ This is the Application Context handle that is returned when calling the C API f
             <remarks />
         </member>
         <member name="P:PCSC.SCardContext.Infinite">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
+            <summary>Infinite timeout (const. value).</summary>
+            <value />
+            <remarks />
         </member>
         <member name="M:PCSC.SCardContext.IsValid">
             <summary>Checks the validity of the current context. </summary>
@@ -5815,9 +5814,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
             <remarks />
         </member>
         <member name="P:PCSC.SCardReaderState.CurrentStateValue">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
+            <summary>Current state of reader.</summary>
+            <value />
+            <remarks />
         </member>
         <member name="M:PCSC.SCardReaderState.Dispose">
             <summary>To be added.</summary>
@@ -5829,9 +5828,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
             <remarks />
         </member>
         <member name="P:PCSC.SCardReaderState.EventStateValue">
-            <summary>To be added.</summary>
-            <value>To be added.</value>
-            <remarks>To be added.</remarks>
+            <summary>Reader state after a state change.</summary>
+            <value />
+            <remarks />
         </member>
         <member name="M:PCSC.SCardReaderState.Finalize">
             <summary>To be added.</summary>
@@ -5843,6 +5842,11 @@ To wait for a reader event (reader added or removed) you may use the special rea
             <remarks />
         </member>
         <member name="P:PCSC.SCardReaderState.UserData">
+            <summary>User defined data.</summary>
+            <value />
+            <remarks />
+        </member>
+        <member name="P:PCSC.SCardReaderState.UserDataPointer">
             <summary>User defined data.</summary>
             <value />
             <remarks />
