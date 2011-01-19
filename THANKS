@@ -3,3 +3,7 @@ To Dr. Ludovic Rousseau for reporting the incorrect string termination problem.
 
 2011-01-16
 To Dariusz Marzoch for reporting the UIntPtr/IntPtr problem on Windows 7 64bit.
+
+2011-01-19
+To Miah Cottrell for reporting the long to IntPtr type casting problem on 
+Windows XP/32bit.

@@ -4,11 +4,18 @@ b = Minor API change (subcomponents like Iso7816 or Iso8825)
 c = Feature enhancement
 d = Bug fix
 
+2011-01-19  Daniel Mueller <daniel@danm.de>
+
+    * New Version 2.0.0.1
+      Added unchecked() to correct long/IntPtr type castings.
+      Thanks to Miah Cottrell for reporting!
+
 2011-01-16  Daniel Mueller <daniel@danm.de>
 
     * New version 2.0.0.0
       Tested with Windows 7 64bit edition
       Tested with Ubuntu 10.10 64bit edition
+      Thanks to Dariusz Marzoch for reporting!
 
 2011-01-12  Daniel Mueller <daniel@danm.de>
 
