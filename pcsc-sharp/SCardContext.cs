@@ -34,6 +34,8 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System;
 using System.ComponentModel;
 using System.Reflection;
+using System.Runtime.InteropServices;
+
 using PCSC.Interop;
 
 namespace PCSC
@@ -262,7 +264,14 @@ namespace PCSC
         }
         public static IntPtr Infinite
         {
-            get { return unchecked((IntPtr)0xFFFFFFFF); }
+            get
+            {
+                // Hack to avoid Overflow exception on Windows 7 32bit
+                if (Marshal.SizeOf(typeof(IntPtr)) == 4)
+                    return unchecked((IntPtr)(Int32)0xFFFFFFFF);
+                else
+                    return unchecked((IntPtr)0xFFFFFFFF);
+            }
         }
     }
 }
