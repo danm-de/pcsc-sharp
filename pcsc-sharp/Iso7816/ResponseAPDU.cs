@@ -163,7 +163,7 @@ namespace PCSC.Iso7816
                     response.Length > 0 &&
                     length > 0)
                 {
-                    return response[response.Length - 1];
+                    return response[length - 1];
                 }
                 else
                     throw new InvalidApduException("The response APDU is invalid.");
