@@ -1,0 +1,17 @@
+PC/SC wrapper classes for .NET, written in C#. 
+Author: Daniel Mueller
+
+Tested on 
+
+- Windows (winscard.dll) 
+  * Windows 7 64bit Professional
+
+- Linux (PC/SC lite)
+  * Ubuntu 12.10 64bit edition
+
+Have a look into the Examples directory. Please be aware that I am still not 
+happy with the class design, methods, parameter names etc. Slight changes 
+might appear :-) Check the CHANGELOG file.
+
+Documentation can be found here: 
+http://danm.de/docs/pcsc-sharp/index.html
