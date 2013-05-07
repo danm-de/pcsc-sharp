@@ -161,7 +161,7 @@ namespace PCSC.Interop
             // initialize groups array
             byte[] mszGroups = null;
             if (Groups != null)
-                mszGroups = SCardHelper._ConvertToByteArray(Groups, textEncoding);
+                mszGroups = SCardHelper.ConvertToByteArray(Groups, textEncoding);
 
             // determine the needed buffer size
             rc = SCardHelper.ToSCardError(
@@ -186,7 +186,7 @@ namespace PCSC.Interop
                     ref dwReaders));
 
             if (rc == SCardError.Success)
-                Readers = SCardHelper._ConvertToStringArray(mszReaders, textEncoding);
+                Readers = SCardHelper.ConvertToStringArray(mszReaders, textEncoding);
             else
                 Readers = null;
 
@@ -229,7 +229,7 @@ namespace PCSC.Interop
                     ref dwGroups));
 
             if (rc == SCardError.Success)
-                Groups = SCardHelper._ConvertToStringArray(mszGroups, textEncoding);
+                Groups = SCardHelper.ConvertToStringArray(mszGroups, textEncoding);
             else
                 Groups = null;
 
@@ -252,7 +252,7 @@ namespace PCSC.Interop
             out IntPtr phCard,
             out SCardProtocol pdwActiveProtocol)
         {
-            byte[] readername = SCardHelper._ConvertToByteArray(szReader, textEncoding, SCardAPI.Lib.CharSize);
+            byte[] readername = SCardHelper.ConvertToByteArray(szReader, textEncoding, SCardAPI.Lib.CharSize);
             IntPtr ctx = (IntPtr)hContext;
             IntPtr sharemode = (IntPtr)dwShareMode;
             IntPtr prefproto = (IntPtr)dwPreferredProtocols;
@@ -543,7 +543,7 @@ namespace PCSC.Interop
                 if (((int)tmp_sreadername) < (readername.Length / CharSize))
                     Array.Resize<byte>(ref readername, (int)tmp_sreadername * CharSize);
 
-                szReaderName = SCardHelper._ConvertToStringArray(
+                szReaderName = SCardHelper.ConvertToStringArray(
                     readername, textEncoding);
             }
             else
@@ -575,7 +575,7 @@ namespace PCSC.Interop
                 cReaders = rgReaderStates.Length;
                 readerstates = new SCARD_READERSTATE[cReaders];
                 for (int i = 0; i < cReaders; i++)
-                    readerstates[i] = rgReaderStates[i].pcsclite_rstate;
+                    readerstates[i] = rgReaderStates[i]._pcscliteRstate;
             }
             IntPtr retval = SCardGetStatusChange(
                     (IntPtr)hContext,
@@ -588,7 +588,7 @@ namespace PCSC.Interop
                 {
                     for (int i = 0; i < cReaders; i++)
                         /* replace with returned values */
-                        rgReaderStates[i].pcsclite_rstate = readerstates[i];
+                        rgReaderStates[i]._pcscliteRstate = readerstates[i];
                 }
 
             return rc;

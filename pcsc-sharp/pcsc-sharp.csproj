@@ -60,11 +60,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\SCardAttr.cs" />
+    <Compile Include="Enums\SCardClass.cs" />
+    <Compile Include="Enums\SCardError.cs" />
+    <Compile Include="Enums\SCardProtocol.cs" />
+    <Compile Include="Enums\SCardReaderDisposition.cs" />
+    <Compile Include="Enums\SCardState.cs" />
+    <Compile Include="EventArgs\CardStatusEventArgs.cs" />
+    <Compile Include="EventArgs\StatusChangeEventArgs.cs" />
     <Compile Include="Exceptions\CommunicationErrorException.cs" />
     <Compile Include="Exceptions\InsufficientBufferException.cs" />
     <Compile Include="Exceptions\InternalErrorException.cs" />
@@ -126,6 +131,9 @@
     <Compile Include="Iso7816\CommandAPDU.cs" />
     <Compile Include="Iso7816\ISO7816Types.cs" />
     <Compile Include="Iso7816\ResponseAPDU.cs" />
+    <Compile Include="Enums\SCardScope.cs" />
+    <Compile Include="Enums\SCRState.cs" />
+    <Compile Include="Enums\SCardShareMode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="pcsc-sharp.dll.config">

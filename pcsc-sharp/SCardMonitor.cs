@@ -1,34 +1,3 @@
-/*
-Copyright (c) 2010 Daniel Mueller <daniel@danm.de>
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions
-are met:
-
-1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright
-   notice, this list of conditions and the following disclaimer in the
-   documentation and/or other materials provided with the distribution.
-3. The name of the author may not be used to endorse or promote products
-   derived from this software without specific prior written permission.
-
-Changes to this license can be made only by the copyright author with
-explicit written consent.
-
-THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
-INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
 using System;
 using System.Threading;
 
@@ -40,38 +9,6 @@ namespace PCSC
     public delegate void CardInitializedEvent(object sender, CardStatusEventArgs e);
     public delegate void MonitorExceptionEvent(object sender, PCSCException ex);
 
-    public class StatusChangeEventArgs : EventArgs
-    {
-        public string ReaderName;
-        public SCRState LastState;
-        public SCRState NewState;
-        public byte[] ATR;
-
-        public StatusChangeEventArgs() { }
-        public StatusChangeEventArgs(string ReaderName, SCRState LastState, SCRState NewState, byte[] Atr)
-        {
-            this.ReaderName = ReaderName;
-            this.LastState = LastState;
-            this.NewState = NewState;
-            this.ATR = Atr;
-        }
-    }
-
-    public class CardStatusEventArgs : EventArgs
-    {
-        public string ReaderName;
-        public SCRState State;
-        public byte[] Atr;
-
-        public CardStatusEventArgs() { }
-        public CardStatusEventArgs(string ReaderName, SCRState State, byte[] Atr)
-        {
-            this.ReaderName = ReaderName;
-            this.State = State;
-            this.Atr = Atr;
-        }
-    }
-
     public class SCardMonitor : IDisposable
     {
         public event StatusChangeEvent StatusChanged;
@@ -80,251 +17,261 @@ namespace PCSC
         public event CardInitializedEvent Initialized;
         public event MonitorExceptionEvent MonitorException;
 
-        internal SCardContext context;
-        internal SCRState[] previousState;
-        internal IntPtr[] previousStateValue;
-        internal Thread monitorthread;
+        private readonly object _sync = new object();
 
-        internal string[] readernames;
-        public string[] ReaderNames
-        {
-            get
-            {
-                if (readernames == null)
+        internal SCardContext _context;
+        internal SCRState[] _previousState;
+        internal IntPtr[] _previousStateValue;
+        internal Thread _monitorthread;
+        internal string[] _readernames;
+        internal bool _monitoring;
+
+        public string[] ReaderNames {
+            get {
+                if (_readernames == null) {
                     return null;
+                }
 
-                string[] tmp = new string[readernames.Length];
-                Array.Copy(readernames, tmp, readernames.Length);
+                var tmp = new string[_readernames.Length];
+                Array.Copy(_readernames, tmp, _readernames.Length);
 
                 return tmp;
             }
         }
 
-        internal bool monitoring;
-        public bool Monitoring
-        {
-            get { return monitoring; }
+        public bool Monitoring {
+            get { return _monitoring; }
         }
 
-        public IntPtr GetCurrentStateValue(int index)
-        {
-            if (previousStateValue == null)
-                throw new InvalidOperationException("Monitor object is not initialized.");
-
-            lock (previousStateValue)
-            {
-                // actually "previousStateValue" contains the last known value.
-                if (index < 0 || index > previousStateValue.Length)
-                    throw new ArgumentOutOfRangeException("index");
-                return previousStateValue[index];
-            }
+        ~SCardMonitor() {
+            Dispose(false);
         }
 
-        public SCRState GetCurrentState(int index)
-        {
-            if (previousState == null)
-                throw new InvalidOperationException("Monitor object is not initialized.");
-
-            lock (previousState)
-            {
-                // "previousState" contains the last known value.
-                if (index < 0 || index > previousState.Length)
-                    throw new ArgumentOutOfRangeException("index");
-                return previousState[index];
-            }
-        }
-
-        public string GetReaderName(int index)
-        {
-            if (readernames == null)
-                throw new InvalidOperationException("Monitor object is not initialized.");
-
-            lock (readernames)
-            {
-                if (index < 0 || index > readernames.Length)
-                    throw new ArgumentOutOfRangeException("index");
-                return readernames[index];
-            }
-        }
-
-        public int ReaderCount
-        {
-            get
-            {
-                lock (readernames)
-                {
-                    if (readernames == null)
-                        return 0;
-
-                    return readernames.Length;
-                }
-            }
-        }
-
-        public SCardMonitor(SCardContext hContext)
-        {
-            if (hContext == null)
+        public SCardMonitor(SCardContext hContext) {
+            if (hContext == null) {
                 throw new ArgumentNullException("hContext");
+            }
 
-            this.context = hContext;
+            _context = hContext;
         }
 
         public SCardMonitor(SCardContext hContext, SCardScope scope)
-            : this(hContext)
-        {
+            : this(hContext) {
             hContext.Establish(scope);
         }
 
-        ~SCardMonitor()
-        {
-            Dispose();
-        }
+        public IntPtr GetCurrentStateValue(int index) {
+            if (_previousStateValue == null) {
+                throw new InvalidOperationException("Monitor object is not initialized.");
+            }
 
-        public void Dispose()
-        {
-            Cancel();
-        }
-
-        public void Cancel()
-        {
-            if (monitoring)
-            {
-                context.Cancel();
-                readernames = null;
-                previousStateValue = null;
-                previousState = null;
-
-                monitoring = false;
+            lock (_previousStateValue) {
+                // actually "previousStateValue" contains the last known value.
+                if (index < 0 || (index > _previousStateValue.Length)) {
+                    throw new ArgumentOutOfRangeException("index");
+                }
+                return _previousStateValue[index];
             }
         }
 
-        public void Start(string readername)
-        {
-            if (readername == null || readername.Equals(""))
-                throw new ArgumentNullException("readername");
+        public SCRState GetCurrentState(int index) {
+            if (_previousState == null) {
+                throw new InvalidOperationException("Monitor object is not initialized.");
+            }
 
-            Start(new string[] { readername });
+            lock (_previousState) {
+                // "previousState" contains the last known value.
+                if (index < 0 || (index > _previousState.Length)) {
+                    throw new ArgumentOutOfRangeException("index");
+                }
+                return _previousState[index];
+            }
         }
 
-        public void Start(string[] readernames)
-        {
-            if (monitoring)
-                Cancel();
+        public string GetReaderName(int index) {
+            if (_readernames == null)
+                throw new InvalidOperationException("Monitor object is not initialized.");
 
-            lock (this)
-            {
-                if (!monitoring)
-                {
-                    if (readernames == null || readernames.Length == 0)
-                        throw new ArgumentNullException("readernames");
-                    if (context == null || !context.IsValid())
-                        throw new InvalidContextException(SCardError.InvalidHandle,
-                            "No connection context object specified.");
+            lock (_readernames) {
+                if (index < 0 || (index > _readernames.Length)) {
+                    throw new ArgumentOutOfRangeException("index");
+                }
+                return _readernames[index];
+            }
+        }
 
-                    this.readernames = readernames;
-                    previousState = new SCRState[readernames.Length];
-                    previousStateValue = new IntPtr[readernames.Length];
-
-                    monitorthread = new Thread(new ThreadStart(StartMonitor));
-                    monitorthread.IsBackground = true;
-
-                    monitorthread.Start();
+        public int ReaderCount {
+            get {
+                lock (_readernames) {
+                    return (_readernames == null)
+                        ? 0
+                        : _readernames.Length;
                 }
             }
         }
 
-        private void StartMonitor()
-        {
-            monitoring = true;
+        public void Dispose() {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-            SCardReaderState[] state = new SCardReaderState[readernames.Length];
+        protected virtual void Dispose(bool disposing) {
+            if (disposing) {
+                Cancel();
+            }
+        }
 
-            for (int i = 0; i < readernames.Length; i++)
-            {
-                state[i] = new SCardReaderState();
-                state[i].ReaderName = readernames[i];
-                state[i].CurrentState = SCRState.Unaware; /* force SCardGetStatusChange to return 
-                                                             immediately with the current reader state */
+        public void Cancel() {
+            lock (_sync) {
+                if (!_monitoring) {
+                    return;
+                }
+
+                _context.Cancel();
+                _readernames = null;
+                _previousStateValue = null;
+                _previousState = null;
+
+                _monitoring = false;
+            }
+        }
+
+        public void Start(string readerName) {
+            if (string.IsNullOrWhiteSpace(readerName)) {
+                throw new ArgumentNullException("readerName");
             }
 
-            SCardError rc = context.GetStatusChange(IntPtr.Zero, state);
+            Start(new[] {readerName});
+        }
 
-            if (rc == SCardError.Success)
-            {
+        public void Start(string[] readerNames) {
+            lock (_sync) {
+                if (_monitoring) {
+                    Cancel();
+                }
+
+                if (readerNames == null) {
+                    throw new ArgumentNullException("readerNames");
+                }
+                if (readerNames.Length == 0) {
+                    throw new ArgumentException("Empty list of reader names.", "readerNames");
+                }
+                if (_context == null || !_context.IsValid()) {
+                    throw new InvalidContextException(SCardError.InvalidHandle,
+                        "No connection context object specified.");
+                }
+
+                _readernames = readerNames;
+                _previousState = new SCRState[readerNames.Length];
+                _previousStateValue = new IntPtr[readerNames.Length];
+
+                _monitorthread = new Thread(StartMonitor) {
+                    IsBackground = true
+                };
+
+                _monitorthread.Start();
+            }
+        }
+
+        private void StartMonitor() {
+            _monitoring = true;
+
+            SCardReaderState[] state = new SCardReaderState[_readernames.Length];
+
+            for (var i = 0; i < _readernames.Length; i++) {
+                state[i] = new SCardReaderState {
+                    ReaderName = _readernames[i], 
+                    CurrentState = SCRState.Unaware
+                };
+            }
+
+            var rc = _context.GetStatusChange(IntPtr.Zero, state);
+
+            if (rc == SCardError.Success) {
                 // initialize event
-                if (Initialized != null)
-                {
-                    for (int i = 0; i < state.Length; i++)
-                    {
-                        Initialized(this,
-                                    new CardStatusEventArgs(readernames[i],
-                                        (state[i].EventState & (~(SCRState.Changed))),
-                                        state[i].ATR));
-                        previousState[i] = state[i].EventState & (~(SCRState.Changed)); // remove "Changed"
-                        previousStateValue[i] = state[i].EventStateValue;
+                var onInitializedHandler = Initialized;
+                if (onInitializedHandler != null) {
+                    for (var i = 0; i < state.Length; i++) {
+                        onInitializedHandler(this,
+                            new CardStatusEventArgs(
+                                _readernames[i],
+                                (state[i].EventState & (~(SCRState.Changed))),
+                                state[i].ATR));
+
+                        _previousState[i] = state[i].EventState & (~(SCRState.Changed)); // remove "Changed"
+                        _previousStateValue[i] = state[i].EventStateValue;
                     }
                 }
 
-                while (true)
-                {
-                    for (int i = 0; i < state.Length; i++)
-                    {
-                        state[i].CurrentStateValue = previousStateValue[i];
+                while (true) {
+                    for (var i = 0; i < state.Length; i++) {
+                        state[i].CurrentStateValue = _previousStateValue[i];
                     }
 
                     // block until status change occurs                    
-                    rc = context.GetStatusChange(SCardReader.Infinite, state);
+                    rc = _context.GetStatusChange(SCardReader.Infinite, state);
 
                     // Cancel?
-                    if (rc != SCardError.Success)
+                    if (rc != SCardError.Success) {
                         break;
+                    }
 
-                    for (int i = 0; i < state.Length; i++)
-                    {
-                        SCRState newState = state[i].EventState;
+                    for (var i = 0; i < state.Length; i++) {
+                        var newState = state[i].EventState;
                         newState &= (~(SCRState.Changed)); // remove "Changed"
 
-                        byte[] Atr = state[i].ATR;
+                        byte[] atr = state[i].ATR;
 
                         // Status change
-                        if (StatusChanged != null &&
-                            (previousState[i] != newState))
-                            StatusChanged(this,
-                                          new StatusChangeEventArgs(readernames[i],
-                                                                    previousState[i],
-                                                                    newState,
-                                                                    Atr));
+                        var onStatusChangedHandler = StatusChanged;
+                        if (onStatusChangedHandler != null && (_previousState[i] != newState)) {
+                            onStatusChangedHandler(this,
+                                new StatusChangeEventArgs(_readernames[i],
+                                    _previousState[i],
+                                    newState,
+                                    atr));
+                        }
 
                         // Card inserted
-                        if (((newState & SCRState.Present) == SCRState.Present) &&
-                            ((previousState[i] & SCRState.Empty) == SCRState.Empty))
-                            if (CardInserted != null)
-                                CardInserted(this,
-                                             new CardStatusEventArgs(readernames[i],
-                                                                     newState,
-                                                                     Atr));
+                        if (((newState & SCRState.Present) == SCRState.Present) && 
+                            ((_previousState[i] & SCRState.Empty) == SCRState.Empty)) {
+                            var onCardInsertedHandler = CardInserted;
+                            if (onCardInsertedHandler != null) {
+                                onCardInsertedHandler(this,
+                                    new CardStatusEventArgs(_readernames[i],
+                                        newState,
+                                        atr));
+                            }
+                        }
 
                         // Card removed
                         if (((newState & SCRState.Empty) == SCRState.Empty) &&
-                            ((previousState[i] & SCRState.Present) == SCRState.Present))
-                            if (CardRemoved != null)
-                                CardRemoved(this,
-                                            new CardStatusEventArgs(readernames[i],
-                                                                    newState,
-                                                                    Atr));
+                            ((_previousState[i] & SCRState.Present) == SCRState.Present)) {
+                            var onCardRemovedHandler = CardRemoved;
+                            if (onCardRemovedHandler != null) {
+                                onCardRemovedHandler(this,
+                                    new CardStatusEventArgs(_readernames[i],
+                                        newState,
+                                        atr));
+                            }
+                        }
 
-                        previousState[i] = newState;
-                        previousStateValue[i] = state[i].EventStateValue;
+                        _previousState[i] = newState;
+                        _previousStateValue[i] = state[i].EventStateValue;
                     }
                 }
             }
 
-            monitoring = false;
+            _monitoring = false;
 
-            if (rc != SCardError.Cancelled)
-                if (MonitorException != null)
-                    MonitorException(this, new PCSCException(rc,
-                        "An error occured during SCardGetStatusChange(..)."));
+            if (rc == SCardError.Cancelled) {
+                return;
+            }
+
+            var monitorExceptionHandler = MonitorException;
+            if (monitorExceptionHandler != null) {
+                monitorExceptionHandler(this, new PCSCException(rc, "An error occured during SCardGetStatusChange(..)."));
+            }
         }
     }
 }

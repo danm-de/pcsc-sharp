@@ -1,288 +1,219 @@
-/*
-Copyright (c) 2010 Daniel Mueller <daniel@danm.de>
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions
-are met:
-
-1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
-2. Redistributions in binary form must reproduce the above copyright
-   notice, this list of conditions and the following disclaimer in the
-   documentation and/or other materials provided with the distribution.
-3. The name of the author may not be used to endorse or promote products
-   derived from this software without specific prior written permission.
-
-Changes to this license can be made only by the copyright author with
-explicit written consent.
-
-THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
-IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
-INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
-THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
 using System;
 using System.ComponentModel;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using PCSC.Interop;
 
 namespace PCSC
 {
-
     public class SCardPCI : IDisposable
     {
-        static IntPtr pci_t0 = IntPtr.Zero;
-        static IntPtr pci_t1 = IntPtr.Zero;
-        static IntPtr pci_raw = IntPtr.Zero;
-        internal WinSCardAPI.SCARD_IO_REQUEST winscard_iorequest = new WinSCardAPI.SCARD_IO_REQUEST();
-        internal PCSCliteAPI.SCARD_IO_REQUEST pcsclite_iorequest = new PCSCliteAPI.SCARD_IO_REQUEST();
-        internal IntPtr iomem = IntPtr.Zero;
+        private static IntPtr _pciT0 = IntPtr.Zero;
+        private static IntPtr _pciT1 = IntPtr.Zero;
+        private static IntPtr _pciRaw = IntPtr.Zero;
+        internal WinSCardAPI.SCARD_IO_REQUEST _winscardIoRequest = new WinSCardAPI.SCARD_IO_REQUEST();
+        internal PCSCliteAPI.SCARD_IO_REQUEST _pcscliteIoRequest = new PCSCliteAPI.SCARD_IO_REQUEST();
+        internal IntPtr _iomem = IntPtr.Zero;
 
-        public SCardPCI()
-        {
-            if (SCardAPI.IsWindows)
-            {
-                winscard_iorequest.dwProtocol = 0;
-                winscard_iorequest.cbPciLength = 0;
-            }
-            else
-            {
-                pcsclite_iorequest.dwProtocol = IntPtr.Zero;
-                pcsclite_iorequest.cbPciLength = IntPtr.Zero;
+        public SCardPCI() {
+            if (SCardAPI.IsWindows) {
+                _winscardIoRequest.dwProtocol = 0;
+                _winscardIoRequest.cbPciLength = 0;
+            } else {
+                _pcscliteIoRequest.dwProtocol = IntPtr.Zero;
+                _pcscliteIoRequest.cbPciLength = IntPtr.Zero;
             }
         }
 
-        public SCardPCI(SCardProtocol protocol, int buflength)
-            : this()
+        public SCardPCI(SCardProtocol protocol, int bufLength)
+            : this() 
         {
-            if (buflength < 0)
-                throw new System.ArgumentOutOfRangeException(
-                    "buflength");
+            if (bufLength < 0) {
+                throw new ArgumentOutOfRangeException(
+                    "bufLength");
+            }
 
-            if (SCardAPI.IsWindows)
-            {
-                iomem = unchecked((IntPtr)((long)Marshal.AllocCoTaskMem(buflength
+            if (SCardAPI.IsWindows) {
+                _iomem = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
                     + Marshal.SizeOf(typeof(WinSCardAPI.SCARD_IO_REQUEST)))));
 
-                winscard_iorequest.dwProtocol = (Int32)protocol;
-                winscard_iorequest.cbPciLength = (Int32)buflength;
-                if (iomem != IntPtr.Zero)
-                {
+                _winscardIoRequest.dwProtocol = (Int32) protocol;
+                _winscardIoRequest.cbPciLength = bufLength;
+                if (_iomem != IntPtr.Zero) {
                     Marshal.StructureToPtr(
-                        winscard_iorequest,
-                        iomem,
+                        _winscardIoRequest,
+                        _iomem,
                         false);
                 }
-            }
-            else
-            {
-                iomem = unchecked((IntPtr)((long)Marshal.AllocCoTaskMem(buflength
+            } else {
+                _iomem = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
                     + Marshal.SizeOf(typeof(PCSCliteAPI.SCARD_IO_REQUEST)))));
 
-                pcsclite_iorequest.dwProtocol = (IntPtr)protocol;
-                pcsclite_iorequest.cbPciLength = (IntPtr)buflength;
-                if (iomem != IntPtr.Zero)
-                {
+                _pcscliteIoRequest.dwProtocol = (IntPtr) protocol;
+                _pcscliteIoRequest.cbPciLength = (IntPtr) bufLength;
+                if (_iomem != IntPtr.Zero) {
                     Marshal.StructureToPtr(
-                        pcsclite_iorequest,
-                        iomem, 
+                        _pcscliteIoRequest,
+                        _iomem,
                         false);
                 }
             }
         }
-        public SCardPCI(SCardProtocol protocol, byte[] pcidata)
-            : this(protocol, pcidata.Length)
-        {
-            if (pcidata == null)
-                throw new ArgumentNullException("pcidata");
 
-            if (pcidata.Length > 0 && iomem != IntPtr.Zero)
-            {
-                if (SCardAPI.IsWindows)
-                {
-                    Marshal.Copy(pcidata, 0,
-                        BufferStartAddr, 
-                        pcidata.Length);
-                }
-                else
-                {
-                    Marshal.Copy(pcidata, 0,
-                        BufferStartAddr, 
-                        pcidata.Length);
+        public SCardPCI(SCardProtocol protocol, byte[] pciData)
+            : this(protocol, pciData.Length) {
+            if (pciData == null)
+                throw new ArgumentNullException("pciData");
+
+            if (pciData.Length > 0 && _iomem != IntPtr.Zero) {
+                if (SCardAPI.IsWindows) {
+                    Marshal.Copy(pciData, 0,
+                        BufferStartAddr,
+                        pciData.Length);
+                } else {
+                    Marshal.Copy(pciData, 0,
+                        BufferStartAddr,
+                        pciData.Length);
                 }
             }
         }
 
-        ~SCardPCI()
-        {
-            this.Dispose();
+        ~SCardPCI() {
+            Dispose(false);
         }
-        public void Dispose()
-        {
-            if (iomem != IntPtr.Zero)
-            {
+
+        public void Dispose() {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing) {
+            if (!disposing) {
+                return;
+            }
+
+            if (_iomem != IntPtr.Zero) {
                 Marshal.FreeCoTaskMem(
-                    iomem);
+                    _iomem);
+                _iomem = IntPtr.Zero;
             }
         }
 
         [DescriptionAttribute("Protocol identifier")]
-        public SCardProtocol Protocol
-        {
-            get
-            {
-                if (iomem != IntPtr.Zero)
+        public SCardProtocol Protocol {
+            get {
+                if (_iomem != IntPtr.Zero)
                     UpdateIoRequestHeader();
 
-                if (SCardAPI.IsWindows)
-                {
-                    return (SCardProtocol)winscard_iorequest.dwProtocol;
+                if (SCardAPI.IsWindows) {
+                    return (SCardProtocol) _winscardIoRequest.dwProtocol;
                 }
-                else
-                {
-                    return (SCardProtocol)pcsclite_iorequest.dwProtocol;
-                }
+                return (SCardProtocol) _pcscliteIoRequest.dwProtocol;
             }
 
         }
 
         [DescriptionAttribute("Protocol Control Inf Length")]
-        public int PciLength
-        {
-            get
-            {
-                if (iomem != IntPtr.Zero)
+        public int PciLength {
+            get {
+                if (_iomem != IntPtr.Zero)
                     UpdateIoRequestHeader();
 
-                if (SCardAPI.IsWindows)
-                {
-                    return (int)winscard_iorequest.cbPciLength;
+                if (SCardAPI.IsWindows) {
+                    return _winscardIoRequest.cbPciLength;
                 }
-                else
-                {
-                    return (int)pcsclite_iorequest.cbPciLength;
-                }
+                return (int) _pcscliteIoRequest.cbPciLength;
             }
         }
 
-        internal void UpdateIoRequestHeader()
-        {
-            if (SCardAPI.IsWindows)
-            {
-                winscard_iorequest = (WinSCardAPI.SCARD_IO_REQUEST)Marshal.PtrToStructure(
-                    iomem, 
+        internal void UpdateIoRequestHeader() {
+            if (SCardAPI.IsWindows) {
+                _winscardIoRequest = (WinSCardAPI.SCARD_IO_REQUEST) Marshal.PtrToStructure(
+                    _iomem,
                     typeof(WinSCardAPI.SCARD_IO_REQUEST));
-            }
-            else
-            {
-                pcsclite_iorequest = (PCSCliteAPI.SCARD_IO_REQUEST)Marshal.PtrToStructure(
-                    iomem, 
+            } else {
+                _pcscliteIoRequest = (PCSCliteAPI.SCARD_IO_REQUEST) Marshal.PtrToStructure(
+                    _iomem,
                     typeof(PCSCliteAPI.SCARD_IO_REQUEST));
             }
         }
 
         [DescriptionAttribute("PCI data")]
-        public byte[] Data
-        {
-            get
-            {
+        public byte[] Data {
+            get {
                 byte[] data = null;
 
-                if (iomem != IntPtr.Zero)
-                {
-                    // Return PCI header from memory
-                    UpdateIoRequestHeader();
+                if (_iomem == IntPtr.Zero) {
+                    return null;
+                }
 
-                    if (SCardAPI.IsWindows)
-                    {
-                        // Copy data buffer into managed byte-array.
-                        if (winscard_iorequest.cbPciLength != 0)
-                        {
-                            data = new byte[(int)winscard_iorequest.cbPciLength];
-                            Marshal.Copy(
-                                BufferStartAddr, 
-                                data,
-                                0,
-                                (int)winscard_iorequest.cbPciLength);
-                        }
+                // Return PCI header from memory
+                UpdateIoRequestHeader();
+
+                if (SCardAPI.IsWindows) {
+                    // Copy data buffer into managed byte-array.
+                    if (_winscardIoRequest.cbPciLength != 0) {
+                        data = new byte[_winscardIoRequest.cbPciLength];
+                        Marshal.Copy(
+                            BufferStartAddr,
+                            data,
+                            0,
+                            _winscardIoRequest.cbPciLength);
                     }
-                    else
-                    {
-                        // Copy data buffer into managed byte-array.
-                        if (pcsclite_iorequest.cbPciLength != IntPtr.Zero)
-                        {
-                            data = new byte[(int)pcsclite_iorequest.cbPciLength];
-                            Marshal.Copy(
-                                BufferStartAddr, // ugly hack because Mono has problems with IntPtr & 64bit
-                                data,
-                                0,
-                                (int)pcsclite_iorequest.cbPciLength);
-                        }
+                } else {
+                    // Copy data buffer into managed byte-array.
+                    if (_pcscliteIoRequest.cbPciLength != IntPtr.Zero) {
+                        data = new byte[(int) _pcscliteIoRequest.cbPciLength];
+                        Marshal.Copy(
+                            BufferStartAddr, // ugly hack because Mono has problems with IntPtr & 64bit
+                            data,
+                            0,
+                            (int) _pcscliteIoRequest.cbPciLength);
                     }
                 }
                 return data;
             }
         }
 
-        internal IntPtr BufferStartAddr
-        {
-            get
-            {
-                if (SCardAPI.IsWindows)
-                {
-                    return unchecked((IntPtr)((long)iomem +
-                        (long)Marshal.SizeOf(typeof(WinSCardAPI.SCARD_IO_REQUEST))));
+        internal IntPtr BufferStartAddr {
+            get {
+                if (SCardAPI.IsWindows) {
+                    return unchecked((IntPtr) ((long) _iomem +
+                        Marshal.SizeOf(typeof(WinSCardAPI.SCARD_IO_REQUEST))));
                 }
-                else
-                {
-                    return unchecked((IntPtr)((long)iomem +
-                        (long)Marshal.SizeOf(typeof(PCSCliteAPI.SCARD_IO_REQUEST))));
+                return unchecked((IntPtr) ((long) _iomem +
+                    Marshal.SizeOf(typeof(PCSCliteAPI.SCARD_IO_REQUEST))));
+            }
+        }
+
+        public static IntPtr T0 {
+            get {
+                if (_pciT0 == IntPtr.Zero) {
+                    _pciT0 = SCardAPI.Lib.GetSymFromLib("g_rgSCardT0Pci");
                 }
-            }
-        }
-
-        public static IntPtr T0
-        {
-            get
-            {
-                if (pci_t0 == IntPtr.Zero)
-                    pci_t0 = SCardAPI.Lib.GetSymFromLib("g_rgSCardT0Pci");
-                return pci_t0;
+                return _pciT0;
 
             }
         }
 
-        public static IntPtr T1
-        {
-            get
-            {
-                if (pci_t1 == IntPtr.Zero)
-                    pci_t1 = SCardAPI.Lib.GetSymFromLib("g_rgSCardT1Pci");
-                return pci_t1;
+        public static IntPtr T1 {
+            get {
+                if (_pciT1 == IntPtr.Zero) {
+                    _pciT1 = SCardAPI.Lib.GetSymFromLib("g_rgSCardT1Pci");
+                }
+                return _pciT1;
             }
         }
 
-        public static IntPtr Raw
-        {
-            get
-            {
-                if (pci_raw == IntPtr.Zero)
-                    pci_raw = SCardAPI.Lib.GetSymFromLib("g_rgSCardRawPci");
-                return pci_raw;
+        public static IntPtr Raw {
+            get {
+                if (_pciRaw == IntPtr.Zero) {
+                    _pciRaw = SCardAPI.Lib.GetSymFromLib("g_rgSCardRawPci");
+                }
+                return _pciRaw;
             }
         }
 
-        public static IntPtr GetPci(SCardProtocol proto)
-        {
+        public static IntPtr GetPci(SCardProtocol proto) {
             switch (proto) {
                 case SCardProtocol.T0:
                     return T0;
