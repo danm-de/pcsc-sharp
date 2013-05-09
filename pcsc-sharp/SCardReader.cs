@@ -56,14 +56,14 @@ namespace PCSC
                 throw new UnknownReaderException(SCardError.InvalidValue, "Invalid card reader name.");
             }
 
-            if (_context == null || _context._contextPtr.Equals(IntPtr.Zero)) {
+            if (_context == null || _context.Handle.Equals(IntPtr.Zero)) {
                 throw new InvalidContextException(SCardError.InvalidHandle, "Invalid connection context.");
             }
 
             IntPtr hCard;
             SCardProtocol dwActiveProtocol;
 
-            var rc = SCardAPI.Lib.Connect(_context._contextPtr,
+            var rc = Platform.Lib.Connect(_context.Handle,
                 name,
                 mode,
                 prefProto,
@@ -92,7 +92,7 @@ namespace PCSC
         public SCardError Disconnect(SCardReaderDisposition discntExec) {
             ThrowOnInvalidCardHandle();
 
-            var rc = SCardAPI.Lib.Disconnect(_cardHandle, discntExec);
+            var rc = Platform.Lib.Disconnect(_cardHandle, discntExec);
 
             if (rc != SCardError.Success) {
                 return rc;
@@ -111,7 +111,7 @@ namespace PCSC
             ThrowOnInvalidCardHandle();
 
             SCardProtocol dwActiveProtocol;
-            var rc = SCardAPI.Lib.Reconnect(_cardHandle,
+            var rc = Platform.Lib.Reconnect(_cardHandle,
                 mode,
                 prefProto,
                 initExec,
@@ -130,25 +130,25 @@ namespace PCSC
         public SCardError BeginTransaction() {
             ThrowOnInvalidCardHandle(); 
             
-            return SCardAPI.Lib.BeginTransaction(_cardHandle);
+            return Platform.Lib.BeginTransaction(_cardHandle);
         }
 
         public SCardError EndTransaction(SCardReaderDisposition disposition) {
             ThrowOnInvalidCardHandle();
 
-            return SCardAPI.Lib.EndTransaction(_cardHandle, disposition);
+            return Platform.Lib.EndTransaction(_cardHandle, disposition);
         }
 
         public SCardError Transmit(SCardPCI ioSendPci, byte[] sendBuffer, SCardPCI ioRecvPci, ref byte[] recvBuffer) {
             if (ioSendPci == null) {
                 throw new ArgumentNullException("ioSendPci");
             }
-            if (ioSendPci._iomem == IntPtr.Zero) {
+            if (ioSendPci.MemoryPtr == IntPtr.Zero) {
                 throw new ArgumentException("ioSendPci");
             }
 
             return Transmit(
-                ioSendPci._iomem, 
+                ioSendPci.MemoryPtr, 
                 sendBuffer, 
                 ioRecvPci, 
                 ref recvBuffer);
@@ -168,10 +168,10 @@ namespace PCSC
 
             var ioRecvPciPtr = IntPtr.Zero;
             if (ioRecvPci != null) {
-                ioRecvPciPtr = ioRecvPci._iomem;
+                ioRecvPciPtr = ioRecvPci.MemoryPtr;
             }
 
-            return SCardAPI.Lib.Transmit(
+            return Platform.Lib.Transmit(
                 _cardHandle,
                 pioSendPci,
                 sendBuffer,
@@ -188,10 +188,10 @@ namespace PCSC
             var ioRecvPciPtr = IntPtr.Zero;
             
             if (ioRecvPci != null) {
-                ioRecvPciPtr = ioRecvPci._iomem;
+                ioRecvPciPtr = ioRecvPci.MemoryPtr;
             }
 
-            var rc = SCardAPI.Lib.Transmit(
+            var rc = Platform.Lib.Transmit(
                 _cardHandle,
                 pioSendPci,
                 sendBuffer,
@@ -263,7 +263,7 @@ namespace PCSC
 
             int lpBytesReturned;
 
-            var rc = SCardAPI.Lib.Control(
+            var rc = Platform.Lib.Control(
                 _cardHandle,
                 controlCode,
                 sendBuffer,
@@ -286,7 +286,7 @@ namespace PCSC
             IntPtr dwState;
             IntPtr dwProtocol;
 
-            var rc = SCardAPI.Lib.Status(
+            var rc = Platform.Lib.Status(
                 _cardHandle,
                 out readerName,
                 out dwState,
@@ -333,7 +333,7 @@ namespace PCSC
         }
 
         public SCardError GetAttrib(IntPtr dwAttrId, byte[] pbAttr, out int attrLen) {
-            return SCardAPI.Lib.GetAttrib(
+            return Platform.Lib.GetAttrib(
                 _cardHandle,
                 dwAttrId,
                 pbAttr,
@@ -353,7 +353,7 @@ namespace PCSC
         }
 
         public SCardError SetAttrib(IntPtr attr, byte[] pbAttr, int attrBufSize) {
-            return SCardAPI.Lib.SetAttrib(
+            return Platform.Lib.SetAttrib(
                 _cardHandle,
                 attr,
                 pbAttr,

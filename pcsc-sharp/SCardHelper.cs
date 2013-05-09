@@ -6,13 +6,13 @@ using System.Text;
 
 namespace PCSC
 {
-    public class SCardHelper
+    public static class SCardHelper
     {
         public static string StringifyError(SCardError code) {
             return GetAttrDesc(code);
         }
 
-        public static string GetAttrDesc<T>(T attr) {
+        private static string GetAttrDesc<T>(T attr) {
             var fieldinf = attr
                 .GetType()
                 .GetField(attr.ToString());
@@ -31,13 +31,13 @@ namespace PCSC
             }
         }
 
-        internal static string[] RemoveEmptyStrings(string[] array) {
+        private static string[] RemoveEmptyStrings(IEnumerable<string> array) {
             return array
                 .Where(str => !str.Equals(""))
                 .ToArray();
         }
 
-        internal static byte[] ConvertToByteArray(string[] array, Encoding encoder) {
+        internal static byte[] ConvertToByteArray(IEnumerable<string> array, Encoding encoder) {
             var lst = new List<byte>();
 
             foreach (var s in array) {

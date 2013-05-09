@@ -19,8 +19,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApduTest", "ISO7816-4\APDUT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCardTest", "ISO7816-4\SmartCardTest\SmartCardTest.csproj", "{4CDE4E8C-BE81-402E-82A0-E832E1DC7491}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicEncodingRulesTest", "ISO8825\BasicEncodingRulesTest\BasicEncodingRulesTest.csproj", "{FA0D4DCE-A6FA-4FC3-B1FC-AE842D45F2EE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,10 +61,6 @@ Global
 		{4CDE4E8C-BE81-402E-82A0-E832E1DC7491}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CDE4E8C-BE81-402E-82A0-E832E1DC7491}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CDE4E8C-BE81-402E-82A0-E832E1DC7491}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA0D4DCE-A6FA-4FC3-B1FC-AE842D45F2EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA0D4DCE-A6FA-4FC3-B1FC-AE842D45F2EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA0D4DCE-A6FA-4FC3-B1FC-AE842D45F2EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA0D4DCE-A6FA-4FC3-B1FC-AE842D45F2EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

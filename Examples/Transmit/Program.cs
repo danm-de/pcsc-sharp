@@ -40,8 +40,8 @@ namespace Transmit
 
             string readername = readernames[num];
 
-            SCardReader RFIDReader = new SCardReader(ctx);
-            SCardError rc = RFIDReader.Connect(
+            SCardReader rfidReader = new SCardReader(ctx);
+            SCardError rc = rfidReader.Connect(
                 readername,
                 SCardShareMode.Shared,
                 SCardProtocol.Any);
@@ -66,15 +66,15 @@ namespace Transmit
 
             Console.Out.WriteLine("Retrieving the UID .... ");
 
-            rc = RFIDReader.BeginTransaction();
+            rc = rfidReader.BeginTransaction();
             if (rc != SCardError.Success)
                 throw new Exception("Could not begin transaction.");
 
             SCardPCI ioreq = new SCardPCI();    /* creates an empty object (null).
                                                  * IO returned protocol control information.
                                                  */
-            IntPtr sendPci = SCardPCI.GetPci(RFIDReader.ActiveProtocol);
-            rc = RFIDReader.Transmit(
+            IntPtr sendPci = SCardPCI.GetPci(rfidReader.ActiveProtocol);
+            rc = rfidReader.Transmit(
                 sendPci,    /* Protocol control information, T0, T1 and Raw
                              * are global defined protocol header structures.
                              */
@@ -94,8 +94,8 @@ namespace Transmit
                 Console.WriteLine("Error: " + SCardHelper.StringifyError(rc));
             }
 
-            RFIDReader.EndTransaction(SCardReaderDisposition.Leave);
-            RFIDReader.Disconnect(SCardReaderDisposition.Reset);
+            rfidReader.EndTransaction(SCardReaderDisposition.Leave);
+            rfidReader.Disconnect(SCardReaderDisposition.Reset);
 
             return;
         }

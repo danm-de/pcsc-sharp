@@ -1,7 +1,10 @@
+bin/
+
+obj/
 *.suo
-*.dll
-*.mdb
-*.pdb
-*.exe
 *.userprefs
-*.pidb
+*.csproj.user
+*.DotSettings.user
+*.ReSharper.user
+
+_Resharper*

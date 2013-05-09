@@ -1,8 +1,30 @@
 Version numbering info: a.b.c.d
 a = Major API change
-b = Minor API change (subcomponents like Iso7816 or Iso8825)
+b = Minor API change (subcomponents like Iso7816)
 c = Feature enhancement
 d = Bug fix
+
+2013-05-09	Daniel Mueller <daniel@danm.de>
+	* Start working on version 3.0.0.0
+	  WARNING major API changes! 
+	  I have corrected various classes that implement IDisposable. They will
+	  _not_ longer release system resources during GC finalize, so look out
+	  for memory leaks!
+	* Update to .Net Framework 4.0 (die Windows XP, die)
+	* Removed Iso8825 completely. I hope nobody besides me was using it :-)
+	* Code cleanup (using the awesome Resharper 
+	  http://www.jetbrains.com/resharper/)
+	* SCardContext: implemented the correct IDisposable pattern.
+	  GC will _not_ longer release the context! This is due to the fact that 
+	  you can access the context handle using SCardContext.Handle and use it 
+	  in your own managed/unmanaged libraries calls.
+	* SCardReader: implemented the correct IDisposable pattern.
+	  GC will _not_ longer disconnect the reader! (Same reason as with 
+	  SCardContext)
+	* SCardMonitor: implemented the correct IDisposable pattern.
+	  GC will _not_ longer call SCardContext.Cancel() during finalize!
+	* SCardPCI: implemented the correct IDisposable pattern.
+	  GC will _not_ longer free unmanaged memory of your own PCI structure!
 
 2012-05-06  Daniel Mueller <daniel@danm.de>
     * New Version 2.0.0.4

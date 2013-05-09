@@ -35,15 +35,15 @@ namespace SmartCardTest
             apdu.Le = 0x08;  // Expected length of the returned data
 
             // Transmit the Command APDU to the card and receive the response
-            Response resp = card.Transmit(apdu);
+            Response response = card.Transmit(apdu);
 
             // Show SW1SW2 from the last response packet (if more than one has been received).
-            Console.WriteLine("SW1: {0:X2} SW2: {1:X2}", resp.SW1, resp.SW2);
+            Console.WriteLine("SW1: {0:X2} SW2: {1:X2}", response.SW1, response.SW2);
 
             byte[] data;
 
             // First test - get the data from all response APDUs
-            data = resp.GetData();
+            data = response.GetData();
             if (data != null)
             {
                 Console.Write("CHALLENGE:");
@@ -55,7 +55,7 @@ namespace SmartCardTest
 
             // Second test - get the data from each response APDU.
             int i = 0;
-            foreach (ResponseApdu respApdu in resp.ResponseApduList)
+            foreach (ResponseApdu respApdu in response)
             {
                 data = respApdu.GetData();
 

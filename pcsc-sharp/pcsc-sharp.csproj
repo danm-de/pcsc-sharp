@@ -87,39 +87,28 @@
     <Compile Include="Exceptions\UnpoweredCardException.cs" />
     <Compile Include="Exceptions\UnresponsiveCardException.cs" />
     <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
-    <Compile Include="Iso8825\Asn1\Asn1Boolean.cs" />
-    <Compile Include="Iso8825\Asn1\Asn1Integer.cs" />
-    <Compile Include="Iso8825\Asn1\Exceptions\InvalidAsn1BooleanException.cs" />
-    <Compile Include="Iso8825\DataObjectFactory.cs" />
-    <Compile Include="Iso8825\Asn1\Asn1Types.cs" />
-    <Compile Include="Iso8825\Asn1\Asn1IA5String.cs" />
-    <Compile Include="Iso8825\Asn1\IAsn1Type.cs" />
-    <Compile Include="Iso8825\DataObject.cs" />
-    <Compile Include="Iso8825\BasicEncodingRules\BerTlvPacket.cs" />
+    <Compile Include="Interop\Unix\DLOPEN_FLAGS.cs" />
+    <Compile Include="Interop\Unix\SCARD_IO_REQUEST.cs" />
+    <Compile Include="Interop\Unix\SCARD_READERSTATE.cs" />
+    <Compile Include="Interop\Windows\SCARD_IO_REQUEST.cs" />
+    <Compile Include="Interop\Windows\SCARD_READERSTATE.cs" />
     <Compile Include="Iso7816\ClassByte.cs" />
     <Compile Include="Exceptions\InvalidContextException.cs" />
     <Compile Include="Exceptions\InvalidScopeTypeException.cs" />
     <Compile Include="Exceptions\PCSCException.cs" />
     <Compile Include="Interop\ISCardAPI.cs" />
-    <Compile Include="Interop\Platform\WinSCardAPI.cs" />
-    <Compile Include="Interop\Platform\PCSCliteAPI.cs" />
-    <Compile Include="Interop\SCardAPI.cs" />
+    <Compile Include="Interop\Windows\WinSCardAPI.cs" />
+    <Compile Include="Interop\Unix\PCSCliteAPI.cs" />
+    <Compile Include="Interop\Platform.cs" />
     <Compile Include="ISCardReader.cs" />
     <Compile Include="Iso7816\Exceptions\InvalidApduException.cs" />
-    <Compile Include="Iso8825\BasicEncodingRules\BerTypes.cs" />
-    <Compile Include="Iso8825\Exceptions\InvalidBerTlvPacketException.cs" />
-    <Compile Include="Iso8825\Exceptions\InvalidSimpleTlvPacketException.cs" />
-    <Compile Include="Iso8825\Exceptions\InvalidTlvDataException.cs" />
     <Compile Include="Iso7816\FileDescriptor.cs" />
     <Compile Include="Iso7816\FileStructureInfo.cs" />
     <Compile Include="Iso7816\InstructionByte.cs" />
     <Compile Include="Iso7816\RecordInfo.cs" />
     <Compile Include="Iso7816\Response.cs" />
     <Compile Include="Iso7816\IsoCard.cs" />
-    <Compile Include="Iso7816\SimpleTlvPacket.cs" />
-    <Compile Include="Iso7816\SimpleTlvPacketBuilder.cs" />
-    <Compile Include="Iso8825\TlvData.cs" />
-    <Compile Include="Iso8825\Iso8825Types.cs" />
+    <Compile Include="Iso7816\ResponseApduList.cs" />
     <Compile Include="SCardContext.cs" />
     <Compile Include="SCardHelper.cs" />
     <Compile Include="SCardMonitor.cs" />
@@ -127,10 +116,10 @@
     <Compile Include="SCardReader.cs" />
     <Compile Include="SCardReaderState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Iso7816\APDU.cs" />
-    <Compile Include="Iso7816\CommandAPDU.cs" />
+    <Compile Include="Iso7816\Apdu.cs" />
+    <Compile Include="Iso7816\CommandApdu.cs" />
     <Compile Include="Iso7816\ISO7816Types.cs" />
-    <Compile Include="Iso7816\ResponseAPDU.cs" />
+    <Compile Include="Iso7816\ResponseApdu.cs" />
     <Compile Include="Enums\SCardScope.cs" />
     <Compile Include="Enums\SCRState.cs" />
     <Compile Include="Enums\SCardShareMode.cs" />
@@ -151,6 +140,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Iso7816\Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

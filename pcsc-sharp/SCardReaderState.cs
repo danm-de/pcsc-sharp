@@ -1,6 +1,9 @@
 using System;
 using System.Runtime.InteropServices;
 using PCSC.Interop;
+using PCSC.Interop.Unix;
+using PCSC.Interop.Windows;
+using SCARD_READERSTATE = PCSC.Interop.Windows.SCARD_READERSTATE;
 
 namespace PCSC
 {
@@ -10,8 +13,8 @@ namespace PCSC
         private const int EVENTSTATE_RANGE = 0xFFFF;
         private const long CHCOUNT_RANGE = 0xFFFF0000;
 
-        internal WinSCardAPI.SCARD_READERSTATE _winscardRstate;
-        internal PCSCliteAPI.SCARD_READERSTATE _pcscliteRstate;
+        internal SCARD_READERSTATE _winscardRstate;
+        internal Interop.Unix.SCARD_READERSTATE _pcscliteRstate;
 
         private IntPtr _pReaderName = IntPtr.Zero;
         private int _pReaderNameSize;
@@ -41,15 +44,15 @@ namespace PCSC
         }
 
         public SCardReaderState() {
-            if (SCardAPI.IsWindows) {
-                _winscardRstate = new WinSCardAPI.SCARD_READERSTATE {
+            if (Platform.IsWindows) {
+                _winscardRstate = new SCARD_READERSTATE {
                     // initialize embedded array
                     rgbAtr = new byte[WinSCardAPI.MAX_ATR_SIZE],
                     cbAtr = WinSCardAPI.MAX_ATR_SIZE
                 };
                
             } else {
-                _pcscliteRstate = new PCSCliteAPI.SCARD_READERSTATE {
+                _pcscliteRstate = new Interop.Unix.SCARD_READERSTATE {
                     // initialize embedded array
                     rgbAtr = new byte[PCSCliteAPI.MAX_ATR_SIZE],
                     cbAtr = (IntPtr) PCSCliteAPI.MAX_ATR_SIZE
@@ -64,12 +67,12 @@ namespace PCSC
 
         public IntPtr UserDataPointer {
             get {
-                return SCardAPI.IsWindows
+                return Platform.IsWindows
                     ? _winscardRstate.pvUserData
                     : _pcscliteRstate.pvUserData;
             }
             set {
-                if (SCardAPI.IsWindows) {
+                if (Platform.IsWindows) {
                     _winscardRstate.pvUserData = value;
                 } else {
                     _pcscliteRstate.pvUserData = value;
@@ -79,12 +82,12 @@ namespace PCSC
 
         public SCRState CurrentState {
             get {
-                return SCardAPI.IsWindows
+                return Platform.IsWindows
                     ? SCardHelper.ToSCRState((_winscardRstate.dwCurrentState & EVENTSTATE_RANGE))
                     : SCardHelper.ToSCRState(((int) _pcscliteRstate.dwCurrentState & EVENTSTATE_RANGE));
             }
             set {
-                if (SCardAPI.IsWindows) {
+                if (Platform.IsWindows) {
                     _winscardRstate.dwCurrentState =
                         (int) value & EVENTSTATE_RANGE;
                 } else {
@@ -96,7 +99,7 @@ namespace PCSC
 
         public SCRState EventState {
             get {
-                return SCardAPI.IsWindows
+                return Platform.IsWindows
                     ? SCardHelper.ToSCRState(
                         (_winscardRstate.dwEventState & EVENTSTATE_RANGE))
                     : SCardHelper.ToSCRState(
@@ -104,7 +107,7 @@ namespace PCSC
             }
             set {
                 long lng = CardChangeEventCnt; // save CardChangeEventCounter
-                if (SCardAPI.IsWindows) {
+                if (Platform.IsWindows) {
                     _winscardRstate.dwEventState = ((int) value & EVENTSTATE_RANGE) | (int) lng;
                 } else {
                     _pcscliteRstate.dwEventState = (IntPtr)
@@ -115,12 +118,12 @@ namespace PCSC
 
         public IntPtr EventStateValue {
             get {
-                return SCardAPI.IsWindows
+                return Platform.IsWindows
                     ? (IntPtr) _winscardRstate.dwEventState
                     : _pcscliteRstate.dwEventState;
             }
             set {
-                if (SCardAPI.IsWindows) {
+                if (Platform.IsWindows) {
                     // On a 64-bit platforms .ToInt32() will throw an OverflowException 
                     _winscardRstate.dwEventState = unchecked((Int32) value.ToInt64());
                 } else {
@@ -130,12 +133,12 @@ namespace PCSC
         }
         public IntPtr CurrentStateValue {
             get {
-                return SCardAPI.IsWindows
+                return Platform.IsWindows
                     ? (IntPtr) _winscardRstate.dwCurrentState
                     : _pcscliteRstate.dwCurrentState;
             }
             set {
-                if (SCardAPI.IsWindows) {
+                if (Platform.IsWindows) {
                     // On a 64-bit platform .ToInt32() will throw an OverflowException 
                     _winscardRstate.dwCurrentState = unchecked((Int32) value.ToInt64());
                 } else {
@@ -146,18 +149,18 @@ namespace PCSC
 
         public int CardChangeEventCnt {
             get {
-                return SCardAPI.IsWindows
-                    ? (int) ((((long) _winscardRstate.dwEventState) & CHCOUNT_RANGE) >> 16)
+                return Platform.IsWindows
+                    ? (int) ((_winscardRstate.dwEventState & CHCOUNT_RANGE) >> 16)
                     : (int) ((((long) _pcscliteRstate.dwEventState) & CHCOUNT_RANGE) >> 16);
             }
             set {
                 long es = (long) EventState; // save EventState
-                if (SCardAPI.IsWindows) {
+                if (Platform.IsWindows) {
                     _winscardRstate.dwEventState = unchecked((Int32)
-                        (((long) (value & CHCOUNT_RANGE) << 16) | es));
+                        (((value & CHCOUNT_RANGE) << 16) | es));
                 } else {
                     _pcscliteRstate.dwEventState = unchecked((IntPtr)
-                        (((long) (value & CHCOUNT_RANGE) << 16) | es));
+                        (((value & CHCOUNT_RANGE) << 16) | es));
                 }
             }
         }
@@ -169,7 +172,7 @@ namespace PCSC
 
                 byte[] tmp = new byte[_pReaderNameSize];
                 Marshal.Copy(_pReaderName, tmp, 0, _pReaderNameSize);
-                return SCardHelper.ConvertToString(tmp, tmp.Length, SCardAPI.Lib.TextEncoding);
+                return SCardHelper.ConvertToString(tmp, tmp.Length, Platform.Lib.TextEncoding);
             }
             set {
                 // Free reserved memory
@@ -180,17 +183,17 @@ namespace PCSC
                 }
 
                 if (value != null) {
-                    var tmp = SCardHelper.ConvertToByteArray(value, SCardAPI.Lib.TextEncoding, 0);
-                    _pReaderName = Marshal.AllocCoTaskMem(tmp.Length + SCardAPI.Lib.CharSize);
+                    var tmp = SCardHelper.ConvertToByteArray(value, Platform.Lib.TextEncoding, 0);
+                    _pReaderName = Marshal.AllocCoTaskMem(tmp.Length + Platform.Lib.CharSize);
                     _pReaderNameSize = tmp.Length;
                     Marshal.Copy(tmp, 0, _pReaderName, tmp.Length);
-                    for (int i = 0; i < (SCardAPI.Lib.CharSize); i++) {
+                    for (int i = 0; i < (Platform.Lib.CharSize); i++) {
                         Marshal.WriteByte(_pReaderName, tmp.Length + i, 0); // String ends with \0 (or 0x00 0x00)
                     }
 
                 }
 
-                if (SCardAPI.IsWindows)
+                if (Platform.IsWindows)
                     _winscardRstate.pszReader = _pReaderName;
                 else
                     _pcscliteRstate.pszReader = _pReaderName;
@@ -201,7 +204,7 @@ namespace PCSC
             get {
                 byte[] tmp;
 
-                if (SCardAPI.IsWindows) {
+                if (Platform.IsWindows) {
                     if (_winscardRstate.cbAtr <= WinSCardAPI.MAX_ATR_SIZE)
                         tmp = new byte[_winscardRstate.cbAtr];
                     else {
@@ -226,7 +229,7 @@ namespace PCSC
             set {
                 var tmp = value;
                 // the size of rstate.rgbAtr MUST(!) be MAX_ATR_SIZE 
-                if (SCardAPI.IsWindows) {
+                if (Platform.IsWindows) {
                     if (tmp.Length != WinSCardAPI.MAX_ATR_SIZE)
                         Array.Resize(ref tmp, WinSCardAPI.MAX_ATR_SIZE);
                     _winscardRstate.rgbAtr = tmp;

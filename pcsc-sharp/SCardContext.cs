@@ -7,9 +7,9 @@ namespace PCSC
 {
     public class SCardContext : IDisposable
     {
-        internal bool _hasContext = false;
-        internal IntPtr _contextPtr;
-        internal SCardScope _lastScope;
+        private bool _hasContext;
+        private SCardScope _lastScope;
+        private IntPtr _contextPtr;
 
         ~SCardContext() {
             Dispose(false);
@@ -20,13 +20,13 @@ namespace PCSC
                 Release();
             }
 
-            var hContext = IntPtr.Zero;
+            IntPtr hContext;
 
-            var rc = SCardAPI.Lib.EstablishContext(
+            var rc = Platform.Lib.EstablishContext(
                 scope,
                 IntPtr.Zero,
                 IntPtr.Zero,
-                ref hContext);
+                out hContext);
 
             switch (rc) {
                 case SCardError.Success:
@@ -46,7 +46,7 @@ namespace PCSC
                 throw new InvalidContextException(SCardError.UnknownError, "Context was not established");
             }
 
-            var rc = SCardAPI.Lib.ReleaseContext(_contextPtr);
+            var rc = Platform.Lib.ReleaseContext(_contextPtr);
 
             switch (rc) {
                 case SCardError.Success:
@@ -61,7 +61,7 @@ namespace PCSC
         }
 
         public SCardError CheckValidity() {
-            return SCardAPI.Lib.IsValidContext(_contextPtr);
+            return Platform.Lib.IsValidContext(_contextPtr);
         }
 
         public bool IsValid() {
@@ -93,7 +93,7 @@ namespace PCSC
             }
 
             string[] readers;
-            var rc = SCardAPI.Lib.ListReaders(
+            var rc = Platform.Lib.ListReaders(
                 _contextPtr,
                 groups,
                 out readers);
@@ -119,7 +119,7 @@ namespace PCSC
 
             string[] groups;
 
-            var sc = SCardAPI.Lib.ListReaderGroups(
+            var sc = Platform.Lib.ListReaderGroups(
                 _contextPtr,
                 out groups);
 
@@ -171,7 +171,7 @@ namespace PCSC
                 throw new InvalidContextException(SCardError.InvalidHandle);
             }
 
-            return SCardAPI.Lib.GetStatusChange(_contextPtr, timeout, readerStates);
+            return Platform.Lib.GetStatusChange(_contextPtr, timeout, readerStates);
         }
 
         public SCardError Cancel() {
@@ -179,12 +179,12 @@ namespace PCSC
                 throw new InvalidContextException(SCardError.UnknownError, "Invalid connection context.");
             }
 
-            var rc = SCardAPI.Lib.Cancel(_contextPtr);
+            var rc = Platform.Lib.Cancel(_contextPtr);
             return rc;
         }
 
         public static int MaxATRSize {
-            get { return SCardAPI.Lib.MaxATRSize; }
+            get { return Platform.Lib.MaxATRSize; }
         }
 
         public IntPtr Handle {
