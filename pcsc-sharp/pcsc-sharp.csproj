@@ -101,6 +101,16 @@
     <Compile Include="Interop\Unix\PCSCliteAPI.cs" />
     <Compile Include="Interop\Platform.cs" />
     <Compile Include="ISCardReader.cs" />
+    <Compile Include="Iso7816\Enums\ClaHighPart.cs" />
+    <Compile Include="Iso7816\Enums\ExtendedFileType.cs" />
+    <Compile Include="Iso7816\Enums\FileShareMode.cs" />
+    <Compile Include="Iso7816\Enums\FileStructureType.cs" />
+    <Compile Include="Iso7816\Enums\FileType.cs" />
+    <Compile Include="Iso7816\Enums\InstructionCode.cs" />
+    <Compile Include="Iso7816\Enums\IsoCase.cs" />
+    <Compile Include="Iso7816\Enums\SecureMessagingFormat.cs" />
+    <Compile Include="Iso7816\Enums\SW1Code.cs" />
+    <Compile Include="Iso7816\Enums\TlvDataType.cs" />
     <Compile Include="Iso7816\Exceptions\InvalidApduException.cs" />
     <Compile Include="Iso7816\FileDescriptor.cs" />
     <Compile Include="Iso7816\FileStructureInfo.cs" />
@@ -118,7 +128,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Iso7816\Apdu.cs" />
     <Compile Include="Iso7816\CommandApdu.cs" />
-    <Compile Include="Iso7816\ISO7816Types.cs" />
     <Compile Include="Iso7816\ResponseApdu.cs" />
     <Compile Include="Enums\SCardScope.cs" />
     <Compile Include="Enums\SCRState.cs" />
@@ -141,9 +150,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Iso7816\Enums\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

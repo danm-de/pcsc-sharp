@@ -37,6 +37,9 @@ namespace PCSC.Iso7816
         public virtual int StatusWord {
             get { return (SW1 << 8) | SW2; }
         }
+        public bool HasData {
+            get { return _lstRespApdu.Any(responseAdpu => responseAdpu.HasData); }
+        }
 
         protected internal Response() {}
 

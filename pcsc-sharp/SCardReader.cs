@@ -35,6 +35,10 @@ namespace PCSC
             get { return _cardHandle; }
         }
 
+        public bool IsConnected {
+            get { return _cardHandle != IntPtr.Zero; }
+        }
+
         public static IntPtr Infinite {
             get { return SCardContext.Infinite; }
         }
@@ -47,12 +51,12 @@ namespace PCSC
             _context = context;
         }
 
-        public SCardError Connect(string name, SCardShareMode mode, SCardProtocol prefProto) {
-            if (name == null) {
-                throw new ArgumentNullException("name");
+        public SCardError Connect(string readerName, SCardShareMode mode, SCardProtocol prefProto) {
+            if (readerName == null) {
+                throw new ArgumentNullException("readerName");
             }
 
-            if (string.IsNullOrWhiteSpace(name)) {
+            if (string.IsNullOrWhiteSpace(readerName)) {
                 throw new UnknownReaderException(SCardError.InvalidValue, "Invalid card reader name.");
             }
 
@@ -64,7 +68,7 @@ namespace PCSC
             SCardProtocol dwActiveProtocol;
 
             var rc = Platform.Lib.Connect(_context.Handle,
-                name,
+                readerName,
                 mode,
                 prefProto,
                 out hCard,
@@ -76,7 +80,7 @@ namespace PCSC
 
             _cardHandle = hCard;
             _activeprot = dwActiveProtocol;
-            _readername = name;
+            _readername = readerName;
             _sharemode = mode;
 
             return rc;

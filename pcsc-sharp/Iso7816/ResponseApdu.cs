@@ -46,7 +46,7 @@ namespace PCSC.Iso7816
             }
         }
 
-        public ResponseApdu(byte[] response, int length, IsoCase isoCase, SCardProtocol proto) {
+        public ResponseApdu(byte[] response, int length, IsoCase isoCase, SCardProtocol protocol) {
             if (length < 0 ||
                 (response == null && length > 0) ||
                 (response != null && response.Length < length)) {
@@ -55,14 +55,14 @@ namespace PCSC.Iso7816
 
             this.response = response;
             this.length = length;
-            this.isocase = isoCase;
-            this.proto = proto;
+            isocase = isoCase;
+            proto = protocol;
         }
 
-        public ResponseApdu(byte[] response, int length, IsoCase isoCase, SCardProtocol proto, bool copy) {
+        public ResponseApdu(byte[] response, int length, IsoCase isoCase, SCardProtocol protocol, bool copy) {
             if (length < 0 ||
                 (response == null && length > 0) ||
-                (response.Length < length)) {
+                (response != null && response.Length < length)) {
                 throw new ArgumentOutOfRangeException("length");
             }
 
@@ -75,19 +75,13 @@ namespace PCSC.Iso7816
                 this.response = response;
             }
             this.length = length;
-            this.isocase = isoCase;
-            this.proto = proto;
+            isocase = isoCase;
+            proto = protocol;
         }
 
         public bool HasData {
             get {
-                if (response != null &&
-                    response.Length > 2 &&
-                    length > 2) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return response != null && response.Length > 2 && length > 2;
             }
         }
 
@@ -96,44 +90,54 @@ namespace PCSC.Iso7816
                 if (response == null) {
                     return false;
                 }
-                if (response.Length < 2 || length < 2) // a valid APDU response contains SW1 and SW2
-                {
-                    return false;
-                }
-                return true;
+                return response.Length >= 2 && length >= 2;
             }
         }
 
         public byte SW1 {
             get {
-                if (response != null &&
-                    response.Length > 1 &&
-                    length > 1) {
-                    return response[length - 2];
-                } else {
+                if (response == null || response.Length < length || length <= 1) {
                     throw new InvalidApduException("The response APDU is invalid.");
                 }
+                return response[length - 2];
             }
         }
+        
         public byte SW2 {
             get {
-                if (response != null &&
-                    response.Length > 0 &&
-                    length > 0) {
-                    return response[length - 1];
-                } else {
+                if (response == null || response.Length < length || length <= 0) {
                     throw new InvalidApduException("The response APDU is invalid.");
                 }
+                return response[length - 1];
             }
         }
+        
         public int StatusWord {
-            get { return (((int) SW1) << 8) | (int) SW2; }
+            get { return (SW1 << 8) | SW2; }
+        }
+
+        public int Length {
+            get { return length; }
+        }
+
+        public int DataSize {
+            get {
+                if (response == null || response.Length <= 2 || length <= 2) {
+                    return 0;
+                }
+                return length - 2;
+            }
+        }
+        
+        public byte[] FullApdu {
+            get { return response; }
         }
 
         public byte[] GetData() {
             if (response == null) {
                 throw new InvalidApduException("The response APDU is invalid.");
             }
+
             if (response.Length <= 2 ||
                 length <= 2) {
                 return null;
@@ -144,38 +148,25 @@ namespace PCSC.Iso7816
             return tmp;
         }
 
-        public int DataSize {
-            get {
-                if (response == null ||
-                    response.Length <= 2 ||
-                    length <= 2) {
-                    return 0;
-                } else {
-                    return length - 2;
-                }
-            }
-        }
-        public byte[] FullApdu {
-            get { return response; }
-        }
-
         public override byte[] ToArray() {
             if (response == null) {
                 return null;
             }
-            if (response.Length <= length) {
-                var tmp = new byte[length];
-                Array.Copy(response, tmp, length);
-                return tmp;
-            } else {
-                throw new InvalidApduException("The response APDU is null or invalid.");
+            
+            if (response.Length < length) {
+                throw new InvalidApduException("The response APDU is invalid.");
             }
+            
+            var tmp = new byte[length];
+            Array.Copy(response, tmp, length);
+            return tmp;
         }
 
         public virtual object Clone() {
-            var tmp = new ResponseApdu();
-            tmp.response = response;
-            tmp.length = length;
+            var tmp = new ResponseApdu {
+                response = response, 
+                length = length
+            };
             return tmp;
         }
     }

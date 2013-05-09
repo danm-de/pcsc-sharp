@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace PCSC.Iso7816
 {
-    public class IsoCard
+    public class IsoCard : IDisposable
     {
         private readonly ISCardReader _reader;
 
@@ -34,6 +34,10 @@ namespace PCSC.Iso7816
         public virtual int MaxReceiveSize {
             get { return _maxRecvSize; }
             protected set { _maxRecvSize = value; }
+        }
+
+        ~IsoCard() {
+            Dispose(false);
         }
 
         public IsoCard(ISCardReader reader) {
@@ -69,6 +73,12 @@ namespace PCSC.Iso7816
 
             // Throws an exception if sc != SCardError.Success
             ThrowExceptionOnSCardError(sc);
+        }
+
+        public virtual void Disconnect(SCardReaderDisposition disposition) {
+            if (_reader != null) {
+                _reader.Disconnect(disposition);
+            }
         }
 
         /// <summary>
@@ -284,12 +294,9 @@ namespace PCSC.Iso7816
                     le = respApdu.SW2;
                 } while (
                     // More data available.
-                    respApdu.SW1 == (byte) SW1Code.NormalDataResponse
-                        ||
-                    // Warning condition: data may be corrupted. Iso7816-4 7.1.5
-                    (respApdu.SW1 == (byte) SW1Code.WarningNVDataNotChanged &&
-                        respApdu.SW2 == 0x81)
-                    );
+                    respApdu.SW1 == (byte) SW1Code.NormalDataResponse ||
+                        // Warning condition: data may be corrupted. Iso7816-4 7.1.5
+                        (respApdu.SW1 == (byte) SW1Code.WarningNVDataNotChanged && respApdu.SW2 == 0x81));
             }
 
             response.AddResponseApdu(respApdu);
@@ -317,6 +324,21 @@ namespace PCSC.Iso7816
             cmd.P2 = 0x00;
 
             return cmd;
+        }
+
+        public void Dispose() {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing) {
+            if (!disposing) {
+                return;
+            }
+
+            if (_reader != null && _reader.IsConnected) {
+                _reader.Disconnect(SCardReaderDisposition.Leave);
+            }
         }
     }
 }

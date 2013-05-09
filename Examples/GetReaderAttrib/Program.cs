@@ -1,65 +1,55 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-
 using PCSC;
 
 namespace GetReaderAttrib
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
-        {
-            SCardContext ctx = new SCardContext();
-            ctx.Establish(SCardScope.System);
+        private static void Main() {
+            using (var context = new SCardContext()) {
+                context.Establish(SCardScope.System);
 
-            string[] readernames = ctx.GetReaders();
-            if (readernames == null || readernames.Length < 1)
-                throw new Exception("You need at least one reader in order to run this example.");
+                var readerNames = context.GetReaders();
+                if (readerNames == null || readerNames.Length < 1) {
+                    throw new Exception("You need at least one reader in order to run this example.");
+                }
 
-            // Receive the ATR of each reader by using the GetAttrib function
-            foreach (string name in readernames)
-            {
-                SCardReader reader = new SCardReader(ctx);
+                // Receive the ATR of each reader by using the GetAttrib function
+                foreach (var readerName in readerNames) {
+                    var reader = new SCardReader(context);
 
-                Console.Write("Trying to connect to reader.. " + name);
+                    Console.Write("Trying to connect to reader.. " + readerName);
 
-                // Connect to the reader, error if no card present.
-                SCardError rc = reader.Connect(
-                    name,
-                    SCardShareMode.Shared,
-                    SCardProtocol.Any);
+                    // Connect to the reader, error if no card present.
+                    var rc = reader.Connect(
+                        readerName,
+                        SCardShareMode.Shared,
+                        SCardProtocol.Any);
 
-                if (rc == SCardError.Success)
-                {
-                    // Reader is now connected.
-                    Console.WriteLine(" done.");
+                    if (rc == SCardError.Success) {
+                        // Reader is now connected.
+                        Console.WriteLine(" done.");
 
-                    // receive ATR string attribute
-                    byte[] atr;
-                    rc = reader.GetAttrib(SCardAttr.ATRString, out atr);
+                        // receive ATR string attribute
+                        byte[] atr;
+                        rc = reader.GetAttrib(SCardAttr.ATRString, out atr);
 
-                    if (rc != SCardError.Success)
-                        // ATR not supported?
-                        Console.WriteLine("Error by trying to receive the ATR. "
-                            + SCardHelper.StringifyError(rc) + "\n");
-                    else
-                    {
-                        Console.WriteLine("ATR: " + StringAtr(atr) + "\n");
+                        if (rc != SCardError.Success)
+                            // ATR not supported?
+                            Console.WriteLine("Error by trying to receive the ATR. {0}\n", SCardHelper.StringifyError(rc));
+                        else {
+                            Console.WriteLine("ATR: {0}\n", StringAtr(atr));
+                        }
+
+                        reader.Disconnect(SCardReaderDisposition.Leave);
+                    } else {
+                        // Probably no SmartCard present.
+                        Console.WriteLine(" failed. " + SCardHelper.StringifyError(rc) + "\n");
                     }
+                }
 
-                    // Disconnect
-                    reader.Disconnect(SCardReaderDisposition.Leave);
-                }
-                else
-                {
-                    // Probably no SmartCard present.
-                    Console.WriteLine(" failed. " + SCardHelper.StringifyError(rc) + "\n");
-                }
+                context.Release();
             }
-
-            ctx.Release();
-            return;
         }
 
         /// <summary>
@@ -67,16 +57,10 @@ namespace GetReaderAttrib
         /// </summary>
         /// <param name="atr">Contains the SmartCard ATR.</param>
         /// <returns></returns>
-        static string StringAtr(byte[] atr)
-        {
-            if (atr == null)
-                return null;
-
-            StringBuilder sb = new StringBuilder();
-            foreach (byte b in atr)
-                sb.AppendFormat("{0:X2}", b);
-
-            return sb.ToString();
+        static string StringAtr(byte[] atr) {
+            return atr == null
+                ? null
+                : BitConverter.ToString(atr);
         }
     }
 }

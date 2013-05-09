@@ -7,7 +7,7 @@ using SCARD_IO_REQUEST_UNIX = PCSC.Interop.Unix.SCARD_IO_REQUEST;
 
 namespace PCSC
 {
-    public class SCardPCI : IDisposable
+    public class SCardPCI: IDisposable
     {
         private static IntPtr _pciT0 = IntPtr.Zero;
         private static IntPtr _pciT1 = IntPtr.Zero;
@@ -82,14 +82,10 @@ namespace PCSC
 
         public void Dispose() {
             Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
         protected virtual void Dispose(bool disposing) {
-            if (!disposing) {
-                return;
-            }
-
+            // The MUST free unmanaged memory
             if (_iomem != IntPtr.Zero) {
                 Marshal.FreeCoTaskMem(
                     _iomem);

@@ -23,8 +23,7 @@ d = Bug fix
 	  SCardContext)
 	* SCardMonitor: implemented the correct IDisposable pattern.
 	  GC will _not_ longer call SCardContext.Cancel() during finalize!
-	* SCardPCI: implemented the correct IDisposable pattern.
-	  GC will _not_ longer free unmanaged memory of your own PCI structure!
+	* ResponseApdu: Fixed a bug in ResponseApdu.ToArray()
 
 2012-05-06  Daniel Mueller <daniel@danm.de>
     * New Version 2.0.0.4

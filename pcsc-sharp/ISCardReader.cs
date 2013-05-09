@@ -4,14 +4,16 @@ namespace PCSC
 {
     public interface ISCardReader
     {
-        SCardError Connect(string name, SCardShareMode mode, SCardProtocol prefProto);
+        SCardError Connect(string readerName, SCardShareMode mode, SCardProtocol prefProto);
         SCardError Disconnect(SCardReaderDisposition discntExec);
         SCardError Reconnect(SCardShareMode mode, SCardProtocol prefProto, SCardReaderDisposition initExec);
 
         SCardError BeginTransaction();
         SCardError EndTransaction(SCardReaderDisposition disposition);
 
-        SCardError Transmit(IntPtr pioSendPci, byte[] sendBuffer, int sendBufLength, SCardPCI ioRecvPci, byte[] recvBuffer, ref int recvBufLength);
+        SCardError Transmit(IntPtr pioSendPci, byte[] sendBuffer, int sendBufLength, SCardPCI ioRecvPci,
+            byte[] recvBuffer, ref int recvBufLength);
+
         SCardError Transmit(IntPtr pioSendPci, byte[] sendBuffer, SCardPCI ioRecvPci, ref byte[] recvBuffer);
         SCardError Transmit(IntPtr pioSendPci, byte[] sendBuffer, ref byte[] recvBuffer);
         SCardError Transmit(SCardPCI ioSendPci, byte[] sendBuffer, SCardPCI ioRecvPci, ref byte[] recvBuffer);
@@ -38,5 +40,6 @@ namespace PCSC
         SCardShareMode CurrentShareMode { get; }
         SCardProtocol ActiveProtocol { get; }
         IntPtr CardHandle { get; }
+        bool IsConnected { get; }
     }
 }
