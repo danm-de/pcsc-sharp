@@ -415,7 +415,7 @@ namespace PCSC.Interop.Windows
                 cReaders = rgReaderStates.Length;
                 readerstates = new SCARD_READERSTATE[cReaders];
                 for (var i = 0; i < cReaders; i++) {
-                    readerstates[i] = rgReaderStates[i]._winscardRstate;
+                    readerstates[i] = rgReaderStates[i].WindowsReaderState;
                 }
             }
 
@@ -434,7 +434,7 @@ namespace PCSC.Interop.Windows
 
             for (var i = 0; i < cReaders; i++) {
                 // replace with returned values
-                rgReaderStates[i]._winscardRstate = readerstates[i];
+                rgReaderStates[i].WindowsReaderState = readerstates[i];
             }
 
             return rc;

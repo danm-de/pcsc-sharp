@@ -3,7 +3,8 @@ using System.Runtime.InteropServices;
 using PCSC.Interop;
 using PCSC.Interop.Unix;
 using PCSC.Interop.Windows;
-using SCARD_READERSTATE = PCSC.Interop.Windows.SCARD_READERSTATE;
+using WINDOWS_SCARD_READERSTATE = PCSC.Interop.Windows.SCARD_READERSTATE;
+using UNIX_SCARD_READERSTATE = PCSC.Interop.Unix.SCARD_READERSTATE;
 
 namespace PCSC
 {
@@ -13,8 +14,8 @@ namespace PCSC
         private const int EVENTSTATE_RANGE = 0xFFFF;
         private const long CHCOUNT_RANGE = 0xFFFF0000;
 
-        internal SCARD_READERSTATE _winscardRstate;
-        internal Interop.Unix.SCARD_READERSTATE _pcscliteRstate;
+        private WINDOWS_SCARD_READERSTATE _winscardRstate;
+        private UNIX_SCARD_READERSTATE _pcscliteRstate;
 
         private IntPtr _pReaderName = IntPtr.Zero;
         private int _pReaderNameSize;
@@ -29,12 +30,13 @@ namespace PCSC
             GC.SuppressFinalize(this);
         }
 
-        public void Dispose(bool disposing) {
-            if (!disposing || _disposed) {
+        protected virtual void Dispose(bool disposing) {
+            if (_disposed) {
                 return;
             }
 
             if (_pReaderName != IntPtr.Zero) {
+                // Free unmanaged memory
                 Marshal.FreeCoTaskMem(_pReaderName);
                 _pReaderName = IntPtr.Zero;
                 _pReaderNameSize = 0;
@@ -45,7 +47,7 @@ namespace PCSC
 
         public SCardReaderState() {
             if (Platform.IsWindows) {
-                _winscardRstate = new SCARD_READERSTATE {
+                _winscardRstate = new WINDOWS_SCARD_READERSTATE {
                     // initialize embedded array
                     rgbAtr = new byte[WinSCardAPI.MAX_ATR_SIZE],
                     cbAtr = WinSCardAPI.MAX_ATR_SIZE
@@ -200,7 +202,7 @@ namespace PCSC
             }
         }
 
-        public byte[] ATR {
+        public byte[] Atr {
             get {
                 byte[] tmp;
 
@@ -241,6 +243,16 @@ namespace PCSC
                     _pcscliteRstate.cbAtr = (IntPtr) value.Length;
                 }
             }
+        }
+
+        internal WINDOWS_SCARD_READERSTATE WindowsReaderState {
+            get { return _winscardRstate; }
+            set { _winscardRstate = value; }
+        }
+
+        internal UNIX_SCARD_READERSTATE UnixReaderState {
+            get { return _pcscliteRstate; }
+            set { _pcscliteRstate = value; }
         }
     }
 }

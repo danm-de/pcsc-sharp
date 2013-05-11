@@ -1,103 +1,104 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-
 using PCSC;
+using PCSC.Iso7816;
 
 namespace Transmit
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
-        {
-            SCardContext ctx = new SCardContext();
-            ctx.Establish(SCardScope.System);
+        public static void Main() {
+            using (var context = new SCardContext()) {
+                context.Establish(SCardScope.System);
 
-            string[] readernames = ctx.GetReaders();
-            if (readernames == null || readernames.Length < 1)
-                throw new Exception("You need at least one reader in order to run this example.");
-
-            // Show available readers.
-            Console.WriteLine("Available readers: ");
-            for (int i = 0; i < readernames.Length; i++)
-                Console.WriteLine("[" + i + "] " + readernames[i]);
-
-            int num = 0;
-
-            if (readernames.Length > 1)
-            {
-                // Ask the user which one to choose.
-                Console.Write("Which reader is an RFID reader? ");
-                string relin = Console.ReadLine();
-                if (!(int.TryParse(relin, out num))
-                    || num < 0
-                    || num > readernames.Length)
-                {
-                    Console.WriteLine("An invalid number has been entered. Exiting.");
+                var readerNames = context.GetReaders();
+                if (readerNames == null || readerNames.Length < 1) {
+                    Console.WriteLine("You need at least one reader in order to run this example.");
+                    Console.ReadKey();
                     return;
                 }
+
+                var readerName = ChooseRfidReader(readerNames);
+                if (readerName == null) {
+                    return;
+                }
+
+                using (var rfidReader = new SCardReader(context)) {
+
+                    var sc = rfidReader.Connect(readerName, SCardShareMode.Shared, SCardProtocol.Any);
+                    if (sc != SCardError.Success) {
+                        Console.WriteLine("Could not connect to reader {0}:\n{1}",
+                            readerName,
+                            SCardHelper.StringifyError(sc));
+                        Console.ReadKey();
+                        return;
+                    }
+                    
+                    var apdu = new CommandApdu(IsoCase.Case2Short, rfidReader.ActiveProtocol) {
+                        CLA = 0xFF,
+                        Instruction = InstructionCode.GetData,
+                        P1 = 0x00,
+                        P2 = 0x00,
+                        Le = 0  // We don't know the ID tag size
+                    };
+
+                    sc = rfidReader.BeginTransaction();
+                    if (sc != SCardError.Success) {
+                        Console.WriteLine("Could not begin transaction.");
+                        Console.ReadKey();
+                        return;
+                    }
+
+                    Console.WriteLine("Retrieving the UID .... ");
+
+                    var receivePci = new SCardPCI(); // IO returned protocol control information.
+                    var sendPci = SCardPCI.GetPci(rfidReader.ActiveProtocol);
+
+                    var receiveBuffer = new byte[256];
+                    var command = apdu.ToArray();
+
+                    sc = rfidReader.Transmit(
+                        sendPci,            // Protocol Control Information (T0, T1 or Raw)
+                        command,            // command APDU
+                        receivePci,         // returning Protocol Control Information
+                        ref receiveBuffer); // data buffer
+
+                    if (sc != SCardError.Success) {
+                        Console.WriteLine("Error: " + SCardHelper.StringifyError(sc));
+                    }
+
+                    var responseApdu = new ResponseApdu(receiveBuffer, IsoCase.Case2Short, rfidReader.ActiveProtocol);
+                    Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}", 
+                        responseApdu.SW1, 
+                        responseApdu.SW2, 
+                        responseApdu.HasData ? BitConverter.ToString(responseApdu.GetData()) : "No uid received");
+
+                    rfidReader.EndTransaction(SCardReaderDisposition.Leave);
+                    rfidReader.Disconnect(SCardReaderDisposition.Reset);
+
+                    Console.ReadKey();
+                }
+            }
+        }
+
+        private static string ChooseRfidReader(string[] readerNames) {
+            // Show available readers.
+            Console.WriteLine("Available readers: ");
+            for (var i = 0; i < readerNames.Length; i++) {
+                Console.WriteLine("[" + i + "] " + readerNames[i]);
+            }
+            
+            // Ask the user which one to choose.
+            Console.Write("Which reader is an RFID reader? ");
+            var line = Console.ReadLine();
+            int choice;
+
+            if (!(int.TryParse(line, out choice)) || (choice < 0) || (choice > readerNames.Length)) {
+                Console.WriteLine("An invalid number has been entered.");
+                Console.ReadKey();
+                return null;
             }
 
-            string readername = readernames[num];
-
-            SCardReader rfidReader = new SCardReader(ctx);
-            SCardError rc = rfidReader.Connect(
-                readername,
-                SCardShareMode.Shared,
-                SCardProtocol.Any);
-
-            if (rc != SCardError.Success)
-            {
-                Console.WriteLine("Unable to connect to RFID card / chip. Error: " +
-                    SCardHelper.StringifyError(rc));
-                return;
-            }
-
-            // prepare APDU
-            byte[] ucByteSend = new byte[] 
-            {
-                0xFF,   // the instruction class
-                0xCA,   // the instruction code 
-                0x00,   // parameter to the instruction
-                0x00,   // parameter to the instruction
-                0x00    // size of I/O transfer
-            };
-            byte[] ucByteReceive = new byte[10];
-
-            Console.Out.WriteLine("Retrieving the UID .... ");
-
-            rc = rfidReader.BeginTransaction();
-            if (rc != SCardError.Success)
-                throw new Exception("Could not begin transaction.");
-
-            SCardPCI ioreq = new SCardPCI();    /* creates an empty object (null).
-                                                 * IO returned protocol control information.
-                                                 */
-            IntPtr sendPci = SCardPCI.GetPci(rfidReader.ActiveProtocol);
-            rc = rfidReader.Transmit(
-                sendPci,    /* Protocol control information, T0, T1 and Raw
-                             * are global defined protocol header structures.
-                             */
-                ucByteSend, /* the actual data to be written to the card */
-                ioreq,      /* The returned protocol control information */
-                ref ucByteReceive);
-
-            if (rc == SCardError.Success)
-            {
-                Console.Write("Uid: ");
-                for (int i = 0; i < (ucByteReceive.Length); i++)
-                    Console.Write("{0:X2} ", ucByteReceive[i]);
-                Console.WriteLine("");
-            }
-            else
-            {
-                Console.WriteLine("Error: " + SCardHelper.StringifyError(rc));
-            }
-
-            rfidReader.EndTransaction(SCardReaderDisposition.Leave);
-            rfidReader.Disconnect(SCardReaderDisposition.Reset);
-
-            return;
+            return readerNames[choice];
         }
     }
 }

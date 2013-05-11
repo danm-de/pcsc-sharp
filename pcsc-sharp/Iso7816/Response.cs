@@ -16,28 +16,25 @@ namespace PCSC.Iso7816
 
         public virtual byte SW1 {
             get {
-                if (_lstRespApdu.Count > 0) {
-                    // return the last status word SW1
-                    return _lstRespApdu[_lstRespApdu.Count - 1].SW1;
-                }
-                return 0;
+                return (_lstRespApdu.Count > 0)
+                    ? _lstRespApdu[_lstRespApdu.Count - 1].SW1
+                    : (byte) 0;
             }
         }
 
         public virtual byte SW2 {
             get {
-                if (_lstRespApdu.Count > 0) {
-                    // return the last status word SW2
-                    return _lstRespApdu[_lstRespApdu.Count - 1].SW2;
-                }
-                return 0;
+                return (_lstRespApdu.Count > 0)
+                    ? _lstRespApdu[_lstRespApdu.Count - 1].SW2
+                    : (byte) 0;
             }
         }
 
         public virtual int StatusWord {
             get { return (SW1 << 8) | SW2; }
         }
-        public bool HasData {
+
+        public virtual bool HasData {
             get { return _lstRespApdu.Any(responseAdpu => responseAdpu.HasData); }
         }
 

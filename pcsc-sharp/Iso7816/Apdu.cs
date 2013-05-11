@@ -29,16 +29,17 @@ namespace PCSC.Iso7816
          * CLA INS P1 P2                                *
          ************************************************/
 
-        protected IsoCase isocase;
-        public virtual IsoCase Case {
-            get { return isocase; }
-            protected set { isocase = value; }
+        private IsoCase _isoCase;
+        private SCardProtocol _protocol;
+        
+        public IsoCase Case {
+            get { return _isoCase; }
+            protected set { _isoCase = value; }
         }
 
-        protected SCardProtocol proto;
-        public virtual SCardProtocol Protocol {
-            get { return proto; }
-            protected set { proto = value; }
+        public SCardProtocol Protocol {
+            get { return _protocol; }
+            protected set { _protocol = value; }
         }
 
         public abstract byte[] ToArray();

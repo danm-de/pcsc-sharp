@@ -23,7 +23,17 @@ d = Bug fix
 	  SCardContext)
 	* SCardMonitor: implemented the correct IDisposable pattern.
 	  GC will _not_ longer call SCardContext.Cancel() during finalize!
-	* ResponseApdu: Fixed a bug in ResponseApdu.ToArray()
+	  Constructor got new parameter "releaseContextOnDispose".
+	* ResponseApdu: Fixed a bug in ResponseApdu.ToArray().
+	  Removed protected variables response and length.
+	* Apdu: Apdu.Case and Apdu.Protocol are not longer virtual, removed 
+	  protected variables proto and isocase.
+	* CommandApdu: removed protected variables cla, ins, p1, p2, lc, le 
+	  and data (use property setter!).
+	* IsoCard: constructor got new parameter "disconnectReaderOnDispose".
+	* SCardReaderState: renamed property ATR to Atr.
+	* CardStatusEventArgs & StatusChangeEventArgs: renamed property ATR to Atr.
+	  Both inherit from CardEventArgs.
 
 2012-05-06  Daniel Mueller <daniel@danm.de>
     * New Version 2.0.0.4

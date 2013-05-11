@@ -1,121 +1,67 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-
 using PCSC;
 
 namespace MonitorReaderEvents
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
-        {
-            ConsoleKeyInfo keyinfo;
-
+        public static void Main() {
             Console.WriteLine("This program will monitor all SmartCard readers and display all status changes.");
             Console.WriteLine("Press a key to continue.");
-
-            keyinfo = Console.ReadKey();
+            Console.ReadKey(); // Wait for user to press a key
 
             // Retrieve the names of all installed readers.
-            SCardContext ctx = new SCardContext();
-            ctx.Establish(SCardScope.System);
-            string[] readernames = ctx.GetReaders();
-            ctx.Release();
+            string[] readerNames;
+            using (var context = new SCardContext()) {
+                context.Establish(SCardScope.System);
+                readerNames = context.GetReaders();
+                context.Release();
+            }
 
-            if (readernames == null || readernames.Length == 0)
-            {
+            if (readerNames == null || readerNames.Length == 0) {
                 Console.WriteLine("There are currently no readers installed.");
                 return;
             }
 
-            // Create a monitor object with its own PC/SC context.
-            SCardMonitor monitor = new SCardMonitor(
-                new SCardContext(),
-                SCardScope.System);
+            // Create a monitor object with its own PC/SC context. 
+            // The context will be released after monitor.Dispose()
+            using (var monitor = new SCardMonitor(new SCardContext(), SCardScope.System)) {
+                // Point the callback function(s) to the anonymous & static defined methods below.
+                monitor.CardInserted += (sender, args) => DisplayEvent("CardInserted", args);
+                monitor.CardRemoved += (sender, args) => DisplayEvent("CardRemoved", args);
+                monitor.Initialized += (sender, args) => DisplayEvent("Initialized", args);
+                monitor.StatusChanged += StatusChanged;
+                monitor.MonitorException += MonitorException;
 
-            // Point the callback function(s) to the static defined methods below.
-            monitor.CardInserted += new CardInsertedEvent(CardInserted);
-            monitor.CardRemoved += new CardRemovedEvent(CardRemoved);
-            monitor.Initialized += new CardInitializedEvent(Initialized);
-            monitor.StatusChanged += new StatusChangeEvent(StatusChanged);
-            monitor.MonitorException += new MonitorExceptionEvent(MonitorException);
+                foreach (string reader in readerNames) {
+                    Console.WriteLine("Start monitoring for reader " + reader + ".");
+                }
 
-            foreach (string reader in readernames)
-                Console.WriteLine("Start monitoring for reader " + reader + ".");
+                monitor.Start(readerNames);
 
-            monitor.Start(readernames);
+                // Let the program run until the user presses a key
+                Console.ReadKey();
 
-            // Let the program run until the user presses a key
-            keyinfo = Console.ReadKey();
-            GC.KeepAlive(keyinfo);
-
-            // Stop monitoring
-            monitor.Cancel();
+                // Stop monitoring
+                monitor.Cancel();
+            }
         }
 
-        static void CardInserted(object sender, CardStatusEventArgs args)
-        {
-            SCardMonitor monitor = (SCardMonitor)sender;
-
-            Console.WriteLine(">> CardInserted Event for reader: "
-                + args.ReaderName);
-            Console.WriteLine("   ATR: " + StringAtr(args.Atr));
-            Console.WriteLine("   State: " + args.State + "\n");
+        private static void DisplayEvent(string eventName, CardStatusEventArgs unknown) {
+            Console.WriteLine(">> {0} Event for reader: {1}", eventName, unknown.ReaderName);
+            Console.WriteLine("ATR: {0}", BitConverter.ToString(unknown.Atr ?? new byte[0]));
+            Console.WriteLine("State: {0}\n", unknown.State);
         }
 
-        static void CardRemoved(object sender, CardStatusEventArgs args)
-        {
-            SCardMonitor monitor = (SCardMonitor)sender;
-
-            Console.WriteLine(">> CardRemoved Event for reader: "
-                + args.ReaderName);
-            Console.WriteLine("   ATR: " + StringAtr(args.Atr));
-            Console.WriteLine("   State: " + args.State + "\n");
+        private static void StatusChanged(object sender, StatusChangeEventArgs args) {
+            Console.WriteLine(">> StatusChanged Event for reader: {0}", args.ReaderName);
+            Console.WriteLine("ATR: {0}", BitConverter.ToString(args.Atr ?? new byte[0]));
+            Console.WriteLine("Last state: {0}\nNew state: {1}\n", args.LastState, args.NewState);
         }
 
-        static void Initialized(object sender, CardStatusEventArgs args)
-        {
-            SCardMonitor monitor = (SCardMonitor)sender;
-
-            Console.WriteLine(">> Initialized Event for reader: "
-                + args.ReaderName);
-            Console.WriteLine("   ATR: " + StringAtr(args.Atr));
-            Console.WriteLine("   State: " + args.State + "\n");
-        }
-
-        static void StatusChanged(object sender, StatusChangeEventArgs args)
-        {
-            SCardMonitor monitor = (SCardMonitor)sender;
-
-            Console.WriteLine(">> StatusChanged Event for reader: "
-                + args.ReaderName);
-            Console.WriteLine("   ATR: " + StringAtr(args.ATR));
-            Console.WriteLine("   Last state: " + args.LastState
-                + "\n   New state: " + args.NewState + "\n");
-        }
-
-        static void MonitorException(object sender, PCSCException ex)
-        {
+        private static void MonitorException(object sender, PCSCException ex) {
             Console.WriteLine("Monitor exited due an error:");
             Console.WriteLine(SCardHelper.StringifyError(ex.SCardError));
-        }
-
-        /// <summary>
-        /// Helper function that translates a byte array into an hex-encoded ATR string.
-        /// </summary>
-        /// <param name="atr">Contains the SmartCard ATR.</param>
-        /// <returns></returns>
-        static string StringAtr(byte[] atr)
-        {
-            if (atr == null)
-                return null;
-
-            StringBuilder sb = new StringBuilder();
-            foreach (byte b in atr)
-                sb.AppendFormat("{0:X2}", b);
-
-            return sb.ToString();
         }
     }
 }

@@ -19,12 +19,13 @@ namespace PCSC
 
         private readonly object _sync = new object();
 
-        internal SCardContext _context;
-        internal SCRState[] _previousState;
-        internal IntPtr[] _previousStateValue;
-        internal Thread _monitorthread;
-        internal string[] _readernames;
-        internal bool _monitoring;
+        private readonly SCardContext _context;
+        private readonly bool _releaseContextOnDispose;
+        private SCRState[] _previousState;
+        private IntPtr[] _previousStateValue;
+        private Thread _monitorthread;
+        private string[] _readernames;
+        private bool _monitoring;
 
         public string[] ReaderNames {
             get {
@@ -47,17 +48,19 @@ namespace PCSC
             Dispose(false);
         }
 
-        public SCardMonitor(SCardContext hContext) {
+        public SCardMonitor(SCardContext hContext, bool releaseContextOnDispose = false) {
             if (hContext == null) {
                 throw new ArgumentNullException("hContext");
             }
 
             _context = hContext;
+            _releaseContextOnDispose = releaseContextOnDispose;
         }
 
-        public SCardMonitor(SCardContext hContext, SCardScope scope)
-            : this(hContext) {
-            hContext.Establish(scope);
+        public SCardMonitor(SCardContext hContext, SCardScope scope, bool releaseContextOnDispose = true)
+            : this(hContext, releaseContextOnDispose) {
+            
+            _context.Establish(scope);
         }
 
         public IntPtr GetCurrentStateValue(int index) {
@@ -116,8 +119,14 @@ namespace PCSC
         }
 
         protected virtual void Dispose(bool disposing) {
-            if (disposing) {
-                Cancel();
+            if (!disposing) {
+                return;
+            }
+
+            Cancel();
+
+            if (_releaseContextOnDispose && _context != null) {
+                _context.Dispose();
             }
         }
 
@@ -176,51 +185,51 @@ namespace PCSC
         private void StartMonitor() {
             _monitoring = true;
 
-            SCardReaderState[] state = new SCardReaderState[_readernames.Length];
+            var readerStates = new SCardReaderState[_readernames.Length];
 
             for (var i = 0; i < _readernames.Length; i++) {
-                state[i] = new SCardReaderState {
+                readerStates[i] = new SCardReaderState {
                     ReaderName = _readernames[i], 
                     CurrentState = SCRState.Unaware
                 };
             }
 
-            var rc = _context.GetStatusChange(IntPtr.Zero, state);
+            var rc = _context.GetStatusChange(IntPtr.Zero, readerStates);
 
             if (rc == SCardError.Success) {
                 // initialize event
                 var onInitializedHandler = Initialized;
                 if (onInitializedHandler != null) {
-                    for (var i = 0; i < state.Length; i++) {
+                    for (var i = 0; i < readerStates.Length; i++) {
                         onInitializedHandler(this,
                             new CardStatusEventArgs(
                                 _readernames[i],
-                                (state[i].EventState & (~(SCRState.Changed))),
-                                state[i].ATR));
+                                (readerStates[i].EventState & (~(SCRState.Changed))),
+                                readerStates[i].Atr));
 
-                        _previousState[i] = state[i].EventState & (~(SCRState.Changed)); // remove "Changed"
-                        _previousStateValue[i] = state[i].EventStateValue;
+                        _previousState[i] = readerStates[i].EventState & (~(SCRState.Changed)); // remove "Changed"
+                        _previousStateValue[i] = readerStates[i].EventStateValue;
                     }
                 }
 
                 while (true) {
-                    for (var i = 0; i < state.Length; i++) {
-                        state[i].CurrentStateValue = _previousStateValue[i];
+                    for (var i = 0; i < readerStates.Length; i++) {
+                        readerStates[i].CurrentStateValue = _previousStateValue[i];
                     }
 
                     // block until status change occurs                    
-                    rc = _context.GetStatusChange(SCardReader.Infinite, state);
+                    rc = _context.GetStatusChange(SCardReader.Infinite, readerStates);
 
                     // Cancel?
                     if (rc != SCardError.Success) {
                         break;
                     }
 
-                    for (var i = 0; i < state.Length; i++) {
-                        var newState = state[i].EventState;
+                    for (var i = 0; i < readerStates.Length; i++) {
+                        var newState = readerStates[i].EventState;
                         newState &= (~(SCRState.Changed)); // remove "Changed"
 
-                        byte[] atr = state[i].ATR;
+                        var atr = readerStates[i].Atr;
 
                         // Status change
                         var onStatusChangedHandler = StatusChanged;
@@ -257,12 +266,16 @@ namespace PCSC
                         }
 
                         _previousState[i] = newState;
-                        _previousStateValue[i] = state[i].EventStateValue;
+                        _previousStateValue[i] = readerStates[i].EventStateValue;
                     }
                 }
             }
 
             _monitoring = false;
+
+            foreach (var state in readerStates) {
+                state.Dispose();
+            }
 
             if (rc == SCardError.Cancelled) {
                 return;

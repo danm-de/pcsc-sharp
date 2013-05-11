@@ -6,6 +6,7 @@ namespace PCSC.Iso7816
     public class IsoCard : IDisposable
     {
         private readonly ISCardReader _reader;
+        private readonly bool _disconnectReaderOnDispose;
 
         private int _retransmitWaitTime;
         private int _maxRecvSize = 128;
@@ -40,19 +41,18 @@ namespace PCSC.Iso7816
             Dispose(false);
         }
 
-        public IsoCard(ISCardReader reader) {
+        public IsoCard(ISCardReader reader, bool disconnectReaderOnDispose = false) {
             if (reader == null) {
                 throw new ArgumentNullException("reader");
             }
+            
             _reader = reader;
+            _disconnectReaderOnDispose = disconnectReaderOnDispose;
         }
 
-        public IsoCard(ISCardReader reader, string readerName, SCardShareMode mode, SCardProtocol proto) {
-            if (reader == null) {
-                throw new ArgumentNullException("reader");
-            }
-
-            _reader = reader;
+        public IsoCard(ISCardReader reader, string readerName, SCardShareMode mode, SCardProtocol proto, bool disconnectReaderOnDispose = true) 
+            :this(reader, disconnectReaderOnDispose)
+        {
             Connect(readerName, mode, proto);
         }
 
@@ -336,7 +336,7 @@ namespace PCSC.Iso7816
                 return;
             }
 
-            if (_reader != null && _reader.IsConnected) {
+            if (_disconnectReaderOnDispose && _reader != null && _reader.IsConnected) {
                 _reader.Disconnect(SCardReaderDisposition.Leave);
             }
         }

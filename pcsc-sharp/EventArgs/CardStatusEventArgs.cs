@@ -1,19 +1,14 @@
-using System;
-
 namespace PCSC
 {
-    public class CardStatusEventArgs : EventArgs
+    public class CardStatusEventArgs : CardEventArgs
     {
-        public string ReaderName;
-        public SCRState State;
-        public byte[] Atr;
+        public SCRState State { get; private set; }
 
         public CardStatusEventArgs() { }
         public CardStatusEventArgs(string readerName, SCRState state, byte[] atr)
+            :base(readerName, atr)
         {
-            ReaderName = readerName;
             State = state;
-            Atr = atr;
         }
     }
 }

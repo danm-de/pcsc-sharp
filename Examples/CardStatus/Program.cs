@@ -16,6 +16,7 @@ namespace CardStatus
 
                 if (readerNames == null) {
                     Console.WriteLine("No readers found.");
+                    Console.ReadKey();
                     return;
                 }
 
@@ -33,6 +34,8 @@ namespace CardStatus
                         }
                     }
                 }
+
+                Console.ReadKey();
             }
         }
 
@@ -53,8 +56,8 @@ namespace CardStatus
                 DisplayCardAtr(atr);
                 Console.WriteLine();
             } else {
-                Console.WriteLine("Unable to retrieve card status.");
-                Console.WriteLine("Error message: {0}", SCardHelper.StringifyError(sc));
+                Console.WriteLine("Unable to retrieve card status.\nError message: {0}", 
+                    SCardHelper.StringifyError(sc));
             }
         }
 
@@ -63,9 +66,7 @@ namespace CardStatus
                 return;
             }
 
-            Console.Write("Card ATR: ");
-            Console.WriteLine(BitConverter.ToString(atr));
-            Console.WriteLine();
+            Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
         }
     }
 }

@@ -68,6 +68,7 @@
     <Compile Include="Enums\SCardProtocol.cs" />
     <Compile Include="Enums\SCardReaderDisposition.cs" />
     <Compile Include="Enums\SCardState.cs" />
+    <Compile Include="EventArgs\CardEventArgs.cs" />
     <Compile Include="EventArgs\CardStatusEventArgs.cs" />
     <Compile Include="EventArgs\StatusChangeEventArgs.cs" />
     <Compile Include="Exceptions\CommunicationErrorException.cs" />

@@ -1,56 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using PCSC;
 
 namespace ReaderStatus
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
-        {
-            // Retrieve the names of all installed readers.
-            SCardContext ctx = new SCardContext();
-            ctx.Establish(SCardScope.System);
-            string[] readernames = ctx.GetReaders();
+        public static void Main() {
+            using (var ctx = new SCardContext()) {
+                ctx.Establish(SCardScope.System);
 
-            /* Get the current status of each reader in "readernames".
-             */
-            SCardReaderState[] states = ctx.GetReaderStatus(readernames);
+                var readerNames = ctx.GetReaders();
+                var readerStates = ctx.GetReaderStatus(readerNames);
 
-            foreach (SCardReaderState state in states)
-            {
-                Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-                Console.WriteLine("Reader: " + state.ReaderName);
-                Console.WriteLine("CurrentState: " + state.CurrentState
-                    + " EventState: " + state.EventState + "\n"
-                    + "CurrentStateValue: " + state.CurrentStateValue
-                    + " EventStateValue: " + state.EventStateValue);
-                Console.WriteLine("UserData: " + state.UserData.ToString()
-                    + " CardChangeEventCnt: " + state.CardChangeEventCnt);
-                Console.WriteLine("ATR: " + StringAtr(state.ATR));
+                foreach (var state in readerStates) {
+                    Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                    Console.WriteLine("Reader: {0}\n" +
+                        "CurrentState: {1}\n" +
+                        "EventState: {2}\n" +
+                        "CurrentStateValue: {3}\n" +
+                        "EventStateValue: {4}\n" +
+                        "UserData: {5}\n" +
+                        "CardChangeEventCnt: {6}\n" +
+                        "ATR: {7}",
+                        
+                        state.ReaderName, 
+                        state.CurrentState, 
+                        state.EventState, 
+                        state.CurrentStateValue,
+                        state.EventStateValue, 
+                        state.UserData, 
+                        state.CardChangeEventCnt,
+                        BitConverter.ToString(state.Atr ?? new byte[0]));
+
+                    state.Dispose();
+                }
+
+                ctx.Release();
             }
-
-            ctx.Release();
-            return;
-        }
-
-        /// <summary>
-        /// Helper function that translates a byte array into an hex-encoded ATR string.
-        /// </summary>
-        /// <param name="atr">Contains the SmartCard ATR.</param>
-        /// <returns></returns>
-        static string StringAtr(byte[] atr)
-        {
-            if (atr == null)
-                return null;
-
-            StringBuilder sb = new StringBuilder();
-            foreach (byte b in atr)
-                sb.AppendFormat("{0:X2}", b);
-
-            return sb.ToString();
+            Console.ReadKey();
         }
     }
 }

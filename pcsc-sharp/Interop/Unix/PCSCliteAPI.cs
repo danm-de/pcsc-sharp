@@ -410,7 +410,7 @@ namespace PCSC.Interop.Unix
                 cReaders = rgReaderStates.Length;
                 readerstates = new SCARD_READERSTATE[cReaders];
                 for (var i = 0; i < cReaders; i++) {
-                    readerstates[i] = rgReaderStates[i]._pcscliteRstate;
+                    readerstates[i] = rgReaderStates[i].UnixReaderState;
                 }
             }
 
@@ -426,7 +426,7 @@ namespace PCSC.Interop.Unix
 
             for (var i = 0; i < cReaders; i++)
                 // replace with returned values 
-                rgReaderStates[i]._pcscliteRstate = readerstates[i];
+                rgReaderStates[i].UnixReaderState = readerstates[i];
 
             return rc;
         }

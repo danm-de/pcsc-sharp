@@ -1,43 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
 using PCSC;
 
 namespace ListReaders
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
-        {
-            SCardContext context = new SCardContext();
-            context.Establish(SCardScope.System);
+        public static void Main() {
+            using (var context = new SCardContext()) {
+                context.Establish(SCardScope.System);
 
-            Console.Out.WriteLine("Context is valid? -> " + context.IsValid());
+                Console.WriteLine("Context is valid? -> " + context.IsValid());
 
-            // list all (smart card) readers
-            Console.Out.WriteLine("Currently connected readers: ");
-            string[] readers = context.GetReaders();
-            foreach (string reader in readers)
-                Console.WriteLine("\t" + reader);
+                // list all (smart card) readers
+                Console.WriteLine("Currently connected readers: ");
+                var readerNames = context.GetReaders();
+                foreach (var readerName in readerNames) {
+                    Console.WriteLine("\t" + readerName);
+                }
 
-            // list all configured reader groups
-            Console.Out.WriteLine("\nCurrently configured readers groups: ");
-            string[] groups = context.GetReaderGroups();
-            foreach (string group in groups)
-                Console.WriteLine("\t" + group);
+                // list all configured reader groups
+                Console.WriteLine("\nCurrently configured readers groups: ");
+                var groupNames = context.GetReaderGroups();
+                foreach (var groupName in groupNames) {
+                    Console.WriteLine("\t" + groupName);
+                }
 
-            // list readers for each group
-            foreach (string group in groups)
-            {
-                Console.WriteLine("\nGroup " + group + " contains ");
-                foreach (string reader in context.GetReaders(new string[] { group }))
-                    Console.WriteLine("\t" + reader);
+                // list readers for each group
+                foreach (var groupName in groupNames) {
+                    Console.WriteLine("\nGroup " + groupName + " contains ");
+                    foreach (var readerName in context.GetReaders(new[] { groupName })) {
+                        Console.WriteLine("\t" + readerName);
+                    }
+                }
+
+                context.Release();
+                Console.WriteLine("Context is valid? -> " + context.IsValid());
+                Console.ReadKey();
             }
-
-            context.Release();
-            Console.Out.WriteLine("Context is valid? -> " + context.IsValid());
-            return;
         }
     }
 }
