@@ -19,7 +19,7 @@ namespace PCSC.Interop.Windows
         private IntPtr _dllHandle = IntPtr.Zero;
         private Encoding _textEncoding;
 
-        public int MaxATRSize {
+        public int MaxAtrSize {
             get { return MAX_ATR_SIZE; }
         }
 

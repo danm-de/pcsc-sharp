@@ -10,7 +10,7 @@ namespace PCSC.Interop
     {
         IntPtr GetSymFromLib(string symName);
 
-        int MaxATRSize { get; }
+        int MaxAtrSize { get; }
         Encoding TextEncoding { get; set; }
         int CharSize { get; }
 

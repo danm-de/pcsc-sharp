@@ -19,7 +19,7 @@ namespace PCSC.Interop.Unix
         private IntPtr _libHandle = IntPtr.Zero;
         private Encoding _textEncoding;
 
-        public int MaxATRSize {
+        public int MaxAtrSize {
             get { return MAX_ATR_SIZE; }
         }
         public Encoding TextEncoding {

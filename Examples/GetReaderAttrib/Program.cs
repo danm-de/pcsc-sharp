@@ -32,7 +32,7 @@ namespace GetReaderAttrib
 
                     // receive ATR string attribute
                     byte[] atr;
-                    rc = reader.GetAttrib(SCardAttr.ATRString, out atr);
+                    rc = reader.GetAttrib(SCardAttr.AtrString, out atr);
 
                     if (rc != SCardError.Success) {
                         // ATR not supported?

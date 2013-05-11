@@ -22,7 +22,7 @@ namespace PCSC
         [Description("Card inserted")]
         Present = 0x0020,
         [Description("ATR matches card")]
-        ATRMatch = 0x0040,
+        AtrMatch = 0x0040,
         [Description("Exclusive Mode")]
         Exclusive = 0x0080,
         [Description("Shared Mode")]

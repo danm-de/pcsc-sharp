@@ -183,8 +183,8 @@ namespace PCSC
             return rc;
         }
 
-        public static int MaxATRSize {
-            get { return Platform.Lib.MaxATRSize; }
+        public static int MaxAtrSize {
+            get { return Platform.Lib.MaxAtrSize; }
         }
 
         public IntPtr Handle {

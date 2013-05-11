@@ -35,8 +35,8 @@ namespace PCSC
         ICCPresence = (SCardClass.ICCState << 16) | 0x0300,
         ICCInterfaceStatus = (SCardClass.ICCState << 16) | 0x0301,
         CurrentIOState = (SCardClass.ICCState << 16) | 0x0302,
-        ATRString = (SCardClass.ICCState << 16) | 0x0303,
-        ICCTypePerATR = (SCardClass.ICCState << 16) | 0x0304,
+        AtrString = (SCardClass.ICCState << 16) | 0x0303,
+        ICCTypePerAtr = (SCardClass.ICCState << 16) | 0x0304,
 
         EscReset = (SCardClass.VendorDefined << 16) | 0xA000,
         EscCancel = (SCardClass.VendorDefined << 16) | 0xA003,
