@@ -62,6 +62,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Delegates\CardInitializedEvent.cs" />
+    <Compile Include="Delegates\CardInsertedEvent.cs" />
+    <Compile Include="Delegates\CardRemovedEvent.cs" />
+    <Compile Include="Delegates\MonitorExceptionEvent.cs" />
+    <Compile Include="Delegates\StatusChangeEvent.cs" />
     <Compile Include="Enums\SCardAttr.cs" />
     <Compile Include="Enums\SCardClass.cs" />
     <Compile Include="Enums\SCardError.cs" />
@@ -93,6 +98,7 @@
     <Compile Include="Interop\Unix\SCARD_READERSTATE.cs" />
     <Compile Include="Interop\Windows\SCARD_IO_REQUEST.cs" />
     <Compile Include="Interop\Windows\SCARD_READERSTATE.cs" />
+    <Compile Include="ISCardContext.cs" />
     <Compile Include="Iso7816\ClassByte.cs" />
     <Compile Include="Exceptions\InvalidContextException.cs" />
     <Compile Include="Exceptions\InvalidScopeTypeException.cs" />

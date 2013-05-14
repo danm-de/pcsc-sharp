@@ -3,94 +3,13 @@ using System.Threading;
 
 namespace PCSC
 {
-    public delegate void StatusChangeEvent(object sender, StatusChangeEventArgs e);
-
-    /// <summary>
-    ///     A new card has been inserted.
-    /// </summary>
-    /// <param name="sender">
-    ///     The <see cref="SCardMonitor" /> sender object
-    /// </param>
-    /// <param name="e">Reader status information.</param>
-    /// <remarks>
-    ///     <example>
-    ///         <code lang="C#">
-    /// // Create a monitor object with its own PC/SC context.
-    /// SCardMonitor monitor = new SCardMonitor(
-    ///     new SCardContext(),
-    ///     SCardScope.System);
-    /// 
-    /// // Point the callback function(s) to the pre-defined method MyCardInsertedMethod.
-    /// monitor.CardInserted += new CardInsertedEvent(MyCardInsertedMethod);
-    /// 
-    /// // Start to monitor the reader
-    /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
-    ///   </code>
-    ///     </example>
-    /// </remarks>
-    public delegate void CardInsertedEvent(object sender, CardStatusEventArgs e);
-
-    /// <summary>
-    ///     A card has been removed.
-    /// </summary>
-    /// <param name="sender">
-    ///     The <see cref="SCardMonitor" /> sender object.
-    /// </param>
-    /// <param name="e">Reader status information.</param>
-    /// <remarks>
-    ///     <example>
-    ///         <code lang="C#">
-    /// // Create a monitor object with its own PC/SC context.
-    /// SCardMonitor monitor = new SCardMonitor(
-    /// 	new SCardContext(),
-    /// 	SCardScope.System);
-    /// 
-    /// // Point the callback function(s) to the pre-defined method MyCardRemovedMethod.
-    /// monitor.CardRemoved += new CardRemovedEvent(MyCardRemovedMethod);
-    /// 
-    /// // Start to monitor the reader
-    /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
-    ///   </code>
-    ///     </example>
-    /// </remarks>
-    public delegate void CardRemovedEvent(object sender, CardStatusEventArgs e);
-
-    /// <summary>The reader has been Initialized.</summary>
-    /// <param name="sender">
-    ///     The <see cref="SCardMonitor" /> sender object.
-    /// </param>
-    /// <param name="e">Reader status information.</param>
-    /// <remarks>
-    ///     <example>
-    ///         <code lang="C#">
-    /// // Create a monitor object with its own PC/SC context.
-    /// SCardMonitor monitor = new SCardMonitor(
-    /// 	new SCardContext(),
-    /// 	SCardScope.System);
-    /// 
-    /// // Point the callback function(s) to the pre-defined method MyCardInitializedMethod.
-    /// monitor.Initialized += new CardInitializedEvent(MyCardInitializedMethod);
-    /// 
-    /// // Start to monitor the reader
-    /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
-    /// </code>
-    ///     </example>
-    /// </remarks>
-    public delegate void CardInitializedEvent(object sender, CardStatusEventArgs e);
-
-    public delegate void MonitorExceptionEvent(object sender, PCSCException ex);
-
+    /// <summary>Monitors a Smart Card reader and triggers events on status changes.</summary>
+    /// <remarks>Creates a new thread and calls the <see cref="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])" /> of the given <see cref="T:PCSC.ISCardContext" /> object.</remarks>
     public class SCardMonitor : IDisposable
     {
-        public event StatusChangeEvent StatusChanged;
-        public event CardInsertedEvent CardInserted;
-        public event CardRemovedEvent CardRemoved;
-        public event CardInitializedEvent Initialized;
-        public event MonitorExceptionEvent MonitorException;
-
         private readonly object _sync = new object();
 
-        private readonly SCardContext _context;
+        private readonly ISCardContext _context;
         private readonly bool _releaseContextOnDispose;
         private SCRState[] _previousState;
         private IntPtr[] _previousStateValue;
@@ -98,6 +17,105 @@ namespace PCSC
         private string[] _readernames;
         private bool _monitoring;
 
+        /// <summary>A general reader status change.</summary>
+        /// <remarks>
+        ///     <example>
+        ///         <code lang="C#">
+        /// // Create a monitor object with its own PC/SC context.
+        /// var monitor = new SCardMonitor(
+        /// 	new SCardContext(),
+        /// 	SCardScope.System,
+        ///     true);
+        /// 
+        /// // Point the callback function(s) to the pre-defined method MyStatusChangedMethod.
+        /// monitor.StatusChanged += new StatusChangeEvent(MyStatusChangedMethod);
+        /// 
+        /// // Start to monitor the reader
+        /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
+        ///   </code>
+        ///     </example>
+        /// </remarks>
+        public event StatusChangeEvent StatusChanged;
+
+        /// <summary>A new card has been inserted.</summary>
+        /// <remarks>
+        ///     <example>
+        ///         <code lang="C#">
+        /// // Create a monitor object with its own PC/SC context.
+        /// var monitor = new SCardMonitor(
+        /// 	new SCardContext(),
+        /// 	SCardScope.System,
+        ///     true);
+        /// 
+        /// monitor.CardInserted += new CardInsertedEvent(MyCardInsertedMethod);
+        /// 
+        /// // Start to monitor the reader
+        /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
+        ///   </code>
+        ///     </example>
+        /// </remarks>
+        public event CardInsertedEvent CardInserted;
+
+        /// <summary>A card has been removed.</summary>
+        /// <remarks>
+        ///     <example>
+        ///         <code lang="C#">
+        /// // Create a monitor object with its own PC/SC context.
+        /// var monitor = new SCardMonitor(
+        /// 	new SCardContext(),
+        /// 	SCardScope.System,
+        ///     true);
+        /// 
+        /// monitor.CardRemoved += new CardRemovedEvent(MyCardRemovedMethod);
+        /// 
+        /// // Start to monitor the reader
+        /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
+        ///   </code>
+        ///     </example>
+        /// </remarks>
+        public event CardRemovedEvent CardRemoved;
+
+        /// <summary>The monitor object has been initialized.</summary>
+        /// <remarks>
+        ///     <para>This event appears only once for each reader after calling <see cref="SCardMonitor.Start(string)" /> or <see cref="SCardMonitor.Start(string[])" />.</para>
+        ///     <example>
+        ///         <code lang="C#">
+        /// // Create a monitor object with its own PC/SC context.
+        /// var monitor = new SCardMonitor(
+        /// 	new SCardContext(),
+        /// 	SCardScope.System,
+        ///     true);
+        /// 
+        /// monitor.Initialized += new CardInitializedEvent(MyCardInitializedMethod);
+        /// 
+        /// // Start to monitor the reader
+        /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
+        ///   </code>
+        ///     </example>
+        /// </remarks>
+        public event CardInitializedEvent Initialized;
+
+        /// <summary>An PC/SC error occurred during monitoring.</summary>
+        /// <remarks>
+        ///     <example>
+        ///         <code lang="C#">
+        /// // Create a monitor object with its own PC/SC context.
+        /// var monitor = new SCardMonitor(
+        /// 	new SCardContext(),
+        /// 	SCardScope.System,
+        ///     true);
+        /// 
+        /// monitor.MonitorException += new MonitorExceptionEvent(MyMonitorExceptionMethod);
+        /// 
+        /// // Start to monitor the reader
+        /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
+        ///   </code>
+        ///     </example>
+        /// </remarks>
+        public event MonitorExceptionEvent MonitorException;
+
+        /// <summary>All readers that are currently being monitored.</summary>
+        /// <value>A <see cref="T:System.String" /> array of reader names. <see langword="null" /> if no readers is being monitored.</value>
         public string[] ReaderNames {
             get {
                 if (_readernames == null) {
@@ -111,6 +129,27 @@ namespace PCSC
             }
         }
 
+        /// <summary>Indicates if there are readers currently monitored.</summary>
+        /// <value>
+        ///     <list type="table">
+        ///         <listheader>
+        ///             <term>Value</term>
+        ///             <description>Description</description>
+        ///         </listheader>
+        ///         <item>
+        ///             <term>
+        ///                 <see langword="true" />
+        ///             </term>
+        ///             <description>Monitoring process ongoing.</description>
+        ///         </item>
+        ///         <item>
+        ///             <term>
+        ///                 <see langword="false" />
+        ///             </term>
+        ///             <description>No monitoring.</description>
+        ///         </item>
+        ///     </list>
+        /// </value>
         public bool Monitoring {
             get { return _monitoring; }
         }
@@ -119,20 +158,38 @@ namespace PCSC
             Dispose(false);
         }
 
-        public SCardMonitor(SCardContext hContext, bool releaseContextOnDispose = false) {
-            if (hContext == null) {
-                throw new ArgumentNullException("hContext");
+        /// <summary>Creates a new SCardMonitor object that is able to listen for certain smart card / reader changes.</summary>
+        /// <param name="context">A new Application Context to the PC/SC Resource Manager.</param>
+        /// <param name="releaseContextOnDispose">If <see langword="true" /> the supplied <paramref name="context" /> will be released (using <see cref="ISCardContext.Release()" />) on <see cref="Dispose()" /></param>
+        /// <remarks>The monitor object should use its own application context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.
+        ///     <para>Warning: You MUST dispose the monitor instance otherwise the background thread will run forever!</para>
+        /// </remarks>
+        public SCardMonitor(ISCardContext context, bool releaseContextOnDispose = false) {
+            if (context == null) {
+                throw new ArgumentNullException("context");
             }
 
-            _context = hContext;
+            _context = context;
             _releaseContextOnDispose = releaseContextOnDispose;
         }
 
-        public SCardMonitor(SCardContext hContext, SCardScope scope, bool releaseContextOnDispose = true)
-            : this(hContext, releaseContextOnDispose) {
+        /// <summary>Creates a new SCardMonitor object that is able to listen for certain smart card / reader changes.</summary>
+        /// <param name="context">A new Application Context to the PC/SC Resource Manager.</param>
+        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
+        /// <param name="releaseContextOnDispose">If <see langword="true" /> the supplied <paramref name="context" /> will be released (using <see cref="ISCardContext.Release()" />) on <see cref="Dispose()" /></param>
+        /// <remarks>The monitor object should use its own application context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.
+        ///     <para>Warning: You MUST dispose the monitor instance otherwise the background thread will run forever!</para>
+        /// </remarks>
+        public SCardMonitor(ISCardContext context, SCardScope scope, bool releaseContextOnDispose = true)
+            : this(context, releaseContextOnDispose) {
             _context.Establish(scope);
         }
 
+        /// <summary>Returns the current state of a reader that is currently being monitored.</summary>
+        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.SCardMonitor.ReaderCount" /> - 1).</param>
+        /// <returns>The current state of reader with index number <paramref name="index" />.</returns>
+        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.SCardMonitor.ReaderNames" /> property.</remarks>
+        /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         public IntPtr GetCurrentStateValue(int index) {
             if (_previousStateValue == null) {
                 throw new InvalidOperationException("Monitor object is not initialized.");
@@ -147,6 +204,11 @@ namespace PCSC
             }
         }
 
+        /// <summary>Returns the current state of a reader that is currently being monitored.</summary>
+        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.SCardMonitor.ReaderCount" /> - 1).</param>
+        /// <returns>The current state of reader with index number <paramref name="index" />.</returns>
+        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.SCardMonitor.ReaderNames" /> property.</remarks>
+        /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         public SCRState GetCurrentState(int index) {
             if (_previousState == null) {
                 throw new InvalidOperationException("Monitor object is not initialized.");
@@ -161,6 +223,11 @@ namespace PCSC
             }
         }
 
+        /// <summary>Returns the reader name of a given <paramref name="index" />.</summary>
+        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.SCardMonitor.ReaderCount" /> - 1).</param>
+        /// <returns>A reader name.</returns>
+        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.SCardMonitor.ReaderNames" /> property.</remarks>
+        /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         public string GetReaderName(int index) {
             if (_readernames == null) {
                 throw new InvalidOperationException("Monitor object is not initialized.");
@@ -174,6 +241,8 @@ namespace PCSC
             }
         }
 
+        /// <summary>The number of readers that currently being monitored.</summary>
+        /// <value>Return 0 if no reader is being monitored.</value>
         public int ReaderCount {
             get {
                 lock (_readernames) {
@@ -184,11 +253,15 @@ namespace PCSC
             }
         }
 
+        /// <summary>Disposes the object.</summary>
+        /// <remarks>Dispose will call <see cref="Cancel()" /> in order to stop the background thread. The application context will be disposed if you configured the monitor to do so at construction time.</remarks>
         public void Dispose() {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>Disposes the object.</summary>
+        /// <param name="disposing">If <see langword="true" /> it will call <see cref="Cancel()" /> in order to stop the background thread. The application context will be disposed if the user configured the monitor to do so at construction time.</param>
         protected virtual void Dispose(bool disposing) {
             if (!disposing) {
                 return;
@@ -201,6 +274,8 @@ namespace PCSC
             }
         }
 
+        /// <summary>Cancels the monitoring of all readers that are currently being monitored.</summary>
+        /// <remarks>This will end the monitoring. The method calls the <see cref="ISCardContext.Cancel()" /> method of its Application Context to the PC/SC Resource Manager.</remarks>
         public void Cancel() {
             lock (_sync) {
                 if (!_monitoring) {
@@ -216,6 +291,31 @@ namespace PCSC
             }
         }
 
+        /// <param name="readerName">The Smart Card reader that shall be monitored.</param>
+        /// <summary>Starts to monitor a single Smart Card reader for status changes.</summary>
+        /// <remarks>
+        ///     <example>
+        ///         <code lang="C#">
+        /// // Create a new monitor object with its own PC/SC context.
+        /// var monitor = new SCardMonitor(
+        /// 	new SCardContext(),
+        /// 	SCardScope.System,
+        ///     true);
+        /// 
+        /// // Start to monitor a single reader.
+        /// monitor.Start("OMNIKEY CardMan 5x21 00 00");
+        ///   </code>
+        ///     </example>
+        ///     <para>Do not forget to register for at least one event:
+        ///         <list type="table">
+        ///             <listheader><term>Event</term><description>Description</description></listheader>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.CardInserted" /></term><description>A new card has been inserted.</description></item>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.CardRemoved" /></term><description>A card has been removed.</description></item>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.Initialized" /></term><description>Initial status.</description></item>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.StatusChanged" /></term><description>A general status change.</description></item>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.MonitorException" /></term><description>An error occurred.</description></item>
+        ///         </list></para>
+        /// </remarks>
         public void Start(string readerName) {
             if (string.IsNullOrWhiteSpace(readerName)) {
                 throw new ArgumentNullException("readerName");
@@ -224,6 +324,43 @@ namespace PCSC
             Start(new[] {readerName});
         }
 
+        /// <param name="readerNames">A <see cref="T:System.String" /> array of reader names that shall be monitored.</param>
+        /// <summary>Starts to monitor a range Smart Card readers for status changes.</summary>
+        /// <remarks>
+        ///     <example>
+        ///         <code lang="C#">
+        /// string [] readerNames;
+        /// using (var ctx = new SCardContext()) {
+        ///     ctx.Establish(SCardScope.System);
+        ///     // Retrieve the names of all installed readers.
+        ///     readerNames = ctx.GetReaders();
+        ///     ctx.Release();
+        /// }
+        /// 
+        /// // Create a new monitor object with its own PC/SC context.
+        /// var monitor = new SCardMonitor(
+        /// 	new SCardContext(),
+        /// 	SCardScope.System,
+        ///     true);
+        /// 
+        /// foreach (string reader in readerNames) {
+        /// 	Console.WriteLine("Start monitoring for reader {0}.", reader);
+        /// }
+        ///         
+        /// // Start monitoring multiple readers.
+        /// monitor.Start(readerNames);
+        /// </code>
+        ///     </example>
+        ///     <para>Do not forget to register for at least one event:
+        ///         <list type="table">
+        ///             <listheader><term>Event</term><description>Description</description></listheader>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.CardInserted" /></term><description>A new card has been inserted.</description></item>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.CardRemoved" /></term><description>A card has been removed.</description></item>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.Initialized" /></term><description>Initial status.</description></item>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.StatusChanged" /></term><description>A general status change.</description></item>
+        ///             <item><term><see cref="E:PCSC.SCardMonitor.MonitorException" /></term><description>An error occurred.</description></item>
+        ///         </list></para>
+        /// </remarks>
         public void Start(string[] readerNames) {
             lock (_sync) {
                 if (_monitoring) {
@@ -289,7 +426,7 @@ namespace PCSC
                     }
 
                     // block until status change occurs                    
-                    rc = _context.GetStatusChange(SCardReader.Infinite, readerStates);
+                    rc = _context.GetStatusChange(_context.Infinite, readerStates);
 
                     // Cancel?
                     if (rc != SCardError.Success) {

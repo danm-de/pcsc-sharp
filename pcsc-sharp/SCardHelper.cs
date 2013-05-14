@@ -6,12 +6,27 @@ using System.Text;
 
 namespace PCSC
 {
+    /// <summary>
+    /// Helper class that offers methods to convert various values into strings.
+    /// </summary>
     public static class SCardHelper
     {
+        /// <summary>
+        /// Returns a human readable text for the given PC/SC error code.
+        /// </summary>
+        /// <param name="code">Error or return code.</param>
+        /// <returns>A human readable string.</returns>
+        /// <remarks>Warning! This method behaves differently compared to the original PC/SC-Lite pcsc_stringify_error function. Instead of the (const) variable name it returns a short text description.</remarks>
         public static string StringifyError(SCardError code) {
             return GetAttrDesc(code);
         }
 
+        /// <summary>
+        /// Returns a description string of an enumeration attribute.
+        /// </summary>
+        /// <typeparam name="T">attribute type</typeparam>
+        /// <param name="attr">attribute</param>
+        /// <returns>If available: a description string of the specified attribute. Otherwise null.</returns>
         private static string GetAttrDesc<T>(T attr) {
             var fieldinf = attr
                 .GetType()

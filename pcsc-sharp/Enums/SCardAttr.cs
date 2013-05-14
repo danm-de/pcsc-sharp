@@ -1,5 +1,13 @@
 namespace PCSC
 {
+    ///  <summary>Smart card reader attribute enumeration.</summary>
+    /// <remarks>Can be used as parameter for the following methods:
+    /// <list type="bullet">
+    /// <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)" /></term></item>
+    /// </list></remarks>
     public enum SCardAttr
     {
         VendorName = (SCardClass.VendorInfo << 16) | 0x0100,
@@ -53,10 +61,5 @@ namespace PCSC
 
         DeviceFriendlyName = DeviceFriendlyNameW,
         DeviceSystemName = DeviceSystemNameW
-
-        /* ASCII *
-        DEVICE_FRIENDLY_NAME     = DEVICE_FRIENDLY_NAME_A,
-        DEVICE_SYSTEM_NAME       = DEVICE_SYSTEM_NAME_A
-        */
     }
 }

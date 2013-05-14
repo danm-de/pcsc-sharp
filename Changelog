@@ -18,12 +18,18 @@ d = Bug fix
 	  GC will _not_ longer release the context! This is due to the fact that 
 	  you can access the context handle using SCardContext.Handle and use it 
 	  in your own managed/unmanaged libraries calls.
+	  Changed the static properties "Infinite" and "MaxAtrSize" to instance
+	  properties.
 	* SCardReader: implemented the correct IDisposable pattern.
 	  GC will _not_ longer disconnect the reader! (Same reason as with 
 	  SCardContext)
+	  Changed type of property "CurrentContext" to ISCardContext.
+	  Changed constructor to accept ISCardContext instead of SCardContext.
+	  Removed static property "Infinite" (duplicate of ISCardContext.Infinite)
 	* SCardMonitor: implemented the correct IDisposable pattern.
 	  GC will _not_ longer call SCardContext.Cancel() during finalize!
 	  Constructor got new parameter "releaseContextOnDispose".
+	  Changed constructor to accept ISCardContext instead of SCardContext.
 	* ResponseApdu: Fixed a bug in ResponseApdu.ToArray().
 	  Removed protected variables response and length.
 	* Apdu: Apdu.Case and Apdu.Protocol are not longer virtual, removed 
@@ -34,6 +40,7 @@ d = Bug fix
 	* SCardReaderState: renamed property ATR to Atr.
 	* CardStatusEventArgs & StatusChangeEventArgs: renamed property ATR to Atr.
 	  Both inherit from CardEventArgs.
+	* New interface ISCardContext to ease unit testing.
 
 2012-05-06  Daniel Mueller <daniel@danm.de>
     * New Version 2.0.0.4
