@@ -1,21 +1,11 @@
 using System;
-using System.Runtime.InteropServices;
-using PCSC.Interop;
 
 namespace PCSC
 {
-    /// <summary>Manages an application context to the PC/SC Resource Manager.</summary>
-    /// <remarks>Each thread of an application shall use its own SCardContext.</remarks>
-    public class SCardContext : ISCardContext
+    /// <summary>An application context to the PC/SC Resource Manager.</summary>
+    /// <remarks>Each thread of an application shall use its own context.</remarks>
+    public interface ISCardContext : IDisposable
     {
-        private bool _hasContext;
-        private SCardScope _lastScope;
-        private IntPtr _contextPtr;
-
-        ~SCardContext() {
-            Dispose(false);
-        }
-
         /// <summary>Creates an Application Context to the PC/SC Resource Manager.</summary>
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <remarks>
@@ -28,35 +18,11 @@ namespace PCSC
         ///   </code>
         ///     </example>
         /// </remarks>
-        public void Establish(SCardScope scope) {
-            if (_hasContext && IsValid()) {
-                Release();
-            }
-
-            IntPtr hContext;
-
-            var rc = Platform.Lib.EstablishContext(
-                scope,
-                IntPtr.Zero,
-                IntPtr.Zero,
-                out hContext);
-
-            switch (rc) {
-                case SCardError.Success:
-                    _contextPtr = hContext;
-                    _lastScope = scope;
-                    _hasContext = true;
-                    break;
-                case SCardError.InvalidValue:
-                    throw new InvalidScopeTypeException(rc, "Invalid scope type passed");
-                default:
-                    throw new PCSCException(rc, SCardHelper.StringifyError(rc));
-            }
-        }
+        void Establish(SCardScope scope);
 
         /// <summary>Destroys a communication context to the PC/SC Resource Manager and frees unmanaged resources.</summary>
         /// <remarks>
-        ///     <para>This must be the last method called in a PC/SC application. <see cref="Dispose()"/> calls this method silently.</para>
+        ///     <para>This must be the last method called in a PC/SC application. <see cref="SCardContext.Dispose"/> calls this method silently.</para>
         ///     <para>This method calls the API function SCardReleaseContext().</para>
         ///     <example>
         ///         <code lang="C#">
@@ -70,24 +36,7 @@ namespace PCSC
         ///   </code>
         ///     </example>
         /// </remarks>
-        public void Release() {
-            if (!_hasContext) {
-                throw new InvalidContextException(SCardError.UnknownError, "Context was not established");
-            }
-
-            var rc = Platform.Lib.ReleaseContext(_contextPtr);
-
-            switch (rc) {
-                case SCardError.Success:
-                    _contextPtr = IntPtr.Zero;
-                    _hasContext = false;
-                    break;
-                case SCardError.InvalidHandle:
-                    throw new InvalidContextException(rc, "Invalid Context handle");
-                default:
-                    throw new PCSCException(rc, SCardHelper.StringifyError(rc));
-            }
-        }
+        void Release();
 
         /// <summary>Checks the validity of the current context.</summary>
         /// <returns>
@@ -114,9 +63,7 @@ namespace PCSC
         ///     <para>Call this function to determine whether a smart card context handle is still valid. After a smart card context handle has been set by <see cref="M:PCSC.SCardContext.Establish(PCSC.SCardScope)" />, it may become not valid if the resource manager service has been shut down.</para>
         ///     <para>This method calls the API function SCardIsValidContext().</para>
         /// </remarks>
-        public SCardError CheckValidity() {
-            return Platform.Lib.IsValidContext(_contextPtr);
-        }
+        SCardError CheckValidity();
 
         /// <summary>Checks the validity of the current context.</summary>
         /// <returns><see langword="true" /> if the context is valid.</returns>
@@ -130,34 +77,11 @@ namespace PCSC
         ///   </code>
         ///     </example>
         /// </remarks>
-        public bool IsValid() {
-            return CheckValidity() == SCardError.Success;
-        }
+        bool IsValid();
 
         /// <summary>Re-Establishes an Application Context to the PC/SC Resource Manager with the last used <see cref="T:PCSC.SCardScope" />.</summary>
-        /// <remarks>This method must not be called before <see cref="Establish(PCSC.SCardScope)" /></remarks>
-        public void ReEstablish() {
-            Establish(_lastScope);
-        }
-
-        /// <summary>Disposes a PC/SC application context.</summary>
-        /// <remarks>If a context to the PC/SC Resource Manager is established, Dispose() will call the <see cref="Release()" /> method silently.</remarks>
-        public void Dispose() {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>Disposes a PC/SC application context.</summary>
-        /// <param name="disposing">If <see langword="true" /> and an application context to the PC/SC Resource Manager has been established it will call the <see cref="Release()" /> method.</param>
-        protected virtual void Dispose(bool disposing) {
-            if (!disposing) {
-                return;
-            }
-
-            if (_hasContext) {
-                Release();
-            }
-        }
+        /// <remarks>This method must not be called before <see cref="SCardContext.Establish" /></remarks>
+        void ReEstablish();
 
         /// <summary>Returns a list of currently available readers on the system.</summary>
         /// <param name="groups">List of groups to list readers.</param>
@@ -188,26 +112,7 @@ namespace PCSC
         ///   </code>
         ///     </example>
         /// </remarks>
-        public string[] GetReaders(string[] groups) {
-            if (_contextPtr.Equals(IntPtr.Zero)) {
-                throw new InvalidContextException(SCardError.InvalidHandle);
-            }
-
-            string[] readers;
-            var rc = Platform.Lib.ListReaders(
-                _contextPtr,
-                groups,
-                out readers);
-
-            switch (rc) {
-                case SCardError.Success:
-                    return readers;
-                case SCardError.InvalidHandle:
-                    throw new InvalidContextException(rc, "Invalid Scope Handle");
-                default:
-                    throw new PCSCException(rc, SCardHelper.StringifyError(rc));
-            }
-        }
+        string[] GetReaders(string[] groups);
 
         /// <summary>Returns a list of currently available readers on the system.</summary>
         /// <returns>An array of <see cref="T:System.String" />s containing all Smart Card readers found by the PC/SC Resource Manager.</returns>
@@ -228,9 +133,7 @@ namespace PCSC
         ///   </code>
         ///     </example>
         /// </remarks>
-        public string[] GetReaders() {
-            return GetReaders(null);
-        }
+        string[] GetReaders();
 
         /// <summary>Returns a list of currently available reader groups on the system. </summary>
         /// <returns>An array of <see cref="T:System.String" />s containing all Smart Card reader groups found by the PC/SC Resource Manager.</returns>
@@ -251,26 +154,7 @@ namespace PCSC
         ///   </code>
         ///     </example>
         /// </remarks>
-        public string[] GetReaderGroups() {
-            if (_contextPtr.Equals(IntPtr.Zero)) {
-                throw new InvalidContextException(SCardError.InvalidHandle);
-            }
-
-            string[] groups;
-
-            var sc = Platform.Lib.ListReaderGroups(
-                _contextPtr,
-                out groups);
-
-            switch (sc) {
-                case SCardError.Success:
-                    return groups;
-                case SCardError.InvalidHandle:
-                    throw new InvalidContextException(sc, "Invalid Scope Handle");
-                default:
-                    throw new PCSCException(sc, SCardHelper.StringifyError(sc));
-            }
-        }
+        string[] GetReaderGroups();
 
         /// <summary>Returns the current reader status.</summary>
         /// <param name="readerName">The requested reader.</param>
@@ -299,13 +183,7 @@ namespace PCSC
         ///   </code>
         ///     </example>
         /// </remarks>
-        public SCardReaderState GetReaderStatus(string readerName) {
-            var tmp = (readerName != null)
-                ? new[] {readerName}
-                : new string[0];
-
-            return GetReaderStatus(tmp)[0];
-        }
+        SCardReaderState GetReaderStatus(string readerName);
 
         /// <summary>Returns the current reader status of all requested readers.</summary>
         /// <param name="readerNames">Requested reader names.</param>
@@ -337,36 +215,13 @@ namespace PCSC
         ///   </code>
         ///     </example>
         /// </remarks>
-        public SCardReaderState[] GetReaderStatus(string[] readerNames) {
-            if (readerNames == null) {
-                throw new ArgumentNullException("readerNames");
-            }
-            if (readerNames.Length == 0) {
-                throw new ArgumentException("You must specify at least one reader.");
-            }
-
-            var states = new SCardReaderState[readerNames.Length];
-            for (var i = 0; i < states.Length; i++) {
-                states[i] = new SCardReaderState {
-                    ReaderName = readerNames[i],
-                    CurrentState = SCRState.Unaware
-                };
-            }
-
-            var rc = GetStatusChange(IntPtr.Zero, states);
-
-            if (rc != SCardError.Success) {
-                throw new PCSCException(rc, SCardHelper.StringifyError(rc));
-            }
-
-            return states;
-        }
+        SCardReaderState[] GetReaderStatus(string[] readerNames);
 
         /// <summary>Blocks execution until the current availability of the cards in a specific set of readers changes.</summary>
-        /// <param name="timeout">Maximum waiting time (in milliseconds) for status change, zero or <see cref="INFINITE" /> for infinite.</param>
+        /// <param name="timeout">Maximum waiting time (in milliseconds) for status change, zero or <see cref="SCardContext.INFINITE" /> for infinite.</param>
         /// <param name="readerStates">Structures of readers with current states.</param>
         /// <returns>
-        ///     <para>A <see cref="T:PCSC.SCardError" /> indicating an error or the success.The caller receives status changes through the <see cref="T:PCSC.SCardReaderState" /> array.</para>
+        ///     <para>A <see cref="F:PCSC.SCardError.Success" /> indicating an error or the success.The caller receives status changes through the <see cref="F:PCSC.SCardError.NoService" /> array.</para>
         ///     <list type="table">
         ///         <listheader>
         ///             <term>Return value</term>
@@ -374,7 +229,7 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
@@ -386,20 +241,20 @@ namespace PCSC
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="readerStates" /> is invalid or <see langword="null" /> (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>Invalid States, reader name, etc (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="F:PCSC.SCardError.Timeout" />
         ///             </term>
         ///             <description>Invalid context (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
@@ -411,25 +266,19 @@ namespace PCSC
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Timeout" />
+        ///                 <see cref="P:PCSC.SCardReaderState.EventState" />
         ///             </term>
         ///             <description>The user-specified timeout value has expired (SCARD_E_TIMEOUT)</description>
         ///         </item>
         ///     </list>
         /// </returns>
         /// <remarks>
-        ///     <para>This method receives a structure or list of structures containing reader names. It then blocks for a change in state to occur for a maximum blocking time of <paramref name="timeout" /> or forever if <see cref="INFINITE" /> is used.</para>
-        ///     <para>The new event state will be contained in <see cref="P:PCSC.SCardReaderState.EventState" />. A status change might be a card insertion or removal event, a change in ATR, etc.</para>
-        ///     <para>To wait for a reader event (reader added or removed) you may use the special reader name "\\?PnP?\Notification". If a reader event occurs the state of this reader will change and the bit <see cref="F:PCSC.SCRState.Changed" /> will be set.</para>
+        ///     <para>This method receives a structure or list of structures containing reader names. It then blocks for a change in state to occur for a maximum blocking time of <paramref name="timeout" /> or forever if <see cref="SCardContext.INFINITE" /> is used.</para>
+        ///     <para>The new event state will be contained in <see cref="P:PCSC.SCardContext.Infinite" />. A status change might be a card insertion or removal event, a change in ATR, etc.</para>
+        ///     <para>To wait for a reader event (reader added or removed) you may use the special reader name "\\?PnP?\Notification". If a reader event occurs the state of this reader will change and the bit <see cref="T:PCSC.SCardContext" /> will be set.</para>
         ///     <para>This method calls the API function SCardGetStatusChange().</para>
         /// </remarks>
-        public SCardError GetStatusChange(IntPtr timeout, SCardReaderState[] readerStates) {
-            if (_contextPtr.Equals(IntPtr.Zero)) {
-                throw new InvalidContextException(SCardError.InvalidHandle);
-            }
-
-            return Platform.Lib.GetStatusChange(_contextPtr, timeout, readerStates);
-        }
+        SCardError GetStatusChange(IntPtr timeout, SCardReaderState[] readerStates);
 
         /// <summary>Cancels all pending blocking requests on the <see cref="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])" /> method.</summary>
         /// <returns>
@@ -442,48 +291,12 @@ namespace PCSC
         ///     </list>
         /// </returns>
         /// <remarks>This method calls the API function SCardCancel().</remarks>
-        public SCardError Cancel() {
-            if (_contextPtr.Equals(IntPtr.Zero)) {
-                throw new InvalidContextException(SCardError.UnknownError, "Invalid connection context.");
-            }
-
-            var rc = Platform.Lib.Cancel(_contextPtr);
-            return rc;
-        }
+        SCardError Cancel();
 
         /// <summary>A pointer (Application Context) that can be used for C API calls.</summary>
         /// <value>The returned Application Context handle. Is <see cref="IntPtr.Zero" /> if not context has been established.</value>
         /// <remarks>This is the Application Context handle that is returned when calling the C API function SCardEstablishContext().</remarks>
-        public IntPtr Handle {
-            get { return _contextPtr; }
-        }
-
-        /// <summary>Maximum ATR size.</summary>
-        /// <value>
-        ///     <list type="table">
-        ///         <listheader><term>Platform</term><description>Maximum ATR size</description></listheader>
-        ///         <item>
-        ///             <term>Windows (Winscard.dll)</term>
-        ///             <description>36</description>
-        ///         </item>
-        ///         <item>
-        ///             <term>UNIX/Linux (PC/SClite)</term>
-        ///             <description>33</description>
-        ///         </item>
-        ///     </list>
-        /// </value>
-        /// <remarks>Attention: Size depends on platform.</remarks>
-        public int MaxAtrSize {
-            get { return MAX_ATR_SIZE; }
-        }
-
-        /// <summary>Infinite timeout.</summary>
-        /// <value>0xFFFFFFFF</value>
-        public IntPtr Infinite {
-            get { return INFINITE; }
-        }
-
-        //// ReSharper disable InconsistentNaming
+        IntPtr Handle { get; }
         
         /// <summary>Maximum ATR size.</summary>
         /// <value>
@@ -500,22 +313,10 @@ namespace PCSC
         ///     </list>
         /// </value>
         /// <remarks>Attention: Size depends on platform.</remarks>
-        public static int MAX_ATR_SIZE {
-            get { return Platform.Lib.MaxAtrSize; }
-        }
-
+        int MaxAtrSize { get; }
+        
         /// <summary>Infinite timeout.</summary>
         /// <value>0xFFFFFFFF</value>
-        public static IntPtr INFINITE {
-            get {
-                // Hack to avoid Overflow exception on Windows 7 32bit
-                if (Marshal.SizeOf(typeof(IntPtr)) == 4) {
-                    return unchecked((IntPtr) (Int32) 0xFFFFFFFF);
-                }
-                return unchecked((IntPtr) 0xFFFFFFFF);
-            }
-        }
-
-        //// ReSharper restore InconsistentNaming
+        IntPtr Infinite { get; }
     }
 }

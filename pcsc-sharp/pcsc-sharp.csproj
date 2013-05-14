@@ -93,6 +93,7 @@
     <Compile Include="Interop\Unix\SCARD_READERSTATE.cs" />
     <Compile Include="Interop\Windows\SCARD_IO_REQUEST.cs" />
     <Compile Include="Interop\Windows\SCARD_READERSTATE.cs" />
+    <Compile Include="ISCardContext.cs" />
     <Compile Include="Iso7816\ClassByte.cs" />
     <Compile Include="Exceptions\InvalidContextException.cs" />
     <Compile Include="Exceptions\InvalidScopeTypeException.cs" />

@@ -4,13 +4,13 @@ namespace PCSC
 {
     public enum SCardReaderDisposition
     {
-        [Description("Do nothing on close")]
+        [Description("Do nothing")]
         Leave = 0x0000,
-        [Description("Reset on close")]
+        [Description("Reset the reader")]
         Reset = 0x0001,
-        [Description("Power down on close")]
+        [Description("Power down the reader")]
         Unpower = 0x0002,
-        [Description("Eject on close")]
+        [Description("Eject")]
         Eject = 0x0003
     }
 }

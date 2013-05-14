@@ -3,7 +3,7 @@
 namespace PCSC
 {
     /// <summary>
-    /// PC/SC exception type.
+    /// A general PC/SC exception.
     /// </summary>
     public class PCSCException : Exception
     {

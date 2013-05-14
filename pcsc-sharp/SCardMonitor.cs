@@ -5,12 +5,8 @@ namespace PCSC
 {
     public delegate void StatusChangeEvent(object sender, StatusChangeEventArgs e);
 
-    /// <summary>
-    ///     A new card has been inserted.
-    /// </summary>
-    /// <param name="sender">
-    ///     The <see cref="SCardMonitor" /> sender object
-    /// </param>
+    /// <summary>A new card has been inserted.</summary>
+    /// <param name="sender">The <see cref="SCardMonitor" /> sender object</param>
     /// <param name="e">Reader status information.</param>
     /// <remarks>
     ///     <example>
@@ -30,12 +26,8 @@ namespace PCSC
     /// </remarks>
     public delegate void CardInsertedEvent(object sender, CardStatusEventArgs e);
 
-    /// <summary>
-    ///     A card has been removed.
-    /// </summary>
-    /// <param name="sender">
-    ///     The <see cref="SCardMonitor" /> sender object.
-    /// </param>
+    /// <summary>A card has been removed.</summary>
+    /// <param name="sender">The <see cref="SCardMonitor" /> sender object.</param>
     /// <param name="e">Reader status information.</param>
     /// <remarks>
     ///     <example>
@@ -56,9 +48,7 @@ namespace PCSC
     public delegate void CardRemovedEvent(object sender, CardStatusEventArgs e);
 
     /// <summary>The reader has been Initialized.</summary>
-    /// <param name="sender">
-    ///     The <see cref="SCardMonitor" /> sender object.
-    /// </param>
+    /// <param name="sender">The <see cref="SCardMonitor" /> sender object.</param>
     /// <param name="e">Reader status information.</param>
     /// <remarks>
     ///     <example>
@@ -78,7 +68,10 @@ namespace PCSC
     /// </remarks>
     public delegate void CardInitializedEvent(object sender, CardStatusEventArgs e);
 
-    public delegate void MonitorExceptionEvent(object sender, PCSCException ex);
+    /// <summary>An PC/SC error occurred during monitoring.</summary>
+    /// <param name="sender">The <see cref="T:PCSC.SCardMonitor" /> sender object.</param>
+    /// <param name="exception">An exception containting the PC/SC error code returned from the native library.</param>
+    public delegate void MonitorExceptionEvent(object sender, PCSCException exception);
 
     public class SCardMonitor : IDisposable
     {
@@ -90,7 +83,7 @@ namespace PCSC
 
         private readonly object _sync = new object();
 
-        private readonly SCardContext _context;
+        private readonly ISCardContext _context;
         private readonly bool _releaseContextOnDispose;
         private SCRState[] _previousState;
         private IntPtr[] _previousStateValue;
@@ -119,7 +112,7 @@ namespace PCSC
             Dispose(false);
         }
 
-        public SCardMonitor(SCardContext hContext, bool releaseContextOnDispose = false) {
+        public SCardMonitor(ISCardContext hContext, bool releaseContextOnDispose = false) {
             if (hContext == null) {
                 throw new ArgumentNullException("hContext");
             }
@@ -128,7 +121,7 @@ namespace PCSC
             _releaseContextOnDispose = releaseContextOnDispose;
         }
 
-        public SCardMonitor(SCardContext hContext, SCardScope scope, bool releaseContextOnDispose = true)
+        public SCardMonitor(ISCardContext hContext, SCardScope scope, bool releaseContextOnDispose = true)
             : this(hContext, releaseContextOnDispose) {
             _context.Establish(scope);
         }
@@ -289,7 +282,7 @@ namespace PCSC
                     }
 
                     // block until status change occurs                    
-                    rc = _context.GetStatusChange(SCardReader.Infinite, readerStates);
+                    rc = _context.GetStatusChange(_context.Infinite, readerStates);
 
                     // Cancel?
                     if (rc != SCardError.Success) {
