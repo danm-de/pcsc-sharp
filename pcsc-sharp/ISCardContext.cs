@@ -22,7 +22,7 @@ namespace PCSC
 
         /// <summary>Destroys a communication context to the PC/SC Resource Manager and frees unmanaged resources.</summary>
         /// <remarks>
-        ///     <para>This must be the last method called in a PC/SC application. <see cref="SCardContext.Dispose"/> calls this method silently.</para>
+        ///     <para>This must be the last method called in a PC/SC application. <see cref="SCardContext.Dispose()"/> calls this method silently.</para>
         ///     <para>This method calls the API function SCardReleaseContext().</para>
         ///     <example>
         ///         <code lang="C#">

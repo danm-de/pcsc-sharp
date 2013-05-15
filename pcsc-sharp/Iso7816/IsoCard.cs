@@ -332,11 +332,7 @@ namespace PCSC.Iso7816
         }
 
         protected virtual void Dispose(bool disposing) {
-            if (!disposing) {
-                return;
-            }
-
-            if (_disconnectReaderOnDispose && _reader != null && _reader.IsConnected) {
+            if (disposing && _disconnectReaderOnDispose && _reader != null && _reader.IsConnected) {
                 _reader.Disconnect(SCardReaderDisposition.Leave);
             }
         }

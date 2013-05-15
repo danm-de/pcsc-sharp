@@ -552,7 +552,7 @@ namespace PCSC
         ///     </list>
         /// </returns>
         /// <remarks>
-        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. The size of the returned data will be stored in <paramref name="receiveBufferLength" />. This method will return with error code <see cref="F:PCSC.SCardError.InsufficientBuffer" /> if the buffer size of <paramref name="receiveBuffer" /> is too small for the result. If one of the parameters <paramref name="sendBufferLength" /> or <paramref name="recvBuferfLength" /> is invalid, the method will throw an <see cref="T:System.ArgumentOutOfRangeException" />.</para>
+        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. The size of the returned data will be stored in <paramref name="receiveBufferLength" />. This method will return with error code <see cref="F:PCSC.SCardError.InsufficientBuffer" /> if the buffer size of <paramref name="receiveBuffer" /> is too small for the result. If one of the parameters <paramref name="sendBufferLength" /> or <paramref name="receiveBufferLength" /> is invalid, the method will throw an <see cref="T:System.ArgumentOutOfRangeException" />.</para>
         ///     <para>This method calls the API function SCardTransmit(). The pointers to the pre-defined / built-in PCI structures are determinated with dlsym() on UNIX/Linux hosts and GetProcAddress() on Windows hosts.</para>
         /// </remarks>
         SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci,

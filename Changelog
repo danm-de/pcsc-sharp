@@ -7,29 +7,25 @@ d = Bug fix
 2013-05-09	Daniel Mueller <daniel@danm.de>
 	* Start working on version 3.0.0.0
 	  WARNING major API changes! 
-	  I have corrected various classes that implement IDisposable. They will
-	  _not_ longer release system resources during GC finalize, so look out
-	  for memory leaks!
 	* Update to .Net Framework 4.0 (die Windows XP, die)
 	* Removed Iso8825 completely. I hope nobody besides me was using it :-)
 	* Code cleanup (using the awesome Resharper 
 	  http://www.jetbrains.com/resharper/)
 	* SCardContext: implemented the correct IDisposable pattern.
-	  GC will _not_ longer release the context! This is due to the fact that 
-	  you can access the context handle using SCardContext.Handle and use it 
-	  in your own managed/unmanaged libraries calls.
+	  GC will release the context during finalize! If you access/use the 
+	  SCardContext.Handle in your own managed/unmanaged libraries calls make
+	  sure that you keep a reference to the context instance.
 	  Changed the static properties "Infinite" and "MaxAtrSize" to instance
 	  properties.
+	* New interface ISCardContext to ease unit testing.
 	* SCardReader: implemented the correct IDisposable pattern.
-	  GC will _not_ longer disconnect the reader! (Same reason as with 
-	  SCardContext)
 	  Changed type of property "CurrentContext" to ISCardContext.
 	  Changed constructor to accept ISCardContext instead of SCardContext.
 	  Removed static property "Infinite" (duplicate of ISCardContext.Infinite)
 	* SCardMonitor: implemented the correct IDisposable pattern.
-	  GC will _not_ longer call SCardContext.Cancel() during finalize!
 	  Constructor got new parameter "releaseContextOnDispose".
 	  Changed constructor to accept ISCardContext instead of SCardContext.
+	* New interface ISCardMonitor to ease unit testing.
 	* ResponseApdu: Fixed a bug in ResponseApdu.ToArray().
 	  Removed protected variables response and length.
 	* Apdu: Apdu.Case and Apdu.Protocol are not longer virtual, removed 
@@ -37,10 +33,10 @@ d = Bug fix
 	* CommandApdu: removed protected variables cla, ins, p1, p2, lc, le 
 	  and data (use property setter!).
 	* IsoCard: constructor got new parameter "disconnectReaderOnDispose".
-	* SCardReaderState: renamed property ATR to Atr.
+	* SCardReaderState: implemented the correct IDisposable pattern.
+	  Renamed property ATR to Atr.
 	* CardStatusEventArgs & StatusChangeEventArgs: renamed property ATR to Atr.
 	  Both inherit from CardEventArgs.
-	* New interface ISCardContext to ease unit testing.
 
 2012-05-06  Daniel Mueller <daniel@danm.de>
     * New Version 2.0.0.4

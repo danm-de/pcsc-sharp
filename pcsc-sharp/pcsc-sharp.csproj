@@ -45,6 +45,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>PCSC</RootNamespace>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DocumentationFile>bin\Debug\pcsc-sharp.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -57,6 +58,7 @@
     <DebugSymbols>true</DebugSymbols>
     <RootNamespace>PCSC</RootNamespace>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DocumentationFile>bin\Release\pcsc-sharp.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -99,6 +101,7 @@
     <Compile Include="Interop\Windows\SCARD_IO_REQUEST.cs" />
     <Compile Include="Interop\Windows\SCARD_READERSTATE.cs" />
     <Compile Include="ISCardContext.cs" />
+    <Compile Include="ISCardMonitor.cs" />
     <Compile Include="Iso7816\ClassByte.cs" />
     <Compile Include="Exceptions\InvalidContextException.cs" />
     <Compile Include="Exceptions\InvalidScopeTypeException.cs" />

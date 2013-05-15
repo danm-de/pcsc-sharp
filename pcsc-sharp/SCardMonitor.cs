@@ -5,7 +5,7 @@ namespace PCSC
 {
     /// <summary>Monitors a Smart Card reader and triggers events on status changes.</summary>
     /// <remarks>Creates a new thread and calls the <see cref="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])" /> of the given <see cref="T:PCSC.ISCardContext" /> object.</remarks>
-    public class SCardMonitor : IDisposable
+    public class SCardMonitor : ISCardMonitor
     {
         private readonly object _sync = new object();
 
@@ -154,6 +154,9 @@ namespace PCSC
             get { return _monitoring; }
         }
 
+        /// <summary>
+        /// Releases unmanaged resources and stops the background thread (if running).
+        /// </summary>
         ~SCardMonitor() {
             Dispose(false);
         }
@@ -261,15 +264,11 @@ namespace PCSC
         }
 
         /// <summary>Disposes the object.</summary>
-        /// <param name="disposing">If <see langword="true" /> it will call <see cref="Cancel()" /> in order to stop the background thread. The application context will be disposed if the user configured the monitor to do so at construction time.</param>
+        /// <param name="disposing">Ignored. It will call <see cref="Cancel()" /> in order to stop the background thread. The application context will be disposed if the user configured the monitor to do so at construction time.</param>
         protected virtual void Dispose(bool disposing) {
-            if (!disposing) {
-                return;
-            }
-
             Cancel();
 
-            if (_releaseContextOnDispose && _context != null) {
+            if (disposing && _releaseContextOnDispose && _context != null) {
                 _context.Dispose();
             }
         }

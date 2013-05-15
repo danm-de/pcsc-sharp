@@ -12,6 +12,9 @@ namespace PCSC
         private SCardScope _lastScope;
         private IntPtr _contextPtr;
 
+        /// <summary>
+        /// Destroys application context to the PC/SC Resource Manager.
+        /// </summary>
         ~SCardContext() {
             Dispose(false);
         }
@@ -148,12 +151,9 @@ namespace PCSC
         }
 
         /// <summary>Disposes a PC/SC application context.</summary>
-        /// <param name="disposing">If <see langword="true" /> and an application context to the PC/SC Resource Manager has been established it will call the <see cref="Release()" /> method.</param>
+        /// <param name="disposing">Ignored. If an application context to the PC/SC Resource Manager has been established it will call the <see cref="Release()" /> method.</param>
         protected virtual void Dispose(bool disposing) {
-            if (!disposing) {
-                return;
-            }
-
+            // we must free unmanaged resources in order to avoid memleeks.
             if (_hasContext) {
                 Release();
             }

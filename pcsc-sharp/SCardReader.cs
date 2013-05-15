@@ -3,7 +3,8 @@ using PCSC.Interop;
 
 namespace PCSC
 {
-    /// <summary>A reader class with common functions that are needed to operate on smart cards. It will use the system's PC/SC API.</summary>
+    /// <summary>A reader class that implements the most basic PC/SC functions to operate on smart cards, RFID tags and so on.</summary>
+    /// <remarks>It will use the system's native PC/SC API.</remarks>
     public class SCardReader : ISCardReader
     {
         private SCardShareMode _sharemode;
@@ -55,10 +56,29 @@ namespace PCSC
             get { return _cardHandle != IntPtr.Zero; }
         }
 
+        /// <summary>Unmanaged resources (card handle) are released!</summary>
         ~SCardReader() {
             Dispose(false);
         }
 
+        /// <summary>Creates a new smart card reader object.</summary>
+        /// <param name="context">Connection context to the PC/SC Resource Manager.</param>
+        /// <remarks>
+        ///     <example>
+        ///         <code lang="C#">
+        /// // Create PC/SC context
+        /// var ctx = new SCardContext();
+        /// ctx.Establish(SCardScope.System);
+        /// 
+        /// // Create reader object and connect to the Smart Card
+        /// var myReader = new SCardReader(ctx);
+        /// var rc = myReader.Connect(
+        /// 	"OMNIKEY CardMan 5321", 
+        /// 	SCardShareMode.Shared, 
+        /// 	SCardProtocol.T1);
+        ///   </code>
+        ///     </example>
+        /// </remarks>
         public SCardReader(ISCardContext context) {
             _context = context;
         }
@@ -458,7 +478,8 @@ namespace PCSC
         ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
         ///     <para>This method calls the API function SCardReconnect().</para>
         /// </remarks>
-        public SCardError Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol, SCardReaderDisposition initialExecution) {
+        public SCardError Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol,
+            SCardReaderDisposition initialExecution) {
             ThrowOnInvalidCardHandle();
 
             SCardProtocol dwActiveProtocol;
@@ -529,8 +550,8 @@ namespace PCSC
         ///     <para>This method calls the API function SCardBeginTransaction().</para>
         /// </remarks>
         public SCardError BeginTransaction() {
-            ThrowOnInvalidCardHandle(); 
-            
+            ThrowOnInvalidCardHandle();
+
             return Platform.Lib.BeginTransaction(_cardHandle);
         }
 
@@ -710,9 +731,9 @@ namespace PCSC
             }
 
             return Transmit(
-                sendPci.MemoryPtr, 
-                sendBuffer, 
-                receivePci, 
+                sendPci.MemoryPtr,
+                sendBuffer,
+                receivePci,
                 ref receiveBuffer);
         }
 
@@ -814,9 +835,9 @@ namespace PCSC
         /// </remarks>
         public SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, ref byte[] receiveBuffer) {
             return Transmit(
-                sendPci, 
-                sendBuffer, 
-                null, 
+                sendPci,
+                sendBuffer,
+                null,
                 ref receiveBuffer);
         }
 
@@ -914,7 +935,8 @@ namespace PCSC
         ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. The size of the returned data will be stored in <paramref name="receiveBufferLength" />. This method will return with error code <see cref="F:PCSC.SCardError.InsufficientBuffer" /> if the buffer size of <paramref name="receiveBuffer" /> is too small for the result. If one of the parameters <paramref name="sendBufferLength" /> or <paramref name="receiveBufferLength" /> is invalid, the method will throw an <see cref="T:System.ArgumentOutOfRangeException" />.</para>
         ///     <para>This method calls the API function SCardTransmit(). The pointers to the pre-defined / built-in PCI structures are determinated with dlsym() on UNIX/Linux hosts and GetProcAddress() on Windows hosts.</para>
         /// </remarks>
-        public SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci, byte[] receiveBuffer, ref int receiveBufferLength) {
+        public SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci,
+            byte[] receiveBuffer, ref int receiveBufferLength) {
             ThrowOnInvalidCardHandle();
 
             var ioRecvPciPtr = IntPtr.Zero;
@@ -1091,7 +1113,7 @@ namespace PCSC
 
             int pcbRecvLength;
             var ioRecvPciPtr = IntPtr.Zero;
-            
+
             if (receivePci != null) {
                 ioRecvPciPtr = receivePci.MemoryPtr;
             }
@@ -1215,8 +1237,9 @@ namespace PCSC
         ///             </list></para>
         ///     </block>
         /// </remarks>
-        public SCardError Transmit(byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer, ref int receiveBufferLength) {
-            SCardPCI iorecvpci = new SCardPCI(); // will be discarded
+        public SCardError Transmit(byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer,
+            ref int receiveBufferLength) {
+            var iorecvpci = new SCardPCI(); // will be discarded
             return Transmit(
                 SCardPCI.GetPci(_activeprot),
                 sendBuffer,
@@ -1322,7 +1345,7 @@ namespace PCSC
         /// </remarks>
         public SCardError Transmit(byte[] sendBuffer, byte[] receiveBuffer, ref int receiveBufferLength) {
             var sendbufsize = 0;
-            
+
             if (sendBuffer != null) {
                 sendbufsize = sendBuffer.Length;
             }
@@ -1419,7 +1442,7 @@ namespace PCSC
         /// </remarks>
         public SCardError Transmit(byte[] sendBuffer, ref byte[] receiveBuffer) {
             var recvbufsize = 0;
-            
+
             if (receiveBuffer != null) {
                 recvbufsize = receiveBuffer.Length;
             }
@@ -1432,7 +1455,7 @@ namespace PCSC
             if (sc != SCardError.Success) {
                 return sc;
             }
-            
+
             if (receiveBuffer != null && (recvbufsize < receiveBuffer.Length)) {
                 Array.Resize(ref receiveBuffer, recvbufsize);
             }
@@ -1641,7 +1664,8 @@ namespace PCSC
         ///     <para>The connected readers's friendly name will be stored in <paramref name="readerName" />. The card's ATR will be stored in <paramref name="atr" />. The current state, and protocol will be stored in <paramref name="state" /> and <paramref name="protocol" /> respectively.</para>
         ///     <para>This method calls the API function SCardStatus().</para>
         /// </remarks>
-        public SCardError Status(out string[] readerName, out SCardState state, out SCardProtocol protocol, out byte[] atr) {
+        public SCardError Status(out string[] readerName, out SCardState state, out SCardProtocol protocol,
+            out byte[] atr) {
             IntPtr dwState;
             IntPtr dwProtocol;
 
@@ -2282,23 +2306,15 @@ namespace PCSC
                 attributeBufferLength);
         }
 
-        /// <summary>
-        /// This will disconnect the reader if it is currently connected using <see cref="SCardReaderDisposition.Leave"/>.
-        /// </summary>
+        /// <summary>This will disconnect the reader if it is currently connected using <see cref="SCardReaderDisposition.Leave" />.</summary>
         public void Dispose() {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
-        /// <summary>
-        /// This will disconnect the reader if it is currently connected and <paramref name="disposing"/> is <see langword="true" /> using <see cref="SCardReaderDisposition.Leave"/>.
-        /// </summary>
-        /// <param name="disposing"><see langword="true" /> the reader will be disconnected. <see langword="false"/> the reader will not be disconnected and <see cref="CardHandle"/> remains valid.</param>
+        /// <summary>This will disconnect the reader if it is currently connected using <see cref="SCardReaderDisposition.Leave" />.</summary>
+        /// <param name="disposing">Ignored. The reader will be disconnected.</param>
         protected virtual void Dispose(bool disposing) {
-            if (!disposing) {
-                return;
-            }
-
             if (_cardHandle != IntPtr.Zero) {
                 Disconnect(SCardReaderDisposition.Leave);
             }
