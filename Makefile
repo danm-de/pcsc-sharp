@@ -1,42 +1,20 @@
-# pcsc-sharp - PC/SC .NET bindings
-# Copyright (C) 2010 Daniel Mueller <daniel@danm.de>
-#
-# This library is free software; you can redistribute it and/or
-# modify it under the terms of the GNU Lesser General Public
-# License as published by the Free Software Foundation; either
-# version 2.1 of the License, or (at your option) any later version.
-#
-# This library is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public
-# License along with this library; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, 
-# MA  02110-1301  US
-#
-
 # development tools
-GMCS		= gmcs
 MONODOCER	= monodocer
-MONODOC		= monodoc
 MONODOCS2HTML	= monodocs2html
 MDASSEMBLER	= mdassembler
 MDOC		= mdoc
+BUILDTOOL	= xbuild
 
-DEFINES		= -define:TRACE -define:DEBUG
-FLAGS		= -noconfig -codepage:utf8 -warn:4 -optimize+ -debug
-TARGET		= -target:library
-NAMESPACES	= -r:System -r:System.Data -r:System.Xml
-GMCSOPTS	= $(FLAGS) $(DEFINES) $(TARGET) $(NAMESPACES)
 CONFTARGET	= Release
 DOCLANG		= en
 DOCNAME		= PCSC
 
 LIBNAME		= pcsc-sharp
 LIBNAMESPACE	= PCSC
-ASSEMBLYVERSION	= 1.0.0.0
+
+ASMSTR		= "AssemblyVersion\(\"[0-9]+\.[0-9]+\.[0-9]\.[0-9]\"\)"
+ASMVER		= "[0-9]+\.[0-9]+\.[0-9]\.[0-9]"
+ASSEMBLYVERSION	= $(shell grep -oE $(ASMSTR) pcsc-sharp/Properties/AssemblyInfo.cs | grep -oE $(ASMVER)) 
 
 LIBFILE		= $(LIBNAME).dll
 LIBCONFIGNAME	= $(LIBFILE).config
@@ -53,19 +31,10 @@ PREFIX		= /usr/local
 LIBDIR		= $(PREFIX)/lib/$(LIBNAME)
 PKGCONFIGDIR	= $(PREFIX)/lib/$(PKGCONFIG)
 
-SOURCEFILES	= $(wildcard $(SOURCEDIR)/*.cs \
-			$(SOURCEDIR)/Properties/*.cs \
-			$(SOURCEDIR)/Exceptions/*.cs) \
-			$(SOURCEDIR)/Interop/*.cs \
-			$(SOURCEDIR)/Interop/Platform/*.cs \
-			$(SOURCEDIR)/Iso7816/*.cs \
-			$(SOURCEDIR)/Iso7816/Exceptions/*.cs \
-			$(SOURCEDIR)/Iso8825/*.cs \
-			$(SOURCEDIR)/Iso8825/Exceptions/*.cs \
-			$(SOURCEDIR)/Iso8825/Asn1/*.cs \
-			$(SOURCEDIR)/Iso8825/Asn1/Exceptions/*.cs \
-			$(SOURCEDIR)/Iso8825/BasicEncodingRules/*.cs 
-
+BUILDFLAGS	= /p:Configuration=$(CONFTARGET)
+SOLUTIONFILE	= pcsc-sharp.sln
+SOURCEFILES	= $(shell find $(SOURCEDIR) -name *.cs) \
+		  $(shell find $(SOURCEDIR) -name *.cproj)
 
 all:	$(LIBFILE)
 
@@ -73,8 +42,7 @@ all:	$(LIBFILE)
 $(LIBFILE):	$(BUILDDIR)/$(LIBFILE) $(PKGCONFIGFILE) $(LIBCONFIGNAME)
 $(BUILDDIR)/$(LIBFILE):	$(SOURCEFILES)
 	mkdir -p $(BUILDDIR)
-	$(GMCS) $(GMCSOPTS) $(SOURCEFILES) \
-		-out:$(BUILDDIR)/$(LIBFILE)
+	$(BUILDTOOL) $(SOLUTIONFILE) $(BUILDFLAGS)
 
 # pkgconfig
 $(PKGCONFIGFILE):	$(BUILDDIR)/$(PKGCONFIGFILE)
@@ -100,27 +68,11 @@ $(DOCDIR)/$(DOCLANG)/index.xml:	$(BUILDDIR)/$(LIBFILE)
 		-pretty \
 		-name:$(DOCNAME)
 
-# edit documentation
-editdoc:	xmldoc	
-	# DEBIAN BUG
-	#mv $(DOCDIR)/$(DOCLANG)/ns-$(LIBNAMESPACE).xml \
-	#	$(DOCDIR)/$(DOCLANG)/$(LIBNAMESPACE).xml
-	$(MONODOC) --edit $(DOCDIR)/$(DOCLANG)
-	# DEBIAN BUG
-	#mv $(DOCDIR)/$(DOCLANG)/$(LIBNAMESPACE).xml \
-	#	$(DOCDIR)/$(DOCLANG)/ns-$(LIBNAMESPACE).xml
-
 # HTML docs
 htmldoc:	$(DOCDIR)/$(HTMLDOCDIR)/index.html
 $(DOCDIR)/$(HTMLDOCDIR)/index.html:	xmldoc
 	$(MONODOCS2HTML) $(DOCDIR)/$(DOCLANG) \
 		-o $(HTMLDOCDIR)
-
-# Visual Studio documentation XML file(s)
-msxdoc:		$(LIBNAME).xml
-
-$(LIBNAME).xml: $(DOCDIR)/$(DOCLANG)/index.xml
-	$(MDOC) export-msxdoc $(DOCDIR)/$(DOCLANG)
 
 clean:
 	rm -f $(BUILDDIR)/*
