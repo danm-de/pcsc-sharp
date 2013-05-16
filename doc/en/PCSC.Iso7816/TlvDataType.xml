@@ -1,10 +1,9 @@
 <Type Name="TlvDataType" FullName="PCSC.Iso7816.TlvDataType">
   <TypeSignature Language="C#" Value="public enum TlvDataType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed TlvDataType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -16,11 +15,10 @@
   <Members>
     <Member MemberName="Ber">
       <MemberSignature Language="C#" Value="Ber" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.TlvDataType Ber = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.TlvDataType</ReturnType>
@@ -31,11 +29,10 @@
     </Member>
     <Member MemberName="Simple">
       <MemberSignature Language="C#" Value="Simple" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.TlvDataType Simple = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.TlvDataType</ReturnType>

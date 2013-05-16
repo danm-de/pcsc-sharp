@@ -1,10 +1,9 @@
 <Type Name="FileStructureType" FullName="PCSC.Iso7816.FileStructureType">
   <TypeSignature Language="C#" Value="public enum FileStructureType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FileStructureType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -16,11 +15,10 @@
   <Members>
     <Member MemberName="Cyclic">
       <MemberSignature Language="C#" Value="Cyclic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileStructureType Cyclic = unsigned int8(6)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
@@ -31,11 +29,10 @@
     </Member>
     <Member MemberName="CyclicSimpleTlv">
       <MemberSignature Language="C#" Value="CyclicSimpleTlv" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileStructureType CyclicSimpleTlv = unsigned int8(7)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
@@ -46,11 +43,10 @@
     </Member>
     <Member MemberName="LinearFixed">
       <MemberSignature Language="C#" Value="LinearFixed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileStructureType LinearFixed = unsigned int8(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
@@ -61,11 +57,10 @@
     </Member>
     <Member MemberName="LinearFixedSimpleTlv">
       <MemberSignature Language="C#" Value="LinearFixedSimpleTlv" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileStructureType LinearFixedSimpleTlv = unsigned int8(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
@@ -76,11 +71,10 @@
     </Member>
     <Member MemberName="LinearVariable">
       <MemberSignature Language="C#" Value="LinearVariable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileStructureType LinearVariable = unsigned int8(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
@@ -91,11 +85,10 @@
     </Member>
     <Member MemberName="LinearVariableSimpleTlv">
       <MemberSignature Language="C#" Value="LinearVariableSimpleTlv" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileStructureType LinearVariableSimpleTlv = unsigned int8(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
@@ -106,11 +99,10 @@
     </Member>
     <Member MemberName="NoInformation">
       <MemberSignature Language="C#" Value="NoInformation" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileStructureType NoInformation = unsigned int8(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
@@ -121,11 +113,10 @@
     </Member>
     <Member MemberName="Transparent">
       <MemberSignature Language="C#" Value="Transparent" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileStructureType Transparent = unsigned int8(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>

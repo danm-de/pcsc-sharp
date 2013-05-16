@@ -1,10 +1,9 @@
 <Type Name="FileShareMode" FullName="PCSC.Iso7816.FileShareMode">
   <TypeSignature Language="C#" Value="public enum FileShareMode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FileShareMode extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -16,11 +15,10 @@
   <Members>
     <Member MemberName="NotShareable">
       <MemberSignature Language="C#" Value="NotShareable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileShareMode NotShareable = unsigned int8(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileShareMode</ReturnType>
@@ -31,11 +29,10 @@
     </Member>
     <Member MemberName="Shareable">
       <MemberSignature Language="C#" Value="Shareable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.FileShareMode Shareable = unsigned int8(64)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileShareMode</ReturnType>

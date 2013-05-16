@@ -208,30 +208,25 @@
     <h1 class="PageTitle" id="T:PCSC.StatusChangeEvent">StatusChangeEvent  Delegate</h1>
     <p class="Summary" id="T:PCSC.StatusChangeEvent:Summary">A general reader status change.</p>
     <div id="T:PCSC.StatusChangeEvent:Signature">
+      <h2>Syntax</h2>
       <div class="Signature">public delegate <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>StatusChangeEvent</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> sender, <a href="../PCSC/StatusChangeEventArgs.html">StatusChangeEventArgs</a> e)</div>
     </div>
     <div class="Remarks" id="T:PCSC.StatusChangeEvent:Docs">
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.StatusChangeEvent:Docs:Parameters')">
-          <span id="T:PCSC.StatusChangeEvent:Docs:Parameters:toggle">⊟</span> Parameters</a>
-      </h4>
+      <h4 class="Subsection">Parameters</h4>
       <blockquote class="SubsectionBox" id="T:PCSC.StatusChangeEvent:Docs:Parameters">
         <dl>
           <dt>
             <i>sender</i>
           </dt>
-          <dd>The <a href="../PCSC/SCardMonitor.html">PCSC.SCardMonitor</a> sender object.</dd>
+          <dd>The <a href="../PCSC/ISCardMonitor.html">PCSC.ISCardMonitor</a> sender object.</dd>
           <dt>
             <i>e</i>
           </dt>
           <dd>Reader status information.</dd>
         </dl>
       </blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.StatusChangeEvent:Docs:Remarks')">
-          <span id="T:PCSC.StatusChangeEvent:Docs:Remarks:toggle">⊟</span> Remarks</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.StatusChangeEvent:Docs:Remarks">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:PCSC.StatusChangeEvent:Docs:Remarks">
         <table class="CodeExampleTable">
           <tr>
             <td>
@@ -243,27 +238,23 @@
           <tr>
             <td>
               <pre class="code-csharp">
-// Create a monitor object with its own PC/SC context.
-SCardMonitor monitor = new SCardMonitor(
-	new SCardContext(),
-	SCardScope.System);
-
-// Point the callback function(s) to the pre-defined method MyStatusChangedMethod.
-monitor.StatusChanged += new StatusChangeEvent(MyStatusChangedMethod);
-
-// Start to monitor the reader
-monitor.Start("OMNIKEY CardMan 5x21 00 01");
-  </pre>
+            // Create a monitor object with its own PC/SC context.
+            var monitor = new SCardMonitor(
+            	new SCardContext(),
+            	SCardScope.System,
+            true);
+            // Point the callback function(s) to the pre-defined method MyStatusChangedMethod.
+            monitor.StatusChanged += new StatusChangeEvent(MyStatusChangedMethod);
+            // Start to monitor the reader
+            monitor.Start("OMNIKEY CardMan 5x21 00 01");
+            </pre>
             </td>
           </tr>
         </table>
-      </blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.StatusChangeEvent:Docs:Version Information')">
-          <span id="T:PCSC.StatusChangeEvent:Docs:Version Information:toggle">⊟</span> Requirements</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.StatusChangeEvent:Docs:Version Information">
-        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:PCSC.StatusChangeEvent:Docs:Version Information">
+        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
     </div>
     <div class="Members" id="T:PCSC.StatusChangeEvent:Members">
     </div>

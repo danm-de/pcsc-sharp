@@ -1,66 +1,27 @@
 <Type Name="SCardHelper" FullName="PCSC.SCardHelper">
-  <TypeSignature Language="C#" Value="public class SCardHelper" />
+  <TypeSignature Language="C#" Value="public static class SCardHelper" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit SCardHelper extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Helper class that offers methods to convert various values into strings.</summary>
-    <remarks />
+    <summary>
+            Helper class that offers methods to convert various values into strings.
+            </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public SCardHelper ();" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetAttrDesc&lt;T&gt;">
-      <MemberSignature Language="C#" Value="public static string GetAttrDesc&lt;T&gt; (T attr);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <TypeParameters>
-        <TypeParameter Name="T" />
-      </TypeParameters>
-      <Parameters>
-        <Parameter Name="attr" Type="T" />
-      </Parameters>
-      <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <param name="attr">Enumeration attribute.</param>
-        <summary>Returns a description string of an enumeration attribute.</summary>
-        <returns>If available: a description string of the specified attribute. Otherwise null.</returns>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="StringifyError">
       <MemberSignature Language="C#" Value="public static string StringifyError (PCSC.SCardError code);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string StringifyError(valuetype PCSC.SCardError code) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -70,7 +31,9 @@
       </Parameters>
       <Docs>
         <param name="code">Error or return code.</param>
-        <summary>Returns a human readable text for the given PC/SC error code.</summary>
+        <summary>
+            Returns a human readable text for the given PC/SC error code.
+            </summary>
         <returns>A human readable string.</returns>
         <remarks>Warning! This method behaves differently compared to the original PC/SC-Lite pcsc_stringify_error function. Instead of the (const) variable name it returns a short text description.</remarks>
       </Docs>

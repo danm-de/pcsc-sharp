@@ -1,10 +1,9 @@
 <Type Name="SCardState" FullName="PCSC.SCardState">
   <TypeSignature Language="C#" Value="public enum SCardState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SCardState extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -21,11 +20,10 @@
   <Members>
     <Member MemberName="Absent">
       <MemberSignature Language="C#" Value="Absent" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardState Absent = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -41,11 +39,10 @@
     </Member>
     <Member MemberName="Negotiable">
       <MemberSignature Language="C#" Value="Negotiable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardState Negotiable = int32(32)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -61,11 +58,10 @@
     </Member>
     <Member MemberName="Powered">
       <MemberSignature Language="C#" Value="Powered" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardState Powered = int32(16)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -81,11 +77,10 @@
     </Member>
     <Member MemberName="Present">
       <MemberSignature Language="C#" Value="Present" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardState Present = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -101,11 +96,10 @@
     </Member>
     <Member MemberName="Specific">
       <MemberSignature Language="C#" Value="Specific" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardState Specific = int32(64)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -116,16 +110,15 @@
         <ReturnType>PCSC.SCardState</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>The card has been reset and specific communication protocols have been established. </summary>
+        <summary>The card has been reset and specific communication protocols have been established.</summary>
       </Docs>
     </Member>
     <Member MemberName="Swallowed">
       <MemberSignature Language="C#" Value="Swallowed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardState Swallowed = int32(8)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -141,11 +134,10 @@
     </Member>
     <Member MemberName="Unknown">
       <MemberSignature Language="C#" Value="Unknown" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardState Unknown = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>

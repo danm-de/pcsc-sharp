@@ -208,21 +208,15 @@
     <h1 class="PageTitle" id="T:PCSC.SCardAttr">SCardAttr  Enum</h1>
     <p class="Summary" id="T:PCSC.SCardAttr:Summary">Smart card reader attribute enumeration.</p>
     <div id="T:PCSC.SCardAttr:Signature">
+      <h2>Syntax</h2>
       <div class="Signature">public enum <b>SCardAttr</b></div>
     </div>
     <div class="Remarks" id="T:PCSC.SCardAttr:Docs">
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.SCardAttr:Docs:Remarks')">
-          <span id="T:PCSC.SCardAttr:Docs:Remarks:toggle">⊟</span> Remarks</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.SCardAttr:Docs:Remarks">Can be used as parameter for the following methods:
-
-<ul><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)">SCardReader.GetAttrib(SCardAttr, Byte[]@)</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)">SCardReader.GetAttrib(SCardAttr, Byte[], Int32@)</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])">SCardReader.SetAttrib(SCardAttr, Byte[])</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)">SCardReader.SetAttrib(SCardAttr, Byte[], int)</a></li></ul></blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.SCardAttr:Docs:Members')">
-          <span id="T:PCSC.SCardAttr:Docs:Members:toggle">⊟</span> Members</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.SCardAttr:Docs:Members">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:PCSC.SCardAttr:Docs:Remarks">Can be used as parameter for the following methods:
+            <ul><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)">SCardReader.GetAttrib(SCardAttr, Byte[]@)</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)">SCardReader.GetAttrib(SCardAttr, Byte[], Int32@)</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])">SCardReader.SetAttrib(SCardAttr, Byte[])</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)">SCardReader.SetAttrib(SCardAttr, Byte[], int)</a></li></ul></div>
+      <h2 class="Section">Members</h2>
+      <div class="SectionBox" id="T:PCSC.SCardAttr:Docs:Members">
         <table class="Enumeration">
           <tr>
             <th>Member Name</th>
@@ -233,15 +227,15 @@
               <b>AsyncProtocolTypes</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Asynchronous protocol types (SCARD_ATTR_ASYNC_PROTOCOL_TYPES)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.ATRString">
-              <b>ATRString</b>
+            <td id="F:PCSC.SCardAttr.AtrString">
+              <b>AtrString</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Answer to reset (ATR) string. (SCARD_ATTR_ATR_STRING)
             </td>
           </tr>
           <tr valign="top">
@@ -249,7 +243,7 @@
               <b>ChannelId</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            DWORD encoded as 0xDDDDCCCC, where DDDD = data channel type and CCCC = channel number (SCARD_ATTR_CHANNEL_ID)
             </td>
           </tr>
           <tr valign="top">
@@ -257,7 +251,7 @@
               <b>Characteristics</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            DWORD indicating which mechanical characteristics are supported. If zero, no special characteristics are supported. Note that multiple bits can be set (SCARD_ATTR_CHARACTERISTICS)
             </td>
           </tr>
           <tr valign="top">
@@ -265,7 +259,7 @@
               <b>CurrentBwt</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current block waiting time. (SCARD_ATTR_CURRENT_BWT)
             </td>
           </tr>
           <tr valign="top">
@@ -273,7 +267,7 @@
               <b>CurrentClk</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current clock rate, in kHz. (SCARD_ATTR_CURRENT_CLK)
             </td>
           </tr>
           <tr valign="top">
@@ -281,7 +275,7 @@
               <b>CurrentCwt</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current character waiting time. (SCARD_ATTR_CURRENT_CWT)
             </td>
           </tr>
           <tr valign="top">
@@ -289,7 +283,7 @@
               <b>CurrentD</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Bit rate conversion factor. (SCARD_ATTR_CURRENT_D)
             </td>
           </tr>
           <tr valign="top">
@@ -297,7 +291,7 @@
               <b>CurrentEbcEncoding</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current error block control encoding. (SCARD_ATTR_CURRENT_EBC_ENCODING)
             </td>
           </tr>
           <tr valign="top">
@@ -305,7 +299,7 @@
               <b>CurrentF</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Clock conversion factor. (SCARD_ATTR_CURRENT_F)
             </td>
           </tr>
           <tr valign="top">
@@ -313,7 +307,7 @@
               <b>CurrentIfsc</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current byte size for information field size card. (SCARD_ATTR_CURRENT_IFSC)
             </td>
           </tr>
           <tr valign="top">
@@ -321,7 +315,7 @@
               <b>CurrentIfsd</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current byte size for information field size device. (SCARD_ATTR_CURRENT_IFSD)
             </td>
           </tr>
           <tr valign="top">
@@ -329,7 +323,7 @@
               <b>CurrentIOState</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current IO state (SCARD_ATTR_CURRENT_IO_STATE)
             </td>
           </tr>
           <tr valign="top">
@@ -337,7 +331,7 @@
               <b>CurrentN</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current guard time. (SCARD_ATTR_CURRENT_N)
             </td>
           </tr>
           <tr valign="top">
@@ -345,7 +339,7 @@
               <b>CurrentProtocolType</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current protocol type (SCARD_ATTR_CURRENT_PROTOCOL_TYPE)
             </td>
           </tr>
           <tr valign="top">
@@ -353,7 +347,7 @@
               <b>CurrentW</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Current work waiting time. (SCARD_ATTR_CURRENT_W)
             </td>
           </tr>
           <tr valign="top">
@@ -361,7 +355,7 @@
               <b>DefaultClk</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Default clock rate, in kHz. (SCARD_ATTR_DEFAULT_CLK)
             </td>
           </tr>
           <tr valign="top">
@@ -369,7 +363,7 @@
               <b>DefaultDataRate</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Default data rate, in bps. (SCARD_ATTR_DEFAULT_DATA_RATE)
             </td>
           </tr>
           <tr valign="top">
@@ -377,7 +371,7 @@
               <b>DeviceFriendlyName</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Device friendly name (SCARD_ATTR_DEVICE_FRIENDLY_NAME)
             </td>
           </tr>
           <tr valign="top">
@@ -385,7 +379,7 @@
               <b>DeviceFriendlyNameA</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Device friendly name ASCII (SCARD_ATTR_DEVICE_FRIENDLY_NAME_A)
             </td>
           </tr>
           <tr valign="top">
@@ -393,7 +387,7 @@
               <b>DeviceFriendlyNameW</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Device friendly name UNICODE (SCARD_ATTR_DEVICE_FRIENDLY_NAME_W)
             </td>
           </tr>
           <tr valign="top">
@@ -401,7 +395,7 @@
               <b>DeviceInUse</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Reserved for future use. (SCARD_ATTR_DEVICE_IN_USE)
             </td>
           </tr>
           <tr valign="top">
@@ -409,7 +403,7 @@
               <b>DeviceSystemName</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Device system name (SCARD_ATTR_DEVICE_SYSTEM_NAME)
             </td>
           </tr>
           <tr valign="top">
@@ -417,7 +411,7 @@
               <b>DeviceSystemNameA</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Device system name ASCII (SCARD_ATTR_DEVICE_SYSTEM_NAME_A)
             </td>
           </tr>
           <tr valign="top">
@@ -425,7 +419,7 @@
               <b>DeviceSystemNameW</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Device system name UNICODE (SCARD_ATTR_DEVICE_SYSTEM_NAME_W)
             </td>
           </tr>
           <tr valign="top">
@@ -433,7 +427,7 @@
               <b>DeviceUnit</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Instance of this vendor's reader attached to the computer. The first instance will be device unit 0, the next will be unit 1 (if it is the same brand of reader) and so on. Two different brands of readers will both have zero for this value. (SCARD_ATTR_DEVICE_UNIT)
             </td>
           </tr>
           <tr valign="top">
@@ -441,7 +435,7 @@
               <b>EscAuthRequest</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Esc authentication request (SCARD_ATTR_ESC_AUTHREQUEST)
             </td>
           </tr>
           <tr valign="top">
@@ -449,7 +443,7 @@
               <b>EscCancel</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Esc cancel (SCARD_ATTR_ESC_CANCEL)
             </td>
           </tr>
           <tr valign="top">
@@ -457,7 +451,7 @@
               <b>EscReset</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Esc reset (SCARD_ATTR_ESC_RESET)
             </td>
           </tr>
           <tr valign="top">
@@ -465,7 +459,7 @@
               <b>ExtendedBwt</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Extended block wait time. (SCARD_ATTR_EXTENDED_BWT)
             </td>
           </tr>
           <tr valign="top">
@@ -473,7 +467,7 @@
               <b>ICCInterfaceStatus</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Single byte. Zero if smart card electrical contact is not active; nonzero if contact is active. (SCARD_ATTR_ICC_INTERFACE_STATUS)
             </td>
           </tr>
           <tr valign="top">
@@ -481,15 +475,15 @@
               <b>ICCPresence</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Single byte indicating smart card presence(SCARD_ATTR_ICC_PRESENCE)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.ICCTypePerATR">
-              <b>ICCTypePerATR</b>
+            <td id="F:PCSC.SCardAttr.ICCTypePerAtr">
+              <b>ICCTypePerAtr</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Single byte indicating smart card type (SCARD_ATTR_ICC_TYPE_PER_ATR)
             </td>
           </tr>
           <tr valign="top">
@@ -497,7 +491,7 @@
               <b>MaxClk</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Maximum clock rate, in kHz. (SCARD_ATTR_MAX_CLK)
             </td>
           </tr>
           <tr valign="top">
@@ -505,7 +499,7 @@
               <b>MaxDataRate</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Maximum data rate, in bps. (SCARD_ATTR_MAX_DATA_RATE)
             </td>
           </tr>
           <tr valign="top">
@@ -513,7 +507,7 @@
               <b>MaxIfsd</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Maximum bytes for information file size device. (SCARD_ATTR_MAX_IFSD)
             </td>
           </tr>
           <tr valign="top">
@@ -521,7 +515,7 @@
               <b>MaxInput</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Maximum input (SCARD_ATTR_MAXINPUT)
             </td>
           </tr>
           <tr valign="top">
@@ -529,7 +523,7 @@
               <b>PowerMgmtSupport</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Zero if device does not support power down while smart card is inserted. Nonzero otherwise. (SCARD_ATTR_POWER_MGMT_SUPPORT)
             </td>
           </tr>
           <tr valign="top">
@@ -537,7 +531,7 @@
               <b>SupressT1IFSRequest</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Supress T1 information file size request (SCARD_ATTR_SUPRESS_T1_IFS_REQUEST)
             </td>
           </tr>
           <tr valign="top">
@@ -545,7 +539,7 @@
               <b>SyncProtocolTypes</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Synchronous protocol types (SCARD_ATTR_SYNC_PROTOCOL_TYPES)
             </td>
           </tr>
           <tr valign="top">
@@ -553,7 +547,7 @@
               <b>UserAuthInputDevice</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            User authentication input device (SCARD_ATTR_USER_AUTH_INPUT_DEVICE)
             </td>
           </tr>
           <tr valign="top">
@@ -561,7 +555,7 @@
               <b>UserToCardAuthDevice</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            User to card authentication device (SCARD_ATTR_USER_TO_CARD_AUTH_DEVICE)
             </td>
           </tr>
           <tr valign="top">
@@ -569,7 +563,7 @@
               <b>VendorIFDSerialNo</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Vendor-supplied interface device serial number. (SCARD_ATTR_VENDOR_IFD_SERIAL_NO)
             </td>
           </tr>
           <tr valign="top">
@@ -577,7 +571,7 @@
               <b>VendorIFDType</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Vendor-supplied interface device type (model designation of reader). (SCARD_ATTR_VENDOR_IFD_TYPE)
             </td>
           </tr>
           <tr valign="top">
@@ -585,7 +579,7 @@
               <b>VendorIFDVersion</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Vendor-supplied interface device version (DWORD in the form 0xMMmmbbbb where MM = major version, mm = minor version, and bbbb = build number).  (SCARD_ATTR_VENDOR_IFD_VERSION)
             </td>
           </tr>
           <tr valign="top">
@@ -593,17 +587,14 @@
               <b>VendorName</b>
             </td>
             <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+            Vendor name. (SCARD_ATTR_VENDOR_NAME)
             </td>
           </tr>
         </table>
-      </blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.SCardAttr:Docs:Version Information')">
-          <span id="T:PCSC.SCardAttr:Docs:Version Information:toggle">⊟</span> Requirements</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.SCardAttr:Docs:Version Information">
-        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:PCSC.SCardAttr:Docs:Version Information">
+        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
     </div>
     <div class="Members" id="T:PCSC.SCardAttr:Members">
     </div>

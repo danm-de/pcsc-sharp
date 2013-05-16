@@ -208,20 +208,15 @@
     <h1 class="PageTitle" id="T:PCSC.SCardShareMode">SCardShareMode  Enum</h1>
     <p class="Summary" id="T:PCSC.SCardShareMode:Summary">Mode of connection type: exclusive or shared.</p>
     <div id="T:PCSC.SCardShareMode:Signature">
+      <h2>Syntax</h2>
       <div class="Signature">public enum <b>SCardShareMode</b></div>
     </div>
     <div class="Remarks" id="T:PCSC.SCardShareMode:Docs">
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.SCardShareMode:Docs:Remarks')">
-          <span id="T:PCSC.SCardShareMode:Docs:Remarks:toggle">⊟</span> Remarks</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.SCardShareMode:Docs:Remarks">
-        <a href="../PCSC/SCardShareMode.html#F:PCSC.SCardShareMode.Direct">SCardShareMode.Direct</a> can be used before using <a href="../PCSC/ISCardReader.html#M:PCSC.ISCardReader.Control(System.IntPtr,System.Byte[],System.Byte[]@)">ISCardReader.Control(IntPtr, Byte[], Byte[]@)</a>  to send control commands to the reader even if a card is not present in the reader. Contrary to Windows winscard behavior, the reader is accessed in shared mode and not exclusive mode. </blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.SCardShareMode:Docs:Members')">
-          <span id="T:PCSC.SCardShareMode:Docs:Members:toggle">⊟</span> Members</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.SCardShareMode:Docs:Members">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:PCSC.SCardShareMode:Docs:Remarks">
+        <a href="../PCSC/SCardShareMode.html#F:PCSC.SCardShareMode.Direct">SCardShareMode.Direct</a> can be used before using <a href="../PCSC/ISCardReader.html#M:PCSC.ISCardReader.Control(System.IntPtr,System.Byte[],System.Byte[]@)">ISCardReader.Control(IntPtr, Byte[], Byte[]@)</a>  to send control commands to the reader even if a card is not present in the reader. Contrary to Windows winscard behavior, the reader is accessed in shared mode and not exclusive mode. </div>
+      <h2 class="Section">Members</h2>
+      <div class="SectionBox" id="T:PCSC.SCardShareMode:Docs:Members">
         <table class="Enumeration">
           <tr>
             <th>Member Name</th>
@@ -246,13 +241,10 @@
             <td>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</td>
           </tr>
         </table>
-      </blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.SCardShareMode:Docs:Version Information')">
-          <span id="T:PCSC.SCardShareMode:Docs:Version Information:toggle">⊟</span> Requirements</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.SCardShareMode:Docs:Version Information">
-        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:PCSC.SCardShareMode:Docs:Version Information">
+        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
     </div>
     <div class="Members" id="T:PCSC.SCardShareMode:Members">
     </div>

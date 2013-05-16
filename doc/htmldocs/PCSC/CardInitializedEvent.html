@@ -208,13 +208,11 @@
     <h1 class="PageTitle" id="T:PCSC.CardInitializedEvent">CardInitializedEvent  Delegate</h1>
     <p class="Summary" id="T:PCSC.CardInitializedEvent:Summary">The reader has been Initialized.</p>
     <div id="T:PCSC.CardInitializedEvent:Signature">
+      <h2>Syntax</h2>
       <div class="Signature">public delegate <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>CardInitializedEvent</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> sender, <a href="../PCSC/CardStatusEventArgs.html">CardStatusEventArgs</a> e)</div>
     </div>
     <div class="Remarks" id="T:PCSC.CardInitializedEvent:Docs">
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.CardInitializedEvent:Docs:Parameters')">
-          <span id="T:PCSC.CardInitializedEvent:Docs:Parameters:toggle">⊟</span> Parameters</a>
-      </h4>
+      <h4 class="Subsection">Parameters</h4>
       <blockquote class="SubsectionBox" id="T:PCSC.CardInitializedEvent:Docs:Parameters">
         <dl>
           <dt>
@@ -227,11 +225,8 @@
           <dd>Reader status information.</dd>
         </dl>
       </blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.CardInitializedEvent:Docs:Remarks')">
-          <span id="T:PCSC.CardInitializedEvent:Docs:Remarks:toggle">⊟</span> Remarks</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.CardInitializedEvent:Docs:Remarks">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:PCSC.CardInitializedEvent:Docs:Remarks">
         <table class="CodeExampleTable">
           <tr>
             <td>
@@ -243,27 +238,22 @@
           <tr>
             <td>
               <pre class="code-csharp">
-// Create a monitor object with its own PC/SC context.
-SCardMonitor monitor = new SCardMonitor(
-	new SCardContext(),
-	SCardScope.System);
-
-// Point the callback function(s) to the pre-defined method MyCardInitializedMethod.
-monitor.Initialized += new CardInitializedEvent(MyCardInitializedMethod);
-
-// Start to monitor the reader
-monitor.Start("OMNIKEY CardMan 5x21 00 01");
-  </pre>
+            // Create a monitor object with its own PC/SC context.
+            SCardMonitor monitor = new SCardMonitor(
+            	new SCardContext(),
+            	SCardScope.System);
+            // Point the callback function(s) to the pre-defined method MyCardInitializedMethod.
+            monitor.Initialized += new CardInitializedEvent(MyCardInitializedMethod);
+            // Start to monitor the reader
+            monitor.Start("OMNIKEY CardMan 5x21 00 01");
+            </pre>
             </td>
           </tr>
         </table>
-      </blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.CardInitializedEvent:Docs:Version Information')">
-          <span id="T:PCSC.CardInitializedEvent:Docs:Version Information:toggle">⊟</span> Requirements</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.CardInitializedEvent:Docs:Version Information">
-        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:PCSC.CardInitializedEvent:Docs:Version Information">
+        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
     </div>
     <div class="Members" id="T:PCSC.CardInitializedEvent:Members">
     </div>

@@ -13,11 +13,11 @@ Currently supported systems (tested):
               <description>System library</description>
             </listheader>
             <item>
-              <term>Windows 7 (64bit) Professional</term>
+              <term>Windows 8 (64bit) Professional</term>
               <description>Winscard.dll</description>
             </item>
 	    <item>
-		<term>Ubuntu Linux 10.10 (32bit/64bit)</term>
+		<term>Ubuntu Linux 13.04 (64bit)</term>
 		<description>libpcsclite.so.1</description>
 	    </item>
 </list>

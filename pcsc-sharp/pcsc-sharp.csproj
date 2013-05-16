@@ -45,7 +45,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>PCSC</RootNamespace>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <DocumentationFile>bin\Debug\pcsc-sharp.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\pcsc-sharp.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -58,7 +58,7 @@
     <DebugSymbols>true</DebugSymbols>
     <RootNamespace>PCSC</RootNamespace>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <DocumentationFile>bin\Release\pcsc-sharp.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\pcsc-sharp.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

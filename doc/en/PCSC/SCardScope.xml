@@ -1,10 +1,9 @@
 <Type Name="SCardScope" FullName="PCSC.SCardScope">
   <TypeSignature Language="C#" Value="public enum SCardScope" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SCardScope extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -12,16 +11,15 @@
   <Docs>
     <summary>Scope of the establishment.</summary>
     <remarks>The following scopes are not used on Linux/UNIX machines using the PC/SC Lite daemon:
-<list type="bullet"><item><term><see cref="F:PCSC.SCardScope.User" /></term></item><item><term><see cref="F:PCSC.SCardScope.Terminal" /></term></item><item><term><see cref="F:PCSC.SCardScope.Global" /></term></item></list></remarks>
+            <list type="bullet"><item><term><see cref="F:PCSC.SCardScope.User" /></term></item><item><term><see cref="F:PCSC.SCardScope.Terminal" /></term></item><item><term><see cref="F:PCSC.SCardScope.Global" /></term></item></list></remarks>
   </Docs>
   <Members>
     <Member MemberName="Global">
       <MemberSignature Language="C#" Value="Global" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardScope Global = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -37,11 +35,10 @@
     </Member>
     <Member MemberName="System">
       <MemberSignature Language="C#" Value="System" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardScope System = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -57,11 +54,10 @@
     </Member>
     <Member MemberName="Terminal">
       <MemberSignature Language="C#" Value="Terminal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardScope Terminal = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -72,16 +68,15 @@
         <ReturnType>PCSC.SCardScope</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Scope in terminal. </summary>
+        <summary>Scope in terminal.</summary>
       </Docs>
     </Member>
     <Member MemberName="User">
       <MemberSignature Language="C#" Value="User" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardScope User = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -92,7 +87,7 @@
         <ReturnType>PCSC.SCardScope</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Scope in user space. </summary>
+        <summary>Scope in user space.</summary>
       </Docs>
     </Member>
   </Members>

@@ -1,10 +1,9 @@
 <Type Name="ClassByte" FullName="PCSC.Iso7816.ClassByte">
   <TypeSignature Language="C#" Value="public class ClassByte" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ClassByte extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -16,29 +15,27 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ClassByte (byte Cla);" />
+      <MemberSignature Language="C#" Value="public ClassByte (byte cla);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 cla) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="Cla" Type="System.Byte" />
+        <Parameter Name="cla" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="Cla">To be added.</param>
+        <param name="cla">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ClassByte (PCSC.Iso7816.ClaHighPart highPart, PCSC.Iso7816.SecureMessagingFormat secMsgFmt, int logChannel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype PCSC.Iso7816.ClaHighPart highPart, valuetype PCSC.Iso7816.SecureMessagingFormat secMsgFmt, int32 logChannel) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="highPart" Type="PCSC.Iso7816.ClaHighPart" />
@@ -54,12 +51,11 @@
       </Docs>
     </Member>
     <Member MemberName="HighPart">
-      <MemberSignature Language="C#" Value="public PCSC.Iso7816.ClaHighPart HighPart { set; get; }" />
+      <MemberSignature Language="C#" Value="public PCSC.Iso7816.ClaHighPart HighPart { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.Iso7816.ClaHighPart HighPart" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
@@ -71,12 +67,11 @@
       </Docs>
     </Member>
     <Member MemberName="LogicalChannel">
-      <MemberSignature Language="C#" Value="public int LogicalChannel { set; get; }" />
+      <MemberSignature Language="C#" Value="public int LogicalChannel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 LogicalChannel" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -89,11 +84,10 @@
     </Member>
     <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static byte op_Implicit (PCSC.Iso7816.ClassByte bInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname unsigned int8 op_Implicit(class PCSC.Iso7816.ClassByte bInfo) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -110,11 +104,10 @@
     </Member>
     <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static PCSC.Iso7816.ClassByte op_Implicit (byte b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class PCSC.Iso7816.ClassByte op_Implicit(unsigned int8 b) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.ClassByte</ReturnType>
@@ -130,12 +123,11 @@
       </Docs>
     </Member>
     <Member MemberName="Security">
-      <MemberSignature Language="C#" Value="public PCSC.Iso7816.SecureMessagingFormat Security { set; get; }" />
+      <MemberSignature Language="C#" Value="public PCSC.Iso7816.SecureMessagingFormat Security { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.Iso7816.SecureMessagingFormat Security" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SecureMessagingFormat</ReturnType>
@@ -147,12 +139,11 @@
       </Docs>
     </Member>
     <Member MemberName="Value">
-      <MemberSignature Language="C#" Value="public byte Value { set; get; }" />
+      <MemberSignature Language="C#" Value="public byte Value { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Value" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>

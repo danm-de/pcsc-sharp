@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="pcsc-sharp" Version="2.0.0.1">
+    <Assembly Name="pcsc-sharp" Version="3.0.0.0">
       <Attributes>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyCompany("")</AttributeName>
@@ -9,16 +9,16 @@
           <AttributeName>System.Reflection.AssemblyConfiguration("")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyCopyright("Copyright © 2007-2011 by Daniel Mueller")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright © 2007-2013 by Daniel Mueller")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyDescription("PC/SC wrapper classes for .NET")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyFileVersion("2.0.0.1")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyFileVersion("3.0.0.0")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyProduct("PCSC Test")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyProduct("PC/SC Sharp")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyTitle("PC/SC Sharp")</AttributeName>
@@ -42,6 +42,7 @@
   <Copyright>Daniel Mueller</Copyright>
   <Types>
     <Namespace Name="PCSC">
+      <Type Name="CardEventArgs" Kind="Class" />
       <Type Name="CardInitializedEvent" Kind="Delegate" />
       <Type Name="CardInsertedEvent" Kind="Delegate" />
       <Type Name="CardRemovedEvent" Kind="Delegate" />
@@ -55,6 +56,8 @@
       <Type Name="InvalidScopeTypeException" Kind="Class" />
       <Type Name="InvalidShareModeException" Kind="Class" />
       <Type Name="InvalidValueException" Kind="Class" />
+      <Type Name="ISCardContext" Kind="Interface" />
+      <Type Name="ISCardMonitor" Kind="Interface" />
       <Type Name="ISCardReader" Kind="Interface" />
       <Type Name="MonitorExceptionEvent" Kind="Delegate" />
       <Type Name="NoServiceException" Kind="Class" />
@@ -106,35 +109,8 @@
       <Type Name="ResponseApdu" Kind="Class" />
       <Type Name="ResponseApduList" Kind="Class" />
       <Type Name="SecureMessagingFormat" Kind="Enumeration" />
-      <Type Name="SimpleTlvPacket" Kind="Class" />
-      <Type Name="SimpleTlvPacketBuilder" Kind="Class" />
       <Type Name="SW1Code" Kind="Enumeration" />
       <Type Name="TlvDataType" Kind="Enumeration" />
-    </Namespace>
-    <Namespace Name="PCSC.Iso8825">
-      <Type Name="DataObject" Kind="Class" />
-      <Type Name="DataObjectFactory" Kind="Class" />
-      <Type Name="InvalidBerTlvPacket" Kind="Class" />
-      <Type Name="InvalidBerTlvPacketException" Kind="Class" />
-      <Type Name="InvalidSimpleTlvPacket" Kind="Class" />
-      <Type Name="InvalidSimpleTlvPacketException" Kind="Class" />
-      <Type Name="InvalidTlvData" Kind="Class" />
-      <Type Name="InvalidTlvDataException" Kind="Class" />
-      <Type Name="TlvData" Kind="Class" />
-    </Namespace>
-    <Namespace Name="PCSC.Iso8825.Asn1">
-      <Type Name="Asn1Boolean" Kind="Class" />
-      <Type Name="Asn1IA5String" Kind="Class" />
-      <Type Name="Asn1Integer" Kind="Class" />
-      <Type Name="Asn1Type" Kind="Enumeration" />
-      <Type Name="IAsn1Type" Kind="Interface" />
-      <Type Name="InvalidAsn1BooleanException" Kind="Class" />
-    </Namespace>
-    <Namespace Name="PCSC.Iso8825.BasicEncodingRules">
-      <Type Name="BerClassType" Kind="Enumeration" />
-      <Type Name="BerLengthEncoding" Kind="Enumeration" />
-      <Type Name="BerStructureType" Kind="Enumeration" />
-      <Type Name="BerTlvPacket" Kind="Class" />
     </Namespace>
   </Types>
   <Title>PC/SC Class Library</Title>

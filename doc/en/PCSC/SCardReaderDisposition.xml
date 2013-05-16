@@ -1,10 +1,9 @@
 <Type Name="SCardReaderDisposition" FullName="PCSC.SCardReaderDisposition">
   <TypeSignature Language="C#" Value="public enum SCardReaderDisposition" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SCardReaderDisposition extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -16,15 +15,14 @@
   <Members>
     <Member MemberName="Eject">
       <MemberSignature Language="C#" Value="Eject" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardReaderDisposition Eject = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.Description("Eject on close")</AttributeName>
+          <AttributeName>System.ComponentModel.Description("Eject the card")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -36,15 +34,14 @@
     </Member>
     <Member MemberName="Leave">
       <MemberSignature Language="C#" Value="Leave" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardReaderDisposition Leave = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.Description("Do nothing on close")</AttributeName>
+          <AttributeName>System.ComponentModel.Description("Do nothing")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -56,15 +53,14 @@
     </Member>
     <Member MemberName="Reset">
       <MemberSignature Language="C#" Value="Reset" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardReaderDisposition Reset = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.Description("Reset on close")</AttributeName>
+          <AttributeName>System.ComponentModel.Description("Reset the reader")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -76,15 +72,14 @@
     </Member>
     <Member MemberName="Unpower">
       <MemberSignature Language="C#" Value="Unpower" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardReaderDisposition Unpower = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.ComponentModel.Description("Power down on close")</AttributeName>
+          <AttributeName>System.ComponentModel.Description("Unpower the card")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>

@@ -1,63 +1,65 @@
 <Type Name="UnresponsiveCardException" FullName="PCSC.UnresponsiveCardException">
   <TypeSignature Language="C#" Value="public class UnresponsiveCardException : PCSC.PCSCException" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit UnresponsiveCardException extends PCSC.PCSCException" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>PCSC.PCSCException</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>The smart card is unresponsive.</summary>
+    <summary>
+            The smart card is unresponsive.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public UnresponsiveCardException (PCSC.SCardError serr);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype PCSC.SCardError serr) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="serr" Type="PCSC.SCardError" />
       </Parameters>
       <Docs>
-        <param name="serr">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="serr">System's error code</param>
+        <summary>
+            Initializes a new instance of the <see cref="T:PCSC.UnresponsiveCardException" /> class.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public UnresponsiveCardException (PCSC.SCardError serr, string message);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype PCSC.SCardError serr, string message) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="serr" Type="PCSC.SCardError" />
         <Parameter Name="message" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="serr">To be added.</param>
-        <param name="message">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="serr">System's error code</param>
+        <param name="message">An error message text.</param>
+        <summary>
+            Initializes a new instance of the <see cref="T:PCSC.UnresponsiveCardException" /> class.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public UnresponsiveCardException (PCSC.SCardError serr, string message, Exception innerException);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype PCSC.SCardError serr, string message, class System.Exception innerException) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="serr" Type="PCSC.SCardError" />
@@ -65,10 +67,12 @@
         <Parameter Name="innerException" Type="System.Exception" />
       </Parameters>
       <Docs>
-        <param name="serr">To be added.</param>
-        <param name="message">To be added.</param>
-        <param name="innerException">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="serr">System's error code</param>
+        <param name="message">An error message text.</param>
+        <param name="innerException">The inner exception.</param>
+        <summary>
+            Initializes a new instance of the <see cref="T:PCSC.UnresponsiveCardException" /> class.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

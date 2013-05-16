@@ -1,104 +1,75 @@
 <Type Name="CardStatusEventArgs" FullName="PCSC.CardStatusEventArgs">
-  <TypeSignature Language="C#" Value="public class CardStatusEventArgs : EventArgs" />
+  <TypeSignature Language="C#" Value="public class CardStatusEventArgs : PCSC.CardEventArgs" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CardStatusEventArgs extends PCSC.CardEventArgs" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>System.EventArgs</BaseTypeName>
+    <BaseTypeName>PCSC.CardEventArgs</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Information about a smart card reader status.</summary>
-    <remarks />
+    <summary>
+            Information about a smart card reader status.
+            </summary>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CardStatusEventArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Creates a new instance.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CardStatusEventArgs (string ReaderName, PCSC.SCRState State, byte[] Atr);" />
+      <MemberSignature Language="C#" Value="public CardStatusEventArgs (string readerName, PCSC.SCRState state, byte[] atr);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string readerName, valuetype PCSC.SCRState state, unsigned int8[] atr) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="ReaderName" Type="System.String" />
-        <Parameter Name="State" Type="PCSC.SCRState" />
-        <Parameter Name="Atr" Type="System.Byte[]" />
+        <Parameter Name="readerName" Type="System.String" />
+        <Parameter Name="state" Type="PCSC.SCRState" />
+        <Parameter Name="atr" Type="System.Byte[]" />
       </Parameters>
       <Docs>
-        <param name="ReaderName">To be added.</param>
-        <param name="State">To be added.</param>
-        <param name="Atr">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="readerName">Name of the smard card reader</param>
+        <param name="state">The reader's state</param>
+        <param name="atr">The card's ATR.</param>
+        <summary>
+            Creates a new instance.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Atr">
-      <MemberSignature Language="C#" Value="public byte[] Atr;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The card's ATR.</summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="ReaderName">
-      <MemberSignature Language="C#" Value="public string ReaderName;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The reader name.</summary>
-        <remarks>A human readable string of the reader name.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="State">
-      <MemberSignature Language="C#" Value="public PCSC.SCRState State;" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public PCSC.SCRState State { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.SCRState State" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.SCRState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>The current reader status.</summary>
+        <value>To be added.</value>
         <remarks>
           <para>
-Is a bit mask containing one or more of the following values:
-</para>
+            Is a bit mask containing one or more of the following values:
+            </para>
           <list type="table">
             <listheader>
               <term>State</term>
@@ -126,7 +97,13 @@ Is a bit mask containing one or more of the following values:
               <term>
                 <see cref="F:PCSC.SCRState.Unknown" />
               </term>
-              <description>The given reader name is not recognized by the resource manager. If this bit is set, then <see cref="F:PCSC.SCRState.Changed" /> and <see cref="F:PCSC.SCRState.Ignore" /> will also be set</description>
+              <description>
+            The given reader name is not recognized by the resource manager. If this bit is set, then
+            <see cref="F:PCSC.SCRState.Changed" />
+            and
+            <see cref="F:PCSC.SCRState.Ignore" />
+            will also be set
+            </description>
             </item>
             <item>
               <term>
@@ -150,13 +127,21 @@ Is a bit mask containing one or more of the following values:
               <term>
                 <see cref="F:PCSC.SCRState.Exclusive" />
               </term>
-              <description>The card in the reader is allocated for exclusive use by another application. If this bit is set, <see cref="F:PCSC.SCRState.Present" /> will also be set.</description>
+              <description>
+            The card in the reader is allocated for exclusive use by another application. If this bit is set,
+            <see cref="F:PCSC.SCRState.Present" />
+            will also be set.
+            </description>
             </item>
             <item>
               <term>
                 <see cref="F:PCSC.SCRState.InUse" />
               </term>
-              <description>The card in the reader is in use by one or more other applications, but may be connected to in shared mode. If this bit is set, <see cref="F:PCSC.SCRState.Present" /> will also be set.</description>
+              <description>
+            The card in the reader is in use by one or more other applications, but may be connected to in shared mode. If this bit is set,
+            <see cref="F:PCSC.SCRState.Present" />
+            will also be set.
+            </description>
             </item>
             <item>
               <term>

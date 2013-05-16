@@ -1,10 +1,9 @@
 <Type Name="FileStructureInfo" FullName="PCSC.Iso7816.FileStructureInfo">
   <TypeSignature Language="C#" Value="public class FileStructureInfo" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit FileStructureInfo extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -15,13 +14,188 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="IsRecord">
-      <MemberSignature Language="C#" Value="public bool IsRecord { get; }" />
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FileStructureInfo (byte fileDescriptor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 fileDescriptor) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="fileDescriptor" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="fileDescriptor">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_CYCLIC">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_CYCLIC = 6;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_CYCLIC = (6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>6</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_CYCLIC_TLV">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_CYCLIC_TLV = 7;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_CYCLIC_TLV = (7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>7</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_LINEAR_FIXED">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_LINEAR_FIXED = 2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_LINEAR_FIXED = (2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>2</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_LINEAR_FIXED_TLV">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_LINEAR_FIXED_TLV = 3;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_LINEAR_FIXED_TLV = (3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>3</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_LINEAR_VARIABLE">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_LINEAR_VARIABLE = 4;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_LINEAR_VARIABLE = (4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>4</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_LINEAR_VARIABLE_TLV">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_LINEAR_VARIABLE_TLV = 5;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_LINEAR_VARIABLE_TLV = (5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>5</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_MASK">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_MASK = 135;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_MASK = (135)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>135</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_NO_INFO">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_NO_INFO = 0;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_NO_INFO = (0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>0</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_TRANSPARENT">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_TRANSPARENT = 1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_TRANSPARENT = (1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FileDescriptor">
+      <MemberSignature Language="C#" Value="public byte FileDescriptor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 FileDescriptor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsRecord">
+      <MemberSignature Language="C#" Value="public bool IsRecord { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsRecord" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -34,11 +208,10 @@
     </Member>
     <Member MemberName="IsTransparent">
       <MemberSignature Language="C#" Value="public bool IsTransparent { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsTransparent" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -51,11 +224,10 @@
     </Member>
     <Member MemberName="RecordInfo">
       <MemberSignature Language="C#" Value="public PCSC.Iso7816.RecordInfo RecordInfo { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class PCSC.Iso7816.RecordInfo RecordInfo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.RecordInfo</ReturnType>
@@ -68,11 +240,10 @@
     </Member>
     <Member MemberName="Type">
       <MemberSignature Language="C#" Value="public PCSC.Iso7816.FileStructureType Type { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.Iso7816.FileStructureType Type" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
@@ -80,23 +251,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateFileInfo">
-      <MemberSignature Language="C#" Value="protected void UpdateFileInfo ();" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

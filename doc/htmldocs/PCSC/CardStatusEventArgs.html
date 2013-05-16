@@ -206,37 +206,29 @@
       </p>
     </div>
     <h1 class="PageTitle" id="T:PCSC.CardStatusEventArgs">CardStatusEventArgs  Class</h1>
-    <p class="Summary" id="T:PCSC.CardStatusEventArgs:Summary">Information about a smart card reader status.</p>
+    <p class="Summary" id="T:PCSC.CardStatusEventArgs:Summary">
+            Information about a smart card reader status.
+            </p>
     <div id="T:PCSC.CardStatusEventArgs:Signature">
-      <div class="Signature">public class  <b>CardStatusEventArgs</b> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.EventArgs">EventArgs</a></div>
+      <h2>Syntax</h2>
+      <div class="Signature">public class  <b>CardStatusEventArgs</b> : <a href="../PCSC/CardEventArgs.html">CardEventArgs</a></div>
     </div>
     <div class="Remarks" id="T:PCSC.CardStatusEventArgs:Docs">
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.CardStatusEventArgs:Docs:Remarks')">
-          <span id="T:PCSC.CardStatusEventArgs:Docs:Remarks:toggle">⊟</span> Remarks</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.CardStatusEventArgs:Docs:Remarks">
-      </blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.CardStatusEventArgs:Docs:Version Information')">
-          <span id="T:PCSC.CardStatusEventArgs:Docs:Version Information:toggle">⊟</span> Requirements</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.CardStatusEventArgs:Docs:Version Information">
-        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
-      <h2 class="Section" id="Members">
-        <a href="javascript:toggle_display('_Members')">
-          <span id="_Members:toggle">⊟</span> Members</a>
-      </h2>
-      <blockquote class="SectionBox" id="_Members">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:PCSC.CardStatusEventArgs:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:PCSC.CardStatusEventArgs:Docs:Version Information">
+        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
         <p>
 								See Also: Inherited members from
-								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.EventArgs">EventArgs</a>.
+								<a href="../PCSC/CardEventArgs.html">CardEventArgs</a>.
 							</p>
-        <h3>
-          <a href="javascript:toggle_display('Public Constructors')">
-            <span id="Public Constructors:toggle">⊟</span> Public Constructors</a>
-        </h3>
-        <blockquote id="Public Constructors">
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
           <div class="SubsectionBox">
             <table class="TypeMembers">
               <tr valign="top">
@@ -251,8 +243,8 @@
                     </b>()</div>
                 </td>
                 <td>
-                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-                </td>
+            Creates a new instance.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -266,56 +258,48 @@
                     </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="../PCSC/SCRState.html">SCRState</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[])</div>
                 </td>
                 <td>
-                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-                </td>
+            Creates a new instance.
+            </td>
               </tr>
             </table>
           </div>
-        </blockquote>
-        <h3>
-          <a href="javascript:toggle_display('Public Fields')">
-            <span id="Public Fields:toggle">⊟</span> Public Fields</a>
-        </h3>
-        <blockquote id="Public Fields">
+        </div>
+        <h2 class="Section">Public Properties</h2>
+        <div class="SectionBox" id="Public Properties">
           <div class="SubsectionBox">
             <table class="TypeMembers">
               <tr valign="top">
-                <td>
-                  <div>
-                  </div>
-                </td>
+                <td>[read-only]<div></div></td>
                 <td>
                   <b>
-                    <a href="#F:PCSC.CardStatusEventArgs.Atr">Atr</a>
+                    <a href="../PCSC/CardEventArgs.html#P:PCSC.CardEventArgs.Atr">Atr</a>
                   </b>
                 </td>
                 <td>
                   <i>
-                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</i>. The card's ATR.</td>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</i>. 
+            The card's ATR (if present), otherwise <tt>null</tt>.
+             (<i>Inherited from <a href="../PCSC/CardEventArgs.html">CardEventArgs</a>.</i>)</td>
               </tr>
               <tr valign="top">
-                <td>
-                  <div>
-                  </div>
-                </td>
+                <td>[read-only]<div></div></td>
                 <td>
                   <b>
-                    <a href="#F:PCSC.CardStatusEventArgs.ReaderName">ReaderName</a>
+                    <a href="../PCSC/CardEventArgs.html#P:PCSC.CardEventArgs.ReaderName">ReaderName</a>
                   </b>
                 </td>
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
-                  </i>. The reader name.</td>
+                  </i>. 
+            Name of the reader that has raised the event.
+             (<i>Inherited from <a href="../PCSC/CardEventArgs.html">CardEventArgs</a>.</i>)</td>
               </tr>
               <tr valign="top">
-                <td>
-                  <div>
-                  </div>
-                </td>
+                <td>[read-only]<div></div></td>
                 <td>
                   <b>
-                    <a href="#F:PCSC.CardStatusEventArgs.State">State</a>
+                    <a href="#P:PCSC.CardStatusEventArgs.State">State</a>
                   </b>
                 </td>
                 <td>
@@ -325,145 +309,75 @@
               </tr>
             </table>
           </div>
-        </blockquote>
-      </blockquote>
+        </div>
+      </div>
     </div>
     <div class="Members" id="T:PCSC.CardStatusEventArgs:Members">
-      <h2 class="Section" id="MemberDetails">
-        <a href="javascript:toggle_display('_MemberDetails')">
-          <span id="_MemberDetails:toggle">⊟</span> Member Details</a>
-      </h2>
-      <blockquote class="SectionBox" id="_MemberDetails">
-        <h3 id="C:PCSC.CardStatusEventArgs">
-          <a href="javascript:toggle_display('C:PCSC.CardStatusEventArgs:member')">
-            <span id="C:PCSC.CardStatusEventArgs:member:toggle">⊟</span> CardStatusEventArgs Constructor</a>
-        </h3>
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:PCSC.CardStatusEventArgs">CardStatusEventArgs Constructor</h3>
         <blockquote id="C:PCSC.CardStatusEventArgs:member">
           <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+            Creates a new instance.
+            </p>
+          <h2>Syntax</h2>
           <div class="Signature">public  <b>CardStatusEventArgs</b> ()</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('C:PCSC.CardStatusEventArgs:Remarks')">
-              <span id="C:PCSC.CardStatusEventArgs:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="C:PCSC.CardStatusEventArgs:Remarks">
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:PCSC.CardStatusEventArgs:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('C:PCSC.CardStatusEventArgs:Version Information')">
-              <span id="C:PCSC.CardStatusEventArgs:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="C:PCSC.CardStatusEventArgs:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:PCSC.CardStatusEventArgs:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[])">
-          <a href="javascript:toggle_display('C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):member')">
-            <span id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):member:toggle">⊟</span> CardStatusEventArgs Constructor</a>
-        </h3>
+        <h3 id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[])">CardStatusEventArgs Constructor</h3>
         <blockquote id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):member">
           <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
-          <div class="Signature">public  <b>CardStatusEventArgs</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> ReaderName, <a href="../PCSC/SCRState.html">SCRState</a> State, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] Atr)</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Parameters')">
-              <span id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Parameters:toggle">⊟</span> Parameters</a>
-          </h4>
+            Creates a new instance.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public  <b>CardStatusEventArgs</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> readerName, <a href="../PCSC/SCRState.html">SCRState</a> state, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] atr)</div>
+          <h4 class="Subsection">Parameters</h4>
           <blockquote class="SubsectionBox" id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Parameters">
             <dl>
               <dt>
-                <i>ReaderName</i>
+                <i>readerName</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>Name of the smard card reader</dd>
               <dt>
-                <i>State</i>
+                <i>state</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The reader's state</dd>
               <dt>
-                <i>Atr</i>
+                <i>atr</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The card's ATR.</dd>
             </dl>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Remarks')">
-              <span id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Remarks">
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.CardStatusEventArgs.State">State Property</h3>
+        <blockquote id="P:PCSC.CardStatusEventArgs.State:member">
+          <p class="Summary">The current reader status.</p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC/SCRState.html">SCRState</a> <b>State</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.CardStatusEventArgs.State:Value">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Version Information')">
-              <span id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="C:PCSC.CardStatusEventArgs(System.String,PCSC.SCRState,System.Byte[]):Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
-          <hr size="1" />
-        </blockquote>
-        <h3 id="F:PCSC.CardStatusEventArgs.Atr">
-          <a href="javascript:toggle_display('F:PCSC.CardStatusEventArgs.Atr:member')">
-            <span id="F:PCSC.CardStatusEventArgs.Atr:member:toggle">⊟</span> Atr Field</a>
-        </h3>
-        <blockquote id="F:PCSC.CardStatusEventArgs.Atr:member">
-          <p class="Summary">The card's ATR.</p>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] <b>Atr</b> </div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('F:PCSC.CardStatusEventArgs.Atr:Remarks')">
-              <span id="F:PCSC.CardStatusEventArgs.Atr:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="F:PCSC.CardStatusEventArgs.Atr:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('F:PCSC.CardStatusEventArgs.Atr:Version Information')">
-              <span id="F:PCSC.CardStatusEventArgs.Atr:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="F:PCSC.CardStatusEventArgs.Atr:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
-          <hr size="1" />
-        </blockquote>
-        <h3 id="F:PCSC.CardStatusEventArgs.ReaderName">
-          <a href="javascript:toggle_display('F:PCSC.CardStatusEventArgs.ReaderName:member')">
-            <span id="F:PCSC.CardStatusEventArgs.ReaderName:member:toggle">⊟</span> ReaderName Field</a>
-        </h3>
-        <blockquote id="F:PCSC.CardStatusEventArgs.ReaderName:member">
-          <p class="Summary">The reader name.</p>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ReaderName</b> </div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('F:PCSC.CardStatusEventArgs.ReaderName:Remarks')">
-              <span id="F:PCSC.CardStatusEventArgs.ReaderName:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="F:PCSC.CardStatusEventArgs.ReaderName:Remarks">A human readable string of the reader name.</blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('F:PCSC.CardStatusEventArgs.ReaderName:Version Information')">
-              <span id="F:PCSC.CardStatusEventArgs.ReaderName:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="F:PCSC.CardStatusEventArgs.ReaderName:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
-          <hr size="1" />
-        </blockquote>
-        <h3 id="F:PCSC.CardStatusEventArgs.State">
-          <a href="javascript:toggle_display('F:PCSC.CardStatusEventArgs.State:member')">
-            <span id="F:PCSC.CardStatusEventArgs.State:member:toggle">⊟</span> State Field</a>
-        </h3>
-        <blockquote id="F:PCSC.CardStatusEventArgs.State:member">
-          <p class="Summary">The current reader status.</p>
-          <div class="Signature">public <a href="../PCSC/SCRState.html">SCRState</a> <b>State</b> </div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('F:PCSC.CardStatusEventArgs.State:Remarks')">
-              <span id="F:PCSC.CardStatusEventArgs.State:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="F:PCSC.CardStatusEventArgs.State:Remarks">
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.CardStatusEventArgs.State:Remarks">
             <p>
-Is a bit mask containing one or more of the following values:
-</p>
+            Is a bit mask containing one or more of the following values:
+            </p>
             <table class="Documentation">
               <tr>
                 <th>State</th>
@@ -491,7 +405,13 @@ Is a bit mask containing one or more of the following values:
                 <td>
                   <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Unknown">SCRState.Unknown</a>
                 </td>
-                <td>The given reader name is not recognized by the resource manager. If this bit is set, then <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Changed">SCRState.Changed</a> and <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Ignore">SCRState.Ignore</a> will also be set</td>
+                <td>
+            The given reader name is not recognized by the resource manager. If this bit is set, then
+            <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Changed">SCRState.Changed</a>
+            and
+            <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Ignore">SCRState.Ignore</a>
+            will also be set
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -515,13 +435,21 @@ Is a bit mask containing one or more of the following values:
                 <td>
                   <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Exclusive">SCRState.Exclusive</a>
                 </td>
-                <td>The card in the reader is allocated for exclusive use by another application. If this bit is set, <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Present">SCRState.Present</a> will also be set.</td>
+                <td>
+            The card in the reader is allocated for exclusive use by another application. If this bit is set,
+            <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Present">SCRState.Present</a>
+            will also be set.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
                   <a href="../PCSC/SCRState.html#F:PCSC.SCRState.InUse">SCRState.InUse</a>
                 </td>
-                <td>The card in the reader is in use by one or more other applications, but may be connected to in shared mode. If this bit is set, <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Present">SCRState.Present</a> will also be set.</td>
+                <td>
+            The card in the reader is in use by one or more other applications, but may be connected to in shared mode. If this bit is set,
+            <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Present">SCRState.Present</a>
+            will also be set.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -530,16 +458,13 @@ Is a bit mask containing one or more of the following values:
                 <td>There is an unresponsive card in the reader.</td>
               </tr>
             </table>
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('F:PCSC.CardStatusEventArgs.State:Version Information')">
-              <span id="F:PCSC.CardStatusEventArgs.State:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="F:PCSC.CardStatusEventArgs.State:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.CardStatusEventArgs.State:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-      </blockquote>
+      </div>
     </div>
     <hr size="1" />
     <div class="Copyright">

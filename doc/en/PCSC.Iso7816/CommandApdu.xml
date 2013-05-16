@@ -1,9 +1,9 @@
 <Type Name="CommandApdu" FullName="PCSC.Iso7816.CommandApdu">
   <TypeSignature Language="C#" Value="public class CommandApdu : PCSC.Iso7816.Apdu, ICloneable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CommandApdu extends PCSC.Iso7816.Apdu implements class System.ICloneable" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>PCSC.Iso7816.Apdu</BaseTypeName>
@@ -19,44 +19,29 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CommandApdu (PCSC.Iso7816.IsoCase isocase, PCSC.SCardProtocol protocol);" />
+      <MemberSignature Language="C#" Value="public CommandApdu (PCSC.Iso7816.IsoCase isoCase, PCSC.SCardProtocol protocol);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype PCSC.Iso7816.IsoCase isoCase, valuetype PCSC.SCardProtocol protocol) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="isocase" Type="PCSC.Iso7816.IsoCase" />
+        <Parameter Name="isoCase" Type="PCSC.Iso7816.IsoCase" />
         <Parameter Name="protocol" Type="PCSC.SCardProtocol" />
       </Parameters>
       <Docs>
-        <param name="isocase">To be added.</param>
+        <param name="isoCase">To be added.</param>
         <param name="protocol">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="cla">
-      <MemberSignature Language="C#" Value="protected byte cla;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CLA">
-      <MemberSignature Language="C#" Value="public byte CLA { set; get; }" />
+      <MemberSignature Language="C#" Value="public byte CLA { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 CLA" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -68,11 +53,11 @@
       </Docs>
     </Member>
     <Member MemberName="Clone">
-      <MemberSignature Language="C#" Value="public object Clone ();" />
+      <MemberSignature Language="C#" Value="public virtual object Clone ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object Clone() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
@@ -84,27 +69,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="data">
-      <MemberSignature Language="C#" Value="protected byte[] data;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Data">
-      <MemberSignature Language="C#" Value="public byte[] Data { set; get; }" />
+      <MemberSignature Language="C#" Value="public byte[] Data { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] Data" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte[]</ReturnType>
@@ -116,11 +86,11 @@
       </Docs>
     </Member>
     <Member MemberName="ExpectedResponseLength">
-      <MemberSignature Language="C#" Value="public int ExpectedResponseLength { set; get; }" />
+      <MemberSignature Language="C#" Value="public int ExpectedResponseLength { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ExpectedResponseLength" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -133,10 +103,10 @@
     </Member>
     <Member MemberName="GetClassByteInfo">
       <MemberSignature Language="C#" Value="public PCSC.Iso7816.ClassByte GetClassByteInfo ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class PCSC.Iso7816.ClassByte GetClassByteInfo() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.ClassByte</ReturnType>
@@ -150,10 +120,10 @@
     </Member>
     <Member MemberName="GetInstructionByteInfo">
       <MemberSignature Language="C#" Value="public PCSC.Iso7816.InstructionByte GetInstructionByteInfo ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class PCSC.Iso7816.InstructionByte GetInstructionByteInfo() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.InstructionByte</ReturnType>
@@ -167,10 +137,10 @@
     </Member>
     <Member MemberName="GetLength">
       <MemberSignature Language="C#" Value="public int GetLength ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 GetLength() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -182,27 +152,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ins">
-      <MemberSignature Language="C#" Value="protected byte ins;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="INS">
-      <MemberSignature Language="C#" Value="public byte INS { set; get; }" />
+      <MemberSignature Language="C#" Value="public byte INS { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 INS" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -215,10 +170,10 @@
     </Member>
     <Member MemberName="Instruction">
       <MemberSignature Language="C#" Value="public PCSC.Iso7816.InstructionCode Instruction { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.Iso7816.InstructionCode Instruction" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
@@ -231,10 +186,10 @@
     </Member>
     <Member MemberName="IsValid">
       <MemberSignature Language="C#" Value="public override bool IsValid { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsValid" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -245,27 +200,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="lc">
-      <MemberSignature Language="C#" Value="protected int lc;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Lc">
       <MemberSignature Language="C#" Value="public int Lc { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Lc" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -273,30 +213,15 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="le">
-      <MemberSignature Language="C#" Value="protected int le;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Le">
-      <MemberSignature Language="C#" Value="public int Le { set; get; }" />
+      <MemberSignature Language="C#" Value="public int Le { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Le" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -307,27 +232,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="p1">
-      <MemberSignature Language="C#" Value="protected byte p1;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="P1">
-      <MemberSignature Language="C#" Value="public byte P1 { set; get; }" />
+      <MemberSignature Language="C#" Value="public byte P1 { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 P1" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -339,11 +249,11 @@
       </Docs>
     </Member>
     <Member MemberName="P1P2">
-      <MemberSignature Language="C#" Value="public int P1P2 { set; get; }" />
+      <MemberSignature Language="C#" Value="public int P1P2 { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 P1P2" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -354,27 +264,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="p2">
-      <MemberSignature Language="C#" Value="protected byte p2;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="P2">
-      <MemberSignature Language="C#" Value="public byte P2 { set; get; }" />
+      <MemberSignature Language="C#" Value="public byte P2 { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 P2" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -386,11 +281,11 @@
       </Docs>
     </Member>
     <Member MemberName="P3">
-      <MemberSignature Language="C#" Value="public int P3 { set; get; }" />
+      <MemberSignature Language="C#" Value="public int P3 { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 P3" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -403,10 +298,10 @@
     </Member>
     <Member MemberName="ToArray">
       <MemberSignature Language="C#" Value="public override byte[] ToArray ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance unsigned int8[] ToArray() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte[]</ReturnType>

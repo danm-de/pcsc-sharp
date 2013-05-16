@@ -1,10 +1,9 @@
 <Type Name="CardRemovedEvent" FullName="PCSC.CardRemovedEvent">
   <TypeSignature Language="C#" Value="public delegate void CardRemovedEvent(object sender, CardStatusEventArgs e);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CardRemovedEvent extends System.MulticastDelegate" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Delegate</BaseTypeName>
@@ -23,17 +22,15 @@
     <remarks>
       <example>
         <code lang="C#">
-// Create a monitor object with its own PC/SC context.
-SCardMonitor monitor = new SCardMonitor(
-	new SCardContext(),
-	SCardScope.System);
-
-// Point the callback function(s) to the pre-defined method MyCardRemovedMethod.
-monitor.CardRemoved += new CardRemovedEvent(MyCardRemovedMethod);
-
-// Start to monitor the reader
-monitor.Start("OMNIKEY CardMan 5x21 00 01");
-  </code>
+            // Create a monitor object with its own PC/SC context.
+            SCardMonitor monitor = new SCardMonitor(
+            	new SCardContext(),
+            	SCardScope.System);
+            // Point the callback function(s) to the pre-defined method MyCardRemovedMethod.
+            monitor.CardRemoved += new CardRemovedEvent(MyCardRemovedMethod);
+            // Start to monitor the reader
+            monitor.Start("OMNIKEY CardMan 5x21 00 01");
+            </code>
       </example>
     </remarks>
   </Docs>

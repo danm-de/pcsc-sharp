@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>PCSC.NoServiceException</title>
+    <title>PCSC.CardEventArgs</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
       a { text-decoration: none }
@@ -190,45 +190,45 @@
       <a href="../index.html">pcsc-sharp</a> : <a href="index.html">PCSC Namespace</a></div>
     <div class="SideBar">
       <p>
-        <a href="#T:PCSC.NoServiceException">Overview</a>
+        <a href="#T:PCSC.CardEventArgs">Overview</a>
       </p>
       <p>
-        <a href="#T:PCSC.NoServiceException:Signature">Signature</a>
+        <a href="#T:PCSC.CardEventArgs:Signature">Signature</a>
       </p>
       <p>
-        <a href="#T:PCSC.NoServiceException:Docs">Remarks</a>
+        <a href="#T:PCSC.CardEventArgs:Docs">Remarks</a>
       </p>
       <p>
         <a href="#Members">Members</a>
       </p>
       <p>
-        <a href="#T:PCSC.NoServiceException:Members">Member Details</a>
+        <a href="#T:PCSC.CardEventArgs:Members">Member Details</a>
       </p>
     </div>
-    <h1 class="PageTitle" id="T:PCSC.NoServiceException">NoServiceException  Class</h1>
-    <p class="Summary" id="T:PCSC.NoServiceException:Summary">
-            The PC/SC service is not running.
+    <h1 class="PageTitle" id="T:PCSC.CardEventArgs">CardEventArgs  Class</h1>
+    <p class="Summary" id="T:PCSC.CardEventArgs:Summary">
+            Smart card event.
             </p>
-    <div id="T:PCSC.NoServiceException:Signature">
+    <div id="T:PCSC.CardEventArgs:Signature">
       <h2>Syntax</h2>
-      <div class="Signature">public class  <b>NoServiceException</b> : <a href="../PCSC/PCSCException.html">PCSCException</a></div>
+      <div class="Signature">public abstract class  <b>CardEventArgs</b> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.EventArgs">EventArgs</a></div>
     </div>
-    <div class="Remarks" id="T:PCSC.NoServiceException:Docs">
+    <div class="Remarks" id="T:PCSC.CardEventArgs:Docs">
       <h2 class="Section">Remarks</h2>
-      <div class="SectionBox" id="T:PCSC.NoServiceException:Docs:Remarks">
+      <div class="SectionBox" id="T:PCSC.CardEventArgs:Docs:Remarks">
         <span class="NotEntered">Documentation for this section has not yet been entered.</span>
       </div>
       <h2 class="Section">Requirements</h2>
-      <div class="SectionBox" id="T:PCSC.NoServiceException:Docs:Version Information">
+      <div class="SectionBox" id="T:PCSC.CardEventArgs:Docs:Version Information">
         <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
       <h2 class="Section" id="Members">Members</h2>
       <div class="SectionBox" id="_Members">
         <p>
 								See Also: Inherited members from
-								<a href="../PCSC/PCSCException.html">PCSCException</a>.
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.EventArgs">EventArgs</a>.
 							</p>
-        <h2 class="Section">Public Constructors</h2>
-        <div class="SectionBox" id="Public Constructors">
+        <h2 class="Section">Protected Constructors</h2>
+        <div class="SectionBox" id="Protected Constructors">
           <div class="SubsectionBox">
             <table class="TypeMembers">
               <tr valign="top">
@@ -239,11 +239,11 @@
                 <td>
                   <div>
                     <b>
-                      <a href="#C:PCSC.NoServiceException(PCSC.SCardError)">NoServiceException</a>
-                    </b>(<a href="../PCSC/SCardError.html">SCardError</a>)</div>
+                      <a href="#C:PCSC.CardEventArgs">CardEventArgs</a>
+                    </b>()</div>
                 </td>
                 <td>
-            Initializes a new instance of the <a href="../PCSC/NoServiceException.html">PCSC.NoServiceException</a> class.
+            Creates a new instance.
             </td>
               </tr>
               <tr valign="top">
@@ -254,26 +254,11 @@
                 <td>
                   <div>
                     <b>
-                      <a href="#C:PCSC.NoServiceException(PCSC.SCardError,System.String)">NoServiceException</a>
-                    </b>(<a href="../PCSC/SCardError.html">SCardError</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>)</div>
+                      <a href="#C:PCSC.CardEventArgs(System.String,System.Byte[])">CardEventArgs</a>
+                    </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[])</div>
                 </td>
                 <td>
-            Initializes a new instance of the <a href="../PCSC/NoServiceException.html">PCSC.NoServiceException</a> class.
-            </td>
-              </tr>
-              <tr valign="top">
-                <td>
-                  <div>
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <b>
-                      <a href="#C:PCSC.NoServiceException(PCSC.SCardError,System.String,System.Exception)">NoServiceException</a>
-                    </b>(<a href="../PCSC/SCardError.html">SCardError</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a>)</div>
-                </td>
-                <td>
-            Initializes a new instance of the <a href="../PCSC/NoServiceException.html">PCSC.NoServiceException</a> class.
+            Creates a new instance.
             </td>
               </tr>
             </table>
@@ -284,114 +269,120 @@
           <div class="SubsectionBox">
             <table class="TypeMembers">
               <tr valign="top">
-                <td>
-                  <div>
-                  </div>
-                </td>
+                <td>[read-only]<div></div></td>
                 <td>
                   <b>
-                    <a href="../PCSC/PCSCException.html#P:PCSC.PCSCException.SCardError">SCardError</a>
+                    <a href="#P:PCSC.CardEventArgs.Atr">Atr</a>
                   </b>
                 </td>
                 <td>
                   <i>
-                    <a href="../PCSC/SCardError.html">SCardError</a>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</i>. 
+            The card's ATR (if present), otherwise <tt>null</tt>.
+            </td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.CardEventArgs.ReaderName">ReaderName</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
                   </i>. 
-            The system's error code.
-             (<i>Inherited from <a href="../PCSC/PCSCException.html">PCSCException</a>.</i>)</td>
+            Name of the reader that has raised the event.
+            </td>
               </tr>
             </table>
           </div>
         </div>
       </div>
     </div>
-    <div class="Members" id="T:PCSC.NoServiceException:Members">
+    <div class="Members" id="T:PCSC.CardEventArgs:Members">
       <h2 class="Section" id="MemberDetails">Member Details</h2>
       <div class="SectionBox" id="_MemberDetails">
-        <h3 id="C:PCSC.NoServiceException(PCSC.SCardError)">NoServiceException Constructor</h3>
-        <blockquote id="C:PCSC.NoServiceException(PCSC.SCardError):member">
+        <h3 id="C:PCSC.CardEventArgs">CardEventArgs Constructor</h3>
+        <blockquote id="C:PCSC.CardEventArgs:member">
           <p class="Summary">
-            Initializes a new instance of the <a href="../PCSC/NoServiceException.html">PCSC.NoServiceException</a> class.
+            Creates a new instance.
             </p>
           <h2>Syntax</h2>
-          <div class="Signature">public  <b>NoServiceException</b> (<a href="../PCSC/SCardError.html">SCardError</a> serr)</div>
-          <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="C:PCSC.NoServiceException(PCSC.SCardError):Parameters">
-            <dl>
-              <dt>
-                <i>serr</i>
-              </dt>
-              <dd>System's error code</dd>
-            </dl>
-          </blockquote>
+          <div class="Signature">protected  <b>CardEventArgs</b> ()</div>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="C:PCSC.NoServiceException(PCSC.SCardError):Remarks">
+          <div class="SectionBox" id="C:PCSC.CardEventArgs:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="C:PCSC.NoServiceException(PCSC.SCardError):Version Information">
+          <div class="SectionBox" id="C:PCSC.CardEventArgs:Version Information">
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="C:PCSC.NoServiceException(PCSC.SCardError,System.String)">NoServiceException Constructor</h3>
-        <blockquote id="C:PCSC.NoServiceException(PCSC.SCardError,System.String):member">
+        <h3 id="C:PCSC.CardEventArgs(System.String,System.Byte[])">CardEventArgs Constructor</h3>
+        <blockquote id="C:PCSC.CardEventArgs(System.String,System.Byte[]):member">
           <p class="Summary">
-            Initializes a new instance of the <a href="../PCSC/NoServiceException.html">PCSC.NoServiceException</a> class.
+            Creates a new instance.
             </p>
           <h2>Syntax</h2>
-          <div class="Signature">public  <b>NoServiceException</b> (<a href="../PCSC/SCardError.html">SCardError</a> serr, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> message)</div>
+          <div class="Signature">protected  <b>CardEventArgs</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> readerName, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] atr)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="C:PCSC.NoServiceException(PCSC.SCardError,System.String):Parameters">
+          <blockquote class="SubsectionBox" id="C:PCSC.CardEventArgs(System.String,System.Byte[]):Parameters">
             <dl>
               <dt>
-                <i>serr</i>
+                <i>readerName</i>
               </dt>
-              <dd>System's error code</dd>
+              <dd>Name of the reader that has raised the event.</dd>
               <dt>
-                <i>message</i>
+                <i>atr</i>
               </dt>
-              <dd>An error message text.</dd>
+              <dd>The card's ATR (if present), otherwise <tt>null</tt>.</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="C:PCSC.NoServiceException(PCSC.SCardError,System.String):Remarks">
+          <div class="SectionBox" id="C:PCSC.CardEventArgs(System.String,System.Byte[]):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="C:PCSC.NoServiceException(PCSC.SCardError,System.String):Version Information">
+          <div class="SectionBox" id="C:PCSC.CardEventArgs(System.String,System.Byte[]):Version Information">
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="C:PCSC.NoServiceException(PCSC.SCardError,System.String,System.Exception)">NoServiceException Constructor</h3>
-        <blockquote id="C:PCSC.NoServiceException(PCSC.SCardError,System.String,System.Exception):member">
+        <h3 id="P:PCSC.CardEventArgs.Atr">Atr Property</h3>
+        <blockquote id="P:PCSC.CardEventArgs.Atr:member">
           <p class="Summary">
-            Initializes a new instance of the <a href="../PCSC/NoServiceException.html">PCSC.NoServiceException</a> class.
+            The card's ATR (if present), otherwise <tt>null</tt>.
             </p>
           <h2>Syntax</h2>
-          <div class="Signature">public  <b>NoServiceException</b> (<a href="../PCSC/SCardError.html">SCardError</a> serr, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> message, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a> innerException)</div>
-          <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="C:PCSC.NoServiceException(PCSC.SCardError,System.String,System.Exception):Parameters">
-            <dl>
-              <dt>
-                <i>serr</i>
-              </dt>
-              <dd>System's error code</dd>
-              <dt>
-                <i>message</i>
-              </dt>
-              <dd>An error message text.</dd>
-              <dt>
-                <i>innerException</i>
-              </dt>
-              <dd>The inner exception.</dd>
-            </dl>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] <b>Atr</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.CardEventArgs.Atr:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="C:PCSC.NoServiceException(PCSC.SCardError,System.String,System.Exception):Remarks">
+          <div class="SectionBox" id="P:PCSC.CardEventArgs.Atr:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="C:PCSC.NoServiceException(PCSC.SCardError,System.String,System.Exception):Version Information">
+          <div class="SectionBox" id="P:PCSC.CardEventArgs.Atr:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.CardEventArgs.ReaderName">ReaderName Property</h3>
+        <blockquote id="P:PCSC.CardEventArgs.ReaderName:member">
+          <p class="Summary">
+            Name of the reader that has raised the event.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ReaderName</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.CardEventArgs.ReaderName:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.CardEventArgs.ReaderName:Remarks">A human readable string of the reader name.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.CardEventArgs.ReaderName:Version Information">
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>

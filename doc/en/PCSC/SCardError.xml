@@ -1,10 +1,9 @@
 <Type Name="SCardError" FullName="PCSC.SCardError">
   <TypeSignature Language="C#" Value="public enum SCardError" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SCardError extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -16,16 +15,15 @@
   </Attributes>
   <Docs>
     <summary>Error and return codes.</summary>
-    <remarks />
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="BadSeek">
       <MemberSignature Language="C#" Value="BadSeek" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError BadSeek = int32(-2146435031)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -41,11 +39,10 @@
     </Member>
     <Member MemberName="Cancelled">
       <MemberSignature Language="C#" Value="Cancelled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError Cancelled = int32(-2146435070)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -56,16 +53,15 @@
         <ReturnType>PCSC.SCardError</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>The action was cancelled by an <see cref="M:PCSC.SCardContext.Cancel()" /> request. (SCARD_E_CANCELLED)</summary>
+        <summary>The action was cancelled by an <see cref="M:PCSC.ISCardContext.Cancel" /> request. (SCARD_E_CANCELLED)</summary>
       </Docs>
     </Member>
     <Member MemberName="CancelledByUser">
       <MemberSignature Language="C#" Value="CancelledByUser" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CancelledByUser = int32(-2146434962)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -81,11 +77,10 @@
     </Member>
     <Member MemberName="CantDispose">
       <MemberSignature Language="C#" Value="CantDispose" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CantDispose = int32(-2146435058)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -101,11 +96,10 @@
     </Member>
     <Member MemberName="CardNotAuthenticated">
       <MemberSignature Language="C#" Value="CardNotAuthenticated" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CardNotAuthenticated = int32(-2146434961)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -121,11 +115,10 @@
     </Member>
     <Member MemberName="CardUnsupported">
       <MemberSignature Language="C#" Value="CardUnsupported" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CardUnsupported = int32(-2146435044)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -141,11 +134,10 @@
     </Member>
     <Member MemberName="CertificateUnavailable">
       <MemberSignature Language="C#" Value="CertificateUnavailable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CertificateUnavailable = int32(-2146435027)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -161,11 +153,10 @@
     </Member>
     <Member MemberName="CHVBlocked">
       <MemberSignature Language="C#" Value="CHVBlocked" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CHVBlocked = int32(-2146434964)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -181,11 +172,10 @@
     </Member>
     <Member MemberName="CommunicationDataLost">
       <MemberSignature Language="C#" Value="CommunicationDataLost" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CommunicationDataLost = int32(-2146435025)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -201,11 +191,10 @@
     </Member>
     <Member MemberName="CommunicationError">
       <MemberSignature Language="C#" Value="CommunicationError" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CommunicationError = int32(-2146435053)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -221,11 +210,10 @@
     </Member>
     <Member MemberName="DirectoryNotFound">
       <MemberSignature Language="C#" Value="DirectoryNotFound" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError DirectoryNotFound = int32(-2146435037)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -241,11 +229,10 @@
     </Member>
     <Member MemberName="DuplicateReader">
       <MemberSignature Language="C#" Value="DuplicateReader" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError DuplicateReader = int32(-2146435045)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -261,11 +248,10 @@
     </Member>
     <Member MemberName="Eof">
       <MemberSignature Language="C#" Value="Eof" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError Eof = int32(-2146434963)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -281,11 +267,10 @@
     </Member>
     <Member MemberName="FileNotFound">
       <MemberSignature Language="C#" Value="FileNotFound" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError FileNotFound = int32(-2146435036)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -301,11 +286,10 @@
     </Member>
     <Member MemberName="ICCCreateOrder">
       <MemberSignature Language="C#" Value="ICCCreateOrder" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError ICCCreateOrder = int32(-2146435039)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -321,11 +305,10 @@
     </Member>
     <Member MemberName="ICCInstallation">
       <MemberSignature Language="C#" Value="ICCInstallation" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError ICCInstallation = int32(-2146435040)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -341,11 +324,10 @@
     </Member>
     <Member MemberName="InsertedCard">
       <MemberSignature Language="C#" Value="InsertedCard" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError InsertedCard = int32(-2146434966)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -364,11 +346,10 @@
     </Member>
     <Member MemberName="InsufficientBuffer">
       <MemberSignature Language="C#" Value="InsufficientBuffer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError InsufficientBuffer = int32(-2146435064)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -384,11 +365,10 @@
     </Member>
     <Member MemberName="InternalError">
       <MemberSignature Language="C#" Value="InternalError" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError InternalError = int32(-2146435071)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -404,11 +384,10 @@
     </Member>
     <Member MemberName="InvalidAtr">
       <MemberSignature Language="C#" Value="InvalidAtr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError InvalidAtr = int32(-2146435051)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -424,11 +403,10 @@
     </Member>
     <Member MemberName="InvalidCHV">
       <MemberSignature Language="C#" Value="InvalidCHV" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError InvalidCHV = int32(-2146435030)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -444,11 +422,10 @@
     </Member>
     <Member MemberName="InvalidHandle">
       <MemberSignature Language="C#" Value="InvalidHandle" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError InvalidHandle = int32(-2146435069)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -464,11 +441,10 @@
     </Member>
     <Member MemberName="InvalidParameter">
       <MemberSignature Language="C#" Value="InvalidParameter" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError InvalidParameter = int32(-2146435068)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -484,11 +460,10 @@
     </Member>
     <Member MemberName="InvalidTarget">
       <MemberSignature Language="C#" Value="InvalidTarget" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError InvalidTarget = int32(-2146435067)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -504,11 +479,10 @@
     </Member>
     <Member MemberName="InvalidValue">
       <MemberSignature Language="C#" Value="InvalidValue" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError InvalidValue = int32(-2146435055)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -524,11 +498,10 @@
     </Member>
     <Member MemberName="NoAccess">
       <MemberSignature Language="C#" Value="NoAccess" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NoAccess = int32(-2146435033)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -544,11 +517,10 @@
     </Member>
     <Member MemberName="NoDir">
       <MemberSignature Language="C#" Value="NoDir" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NoDir = int32(-2146435035)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -564,11 +536,10 @@
     </Member>
     <Member MemberName="NoFile">
       <MemberSignature Language="C#" Value="NoFile" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NoFile = int32(-2146435034)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -584,11 +555,10 @@
     </Member>
     <Member MemberName="NoKeyContainer">
       <MemberSignature Language="C#" Value="NoKeyContainer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NoKeyContainer = int32(-2146435024)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -604,11 +574,10 @@
     </Member>
     <Member MemberName="NoMemory">
       <MemberSignature Language="C#" Value="NoMemory" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NoMemory = int32(-2146435066)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -624,11 +593,10 @@
     </Member>
     <Member MemberName="NoReadersAvailable">
       <MemberSignature Language="C#" Value="NoReadersAvailable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NoReadersAvailable = int32(-2146435026)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -644,11 +612,10 @@
     </Member>
     <Member MemberName="NoService">
       <MemberSignature Language="C#" Value="NoService" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NoService = int32(-2146435043)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -664,11 +631,10 @@
     </Member>
     <Member MemberName="NoSmartcard">
       <MemberSignature Language="C#" Value="NoSmartcard" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NoSmartcard = int32(-2146435060)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -684,11 +650,10 @@
     </Member>
     <Member MemberName="NoSuchCertificate">
       <MemberSignature Language="C#" Value="NoSuchCertificate" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NoSuchCertificate = int32(-2146435028)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -704,11 +669,10 @@
     </Member>
     <Member MemberName="NotReady">
       <MemberSignature Language="C#" Value="NotReady" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NotReady = int32(-2146435056)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -724,11 +688,10 @@
     </Member>
     <Member MemberName="NotTransacted">
       <MemberSignature Language="C#" Value="NotTransacted" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError NotTransacted = int32(-2146435050)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -744,11 +707,10 @@
     </Member>
     <Member MemberName="PciTooSmall">
       <MemberSignature Language="C#" Value="PciTooSmall" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError PciTooSmall = int32(-2146435047)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -764,11 +726,10 @@
     </Member>
     <Member MemberName="ProtocolMismatch">
       <MemberSignature Language="C#" Value="ProtocolMismatch" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError ProtocolMismatch = int32(-2146435057)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -784,11 +745,10 @@
     </Member>
     <Member MemberName="ReaderUnavailable">
       <MemberSignature Language="C#" Value="ReaderUnavailable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError ReaderUnavailable = int32(-2146435049)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -804,11 +764,10 @@
     </Member>
     <Member MemberName="ReaderUnsupported">
       <MemberSignature Language="C#" Value="ReaderUnsupported" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError ReaderUnsupported = int32(-2146435046)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -824,11 +783,10 @@
     </Member>
     <Member MemberName="RemovedCard">
       <MemberSignature Language="C#" Value="RemovedCard" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError RemovedCard = int32(-2146434967)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -844,11 +802,10 @@
     </Member>
     <Member MemberName="ResetCard">
       <MemberSignature Language="C#" Value="ResetCard" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError ResetCard = int32(-2146434968)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -864,11 +821,10 @@
     </Member>
     <Member MemberName="SecurityViolation">
       <MemberSignature Language="C#" Value="SecurityViolation" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError SecurityViolation = int32(-2146434966)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -884,11 +840,10 @@
     </Member>
     <Member MemberName="ServerTooBusy">
       <MemberSignature Language="C#" Value="ServerTooBusy" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError ServerTooBusy = int32(-2146435023)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -904,11 +859,10 @@
     </Member>
     <Member MemberName="ServiceStopped">
       <MemberSignature Language="C#" Value="ServiceStopped" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError ServiceStopped = int32(-2146435042)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -924,11 +878,10 @@
     </Member>
     <Member MemberName="SharingViolation">
       <MemberSignature Language="C#" Value="SharingViolation" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError SharingViolation = int32(-2146435061)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -944,11 +897,10 @@
     </Member>
     <Member MemberName="Shutdown">
       <MemberSignature Language="C#" Value="Shutdown" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError Shutdown = int32(-2146435048)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -964,11 +916,10 @@
     </Member>
     <Member MemberName="Success">
       <MemberSignature Language="C#" Value="Success" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError Success = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -984,11 +935,10 @@
     </Member>
     <Member MemberName="SystemCancelled">
       <MemberSignature Language="C#" Value="SystemCancelled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError SystemCancelled = int32(-2146435054)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1004,11 +954,10 @@
     </Member>
     <Member MemberName="Timeout">
       <MemberSignature Language="C#" Value="Timeout" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError Timeout = int32(-2146435062)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1024,11 +973,10 @@
     </Member>
     <Member MemberName="Unexpected">
       <MemberSignature Language="C#" Value="Unexpected" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError Unexpected = int32(-2146435041)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1044,11 +992,10 @@
     </Member>
     <Member MemberName="UnknownCard">
       <MemberSignature Language="C#" Value="UnknownCard" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError UnknownCard = int32(-2146435059)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1064,11 +1011,10 @@
     </Member>
     <Member MemberName="UnknownError">
       <MemberSignature Language="C#" Value="UnknownError" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError UnknownError = int32(-2146435052)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1084,11 +1030,10 @@
     </Member>
     <Member MemberName="UnknownReader">
       <MemberSignature Language="C#" Value="UnknownReader" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError UnknownReader = int32(-2146435063)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1104,11 +1049,10 @@
     </Member>
     <Member MemberName="UnknownResMng">
       <MemberSignature Language="C#" Value="UnknownResMng" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError UnknownResMng = int32(-2146435029)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1124,11 +1068,10 @@
     </Member>
     <Member MemberName="UnpoweredCard">
       <MemberSignature Language="C#" Value="UnpoweredCard" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError UnpoweredCard = int32(-2146434969)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1144,11 +1087,10 @@
     </Member>
     <Member MemberName="UnresponsiveCard">
       <MemberSignature Language="C#" Value="UnresponsiveCard" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError UnresponsiveCard = int32(-2146434970)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1164,11 +1106,10 @@
     </Member>
     <Member MemberName="UnsupportedCard">
       <MemberSignature Language="C#" Value="UnsupportedCard" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError UnsupportedCard = int32(-2146434971)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1184,11 +1125,10 @@
     </Member>
     <Member MemberName="UnsupportedFeature">
       <MemberSignature Language="C#" Value="UnsupportedFeature" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError UnsupportedFeature = int32(-2146435041)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1204,11 +1144,10 @@
     </Member>
     <Member MemberName="WaitedTooLong">
       <MemberSignature Language="C#" Value="WaitedTooLong" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError WaitedTooLong = int32(-2146435065)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1224,11 +1163,10 @@
     </Member>
     <Member MemberName="WriteTooMany">
       <MemberSignature Language="C#" Value="WriteTooMany" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError WriteTooMany = int32(-2146435032)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -1244,11 +1182,10 @@
     </Member>
     <Member MemberName="WrongCHV">
       <MemberSignature Language="C#" Value="WrongCHV" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError WrongCHV = int32(-2146434965)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>

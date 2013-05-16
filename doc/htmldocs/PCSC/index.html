@@ -202,7 +202,7 @@ This class library uses P/Invoke to call the native PC/SC API functions and wrap
 </p>
 <p>
 Currently supported systems (tested):
- <table class="Documentation"><tr><th>Operating System</th><th>System library</th></tr><tr valign="top"><td>Windows 7 (64bit) Professional</td><td>Winscard.dll</td></tr><tr valign="top"><td>Ubuntu Linux 10.10 (32bit/64bit)</td><td>libpcsclite.so.1</td></tr></table>
+ <table class="Documentation"><tr><th>Operating System</th><th>System library</th></tr><tr valign="top"><td>Windows 8 (64bit) Professional</td><td>Winscard.dll</td></tr><tr valign="top"><td>Ubuntu Linux 13.04 (64bit)</td><td>libpcsclite.so.1</td></tr></table>
 </p>
 <p>
 Windows XP/Vista (32bit) has not been tested and is therefore currently not supported!
@@ -212,6 +212,14 @@ Windows XP/Vista (32bit) has not been tested and is therefore currently not supp
         <tr>
           <th>Type</th>
           <th>Description</th>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./CardEventArgs.html">CardEventArgs</a>
+          </td>
+          <td>
+            Smart card event.
+            </td>
         </tr>
         <tr valign="top">
           <td>
@@ -235,61 +243,93 @@ Windows XP/Vista (32bit) has not been tested and is therefore currently not supp
           <td>
             <a href="./CardStatusEventArgs.html">CardStatusEventArgs</a>
           </td>
-          <td>Information about a smart card reader status.</td>
+          <td>
+            Information about a smart card reader status.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./CommunicationErrorException.html">CommunicationErrorException</a>
           </td>
-          <td>A communication error occurred.</td>
+          <td>
+            A communication error occurred.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./InsufficientBufferException.html">InsufficientBufferException</a>
           </td>
-          <td>A supplied buffer is insufficient.</td>
+          <td>
+            A supplied buffer is insufficient.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./InternalErrorException.html">InternalErrorException</a>
           </td>
-          <td>An internal error occurred.</td>
+          <td>
+            An internal error occurred.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./InvalidContextException.html">InvalidContextException</a>
           </td>
-          <td>Invalid PC/SC context exception.</td>
+          <td>
+            Invalid PC/SC context exception.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./InvalidParameterException.html">InvalidParameterException</a>
           </td>
-          <td>One or more arguments contain invalid parameters.</td>
+          <td>
+            One or more arguments contain invalid parameters.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./InvalidProtocolException.html">InvalidProtocolException</a>
           </td>
-          <td>An invalid protocol has been requested.</td>
+          <td>
+            An invalid protocol has been requested.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./InvalidScopeTypeException.html">InvalidScopeTypeException</a>
           </td>
-          <td>Invalid PC/SC scope exception.</td>
+          <td>
+            Invalid PC/SC scope exception.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./InvalidShareModeException.html">InvalidShareModeException</a>
           </td>
-          <td>The share mode is invalid.</td>
+          <td>
+            The share mode is invalid.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./InvalidValueException.html">InvalidValueException</a>
           </td>
-          <td>One or more arguments contain invalid values.</td>
+          <td>
+            One or more arguments contain invalid values.
+            </td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./ISCardContext.html">ISCardContext</a>
+          </td>
+          <td>An application context to the PC/SC Resource Manager.</td>
+        </tr>
+        <tr valign="top">
+          <td>
+            <a href="./ISCardMonitor.html">ISCardMonitor</a>
+          </td>
+          <td>Monitors a Smart Card reader and triggers events on status changes.</td>
         </tr>
         <tr valign="top">
           <td>
@@ -307,37 +347,49 @@ Windows XP/Vista (32bit) has not been tested and is therefore currently not supp
           <td>
             <a href="./NoServiceException.html">NoServiceException</a>
           </td>
-          <td>The PC/SC service is not running.</td>
+          <td>
+            The PC/SC service is not running.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./NoSmartcardException.html">NoSmartcardException</a>
           </td>
-          <td>No smart card is currently inserted.</td>
+          <td>
+            No smart card is currently inserted.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./NotReadyException.html">NotReadyException</a>
           </td>
-          <td>The reader or the smart card is not ready.</td>
+          <td>
+            The reader or the smart card is not ready.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./PCSCException.html">PCSCException</a>
           </td>
-          <td>A general PC/SC exception.</td>
+          <td>
+            A general PC/SC exception.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./ReaderUnavailableException.html">ReaderUnavailableException</a>
           </td>
-          <td>The requested reader is unavailable.</td>
+          <td>
+            The requested reader is unavailable.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./RemovedCardException.html">RemovedCardException</a>
           </td>
-          <td>A smart card has been removed.</td>
+          <td>
+            A smart card has been removed.
+            </td>
         </tr>
         <tr valign="top">
           <td>
@@ -350,14 +402,14 @@ Windows XP/Vista (32bit) has not been tested and is therefore currently not supp
             <a href="./SCardClass.html">SCardClass</a>
           </td>
           <td>
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </td>
+            Smart card class
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./SCardContext.html">SCardContext</a>
           </td>
-          <td>Manages an Application Context to the PC/SC Resource Manager.</td>
+          <td>Manages an application context to the PC/SC Resource Manager.</td>
         </tr>
         <tr valign="top">
           <td>
@@ -369,7 +421,9 @@ Windows XP/Vista (32bit) has not been tested and is therefore currently not supp
           <td>
             <a href="./SCardHelper.html">SCardHelper</a>
           </td>
-          <td>Helper class that offers methods to convert various values into strings.</td>
+          <td>
+            Helper class that offers methods to convert various values into strings.
+            </td>
         </tr>
         <tr valign="top">
           <td>
@@ -381,7 +435,7 @@ Windows XP/Vista (32bit) has not been tested and is therefore currently not supp
           <td>
             <a href="./SCardPCI.html">SCardPCI</a>
           </td>
-          <td>Structure of protocol information.</td>
+          <td>Structure of protocol control information.</td>
         </tr>
         <tr valign="top">
           <td>
@@ -393,7 +447,7 @@ Windows XP/Vista (32bit) has not been tested and is therefore currently not supp
           <td>
             <a href="./SCardReader.html">SCardReader</a>
           </td>
-          <td>Operates on a Smart Card reader.</td>
+          <td>A reader class that implements the most basic PC/SC functions to operate on smart cards, RFID tags and so on.</td>
         </tr>
         <tr valign="top">
           <td>
@@ -435,7 +489,9 @@ Windows XP/Vista (32bit) has not been tested and is therefore currently not supp
           <td>
             <a href="./SharingViolationException.html">SharingViolationException</a>
           </td>
-          <td>A sharing violation occurred.</td>
+          <td>
+            A sharing violation occurred.
+            </td>
         </tr>
         <tr valign="top">
           <td>
@@ -453,25 +509,33 @@ Windows XP/Vista (32bit) has not been tested and is therefore currently not supp
           <td>
             <a href="./UnknownReaderException.html">UnknownReaderException</a>
           </td>
-          <td>The requested reader name is unknown.</td>
+          <td>
+            The requested reader name is unknown.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./UnpoweredCardException.html">UnpoweredCardException</a>
           </td>
-          <td>The smart card is unpowered.</td>
+          <td>
+            The smart card is unpowered.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./UnresponsiveCardException.html">UnresponsiveCardException</a>
           </td>
-          <td>The smart card is unresponsive.</td>
+          <td>
+            The smart card is unresponsive.
+            </td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./UnsupportedFeatureException.html">UnsupportedFeatureException</a>
           </td>
-          <td>The requested feature is unsupported.</td>
+          <td>
+            The requested feature is unsupported.
+            </td>
         </tr>
       </table>
     </div>

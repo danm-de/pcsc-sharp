@@ -1,10 +1,9 @@
 <Type Name="RecordInfo" FullName="PCSC.Iso7816.RecordInfo">
   <TypeSignature Language="C#" Value="public class RecordInfo" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit RecordInfo extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -15,13 +14,108 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="IsCyclic">
-      <MemberSignature Language="C#" Value="public bool IsCyclic { get; }" />
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public RecordInfo (byte fileDescriptor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 fileDescriptor) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="fileDescriptor" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="fileDescriptor">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_IS_CYCLIC">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_IS_CYCLIC = 6;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_IS_CYCLIC = (6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>6</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_IS_LINEAR_FIXED">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_IS_LINEAR_FIXED = 2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_IS_LINEAR_FIXED = (2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>2</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_IS_LINEAR_VARIABLE">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_IS_LINEAR_VARIABLE = 4;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_IS_LINEAR_VARIABLE = (4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>4</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_STRUCTURE_IS_MASK">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_IS_MASK = 134;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_IS_MASK = (134)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>134</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FileDescriptor">
+      <MemberSignature Language="C#" Value="public byte FileDescriptor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 FileDescriptor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsCyclic">
+      <MemberSignature Language="C#" Value="public bool IsCyclic { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsCyclic" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -34,11 +128,10 @@
     </Member>
     <Member MemberName="IsFixed">
       <MemberSignature Language="C#" Value="public bool IsFixed { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsFixed" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -51,11 +144,10 @@
     </Member>
     <Member MemberName="IsLinear">
       <MemberSignature Language="C#" Value="public bool IsLinear { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsLinear" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -68,11 +160,10 @@
     </Member>
     <Member MemberName="IsSimpleTlv">
       <MemberSignature Language="C#" Value="public bool IsSimpleTlv { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsSimpleTlv" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -85,11 +176,10 @@
     </Member>
     <Member MemberName="IsVariable">
       <MemberSignature Language="C#" Value="public bool IsVariable { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsVariable" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -97,23 +187,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateFileInfo">
-      <MemberSignature Language="C#" Value="protected void UpdateFileInfo ();" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

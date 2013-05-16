@@ -1,7 +1,7 @@
 # development tools
 MONODOCER	= monodocer
 MONODOCS2HTML	= monodocs2html
-MDASSEMBLER	= mdassembler
+MONODOC		= monodoc
 MDOC		= mdoc
 BUILDTOOL	= xbuild
 
@@ -19,6 +19,7 @@ ASSEMBLYVERSION	= $(shell grep -oE $(ASMSTR) pcsc-sharp/Properties/AssemblyInfo.
 LIBFILE		= $(LIBNAME).dll
 LIBCONFIGNAME	= $(LIBFILE).config
 LIBMDB		= $(LIBFILE).mdb
+LIBXMLFILE	= $(LIBNAME).xml
 PKGCONFIGFILE	= $(LIBNAME).pc
 
 SOURCEDIR	= pcsc-sharp
@@ -58,13 +59,16 @@ $(BUILDDIR)/$(LIBCONFIGNAME):	$(SOURCEDIR)/$(LIBCONFIGNAME)
 	cp $(SOURCEDIR)/$(LIBCONFIGNAME) \
 		$(BUILDDIR)/$(LIBCONFIGNAME)
 
+$(BUILDDIR)/$(LIBXMLFILE):	$(BUILDDIR)/$(LIBFILE)
+
 # documentation XML files
 xmldoc:	$(DOCDIR)/$(DOCLANG)/index.xml
 
-$(DOCDIR)/$(DOCLANG)/index.xml:	$(BUILDDIR)/$(LIBFILE)	
+$(DOCDIR)/$(DOCLANG)/index.xml:	$(BUILDDIR)/$(LIBFILE) $(BUILDDIR)/$(LIBXMLFILE)
 	mkdir -p $(DOCDIR)/$(DOCLANG)
 	$(MONODOCER) -assembly:$(BUILDDIR)/$(LIBFILE) \
 		-path:$(DOCDIR)/$(DOCLANG) \
+		-importslashdoc:$(BUILDDIR)/$(LIBXMLFILE) \
 		-pretty \
 		-name:$(DOCNAME)
 
@@ -73,6 +77,10 @@ htmldoc:	$(DOCDIR)/$(HTMLDOCDIR)/index.html
 $(DOCDIR)/$(HTMLDOCDIR)/index.html:	xmldoc
 	$(MONODOCS2HTML) $(DOCDIR)/$(DOCLANG) \
 		-o $(HTMLDOCDIR)
+
+# edit documentation
+editdoc: xmldoc
+	$(MONODOC) --edit $(DOCDIR)/$(DOCLANG)
 
 clean:
 	rm -f $(BUILDDIR)/*

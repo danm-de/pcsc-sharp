@@ -1,10 +1,9 @@
 <Type Name="SW1Code" FullName="PCSC.Iso7816.SW1Code">
   <TypeSignature Language="C#" Value="public enum SW1Code" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SW1Code extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -16,11 +15,10 @@
   <Members>
     <Member MemberName="ErrorAuthorization">
       <MemberSignature Language="C#" Value="ErrorAuthorization" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorAuthorization = unsigned int8(152)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -31,11 +29,10 @@
     </Member>
     <Member MemberName="ErrorClassNotSupported">
       <MemberSignature Language="C#" Value="ErrorClassNotSupported" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorClassNotSupported = unsigned int8(110)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -46,11 +43,10 @@
     </Member>
     <Member MemberName="ErrorCmdNotAllowed">
       <MemberSignature Language="C#" Value="ErrorCmdNotAllowed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorCmdNotAllowed = unsigned int8(105)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -61,11 +57,10 @@
     </Member>
     <Member MemberName="ErrorFile">
       <MemberSignature Language="C#" Value="ErrorFile" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorFile = unsigned int8(148)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -76,11 +71,10 @@
     </Member>
     <Member MemberName="ErrorFunctionNotSupported">
       <MemberSignature Language="C#" Value="ErrorFunctionNotSupported" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorFunctionNotSupported = unsigned int8(104)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -91,11 +85,10 @@
     </Member>
     <Member MemberName="ErrorInsNotSupported">
       <MemberSignature Language="C#" Value="ErrorInsNotSupported" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorInsNotSupported = unsigned int8(109)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -106,11 +99,10 @@
     </Member>
     <Member MemberName="ErrorLengthIncorrect">
       <MemberSignature Language="C#" Value="ErrorLengthIncorrect" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorLengthIncorrect = unsigned int8(103)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -121,11 +113,10 @@
     </Member>
     <Member MemberName="ErrorMemory">
       <MemberSignature Language="C#" Value="ErrorMemory" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorMemory = unsigned int8(146)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -136,11 +127,10 @@
     </Member>
     <Member MemberName="ErrorNoPreciseDiagnostic">
       <MemberSignature Language="C#" Value="ErrorNoPreciseDiagnostic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorNoPreciseDiagnostic = unsigned int8(111)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -151,11 +141,10 @@
     </Member>
     <Member MemberName="ErrorNVDataChanged">
       <MemberSignature Language="C#" Value="ErrorNVDataChanged" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorNVDataChanged = unsigned int8(101)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -166,11 +155,10 @@
     </Member>
     <Member MemberName="ErrorNVDataNotChanged">
       <MemberSignature Language="C#" Value="ErrorNVDataNotChanged" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorNVDataNotChanged = unsigned int8(100)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -181,11 +169,10 @@
     </Member>
     <Member MemberName="ErrorP1P2Incorrect">
       <MemberSignature Language="C#" Value="ErrorP1P2Incorrect" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorP1P2Incorrect = unsigned int8(106)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -196,11 +183,10 @@
     </Member>
     <Member MemberName="ErrorP3Incorrect">
       <MemberSignature Language="C#" Value="ErrorP3Incorrect" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorP3Incorrect = unsigned int8(108)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -211,11 +197,10 @@
     </Member>
     <Member MemberName="ErrorParameterIncorrect">
       <MemberSignature Language="C#" Value="ErrorParameterIncorrect" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorParameterIncorrect = unsigned int8(107)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -226,11 +211,10 @@
     </Member>
     <Member MemberName="ErrorPurseBalance">
       <MemberSignature Language="C#" Value="ErrorPurseBalance" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorPurseBalance = unsigned int8(145)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -241,11 +225,10 @@
     </Member>
     <Member MemberName="ErrorSecurity">
       <MemberSignature Language="C#" Value="ErrorSecurity" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code ErrorSecurity = unsigned int8(102)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -256,11 +239,10 @@
     </Member>
     <Member MemberName="Normal">
       <MemberSignature Language="C#" Value="Normal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code Normal = unsigned int8(144)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -271,11 +253,10 @@
     </Member>
     <Member MemberName="NormalDataResponse">
       <MemberSignature Language="C#" Value="NormalDataResponse" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code NormalDataResponse = unsigned int8(97)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -286,11 +267,10 @@
     </Member>
     <Member MemberName="NormalGetResponse">
       <MemberSignature Language="C#" Value="NormalGetResponse" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code NormalGetResponse = unsigned int8(159)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -301,11 +281,10 @@
     </Member>
     <Member MemberName="WarningNVDataChanged">
       <MemberSignature Language="C#" Value="WarningNVDataChanged" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code WarningNVDataChanged = unsigned int8(99)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
@@ -316,11 +295,10 @@
     </Member>
     <Member MemberName="WarningNVDataNotChanged">
       <MemberSignature Language="C#" Value="WarningNVDataNotChanged" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SW1Code WarningNVDataNotChanged = unsigned int8(98)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>

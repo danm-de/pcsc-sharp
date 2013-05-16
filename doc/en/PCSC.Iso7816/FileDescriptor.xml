@@ -1,10 +1,9 @@
 <Type Name="FileDescriptor" FullName="PCSC.Iso7816.FileDescriptor">
   <TypeSignature Language="C#" Value="public class FileDescriptor" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit FileDescriptor extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -17,11 +16,10 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public FileDescriptor (byte fileDescriptorByte);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 fileDescriptorByte) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="fileDescriptorByte" Type="System.Byte" />
@@ -34,11 +32,10 @@
     </Member>
     <Member MemberName="Descriptor">
       <MemberSignature Language="C#" Value="public byte Descriptor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Descriptor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -51,11 +48,10 @@
     </Member>
     <Member MemberName="ExtendedType">
       <MemberSignature Language="C#" Value="public PCSC.Iso7816.ExtendedFileType ExtendedType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.Iso7816.ExtendedFileType ExtendedType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.ExtendedFileType</ReturnType>
@@ -66,13 +62,124 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="FILE_SHARE_MODE_MASK">
+      <MemberSignature Language="C#" Value="public const byte FILE_SHARE_MODE_MASK = 192;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_SHARE_MODE_MASK = (192)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>192</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_SHARE_MODE_NOTSHAREABLE">
+      <MemberSignature Language="C#" Value="public const byte FILE_SHARE_MODE_NOTSHAREABLE = 0;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_SHARE_MODE_NOTSHAREABLE = (0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>0</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_SHARE_MODE_SHAREABLE">
+      <MemberSignature Language="C#" Value="public const byte FILE_SHARE_MODE_SHAREABLE = 64;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_SHARE_MODE_SHAREABLE = (64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>64</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_TYPE_DF">
+      <MemberSignature Language="C#" Value="public const byte FILE_TYPE_DF = 56;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_TYPE_DF = (56)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>56</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_TYPE_INTERNAL_EF">
+      <MemberSignature Language="C#" Value="public const byte FILE_TYPE_INTERNAL_EF = 8;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_TYPE_INTERNAL_EF = (8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>8</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_TYPE_MASK">
+      <MemberSignature Language="C#" Value="public const byte FILE_TYPE_MASK = 184;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_TYPE_MASK = (184)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>184</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FILE_TYPE_WORKING_EF">
+      <MemberSignature Language="C#" Value="public const byte FILE_TYPE_WORKING_EF = 0;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_TYPE_WORKING_EF = (0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <MemberValue>0</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsSet">
       <MemberSignature Language="C#" Value="public bool IsSet (byte mask, byte bits);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsSet(unsigned int8 mask, unsigned int8 bits) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -91,11 +198,10 @@
     </Member>
     <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static byte op_Implicit (PCSC.Iso7816.FileDescriptor fd);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname unsigned int8 op_Implicit(class PCSC.Iso7816.FileDescriptor fd) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -112,11 +218,10 @@
     </Member>
     <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static PCSC.Iso7816.FileDescriptor op_Implicit (byte b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class PCSC.Iso7816.FileDescriptor op_Implicit(unsigned int8 b) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileDescriptor</ReturnType>
@@ -133,11 +238,10 @@
     </Member>
     <Member MemberName="ShareMode">
       <MemberSignature Language="C#" Value="public PCSC.Iso7816.FileShareMode ShareMode { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.Iso7816.FileShareMode ShareMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileShareMode</ReturnType>
@@ -150,11 +254,10 @@
     </Member>
     <Member MemberName="Structure">
       <MemberSignature Language="C#" Value="public PCSC.Iso7816.FileStructureInfo Structure { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class PCSC.Iso7816.FileStructureInfo Structure" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileStructureInfo</ReturnType>
@@ -167,11 +270,10 @@
     </Member>
     <Member MemberName="Type">
       <MemberSignature Language="C#" Value="public PCSC.Iso7816.FileType Type { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.Iso7816.FileType Type" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>PCSC.Iso7816.FileType</ReturnType>
@@ -179,23 +281,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateFileInfo">
-      <MemberSignature Language="C#" Value="protected void UpdateFileInfo ();" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

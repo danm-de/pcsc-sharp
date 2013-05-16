@@ -1,26 +1,26 @@
 <Type Name="SCardClass" FullName="PCSC.SCardClass">
   <TypeSignature Language="C#" Value="public enum SCardClass" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SCardClass extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Smart card class
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName="Communications">
       <MemberSignature Language="C#" Value="Communications" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass Communications = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -31,16 +31,15 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Communication definitions</summary>
       </Docs>
     </Member>
     <Member MemberName="ICCState">
       <MemberSignature Language="C#" Value="ICCState" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass ICCState = int32(9)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -51,16 +50,15 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>ICC State specific definitions</summary>
       </Docs>
     </Member>
     <Member MemberName="IFDProtocol">
       <MemberSignature Language="C#" Value="IFDProtocol" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass IFDProtocol = int32(8)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -71,16 +69,15 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Interface Device Protocol options</summary>
       </Docs>
     </Member>
     <Member MemberName="Mechanical">
       <MemberSignature Language="C#" Value="Mechanical" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass Mechanical = int32(6)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -91,16 +88,15 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Mechanical characteristic definitions</summary>
       </Docs>
     </Member>
     <Member MemberName="PowerMgmt">
       <MemberSignature Language="C#" Value="PowerMgmt" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass PowerMgmt = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -111,16 +107,15 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Power Management definitions</summary>
       </Docs>
     </Member>
     <Member MemberName="Protocol">
       <MemberSignature Language="C#" Value="Protocol" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass Protocol = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -131,16 +126,15 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Protocol definitions</summary>
       </Docs>
     </Member>
     <Member MemberName="Security">
       <MemberSignature Language="C#" Value="Security" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass Security = int32(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -151,16 +145,15 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Security Assurance definitions</summary>
       </Docs>
     </Member>
     <Member MemberName="System">
       <MemberSignature Language="C#" Value="System" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass System = int32(32767)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -171,16 +164,15 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>System-specific definitions</summary>
       </Docs>
     </Member>
     <Member MemberName="VendorDefined">
       <MemberSignature Language="C#" Value="VendorDefined" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass VendorDefined = int32(7)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -191,16 +183,15 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Vendor specific definitions</summary>
       </Docs>
     </Member>
     <Member MemberName="VendorInfo">
       <MemberSignature Language="C#" Value="VendorInfo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass VendorInfo = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>1.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.0</AssemblyVersion>
-        <AssemblyVersion>2.0.0.1</AssemblyVersion>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -211,7 +202,7 @@
         <ReturnType>PCSC.SCardClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Vendor information definitions</summary>
       </Docs>
     </Member>
   </Members>

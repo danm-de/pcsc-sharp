@@ -208,43 +208,26 @@
     <h1 class="PageTitle" id="T:PCSC.SCardReaderState">SCardReaderState  Class</h1>
     <p class="Summary" id="T:PCSC.SCardReaderState:Summary">A structures that contains the old and the new Smart Card reader status.</p>
     <div id="T:PCSC.SCardReaderState:Signature">
+      <h2>Syntax</h2>
       <div class="Signature">public class  <b>SCardReaderState</b> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IDisposable">IDisposable</a></div>
     </div>
     <div class="Remarks" id="T:PCSC.SCardReaderState:Docs">
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.SCardReaderState:Docs:Remarks')">
-          <span id="T:PCSC.SCardReaderState:Docs:Remarks:toggle">⊟</span> Remarks</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.SCardReaderState:Docs:Remarks">
-        <p>
-Is used as parameter in <a href="../PCSC/SCardContext.html#M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])">SCardContext.GetStatusChange(IntPtr, SCardReaderState[])</a>.
-</p>
-        <p>
-The new event state will be contained in <a href="../PCSC/SCardReaderState.html#P:PCSC.SCardReaderState.EventState">SCardReaderState.EventState</a>. A status change might be a card insertion or removal event, a change in ATR, etc.
-
-To wait for a reader event (reader added or removed) you may use the special reader name "\\?PnP?\Notification". If a reader event occurs the state of this reader will change and the bit <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Changed">SCRState.Changed</a> will be set.
-</p>
-      </blockquote>
-      <h4 class="Subsection">
-        <a href="javascript:toggle_display('T:PCSC.SCardReaderState:Docs:Version Information')">
-          <span id="T:PCSC.SCardReaderState:Docs:Version Information:toggle">⊟</span> Requirements</a>
-      </h4>
-      <blockquote class="SubsectionBox" id="T:PCSC.SCardReaderState:Docs:Version Information">
-        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
-      <h2 class="Section" id="Members">
-        <a href="javascript:toggle_display('_Members')">
-          <span id="_Members:toggle">⊟</span> Members</a>
-      </h2>
-      <blockquote class="SectionBox" id="_Members">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:PCSC.SCardReaderState:Docs:Remarks">
+        <p>Is used as parameter in <a href="../PCSC/ISCardContext.html#M:PCSC.ISCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])">ISCardContext.GetStatusChange(IntPtr, SCardReaderState[])</a>.</p>
+        <p>The new event state will be contained in <a href="../PCSC/SCardReaderState.html#P:PCSC.SCardReaderState.EventState">SCardReaderState.EventState</a>. A status change might be a card insertion or removal event, a change in ATR, etc. To wait for a reader event (reader added or removed) you may use the special reader name "\\?PnP?\Notification". If a reader event occurs the state of this reader will change and the bit <a href="../PCSC/SCRState.html#F:PCSC.SCRState.Changed">SCRState.Changed</a> will be set.</p>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:PCSC.SCardReaderState:Docs:Version Information">
+        <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
         <p>
 								See Also: Inherited members from
 								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
 							</p>
-        <h3>
-          <a href="javascript:toggle_display('Public Constructors')">
-            <span id="Public Constructors:toggle">⊟</span> Public Constructors</a>
-        </h3>
-        <blockquote id="Public Constructors">
+        <h2 class="Section">Public Constructors</h2>
+        <div class="SectionBox" id="Public Constructors">
           <div class="SubsectionBox">
             <table class="TypeMembers">
               <tr valign="top">
@@ -258,16 +241,15 @@ To wait for a reader event (reader added or removed) you may use the special rea
                       <a href="#C:PCSC.SCardReaderState">SCardReaderState</a>
                     </b>()</div>
                 </td>
-                <td>Creates a new Smart Card reader status object.</td>
+                <td>
+            Initializes a new instance of the <a href="../PCSC/SCardReaderState.html">PCSC.SCardReaderState</a> class.
+            </td>
               </tr>
             </table>
           </div>
-        </blockquote>
-        <h3>
-          <a href="javascript:toggle_display('Public Properties')">
-            <span id="Public Properties:toggle">⊟</span> Public Properties</a>
-        </h3>
-        <blockquote id="Public Properties">
+        </div>
+        <h2 class="Section">Public Properties</h2>
+        <div class="SectionBox" id="Public Properties">
           <div class="SubsectionBox">
             <table class="TypeMembers">
               <tr valign="top">
@@ -277,12 +259,14 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 </td>
                 <td>
                   <b>
-                    <a href="#P:PCSC.SCardReaderState.ATR">ATR</a>
+                    <a href="#P:PCSC.SCardReaderState.Atr">Atr</a>
                   </b>
                 </td>
                 <td>
                   <i>
-                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</i>. ATR Value.</td>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</i>. 
+            Answer To Reset (ATR)
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -297,7 +281,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. 
+            Number of change events.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -312,7 +298,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td>
                   <i>
                     <a href="../PCSC/SCRState.html">SCRState</a>
-                  </i>. Current state of reader.</td>
+                  </i>. 
+            Current state of reader.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -327,7 +315,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a>
-                  </i>. Current state of reader.</td>
+                  </i>. 
+            Current state of reader.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -342,7 +332,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td>
                   <i>
                     <a href="../PCSC/SCRState.html">SCRState</a>
-                  </i>. Reader state after a state change.</td>
+                  </i>. 
+            Reader state after a state change.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -357,7 +349,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a>
-                  </i>. Reader state after a state change.</td>
+                  </i>. 
+            Reader state after a state change.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -372,7 +366,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
-                  </i>. The reader name.</td>
+                  </i>. 
+            The reader's name.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -387,7 +383,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int64">long</a>
-                  </i>. User defined data.</td>
+                  </i>. 
+            User defined data.
+            </td>
               </tr>
               <tr valign="top">
                 <td>
@@ -402,16 +400,15 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a>
-                  </i>. User defined data.</td>
+                  </i>. 
+            User defined data.
+            </td>
               </tr>
             </table>
           </div>
-        </blockquote>
-        <h3>
-          <a href="javascript:toggle_display('Public Methods')">
-            <span id="Public Methods:toggle">⊟</span> Public Methods</a>
-        </h3>
-        <blockquote id="Public Methods">
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
           <div class="SubsectionBox">
             <table class="TypeMembers">
               <tr valign="top">
@@ -422,7 +419,9 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.SCardReaderState.Dispose">Dispose</a>
-                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<blockquote>
+            Frees unmanaged resources.
+            </blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -432,337 +431,292 @@ To wait for a reader event (reader added or removed) you may use the special rea
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.SCardReaderState.Finalize">Finalize</a>
-                  </b>()<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<blockquote>
+            Frees unmanaged resources.
+            </blockquote></td>
               </tr>
             </table>
           </div>
-        </blockquote>
-      </blockquote>
+        </div>
+        <h2 class="Section">Protected Methods</h2>
+        <div class="SectionBox" id="Protected Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.SCardReaderState.Dispose(System.Boolean)">Dispose</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>)<blockquote>
+            Frees unmanaged resources.
+            </blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="Members" id="T:PCSC.SCardReaderState:Members">
-      <h2 class="Section" id="MemberDetails">
-        <a href="javascript:toggle_display('_MemberDetails')">
-          <span id="_MemberDetails:toggle">⊟</span> Member Details</a>
-      </h2>
-      <blockquote class="SectionBox" id="_MemberDetails">
-        <h3 id="C:PCSC.SCardReaderState">
-          <a href="javascript:toggle_display('C:PCSC.SCardReaderState:member')">
-            <span id="C:PCSC.SCardReaderState:member:toggle">⊟</span> SCardReaderState Constructor</a>
-        </h3>
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="C:PCSC.SCardReaderState">SCardReaderState Constructor</h3>
         <blockquote id="C:PCSC.SCardReaderState:member">
-          <p class="Summary">Creates a new Smart Card reader status object.</p>
+          <p class="Summary">
+            Initializes a new instance of the <a href="../PCSC/SCardReaderState.html">PCSC.SCardReaderState</a> class.
+            </p>
+          <h2>Syntax</h2>
           <div class="Signature">public  <b>SCardReaderState</b> ()</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('C:PCSC.SCardReaderState:Remarks')">
-              <span id="C:PCSC.SCardReaderState:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="C:PCSC.SCardReaderState:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('C:PCSC.SCardReaderState:Version Information')">
-              <span id="C:PCSC.SCardReaderState:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="C:PCSC.SCardReaderState:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="C:PCSC.SCardReaderState:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="C:PCSC.SCardReaderState:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="P:PCSC.SCardReaderState.ATR">
-          <a href="javascript:toggle_display('P:PCSC.SCardReaderState.ATR:member')">
-            <span id="P:PCSC.SCardReaderState.ATR:member:toggle">⊟</span> ATR Property</a>
-        </h3>
-        <blockquote id="P:PCSC.SCardReaderState.ATR:member">
-          <p class="Summary">ATR Value.</p>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] <b>ATR</b>  { set; get; }</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.ATR:Value')">
-              <span id="P:PCSC.SCardReaderState.ATR:Value:toggle">⊟</span> Value</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.ATR:Value">
+        <h3 id="P:PCSC.SCardReaderState.Atr">Atr Property</h3>
+        <blockquote id="P:PCSC.SCardReaderState.Atr:member">
+          <p class="Summary">
+            Answer To Reset (ATR)
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] <b>Atr</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.Atr:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.ATR:Remarks')">
-              <span id="P:PCSC.SCardReaderState.ATR:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.ATR:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.ATR:Version Information')">
-              <span id="P:PCSC.SCardReaderState.ATR:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.ATR:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.Atr:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.Atr:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="P:PCSC.SCardReaderState.CardChangeEventCnt">
-          <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CardChangeEventCnt:member')">
-            <span id="P:PCSC.SCardReaderState.CardChangeEventCnt:member:toggle">⊟</span> CardChangeEventCnt Property</a>
-        </h3>
+        <h3 id="P:PCSC.SCardReaderState.CardChangeEventCnt">CardChangeEventCnt Property</h3>
         <blockquote id="P:PCSC.SCardReaderState.CardChangeEventCnt:member">
           <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>CardChangeEventCnt</b>  { set; get; }</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CardChangeEventCnt:Value')">
-              <span id="P:PCSC.SCardReaderState.CardChangeEventCnt:Value:toggle">⊟</span> Value</a>
-          </h4>
+            Number of change events.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>CardChangeEventCnt</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CardChangeEventCnt:Value">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CardChangeEventCnt:Remarks')">
-              <span id="P:PCSC.SCardReaderState.CardChangeEventCnt:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CardChangeEventCnt:Remarks">
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.CardChangeEventCnt:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.CardChangeEventCnt:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.SCardReaderState.CurrentState">CurrentState Property</h3>
+        <blockquote id="P:PCSC.SCardReaderState.CurrentState:member">
+          <p class="Summary">
+            Current state of reader.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC/SCRState.html">SCRState</a> <b>CurrentState</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CurrentState:Value">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CardChangeEventCnt:Version Information')">
-              <span id="P:PCSC.SCardReaderState.CardChangeEventCnt:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CardChangeEventCnt:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.CurrentState:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.CurrentState:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="P:PCSC.SCardReaderState.CurrentState">
-          <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CurrentState:member')">
-            <span id="P:PCSC.SCardReaderState.CurrentState:member:toggle">⊟</span> CurrentState Property</a>
-        </h3>
-        <blockquote id="P:PCSC.SCardReaderState.CurrentState:member">
-          <p class="Summary">Current state of reader.</p>
-          <div class="Signature">public <a href="../PCSC/SCRState.html">SCRState</a> <b>CurrentState</b>  { set; get; }</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CurrentState:Value')">
-              <span id="P:PCSC.SCardReaderState.CurrentState:Value:toggle">⊟</span> Value</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CurrentState:Value">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CurrentState:Remarks')">
-              <span id="P:PCSC.SCardReaderState.CurrentState:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CurrentState:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CurrentState:Version Information')">
-              <span id="P:PCSC.SCardReaderState.CurrentState:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CurrentState:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
-          <hr size="1" />
-        </blockquote>
-        <h3 id="P:PCSC.SCardReaderState.CurrentStateValue">
-          <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CurrentStateValue:member')">
-            <span id="P:PCSC.SCardReaderState.CurrentStateValue:member:toggle">⊟</span> CurrentStateValue Property</a>
-        </h3>
+        <h3 id="P:PCSC.SCardReaderState.CurrentStateValue">CurrentStateValue Property</h3>
         <blockquote id="P:PCSC.SCardReaderState.CurrentStateValue:member">
-          <p class="Summary">Current state of reader.</p>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>CurrentStateValue</b>  { set; get; }</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CurrentStateValue:Value')">
-              <span id="P:PCSC.SCardReaderState.CurrentStateValue:Value:toggle">⊟</span> Value</a>
-          </h4>
+          <p class="Summary">
+            Current state of reader.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>CurrentStateValue</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CurrentStateValue:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CurrentStateValue:Remarks')">
-              <span id="P:PCSC.SCardReaderState.CurrentStateValue:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CurrentStateValue:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.CurrentStateValue:Version Information')">
-              <span id="P:PCSC.SCardReaderState.CurrentStateValue:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.CurrentStateValue:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.CurrentStateValue:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.CurrentStateValue:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:PCSC.SCardReaderState.Dispose">
-          <a href="javascript:toggle_display('M:PCSC.SCardReaderState.Dispose:member')">
-            <span id="M:PCSC.SCardReaderState.Dispose:member:toggle">⊟</span> Dispose Method</a>
-        </h3>
+        <h3 id="M:PCSC.SCardReaderState.Dispose">Dispose Method</h3>
         <blockquote id="M:PCSC.SCardReaderState.Dispose:member">
           <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+            Frees unmanaged resources.
+            </p>
+          <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Dispose</b> ()</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('M:PCSC.SCardReaderState.Dispose:Remarks')">
-              <span id="M:PCSC.SCardReaderState.Dispose:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReaderState.Dispose:Remarks">
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:PCSC.SCardReaderState.Dispose:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:PCSC.SCardReaderState.Dispose:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.SCardReaderState.Dispose(System.Boolean)">Dispose Method</h3>
+        <blockquote id="M:PCSC.SCardReaderState.Dispose(System.Boolean):member">
+          <p class="Summary">
+            Frees unmanaged resources.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">protected virtual <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Dispose</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> disposing)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardReaderState.Dispose(System.Boolean):Parameters">
+            <dl>
+              <dt>
+                <i>disposing</i>
+              </dt>
+              <dd>Ignored.</dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:PCSC.SCardReaderState.Dispose(System.Boolean):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:PCSC.SCardReaderState.Dispose(System.Boolean):Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.SCardReaderState.EventState">EventState Property</h3>
+        <blockquote id="P:PCSC.SCardReaderState.EventState:member">
+          <p class="Summary">
+            Reader state after a state change.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC/SCRState.html">SCRState</a> <b>EventState</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.EventState:Value">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('M:PCSC.SCardReaderState.Dispose:Version Information')">
-              <span id="M:PCSC.SCardReaderState.Dispose:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReaderState.Dispose:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.EventState:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.EventState:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="P:PCSC.SCardReaderState.EventState">
-          <a href="javascript:toggle_display('P:PCSC.SCardReaderState.EventState:member')">
-            <span id="P:PCSC.SCardReaderState.EventState:member:toggle">⊟</span> EventState Property</a>
-        </h3>
-        <blockquote id="P:PCSC.SCardReaderState.EventState:member">
-          <p class="Summary">Reader state after a state change.</p>
-          <div class="Signature">public <a href="../PCSC/SCRState.html">SCRState</a> <b>EventState</b>  { set; get; }</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.EventState:Value')">
-              <span id="P:PCSC.SCardReaderState.EventState:Value:toggle">⊟</span> Value</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.EventState:Value">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.EventState:Remarks')">
-              <span id="P:PCSC.SCardReaderState.EventState:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.EventState:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.EventState:Version Information')">
-              <span id="P:PCSC.SCardReaderState.EventState:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.EventState:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
-          <hr size="1" />
-        </blockquote>
-        <h3 id="P:PCSC.SCardReaderState.EventStateValue">
-          <a href="javascript:toggle_display('P:PCSC.SCardReaderState.EventStateValue:member')">
-            <span id="P:PCSC.SCardReaderState.EventStateValue:member:toggle">⊟</span> EventStateValue Property</a>
-        </h3>
+        <h3 id="P:PCSC.SCardReaderState.EventStateValue">EventStateValue Property</h3>
         <blockquote id="P:PCSC.SCardReaderState.EventStateValue:member">
-          <p class="Summary">Reader state after a state change.</p>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>EventStateValue</b>  { set; get; }</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.EventStateValue:Value')">
-              <span id="P:PCSC.SCardReaderState.EventStateValue:Value:toggle">⊟</span> Value</a>
-          </h4>
+          <p class="Summary">
+            Reader state after a state change.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>EventStateValue</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.EventStateValue:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.EventStateValue:Remarks')">
-              <span id="P:PCSC.SCardReaderState.EventStateValue:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.EventStateValue:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.EventStateValue:Version Information')">
-              <span id="P:PCSC.SCardReaderState.EventStateValue:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.EventStateValue:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.EventStateValue:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.EventStateValue:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:PCSC.SCardReaderState.Finalize">
-          <a href="javascript:toggle_display('M:PCSC.SCardReaderState.Finalize:member')">
-            <span id="M:PCSC.SCardReaderState.Finalize:member:toggle">⊟</span> Finalize Method</a>
-        </h3>
+        <h3 id="M:PCSC.SCardReaderState.Finalize">Finalize Method</h3>
         <blockquote id="M:PCSC.SCardReaderState.Finalize:member">
           <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+            Frees unmanaged resources.
+            </p>
+          <h2>Syntax</h2>
           <div class="Signature">
             <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Finalize</b> ()</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('M:PCSC.SCardReaderState.Finalize:Remarks')">
-              <span id="M:PCSC.SCardReaderState.Finalize:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReaderState.Finalize:Remarks">
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:PCSC.SCardReaderState.Finalize:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:PCSC.SCardReaderState.Finalize:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.SCardReaderState.ReaderName">ReaderName Property</h3>
+        <blockquote id="P:PCSC.SCardReaderState.ReaderName:member">
+          <p class="Summary">
+            The reader's name.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ReaderName</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.ReaderName:Value">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('M:PCSC.SCardReaderState.Finalize:Version Information')">
-              <span id="M:PCSC.SCardReaderState.Finalize:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReaderState.Finalize:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.ReaderName:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.ReaderName:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="P:PCSC.SCardReaderState.ReaderName">
-          <a href="javascript:toggle_display('P:PCSC.SCardReaderState.ReaderName:member')">
-            <span id="P:PCSC.SCardReaderState.ReaderName:member:toggle">⊟</span> ReaderName Property</a>
-        </h3>
-        <blockquote id="P:PCSC.SCardReaderState.ReaderName:member">
-          <p class="Summary">The reader name.</p>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ReaderName</b>  { set; get; }</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.ReaderName:Value')">
-              <span id="P:PCSC.SCardReaderState.ReaderName:Value:toggle">⊟</span> Value</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.ReaderName:Value">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.ReaderName:Remarks')">
-              <span id="P:PCSC.SCardReaderState.ReaderName:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.ReaderName:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.ReaderName:Version Information')">
-              <span id="P:PCSC.SCardReaderState.ReaderName:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.ReaderName:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
-          <hr size="1" />
-        </blockquote>
-        <h3 id="P:PCSC.SCardReaderState.UserData">
-          <a href="javascript:toggle_display('P:PCSC.SCardReaderState.UserData:member')">
-            <span id="P:PCSC.SCardReaderState.UserData:member:toggle">⊟</span> UserData Property</a>
-        </h3>
+        <h3 id="P:PCSC.SCardReaderState.UserData">UserData Property</h3>
         <blockquote id="P:PCSC.SCardReaderState.UserData:member">
-          <p class="Summary">User defined data.</p>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int64">long</a> <b>UserData</b>  { set; get; }</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.UserData:Value')">
-              <span id="P:PCSC.SCardReaderState.UserData:Value:toggle">⊟</span> Value</a>
-          </h4>
+          <p class="Summary">
+            User defined data.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int64">long</a> <b>UserData</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.UserData:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.UserData:Remarks')">
-              <span id="P:PCSC.SCardReaderState.UserData:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.UserData:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.UserData:Version Information')">
-              <span id="P:PCSC.SCardReaderState.UserData:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.UserData:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>1.0.0.0, 2.0.0.0, 2.0.0.1</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.UserData:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.UserData:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="P:PCSC.SCardReaderState.UserDataPointer">
-          <a href="javascript:toggle_display('P:PCSC.SCardReaderState.UserDataPointer:member')">
-            <span id="P:PCSC.SCardReaderState.UserDataPointer:member:toggle">⊟</span> UserDataPointer Property</a>
-        </h3>
+        <h3 id="P:PCSC.SCardReaderState.UserDataPointer">UserDataPointer Property</h3>
         <blockquote id="P:PCSC.SCardReaderState.UserDataPointer:member">
-          <p class="Summary">User defined data.</p>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>UserDataPointer</b>  { set; get; }</div>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.UserDataPointer:Value')">
-              <span id="P:PCSC.SCardReaderState.UserDataPointer:Value:toggle">⊟</span> Value</a>
-          </h4>
+          <p class="Summary">
+            User defined data.
+            </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IntPtr">IntPtr</a> <b>UserDataPointer</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.UserDataPointer:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.UserDataPointer:Remarks')">
-              <span id="P:PCSC.SCardReaderState.UserDataPointer:Remarks:toggle">⊟</span> Remarks</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.UserDataPointer:Remarks">
-          </blockquote>
-          <h4 class="Subsection">
-            <a href="javascript:toggle_display('P:PCSC.SCardReaderState.UserDataPointer:Version Information')">
-              <span id="P:PCSC.SCardReaderState.UserDataPointer:Version Information:toggle">⊟</span> Requirements</a>
-          </h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.SCardReaderState.UserDataPointer:Version Information">
-            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>2.0.0.1</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.UserDataPointer:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.SCardReaderState.UserDataPointer:Version Information">
+            <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-      </blockquote>
+      </div>
     </div>
     <hr size="1" />
     <div class="Copyright">
