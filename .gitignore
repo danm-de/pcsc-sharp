@@ -1,7 +1,7 @@
 bin/
-
 obj/
 *.suo
+*.pidb
 *.userprefs
 *.csproj.user
 *.DotSettings.user
