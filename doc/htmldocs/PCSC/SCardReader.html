@@ -415,8 +415,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)">GetAttrib</a>
-                  </b>(<a href="../PCSC/SCardAttr.html">SCardAttr</a>, <i>out</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[])<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Gets an attribute from the IFD Handler (reader driver).</blockquote></td>
+                    <a href="#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)">GetAttrib</a>
+                  </b>(<a href="../PCSC/SCardAttribute.html">SCardAttribute</a>, <i>out</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[])<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Gets an attribute from the IFD Handler (reader driver).</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -435,8 +435,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)">GetAttrib</a>
-                  </b>(<a href="../PCSC/SCardAttr.html">SCardAttr</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[], <i>out</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Gets an attribute from the IFD Handler (reader driver).</blockquote></td>
+                    <a href="#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@)">GetAttrib</a>
+                  </b>(<a href="../PCSC/SCardAttribute.html">SCardAttribute</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[], <i>out</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Gets an attribute from the IFD Handler (reader driver).</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -467,8 +467,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])">SetAttrib</a>
-                  </b>(<a href="../PCSC/SCardAttr.html">SCardAttr</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[])<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Set an attribute of the IFD Handler.</blockquote></td>
+                    <a href="#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[])">SetAttrib</a>
+                  </b>(<a href="../PCSC/SCardAttribute.html">SCardAttribute</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[])<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Set an attribute of the IFD Handler.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -487,8 +487,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)">SetAttrib</a>
-                  </b>(<a href="../PCSC/SCardAttr.html">SCardAttr</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[], <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Set an attribute of the IFD Handler.</blockquote></td>
+                    <a href="#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32)">SetAttrib</a>
+                  </b>(<a href="../PCSC/SCardAttribute.html">SCardAttribute</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[], <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../PCSC/SCardError.html">SCardError</a></nobr><blockquote>Set an attribute of the IFD Handler.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -618,6 +618,21 @@
               </dt>
               <dd>Connection context to the PC/SC Resource Manager.</dd>
             </dl>
+          </blockquote>
+          <h4 class="Subsection">Exceptions</h4>
+          <blockquote class="SubsectionBox" id="C:PCSC.SCardReader(PCSC.ISCardContext):Exceptions">
+            <table class="TypeDocumentation">
+              <tr>
+                <th>Type</th>
+                <th>Reason</th>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.ArgumentNullException">ArgumentNullException</a>
+                </td>
+                <td>If <i>context</i> is <tt>null</tt></td>
+              </tr>
+            </table>
           </blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="C:PCSC.SCardReader(PCSC.ISCardContext):Remarks">
@@ -1284,13 +1299,13 @@
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)">GetAttrib Method</h3>
-        <blockquote id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@):member">
+        <h3 id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)">GetAttrib Method</h3>
+        <blockquote id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@):member">
           <p class="Summary">Gets an attribute from the IFD Handler (reader driver).</p>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>GetAttrib</b> (<a href="../PCSC/SCardAttr.html">SCardAttr</a> attributeId, <i>out</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] attribute)</div>
+          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>GetAttrib</b> (<a href="../PCSC/SCardAttribute.html">SCardAttribute</a> attributeId, <i>out</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] attribute)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@):Parameters">
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@):Parameters">
             <dl>
               <dt>
                 <i>attributeId</i>
@@ -1303,7 +1318,7 @@
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@):Returns">
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@):Returns">
             <table class="Documentation">
               <tr>
                 <th>Return code</th>
@@ -1373,9 +1388,9 @@
             </table>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@):Remarks">This method calls the API function SCardGetAttrib().</div>
+          <div class="SectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@):Remarks">This method calls the API function SCardGetAttrib().</div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@):Version Information">
+          <div class="SectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@):Version Information">
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
@@ -1474,13 +1489,13 @@
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)">GetAttrib Method</h3>
-        <blockquote id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@):member">
+        <h3 id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@)">GetAttrib Method</h3>
+        <blockquote id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@):member">
           <p class="Summary">Gets an attribute from the IFD Handler (reader driver).</p>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>GetAttrib</b> (<a href="../PCSC/SCardAttr.html">SCardAttr</a> attributeId, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] attribute, <i>out</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> attributeBufferLength)</div>
+          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>GetAttrib</b> (<a href="../PCSC/SCardAttribute.html">SCardAttribute</a> attributeId, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] attribute, <i>out</i> <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> attributeBufferLength)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@):Parameters">
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@):Parameters">
             <dl>
               <dt>
                 <i>attributeId</i>
@@ -1497,7 +1512,7 @@
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@):Returns">
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@):Returns">
             <table class="Documentation">
               <tr>
                 <th>Return code</th>
@@ -1571,12 +1586,12 @@
             <p>If the method returned with <a href="../PCSC/SCardError.html#F:PCSC.SCardError.Success">SCardError.Success</a> then <i>attributeBufferLength</i> contains the exact size of the result in
             <i>attribute</i>
             .</p>
-            <p>For an example please see <a href="../PCSC/ISCardReader.html#M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)">ISCardReader.GetAttrib(SCardAttr, Byte[]@)</a>.</p>
+            <p>For an example please see <a href="../PCSC/ISCardReader.html#M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)">ISCardReader.GetAttrib(SCardAttribute, Byte[]@)</a>.</p>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@):Remarks">This method calls the API function SCardGetAttrib().</div>
+          <div class="SectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@):Remarks">This method calls the API function SCardGetAttrib().</div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@):Version Information">
+          <div class="SectionBox" id="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@):Version Information">
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
@@ -1677,7 +1692,7 @@
             <p>If the method returned with <a href="../PCSC/SCardError.html#F:PCSC.SCardError.Success">SCardError.Success</a> then <i>attributeBufferLength</i> contains the exact size of the result in
             <i>attribute</i>
             .</p>
-            <p>For an example please see <a href="../PCSC/ISCardReader.html#M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)">ISCardReader.GetAttrib(SCardAttr, Byte[]@)</a>.</p>
+            <p>For an example please see <a href="../PCSC/ISCardReader.html#M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)">ISCardReader.GetAttrib(SCardAttribute, Byte[]@)</a>.</p>
           </blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:PCSC.SCardReader.GetAttrib(System.IntPtr,System.Byte[],System.Int32@):Remarks">This method calls the API function SCardGetAttrib().</div>
@@ -1758,13 +1773,13 @@
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])">SetAttrib Method</h3>
-        <blockquote id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[]):member">
+        <h3 id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[])">SetAttrib Method</h3>
+        <blockquote id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[]):member">
           <p class="Summary">Set an attribute of the IFD Handler.</p>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>SetAttrib</b> (<a href="../PCSC/SCardAttr.html">SCardAttr</a> attributeId, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] attribute)</div>
+          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>SetAttrib</b> (<a href="../PCSC/SCardAttribute.html">SCardAttribute</a> attributeId, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] attribute)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[]):Parameters">
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[]):Parameters">
             <dl>
               <dt>
                 <i>attributeId</i>
@@ -1777,7 +1792,7 @@
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[]):Returns">
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[]):Returns">
             <table class="Documentation">
               <tr>
                 <th>Value</th>
@@ -1834,12 +1849,12 @@
             </table>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[]):Remarks">
+          <div class="SectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[]):Remarks">
             <p>The list of attributes you can set depends on the IFD handler you are using.</p>
             <p>This method calls the API function SCardSetAttrib().</p>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[]):Version Information">
+          <div class="SectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[]):Version Information">
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
@@ -1928,13 +1943,13 @@
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)">SetAttrib Method</h3>
-        <blockquote id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32):member">
+        <h3 id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32)">SetAttrib Method</h3>
+        <blockquote id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32):member">
           <p class="Summary">Set an attribute of the IFD Handler.</p>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>SetAttrib</b> (<a href="../PCSC/SCardAttr.html">SCardAttr</a> attributeId, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] attribute, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> attributeBufferLength)</div>
+          <div class="Signature">public <a href="../PCSC/SCardError.html">SCardError</a> <b>SetAttrib</b> (<a href="../PCSC/SCardAttribute.html">SCardAttribute</a> attributeId, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] attribute, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> attributeBufferLength)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32):Parameters">
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32):Parameters">
             <dl>
               <dt>
                 <i>attributeId</i>
@@ -1951,7 +1966,7 @@
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32):Returns">
+          <blockquote class="SubsectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32):Returns">
             <table class="Documentation">
               <tr>
                 <th>Column</th>
@@ -2008,12 +2023,12 @@
             </table>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32):Remarks">
+          <div class="SectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32):Remarks">
             <p>The list of attributes you can set depends on the IFD handler you are using.</p>
             <p>This method calls the API function SCardSetAttrib().</p>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32):Version Information">
+          <div class="SectionBox" id="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32):Version Information">
             <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>

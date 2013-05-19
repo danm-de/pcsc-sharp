@@ -1,0 +1,646 @@
+<html>
+  <head>
+    <title>PCSC.Iso7816.IIsoReader</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">pcsc-sharp</a> : <a href="index.html">PCSC.Iso7816 Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:PCSC.Iso7816.IIsoReader">Overview</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.Iso7816.IIsoReader:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.Iso7816.IIsoReader:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:PCSC.Iso7816.IIsoReader:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:PCSC.Iso7816.IIsoReader">IIsoReader  Interface</h1>
+    <p class="Summary" id="T:PCSC.Iso7816.IIsoReader:Summary">
+      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+    </p>
+    <div id="T:PCSC.Iso7816.IIsoReader:Signature">
+      <h2>Syntax</h2>
+      <div class="Signature">public interface  <b>IIsoReader</b> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IDisposable">IDisposable</a></div>
+    </div>
+    <div class="Remarks" id="T:PCSC.Iso7816.IIsoReader:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:PCSC.Iso7816.IIsoReader:Docs:Remarks">
+        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+      </div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:PCSC.Iso7816.IIsoReader:Docs:Version Information">
+        <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <h2 class="Section">Public Properties</h2>
+        <div class="SectionBox" id="Public Properties">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IIsoReader.ActiveProtocol">ActiveProtocol</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IIsoReader.CurrentContext">CurrentContext</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC/ISCardContext.html">PCSC.ISCardContext</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IIsoReader.CurrentShareMode">CurrentShareMode</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IIsoReader.MaxReceiveSize">MaxReceiveSize</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IIsoReader.Reader">Reader</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="../PCSC/ISCardReader.html">PCSC.ISCardReader</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IIsoReader.ReaderName">ReaderName</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime">RetransmitWaitTime</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">Connect</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a>, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase)">ConstructCommandApdu</a>
+                  </b>(<a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a>)<nobr> : <a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition)">Disconnect</a>
+                  </b>(<a href="../PCSC/SCardReaderDisposition.html">PCSC.SCardReaderDisposition</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu)">Transmit</a>
+                  </b>(<a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a>)<nobr> : <a href="../PCSC.Iso7816/Response.html">Response</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:PCSC.Iso7816.IIsoReader:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="P:PCSC.Iso7816.IIsoReader.ActiveProtocol">ActiveProtocol Property</h3>
+        <blockquote id="P:PCSC.Iso7816.IIsoReader.ActiveProtocol:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> <b>ActiveProtocol</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IIsoReader.ActiveProtocol:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.ActiveProtocol:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.ActiveProtocol:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">Connect Method</h3>
+        <blockquote id="M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Connect</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> readerName, <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a> mode, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> protocol)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Parameters">
+            <dl>
+              <dt>
+                <i>readerName</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>mode</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>protocol</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase)">ConstructCommandApdu Method</h3>
+        <blockquote id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a> <b>ConstructCommandApdu</b> (<a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a> isoCase)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Parameters">
+            <dl>
+              <dt>
+                <i>isoCase</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IIsoReader.CurrentContext">CurrentContext Property</h3>
+        <blockquote id="P:PCSC.Iso7816.IIsoReader.CurrentContext:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC/ISCardContext.html">PCSC.ISCardContext</a> <b>CurrentContext</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IIsoReader.CurrentContext:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.CurrentContext:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.CurrentContext:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IIsoReader.CurrentShareMode">CurrentShareMode Property</h3>
+        <blockquote id="P:PCSC.Iso7816.IIsoReader.CurrentShareMode:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a> <b>CurrentShareMode</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IIsoReader.CurrentShareMode:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.CurrentShareMode:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.CurrentShareMode:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition)">Disconnect Method</h3>
+        <blockquote id="M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Disconnect</b> (<a href="../PCSC/SCardReaderDisposition.html">PCSC.SCardReaderDisposition</a> disposition)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition):Parameters">
+            <dl>
+              <dt>
+                <i>disposition</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IIsoReader.MaxReceiveSize">MaxReceiveSize Property</h3>
+        <blockquote id="P:PCSC.Iso7816.IIsoReader.MaxReceiveSize:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>MaxReceiveSize</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IIsoReader.MaxReceiveSize:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.MaxReceiveSize:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.MaxReceiveSize:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IIsoReader.Reader">Reader Property</h3>
+        <blockquote id="P:PCSC.Iso7816.IIsoReader.Reader:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC/ISCardReader.html">PCSC.ISCardReader</a> <b>Reader</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IIsoReader.Reader:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.Reader:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.Reader:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IIsoReader.ReaderName">ReaderName Property</h3>
+        <blockquote id="P:PCSC.Iso7816.IIsoReader.ReaderName:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ReaderName</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IIsoReader.ReaderName:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.ReaderName:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.ReaderName:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime">RetransmitWaitTime Property</h3>
+        <blockquote id="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>RetransmitWaitTime</b>  { get; set; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu)">Transmit Method</h3>
+        <blockquote id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC.Iso7816/Response.html">Response</a> <b>Transmit</b> (<a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a> commandApdu)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu):Parameters">
+            <dl>
+              <dt>
+                <i>commandApdu</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

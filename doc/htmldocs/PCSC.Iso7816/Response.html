@@ -257,6 +257,18 @@
                 <td>[read-only]<div></div></td>
                 <td>
                   <b>
+                    <a href="#P:PCSC.Iso7816.Response.Count">Count</a>
+                  </b>
+                </td>
+                <td>
+                  <i>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
+                <td>[read-only]<div></div></td>
+                <td>
+                  <b>
                     <a href="#P:PCSC.Iso7816.Response.HasData">HasData</a>
                   </b>
                 </td>
@@ -266,15 +278,26 @@
                   </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
               </tr>
               <tr valign="top">
+                <td>[read-only]<div><i>default property</i></div><div></div></td>
+                <td>
+                  <b>
+                    <a href="#P:PCSC.Iso7816.Response.Item(System.Int32)">Item</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)</td>
+                <td>
+                  <i>
+                    <a href="../PCSC.Iso7816/ResponseApdu.html">ResponseApdu</a>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+              </tr>
+              <tr valign="top">
                 <td>[read-only]<div></div></td>
                 <td>
                   <b>
-                    <a href="#P:PCSC.Iso7816.Response.ResponseApduList">ResponseApduList</a>
+                    <a href="#P:PCSC.Iso7816.Response.PciCount">PciCount</a>
                   </b>
                 </td>
                 <td>
                   <i>
-                    <a href="../PCSC.Iso7816/ResponseApduList.html">ResponseApduList</a>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
                   </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
               </tr>
               <tr valign="top">
@@ -327,6 +350,16 @@
                 </td>
                 <td colspan="2">
                   <b>
+                    <a href="#M:PCSC.Iso7816.Response.Get(System.Int32)">Get</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../PCSC.Iso7816/ResponseApdu.html">ResponseApdu</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
                     <a href="#M:PCSC.Iso7816.Response.GetData">GetData</a>
                   </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
@@ -339,6 +372,16 @@
                   <b>
                     <a href="#M:PCSC.Iso7816.Response.GetEnumerator">GetEnumerator</a>
                   </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IEnumerator`1">IEnumerator&lt;ResponseApdu&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:PCSC.Iso7816.Response.GetPci(System.Int32)">GetPci</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>)<nobr> : <a href="../PCSC/SCardPCI.html">PCSC.SCardPCI</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
             </table>
           </div>
@@ -354,8 +397,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:PCSC.Iso7816.Response.AddRecvPci(PCSC.SCardPCI)">AddRecvPci</a>
-                  </b>(<a href="../PCSC/SCardPCI.html">PCSC.SCardPCI</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                    <a href="#M:PCSC.Iso7816.Response.Add(PCSC.Iso7816.ResponseApdu)">Add</a>
+                  </b>(<a href="../PCSC.Iso7816/ResponseApdu.html">ResponseApdu</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -364,8 +407,8 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:PCSC.Iso7816.Response.AddResponseApdu(PCSC.Iso7816.ResponseApdu)">AddResponseApdu</a>
-                  </b>(<a href="../PCSC.Iso7816/ResponseApdu.html">ResponseApdu</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                    <a href="#M:PCSC.Iso7816.Response.Add(PCSC.SCardPCI)">Add</a>
+                  </b>(<a href="../PCSC/SCardPCI.html">PCSC.SCardPCI</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
             </table>
           </div>
@@ -412,18 +455,18 @@
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:PCSC.Iso7816.Response.AddRecvPci(PCSC.SCardPCI)">AddRecvPci Method</h3>
-        <blockquote id="M:PCSC.Iso7816.Response.AddRecvPci(PCSC.SCardPCI):member">
+        <h3 id="M:PCSC.Iso7816.Response.Add(PCSC.Iso7816.ResponseApdu)">Add Method</h3>
+        <blockquote id="M:PCSC.Iso7816.Response.Add(PCSC.Iso7816.ResponseApdu):member">
           <p class="Summary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature">protected <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddRecvPci</b> (<a href="../PCSC/SCardPCI.html">PCSC.SCardPCI</a> recvPci)</div>
+          <div class="Signature">protected <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Add</b> (<a href="../PCSC.Iso7816/ResponseApdu.html">ResponseApdu</a> responseApdu)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Response.AddRecvPci(PCSC.SCardPCI):Parameters">
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Response.Add(PCSC.Iso7816.ResponseApdu):Parameters">
             <dl>
               <dt>
-                <i>recvPci</i>
+                <i>responseApdu</i>
               </dt>
               <dd>
                 <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -431,26 +474,26 @@
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:PCSC.Iso7816.Response.AddRecvPci(PCSC.SCardPCI):Remarks">
+          <div class="SectionBox" id="M:PCSC.Iso7816.Response.Add(PCSC.Iso7816.ResponseApdu):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:PCSC.Iso7816.Response.AddRecvPci(PCSC.SCardPCI):Version Information">
+          <div class="SectionBox" id="M:PCSC.Iso7816.Response.Add(PCSC.Iso7816.ResponseApdu):Version Information">
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:PCSC.Iso7816.Response.AddResponseApdu(PCSC.Iso7816.ResponseApdu)">AddResponseApdu Method</h3>
-        <blockquote id="M:PCSC.Iso7816.Response.AddResponseApdu(PCSC.Iso7816.ResponseApdu):member">
+        <h3 id="M:PCSC.Iso7816.Response.Add(PCSC.SCardPCI)">Add Method</h3>
+        <blockquote id="M:PCSC.Iso7816.Response.Add(PCSC.SCardPCI):member">
           <p class="Summary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature">protected <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>AddResponseApdu</b> (<a href="../PCSC.Iso7816/ResponseApdu.html">ResponseApdu</a> apdu)</div>
+          <div class="Signature">protected <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Add</b> (<a href="../PCSC/SCardPCI.html">PCSC.SCardPCI</a> receivePci)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Response.AddResponseApdu(PCSC.Iso7816.ResponseApdu):Parameters">
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Response.Add(PCSC.SCardPCI):Parameters">
             <dl>
               <dt>
-                <i>apdu</i>
+                <i>receivePci</i>
               </dt>
               <dd>
                 <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -458,11 +501,62 @@
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:PCSC.Iso7816.Response.AddResponseApdu(PCSC.Iso7816.ResponseApdu):Remarks">
+          <div class="SectionBox" id="M:PCSC.Iso7816.Response.Add(PCSC.SCardPCI):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:PCSC.Iso7816.Response.AddResponseApdu(PCSC.Iso7816.ResponseApdu):Version Information">
+          <div class="SectionBox" id="M:PCSC.Iso7816.Response.Add(PCSC.SCardPCI):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.Response.Count">Count Property</h3>
+        <blockquote id="P:PCSC.Iso7816.Response.Count:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public virtual <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Count</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Response.Count:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.Response.Count:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.Response.Count:Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:PCSC.Iso7816.Response.Get(System.Int32)">Get Method</h3>
+        <blockquote id="M:PCSC.Iso7816.Response.Get(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC.Iso7816/ResponseApdu.html">ResponseApdu</a> <b>Get</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> index)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Response.Get(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>index</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Response.Get(System.Int32):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.Response.Get(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.Response.Get(System.Int32):Version Information">
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
@@ -506,6 +600,37 @@
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
+        <h3 id="M:PCSC.Iso7816.Response.GetPci(System.Int32)">GetPci Method</h3>
+        <blockquote id="M:PCSC.Iso7816.Response.GetPci(System.Int32):member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="../PCSC/SCardPCI.html">PCSC.SCardPCI</a> <b>GetPci</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> index)</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Response.GetPci(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>index</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.Response.GetPci(System.Int32):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.Response.GetPci(System.Int32):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:PCSC.Iso7816.Response.GetPci(System.Int32):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
         <h3 id="P:PCSC.Iso7816.Response.HasData">HasData Property</h3>
         <blockquote id="P:PCSC.Iso7816.Response.HasData:member">
           <p class="Summary">
@@ -526,23 +651,57 @@
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="P:PCSC.Iso7816.Response.ResponseApduList">ResponseApduList Property</h3>
-        <blockquote id="P:PCSC.Iso7816.Response.ResponseApduList:member">
+        <h3 id="P:PCSC.Iso7816.Response.Item(System.Int32)">Item Property</h3>
+        <blockquote id="P:PCSC.Iso7816.Response.Item(System.Int32):member">
           <p class="Summary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </p>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="../PCSC.Iso7816/ResponseApduList.html">ResponseApduList</a> <b>ResponseApduList</b>  { get; }</div>
+          <div class="Signature">
+            <p>
+              <i>This is the default property for this class.</i>
+            </p>public <a href="../PCSC.Iso7816/ResponseApdu.html">ResponseApdu</a> this [<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> index] { get; }</div>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Response.Item(System.Int32):Parameters">
+            <dl>
+              <dt>
+                <i>index</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
           <h4 class="Subsection">Value</h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Response.ResponseApduList:Value">
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Response.Item(System.Int32):Value">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="P:PCSC.Iso7816.Response.ResponseApduList:Remarks">
+          <div class="SectionBox" id="P:PCSC.Iso7816.Response.Item(System.Int32):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="P:PCSC.Iso7816.Response.ResponseApduList:Version Information">
+          <div class="SectionBox" id="P:PCSC.Iso7816.Response.Item(System.Int32):Version Information">
+            <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="P:PCSC.Iso7816.Response.PciCount">PciCount Property</h3>
+        <blockquote id="P:PCSC.Iso7816.Response.PciCount:member">
+          <p class="Summary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </p>
+          <h2>Syntax</h2>
+          <div class="Signature">public virtual <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>PciCount</b>  { get; }</div>
+          <h4 class="Subsection">Value</h4>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.Response.PciCount:Value">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.Response.PciCount:Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="P:PCSC.Iso7816.Response.PciCount:Version Information">
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>

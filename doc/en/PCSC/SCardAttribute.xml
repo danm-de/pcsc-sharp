@@ -1,6 +1,6 @@
-<Type Name="SCardAttr" FullName="PCSC.SCardAttr">
-  <TypeSignature Language="C#" Value="public enum SCardAttr" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SCardAttr extends System.Enum" />
+<Type Name="SCardAttribute" FullName="PCSC.SCardAttribute">
+  <TypeSignature Language="C#" Value="public enum SCardAttribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SCardAttribute extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pcsc-sharp</AssemblyName>
     <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -11,18 +11,34 @@
   <Docs>
     <summary>Smart card reader attribute enumeration.</summary>
     <remarks>Can be used as parameter for the following methods:
-            <list type="bullet"><item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" /></term></item><item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)" /></term></item><item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])" /></term></item><item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)" /></term></item></list></remarks>
+            <list type="bullet"><item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" /></term></item><item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@)" /></term></item><item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[])" /></term></item><item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32)" /></term></item></list></remarks>
   </Docs>
   <Members>
-    <Member MemberName="AsyncProtocolTypes">
-      <MemberSignature Language="C#" Value="AsyncProtocolTypes" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr AsyncProtocolTypes = int32(196896)" />
+    <Member MemberName="AnswerToResetString">
+      <MemberSignature Language="C#" Value="AnswerToResetString" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute AnswerToResetString = int32(590595)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Answer to reset (ATR) string. (SCARD_ATTR_ATR_STRING)
+            </summary>
+      </Docs>
+    </Member>
+    <Member MemberName="AsyncProtocolTypes">
+      <MemberSignature Language="C#" Value="AsyncProtocolTypes" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute AsyncProtocolTypes = int32(196896)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -32,13 +48,13 @@
     </Member>
     <Member MemberName="AtrString">
       <MemberSignature Language="C#" Value="AtrString" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr AtrString = int32(590595)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute AtrString = int32(590595)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -48,13 +64,13 @@
     </Member>
     <Member MemberName="ChannelId">
       <MemberSignature Language="C#" Value="ChannelId" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr ChannelId = int32(131344)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute ChannelId = int32(131344)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -64,13 +80,13 @@
     </Member>
     <Member MemberName="Characteristics">
       <MemberSignature Language="C#" Value="Characteristics" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr Characteristics = int32(393552)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute Characteristics = int32(393552)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -78,63 +94,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="CurrentBwt">
-      <MemberSignature Language="C#" Value="CurrentBwt" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentBwt = int32(524809)" />
+    <Member MemberName="CurrentBitRateConversionFactor">
+      <MemberSignature Language="C#" Value="CurrentBitRateConversionFactor" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentBitRateConversionFactor = int32(524804)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Current block waiting time. (SCARD_ATTR_CURRENT_BWT)
-            </summary>
-      </Docs>
-    </Member>
-    <Member MemberName="CurrentClk">
-      <MemberSignature Language="C#" Value="CurrentClk" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentClk = int32(524802)" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>3.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Current clock rate, in kHz. (SCARD_ATTR_CURRENT_CLK)
-            </summary>
-      </Docs>
-    </Member>
-    <Member MemberName="CurrentCwt">
-      <MemberSignature Language="C#" Value="CurrentCwt" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentCwt = int32(524810)" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>3.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Current character waiting time. (SCARD_ATTR_CURRENT_CWT)
-            </summary>
-      </Docs>
-    </Member>
-    <Member MemberName="CurrentD">
-      <MemberSignature Language="C#" Value="CurrentD" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentD = int32(524804)" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>3.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -142,31 +110,47 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="CurrentEbcEncoding">
-      <MemberSignature Language="C#" Value="CurrentEbcEncoding" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentEbcEncoding = int32(524811)" />
+    <Member MemberName="CurrentBlockWaitingTime">
+      <MemberSignature Language="C#" Value="CurrentBlockWaitingTime" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentBlockWaitingTime = int32(524809)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
-            Current error block control encoding. (SCARD_ATTR_CURRENT_EBC_ENCODING)
+            Current block waiting time. (SCARD_ATTR_CURRENT_BWT)
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="CurrentF">
-      <MemberSignature Language="C#" Value="CurrentF" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentF = int32(524803)" />
+    <Member MemberName="CurrentCharacterWaitingTime">
+      <MemberSignature Language="C#" Value="CurrentCharacterWaitingTime" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentCharacterWaitingTime = int32(524810)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Current character waiting time. (SCARD_ATTR_CURRENT_CWT)
+            </summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentClockConversionFactor">
+      <MemberSignature Language="C#" Value="CurrentClockConversionFactor" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentClockConversionFactor = int32(524803)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -174,15 +158,63 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="CurrentIfsc">
-      <MemberSignature Language="C#" Value="CurrentIfsc" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentIfsc = int32(524807)" />
+    <Member MemberName="CurrentClockRate">
+      <MemberSignature Language="C#" Value="CurrentClockRate" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentClockRate = int32(524802)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Current clock rate, in kHz. (SCARD_ATTR_CURRENT_CLK)
+            </summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentErrorBlockControlEncoding">
+      <MemberSignature Language="C#" Value="CurrentErrorBlockControlEncoding" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentErrorBlockControlEncoding = int32(524811)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Current error block control encoding. (SCARD_ATTR_CURRENT_EBC_ENCODING)
+            </summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentGuardTime">
+      <MemberSignature Language="C#" Value="CurrentGuardTime" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentGuardTime = int32(524805)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Current guard time. (SCARD_ATTR_CURRENT_N)
+            </summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentInformationFieldSizeCard">
+      <MemberSignature Language="C#" Value="CurrentInformationFieldSizeCard" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentInformationFieldSizeCard = int32(524807)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -190,15 +222,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="CurrentIfsd">
-      <MemberSignature Language="C#" Value="CurrentIfsd" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentIfsd = int32(524808)" />
+    <Member MemberName="CurrentInformationFieldSizeDevice">
+      <MemberSignature Language="C#" Value="CurrentInformationFieldSizeDevice" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentInformationFieldSizeDevice = int32(524808)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -208,13 +240,13 @@
     </Member>
     <Member MemberName="CurrentIOState">
       <MemberSignature Language="C#" Value="CurrentIOState" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentIOState = int32(590594)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentIOState = int32(590594)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -222,31 +254,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="CurrentN">
-      <MemberSignature Language="C#" Value="CurrentN" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentN = int32(524805)" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>3.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Current guard time. (SCARD_ATTR_CURRENT_N)
-            </summary>
-      </Docs>
-    </Member>
     <Member MemberName="CurrentProtocolType">
       <MemberSignature Language="C#" Value="CurrentProtocolType" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentProtocolType = int32(524801)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentProtocolType = int32(524801)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -254,15 +270,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="CurrentW">
-      <MemberSignature Language="C#" Value="CurrentW" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr CurrentW = int32(524806)" />
+    <Member MemberName="CurrentWaitingTime">
+      <MemberSignature Language="C#" Value="CurrentWaitingTime" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute CurrentWaitingTime = int32(524806)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -270,15 +286,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="DefaultClk">
-      <MemberSignature Language="C#" Value="DefaultClk" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DefaultClk = int32(196897)" />
+    <Member MemberName="DefaultClockRate">
+      <MemberSignature Language="C#" Value="DefaultClockRate" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DefaultClockRate = int32(196897)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -288,13 +304,13 @@
     </Member>
     <Member MemberName="DefaultDataRate">
       <MemberSignature Language="C#" Value="DefaultDataRate" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DefaultDataRate = int32(196899)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DefaultDataRate = int32(196899)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -304,13 +320,13 @@
     </Member>
     <Member MemberName="DeviceFriendlyName">
       <MemberSignature Language="C#" Value="DeviceFriendlyName" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DeviceFriendlyName = int32(2147418117)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DeviceFriendlyName = int32(2147418117)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -320,13 +336,13 @@
     </Member>
     <Member MemberName="DeviceFriendlyNameA">
       <MemberSignature Language="C#" Value="DeviceFriendlyNameA" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DeviceFriendlyNameA = int32(2147418115)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DeviceFriendlyNameA = int32(2147418115)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -336,13 +352,13 @@
     </Member>
     <Member MemberName="DeviceFriendlyNameW">
       <MemberSignature Language="C#" Value="DeviceFriendlyNameW" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DeviceFriendlyNameW = int32(2147418117)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DeviceFriendlyNameW = int32(2147418117)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -352,13 +368,13 @@
     </Member>
     <Member MemberName="DeviceInUse">
       <MemberSignature Language="C#" Value="DeviceInUse" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DeviceInUse = int32(2147418114)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DeviceInUse = int32(2147418114)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -368,13 +384,13 @@
     </Member>
     <Member MemberName="DeviceSystemName">
       <MemberSignature Language="C#" Value="DeviceSystemName" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DeviceSystemName = int32(2147418118)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DeviceSystemName = int32(2147418118)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -384,13 +400,13 @@
     </Member>
     <Member MemberName="DeviceSystemNameA">
       <MemberSignature Language="C#" Value="DeviceSystemNameA" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DeviceSystemNameA = int32(2147418116)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DeviceSystemNameA = int32(2147418116)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -400,13 +416,13 @@
     </Member>
     <Member MemberName="DeviceSystemNameW">
       <MemberSignature Language="C#" Value="DeviceSystemNameW" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DeviceSystemNameW = int32(2147418118)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DeviceSystemNameW = int32(2147418118)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -416,13 +432,13 @@
     </Member>
     <Member MemberName="DeviceUnit">
       <MemberSignature Language="C#" Value="DeviceUnit" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr DeviceUnit = int32(2147418113)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute DeviceUnit = int32(2147418113)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -432,13 +448,13 @@
     </Member>
     <Member MemberName="EscAuthRequest">
       <MemberSignature Language="C#" Value="EscAuthRequest" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr EscAuthRequest = int32(499717)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute EscAuthRequest = int32(499717)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -448,13 +464,13 @@
     </Member>
     <Member MemberName="EscCancel">
       <MemberSignature Language="C#" Value="EscCancel" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr EscCancel = int32(499715)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute EscCancel = int32(499715)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -464,13 +480,13 @@
     </Member>
     <Member MemberName="EscReset">
       <MemberSignature Language="C#" Value="EscReset" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr EscReset = int32(499712)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute EscReset = int32(499712)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -478,15 +494,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="ExtendedBwt">
-      <MemberSignature Language="C#" Value="ExtendedBwt" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr ExtendedBwt = int32(524812)" />
+    <Member MemberName="ExtendedBlockWaitTime">
+      <MemberSignature Language="C#" Value="ExtendedBlockWaitTime" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute ExtendedBlockWaitTime = int32(524812)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -496,13 +512,13 @@
     </Member>
     <Member MemberName="ICCInterfaceStatus">
       <MemberSignature Language="C#" Value="ICCInterfaceStatus" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr ICCInterfaceStatus = int32(590593)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute ICCInterfaceStatus = int32(590593)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -512,13 +528,13 @@
     </Member>
     <Member MemberName="ICCPresence">
       <MemberSignature Language="C#" Value="ICCPresence" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr ICCPresence = int32(590592)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute ICCPresence = int32(590592)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -528,13 +544,13 @@
     </Member>
     <Member MemberName="ICCTypePerAtr">
       <MemberSignature Language="C#" Value="ICCTypePerAtr" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr ICCTypePerAtr = int32(590596)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute ICCTypePerAtr = int32(590596)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -542,15 +558,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="MaxClk">
-      <MemberSignature Language="C#" Value="MaxClk" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr MaxClk = int32(196898)" />
+    <Member MemberName="MaxClockRate">
+      <MemberSignature Language="C#" Value="MaxClockRate" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute MaxClockRate = int32(196898)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -560,13 +576,13 @@
     </Member>
     <Member MemberName="MaxDataRate">
       <MemberSignature Language="C#" Value="MaxDataRate" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr MaxDataRate = int32(196900)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute MaxDataRate = int32(196900)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -574,15 +590,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="MaxIfsd">
-      <MemberSignature Language="C#" Value="MaxIfsd" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr MaxIfsd = int32(196901)" />
+    <Member MemberName="MaxInformationFileSizeDevice">
+      <MemberSignature Language="C#" Value="MaxInformationFileSizeDevice" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute MaxInformationFileSizeDevice = int32(196901)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -592,13 +608,13 @@
     </Member>
     <Member MemberName="MaxInput">
       <MemberSignature Language="C#" Value="MaxInput" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr MaxInput = int32(499719)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute MaxInput = int32(499719)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -606,15 +622,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="PowerMgmtSupport">
-      <MemberSignature Language="C#" Value="PowerMgmtSupport" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr PowerMgmtSupport = int32(262449)" />
+    <Member MemberName="PowerManagementSupport">
+      <MemberSignature Language="C#" Value="PowerManagementSupport" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute PowerManagementSupport = int32(262449)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -622,15 +638,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="SupressT1IFSRequest">
-      <MemberSignature Language="C#" Value="SupressT1IFSRequest" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr SupressT1IFSRequest = int32(2147418119)" />
+    <Member MemberName="SupressT1InformationFileSizeRequest">
+      <MemberSignature Language="C#" Value="SupressT1InformationFileSizeRequest" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute SupressT1InformationFileSizeRequest = int32(2147418119)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -640,13 +656,13 @@
     </Member>
     <Member MemberName="SyncProtocolTypes">
       <MemberSignature Language="C#" Value="SyncProtocolTypes" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr SyncProtocolTypes = int32(196902)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute SyncProtocolTypes = int32(196902)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -656,13 +672,13 @@
     </Member>
     <Member MemberName="UserAuthInputDevice">
       <MemberSignature Language="C#" Value="UserAuthInputDevice" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr UserAuthInputDevice = int32(328002)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute UserAuthInputDevice = int32(328002)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -672,13 +688,13 @@
     </Member>
     <Member MemberName="UserToCardAuthDevice">
       <MemberSignature Language="C#" Value="UserToCardAuthDevice" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr UserToCardAuthDevice = int32(328000)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute UserToCardAuthDevice = int32(328000)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -686,31 +702,15 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="VendorIFDSerialNo">
-      <MemberSignature Language="C#" Value="VendorIFDSerialNo" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr VendorIFDSerialNo = int32(65795)" />
+    <Member MemberName="VendorInterfaceDeviceType">
+      <MemberSignature Language="C#" Value="VendorInterfaceDeviceType" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute VendorInterfaceDeviceType = int32(65793)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-            Vendor-supplied interface device serial number. (SCARD_ATTR_VENDOR_IFD_SERIAL_NO)
-            </summary>
-      </Docs>
-    </Member>
-    <Member MemberName="VendorIFDType">
-      <MemberSignature Language="C#" Value="VendorIFDType" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr VendorIFDType = int32(65793)" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>3.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -718,15 +718,31 @@
             </summary>
       </Docs>
     </Member>
-    <Member MemberName="VendorIFDVersion">
-      <MemberSignature Language="C#" Value="VendorIFDVersion" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr VendorIFDVersion = int32(65794)" />
+    <Member MemberName="VendorInterfaceDeviceTypeSerialNumber">
+      <MemberSignature Language="C#" Value="VendorInterfaceDeviceTypeSerialNumber" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute VendorInterfaceDeviceTypeSerialNumber = int32(65795)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Vendor-supplied interface device serial number. (SCARD_ATTR_VENDOR_IFD_SERIAL_NO)
+            </summary>
+      </Docs>
+    </Member>
+    <Member MemberName="VendorInterfaceDeviceTypeVersion">
+      <MemberSignature Language="C#" Value="VendorInterfaceDeviceTypeVersion" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute VendorInterfaceDeviceTypeVersion = int32(65794)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>
@@ -736,13 +752,13 @@
     </Member>
     <Member MemberName="VendorName">
       <MemberSignature Language="C#" Value="VendorName" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttr VendorName = int32(65792)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardAttribute VendorName = int32(65792)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>PCSC.SCardAttr</ReturnType>
+        <ReturnType>PCSC.SCardAttribute</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>

@@ -70,6 +70,7 @@ $(DOCDIR)/$(DOCLANG)/index.xml:	$(BUILDDIR)/$(LIBFILE) $(BUILDDIR)/$(LIBXMLFILE)
 		-path:$(DOCDIR)/$(DOCLANG) \
 		-importslashdoc:$(BUILDDIR)/$(LIBXMLFILE) \
 		-pretty \
+		--delete \
 		-name:$(DOCNAME)
 
 # HTML docs

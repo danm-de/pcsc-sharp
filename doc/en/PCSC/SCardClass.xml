@@ -15,9 +15,9 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="Communications">
-      <MemberSignature Language="C#" Value="Communications" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass Communications = int32(2)" />
+    <Member MemberName="Communication">
+      <MemberSignature Language="C#" Value="Communication" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass Communication = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -53,9 +53,9 @@
         <summary>ICC State specific definitions</summary>
       </Docs>
     </Member>
-    <Member MemberName="IFDProtocol">
-      <MemberSignature Language="C#" Value="IFDProtocol" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass IFDProtocol = int32(8)" />
+    <Member MemberName="InterfaceDeviceProtocol">
+      <MemberSignature Language="C#" Value="InterfaceDeviceProtocol" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass InterfaceDeviceProtocol = int32(8)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -91,9 +91,9 @@
         <summary>Mechanical characteristic definitions</summary>
       </Docs>
     </Member>
-    <Member MemberName="PowerMgmt">
-      <MemberSignature Language="C#" Value="PowerMgmt" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass PowerMgmt = int32(4)" />
+    <Member MemberName="PowerManagement">
+      <MemberSignature Language="C#" Value="PowerManagement" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardClass PowerManagement = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>

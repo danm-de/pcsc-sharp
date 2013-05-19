@@ -1,0 +1,213 @@
+<Type Name="IIsoReader" FullName="PCSC.Iso7816.IIsoReader">
+  <TypeSignature Language="C#" Value="public interface IIsoReader : IDisposable" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IIsoReader implements class System.IDisposable" />
+  <AssemblyInfo>
+    <AssemblyName>pcsc-sharp</AssemblyName>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ActiveProtocol">
+      <MemberSignature Language="C#" Value="public PCSC.SCardProtocol ActiveProtocol { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.SCardProtocol ActiveProtocol" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardProtocol</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Connect">
+      <MemberSignature Language="C#" Value="public void Connect (string readerName, PCSC.SCardShareMode mode, PCSC.SCardProtocol protocol);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Connect(string readerName, valuetype PCSC.SCardShareMode mode, valuetype PCSC.SCardProtocol protocol) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="readerName" Type="System.String" />
+        <Parameter Name="mode" Type="PCSC.SCardShareMode" />
+        <Parameter Name="protocol" Type="PCSC.SCardProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="readerName">To be added.</param>
+        <param name="mode">To be added.</param>
+        <param name="protocol">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConstructCommandApdu">
+      <MemberSignature Language="C#" Value="public PCSC.Iso7816.CommandApdu ConstructCommandApdu (PCSC.Iso7816.IsoCase isoCase);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class PCSC.Iso7816.CommandApdu ConstructCommandApdu(valuetype PCSC.Iso7816.IsoCase isoCase) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.Iso7816.CommandApdu</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="isoCase" Type="PCSC.Iso7816.IsoCase" />
+      </Parameters>
+      <Docs>
+        <param name="isoCase">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentContext">
+      <MemberSignature Language="C#" Value="public PCSC.ISCardContext CurrentContext { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class PCSC.ISCardContext CurrentContext" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.ISCardContext</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentShareMode">
+      <MemberSignature Language="C#" Value="public PCSC.SCardShareMode CurrentShareMode { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype PCSC.SCardShareMode CurrentShareMode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.SCardShareMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Disconnect">
+      <MemberSignature Language="C#" Value="public void Disconnect (PCSC.SCardReaderDisposition disposition);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Disconnect(valuetype PCSC.SCardReaderDisposition disposition) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposition" Type="PCSC.SCardReaderDisposition" />
+      </Parameters>
+      <Docs>
+        <param name="disposition">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxReceiveSize">
+      <MemberSignature Language="C#" Value="public int MaxReceiveSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MaxReceiveSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reader">
+      <MemberSignature Language="C#" Value="public PCSC.ISCardReader Reader { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class PCSC.ISCardReader Reader" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.ISCardReader</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReaderName">
+      <MemberSignature Language="C#" Value="public string ReaderName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ReaderName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RetransmitWaitTime">
+      <MemberSignature Language="C#" Value="public int RetransmitWaitTime { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 RetransmitWaitTime" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transmit">
+      <MemberSignature Language="C#" Value="public PCSC.Iso7816.Response Transmit (PCSC.Iso7816.CommandApdu commandApdu);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class PCSC.Iso7816.Response Transmit(class PCSC.Iso7816.CommandApdu commandApdu) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>PCSC.Iso7816.Response</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="commandApdu" Type="PCSC.Iso7816.CommandApdu" />
+      </Parameters>
+      <Docs>
+        <param name="commandApdu">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
