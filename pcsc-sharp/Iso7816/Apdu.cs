@@ -1,51 +1,26 @@
 namespace PCSC.Iso7816
 {
-    // The Application Protocol Data Unit (APDU), defined by the ISO/IEC 7816 standards
+    /// <summary>Application Protocol Data Unit (APDU), defined by the ISO/IEC 7816 standards</summary>
     public abstract class Apdu
     {
-        /************************************************
-         * See http://de.wikipedia.org/wiki/APDU        *
-         ************************************************
-         * Command APDU case 4                          *
-         ************************************************
-         * CLA INS P1 P2 Lc Data Le                     *
-         ************************************************/
+        /// <summary>The currently used ISO case.</summary>
+        public IsoCase Case { get; protected set; }
 
-        /************************************************
-         * Command APDU case 3                          *
-         ************************************************
-         * CLA INS P1 P2 Lc Data                        *
-         ************************************************/
+        /// <summary>The currently used protocol.</summary>
+        public SCardProtocol Protocol { get; protected set; }
 
-        /************************************************
-         * Command APDU case 2                          *
-         ************************************************
-         * CLA INS P1 P2 Le                             *
-         ************************************************/
-
-        /************************************************
-         * Command APDU case 1                          *
-         ************************************************
-         * CLA INS P1 P2                                *
-         ************************************************/
-
-        private IsoCase _isoCase;
-        private SCardProtocol _protocol;
-        
-        public IsoCase Case {
-            get { return _isoCase; }
-            protected set { _isoCase = value; }
-        }
-
-        public SCardProtocol Protocol {
-            get { return _protocol; }
-            protected set { _protocol = value; }
-        }
-
+        /// <summary>Converts the APDU structure to a transmittable byte array.</summary>
+        /// <returns>A byte array containing the APDU parameters and data in the correct order.</returns>
         public abstract byte[] ToArray();
 
+        /// <summary>Indicates if the APDU is valid.</summary>
+        /// <value><see langword="true" /> if the APDU is valid.</value>
         public abstract bool IsValid { get; }
 
+
+        /// <summary>Converts the APDU structure to a transmittable byte array.</summary>
+        /// <param name="apdu">The APDU.</param>
+        /// <returns>The supplied APDU as byte array.</returns>
         public static explicit operator byte[](Apdu apdu) {
             return apdu.ToArray();
         }

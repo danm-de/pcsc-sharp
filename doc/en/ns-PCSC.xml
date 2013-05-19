@@ -8,18 +8,10 @@ This class library uses P/Invoke to call the native PC/SC API functions and wrap
 <para>
 Currently supported systems (tested):
  <list type="table">
-            <listheader>
-              <term>Operating System</term>
-              <description>System library</description>
-            </listheader>
-            <item>
-              <term>Windows 8 (64bit) Professional</term>
-              <description>Winscard.dll</description>
-            </item>
-	    <item>
-		<term>Ubuntu Linux 13.04 (64bit)</term>
-		<description>libpcsclite.so.1</description>
-	    </item>
+    <listheader><term>Operating System</term><description>System library</description></listheader>
+	<item><term>Windows 8 (64bit) Professional</term><description>Winscard.dll</description></item>
+	<item><term>Ubuntu Linux 13.04 (64bit)</term><description>libpcsclite.so.1</description></item>
+	<item><term>Ubuntu Linux 13.04 (32bit)</term><description>libpcsclite.so.1</description></item>
 </list>
 </para>
 <para>

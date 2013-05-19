@@ -2,6 +2,18 @@
 
 namespace PCSC.Iso7816
 {
+    /// <summary>A Command Application Protocol Data Unit (APDU), defined by the ISO/IEC 7816 standards</summary>
+    /// <remarks>
+    ///     <para>A <see cref="CommandApdu" /> can be build using one of the following <see cref="IsoCase" />:</para>
+    ///     <list type="table">
+    ///         <listheader><term>Case</term><description>APDU structure</description></listheader>
+    ///         <item><term>1</term><description>CLA INS P1 P2</description></item>
+    ///         <item><term>2</term><description>CLA INS P1 P2 Le</description></item>
+    ///         <item><term>3</term><description>CLA INS P1 P2 Lc Data</description></item>
+    ///         <item><term>4</term><description>CLA INS P1 P2 Lc Data Le</description></item>
+    ///     </list>
+    ///     <para>See the documentation for <see cref="IsoCase" /> for more information.</para>
+    /// </remarks>
     public class CommandApdu : Apdu, ICloneable
     {
         // see http://www.cardwerk.com/smartcards/smartcard_standard_Iso7816-4_5_basic_organizations.aspx
@@ -10,43 +22,57 @@ namespace PCSC.Iso7816
         private int _lc, _le;
         private byte[] _data;
 
+        /// <summary>Initializes a new instance of the <see cref="CommandApdu" /> class.</summary>
+        /// <param name="isoCase">The ISO case to use.</param>
+        /// <param name="protocol">The protocol.</param>
         public CommandApdu(IsoCase isoCase, SCardProtocol protocol) {
             Case = isoCase;
             Protocol = protocol;
         }
 
+        /// <summary>Gets or sets the CLA byte.</summary>
+        /// <remarks>You can use the <see cref="ClassByte" /> class to build a well formed CLA byte.</remarks>
         public byte CLA {
             get { return _cla; }
             set { _cla = value; }
         }
 
+        /// <summary>Gets the CLA.</summary>
+        /// <returns>The <see cref="CLA" /> as <see cref="ClassByte" /> instance.</returns>
         public ClassByte GetClassByteInfo() {
             return new ClassByte(_cla);
         }
 
+        /// <summary>Gets the instruction byte info.</summary>
+        /// <returns>The <see cref="INS" /> as <see cref="InstructionByte" /> instance.</returns>
         public InstructionByte GetInstructionByteInfo() {
             return new InstructionByte(_ins);
         }
 
+        /// <summary>Gets or sets the instruction.</summary>
         public byte INS {
             get { return _ins; }
             set { _ins = value; }
         }
 
+        /// <summary>Sets the instruction.</summary>
         public InstructionCode Instruction {
             set { _ins = (byte) value; }
         }
 
+        /// <summary>The first parameter (P1)</summary>
         public byte P1 {
             get { return _p1; }
             set { _p1 = value; }
         }
 
+        /// <summary>The second parameter (P2)</summary>
         public byte P2 {
             get { return _p2; }
             set { _p2 = value; }
         }
 
+        /// <summary>A combination of parameter P1 and P2</summary>
         public int P1P2 {
             get { return (_p1 << 8) | _p2; }
             set {
@@ -60,6 +86,8 @@ namespace PCSC.Iso7816
             }
         }
 
+        /// <summary>Command APDU data to be transmitted.</summary>
+        /// <remarks>You can only set data if you created the <see cref="CommandApdu" /> with ISO case 3 or 4.</remarks>
         public byte[] Data {
             get { return _data; }
             set {
@@ -104,15 +132,19 @@ namespace PCSC.Iso7816
             }
         }
 
+        /// <summary>Length command</summary>
         public int Lc {
             get { return _lc; }
         }
 
+        /// <summary>The third parameter (P3 or Le)</summary>
         public int P3 {
             get { return Le; }
             set { Le = value; }
         }
 
+        /// <summary>Length expected.</summary>
+        /// <remarks>This is the expected number of response data bytes. Do not take account of the status word (SW1 and SW2) here!</remarks>
         public int Le {
             get { return _le; }
             set {
@@ -175,9 +207,8 @@ namespace PCSC.Iso7816
             }
         }
 
+        /// <summary>The expected response size (Le + SW1SW2)</summary>
         public int ExpectedResponseLength {
-            /* ExpectedResponseLength = Le + SW1SW2.
-             */
             get {
                 switch (Case) {
                     case IsoCase.Case2Short:
@@ -250,7 +281,7 @@ namespace PCSC.Iso7816
                                 " with protocol " + Protocol +
                                 " requires data to be transferred by using GET RESPONSE.");
                         }
-                        
+
                         if (datavalue < 1 || datavalue > 256) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
                                 " accepts only values from 1(+2) - 256(+2).");
@@ -314,12 +345,14 @@ namespace PCSC.Iso7816
                         }
 
                         _le = 0;
-                        
+
                         break;
                 }
             }
         }
 
+        /// <summary>Calculates the APDU size in bytes.</summary>
+        /// <returns>The APDU size in bytes depending on the currently selected ISO case.</returns>
         public int GetLength() {
             var size = 4; /* 4 bytes: CLA, INS, P1, P2 */
             switch (Case) {
@@ -395,12 +428,15 @@ namespace PCSC.Iso7816
                     break;
 
                 default:
-                    throw new NotImplementedException();
+                    throw new InvalidOperationException(string.Format("IsoCase {0} is not supported.", Case));
             }
 
             return size;
         }
 
+        /// <summary>Converts the command APDU to a transmittable byte array.</summary>
+        /// <returns>The command APDU as byte array.</returns>
+        /// <exception cref="InvalidOperationException">If the command APDU is in an invalid state.</exception>
         public override byte[] ToArray() {
             // Inspired by the work from Nils Larsch (OpenSC)
 
@@ -503,6 +539,8 @@ namespace PCSC.Iso7816
             return apdu;
         }
 
+        /// <summary> Indicates if the command APDU is valid.</summary>
+        /// <value><see langword="true" /> if the APDU is valid.</value>
         public override bool IsValid {
             get {
                 try {
@@ -515,7 +553,9 @@ namespace PCSC.Iso7816
                 }
             }
         }
-        
+
+        /// <summary>Creates a clone of the current instance. The data is NOT copied. </summary>
+        /// <returns>A clone of the current instance.</returns>
         public virtual object Clone() {
             return new CommandApdu(Case, Protocol) {
                 _cla = _cla,
