@@ -79,7 +79,11 @@ namespace PCSC
         ///   </code>
         ///     </example>
         /// </remarks>
+        /// <exception cref="ArgumentNullException">If <paramref name="context"/> is <see langword="null" /></exception>
         public SCardReader(ISCardContext context) {
+            if (context == null) {
+                throw new ArgumentNullException("context");
+            }
             _context = context;
         }
 
@@ -1766,7 +1770,7 @@ namespace PCSC
         ///     </list>
         /// </returns>
         /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
-        public SCardError GetAttrib(SCardAttr attributeId, out byte[] attribute) {
+        public SCardError GetAttrib(SCardAttribute attributeId, out byte[] attribute) {
             return GetAttrib((IntPtr) attributeId, out attribute);
         }
 
@@ -1936,10 +1940,10 @@ namespace PCSC
         ///         <paramref
         ///             name="attribute" />
         ///         .</para>
-        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
         /// </returns>
         /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
-        public SCardError GetAttrib(SCardAttr attributeId, byte[] attribute, out int attributeBufferLength) {
+        public SCardError GetAttrib(SCardAttribute attributeId, byte[] attribute, out int attributeBufferLength) {
             return GetAttrib((IntPtr) attributeId, attribute, out attributeBufferLength);
         }
 
@@ -2022,7 +2026,7 @@ namespace PCSC
         ///         <paramref
         ///             name="attribute" />
         ///         .</para>
-        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
         /// </returns>
         /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
         public SCardError GetAttrib(IntPtr attributeId, byte[] attribute, out int attributeBufferLength) {
@@ -2096,7 +2100,7 @@ namespace PCSC
         ///     <para>The list of attributes you can set depends on the IFD handler you are using.</para>
         ///     <para>This method calls the API function SCardSetAttrib().</para>
         /// </remarks>
-        public SCardError SetAttrib(SCardAttr attributeId, byte[] attribute) {
+        public SCardError SetAttrib(SCardAttribute attributeId, byte[] attribute) {
             return SetAttrib((IntPtr) attributeId, attribute, attribute.Length);
         }
 
@@ -2230,7 +2234,7 @@ namespace PCSC
         ///     <para>The list of attributes you can set depends on the IFD handler you are using.</para>
         ///     <para>This method calls the API function SCardSetAttrib().</para>
         /// </remarks>
-        public SCardError SetAttrib(SCardAttr attributeId, byte[] attribute, int attributeBufferLength) {
+        public SCardError SetAttrib(SCardAttribute attributeId, byte[] attribute, int attributeBufferLength) {
             return SetAttrib((IntPtr) attributeId, attribute, attributeBufferLength);
         }
 

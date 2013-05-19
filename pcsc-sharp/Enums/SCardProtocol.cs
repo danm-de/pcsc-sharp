@@ -26,7 +26,7 @@ namespace PCSC
         [Description("T=15 protocol")]
         T15 = 0x0008,
 
-        /// <summary>(<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />). IFD determines prot.</summary>
+        /// <summary>(<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />). IFD (Interface device) determines protocol.</summary>
         [Description("IFD determines protocol")]
         Any = (T0 | T1)
     }

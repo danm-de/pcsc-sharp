@@ -27,8 +27,6 @@ d = Bug fix
 	  Constructor got new parameter "releaseContextOnDispose".
 	  Changed constructor to accept ISCardContext instead of SCardContext.
 	* New interface ISCardMonitor to ease unit testing.
-	* ResponseApdu: Fixed a bug in ResponseApdu.ToArray().
-	  Removed protected variables response and length.
 	* Apdu: Apdu.Case and Apdu.Protocol are not longer virtual, removed 
 	  protected variables proto and isocase.
 	* CommandApdu: removed protected variables cla, ins, p1, p2, lc, le 
@@ -38,6 +36,20 @@ d = Bug fix
 	  Renamed property ATR to Atr.
 	* CardStatusEventArgs & StatusChangeEventArgs: renamed property ATR to Atr.
 	  Both inherit from CardEventArgs.
+	* SCardAttr: renamed to SCardAttribute
+	* SCardAttribute: Renamed various enum member names (replaced C-style 
+	  abbreviation with full name).
+	* SCardClass: Renamed various enum member names (replaced C-style 
+	  abbreviation with full name).
+	* SCardError: Renamed various enum member names (replaced C-style 
+	  abbreviation with full name).
+	* ResponseApduList: Renamed to ResponseApduEnumerator.
+	* Response: Removed property ResponseApduList.
+	* ResponseApdu: Fixed a bug in ResponseApdu.ToArray().
+	  Removed protected variables response and length.
+	* IsoCard: renamed to IsoReader (which is an appropriate name)
+	* New interface IIsoReader
+	
 
 2012-05-06  Daniel Mueller <daniel@danm.de>
     * New Version 2.0.0.4

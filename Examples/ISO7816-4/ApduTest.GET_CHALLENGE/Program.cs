@@ -23,10 +23,10 @@ namespace ApduTest.GetChallenge
                     return;
                 }
 
-                using (var isocard = new IsoCard(new SCardReader(context), readerName, SCardShareMode.Shared, SCardProtocol.Any)) {
+                using (var isoReader = new IsoReader(context, readerName, SCardShareMode.Shared, SCardProtocol.Any, false)) {
                     
                     // Build a GET CHALLENGE command 
-                    var apdu = new CommandApdu(IsoCase.Case2Short, isocard.ActiveProtocol) {
+                    var apdu = new CommandApdu(IsoCase.Case2Short, isoReader.ActiveProtocol) {
                         CLA = 0x00, // Class
                         Instruction = InstructionCode.GetChallenge,
                         P1 = 0x00,  // Parameter 1
@@ -35,7 +35,7 @@ namespace ApduTest.GetChallenge
                     };
 
                     Console.WriteLine("Send APDU with \"GET CHALLENGE\" command: {0}", BitConverter.ToString(apdu.ToArray()));
-                    var response = isocard.Transmit(apdu);
+                    var response = isoReader.Transmit(apdu);
 
                     Console.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
 
@@ -62,13 +62,13 @@ namespace ApduTest.GetChallenge
             var line = Console.ReadLine();
             int choice;
 
-            if (!(int.TryParse(line, out choice)) || (choice < 0) || (choice > readerNames.Length)) {
-                Console.WriteLine("An invalid number has been entered.");
-                Console.ReadKey();
-                return null;
+            if (int.TryParse(line, out choice) && (choice >= 0) && (choice <= readerNames.Length)) {
+                return readerNames[choice];
             }
 
-            return readerNames[choice];
+            Console.WriteLine("An invalid number has been entered.");
+            Console.ReadKey();
+            return null;
         }
     }
 }

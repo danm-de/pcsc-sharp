@@ -53,10 +53,9 @@ namespace PCSC
 
         /// <summary>The system could not dispose of the media in the requested manner. (SCARD_E_CANT_DISPOSE)</summary>
         [Description("The system could not dispose of the media in the requested manner.")]
-        CantDispose = unchecked((int) 0x8010000E),
+        CannotDispose = unchecked((int) 0x8010000E),
         /// <summary>The requested protocols are incompatible with the protocol currently in use with the smart card. (SCARD_E_PROTO_MISMATCH)</summary>
-        [Description("The requested protocols are incompatible with the protocol currently in use with the smart card.")
-        ]
+        [Description("The requested protocols are incompatible with the protocol currently in use with the smart card.")]
         ProtocolMismatch = unchecked((int) 0x8010000F),
         /// <summary>The reader or smart card is not ready to accept commands. (SCARD_E_NOT_READY)</summary>
         [Description("The reader or smart card is not ready to accept commands.")]

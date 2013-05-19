@@ -3,12 +3,12 @@ namespace PCSC
     ///  <summary>Smart card reader attribute enumeration.</summary>
     /// <remarks>Can be used as parameter for the following methods:
     /// <list type="bullet">
-    /// <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" /></term></item>
-    /// <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)" /></term></item>
-    /// <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])" /></term></item>
-    /// <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@)" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[])" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32)" /></term></item>
     /// </list></remarks>
-    public enum SCardAttr
+    public enum SCardAttribute
     {
         /// <summary>
         /// Vendor name. (SCARD_ATTR_VENDOR_NAME)
@@ -17,19 +17,19 @@ namespace PCSC
         /// <summary>
         /// Vendor-supplied interface device type (model designation of reader). (SCARD_ATTR_VENDOR_IFD_TYPE)
         /// </summary>
-        VendorIFDType = (SCardClass.VendorInfo << 16) | 0x0101,
+        VendorInterfaceDeviceType = (SCardClass.VendorInfo << 16) | 0x0101,
         /// <summary>
         /// Vendor-supplied interface device version (DWORD in the form 0xMMmmbbbb where MM = major version, mm = minor version, and bbbb = build number).  (SCARD_ATTR_VENDOR_IFD_VERSION)
         /// </summary>
-        VendorIFDVersion = (SCardClass.VendorInfo << 16) | 0x0102,
+        VendorInterfaceDeviceTypeVersion = (SCardClass.VendorInfo << 16) | 0x0102,
         /// <summary>
         /// Vendor-supplied interface device serial number. (SCARD_ATTR_VENDOR_IFD_SERIAL_NO)
         /// </summary>
-        VendorIFDSerialNo = (SCardClass.VendorInfo << 16) | 0x0103,
+        VendorInterfaceDeviceTypeSerialNumber = (SCardClass.VendorInfo << 16) | 0x0103,
         /// <summary>
         /// DWORD encoded as 0xDDDDCCCC, where DDDD = data channel type and CCCC = channel number (SCARD_ATTR_CHANNEL_ID)
         /// </summary>
-        ChannelId = (SCardClass.Communications << 16) | 0x0110,
+        ChannelId = (SCardClass.Communication << 16) | 0x0110,
         /// <summary>
         /// Asynchronous protocol types (SCARD_ATTR_ASYNC_PROTOCOL_TYPES)
         /// </summary>
@@ -37,11 +37,11 @@ namespace PCSC
         /// <summary>
         /// Default clock rate, in kHz. (SCARD_ATTR_DEFAULT_CLK)
         /// </summary>
-        DefaultClk = (SCardClass.Protocol << 16) | 0x0121,
+        DefaultClockRate = (SCardClass.Protocol << 16) | 0x0121,
         /// <summary>
         /// Maximum clock rate, in kHz. (SCARD_ATTR_MAX_CLK)
         /// </summary>
-        MaxClk = (SCardClass.Protocol << 16) | 0x0122,
+        MaxClockRate = (SCardClass.Protocol << 16) | 0x0122,
         /// <summary>
         /// Default data rate, in bps. (SCARD_ATTR_DEFAULT_DATA_RATE)
         /// </summary>
@@ -53,7 +53,7 @@ namespace PCSC
         /// <summary>
         /// Maximum bytes for information file size device. (SCARD_ATTR_MAX_IFSD)
         /// </summary>
-        MaxIfsd = (SCardClass.Protocol << 16) | 0x0125,
+        MaxInformationFileSizeDevice = (SCardClass.Protocol << 16) | 0x0125,
         /// <summary>
         /// Synchronous protocol types (SCARD_ATTR_SYNC_PROTOCOL_TYPES)
         /// </summary>
@@ -61,7 +61,7 @@ namespace PCSC
         /// <summary>
         /// Zero if device does not support power down while smart card is inserted. Nonzero otherwise. (SCARD_ATTR_POWER_MGMT_SUPPORT)
         /// </summary>
-        PowerMgmtSupport = (SCardClass.PowerMgmt << 16) | 0x0131,
+        PowerManagementSupport = (SCardClass.PowerManagement << 16) | 0x0131,
         /// <summary>
         /// User to card authentication device (SCARD_ATTR_USER_TO_CARD_AUTH_DEVICE)
         /// </summary>
@@ -78,51 +78,51 @@ namespace PCSC
         /// <summary>
         /// Current protocol type (SCARD_ATTR_CURRENT_PROTOCOL_TYPE)
         /// </summary>
-        CurrentProtocolType = (SCardClass.IFDProtocol << 16) | 0x0201,
+        CurrentProtocolType = (SCardClass.InterfaceDeviceProtocol << 16) | 0x0201,
         /// <summary>
         /// Current clock rate, in kHz. (SCARD_ATTR_CURRENT_CLK)
         /// </summary>
-        CurrentClk = (SCardClass.IFDProtocol << 16) | 0x0202,
+        CurrentClockRate = (SCardClass.InterfaceDeviceProtocol << 16) | 0x0202,
         /// <summary>
         /// Clock conversion factor. (SCARD_ATTR_CURRENT_F)
         /// </summary>
-        CurrentF = (SCardClass.IFDProtocol << 16) | 0x0203,
+        CurrentClockConversionFactor = (SCardClass.InterfaceDeviceProtocol << 16) | 0x0203,
         /// <summary>
         /// Bit rate conversion factor. (SCARD_ATTR_CURRENT_D)
         /// </summary>
-        CurrentD = (SCardClass.IFDProtocol << 16) | 0x0204,
+        CurrentBitRateConversionFactor = (SCardClass.InterfaceDeviceProtocol << 16) | 0x0204,
         /// <summary>
         /// Current guard time. (SCARD_ATTR_CURRENT_N)
         /// </summary>
-        CurrentN = (SCardClass.IFDProtocol << 16) | 0x0205,
+        CurrentGuardTime = (SCardClass.InterfaceDeviceProtocol << 16) | 0x0205,
         /// <summary>
         /// Current work waiting time. (SCARD_ATTR_CURRENT_W)
         /// </summary>
-        CurrentW = (SCardClass.IFDProtocol << 16) | 0x0206,
+        CurrentWaitingTime = (SCardClass.InterfaceDeviceProtocol << 16) | 0x0206,
         /// <summary>
         /// Current byte size for information field size card. (SCARD_ATTR_CURRENT_IFSC)
         /// </summary>
-        CurrentIfsc = (SCardClass.IFDProtocol << 16) | 0x0207,
+        CurrentInformationFieldSizeCard = (SCardClass.InterfaceDeviceProtocol << 16) | 0x0207,
         /// <summary>
         /// Current byte size for information field size device. (SCARD_ATTR_CURRENT_IFSD)
         /// </summary>
-        CurrentIfsd = (SCardClass.IFDProtocol << 16) | 0x0208,
+        CurrentInformationFieldSizeDevice = (SCardClass.InterfaceDeviceProtocol << 16) | 0x0208,
         /// <summary>
         /// Current block waiting time. (SCARD_ATTR_CURRENT_BWT)
         /// </summary>
-        CurrentBwt = (SCardClass.IFDProtocol << 16) | 0x0209,
+        CurrentBlockWaitingTime = (SCardClass.InterfaceDeviceProtocol << 16) | 0x0209,
         /// <summary>
         /// Current character waiting time. (SCARD_ATTR_CURRENT_CWT)
         /// </summary>
-        CurrentCwt = (SCardClass.IFDProtocol << 16) | 0x020a,
+        CurrentCharacterWaitingTime = (SCardClass.InterfaceDeviceProtocol << 16) | 0x020a,
         /// <summary>
         /// Current error block control encoding. (SCARD_ATTR_CURRENT_EBC_ENCODING)
         /// </summary>
-        CurrentEbcEncoding = (SCardClass.IFDProtocol << 16) | 0x020b,
+        CurrentErrorBlockControlEncoding = (SCardClass.InterfaceDeviceProtocol << 16) | 0x020b,
         /// <summary>
         /// Extended block wait time. (SCARD_ATTR_EXTENDED_BWT)
         /// </summary>
-        ExtendedBwt = (SCardClass.IFDProtocol << 16) | 0x020c,
+        ExtendedBlockWaitTime = (SCardClass.InterfaceDeviceProtocol << 16) | 0x020c,
 
         /// <summary>
         /// Single byte indicating smart card presence(SCARD_ATTR_ICC_PRESENCE)
@@ -140,6 +140,10 @@ namespace PCSC
         /// Answer to reset (ATR) string. (SCARD_ATTR_ATR_STRING)
         /// </summary>
         AtrString = (SCardClass.ICCState << 16) | 0x0303,
+        /// <summary>
+        /// Answer to reset (ATR) string. (SCARD_ATTR_ATR_STRING)
+        /// </summary>
+        AnswerToResetString = AtrString,
         /// <summary>
         /// Single byte indicating smart card type (SCARD_ATTR_ICC_TYPE_PER_ATR)
         /// </summary>
@@ -189,7 +193,7 @@ namespace PCSC
         /// <summary>
         /// Supress T1 information file size request (SCARD_ATTR_SUPRESS_T1_IFS_REQUEST)
         /// </summary>
-        SupressT1IFSRequest = (SCardClass.System << 16) | 0x0007,
+        SupressT1InformationFileSizeRequest = (SCardClass.System << 16) | 0x0007,
 
         /// <summary>
         /// Device friendly name (SCARD_ATTR_DEVICE_FRIENDLY_NAME)

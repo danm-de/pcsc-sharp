@@ -12,13 +12,13 @@ namespace PCSC
         VendorInfo = 1,
         /// <summary>Communication definitions</summary>
         [Description("Communication definitions")]
-        Communications = 2,
+        Communication = 2,
         /// <summary>Protocol definitions</summary>
         [Description("Protocol definitions")]
         Protocol = 3,
         /// <summary>Power Management definitions</summary>
         [Description("Power Management definitions")]
-        PowerMgmt = 4,
+        PowerManagement = 4,
         /// <summary>Security Assurance definitions</summary>
         [Description("Security Assurance definitions")]
         Security = 5,
@@ -30,7 +30,7 @@ namespace PCSC
         VendorDefined = 7,
         /// <summary>Interface Device Protocol options</summary>
         [Description("Interface Device Protocol options")]
-        IFDProtocol = 8,
+        InterfaceDeviceProtocol = 8,
         /// <summary>ICC State specific definitions</summary>
         [Description("ICC State specific definitions")]
         ICCState = 9,

@@ -4,18 +4,10 @@ using System.Collections.Generic;
 
 namespace PCSC.Iso7816
 {
-    public class ResponseApduList : IEnumerable<ResponseApdu>, IEnumerator<ResponseApdu>
+    public class ResponseApduEnumerator : IEnumerable<ResponseApdu>, IEnumerator<ResponseApdu>
     {
         private readonly List<ResponseApdu> _lstRespApdu = new List<ResponseApdu>();
         private int _position = -1;
-
-        public ResponseApdu this[int index] {
-            get { return _lstRespApdu[index]; }
-        }
-
-        public int Count {
-            get { return _lstRespApdu.Count; }
-        }
 
         public ResponseApdu Current {
             get {
@@ -31,15 +23,15 @@ namespace PCSC.Iso7816
             get { return Current; }
         }
 
-        public ResponseApduList(List<ResponseApdu> lst) {
+        public ResponseApduEnumerator(List<ResponseApdu> lst) {
             _lstRespApdu = lst;
         }
 
-        public ResponseApduList(IEnumerable<ResponseApdu> apdus) {
+        public ResponseApduEnumerator(IEnumerable<ResponseApdu> apdus) {
             _lstRespApdu = new List<ResponseApdu>(apdus);
         }
 
-        public ResponseApduList(ResponseApdu[] apdus) {
+        public ResponseApduEnumerator(ResponseApdu[] apdus) {
             _lstRespApdu = new List<ResponseApdu>(apdus);
         }
 

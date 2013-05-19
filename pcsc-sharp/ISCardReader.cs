@@ -10,125 +10,32 @@ namespace PCSC
         /// <param name="readerName">Reader name to connect to.</param>
         /// <param name="mode">Mode of connection type: exclusive or shared.
         ///     <list type="table">
-        ///         <listheader>
-        ///             <term>Value</term><description>Description</description>
-        ///         </listheader>
-        ///         <item>
-        ///             <term><see cref="F:PCSC.SCardShareMode.Shared" /></term>
-        ///             <description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description>
-        ///         </item>
-        ///         <item>
-        ///             <term>
-        ///                 <see cref="F:PCSC.SCardShareMode.Exclusive" />
-        ///             </term>
-        ///             <description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description>
-        ///         </item>
+        ///         <listheader><term>Value</term><description>Description</description></listheader>
+        ///         <item><term><see cref="F:PCSC.SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item>
+        ///         <item><term><see cref="F:PCSC.SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item>
         ///     </list>
         /// </param>
         /// <param name="preferredProtocol">Desired protocol use.</param>
         /// <returns>An error code / return value:
         ///     <para>
         ///         <list type="table">
-        ///             <listheader>
-        ///                 <term>Error code</term><description>Description</description>
-        ///             </listheader>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.Success" />
-        ///                 </term>
-        ///                 <description>Successful (SCARD_S_SUCCESS)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.InvalidHandle" />
-        ///                 </term>
-        ///                 <description>Invalid context handle (SCARD_E_INVALID_HANDLE)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.InvalidParameter" />
-        ///                 </term>
-        ///                 <description>
-        ///                     <paramref name="preferredProtocol" /> is invalid or <see langword="null" />  (SCARD_E_INVALID_PARAMETER)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.InvalidValue" />
-        ///                 </term>
-        ///                 <description>Invalid sharing mode, requested protocol, or reader name (SCARD_E_INVALID_VALUE)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.NoService" />
-        ///                 </term>
-        ///                 <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.NoSmartcard" />
-        ///                 </term>
-        ///                 <description>No smart card present (SCARD_E_NO_SMARTCARD)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.NotReady" />
-        ///                 </term>
-        ///                 <description>Could not allocate the desired port (SCARD_E_NOT_READY)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.ProtocolMismatch" />
-        ///                 </term>
-        ///                 <description>Requested protocol is unknown (SCARD_E_PROTO_MISMATCH)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.ReaderUnavailable" />
-        ///                 </term>
-        ///                 <description>Could not power up the reader or card (SCARD_E_READER_UNAVAILABLE)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.SharingViolation" />
-        ///                 </term>
-        ///                 <description>Someone else has exclusive rights (SCARD_E_SHARING_VIOLATION)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.UnknownReader" />
-        ///                 </term>
-        ///                 <description>The reader name is <see langword="null" /> (SCARD_E_UNKNOWN_READER)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.UnsupportedFeature" />
-        ///                 </term>
-        ///                 <description>Protocol not supported (SCARD_E_UNSUPPORTED_FEATURE)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.CommunicationError" />
-        ///                 </term>
-        ///                 <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.InternalError" />
-        ///                 </term>
-        ///                 <description>An internal consistency check failed (SCARD_F_INTERNAL_ERROR)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.UnpoweredCard" />
-        ///                 </term>
-        ///                 <description>Card is not powered (SCARD_W_UNPOWERED_CARD)</description>
-        ///             </item>
-        ///             <item>
-        ///                 <term>
-        ///                     <see cref="F:PCSC.SCardError.UnresponsiveCard" />
-        ///                 </term>
-        ///                 <description>Card is mute (SCARD_W_UNRESPONSIVE_CARD)</description>
-        ///             </item>
+        ///             <listheader><term>Error code</term><description>Description</description></listheader>
+        ///             <item><term><see cref="F:PCSC.SCardError.Success" /></term><description>Successful (SCARD_S_SUCCESS)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.InvalidHandle" /></term><description>Invalid context handle (SCARD_E_INVALID_HANDLE)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.InvalidParameter" /></term><description><paramref name="preferredProtocol" /> is invalid or <see langword="null" />  (SCARD_E_INVALID_PARAMETER)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.InvalidValue" /></term><description>Invalid sharing mode, requested protocol, or reader name (SCARD_E_INVALID_VALUE)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.NoService" /></term><description>The server is not runing (SCARD_E_NO_SERVICE)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.NoSmartcard" /></term><description>No smart card present (SCARD_E_NO_SMARTCARD)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.NotReady" /></term><description>Could not allocate the desired port (SCARD_E_NOT_READY)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.ProtocolMismatch" /></term><description>Requested protocol is unknown (SCARD_E_PROTO_MISMATCH)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.ReaderUnavailable" /></term><description>Could not power up the reader or card (SCARD_E_READER_UNAVAILABLE)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.SharingViolation" /></term><description>Someone else has exclusive rights (SCARD_E_SHARING_VIOLATION)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.UnknownReader" /></term><description>The reader name is <see langword="null" /> (SCARD_E_UNKNOWN_READER)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.UnsupportedFeature" /></term><description>Protocol not supported (SCARD_E_UNSUPPORTED_FEATURE)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.CommunicationError" /></term><description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.InternalError" /></term><description>An internal consistency check failed (SCARD_F_INTERNAL_ERROR)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.UnpoweredCard" /></term><description>Card is not powered (SCARD_W_UNPOWERED_CARD)</description></item>
+        ///             <item><term><see cref="F:PCSC.SCardError.UnresponsiveCard" /></term><description>Card is mute (SCARD_W_UNRESPONSIVE_CARD)</description></item>
         ///         </list>
         ///     </para>
         /// </returns>
@@ -1460,7 +1367,7 @@ namespace PCSC
         ///         <paramref
         ///             name="attribute" />
         ///         .</para>
-        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
         /// </returns>
         /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
         SCardError GetAttrib(IntPtr attributeId, byte[] attribute, out int attributeBufferLength);
@@ -1619,10 +1526,10 @@ namespace PCSC
         ///         <paramref
         ///             name="attribute" />
         ///         .</para>
-        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
         /// </returns>
         /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
-        SCardError GetAttrib(SCardAttr attributeId, byte[] attribute, out int attributeBufferLength);
+        SCardError GetAttrib(SCardAttribute attributeId, byte[] attribute, out int attributeBufferLength);
 
         /// <summary>Gets an attribute from the IFD Handler (reader driver).</summary>
         /// <param name="attributeId">Identifier for the attribute to get.</param>
@@ -1697,7 +1604,7 @@ namespace PCSC
         ///     </list>
         /// </returns>
         /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
-        SCardError GetAttrib(SCardAttr attributeId, out byte[] attribute);
+        SCardError GetAttrib(SCardAttribute attributeId, out byte[] attribute);
 
         /// <summary>Set an attribute of the IFD Handler.</summary>
         /// <param name="attributeId">Identifier for the attribute to set.</param>
@@ -1893,7 +1800,7 @@ namespace PCSC
         ///     <para>The list of attributes you can set depends on the IFD handler you are using.</para>
         ///     <para>This method calls the API function SCardSetAttrib().</para>
         /// </remarks>
-        SCardError SetAttrib(SCardAttr attributeId, byte[] attribute, int attributeBufferLength);
+        SCardError SetAttrib(SCardAttribute attributeId, byte[] attribute, int attributeBufferLength);
 
         /// <summary>Set an attribute of the IFD Handler.</summary>
         /// <param name="attributeId">Identifier for the attribute to set.</param>
@@ -1958,7 +1865,7 @@ namespace PCSC
         ///     <para>The list of attributes you can set depends on the IFD handler you are using.</para>
         ///     <para>This method calls the API function SCardSetAttrib().</para>
         /// </remarks>
-        SCardError SetAttrib(SCardAttr attributeId, byte[] attribute);
+        SCardError SetAttrib(SCardAttribute attributeId, byte[] attribute);
 
         /// <summary>The connected reader's friendly name.</summary>
         /// <value>A human readable string of the reader name or <see langword="null" /> if the reader object is currently not connected.</value>

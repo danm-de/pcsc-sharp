@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace PCSC
 {
-    /// <summary>State of a reader.</summary>
+    /// <summary>State of the smart card in the reader.</summary>
     /// <remarks>Is a bit mask that represents the current reader status.</remarks>
     [Flags]
     public enum SCardState

@@ -69,7 +69,7 @@
     <Compile Include="Delegates\CardRemovedEvent.cs" />
     <Compile Include="Delegates\MonitorExceptionEvent.cs" />
     <Compile Include="Delegates\StatusChangeEvent.cs" />
-    <Compile Include="Enums\SCardAttr.cs" />
+    <Compile Include="Enums\SCardAttribute.cs" />
     <Compile Include="Enums\SCardClass.cs" />
     <Compile Include="Enums\SCardError.cs" />
     <Compile Include="Enums\SCardProtocol.cs" />
@@ -124,11 +124,12 @@
     <Compile Include="Iso7816\Exceptions\InvalidApduException.cs" />
     <Compile Include="Iso7816\FileDescriptor.cs" />
     <Compile Include="Iso7816\FileStructureInfo.cs" />
+    <Compile Include="Iso7816\IIsoReader.cs" />
     <Compile Include="Iso7816\InstructionByte.cs" />
     <Compile Include="Iso7816\RecordInfo.cs" />
     <Compile Include="Iso7816\Response.cs" />
-    <Compile Include="Iso7816\IsoCard.cs" />
-    <Compile Include="Iso7816\ResponseApduList.cs" />
+    <Compile Include="Iso7816\IsoReader.cs" />
+    <Compile Include="Iso7816\ResponseApduEnumerator.cs" />
     <Compile Include="SCardContext.cs" />
     <Compile Include="SCardHelper.cs" />
     <Compile Include="SCardMonitor.cs" />
