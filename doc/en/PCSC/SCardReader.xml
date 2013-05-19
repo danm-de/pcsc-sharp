@@ -49,6 +49,7 @@
             </code>
           </example>
         </remarks>
+        <exception cref="T:System.ArgumentNullException">If <paramref name="context" /> is <see langword="null" /></exception>
       </Docs>
     </Member>
     <Member MemberName="ActiveProtocol">
@@ -542,8 +543,8 @@
       </Docs>
     </Member>
     <Member MemberName="GetAttrib">
-      <MemberSignature Language="C#" Value="public PCSC.SCardError GetAttrib (PCSC.SCardAttr attributeId, out byte[] attribute);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype PCSC.SCardError GetAttrib(valuetype PCSC.SCardAttr attributeId, unsigned int8[] attribute) cil managed" />
+      <MemberSignature Language="C#" Value="public PCSC.SCardError GetAttrib (PCSC.SCardAttribute attributeId, out byte[] attribute);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype PCSC.SCardError GetAttrib(valuetype PCSC.SCardAttribute attributeId, unsigned int8[] attribute) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -552,7 +553,7 @@
         <ReturnType>PCSC.SCardError</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attributeId" Type="PCSC.SCardAttr" />
+        <Parameter Name="attributeId" Type="PCSC.SCardAttribute" />
         <Parameter Name="attribute" Type="System.Byte[]&amp;" RefType="out" />
       </Parameters>
       <Docs>
@@ -722,8 +723,8 @@
       </Docs>
     </Member>
     <Member MemberName="GetAttrib">
-      <MemberSignature Language="C#" Value="public PCSC.SCardError GetAttrib (PCSC.SCardAttr attributeId, byte[] attribute, out int attributeBufferLength);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype PCSC.SCardError GetAttrib(valuetype PCSC.SCardAttr attributeId, unsigned int8[] attribute, int32 attributeBufferLength) cil managed" />
+      <MemberSignature Language="C#" Value="public PCSC.SCardError GetAttrib (PCSC.SCardAttribute attributeId, byte[] attribute, out int attributeBufferLength);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype PCSC.SCardError GetAttrib(valuetype PCSC.SCardAttribute attributeId, unsigned int8[] attribute, int32 attributeBufferLength) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -732,7 +733,7 @@
         <ReturnType>PCSC.SCardError</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attributeId" Type="PCSC.SCardAttr" />
+        <Parameter Name="attributeId" Type="PCSC.SCardAttribute" />
         <Parameter Name="attribute" Type="System.Byte[]" />
         <Parameter Name="attributeBufferLength" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
@@ -815,7 +816,7 @@
           <para>If the method returned with <see cref="F:PCSC.SCardError.Success" /> then <paramref name="attributeBufferLength" /> contains the exact size of the result in
             <paramref name="attribute" />
             .</para>
-          <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+          <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
         </returns>
         <remarks>This method calls the API function SCardGetAttrib().</remarks>
       </Docs>
@@ -914,7 +915,7 @@
           <para>If the method returned with <see cref="F:PCSC.SCardError.Success" /> then <paramref name="attributeBufferLength" /> contains the exact size of the result in
             <paramref name="attribute" />
             .</para>
-          <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+          <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
         </returns>
         <remarks>This method calls the API function SCardGetAttrib().</remarks>
       </Docs>
@@ -985,8 +986,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetAttrib">
-      <MemberSignature Language="C#" Value="public PCSC.SCardError SetAttrib (PCSC.SCardAttr attributeId, byte[] attribute);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype PCSC.SCardError SetAttrib(valuetype PCSC.SCardAttr attributeId, unsigned int8[] attribute) cil managed" />
+      <MemberSignature Language="C#" Value="public PCSC.SCardError SetAttrib (PCSC.SCardAttribute attributeId, byte[] attribute);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype PCSC.SCardError SetAttrib(valuetype PCSC.SCardAttribute attributeId, unsigned int8[] attribute) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -995,7 +996,7 @@
         <ReturnType>PCSC.SCardError</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attributeId" Type="PCSC.SCardAttr" />
+        <Parameter Name="attributeId" Type="PCSC.SCardAttribute" />
         <Parameter Name="attribute" Type="System.Byte[]" />
       </Parameters>
       <Docs>
@@ -1145,8 +1146,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetAttrib">
-      <MemberSignature Language="C#" Value="public PCSC.SCardError SetAttrib (PCSC.SCardAttr attributeId, byte[] attribute, int attributeBufferLength);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype PCSC.SCardError SetAttrib(valuetype PCSC.SCardAttr attributeId, unsigned int8[] attribute, int32 attributeBufferLength) cil managed" />
+      <MemberSignature Language="C#" Value="public PCSC.SCardError SetAttrib (PCSC.SCardAttribute attributeId, byte[] attribute, int attributeBufferLength);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype PCSC.SCardError SetAttrib(valuetype PCSC.SCardAttribute attributeId, unsigned int8[] attribute, int32 attributeBufferLength) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -1155,7 +1156,7 @@
         <ReturnType>PCSC.SCardError</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="attributeId" Type="PCSC.SCardAttr" />
+        <Parameter Name="attributeId" Type="PCSC.SCardAttribute" />
         <Parameter Name="attribute" Type="System.Byte[]" />
         <Parameter Name="attributeBufferLength" Type="System.Int32" />
       </Parameters>

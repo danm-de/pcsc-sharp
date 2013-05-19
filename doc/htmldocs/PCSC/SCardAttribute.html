@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>PCSC.SCardAttr</title>
+    <title>PCSC.SCardAttribute</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
       a { text-decoration: none }
@@ -190,40 +190,48 @@
       <a href="../index.html">pcsc-sharp</a> : <a href="index.html">PCSC Namespace</a></div>
     <div class="SideBar">
       <p>
-        <a href="#T:PCSC.SCardAttr">Overview</a>
+        <a href="#T:PCSC.SCardAttribute">Overview</a>
       </p>
       <p>
-        <a href="#T:PCSC.SCardAttr:Signature">Signature</a>
+        <a href="#T:PCSC.SCardAttribute:Signature">Signature</a>
       </p>
       <p>
-        <a href="#T:PCSC.SCardAttr:Docs">Remarks</a>
+        <a href="#T:PCSC.SCardAttribute:Docs">Remarks</a>
       </p>
       <p>
         <a href="#Members">Members</a>
       </p>
       <p>
-        <a href="#T:PCSC.SCardAttr:Members">Member Details</a>
+        <a href="#T:PCSC.SCardAttribute:Members">Member Details</a>
       </p>
     </div>
-    <h1 class="PageTitle" id="T:PCSC.SCardAttr">SCardAttr  Enum</h1>
-    <p class="Summary" id="T:PCSC.SCardAttr:Summary">Smart card reader attribute enumeration.</p>
-    <div id="T:PCSC.SCardAttr:Signature">
+    <h1 class="PageTitle" id="T:PCSC.SCardAttribute">SCardAttribute  Enum</h1>
+    <p class="Summary" id="T:PCSC.SCardAttribute:Summary">Smart card reader attribute enumeration.</p>
+    <div id="T:PCSC.SCardAttribute:Signature">
       <h2>Syntax</h2>
-      <div class="Signature">public enum <b>SCardAttr</b></div>
+      <div class="Signature">public enum <b>SCardAttribute</b></div>
     </div>
-    <div class="Remarks" id="T:PCSC.SCardAttr:Docs">
+    <div class="Remarks" id="T:PCSC.SCardAttribute:Docs">
       <h2 class="Section">Remarks</h2>
-      <div class="SectionBox" id="T:PCSC.SCardAttr:Docs:Remarks">Can be used as parameter for the following methods:
-            <ul><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)">SCardReader.GetAttrib(SCardAttr, Byte[]@)</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)">SCardReader.GetAttrib(SCardAttr, Byte[], Int32@)</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])">SCardReader.SetAttrib(SCardAttr, Byte[])</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)">SCardReader.SetAttrib(SCardAttr, Byte[], int)</a></li></ul></div>
+      <div class="SectionBox" id="T:PCSC.SCardAttribute:Docs:Remarks">Can be used as parameter for the following methods:
+            <ul><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)">SCardReader.GetAttrib(SCardAttribute, Byte[]@)</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@)">SCardReader.GetAttrib(SCardAttribute, Byte[], Int32@)</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[])">SCardReader.SetAttrib(SCardAttribute, Byte[])</a></li><li><a href="../PCSC/SCardReader.html#M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32)">SCardReader.SetAttrib(SCardAttribute, Byte[], int)</a></li></ul></div>
       <h2 class="Section">Members</h2>
-      <div class="SectionBox" id="T:PCSC.SCardAttr:Docs:Members">
+      <div class="SectionBox" id="T:PCSC.SCardAttribute:Docs:Members">
         <table class="Enumeration">
           <tr>
             <th>Member Name</th>
             <th>Description</th>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.AsyncProtocolTypes">
+            <td id="F:PCSC.SCardAttribute.AnswerToResetString">
+              <b>AnswerToResetString</b>
+            </td>
+            <td>
+            Answer to reset (ATR) string. (SCARD_ATTR_ATR_STRING)
+            </td>
+          </tr>
+          <tr valign="top">
+            <td id="F:PCSC.SCardAttribute.AsyncProtocolTypes">
               <b>AsyncProtocolTypes</b>
             </td>
             <td>
@@ -231,7 +239,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.AtrString">
+            <td id="F:PCSC.SCardAttribute.AtrString">
               <b>AtrString</b>
             </td>
             <td>
@@ -239,7 +247,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.ChannelId">
+            <td id="F:PCSC.SCardAttribute.ChannelId">
               <b>ChannelId</b>
             </td>
             <td>
@@ -247,7 +255,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.Characteristics">
+            <td id="F:PCSC.SCardAttribute.Characteristics">
               <b>Characteristics</b>
             </td>
             <td>
@@ -255,71 +263,79 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentBwt">
-              <b>CurrentBwt</b>
-            </td>
-            <td>
-            Current block waiting time. (SCARD_ATTR_CURRENT_BWT)
-            </td>
-          </tr>
-          <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentClk">
-              <b>CurrentClk</b>
-            </td>
-            <td>
-            Current clock rate, in kHz. (SCARD_ATTR_CURRENT_CLK)
-            </td>
-          </tr>
-          <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentCwt">
-              <b>CurrentCwt</b>
-            </td>
-            <td>
-            Current character waiting time. (SCARD_ATTR_CURRENT_CWT)
-            </td>
-          </tr>
-          <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentD">
-              <b>CurrentD</b>
+            <td id="F:PCSC.SCardAttribute.CurrentBitRateConversionFactor">
+              <b>CurrentBitRateConversionFactor</b>
             </td>
             <td>
             Bit rate conversion factor. (SCARD_ATTR_CURRENT_D)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentEbcEncoding">
-              <b>CurrentEbcEncoding</b>
+            <td id="F:PCSC.SCardAttribute.CurrentBlockWaitingTime">
+              <b>CurrentBlockWaitingTime</b>
             </td>
             <td>
-            Current error block control encoding. (SCARD_ATTR_CURRENT_EBC_ENCODING)
+            Current block waiting time. (SCARD_ATTR_CURRENT_BWT)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentF">
-              <b>CurrentF</b>
+            <td id="F:PCSC.SCardAttribute.CurrentCharacterWaitingTime">
+              <b>CurrentCharacterWaitingTime</b>
+            </td>
+            <td>
+            Current character waiting time. (SCARD_ATTR_CURRENT_CWT)
+            </td>
+          </tr>
+          <tr valign="top">
+            <td id="F:PCSC.SCardAttribute.CurrentClockConversionFactor">
+              <b>CurrentClockConversionFactor</b>
             </td>
             <td>
             Clock conversion factor. (SCARD_ATTR_CURRENT_F)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentIfsc">
-              <b>CurrentIfsc</b>
+            <td id="F:PCSC.SCardAttribute.CurrentClockRate">
+              <b>CurrentClockRate</b>
+            </td>
+            <td>
+            Current clock rate, in kHz. (SCARD_ATTR_CURRENT_CLK)
+            </td>
+          </tr>
+          <tr valign="top">
+            <td id="F:PCSC.SCardAttribute.CurrentErrorBlockControlEncoding">
+              <b>CurrentErrorBlockControlEncoding</b>
+            </td>
+            <td>
+            Current error block control encoding. (SCARD_ATTR_CURRENT_EBC_ENCODING)
+            </td>
+          </tr>
+          <tr valign="top">
+            <td id="F:PCSC.SCardAttribute.CurrentGuardTime">
+              <b>CurrentGuardTime</b>
+            </td>
+            <td>
+            Current guard time. (SCARD_ATTR_CURRENT_N)
+            </td>
+          </tr>
+          <tr valign="top">
+            <td id="F:PCSC.SCardAttribute.CurrentInformationFieldSizeCard">
+              <b>CurrentInformationFieldSizeCard</b>
             </td>
             <td>
             Current byte size for information field size card. (SCARD_ATTR_CURRENT_IFSC)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentIfsd">
-              <b>CurrentIfsd</b>
+            <td id="F:PCSC.SCardAttribute.CurrentInformationFieldSizeDevice">
+              <b>CurrentInformationFieldSizeDevice</b>
             </td>
             <td>
             Current byte size for information field size device. (SCARD_ATTR_CURRENT_IFSD)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentIOState">
+            <td id="F:PCSC.SCardAttribute.CurrentIOState">
               <b>CurrentIOState</b>
             </td>
             <td>
@@ -327,15 +343,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentN">
-              <b>CurrentN</b>
-            </td>
-            <td>
-            Current guard time. (SCARD_ATTR_CURRENT_N)
-            </td>
-          </tr>
-          <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentProtocolType">
+            <td id="F:PCSC.SCardAttribute.CurrentProtocolType">
               <b>CurrentProtocolType</b>
             </td>
             <td>
@@ -343,23 +351,23 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.CurrentW">
-              <b>CurrentW</b>
+            <td id="F:PCSC.SCardAttribute.CurrentWaitingTime">
+              <b>CurrentWaitingTime</b>
             </td>
             <td>
             Current work waiting time. (SCARD_ATTR_CURRENT_W)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DefaultClk">
-              <b>DefaultClk</b>
+            <td id="F:PCSC.SCardAttribute.DefaultClockRate">
+              <b>DefaultClockRate</b>
             </td>
             <td>
             Default clock rate, in kHz. (SCARD_ATTR_DEFAULT_CLK)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DefaultDataRate">
+            <td id="F:PCSC.SCardAttribute.DefaultDataRate">
               <b>DefaultDataRate</b>
             </td>
             <td>
@@ -367,7 +375,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DeviceFriendlyName">
+            <td id="F:PCSC.SCardAttribute.DeviceFriendlyName">
               <b>DeviceFriendlyName</b>
             </td>
             <td>
@@ -375,7 +383,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DeviceFriendlyNameA">
+            <td id="F:PCSC.SCardAttribute.DeviceFriendlyNameA">
               <b>DeviceFriendlyNameA</b>
             </td>
             <td>
@@ -383,7 +391,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DeviceFriendlyNameW">
+            <td id="F:PCSC.SCardAttribute.DeviceFriendlyNameW">
               <b>DeviceFriendlyNameW</b>
             </td>
             <td>
@@ -391,7 +399,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DeviceInUse">
+            <td id="F:PCSC.SCardAttribute.DeviceInUse">
               <b>DeviceInUse</b>
             </td>
             <td>
@@ -399,7 +407,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DeviceSystemName">
+            <td id="F:PCSC.SCardAttribute.DeviceSystemName">
               <b>DeviceSystemName</b>
             </td>
             <td>
@@ -407,7 +415,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DeviceSystemNameA">
+            <td id="F:PCSC.SCardAttribute.DeviceSystemNameA">
               <b>DeviceSystemNameA</b>
             </td>
             <td>
@@ -415,7 +423,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DeviceSystemNameW">
+            <td id="F:PCSC.SCardAttribute.DeviceSystemNameW">
               <b>DeviceSystemNameW</b>
             </td>
             <td>
@@ -423,7 +431,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.DeviceUnit">
+            <td id="F:PCSC.SCardAttribute.DeviceUnit">
               <b>DeviceUnit</b>
             </td>
             <td>
@@ -431,7 +439,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.EscAuthRequest">
+            <td id="F:PCSC.SCardAttribute.EscAuthRequest">
               <b>EscAuthRequest</b>
             </td>
             <td>
@@ -439,7 +447,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.EscCancel">
+            <td id="F:PCSC.SCardAttribute.EscCancel">
               <b>EscCancel</b>
             </td>
             <td>
@@ -447,7 +455,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.EscReset">
+            <td id="F:PCSC.SCardAttribute.EscReset">
               <b>EscReset</b>
             </td>
             <td>
@@ -455,15 +463,15 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.ExtendedBwt">
-              <b>ExtendedBwt</b>
+            <td id="F:PCSC.SCardAttribute.ExtendedBlockWaitTime">
+              <b>ExtendedBlockWaitTime</b>
             </td>
             <td>
             Extended block wait time. (SCARD_ATTR_EXTENDED_BWT)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.ICCInterfaceStatus">
+            <td id="F:PCSC.SCardAttribute.ICCInterfaceStatus">
               <b>ICCInterfaceStatus</b>
             </td>
             <td>
@@ -471,7 +479,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.ICCPresence">
+            <td id="F:PCSC.SCardAttribute.ICCPresence">
               <b>ICCPresence</b>
             </td>
             <td>
@@ -479,7 +487,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.ICCTypePerAtr">
+            <td id="F:PCSC.SCardAttribute.ICCTypePerAtr">
               <b>ICCTypePerAtr</b>
             </td>
             <td>
@@ -487,15 +495,15 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.MaxClk">
-              <b>MaxClk</b>
+            <td id="F:PCSC.SCardAttribute.MaxClockRate">
+              <b>MaxClockRate</b>
             </td>
             <td>
             Maximum clock rate, in kHz. (SCARD_ATTR_MAX_CLK)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.MaxDataRate">
+            <td id="F:PCSC.SCardAttribute.MaxDataRate">
               <b>MaxDataRate</b>
             </td>
             <td>
@@ -503,15 +511,15 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.MaxIfsd">
-              <b>MaxIfsd</b>
+            <td id="F:PCSC.SCardAttribute.MaxInformationFileSizeDevice">
+              <b>MaxInformationFileSizeDevice</b>
             </td>
             <td>
             Maximum bytes for information file size device. (SCARD_ATTR_MAX_IFSD)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.MaxInput">
+            <td id="F:PCSC.SCardAttribute.MaxInput">
               <b>MaxInput</b>
             </td>
             <td>
@@ -519,23 +527,23 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.PowerMgmtSupport">
-              <b>PowerMgmtSupport</b>
+            <td id="F:PCSC.SCardAttribute.PowerManagementSupport">
+              <b>PowerManagementSupport</b>
             </td>
             <td>
             Zero if device does not support power down while smart card is inserted. Nonzero otherwise. (SCARD_ATTR_POWER_MGMT_SUPPORT)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.SupressT1IFSRequest">
-              <b>SupressT1IFSRequest</b>
+            <td id="F:PCSC.SCardAttribute.SupressT1InformationFileSizeRequest">
+              <b>SupressT1InformationFileSizeRequest</b>
             </td>
             <td>
             Supress T1 information file size request (SCARD_ATTR_SUPRESS_T1_IFS_REQUEST)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.SyncProtocolTypes">
+            <td id="F:PCSC.SCardAttribute.SyncProtocolTypes">
               <b>SyncProtocolTypes</b>
             </td>
             <td>
@@ -543,7 +551,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.UserAuthInputDevice">
+            <td id="F:PCSC.SCardAttribute.UserAuthInputDevice">
               <b>UserAuthInputDevice</b>
             </td>
             <td>
@@ -551,7 +559,7 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.UserToCardAuthDevice">
+            <td id="F:PCSC.SCardAttribute.UserToCardAuthDevice">
               <b>UserToCardAuthDevice</b>
             </td>
             <td>
@@ -559,31 +567,31 @@
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.VendorIFDSerialNo">
-              <b>VendorIFDSerialNo</b>
-            </td>
-            <td>
-            Vendor-supplied interface device serial number. (SCARD_ATTR_VENDOR_IFD_SERIAL_NO)
-            </td>
-          </tr>
-          <tr valign="top">
-            <td id="F:PCSC.SCardAttr.VendorIFDType">
-              <b>VendorIFDType</b>
+            <td id="F:PCSC.SCardAttribute.VendorInterfaceDeviceType">
+              <b>VendorInterfaceDeviceType</b>
             </td>
             <td>
             Vendor-supplied interface device type (model designation of reader). (SCARD_ATTR_VENDOR_IFD_TYPE)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.VendorIFDVersion">
-              <b>VendorIFDVersion</b>
+            <td id="F:PCSC.SCardAttribute.VendorInterfaceDeviceTypeSerialNumber">
+              <b>VendorInterfaceDeviceTypeSerialNumber</b>
+            </td>
+            <td>
+            Vendor-supplied interface device serial number. (SCARD_ATTR_VENDOR_IFD_SERIAL_NO)
+            </td>
+          </tr>
+          <tr valign="top">
+            <td id="F:PCSC.SCardAttribute.VendorInterfaceDeviceTypeVersion">
+              <b>VendorInterfaceDeviceTypeVersion</b>
             </td>
             <td>
             Vendor-supplied interface device version (DWORD in the form 0xMMmmbbbb where MM = major version, mm = minor version, and bbbb = build number).  (SCARD_ATTR_VENDOR_IFD_VERSION)
             </td>
           </tr>
           <tr valign="top">
-            <td id="F:PCSC.SCardAttr.VendorName">
+            <td id="F:PCSC.SCardAttribute.VendorName">
               <b>VendorName</b>
             </td>
             <td>
@@ -593,10 +601,10 @@
         </table>
       </div>
       <h2 class="Section">Requirements</h2>
-      <div class="SectionBox" id="T:PCSC.SCardAttr:Docs:Version Information">
+      <div class="SectionBox" id="T:PCSC.SCardAttribute:Docs:Version Information">
         <b>Namespace: </b>PCSC<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
     </div>
-    <div class="Members" id="T:PCSC.SCardAttr:Members">
+    <div class="Members" id="T:PCSC.SCardAttribute:Members">
     </div>
     <hr size="1" />
     <div class="Copyright">

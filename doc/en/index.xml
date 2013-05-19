@@ -66,7 +66,7 @@
       <Type Name="PCSCException" Kind="Class" />
       <Type Name="ReaderUnavailableException" Kind="Class" />
       <Type Name="RemovedCardException" Kind="Class" />
-      <Type Name="SCardAttr" Kind="Enumeration" />
+      <Type Name="SCardAttribute" Kind="Enumeration" />
       <Type Name="SCardClass" Kind="Enumeration" />
       <Type Name="SCardContext" Kind="Class" />
       <Type Name="SCardError" Kind="Enumeration" />
@@ -100,14 +100,15 @@
       <Type Name="FileStructureInfo" Kind="Class" />
       <Type Name="FileStructureType" Kind="Enumeration" />
       <Type Name="FileType" Kind="Enumeration" />
+      <Type Name="IIsoReader" Kind="Interface" />
       <Type Name="InstructionByte" Kind="Class" />
       <Type Name="InstructionCode" Kind="Enumeration" />
-      <Type Name="IsoCard" Kind="Class" />
       <Type Name="IsoCase" Kind="Enumeration" />
+      <Type Name="IsoReader" Kind="Class" />
       <Type Name="RecordInfo" Kind="Class" />
       <Type Name="Response" Kind="Class" />
       <Type Name="ResponseApdu" Kind="Class" />
-      <Type Name="ResponseApduList" Kind="Class" />
+      <Type Name="ResponseApduEnumerator" Kind="Class" />
       <Type Name="SecureMessagingFormat" Kind="Enumeration" />
       <Type Name="SW1Code" Kind="Enumeration" />
       <Type Name="TlvDataType" Kind="Enumeration" />

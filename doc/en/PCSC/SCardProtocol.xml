@@ -34,7 +34,7 @@
         <ReturnType>PCSC.SCardProtocol</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>(<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />). IFD determines prot.</summary>
+        <summary>(<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />). IFD (Interface device) determines protocol.</summary>
       </Docs>
     </Member>
     <Member MemberName="Raw">

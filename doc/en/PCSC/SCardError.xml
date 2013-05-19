@@ -75,9 +75,9 @@
         <summary>The user pressed "Cancel" on a Smart Card Selection Dialog. (SCARD_W_CANCELLED_BY_USER)</summary>
       </Docs>
     </Member>
-    <Member MemberName="CantDispose">
-      <MemberSignature Language="C#" Value="CantDispose" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CantDispose = int32(-2146435058)" />
+    <Member MemberName="CannotDispose">
+      <MemberSignature Language="C#" Value="CannotDispose" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.SCardError CannotDispose = int32(-2146435058)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
