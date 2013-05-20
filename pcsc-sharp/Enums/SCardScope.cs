@@ -17,7 +17,7 @@ namespace PCSC
         /// <summary>Scope in terminal.</summary>
         [Description("Scope in terminal")]
         Terminal = 0x0001,
-        /// <summary>Scope in system. Services on the local machine.</summary>
+        /// <summary>Scope in system. Service on the local machine.</summary>
         [Description("Scope in system")]
         System = 0x0002,
 

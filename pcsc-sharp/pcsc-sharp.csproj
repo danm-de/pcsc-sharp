@@ -148,6 +148,12 @@
     <Content Include="pcsc-sharp.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="..\AUTHORS">
+      <Link>AUTHORS</Link>
+    </None>
+    <None Include="..\COPYING">
+      <Link>COPYING</Link>
+    </None>
     <None Include="pcsc-sharp.png" />
   </ItemGroup>
   <ItemGroup>
