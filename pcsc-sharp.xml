@@ -94,242 +94,247 @@
                 </example>
             </remarks>
         </member>
-        <member name="T:PCSC.SCardAttr">
+        <member name="T:PCSC.SCardAttribute">
              <summary>Smart card reader attribute enumeration.</summary>
             <remarks>Can be used as parameter for the following methods:
             <list type="bullet">
-            <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" /></term></item>
-            <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)" /></term></item>
-            <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])" /></term></item>
-            <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)" /></term></item>
+            <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" /></term></item>
+            <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@)" /></term></item>
+            <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[])" /></term></item>
+            <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32)" /></term></item>
             </list></remarks>
         </member>
-        <member name="F:PCSC.SCardAttr.VendorName">
+        <member name="F:PCSC.SCardAttribute.VendorName">
             <summary>
             Vendor name. (SCARD_ATTR_VENDOR_NAME)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.VendorIFDType">
+        <member name="F:PCSC.SCardAttribute.VendorInterfaceDeviceType">
             <summary>
             Vendor-supplied interface device type (model designation of reader). (SCARD_ATTR_VENDOR_IFD_TYPE)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.VendorIFDVersion">
+        <member name="F:PCSC.SCardAttribute.VendorInterfaceDeviceTypeVersion">
             <summary>
             Vendor-supplied interface device version (DWORD in the form 0xMMmmbbbb where MM = major version, mm = minor version, and bbbb = build number).  (SCARD_ATTR_VENDOR_IFD_VERSION)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.VendorIFDSerialNo">
+        <member name="F:PCSC.SCardAttribute.VendorInterfaceDeviceTypeSerialNumber">
             <summary>
             Vendor-supplied interface device serial number. (SCARD_ATTR_VENDOR_IFD_SERIAL_NO)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.ChannelId">
+        <member name="F:PCSC.SCardAttribute.ChannelId">
             <summary>
             DWORD encoded as 0xDDDDCCCC, where DDDD = data channel type and CCCC = channel number (SCARD_ATTR_CHANNEL_ID)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.AsyncProtocolTypes">
+        <member name="F:PCSC.SCardAttribute.AsyncProtocolTypes">
             <summary>
             Asynchronous protocol types (SCARD_ATTR_ASYNC_PROTOCOL_TYPES)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DefaultClk">
+        <member name="F:PCSC.SCardAttribute.DefaultClockRate">
             <summary>
             Default clock rate, in kHz. (SCARD_ATTR_DEFAULT_CLK)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.MaxClk">
+        <member name="F:PCSC.SCardAttribute.MaxClockRate">
             <summary>
             Maximum clock rate, in kHz. (SCARD_ATTR_MAX_CLK)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DefaultDataRate">
+        <member name="F:PCSC.SCardAttribute.DefaultDataRate">
             <summary>
             Default data rate, in bps. (SCARD_ATTR_DEFAULT_DATA_RATE)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.MaxDataRate">
+        <member name="F:PCSC.SCardAttribute.MaxDataRate">
             <summary>
             Maximum data rate, in bps. (SCARD_ATTR_MAX_DATA_RATE)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.MaxIfsd">
+        <member name="F:PCSC.SCardAttribute.MaxInformationFileSizeDevice">
             <summary>
             Maximum bytes for information file size device. (SCARD_ATTR_MAX_IFSD)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.SyncProtocolTypes">
+        <member name="F:PCSC.SCardAttribute.SyncProtocolTypes">
             <summary>
             Synchronous protocol types (SCARD_ATTR_SYNC_PROTOCOL_TYPES)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.PowerMgmtSupport">
+        <member name="F:PCSC.SCardAttribute.PowerManagementSupport">
             <summary>
             Zero if device does not support power down while smart card is inserted. Nonzero otherwise. (SCARD_ATTR_POWER_MGMT_SUPPORT)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.UserToCardAuthDevice">
+        <member name="F:PCSC.SCardAttribute.UserToCardAuthDevice">
             <summary>
             User to card authentication device (SCARD_ATTR_USER_TO_CARD_AUTH_DEVICE)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.UserAuthInputDevice">
+        <member name="F:PCSC.SCardAttribute.UserAuthInputDevice">
             <summary>
             User authentication input device (SCARD_ATTR_USER_AUTH_INPUT_DEVICE)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.Characteristics">
+        <member name="F:PCSC.SCardAttribute.Characteristics">
             <summary>
             DWORD indicating which mechanical characteristics are supported. If zero, no special characteristics are supported. Note that multiple bits can be set (SCARD_ATTR_CHARACTERISTICS)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentProtocolType">
+        <member name="F:PCSC.SCardAttribute.CurrentProtocolType">
             <summary>
             Current protocol type (SCARD_ATTR_CURRENT_PROTOCOL_TYPE)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentClk">
+        <member name="F:PCSC.SCardAttribute.CurrentClockRate">
             <summary>
             Current clock rate, in kHz. (SCARD_ATTR_CURRENT_CLK)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentF">
+        <member name="F:PCSC.SCardAttribute.CurrentClockConversionFactor">
             <summary>
             Clock conversion factor. (SCARD_ATTR_CURRENT_F)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentD">
+        <member name="F:PCSC.SCardAttribute.CurrentBitRateConversionFactor">
             <summary>
             Bit rate conversion factor. (SCARD_ATTR_CURRENT_D)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentN">
+        <member name="F:PCSC.SCardAttribute.CurrentGuardTime">
             <summary>
             Current guard time. (SCARD_ATTR_CURRENT_N)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentW">
+        <member name="F:PCSC.SCardAttribute.CurrentWaitingTime">
             <summary>
             Current work waiting time. (SCARD_ATTR_CURRENT_W)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentIfsc">
+        <member name="F:PCSC.SCardAttribute.CurrentInformationFieldSizeCard">
             <summary>
             Current byte size for information field size card. (SCARD_ATTR_CURRENT_IFSC)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentIfsd">
+        <member name="F:PCSC.SCardAttribute.CurrentInformationFieldSizeDevice">
             <summary>
             Current byte size for information field size device. (SCARD_ATTR_CURRENT_IFSD)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentBwt">
+        <member name="F:PCSC.SCardAttribute.CurrentBlockWaitingTime">
             <summary>
             Current block waiting time. (SCARD_ATTR_CURRENT_BWT)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentCwt">
+        <member name="F:PCSC.SCardAttribute.CurrentCharacterWaitingTime">
             <summary>
             Current character waiting time. (SCARD_ATTR_CURRENT_CWT)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentEbcEncoding">
+        <member name="F:PCSC.SCardAttribute.CurrentErrorBlockControlEncoding">
             <summary>
             Current error block control encoding. (SCARD_ATTR_CURRENT_EBC_ENCODING)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.ExtendedBwt">
+        <member name="F:PCSC.SCardAttribute.ExtendedBlockWaitTime">
             <summary>
             Extended block wait time. (SCARD_ATTR_EXTENDED_BWT)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.ICCPresence">
+        <member name="F:PCSC.SCardAttribute.ICCPresence">
             <summary>
             Single byte indicating smart card presence(SCARD_ATTR_ICC_PRESENCE)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.ICCInterfaceStatus">
+        <member name="F:PCSC.SCardAttribute.ICCInterfaceStatus">
             <summary>
             Single byte. Zero if smart card electrical contact is not active; nonzero if contact is active. (SCARD_ATTR_ICC_INTERFACE_STATUS)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.CurrentIOState">
+        <member name="F:PCSC.SCardAttribute.CurrentIOState">
             <summary>
             Current IO state (SCARD_ATTR_CURRENT_IO_STATE)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.AtrString">
+        <member name="F:PCSC.SCardAttribute.AtrString">
             <summary>
             Answer to reset (ATR) string. (SCARD_ATTR_ATR_STRING)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.ICCTypePerAtr">
+        <member name="F:PCSC.SCardAttribute.AnswerToResetString">
+            <summary>
+            Answer to reset (ATR) string. (SCARD_ATTR_ATR_STRING)
+            </summary>
+        </member>
+        <member name="F:PCSC.SCardAttribute.ICCTypePerAtr">
             <summary>
             Single byte indicating smart card type (SCARD_ATTR_ICC_TYPE_PER_ATR)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.EscReset">
+        <member name="F:PCSC.SCardAttribute.EscReset">
             <summary>
             Esc reset (SCARD_ATTR_ESC_RESET)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.EscCancel">
+        <member name="F:PCSC.SCardAttribute.EscCancel">
             <summary>
             Esc cancel (SCARD_ATTR_ESC_CANCEL)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.EscAuthRequest">
+        <member name="F:PCSC.SCardAttribute.EscAuthRequest">
             <summary>
             Esc authentication request (SCARD_ATTR_ESC_AUTHREQUEST)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.MaxInput">
+        <member name="F:PCSC.SCardAttribute.MaxInput">
             <summary>
             Maximum input (SCARD_ATTR_MAXINPUT)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DeviceUnit">
+        <member name="F:PCSC.SCardAttribute.DeviceUnit">
             <summary>
             Instance of this vendor's reader attached to the computer. The first instance will be device unit 0, the next will be unit 1 (if it is the same brand of reader) and so on. Two different brands of readers will both have zero for this value. (SCARD_ATTR_DEVICE_UNIT)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DeviceInUse">
+        <member name="F:PCSC.SCardAttribute.DeviceInUse">
             <summary>
             Reserved for future use. (SCARD_ATTR_DEVICE_IN_USE)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DeviceFriendlyNameA">
+        <member name="F:PCSC.SCardAttribute.DeviceFriendlyNameA">
             <summary>
             Device friendly name ASCII (SCARD_ATTR_DEVICE_FRIENDLY_NAME_A)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DeviceSystemNameA">
+        <member name="F:PCSC.SCardAttribute.DeviceSystemNameA">
             <summary>
             Device system name ASCII (SCARD_ATTR_DEVICE_SYSTEM_NAME_A)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DeviceFriendlyNameW">
+        <member name="F:PCSC.SCardAttribute.DeviceFriendlyNameW">
             <summary>
             Device friendly name UNICODE (SCARD_ATTR_DEVICE_FRIENDLY_NAME_W)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DeviceSystemNameW">
+        <member name="F:PCSC.SCardAttribute.DeviceSystemNameW">
             <summary>
             Device system name UNICODE (SCARD_ATTR_DEVICE_SYSTEM_NAME_W)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.SupressT1IFSRequest">
+        <member name="F:PCSC.SCardAttribute.SupressT1InformationFileSizeRequest">
             <summary>
             Supress T1 information file size request (SCARD_ATTR_SUPRESS_T1_IFS_REQUEST)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DeviceFriendlyName">
+        <member name="F:PCSC.SCardAttribute.DeviceFriendlyName">
             <summary>
             Device friendly name (SCARD_ATTR_DEVICE_FRIENDLY_NAME)
             </summary>
         </member>
-        <member name="F:PCSC.SCardAttr.DeviceSystemName">
+        <member name="F:PCSC.SCardAttribute.DeviceSystemName">
             <summary>
             Device system name (SCARD_ATTR_DEVICE_SYSTEM_NAME)
             </summary>
@@ -342,13 +347,13 @@
         <member name="F:PCSC.SCardClass.VendorInfo">
             <summary>Vendor information definitions</summary>
         </member>
-        <member name="F:PCSC.SCardClass.Communications">
+        <member name="F:PCSC.SCardClass.Communication">
             <summary>Communication definitions</summary>
         </member>
         <member name="F:PCSC.SCardClass.Protocol">
             <summary>Protocol definitions</summary>
         </member>
-        <member name="F:PCSC.SCardClass.PowerMgmt">
+        <member name="F:PCSC.SCardClass.PowerManagement">
             <summary>Power Management definitions</summary>
         </member>
         <member name="F:PCSC.SCardClass.Security">
@@ -360,7 +365,7 @@
         <member name="F:PCSC.SCardClass.VendorDefined">
             <summary>Vendor specific definitions</summary>
         </member>
-        <member name="F:PCSC.SCardClass.IFDProtocol">
+        <member name="F:PCSC.SCardClass.InterfaceDeviceProtocol">
             <summary>Interface Device Protocol options</summary>
         </member>
         <member name="F:PCSC.SCardClass.ICCState">
@@ -414,7 +419,7 @@
         <member name="F:PCSC.SCardError.UnknownCard">
             <summary>The specified smart card name is not recognized. (SCARD_E_UNKNOWN_CARD)</summary>
         </member>
-        <member name="F:PCSC.SCardError.CantDispose">
+        <member name="F:PCSC.SCardError.CannotDispose">
             <summary>The system could not dispose of the media in the requested manner. (SCARD_E_CANT_DISPOSE)</summary>
         </member>
         <member name="F:PCSC.SCardError.ProtocolMismatch">
@@ -581,7 +586,7 @@
             <summary>T=15 protocol.</summary>
         </member>
         <member name="F:PCSC.SCardProtocol.Any">
-            <summary>(<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />). IFD determines prot.</summary>
+            <summary>(<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />). IFD (Interface device) determines protocol.</summary>
         </member>
         <member name="T:PCSC.SCardReaderDisposition">
             <summary>Action to be taken on the reader.</summary>
@@ -600,7 +605,7 @@
             <summary>Eject the card. (SCARD_EJECT_CARD)</summary>
         </member>
         <member name="T:PCSC.SCardState">
-            <summary>State of a reader.</summary>
+            <summary>State of the smart card in the reader.</summary>
             <remarks>Is a bit mask that represents the current reader status.</remarks>
         </member>
         <member name="F:PCSC.SCardState.Unknown">
@@ -1829,6 +1834,45 @@
             <summary>The number of readers that currently being monitored.</summary>
             <value>Return 0 if no reader is being monitored.</value>
         </member>
+        <member name="T:PCSC.Iso7816.ClassByte">
+            <summary>A class the can be used to build or parse the CLA (Class byte) of a APDU.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.ClassByte.#ctor(System.Byte)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ClassByte"/> class.</summary>
+            <param name="cla">The CLA as byte that will be parsed.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.ClassByte.#ctor(PCSC.Iso7816.ClaHighPart,PCSC.Iso7816.SecureMessagingFormat,System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ClassByte"/> class.</summary>
+            <param name="highPart">The high part of the CLA</param>
+            <param name="secureMessagingFormat">The secure messaging format.</param>
+            <param name="logicalChannelNumber">The logical channel number.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">logicalChannelNumber;Logical channels must be in the range between 0 and 3.</exception>
+        </member>
+        <member name="M:PCSC.Iso7816.ClassByte.op_Implicit(PCSC.Iso7816.ClassByte)~System.Byte">
+            <summary>Implicitly converts a <see cref="T:PCSC.Iso7816.ClassByte"/> to a <see cref="T:System.Byte"/>.</summary>
+            <param name="classByte"></param>
+            <returns>The CLA as byte</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.ClassByte.op_Implicit(System.Byte)~PCSC.Iso7816.ClassByte">
+            <summary>Implicitly converts a <see cref="T:System.Byte"/> to an <see cref="T:PCSC.Iso7816.ClassByte"/> instance.</summary>
+            <param name="byte">CLA as byte.</param>
+            <returns>The parsed CLA.</returns>
+        </member>
+        <member name="P:PCSC.Iso7816.ClassByte.Value">
+            <summary>Returns the CLA as byte.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.ClassByte.HighPart">
+            <summary>Gets or sets the high part of the CLA </summary>
+            <value>The high part of the CLA.</value>
+        </member>
+        <member name="P:PCSC.Iso7816.ClassByte.Security">
+            <summary>Gets or sets the secure messaging (SM) format. </summary>
+        </member>
+        <member name="P:PCSC.Iso7816.ClassByte.LogicalChannel">
+            <summary>Gets or sets the logical channel number.</summary>
+            <value>The logical channel number.</value>
+            <exception cref="T:System.ArgumentOutOfRangeException">value;Logical channels must be in the range between 0 and 3.</exception>
+        </member>
         <member name="T:PCSC.InvalidContextException">
             <summary>
             Invalid PC/SC context exception.
@@ -1920,125 +1964,32 @@
             <param name="readerName">Reader name to connect to.</param>
             <param name="mode">Mode of connection type: exclusive or shared.
                 <list type="table">
-                    <listheader>
-                        <term>Value</term><description>Description</description>
-                    </listheader>
-                    <item>
-                        <term><see cref="F:PCSC.SCardShareMode.Shared" /></term>
-                        <description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description>
-                    </item>
-                    <item>
-                        <term>
-                            <see cref="F:PCSC.SCardShareMode.Exclusive" />
-                        </term>
-                        <description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description>
-                    </item>
+                    <listheader><term>Value</term><description>Description</description></listheader>
+                    <item><term><see cref="F:PCSC.SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item>
+                    <item><term><see cref="F:PCSC.SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item>
                 </list>
             </param>
             <param name="preferredProtocol">Desired protocol use.</param>
             <returns>An error code / return value:
                 <para>
                     <list type="table">
-                        <listheader>
-                            <term>Error code</term><description>Description</description>
-                        </listheader>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.Success" />
-                            </term>
-                            <description>Successful (SCARD_S_SUCCESS)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.InvalidHandle" />
-                            </term>
-                            <description>Invalid context handle (SCARD_E_INVALID_HANDLE)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.InvalidParameter" />
-                            </term>
-                            <description>
-                                <paramref name="preferredProtocol" /> is invalid or <see langword="null" />  (SCARD_E_INVALID_PARAMETER)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.InvalidValue" />
-                            </term>
-                            <description>Invalid sharing mode, requested protocol, or reader name (SCARD_E_INVALID_VALUE)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.NoService" />
-                            </term>
-                            <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.NoSmartcard" />
-                            </term>
-                            <description>No smart card present (SCARD_E_NO_SMARTCARD)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.NotReady" />
-                            </term>
-                            <description>Could not allocate the desired port (SCARD_E_NOT_READY)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.ProtocolMismatch" />
-                            </term>
-                            <description>Requested protocol is unknown (SCARD_E_PROTO_MISMATCH)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.ReaderUnavailable" />
-                            </term>
-                            <description>Could not power up the reader or card (SCARD_E_READER_UNAVAILABLE)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.SharingViolation" />
-                            </term>
-                            <description>Someone else has exclusive rights (SCARD_E_SHARING_VIOLATION)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.UnknownReader" />
-                            </term>
-                            <description>The reader name is <see langword="null" /> (SCARD_E_UNKNOWN_READER)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.UnsupportedFeature" />
-                            </term>
-                            <description>Protocol not supported (SCARD_E_UNSUPPORTED_FEATURE)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.CommunicationError" />
-                            </term>
-                            <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.InternalError" />
-                            </term>
-                            <description>An internal consistency check failed (SCARD_F_INTERNAL_ERROR)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.UnpoweredCard" />
-                            </term>
-                            <description>Card is not powered (SCARD_W_UNPOWERED_CARD)</description>
-                        </item>
-                        <item>
-                            <term>
-                                <see cref="F:PCSC.SCardError.UnresponsiveCard" />
-                            </term>
-                            <description>Card is mute (SCARD_W_UNRESPONSIVE_CARD)</description>
-                        </item>
+                        <listheader><term>Error code</term><description>Description</description></listheader>
+                        <item><term><see cref="F:PCSC.SCardError.Success" /></term><description>Successful (SCARD_S_SUCCESS)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.InvalidHandle" /></term><description>Invalid context handle (SCARD_E_INVALID_HANDLE)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.InvalidParameter" /></term><description><paramref name="preferredProtocol" /> is invalid or <see langword="null" />  (SCARD_E_INVALID_PARAMETER)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.InvalidValue" /></term><description>Invalid sharing mode, requested protocol, or reader name (SCARD_E_INVALID_VALUE)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.NoService" /></term><description>The server is not runing (SCARD_E_NO_SERVICE)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.NoSmartcard" /></term><description>No smart card present (SCARD_E_NO_SMARTCARD)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.NotReady" /></term><description>Could not allocate the desired port (SCARD_E_NOT_READY)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.ProtocolMismatch" /></term><description>Requested protocol is unknown (SCARD_E_PROTO_MISMATCH)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.ReaderUnavailable" /></term><description>Could not power up the reader or card (SCARD_E_READER_UNAVAILABLE)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.SharingViolation" /></term><description>Someone else has exclusive rights (SCARD_E_SHARING_VIOLATION)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.UnknownReader" /></term><description>The reader name is <see langword="null" /> (SCARD_E_UNKNOWN_READER)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.UnsupportedFeature" /></term><description>Protocol not supported (SCARD_E_UNSUPPORTED_FEATURE)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.CommunicationError" /></term><description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.InternalError" /></term><description>An internal consistency check failed (SCARD_F_INTERNAL_ERROR)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.UnpoweredCard" /></term><description>Card is not powered (SCARD_W_UNPOWERED_CARD)</description></item>
+                        <item><term><see cref="F:PCSC.SCardError.UnresponsiveCard" /></term><description>Card is mute (SCARD_W_UNRESPONSIVE_CARD)</description></item>
                     </list>
                 </para>
             </returns>
@@ -3368,7 +3319,7 @@
                     <paramref
                         name="attribute" />
                     .</para>
-                <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+                <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
             </returns>
             <remarks>This method calls the API function SCardGetAttrib().</remarks>
         </member>
@@ -3447,7 +3398,7 @@
             </returns>
             <remarks>This method calls the API function SCardGetAttrib().</remarks>
         </member>
-        <member name="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)">
+        <member name="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@)">
             <summary>Gets an attribute from the IFD Handler (reader driver).</summary>
             <param name="attributeId">Identifier for the attribute to get.</param>
             <param name="attribute">A buffer that receives the attribute.</param>
@@ -3527,11 +3478,11 @@
                     <paramref
                         name="attribute" />
                     .</para>
-                <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+                <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
             </returns>
             <remarks>This method calls the API function SCardGetAttrib().</remarks>
         </member>
-        <member name="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)">
+        <member name="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)">
             <summary>Gets an attribute from the IFD Handler (reader driver).</summary>
             <param name="attributeId">Identifier for the attribute to get.</param>
             <param name="attribute">A buffer that receives the attribute.</param>
@@ -3737,7 +3688,7 @@
                 <para>This method calls the API function SCardSetAttrib().</para>
             </remarks>
         </member>
-        <member name="M:PCSC.ISCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)">
+        <member name="M:PCSC.ISCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32)">
             <summary>Set an attribute of the IFD Handler.</summary>
             <param name="attributeId">Identifier for the attribute to set.</param>
             <param name="attribute">Buffer that contains the new value of the attribute.</param>
@@ -3802,7 +3753,7 @@
                 <para>This method calls the API function SCardSetAttrib().</para>
             </remarks>
         </member>
-        <member name="M:PCSC.ISCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])">
+        <member name="M:PCSC.ISCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[])">
             <summary>Set an attribute of the IFD Handler.</summary>
             <param name="attributeId">Identifier for the attribute to set.</param>
             <param name="attribute">Buffer that contains the new value of the attribute.</param>
@@ -3895,11 +3846,917 @@
             <summary>The current connection state of the reader.</summary>
             <value><see langword="true" /> if the reader is connected. Otherwise <see langword="false" />.</value>
         </member>
-        <member name="M:PCSC.Iso7816.IsoCard.ThrowExceptionOnSCardError(PCSC.SCardError)">
+        <member name="T:PCSC.Iso7816.ClaHighPart">
             <summary>
-                Throws an exception if <paramref name="sc" /> is not <see cref="F:PCSC.SCardError.Success" />.
+            Coding and meaning of the class byte
             </summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Iso0x">
+            <summary>The structure and coding of command and response are as described in ISO/IEC 7816. 'x' contains the options for secure messaging <see cref="T:PCSC.Iso7816.SecureMessagingFormat"/> and the logical channel.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Rfu1x">
+            <summary>Reserved for future use.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Rfu2x">
+            <summary>Reserved for future use.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Rfu3x">
+            <summary>Reserved for future use.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Rfu4x">
+            <summary>Reserved for future use.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Rfu5x">
+            <summary>Reserved for future use.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Rfu6x">
+            <summary>Reserved for future use.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Rfu7x">
+            <summary>Reserved for future use.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Iso8x">
+            <summary>The structure of command and response are as described in ISO/IEC 7816. 'x' contains the options for secure messaging <see cref="T:PCSC.Iso7816.SecureMessagingFormat"/> and the logical channel.
+            The coding (and meaning) of command and response are proprietary.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.Iso9x">
+            <summary>The structure of command and response are as described in ISO/IEC 7816. 'x' contains the options for secure messaging <see cref="T:PCSC.Iso7816.SecureMessagingFormat"/> and the logical channel.
+            The coding (and meaning) of command and response are proprietary.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.IsoAx">
+            <summary>If not specified by the application context, structure and coding of command and response are as described in ISO/IEC 7816. 'x' contains the options for secure messaging <see cref="T:PCSC.Iso7816.SecureMessagingFormat"/> and the logical channel.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.IsoBx">
+            <summary>The structure of command and response are as described in ISO/IEC 7816.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.IsoCx">
+            <summary>The structure of command and response are as described in ISO/IEC 7816.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.ProprietaryDx">
+            <summary>The structure of command and response are proprietary.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.ProprietaryEx">
+            <summary>The structure of command and response are proprietary.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ClaHighPart.ProprietaryFx">
+            <summary>The structure of command and response are proprietary.</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.ExtendedFileType">
+            <summary>Category of file types</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ExtendedFileType.WorkingElementary">
+            <summary>Working elementary file (Working EF) that is intended for storing data not interpreted by the card.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ExtendedFileType.InternalElementary">
+            <summary>Internal elementary file (Internal EF) that is intended for storing data interpreted and/or analyzed by the card and for control purposes.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ExtendedFileType.Proprietary">
+            <summary>Proprietary file type.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.ExtendedFileType.Dedicated">
+            <summary>Dedicated file (DF) that is used for logical organization of data in a card.</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.FileShareMode">
+            <summary>
+            File share mode
+            </summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileShareMode.Shareable">
+            <summary>Shareable file that supports at least concurrent access on different logical channels.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileShareMode.NotShareable">
+            <summary>Non shareable file.</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.FileStructureType">
+            <summary>File structure types</summary>
+            <remarks>The following structures of elementary files are defined:
+                <list type="bullet">
+                    <item><description>Transparent structure; the EF contains a sequence of data units.</description></item>
+                    <item><description>Record structure; the EF contains a sequence of individually identifiable records.</description></item>
+                </list>
+                <para>When using a record structure, the size of the particular records is either fixed or variable. Furthermore records are organized as a sequence (linear) or as a ring (cyclic).</para>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureType.NoInformation">
+            <summary>No information about file structure given</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureType.Transparent">
+            <summary>Transparent. The EF has a sequence of data units</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureType.LinearFixed">
+            <summary>Linear fixed, no further info</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureType.LinearFixedSimpleTlv">
+            <summary>Linear fixed SIMPLE-TLV (Type-length-value)</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureType.LinearVariable">
+            <summary>Linear variable, no further info</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureType.LinearVariableSimpleTlv">
+            <summary>Linear variable SIMPLE-TLV (Type-length-value)</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureType.Cyclic">
+            <summary>Cyclic, no further info </summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureType.CyclicSimpleTlv">
+            <summary>Cyclic, SIMPLE-TLV (Type-length-value)</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.FileType">
+            <summary>File type</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileType.Dedicated">
+            <summary>Dedicated file (DF) that is used for logical organization of data in the card.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileType.Elementary">
+            <summary>Elementary file (EF) that is used for storing data.</summary>
+            <remarks>The data may or may not be interpreted/analyzed by the card. You need to check the extended file type <see cref="T:PCSC.Iso7816.ExtendedFileType"/>.</remarks>
+        </member>
+        <member name="T:PCSC.Iso7816.InstructionCode">
+            <summary>
+            Basic instruction codes defined in ISO/IEC 7816-4
+            </summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.EraseBinary">
+            <summary>Erase binary</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.Verify">
+            <summary>Verify</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.ManageChannel">
+            <summary>Manage channel</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.ExternalAuthenticate">
+            <summary>External authenticate</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.GetChallenge">
+            <summary>Get challenge</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.InternalAuthenticate">
+            <summary>Internal authenticate</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.SelectFile">
+            <summary>Select file</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.ReadBinary">
+            <summary>Read binary</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.ReadRecord">
+            <summary>Read record(s)</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.GetResponse">
+            <summary>Get response</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.Envelope">
+            <summary>Envelope</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.GetData">
+            <summary>Get data</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.WriteBinary">
+            <summary>Write binary</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.WriteRecord">
+            <summary>Write record</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.UpdateBinary">
+            <summary>Update binary</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.PutData">
+            <summary>Put data</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.UpdateData">
+            <summary>Update data</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.InstructionCode.AppendRecord">
+            <summary>Append record</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.IsoCase">
+            <summary>APDU message structure for the command-response pair.</summary>
+            <remarks>
+                <list type="table">
+                    <listheader><term>ISO case</term><description>Command data, Expected response data</description></listheader>
+                    <item><term>1</term><description>Command: no data, Expected response: no data</description></item>
+                    <item><term>2</term><description>Command: no data, Expected response:  data</description></item>
+                    <item><term>3</term><description>Command: data, Expected response: no data</description></item>
+                    <item><term>4</term><description>Command: data, Expected response: data</description></item>
+                </list>
+                <para>In the card capabilities, the card states that the Lc and the Le field should either be short or extended. A short command has one byte for each length field, an extended command has two bytes for each length field.</para>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.IsoCase.Case1">
+            <summary>No command data. No response data.</summary>
+            <remarks>
+                <list type="bullet">
+                    <item><description>Lc is valued to 0.</description></item>
+                    <item><description>Le is valued to 0.</description></item>
+                    <item><description>No data byte is present.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.IsoCase.Case2Short">
+            <summary>No command data. Expected response data.</summary>
+            <remarks>
+                <list type="bullet">
+                    <item><description>Lc is valued to 0.</description></item>
+                    <item><description>Le is valued from 1 to 256.</description></item>
+                    <item><description>No data byte is present.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.IsoCase.Case3Short">
+            <summary>Command data. No response data.</summary>
+            <remarks>
+                <list type="bullet">
+                    <item><description>Lc is valued from 1 to 255.</description></item>
+                    <item><description>Le is valued to 0.</description></item>
+                    <item><description>Lc data bytes are present.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.IsoCase.Case4Short">
+            <summary>Command data. Expected response data.</summary>
+            <remarks>
+                <list type="bullet">
+                    <item><description>Lc is valued from 1 to 255.</description></item>
+                    <item><description>Le is valued from 1 to 256.</description></item>
+                    <item><description>Lc data bytes are present.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.IsoCase.Case2Extended">
+            <summary>No command data. Expected response data.</summary>
+            <remarks>
+                <list type="bullet">
+                    <item><description>Lc is valued to 0.</description></item>
+                    <item><description>Le is valued from 1 to 65536.</description></item>
+                    <item><description>No data byte is present.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.IsoCase.Case3Extended">
+            <summary>Command data. No response data.</summary>
+            <remarks>
+                <list type="bullet">
+                    <item><description>Lc is valued from 1 to 65536.</description></item>
+                    <item><description>Le is valued to 0.</description></item>
+                    <item><description>Lc data bytes are present.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.IsoCase.Case4Extended">
+            <summary>Command data. Expected response data.</summary>
+            <remarks>
+                <list type="bullet">
+                    <item><description>Lc is valued from 1 to 65535.</description></item>
+                    <item><description>Le is valued from 1 to 65536.</description></item>
+                    <item><description>Lc data bytes are present.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="T:PCSC.Iso7816.SecureMessagingFormat">
+            <summary>
+            Secure messaging (SM) format
+            </summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SecureMessagingFormat.None">
+            <summary>No secure messaging</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SecureMessagingFormat.Proprietary">
+            <summary>Proprietary secure messaging format</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SecureMessagingFormat.CommandHeaderNotAuthenticated">
+            <summary>Command header not authenticated</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SecureMessagingFormat.CommandHeaderAuthenticated">
+            <summary>Command header authenticated</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.SW1Code">
+            <summary>Meaning for the first status word SW1 (ISO7816-4).</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.NormalDataResponse">
+            <summary>Normal data response. SW2 indicates the number of remaining response bytes.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.WarningNVDataNotChanged">
+            <summary>Warning. The state of non-volatile memory has not been changed.</summary>
+            <remarks>SW2 could have one of the following values:
+                <list type="table">
+                    <listheader><term>SW2</term><description>Meaning</description></listheader>
+                    <item><term>0x00</term><description>No information.</description></item>
+                    <item><term>0x81</term><description>Returned data may be corrupted.</description></item>
+                    <item><term>0x82</term><description>End of file or end of record reached. The number of bytes read is less than specified in <see cref="P:PCSC.Iso7816.CommandApdu.Le"/></description></item>
+                    <item><term>0x83</term><description>The selected file invalidated.</description></item>
+                    <item><term>0x84</term><description>FCI is not correctly formatted.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.WarningNVDataChanged">
+            <summary>Warning. The state of non-volatile memory has been changed.</summary>
+            <remarks>SW2 could have one of the following values:
+                <list type="table">
+                    <listheader><term>SW2</term><description>Meaning</description></listheader>
+                    <item><term>0x00</term><description>No information.</description></item>
+                    <item><term>0x81</term><description>File filled up.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorNVDataNotChanged">
+            <summary>An error occurred. The state of non-volatile memory has not been changed.</summary>
+            <remarks>SW2 should be 0x00.</remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorNVDataChanged">
+            <summary>An error occurred. The state of non-volatile memory has been changed.</summary>
+            <remarks>SW2 could have one of the following values:
+                <list type="table">
+                    <listheader><term>SW2</term><description>Meaning</description></listheader>
+                    <item><term>0x00</term><description>No information.</description></item>
+                    <item><term>0x81</term><description>Memory failure.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorSecurity">
+            <summary>An security error occurred.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorLengthIncorrect">
+            <summary>Error wrong length.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorFunctionNotSupported">
+            <summary>The function defined in CLA is not supported.</summary>
+            <remarks>SW2 could have one of the following values:
+                <list type="table">
+                    <listheader><term>SW2</term><description>Meaning</description></listheader>
+                    <item><term>0x00</term><description>No information.</description></item>
+                    <item><term>0x81</term><description>Logical channel not supported</description></item>
+                    <item><term>0x82</term><description>Secure messaging not supported</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorCmdNotAllowed">
+            <summary>Error command not allowed</summary>
+            <remarks>SW2 could have one of the following values:
+                <list type="table">
+                    <listheader><term>SW2</term><description>Meaning</description></listheader>
+                    <item><term>0x00</term><description>No information.</description></item>
+                    <item><term>0x81</term><description>The command is not compatible with the file structure.</description></item>
+                    <item><term>0x82</term><description>The security status is not satisfied.</description></item>
+                    <item><term>0x83</term><description>The authentication method is blocked.</description></item>
+                    <item><term>0x84</term><description>The referenced data has been invalidated.</description></item>
+                    <item><term>0x85</term><description>The conditions are not satisfied.</description></item>
+                    <item><term>0x86</term><description>The command is not allowed. No current elementary file (EF).</description></item>
+                    <item><term>0x87</term><description>Expected secure messaging data objects are missing.</description></item>
+                    <item><term>0x88</term><description>Secure messaging data objects are incorrect.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorP1P2Incorrect">
+            <summary>Error wrong parameters P1 and P2</summary>
+            <remarks>SW2 could have one of the following values:
+                <list type="table">
+                    <listheader><term>SW2</term><description>Meaning</description></listheader>
+                    <item><term>0x00</term><description>No information.</description></item>
+                    <item><term>0x80</term><description>The parameters in the data field are incorrect.</description></item>
+                    <item><term>0x81</term><description>The requested function is not supported.</description></item>
+                    <item><term>0x82</term><description>File not found.</description></item>
+                    <item><term>0x83</term><description>Record not found.</description></item>
+                    <item><term>0x84</term><description>The file has not enough free space.</description></item>
+                    <item><term>0x85</term><description>The <see cref="P:PCSC.Iso7816.CommandApdu.Lc"/> parameter is inconsistent with the TLV structure.</description></item>
+                    <item><term>0x86</term><description>The parameters <see cref="P:PCSC.Iso7816.CommandApdu.P1"/> and <see cref="P:PCSC.Iso7816.CommandApdu.P2"/> are incorrect.</description></item>
+                    <item><term>0x87</term><description><see cref="P:PCSC.Iso7816.CommandApdu.Lc"/> is not consistent with <see cref="P:PCSC.Iso7816.CommandApdu.P1P2"/>.</description></item>
+                    <item><term>0x88</term><description></description>The referenced data was not found.</item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorParameterIncorrect">
+            <summary>Error wrong parameters P1 and P2</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorP3Incorrect">
+            <summary><see cref="P:PCSC.Iso7816.CommandApdu.Le"/> has the wrong length.</summary>
+            <remarks>SW2 contains the exact length.</remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorInsNotSupported">
+            <summary>The instruction code is invalid or not supported.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorClassNotSupported">
+            <summary>The Class is not supported.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorNoPreciseDiagnostic">
+            <summary>No precise diagnosis available.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.Normal">
+            <summary>Normal data response.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorPurseBalance">
+            <summary>Error purse balance.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorMemory">
+            <summary>Memory error.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorFile">
+            <summary>File error.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.ErrorAuthorization">
+            <summary>Error authorization.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.SW1Code.NormalGetResponse">
+            <summary>Normal GET response</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.TlvDataType">
+            <summary>TLV (tag-length-value) type.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.TlvDataType.Simple">
+            <summary>Simple</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.TlvDataType.BasicEncodingRules">
+            <summary>ASN.1 (abstract syntax notation) structured using basic encoding rules defined in ISO/IEC8825.</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.InvalidApduException">
+            <summary>The APDU is invalid.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.InvalidApduException.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.InvalidApduException"/> class.</summary>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.InvalidApduException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.InvalidApduException"/> class.</summary>
+            <param name="message">The error message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.InvalidApduException.#ctor(System.String,PCSC.Iso7816.Apdu,System.Exception)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.InvalidApduException"/> class.</summary>
+            <param name="message">The error message.</param>
+            <param name="apdu">The APDU.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="P:PCSC.Iso7816.InvalidApduException.InvalidApdu">
+            <summary>Gets the invalid APDU.</summary>
+            <value>The invalid APDU.</value>
+        </member>
+        <member name="T:PCSC.Iso7816.FileDescriptor">
+            <summary>A file descriptor. See ISO/IEC7816-4 File control information (FCI) for more information.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileDescriptor.FILE_TYPE_MASK">
+            <summary>File type bit mask.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileDescriptor.FILE_TYPE_DF">
+            <summary>Dedicated file (DF) bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileDescriptor.FILE_TYPE_WORKING_EF">
+            <summary>Working elementary file (EF) bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileDescriptor.FILE_TYPE_INTERNAL_EF">
+            <summary>Internal elementary file (EF) bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileDescriptor.FILE_SHARE_MODE_MASK">
+            <summary>Sharemode bit mask.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileDescriptor.FILE_SHARE_MODE_SHAREABLE">
+            <summary>Shareable bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileDescriptor.FILE_SHARE_MODE_NOTSHAREABLE">
+            <summary>Non shareable bit.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.FileDescriptor.#ctor(System.Byte)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.FileDescriptor"/> class.</summary>
+            <param name="fileDescriptorByte">The file descriptor byte that shall be parsed.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.FileDescriptor.IsSet(System.Byte,System.Byte)">
+            <summary>Determines whether the specified bits are set.</summary>
+            <param name="mask">The a bit mask.</param>
+            <param name="bits">The bits to check for.</param>
+            <returns>
+                <c>true</c> if the specified bits are set; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.FileDescriptor.op_Implicit(PCSC.Iso7816.FileDescriptor)~System.Byte">
+            <summary>Implicitly converts a <see cref="T:PCSC.Iso7816.FileDescriptor"/> to a single byte.</summary>
+            <param name="fd">The file descriptor.</param>
+            <returns>A file descriptor as byte.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.FileDescriptor.op_Implicit(System.Byte)~PCSC.Iso7816.FileDescriptor">
+            <summary>Implicitly converts a single byte to a <see cref="T:PCSC.Iso7816.FileDescriptor"/>.</summary>
+            <param name="fd">The file descriptor as byte.</param>
+            <returns>A <see cref="T:PCSC.Iso7816.FileDescriptor"/> instance as parsed result.</returns>
+        </member>
+        <member name="P:PCSC.Iso7816.FileDescriptor.Descriptor">
+            <summary>The file descriptor as single byte structure.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.FileDescriptor.Type">
+            <summary>Gets the file type.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.FileDescriptor.ExtendedType">
+            <summary>Gets the extended file type.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.FileDescriptor.ShareMode">
+            <summary>Gets the file sharing mode.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.FileDescriptor.Structure">
+            <summary>Gets file structure information.</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.FileStructureInfo">
+            <summary>File structure information for elementary file (EF).</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureInfo.FILE_STRUCTURE_MASK">
+            <summary>File structure mask bits.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureInfo.FILE_STRUCTURE_NO_INFO">
+            <summary>File has not structure information bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureInfo.FILE_STRUCTURE_TRANSPARENT">
+            <summary>Transparent bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureInfo.FILE_STRUCTURE_LINEAR_FIXED">
+            <summary>Linear fixed bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureInfo.FILE_STRUCTURE_LINEAR_FIXED_TLV">
+            <summary>Linear fixed TLV bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureInfo.FILE_STRUCTURE_LINEAR_VARIABLE">
+            <summary>Linear variable bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureInfo.FILE_STRUCTURE_LINEAR_VARIABLE_TLV">
+            <summary>Linear variable TLV bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureInfo.FILE_STRUCTURE_CYCLIC">
+            <summary>Cyclic bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.FileStructureInfo.FILE_STRUCTURE_CYCLIC_TLV">
+            <summary>Cyclic TLV bit.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.FileStructureInfo.#ctor(System.Byte)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.FileStructureInfo"/> class.</summary>
+            <param name="fileDescriptor">The file descriptor containing the file structure information.</param>
+        </member>
+        <member name="P:PCSC.Iso7816.FileStructureInfo.Type">
+            <summary>Gets the file structure type.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.FileStructureInfo.IsTransparent">
+            <summary>Gets a value indicating whether the structuring method is a transparent EF.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.FileStructureInfo.RecordInfo">
+            <summary>Gets the record information.</summary>
+            <remarks>Returns a <see cref="P:PCSC.Iso7816.FileStructureInfo.RecordInfo"/> instance if the file structuring method is a record EF. Otherwise <see langword="null"/>.</remarks>
+        </member>
+        <member name="P:PCSC.Iso7816.FileStructureInfo.FileDescriptor">
+            <summary>Gets the file descriptor.</summary>
+            <value>The file descriptor as byte.</value>
+        </member>
+        <member name="P:PCSC.Iso7816.FileStructureInfo.IsRecord">
+            <summary>Gets a value indicating whether the structuring method is a record EF.</summary>
+            <value>
+                <c>true</c> if the EF is record; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:PCSC.Iso7816.IIsoReader">
+            <summary>A ISO/IEC 7816 compliant reader.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase)">
+            <summary>Constructs a command APDU using the active protocol of the reader.</summary>
+            <param name="isoCase">The ISO case that shall be used for this command.</param>
+            <returns>An empty command APDU.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">
+            <summary>Connects the specified reader.</summary>
+            <param name="readerName">Name of the reader.</param>
+            <param name="mode">The share mode.</param>
+            <param name="protocol">The communication protocol. <seealso cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)"/></param>
+        </member>
+        <member name="M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition)">
+            <summary>Disconnects the currently connected reader.</summary>
+            <param name="disposition">The action that shall be executed after disconnect.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu)">
+            <summary>Transmits the specified command APDU.</summary>
+            <param name="commandApdu">The command APDU.</param>
+            <returns>A response containing one ore more <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</returns>
+        </member>
+        <member name="P:PCSC.Iso7816.IIsoReader.CurrentContext">
+            <summary>Gets the current context.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IIsoReader.Reader">
+            <summary>Gets the current reader.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IIsoReader.ReaderName">
+            <summary>Gets the name of the reader.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IIsoReader.ActiveProtocol">
+            <summary>Gets the active protocol.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IIsoReader.CurrentShareMode">
+            <summary>Gets the current share mode.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime">
+            <summary>Gets or sets the wait time in milliseconds that is used if an APDU needs to be retransmitted.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IIsoReader.MaxReceiveSize">
+            <summary>Gets the maximum number of bytes that can be received.</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.InstructionByte">
+            <summary>A class that describes the instruction of a command APDU.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.InstructionByte.#ctor(PCSC.Iso7816.InstructionCode)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.InstructionByte"/> class.</summary>
+            <param name="code">The instruction code.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.InstructionByte.#ctor(System.Byte)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.InstructionByte"/> class.</summary>
+            <param name="instruction">The instruction as byte.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.InstructionByte.op_Implicit(PCSC.Iso7816.InstructionByte)~System.Byte">
+            <summary>Implicitly converts a <see cref="T:PCSC.Iso7816.InstructionByte"/> to a single INS byte.</summary>
+            <returns>A byte containing INS.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.InstructionByte.op_Implicit(System.Byte)~PCSC.Iso7816.InstructionByte">
+            <summary>Implicitly converts a byte to a <see cref="T:PCSC.Iso7816.InstructionByte"/> instance.</summary>
+            <param name="instruction">The instruction as byte.</param>
+            <returns>A <see cref="T:PCSC.Iso7816.InstructionByte"/> class</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.InstructionByte.op_Implicit(PCSC.Iso7816.InstructionCode)~PCSC.Iso7816.InstructionByte">
+            <summary>Implicitly converts a <see cref="T:PCSC.Iso7816.InstructionCode"/> to a <see cref="T:PCSC.Iso7816.InstructionByte"/> instance.</summary>
+            <param name="code">The instruction code.</param>
+            <returns>A <see cref="T:PCSC.Iso7816.InstructionByte"/> instance</returns>
+        </member>
+        <member name="P:PCSC.Iso7816.InstructionByte.Code">
+            <summary>Gets or sets the instruction code.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.InstructionByte.Value">
+            <summary>Gets or sets the instruction as value.</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.RecordInfo">
+            <summary>Record structure information.</summary>
+            <remarks>Elementary files (EF) that have a sequence of individually identifiable records should use one of the following methods for structuring:
+                <list type="bullet">
+                    <item><description>Linear elementary file (EF) with records of variable size.</description></item>
+                    <item><description>Linear elementary file (EF) with records of fixed size.</description></item>
+                    <item><description>Cyclic elementary file (EF) with records of fixed size.</description></item>
+                </list>
+            </remarks>
+        </member>
+        <member name="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURING_MASK">
+            <summary>File structuring mask bits.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_LINEAR_FIXED">
+            <summary>Linear fixed bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_LINEAR_VARIABLE">
+            <summary>Linear variable bit.</summary>
+        </member>
+        <member name="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_CYCLIC">
+            <summary>Cyclic bit.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.RecordInfo.#ctor(System.Byte)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.RecordInfo"/> class.</summary>
+            <param name="fileDescriptor">The file descriptor.</param>
+        </member>
+        <member name="P:PCSC.Iso7816.RecordInfo.IsCyclic">
+            <summary>Gets a value indicating whether the EF has cyclic records.</summary>
+            <value><c>true</c> if the EF is cyclic; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:PCSC.Iso7816.RecordInfo.IsLinear">
+            <summary>Gets a value indicating whether the EF has linear records.</summary>
+            <value><c>true</c> if the EF is linear; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:PCSC.Iso7816.RecordInfo.IsFixed">
+            <summary>Gets a value indicating whether the EF's record size is fixed.</summary>
+            <value><c>true</c> if the record's size is fixed; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:PCSC.Iso7816.RecordInfo.IsVariable">
+            <summary>Gets a value indicating whether the EF's record size is variable.</summary>
+            <value><c>true</c> if the record's size is variable; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:PCSC.Iso7816.RecordInfo.IsSimpleTlv">
+            <summary>Gets a value indicating whether the EF contains simple TLV records.</summary>
+            <value><c>true</c> if the EF contains simple TLV records; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:PCSC.Iso7816.RecordInfo.FileDescriptor">
+            <summary>Gets the file descriptor.</summary>
+            <value>The file descriptor as byte.</value>
+        </member>
+        <member name="T:PCSC.Iso7816.Response">
+            <summary>An aggregation of <see cref="T:PCSC.Iso7816.ResponseApdu"/> instances.</summary>
+            <remarks>When using <see cref="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu)"/> the result can consist of one or more <see cref="T:PCSC.Iso7816.ResponseApdu"/>. If the <see cref="T:PCSC.Iso7816.IIsoReader"/> receives a SW1=0x61 status word, it will automatically transmit a GET RESPONSE command to reader (after waiting <see cref="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime"/> ms) to catch all remaining <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</remarks>
+        </member>
+        <member name="M:PCSC.Iso7816.Response.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.Response"/> class.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.Response.Add(PCSC.Iso7816.ResponseApdu)">
+            <summary>Adds the specified response APDU.</summary>
+            <param name="responseApdu">The response APDU.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.Response.Add(PCSC.SCardPCI)">
+            <summary>Adds the specified PCI.</summary>
+            <param name="receivePci">The PCI.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.Response.GetData">
+            <summary>An aggregation of all data bytes in receive order.</summary>
+            <returns>An aggregation of all data bytes from all <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.Response.Get(System.Int32)">
+            <summary>Gets the <see cref="T:PCSC.Iso7816.ResponseApdu"/> of the specified index.</summary>
+            <param name="index">The index.</param>
+            <returns>The <see cref="T:PCSC.Iso7816.ResponseApdu"/> of the specified index.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.Response.GetPci(System.Int32)">
+            <summary>Gets the <see cref="T:PCSC.SCardPCI"/> of the specified index.</summary>
+            <param name="index">The index.</param>
+            <returns>The <see cref="T:PCSC.SCardPCI"/> of the specified index.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.Response.GetEnumerator">
+            <summary>Returns an enumerator.</summary>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1"/>, that enumerates all received <see cref="T:PCSC.Iso7816.ResponseApdu"/> instance.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.Response.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Returns an enumerator.</summary>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1"/>, that enumerates all received <see cref="T:PCSC.Iso7816.ResponseApdu"/> instance.</returns>
+        </member>
+        <member name="P:PCSC.Iso7816.Response.Item(System.Int32)">
+            <summary>Gets the <see cref="T:PCSC.Iso7816.ResponseApdu"/> at the specified index.</summary>
+            <value>The <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</value>
+            <param name="index">The index.</param>
+            <returns>The <see cref="T:PCSC.Iso7816.ResponseApdu"/> at the specified index.</returns>
+        </member>
+        <member name="P:PCSC.Iso7816.Response.SW1">
+            <summary>The SW1 status of the last received <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.Response.SW2">
+            <summary>The SW2 status of the last received <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.Response.Count">
+            <summary>Gets the number of received <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.Response.PciCount">
+            <summary>Gets the number of received <see cref="T:PCSC.SCardPCI"/>.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.Response.StatusWord">
+            <summary>A combination of SW1 and SW2 as 16bit status word.</summary>
+            <remarks>It contains the status word of the last received <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</remarks>
+        </member>
+        <member name="P:PCSC.Iso7816.Response.HasData">
+            <summary>
+                <see langword="true"/> if at least one <see cref="T:PCSC.Iso7816.ResponseApdu"/> contains data bytes.</summary>
+        </member>
+        <member name="T:PCSC.Iso7816.IsoReader">
+            <summary>A ISO/IEC 7816 compliant reader.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:PCSC.Iso7816.IsoReader"/> class.</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.#ctor(PCSC.ISCardReader,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.IsoReader"/> class.</summary>
+            <param name="reader">The supplied reader will be used for communication with the smart card.</param>
+            <param name="disconnectReaderOnDispose">if set to <c>true</c> the supplied <paramref name="reader"/> will be disconnected on <see cref="M:PCSC.Iso7816.IsoReader.Dispose"/>.</param>
+            <exception cref="T:System.ArgumentNullException">If reader is <see langword="null"/></exception>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.#ctor(PCSC.ISCardReader,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.IsoReader"/> class and immediately connects to the reader.</summary>
+            <param name="reader">The supplied reader will be used for communication with the smart card.</param>
+            <param name="readerName">Name of the reader to connect with.</param>
+            <param name="mode">The share mode.</param>
+            <param name="protocol">The communication protocol. <seealso cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)"/></param>
+            <param name="disconnectReaderOnDispose">if set to <c>true</c> the supplied <paramref name="reader"/> will be disconnected on <see cref="M:PCSC.Iso7816.IsoReader.Dispose"/>.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.#ctor(PCSC.ISCardContext,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.IsoReader"/> class that will create its own instance of a <see cref="T:PCSC.SCardReader"/>.</summary>
+            <param name="context">A context to the PC/SC Resource Manager.</param>
+            <param name="releaseContextOnDispose">if set to <c>true</c> the <paramref name="context"/> will be released on <see cref="M:PCSC.Iso7816.IsoReader.Dispose"/>.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="context"/> is <see langword="null"/></exception>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.#ctor(PCSC.ISCardContext,System.String,PCSC.SCardShareMode,PCSC.SCardProtocol,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.IsoReader"/> class that will create its own instance of a <see cref="T:PCSC.SCardReader"/> and immediately connect.</summary>
+            <param name="context">A context to the PC/SC Resource Manager.</param>
+            <param name="readerName">Name of the reader to connect with.</param>
+            <param name="mode">The share mode.</param>
+            <param name="protocol">The communication protocol. <seealso cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)"/></param>
+            <param name="releaseContextOnDispose">if set to <c>true</c> the <paramref name="context"/> will be released on <see cref="M:PCSC.Iso7816.IsoReader.Dispose"/>.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase)">
+            <summary>Constructs a command APDU using the active protocol of the reader.</summary>
+            <param name="isoCase">The ISO case that shall be used for this command.</param>
+            <returns>An empty command APDU.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">
+            <summary>Connects the specified reader.</summary>
+            <param name="readerName">Name of the reader.</param>
+            <param name="mode">The share mode.</param>
+            <param name="protocol">The communication protocol. <seealso cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)"/></param>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.Disconnect(PCSC.SCardReaderDisposition)">
+            <summary>Disconnects the currently connected reader.</summary>
+            <param name="disposition">The action that shall be executed after disconnect.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.ThrowExceptionOnSCardError(PCSC.SCardError)">
+            <summary>Throws an exception if <paramref name="sc" /> is not <see cref="F:PCSC.SCardError.Success" />.</summary>
             <param name="sc">The error code returned from the native PC/SC library.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.Transmit(PCSC.Iso7816.CommandApdu)">
+            <summary>Transmits the specified command APDU.</summary>
+            <param name="commandApdu">The command APDU.</param>
+            <returns>A response containing one ore more <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.Dispose">
+            <summary>
+            Releases unmanaged and managed resources.
+            </summary>
+        </member>
+        <member name="M:PCSC.Iso7816.IsoReader.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="P:PCSC.Iso7816.IsoReader.CurrentContext">
+            <summary>Gets the current context.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IsoReader.Reader">
+            <summary>Gets the current reader.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IsoReader.ReaderName">
+            <summary>Gets the name of the reader.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IsoReader.ActiveProtocol">
+            <summary>Gets the active protocol.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IsoReader.CurrentShareMode">
+            <summary>Gets the current share mode.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.IsoReader.RetransmitWaitTime">
+            <summary>Gets or sets the wait time in milliseconds that is used if an APDU needs to be retransmitted.</summary>
+            <value>Default is 0 ms</value>
+        </member>
+        <member name="P:PCSC.Iso7816.IsoReader.MaxReceiveSize">
+            <summary>Gets the maximum number of bytes that can be received.</summary>
+            <value>Default is 128 bytes.</value>
+        </member>
+        <member name="T:PCSC.Iso7816.ResponseApduEnumerator">
+            <summary>
+            A <see cref="T:PCSC.Iso7816.ResponseApdu"/> enumerator.
+            </summary>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApduEnumerator.#ctor(System.Collections.Generic.List{PCSC.Iso7816.ResponseApdu})">
+            <summary>
+            Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApduEnumerator"/> class.
+            </summary>
+            <param name="lst">A list of <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApduEnumerator.#ctor(System.Collections.Generic.IEnumerable{PCSC.Iso7816.ResponseApdu})">
+            <summary>
+            Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApduEnumerator"/> class.
+            </summary>
+            <param name="apdus">An enumeration of <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApduEnumerator.#ctor(PCSC.Iso7816.ResponseApdu[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApduEnumerator"/> class.
+            </summary>
+            <param name="apdus">An array of <see cref="T:PCSC.Iso7816.ResponseApdu"/>.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApduEnumerator.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.IEnumerator"/> objekt, that can be used to enumerate through all <see cref="T:PCSC.Iso7816.ResponseApdu"/>.
+            </returns>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApduEnumerator.GetEnumerator">
+            <summary>
+            Returns an enumerator.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.IEnumerator"/> objekt, that can be used to enumerate through all <see cref="T:PCSC.Iso7816.ResponseApdu"/>.
+            </returns>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApduEnumerator.MoveNext">
+            <summary>
+            Sets the enumerator the the next element.
+            </summary>
+            <returns><c>true</c> if there exists another element. Otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApduEnumerator.Reset">
+            <summary>
+            Resets the enumerator to the beginning.
+            </summary>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApduEnumerator.Dispose">
+            <summary>
+            Disposes the enumerator and releases all managed resources.
+            </summary>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApduEnumerator.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApduEnumerator.Current">
+            <summary>
+            Returns the current element.
+            </summary>
+            <returns>The current element.</returns>
+            <exception cref="T:System.InvalidOperationException"> if the enumerator reaches the end and therefore <see cref="P:PCSC.Iso7816.ResponseApduEnumerator.Current"/> is invalid.</exception>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApduEnumerator.System#Collections#IEnumerator#Current">
+            <summary>
+            Returns the current element.
+            </summary>
+            <returns>The current element.</returns>
+            <exception cref="T:System.InvalidOperationException"> if the enumerator reaches the end and therefore <see cref="P:PCSC.Iso7816.ResponseApduEnumerator.Current"/> is invalid.</exception>
         </member>
         <member name="T:PCSC.SCardContext">
             <summary>Manages an application context to the PC/SC Resource Manager.</summary>
@@ -4644,6 +5501,7 @@
               </code>
                 </example>
             </remarks>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="context"/> is <see langword="null"/></exception>
         </member>
         <member name="M:PCSC.SCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">
             <summary>Establishes a connection to the Smart Card reader.</summary>
@@ -6018,7 +6876,7 @@
                 <para>This method calls the API function SCardStatus().</para>
             </remarks>
         </member>
-        <member name="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)">
+        <member name="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)">
             <summary>Gets an attribute from the IFD Handler (reader driver).</summary>
             <param name="attributeId">Identifier for the attribute to get.</param>
             <param name="attribute">A buffer that receives the attribute.</param>
@@ -6168,7 +7026,7 @@
             </returns>
             <remarks>This method calls the API function SCardGetAttrib().</remarks>
         </member>
-        <member name="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32@)">
+        <member name="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@)">
             <summary>Gets an attribute from the IFD Handler (reader driver).</summary>
             <param name="attributeId">Identifier for the attribute to get.</param>
             <param name="attribute">A buffer that receives the attribute.</param>
@@ -6248,7 +7106,7 @@
                     <paramref
                         name="attribute" />
                     .</para>
-                <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+                <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
             </returns>
             <remarks>This method calls the API function SCardGetAttrib().</remarks>
         </member>
@@ -6332,11 +7190,11 @@
                     <paramref
                         name="attribute" />
                     .</para>
-                <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttr,System.Byte[]@)" />.</para>
+                <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
             </returns>
             <remarks>This method calls the API function SCardGetAttrib().</remarks>
         </member>
-        <member name="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[])">
+        <member name="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[])">
             <summary>Set an attribute of the IFD Handler.</summary>
             <param name="attributeId">Identifier for the attribute to set.</param>
             <param name="attribute">Buffer that contains the new value of the attribute.</param>
@@ -6466,7 +7324,7 @@
                 <para>This method calls the API function SCardSetAttrib().</para>
             </remarks>
         </member>
-        <member name="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttr,System.Byte[],System.Int32)">
+        <member name="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32)">
             <summary>Set an attribute of the IFD Handler.</summary>
             <param name="attributeId">Identifier for the attribute to set.</param>
             <param name="attribute">Buffer that contains the new value of the attribute.</param>
@@ -6704,6 +7562,198 @@
             Answer To Reset (ATR)
             </summary>
         </member>
+        <member name="T:PCSC.Iso7816.Apdu">
+            <summary>Application Protocol Data Unit (APDU), defined by the ISO/IEC 7816 standards</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.Apdu.ToArray">
+            <summary>Converts the APDU structure to a transmittable byte array.</summary>
+            <returns>A byte array containing the APDU parameters and data in the correct order.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.Apdu.op_Explicit(PCSC.Iso7816.Apdu)~System.Byte[]">
+            <summary>Converts the APDU structure to a transmittable byte array.</summary>
+            <param name="apdu">The APDU.</param>
+            <returns>The supplied APDU as byte array.</returns>
+        </member>
+        <member name="P:PCSC.Iso7816.Apdu.Case">
+            <summary>The currently used ISO case.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.Apdu.Protocol">
+            <summary>The currently used protocol.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.Apdu.IsValid">
+            <summary>Indicates if the APDU is valid.</summary>
+            <value><see langword="true" /> if the APDU is valid.</value>
+        </member>
+        <member name="T:PCSC.Iso7816.CommandApdu">
+            <summary>A Command Application Protocol Data Unit (APDU), defined by the ISO/IEC 7816 standards</summary>
+            <remarks>
+                <para>A <see cref="T:PCSC.Iso7816.CommandApdu"/> can be build using one of the following <see cref="T:PCSC.Iso7816.IsoCase"/>:</para>
+                <list type="table">
+                    <listheader><term>Case</term><description>APDU structure</description></listheader>
+                    <item><term>1</term><description>CLA INS P1 P2</description></item>
+                    <item><term>2</term><description>CLA INS P1 P2 Le</description></item>
+                    <item><term>3</term><description>CLA INS P1 P2 Lc Data</description></item>
+                    <item><term>4</term><description>CLA INS P1 P2 Lc Data Le</description></item>
+                </list>
+                <para>See the documentation for <see cref="T:PCSC.Iso7816.IsoCase"/> for more information.</para>
+            </remarks>
+        </member>
+        <member name="M:PCSC.Iso7816.CommandApdu.#ctor(PCSC.Iso7816.IsoCase,PCSC.SCardProtocol)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.CommandApdu"/> class.</summary>
+            <param name="isoCase">The ISO case to use.</param>
+            <param name="protocol">The protocol.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.CommandApdu.GetClassByteInfo">
+            <summary>Gets the CLA.</summary>
+            <returns>The <see cref="P:PCSC.Iso7816.CommandApdu.CLA"/> as <see cref="T:PCSC.Iso7816.ClassByte"/> instance.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.CommandApdu.GetInstructionByteInfo">
+            <summary>Gets the instruction byte info.</summary>
+            <returns>The <see cref="P:PCSC.Iso7816.CommandApdu.INS"/> as <see cref="T:PCSC.Iso7816.InstructionByte"/> instance.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.CommandApdu.GetLength">
+            <summary>Calculates the APDU size in bytes.</summary>
+            <returns>The APDU size in bytes depending on the currently selected ISO case.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.CommandApdu.ToArray">
+            <summary>Converts the command APDU to a transmittable byte array.</summary>
+            <returns>The command APDU as byte array.</returns>
+            <exception cref="T:System.InvalidOperationException">If the command APDU is in an invalid state.</exception>
+        </member>
+        <member name="M:PCSC.Iso7816.CommandApdu.Clone">
+            <summary>Creates a clone of the current instance. The data is NOT copied. </summary>
+            <returns>A clone of the current instance.</returns>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.CLA">
+            <summary>Gets or sets the CLA byte.</summary>
+            <remarks>You can use the <see cref="T:PCSC.Iso7816.ClassByte"/> class to build a well formed CLA byte.</remarks>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.INS">
+            <summary>Gets or sets the instruction.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.Instruction">
+            <summary>Sets the instruction.</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.P1">
+            <summary>The first parameter (P1)</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.P2">
+            <summary>The second parameter (P2)</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.P1P2">
+            <summary>A combination of parameter P1 and P2</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.Data">
+            <summary>Command APDU data to be transmitted.</summary>
+            <remarks>You can only set data if you created the <see cref="T:PCSC.Iso7816.CommandApdu"/> with ISO case 3 or 4.</remarks>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.Lc">
+            <summary>Length command</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.P3">
+            <summary>The third parameter (P3 or Le)</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.Le">
+            <summary>Length expected.</summary>
+            <remarks>This is the expected number of response data bytes. Do not take account of the status word (SW1 and SW2) here!</remarks>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.ExpectedResponseLength">
+            <summary>The expected response size (Le + SW1SW2)</summary>
+        </member>
+        <member name="P:PCSC.Iso7816.CommandApdu.IsValid">
+            <summary> Indicates if the command APDU is valid.</summary>
+            <value><see langword="true" /> if the APDU is valid.</value>
+        </member>
+        <member name="T:PCSC.Iso7816.ResponseApdu">
+            <summary>A response APDU</summary>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApdu.#ctor(System.Byte[],PCSC.Iso7816.IsoCase,PCSC.SCardProtocol)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApdu"/> class.</summary>
+            <param name="response">The response as byte array that shall be parsed.</param>
+            <param name="isoCase">The ISO case that was used when sending the <see cref="T:PCSC.Iso7816.CommandApdu"/>.</param>
+            <param name="protocol">The communication protocol.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApdu.#ctor(System.Byte[],PCSC.Iso7816.IsoCase,PCSC.SCardProtocol,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApdu"/> class.</summary>
+            <param name="response">The response as byte array that shall be parsed.</param>
+            <param name="isoCase">The ISO case that was used when sending the <see cref="T:PCSC.Iso7816.CommandApdu"/>.</param>
+            <param name="protocol">The communication protocol.</param>
+            <param name="copy">If <see langword="true"/> the bytes of the supplied response will be copied.</param>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApdu.#ctor(System.Byte[],System.Int32,PCSC.Iso7816.IsoCase,PCSC.SCardProtocol)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApdu"/> class.</summary>
+            <param name="response">The response as byte array that shall be parsed.</param>
+            <param name="length">The size of the response.</param>
+            <param name="isoCase">The ISO case that was used when sending the <see cref="T:PCSC.Iso7816.CommandApdu"/>.</param>
+            <param name="protocol">The communication protocol.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="length"/> is greater than the <paramref name="response"/> size.</exception>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApdu.#ctor(System.Byte[],System.Int32,PCSC.Iso7816.IsoCase,PCSC.SCardProtocol,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApdu"/> class.</summary>
+            <param name="response">The response as byte array that shall be parsed.</param>
+            <param name="length">The size of the response.</param>
+            <param name="isoCase">The ISO case that was used when sending the <see cref="T:PCSC.Iso7816.CommandApdu"/>.</param>
+            <param name="protocol">The communication protocol.</param>
+            <param name="copy">If <see langword="true"/> the bytes of the supplied response will be copied.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="length"/> is greater than the <paramref name="response"/> size.</exception>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApdu.GetData">
+            <summary>
+            Gets the data.
+            </summary>
+            <returns>The data.</returns>
+            <exception cref="T:PCSC.Iso7816.InvalidApduException">The response APDU is invalid.</exception>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApdu.ToArray">
+            <summary>Converts the APDU structure to a transmittable byte array.</summary>
+            <returns>A byte array containing the APDU parameters and data in the correct order.</returns>
+        </member>
+        <member name="M:PCSC.Iso7816.ResponseApdu.Clone">
+            <summary>
+            Creates a clone.
+            </summary>
+            <returns>A clone of the current instance.</returns>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApdu.HasData">
+            <summary>Gets a value indicating whether this response has data.</summary>
+            <value>
+                <c>true</c> if this response has data; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApdu.IsValid">
+            <summary>Indicates if the response APDU is valid.</summary>
+            <value>
+                <see langword="true" /> if the response APDU is valid.</value>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApdu.SW1">
+            <summary>Gets the SW1 status byte.</summary>
+            <exception cref="T:PCSC.Iso7816.InvalidApduException">The response APDU is invalid.</exception>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApdu.SW2">
+            <summary>Gets the SW1 status byte.</summary>
+            <exception cref="T:PCSC.Iso7816.InvalidApduException">The response APDU is invalid.</exception>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApdu.StatusWord">
+            <summary>Gets the combination of SW1 and SW2 as 16bit status word.</summary>
+            <exception cref="T:PCSC.Iso7816.InvalidApduException">The response APDU is invalid.</exception>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApdu.Length">
+            <summary>
+            Gets the length of the response APDU
+            </summary>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApdu.DataSize">
+            <summary>
+            Gets the size of the data.
+            </summary>
+        </member>
+        <member name="P:PCSC.Iso7816.ResponseApdu.FullApdu">
+            <summary>
+            Gets the full response APDU.
+            </summary>
+            <value>
+            The full APDU as byte array.
+            </value>
+        </member>
         <member name="T:PCSC.SCardScope">
             <summary>Scope of the establishment.</summary>
             <remarks>The following scopes are not used on Linux/UNIX machines using the PC/SC Lite daemon:
@@ -6720,7 +7770,7 @@
             <summary>Scope in terminal.</summary>
         </member>
         <member name="F:PCSC.SCardScope.System">
-            <summary>Scope in system. Services on the local machine.</summary>
+            <summary>Scope in system. Service on the local machine.</summary>
         </member>
         <member name="F:PCSC.SCardScope.Global">
             PC/SC Lite specific extensions 
