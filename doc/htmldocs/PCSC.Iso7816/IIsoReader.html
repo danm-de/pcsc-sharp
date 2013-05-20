@@ -206,9 +206,7 @@
       </p>
     </div>
     <h1 class="PageTitle" id="T:PCSC.Iso7816.IIsoReader">IIsoReader  Interface</h1>
-    <p class="Summary" id="T:PCSC.Iso7816.IIsoReader:Summary">
-      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-    </p>
+    <p class="Summary" id="T:PCSC.Iso7816.IIsoReader:Summary">A ISO/IEC 7816 compliant reader.</p>
     <div id="T:PCSC.Iso7816.IIsoReader:Signature">
       <h2>Syntax</h2>
       <div class="Signature">public interface  <b>IIsoReader</b> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.IDisposable">IDisposable</a></div>
@@ -237,7 +235,7 @@
                 <td>
                   <i>
                     <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets the active protocol.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -249,7 +247,7 @@
                 <td>
                   <i>
                     <a href="../PCSC/ISCardContext.html">PCSC.ISCardContext</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets the current context.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -261,7 +259,7 @@
                 <td>
                   <i>
                     <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets the current share mode.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -273,7 +271,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets the maximum number of bytes that can be received.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -285,7 +283,7 @@
                 <td>
                   <i>
                     <a href="../PCSC/ISCardReader.html">PCSC.ISCardReader</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets the current reader.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -297,7 +295,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets the name of the reader.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -312,7 +310,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets or sets the wait time in milliseconds that is used if an APDU needs to be retransmitted.</td>
               </tr>
             </table>
           </div>
@@ -329,7 +327,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">Connect</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a>, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a>, <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a>, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>)<blockquote>Connects the specified reader.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -339,7 +337,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase)">ConstructCommandApdu</a>
-                  </b>(<a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a>)<nobr> : <a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a>)<nobr> : <a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a></nobr><blockquote>Constructs a command APDU using the active protocol of the reader.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -349,7 +347,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition)">Disconnect</a>
-                  </b>(<a href="../PCSC/SCardReaderDisposition.html">PCSC.SCardReaderDisposition</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="../PCSC/SCardReaderDisposition.html">PCSC.SCardReaderDisposition</a>)<blockquote>Disconnects the currently connected reader.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -359,7 +357,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu)">Transmit</a>
-                  </b>(<a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a>)<nobr> : <a href="../PCSC.Iso7816/Response.html">Response</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a>)<nobr> : <a href="../PCSC.Iso7816/Response.html">Response</a></nobr><blockquote>Transmits the specified command APDU.</blockquote></td>
               </tr>
             </table>
           </div>
@@ -371,9 +369,7 @@
       <div class="SectionBox" id="_MemberDetails">
         <h3 id="P:PCSC.Iso7816.IIsoReader.ActiveProtocol">ActiveProtocol Property</h3>
         <blockquote id="P:PCSC.Iso7816.IIsoReader.ActiveProtocol:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets the active protocol.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> <b>ActiveProtocol</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
@@ -391,9 +387,7 @@
         </blockquote>
         <h3 id="M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)">Connect Method</h3>
         <blockquote id="M:PCSC.Iso7816.IIsoReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Connects the specified reader.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Connect</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> readerName, <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a> mode, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> protocol)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -402,21 +396,15 @@
               <dt>
                 <i>readerName</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>Name of the reader.</dd>
               <dt>
                 <i>mode</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The share mode.</dd>
               <dt>
                 <i>protocol</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The communication protocol. </dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
@@ -430,9 +418,7 @@
         </blockquote>
         <h3 id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase)">ConstructCommandApdu Method</h3>
         <blockquote id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Constructs a command APDU using the active protocol of the reader.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a> <b>ConstructCommandApdu</b> (<a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a> isoCase)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -441,15 +427,11 @@
               <dt>
                 <i>isoCase</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The ISO case that shall be used for this command.</dd>
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Returns">An empty command APDU.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.ConstructCommandApdu(PCSC.Iso7816.IsoCase):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -461,9 +443,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.IIsoReader.CurrentContext">CurrentContext Property</h3>
         <blockquote id="P:PCSC.Iso7816.IIsoReader.CurrentContext:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets the current context.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../PCSC/ISCardContext.html">PCSC.ISCardContext</a> <b>CurrentContext</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
@@ -481,9 +461,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.IIsoReader.CurrentShareMode">CurrentShareMode Property</h3>
         <blockquote id="P:PCSC.Iso7816.IIsoReader.CurrentShareMode:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets the current share mode.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../PCSC/SCardShareMode.html">PCSC.SCardShareMode</a> <b>CurrentShareMode</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
@@ -501,9 +479,7 @@
         </blockquote>
         <h3 id="M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition)">Disconnect Method</h3>
         <blockquote id="M:PCSC.Iso7816.IIsoReader.Disconnect(PCSC.SCardReaderDisposition):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Disconnects the currently connected reader.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>Disconnect</b> (<a href="../PCSC/SCardReaderDisposition.html">PCSC.SCardReaderDisposition</a> disposition)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -512,9 +488,7 @@
               <dt>
                 <i>disposition</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The action that shall be executed after disconnect.</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
@@ -528,9 +502,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.IIsoReader.MaxReceiveSize">MaxReceiveSize Property</h3>
         <blockquote id="P:PCSC.Iso7816.IIsoReader.MaxReceiveSize:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets the maximum number of bytes that can be received.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>MaxReceiveSize</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
@@ -548,9 +520,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.IIsoReader.Reader">Reader Property</h3>
         <blockquote id="P:PCSC.Iso7816.IIsoReader.Reader:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets the current reader.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../PCSC/ISCardReader.html">PCSC.ISCardReader</a> <b>Reader</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
@@ -568,9 +538,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.IIsoReader.ReaderName">ReaderName Property</h3>
         <blockquote id="P:PCSC.Iso7816.IIsoReader.ReaderName:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets the name of the reader.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ReaderName</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
@@ -588,9 +556,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime">RetransmitWaitTime Property</h3>
         <blockquote id="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets or sets the wait time in milliseconds that is used if an APDU needs to be retransmitted.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>RetransmitWaitTime</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -608,9 +574,7 @@
         </blockquote>
         <h3 id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu)">Transmit Method</h3>
         <blockquote id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Transmits the specified command APDU.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../PCSC.Iso7816/Response.html">Response</a> <b>Transmit</b> (<a href="../PCSC.Iso7816/CommandApdu.html">CommandApdu</a> commandApdu)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -619,15 +583,11 @@
               <dt>
                 <i>commandApdu</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The command APDU.</dd>
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu):Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu):Returns">A response containing one ore more <a href="../PCSC.Iso7816/ResponseApdu.html">PCSC.Iso7816.ResponseApdu</a>.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu):Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>

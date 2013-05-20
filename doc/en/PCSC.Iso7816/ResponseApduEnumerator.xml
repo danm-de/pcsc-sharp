@@ -17,7 +17,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            A <see cref="T:PCSC.Iso7816.ResponseApdu" /> enumerator.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -32,8 +34,10 @@
         <Parameter Name="apdus" Type="PCSC.Iso7816.ResponseApdu[]" />
       </Parameters>
       <Docs>
-        <param name="apdus">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="apdus">An array of <see cref="T:PCSC.Iso7816.ResponseApdu" />.</param>
+        <summary>
+            Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApduEnumerator" /> class.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -48,8 +52,10 @@
         <Parameter Name="apdus" Type="System.Collections.Generic.IEnumerable&lt;PCSC.Iso7816.ResponseApdu&gt;" />
       </Parameters>
       <Docs>
-        <param name="apdus">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="apdus">An enumeration of <see cref="T:PCSC.Iso7816.ResponseApdu" />.</param>
+        <summary>
+            Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApduEnumerator" /> class.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -64,8 +70,10 @@
         <Parameter Name="lst" Type="System.Collections.Generic.List&lt;PCSC.Iso7816.ResponseApdu&gt;" />
       </Parameters>
       <Docs>
-        <param name="lst">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="lst">A list of <see cref="T:PCSC.Iso7816.ResponseApdu" />.</param>
+        <summary>
+            Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApduEnumerator" /> class.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -80,9 +88,12 @@
         <ReturnType>PCSC.Iso7816.ResponseApdu</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>
+            Returns the current element.
+            </summary>
+        <value>The current element.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException"> if the enumerator reaches the end and therefore <see cref="P:PCSC.Iso7816.ResponseApduEnumerator.Current" /> is invalid.</exception>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -97,7 +108,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Disposes the enumerator and releases all managed resources.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -115,8 +128,11 @@
         <Parameter Name="disposing" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="disposing">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="disposing">
+          <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -132,8 +148,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Returns an enumerator.
+            </summary>
+        <returns>
+            A <see cref="T:System.Collections.IEnumerator" /> objekt, that can be used to enumerate through all <see cref="T:PCSC.Iso7816.ResponseApdu" />.
+            </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -149,8 +169,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Sets the enumerator the the next element.
+            </summary>
+        <returns>
+          <c>true</c> if there exists another element. Otherwise <c>false</c>.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -166,7 +189,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Resets the enumerator to the beginning.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -182,8 +207,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Returns an enumerator.
+            </summary>
+        <returns>
+            A <see cref="T:System.Collections.IEnumerator" /> objekt, that can be used to enumerate through all <see cref="T:PCSC.Iso7816.ResponseApdu" />.
+            </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -198,9 +227,12 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>
+            Returns the current element.
+            </summary>
+        <value>The current element.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException"> if the enumerator reaches the end and therefore <see cref="P:PCSC.Iso7816.ResponseApduEnumerator.Current" /> is invalid.</exception>
       </Docs>
     </Member>
   </Members>

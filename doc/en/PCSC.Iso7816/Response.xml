@@ -14,8 +14,8 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>An aggregation of <see cref="T:PCSC.Iso7816.ResponseApdu" /> instances.</summary>
+    <remarks>When using <see cref="M:PCSC.Iso7816.IIsoReader.Transmit(PCSC.Iso7816.CommandApdu)" /> the result can consist of one or more <see cref="T:PCSC.Iso7816.ResponseApdu" />. If the <see cref="T:PCSC.Iso7816.IIsoReader" /> receives a SW1=0x61 status word, it will automatically transmit a GET RESPONSE command to reader (after waiting <see cref="P:PCSC.Iso7816.IIsoReader.RetransmitWaitTime" /> ms) to catch all remaining <see cref="T:PCSC.Iso7816.ResponseApdu" />.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,7 +27,7 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.Response" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -45,8 +45,8 @@
         <Parameter Name="responseApdu" Type="PCSC.Iso7816.ResponseApdu" />
       </Parameters>
       <Docs>
-        <param name="responseApdu">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="responseApdu">The response APDU.</param>
+        <summary>Adds the specified response APDU.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -64,8 +64,8 @@
         <Parameter Name="receivePci" Type="PCSC.SCardPCI" />
       </Parameters>
       <Docs>
-        <param name="receivePci">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="receivePci">The PCI.</param>
+        <summary>Adds the specified PCI.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -80,7 +80,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the number of received <see cref="T:PCSC.Iso7816.ResponseApdu" />.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -99,9 +99,9 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="index">The index.</param>
+        <summary>Gets the <see cref="T:PCSC.Iso7816.ResponseApdu" /> of the specified index.</summary>
+        <returns>The <see cref="T:PCSC.Iso7816.ResponseApdu" /> of the specified index.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -117,8 +117,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>An aggregation of all data bytes in receive order.</summary>
+        <returns>An aggregation of all data bytes from all <see cref="T:PCSC.Iso7816.ResponseApdu" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -134,8 +134,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns an enumerator.</summary>
+        <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1" />, that enumerates all received <see cref="T:PCSC.Iso7816.ResponseApdu" /> instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -153,9 +153,9 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="index">The index.</param>
+        <summary>Gets the <see cref="T:PCSC.SCardPCI" /> of the specified index.</summary>
+        <returns>The <see cref="T:PCSC.SCardPCI" /> of the specified index.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -170,7 +170,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <see langword="true" /> if at least one <see cref="T:PCSC.Iso7816.ResponseApdu" /> contains data bytes.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -189,9 +190,11 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <param name="index">The index.</param>
+        <summary>Gets the <see cref="T:PCSC.Iso7816.ResponseApdu" /> at the specified index.</summary>
+        <value>The <see cref="T:PCSC.Iso7816.ResponseApdu" /> at the specified index.</value>
+        <value>The <see cref="T:PCSC.Iso7816.ResponseApdu" />.</value>
+        <value>The <see cref="T:PCSC.Iso7816.ResponseApdu" /> at the specified index.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -206,7 +209,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the number of received <see cref="T:PCSC.SCardPCI" />.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -222,9 +225,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>A combination of SW1 and SW2 as 16bit status word.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>It contains the status word of the last received <see cref="T:PCSC.Iso7816.ResponseApdu" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SW1">
@@ -238,7 +241,7 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The SW1 status of the last received <see cref="T:PCSC.Iso7816.ResponseApdu" />.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -254,7 +257,7 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The SW2 status of the last received <see cref="T:PCSC.Iso7816.ResponseApdu" />.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -271,8 +274,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Returns an enumerator.</summary>
+        <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1" />, that enumerates all received <see cref="T:PCSC.Iso7816.ResponseApdu" /> instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

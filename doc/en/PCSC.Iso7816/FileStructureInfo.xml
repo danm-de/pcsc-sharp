@@ -10,7 +10,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>File structure information for elementary file (EF).</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -25,8 +25,8 @@
         <Parameter Name="fileDescriptor" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="fileDescriptor">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="fileDescriptor">The file descriptor containing the file structure information.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.FileStructureInfo" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -42,7 +42,7 @@
       </ReturnValue>
       <MemberValue>6</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Cyclic bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -58,7 +58,7 @@
       </ReturnValue>
       <MemberValue>7</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Cyclic TLV bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -74,7 +74,7 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear fixed bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -90,7 +90,7 @@
       </ReturnValue>
       <MemberValue>3</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear fixed TLV bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -106,7 +106,7 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear variable bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -122,7 +122,7 @@
       </ReturnValue>
       <MemberValue>5</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear variable TLV bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -138,7 +138,7 @@
       </ReturnValue>
       <MemberValue>135</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>File structure mask bits.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -154,7 +154,7 @@
       </ReturnValue>
       <MemberValue>0</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>File has not structure information bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -170,7 +170,7 @@
       </ReturnValue>
       <MemberValue>1</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Transparent bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -185,8 +185,8 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the file descriptor.</summary>
+        <value>The file descriptor as byte.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -201,8 +201,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether the structuring method is a record EF.</summary>
+        <value>
+          <c>true</c> if the EF is record; otherwise, <c>false</c>.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -217,7 +218,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets a value indicating whether the structuring method is a transparent EF.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -233,9 +234,9 @@
         <ReturnType>PCSC.Iso7816.RecordInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the record information.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>Returns a <see cref="T:PCSC.Iso7816.RecordInfo" /> instance if the file structuring method is a record EF. Otherwise <see langword="null" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Type">
@@ -249,7 +250,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the file structure type.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

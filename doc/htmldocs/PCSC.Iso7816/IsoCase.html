@@ -206,9 +206,7 @@
       </p>
     </div>
     <h1 class="PageTitle" id="T:PCSC.Iso7816.IsoCase">IsoCase  Enum</h1>
-    <p class="Summary" id="T:PCSC.Iso7816.IsoCase:Summary">
-      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-    </p>
+    <p class="Summary" id="T:PCSC.Iso7816.IsoCase:Summary">APDU message structure for the command-response pair.</p>
     <div id="T:PCSC.Iso7816.IsoCase:Signature">
       <h2>Syntax</h2>
       <div class="Signature">public enum <b>IsoCase</b></div>
@@ -216,7 +214,29 @@
     <div class="Remarks" id="T:PCSC.Iso7816.IsoCase:Docs">
       <h2 class="Section">Remarks</h2>
       <div class="SectionBox" id="T:PCSC.Iso7816.IsoCase:Docs:Remarks">
-        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+        <table class="Documentation">
+          <tr>
+            <th>ISO case</th>
+            <th>Command data, Expected response data</th>
+          </tr>
+          <tr valign="top">
+            <td>1</td>
+            <td>Command: no data, Expected response: no data</td>
+          </tr>
+          <tr valign="top">
+            <td>2</td>
+            <td>Command: no data, Expected response:  data</td>
+          </tr>
+          <tr valign="top">
+            <td>3</td>
+            <td>Command: data, Expected response: no data</td>
+          </tr>
+          <tr valign="top">
+            <td>4</td>
+            <td>Command: data, Expected response: data</td>
+          </tr>
+        </table>
+        <p>In the card capabilities, the card states that the Lc and the Le field should either be short or extended. A short command has one byte for each length field, an extended command has two bytes for each length field.</p>
       </div>
       <h2 class="Section">Members</h2>
       <div class="SectionBox" id="T:PCSC.Iso7816.IsoCase:Docs:Members">
@@ -229,57 +249,43 @@
             <td id="F:PCSC.Iso7816.IsoCase.Case1">
               <b>Case1</b>
             </td>
-            <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-            </td>
+            <td>No command data. No response data.</td>
           </tr>
           <tr valign="top">
             <td id="F:PCSC.Iso7816.IsoCase.Case2Extended">
               <b>Case2Extended</b>
             </td>
-            <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-            </td>
+            <td>No command data. Expected response data.</td>
           </tr>
           <tr valign="top">
             <td id="F:PCSC.Iso7816.IsoCase.Case2Short">
               <b>Case2Short</b>
             </td>
-            <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-            </td>
+            <td>No command data. Expected response data.</td>
           </tr>
           <tr valign="top">
             <td id="F:PCSC.Iso7816.IsoCase.Case3Extended">
               <b>Case3Extended</b>
             </td>
-            <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-            </td>
+            <td>Command data. No response data.</td>
           </tr>
           <tr valign="top">
             <td id="F:PCSC.Iso7816.IsoCase.Case3Short">
               <b>Case3Short</b>
             </td>
-            <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-            </td>
+            <td>Command data. No response data.</td>
           </tr>
           <tr valign="top">
             <td id="F:PCSC.Iso7816.IsoCase.Case4Extended">
               <b>Case4Extended</b>
             </td>
-            <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-            </td>
+            <td>Command data. Expected response data.</td>
           </tr>
           <tr valign="top">
             <td id="F:PCSC.Iso7816.IsoCase.Case4Short">
               <b>Case4Short</b>
             </td>
-            <td>
-              <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-            </td>
+            <td>Command data. Expected response data.</td>
           </tr>
         </table>
       </div>

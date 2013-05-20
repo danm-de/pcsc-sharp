@@ -14,8 +14,33 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A Command Application Protocol Data Unit (APDU), defined by the ISO/IEC 7816 standards</summary>
+    <remarks>
+      <para>A <see cref="T:PCSC.Iso7816.CommandApdu" /> can be build using one of the following <see cref="T:PCSC.Iso7816.IsoCase" />:</para>
+      <list type="table">
+        <listheader>
+          <term>Case</term>
+          <description>APDU structure</description>
+        </listheader>
+        <item>
+          <term>1</term>
+          <description>CLA INS P1 P2</description>
+        </item>
+        <item>
+          <term>2</term>
+          <description>CLA INS P1 P2 Le</description>
+        </item>
+        <item>
+          <term>3</term>
+          <description>CLA INS P1 P2 Lc Data</description>
+        </item>
+        <item>
+          <term>4</term>
+          <description>CLA INS P1 P2 Lc Data Le</description>
+        </item>
+      </list>
+      <para>See the documentation for <see cref="T:PCSC.Iso7816.IsoCase" /> for more information.</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -30,9 +55,9 @@
         <Parameter Name="protocol" Type="PCSC.SCardProtocol" />
       </Parameters>
       <Docs>
-        <param name="isoCase">To be added.</param>
-        <param name="protocol">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="isoCase">The ISO case to use.</param>
+        <param name="protocol">The protocol.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.CommandApdu" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -47,9 +72,9 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets or sets the CLA byte.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>You can use the <see cref="T:PCSC.Iso7816.ClassByte" /> class to build a well formed CLA byte.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -64,8 +89,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Creates a clone of the current instance. The data is NOT copied. </summary>
+        <returns>A clone of the current instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -80,9 +105,9 @@
         <ReturnType>System.Byte[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Command APDU data to be transmitted.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>You can only set data if you created the <see cref="T:PCSC.Iso7816.CommandApdu" /> with ISO case 3 or 4.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ExpectedResponseLength">
@@ -96,7 +121,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The expected response size (Le + SW1SW2)</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -113,8 +138,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Gets the CLA.</summary>
+        <returns>The <see cref="P:PCSC.Iso7816.CommandApdu.CLA" /> as <see cref="T:PCSC.Iso7816.ClassByte" /> instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -130,8 +155,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Gets the instruction byte info.</summary>
+        <returns>The <see cref="P:PCSC.Iso7816.CommandApdu.INS" /> as <see cref="T:PCSC.Iso7816.InstructionByte" /> instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -147,8 +172,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Calculates the APDU size in bytes.</summary>
+        <returns>The APDU size in bytes depending on the currently selected ISO case.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -163,7 +188,7 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets or sets the instruction.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -179,7 +204,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the instruction.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -195,8 +220,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary> Indicates if the command APDU is valid.</summary>
+        <value>
+          <see langword="true" /> if the APDU is valid.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -211,7 +237,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Length command</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -227,9 +253,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Length expected.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>This is the expected number of response data bytes. Do not take account of the status word (SW1 and SW2) here!</remarks>
       </Docs>
     </Member>
     <Member MemberName="P1">
@@ -243,7 +269,7 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The first parameter (P1)</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -259,7 +285,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>A combination of parameter P1 and P2</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -275,7 +301,7 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The second parameter (P2)</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -291,7 +317,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The third parameter (P3 or Le)</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -308,9 +334,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Converts the command APDU to a transmittable byte array.</summary>
+        <returns>The command APDU as byte array.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">If the command APDU is in an invalid state.</exception>
       </Docs>
     </Member>
   </Members>

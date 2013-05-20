@@ -206,9 +206,7 @@
       </p>
     </div>
     <h1 class="PageTitle" id="T:PCSC.Iso7816.CommandApdu">CommandApdu  Class</h1>
-    <p class="Summary" id="T:PCSC.Iso7816.CommandApdu:Summary">
-      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-    </p>
+    <p class="Summary" id="T:PCSC.Iso7816.CommandApdu:Summary">A Command Application Protocol Data Unit (APDU), defined by the ISO/IEC 7816 standards</p>
     <div id="T:PCSC.Iso7816.CommandApdu:Signature">
       <h2>Syntax</h2>
       <div class="Signature">public class  <b>CommandApdu</b> : <a href="../PCSC.Iso7816/Apdu.html">Apdu</a>,	<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.ICloneable">ICloneable</a></div>
@@ -216,7 +214,30 @@
     <div class="Remarks" id="T:PCSC.Iso7816.CommandApdu:Docs">
       <h2 class="Section">Remarks</h2>
       <div class="SectionBox" id="T:PCSC.Iso7816.CommandApdu:Docs:Remarks">
-        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+        <p>A <a href="../PCSC.Iso7816/CommandApdu.html">PCSC.Iso7816.CommandApdu</a> can be build using one of the following <a href="../PCSC.Iso7816/IsoCase.html">PCSC.Iso7816.IsoCase</a>:</p>
+        <table class="Documentation">
+          <tr>
+            <th>Case</th>
+            <th>APDU structure</th>
+          </tr>
+          <tr valign="top">
+            <td>1</td>
+            <td>CLA INS P1 P2</td>
+          </tr>
+          <tr valign="top">
+            <td>2</td>
+            <td>CLA INS P1 P2 Le</td>
+          </tr>
+          <tr valign="top">
+            <td>3</td>
+            <td>CLA INS P1 P2 Lc Data</td>
+          </tr>
+          <tr valign="top">
+            <td>4</td>
+            <td>CLA INS P1 P2 Lc Data Le</td>
+          </tr>
+        </table>
+        <p>See the documentation for <a href="../PCSC.Iso7816/IsoCase.html">PCSC.Iso7816.IsoCase</a> for more information.</p>
       </div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:PCSC.Iso7816.CommandApdu:Docs:Version Information">
@@ -242,9 +263,7 @@
                       <a href="#C:PCSC.Iso7816.CommandApdu(PCSC.Iso7816.IsoCase,PCSC.SCardProtocol)">CommandApdu</a>
                     </b>(<a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a>, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>)</div>
                 </td>
-                <td>
-                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-                </td>
+                <td>Initializes a new instance of the <a href="../PCSC.Iso7816/CommandApdu.html">PCSC.Iso7816.CommandApdu</a> class.</td>
               </tr>
             </table>
           </div>
@@ -266,7 +285,7 @@
                 <td>
                   <i>
                     <a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../PCSC.Iso7816/Apdu.html">Apdu</a>.</i>)</td>
+                  </i>. The currently used ISO case. (<i>Inherited from <a href="../PCSC.Iso7816/Apdu.html">Apdu</a>.</i>)</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -281,7 +300,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets or sets the CLA byte.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -295,7 +314,7 @@
                 </td>
                 <td>
                   <i>
-                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                    <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</i>. Command APDU data to be transmitted.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -310,7 +329,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. The expected response size (Le + SW1SW2)</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -325,7 +344,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets or sets the instruction.</td>
               </tr>
               <tr valign="top">
                 <td>[write-only]<div></div></td>
@@ -337,7 +356,7 @@
                 <td>
                   <i>
                     <a href="../PCSC.Iso7816/InstructionCode.html">InstructionCode</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Sets the instruction.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div>override </div></td>
@@ -349,7 +368,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>.  Indicates if the command APDU is valid.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div>abstract </div></td>
@@ -361,7 +380,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../PCSC.Iso7816/Apdu.html">Apdu</a>.</i>)</td>
+                  </i>. Indicates if the APDU is valid. (<i>Inherited from <a href="../PCSC.Iso7816/Apdu.html">Apdu</a>.</i>)</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -373,7 +392,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Length command</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -388,7 +407,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Length expected.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -403,7 +422,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. The first parameter (P1)</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -418,7 +437,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. A combination of parameter P1 and P2</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -433,7 +452,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. The second parameter (P2)</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -448,7 +467,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. The third parameter (P3 or Le)</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -463,7 +482,7 @@
                 <td>
                   <i>
                     <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../PCSC.Iso7816/Apdu.html">Apdu</a>.</i>)</td>
+                  </i>. The currently used protocol. (<i>Inherited from <a href="../PCSC.Iso7816/Apdu.html">Apdu</a>.</i>)</td>
               </tr>
             </table>
           </div>
@@ -480,7 +499,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.Iso7816.CommandApdu.Clone">Clone</a>
-                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a></nobr><blockquote>Creates a clone of the current instance. The data is NOT copied. </blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -490,7 +509,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.Iso7816.CommandApdu.GetClassByteInfo">GetClassByteInfo</a>
-                  </b>()<nobr> : <a href="../PCSC.Iso7816/ClassByte.html">ClassByte</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<nobr> : <a href="../PCSC.Iso7816/ClassByte.html">ClassByte</a></nobr><blockquote>Gets the CLA.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -500,7 +519,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.Iso7816.CommandApdu.GetInstructionByteInfo">GetInstructionByteInfo</a>
-                  </b>()<nobr> : <a href="../PCSC.Iso7816/InstructionByte.html">InstructionByte</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<nobr> : <a href="../PCSC.Iso7816/InstructionByte.html">InstructionByte</a></nobr><blockquote>Gets the instruction byte info.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -510,7 +529,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.Iso7816.CommandApdu.GetLength">GetLength</a>
-                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a></nobr><blockquote>Calculates the APDU size in bytes.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -519,7 +538,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:PCSC.Iso7816.CommandApdu.ToArray">ToArray</a>
-                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</nobr><blockquote>Converts the command APDU to a transmittable byte array.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -528,7 +547,7 @@
                 <td colspan="2">
                   <b>
                     <a href="../PCSC.Iso7816/Apdu.html#M:PCSC.Iso7816.Apdu.ToArray">ToArray</a>
-                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../PCSC.Iso7816/Apdu.html">Apdu</a>.</i>)</blockquote></td>
+                  </b>()<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[]</nobr><blockquote>Converts the APDU structure to a transmittable byte array. (<i>Inherited from <a href="../PCSC.Iso7816/Apdu.html">Apdu</a>.</i>)</blockquote></td>
               </tr>
             </table>
           </div>
@@ -540,9 +559,7 @@
       <div class="SectionBox" id="_MemberDetails">
         <h3 id="C:PCSC.Iso7816.CommandApdu(PCSC.Iso7816.IsoCase,PCSC.SCardProtocol)">CommandApdu Constructor</h3>
         <blockquote id="C:PCSC.Iso7816.CommandApdu(PCSC.Iso7816.IsoCase,PCSC.SCardProtocol):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Initializes a new instance of the <a href="../PCSC.Iso7816/CommandApdu.html">PCSC.Iso7816.CommandApdu</a> class.</p>
           <h2>Syntax</h2>
           <div class="Signature">public  <b>CommandApdu</b> (<a href="../PCSC.Iso7816/IsoCase.html">IsoCase</a> isoCase, <a href="../PCSC/SCardProtocol.html">PCSC.SCardProtocol</a> protocol)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -551,15 +568,11 @@
               <dt>
                 <i>isoCase</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The ISO case to use.</dd>
               <dt>
                 <i>protocol</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The protocol.</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
@@ -573,9 +586,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.CLA">CLA Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.CLA:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets or sets the CLA byte.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> <b>CLA</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -583,9 +594,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.CLA:Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.CLA:Remarks">You can use the <a href="../PCSC.Iso7816/ClassByte.html">PCSC.Iso7816.ClassByte</a> class to build a well formed CLA byte.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.CLA:Version Information">
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
@@ -593,15 +602,11 @@
         </blockquote>
         <h3 id="M:PCSC.Iso7816.CommandApdu.Clone">Clone Method</h3>
         <blockquote id="M:PCSC.Iso7816.CommandApdu.Clone:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Creates a clone of the current instance. The data is NOT copied. </p>
           <h2>Syntax</h2>
           <div class="Signature">public virtual <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> <b>Clone</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.Clone:Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.Clone:Returns">A clone of the current instance.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:PCSC.Iso7816.CommandApdu.Clone:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -613,9 +618,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.Data">Data Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.Data:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Command APDU data to be transmitted.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] <b>Data</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -623,9 +626,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.Data:Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.Data:Remarks">You can only set data if you created the <a href="../PCSC.Iso7816/CommandApdu.html">PCSC.Iso7816.CommandApdu</a> with ISO case 3 or 4.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.Data:Version Information">
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
@@ -633,9 +634,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.ExpectedResponseLength">ExpectedResponseLength Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.ExpectedResponseLength:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">The expected response size (Le + SW1SW2)</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>ExpectedResponseLength</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -653,15 +652,11 @@
         </blockquote>
         <h3 id="M:PCSC.Iso7816.CommandApdu.GetClassByteInfo">GetClassByteInfo Method</h3>
         <blockquote id="M:PCSC.Iso7816.CommandApdu.GetClassByteInfo:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets the CLA.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../PCSC.Iso7816/ClassByte.html">ClassByte</a> <b>GetClassByteInfo</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.GetClassByteInfo:Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.GetClassByteInfo:Returns">The <a href="../PCSC.Iso7816/CommandApdu.html#P:PCSC.Iso7816.CommandApdu.CLA">CommandApdu.CLA</a> as <a href="../PCSC.Iso7816/ClassByte.html">PCSC.Iso7816.ClassByte</a> instance.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:PCSC.Iso7816.CommandApdu.GetClassByteInfo:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -673,15 +668,11 @@
         </blockquote>
         <h3 id="M:PCSC.Iso7816.CommandApdu.GetInstructionByteInfo">GetInstructionByteInfo Method</h3>
         <blockquote id="M:PCSC.Iso7816.CommandApdu.GetInstructionByteInfo:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets the instruction byte info.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../PCSC.Iso7816/InstructionByte.html">InstructionByte</a> <b>GetInstructionByteInfo</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.GetInstructionByteInfo:Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.GetInstructionByteInfo:Returns">The <a href="../PCSC.Iso7816/CommandApdu.html#P:PCSC.Iso7816.CommandApdu.INS">CommandApdu.INS</a> as <a href="../PCSC.Iso7816/InstructionByte.html">PCSC.Iso7816.InstructionByte</a> instance.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:PCSC.Iso7816.CommandApdu.GetInstructionByteInfo:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -693,15 +684,11 @@
         </blockquote>
         <h3 id="M:PCSC.Iso7816.CommandApdu.GetLength">GetLength Method</h3>
         <blockquote id="M:PCSC.Iso7816.CommandApdu.GetLength:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Calculates the APDU size in bytes.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>GetLength</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.GetLength:Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.GetLength:Returns">The APDU size in bytes depending on the currently selected ISO case.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:PCSC.Iso7816.CommandApdu.GetLength:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -713,9 +700,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.INS">INS Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.INS:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets or sets the instruction.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> <b>INS</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -733,9 +718,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.Instruction">Instruction Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.Instruction:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Sets the instruction.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="../PCSC.Iso7816/InstructionCode.html">InstructionCode</a> <b>Instruction</b>  { set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -753,15 +736,12 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.IsValid">IsValid Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.IsValid:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary"> Indicates if the command APDU is valid.</p>
           <h2>Syntax</h2>
           <div class="Signature">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>IsValid</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.CommandApdu.IsValid:Value">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+            <tt>true</tt> if the APDU is valid.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.IsValid:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -773,9 +753,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.Lc">Lc Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.Lc:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Length command</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Lc</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
@@ -793,9 +771,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.Le">Le Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.Le:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Length expected.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>Le</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -803,9 +779,7 @@
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.Le:Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.Le:Remarks">This is the expected number of response data bytes. Do not take account of the status word (SW1 and SW2) here!</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.CommandApdu.Le:Version Information">
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
@@ -813,9 +787,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.P1">P1 Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.P1:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">The first parameter (P1)</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> <b>P1</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -833,9 +805,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.P1P2">P1P2 Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.P1P2:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">A combination of parameter P1 and P2</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>P1P2</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -853,9 +823,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.P2">P2 Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.P2:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">The second parameter (P2)</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> <b>P2</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -873,9 +841,7 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.CommandApdu.P3">P3 Property</h3>
         <blockquote id="P:PCSC.Iso7816.CommandApdu.P3:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">The third parameter (P3 or Le)</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Int32">int</a> <b>P3</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -893,14 +859,25 @@
         </blockquote>
         <h3 id="M:PCSC.Iso7816.CommandApdu.ToArray">ToArray Method</h3>
         <blockquote id="M:PCSC.Iso7816.CommandApdu.ToArray:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Converts the command APDU to a transmittable byte array.</p>
           <h2>Syntax</h2>
           <div class="Signature">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>[] <b>ToArray</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.ToArray:Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.ToArray:Returns">The command APDU as byte array.</blockquote>
+          <h4 class="Subsection">Exceptions</h4>
+          <blockquote class="SubsectionBox" id="M:PCSC.Iso7816.CommandApdu.ToArray:Exceptions">
+            <table class="TypeDocumentation">
+              <tr>
+                <th>Type</th>
+                <th>Reason</th>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.InvalidOperationException">InvalidOperationException</a>
+                </td>
+                <td>If the command APDU is in an invalid state.</td>
+              </tr>
+            </table>
           </blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="M:PCSC.Iso7816.CommandApdu.ToArray:Remarks">

@@ -10,7 +10,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>A class that describes the instruction of a command APDU.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -25,24 +25,24 @@
         <Parameter Name="code" Type="PCSC.Iso7816.InstructionCode" />
       </Parameters>
       <Docs>
-        <param name="code">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="code">The instruction code.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.InstructionByte" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected InstructionByte (byte ins);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig specialname rtspecialname instance void .ctor(unsigned int8 ins) cil managed" />
+      <MemberSignature Language="C#" Value="protected InstructionByte (byte instruction);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig specialname rtspecialname instance void .ctor(unsigned int8 instruction) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="ins" Type="System.Byte" />
+        <Parameter Name="instruction" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="ins">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="instruction">The instruction as byte.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.InstructionByte" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -57,23 +57,8 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets or sets the instruction code.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ins">
-      <MemberSignature Language="C#" Value="protected byte ins;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int8 ins" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>3.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -92,8 +77,8 @@
       </Parameters>
       <Docs>
         <param name="insByteInfo">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Implicitly converts a <see cref="T:PCSC.Iso7816.InstructionByte" /> to a single INS byte.</summary>
+        <returns>A byte containing INS.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -111,15 +96,15 @@
         <Parameter Name="code" Type="PCSC.Iso7816.InstructionCode" />
       </Parameters>
       <Docs>
-        <param name="code">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="code">The instruction code.</param>
+        <summary>Implicitly converts a <see cref="T:PCSC.Iso7816.InstructionCode" /> to a <see cref="T:PCSC.Iso7816.InstructionByte" /> instance.</summary>
+        <returns>A <see cref="T:PCSC.Iso7816.InstructionByte" /> instance</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
-      <MemberSignature Language="C#" Value="public static PCSC.Iso7816.InstructionByte op_Implicit (byte b);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class PCSC.Iso7816.InstructionByte op_Implicit(unsigned int8 b) cil managed" />
+      <MemberSignature Language="C#" Value="public static PCSC.Iso7816.InstructionByte op_Implicit (byte instruction);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class PCSC.Iso7816.InstructionByte op_Implicit(unsigned int8 instruction) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -128,12 +113,12 @@
         <ReturnType>PCSC.Iso7816.InstructionByte</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="b" Type="System.Byte" />
+        <Parameter Name="instruction" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="instruction">The instruction as byte.</param>
+        <summary>Implicitly converts a byte to a <see cref="T:PCSC.Iso7816.InstructionByte" /> instance.</summary>
+        <returns>A <see cref="T:PCSC.Iso7816.InstructionByte" /> class</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -148,7 +133,7 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets or sets the instruction as value.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

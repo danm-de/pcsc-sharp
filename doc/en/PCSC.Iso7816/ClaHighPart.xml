@@ -9,7 +9,9 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Coding and meaning of the class byte
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -24,7 +26,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The structure and coding of command and response are as described in ISO/IEC 7816. 'x' contains the options for secure messaging <see cref="T:PCSC.Iso7816.SecureMessagingFormat" /> and the logical channel.</summary>
       </Docs>
     </Member>
     <Member MemberName="Iso8x">
@@ -38,7 +40,8 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The structure of command and response are as described in ISO/IEC 7816. 'x' contains the options for secure messaging <see cref="T:PCSC.Iso7816.SecureMessagingFormat" /> and the logical channel.
+            The coding (and meaning) of command and response are proprietary.</summary>
       </Docs>
     </Member>
     <Member MemberName="Iso9x">
@@ -52,7 +55,8 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The structure of command and response are as described in ISO/IEC 7816. 'x' contains the options for secure messaging <see cref="T:PCSC.Iso7816.SecureMessagingFormat" /> and the logical channel.
+            The coding (and meaning) of command and response are proprietary.</summary>
       </Docs>
     </Member>
     <Member MemberName="IsoAx">
@@ -66,7 +70,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>If not specified by the application context, structure and coding of command and response are as described in ISO/IEC 7816. 'x' contains the options for secure messaging <see cref="T:PCSC.Iso7816.SecureMessagingFormat" /> and the logical channel.</summary>
       </Docs>
     </Member>
     <Member MemberName="IsoBx">
@@ -80,7 +84,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The structure of command and response are as described in ISO/IEC 7816.</summary>
       </Docs>
     </Member>
     <Member MemberName="IsoCx">
@@ -94,7 +98,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The structure of command and response are as described in ISO/IEC 7816.</summary>
       </Docs>
     </Member>
     <Member MemberName="ProprietaryDx">
@@ -108,7 +112,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The structure of command and response are proprietary.</summary>
       </Docs>
     </Member>
     <Member MemberName="ProprietaryEx">
@@ -122,7 +126,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The structure of command and response are proprietary.</summary>
       </Docs>
     </Member>
     <Member MemberName="ProprietaryFx">
@@ -136,7 +140,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The structure of command and response are proprietary.</summary>
       </Docs>
     </Member>
     <Member MemberName="Rfu1x">
@@ -150,7 +154,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved for future use.</summary>
       </Docs>
     </Member>
     <Member MemberName="Rfu2x">
@@ -164,7 +168,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved for future use.</summary>
       </Docs>
     </Member>
     <Member MemberName="Rfu3x">
@@ -178,7 +182,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved for future use.</summary>
       </Docs>
     </Member>
     <Member MemberName="Rfu4x">
@@ -192,7 +196,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved for future use.</summary>
       </Docs>
     </Member>
     <Member MemberName="Rfu5x">
@@ -206,7 +210,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved for future use.</summary>
       </Docs>
     </Member>
     <Member MemberName="Rfu6x">
@@ -220,7 +224,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved for future use.</summary>
       </Docs>
     </Member>
     <Member MemberName="Rfu7x">
@@ -234,7 +238,7 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Reserved for future use.</summary>
       </Docs>
     </Member>
   </Members>

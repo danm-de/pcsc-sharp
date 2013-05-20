@@ -10,7 +10,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>A file descriptor. See ISO/IEC7816-4 File control information (FCI) for more information.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -25,8 +25,8 @@
         <Parameter Name="fileDescriptorByte" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="fileDescriptorByte">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="fileDescriptorByte">The file descriptor byte that shall be parsed.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.FileDescriptor" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -41,7 +41,7 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The file descriptor as single byte structure.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -57,7 +57,7 @@
         <ReturnType>PCSC.Iso7816.ExtendedFileType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the extended file type.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -74,7 +74,7 @@
       </ReturnValue>
       <MemberValue>192</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sharemode bit mask.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -90,7 +90,7 @@
       </ReturnValue>
       <MemberValue>0</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Non shareable bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -106,7 +106,7 @@
       </ReturnValue>
       <MemberValue>64</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Shareable bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -122,7 +122,7 @@
       </ReturnValue>
       <MemberValue>56</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Dedicated file (DF) bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -138,7 +138,7 @@
       </ReturnValue>
       <MemberValue>8</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Internal elementary file (EF) bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -154,7 +154,7 @@
       </ReturnValue>
       <MemberValue>184</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>File type bit mask.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -170,7 +170,7 @@
       </ReturnValue>
       <MemberValue>0</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Working elementary file (EF) bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -189,10 +189,11 @@
         <Parameter Name="bits" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="mask">To be added.</param>
-        <param name="bits">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="mask">The a bit mask.</param>
+        <param name="bits">The bits to check for.</param>
+        <summary>Determines whether the specified bits are set.</summary>
+        <returns>
+          <c>true</c> if the specified bits are set; otherwise, <c>false</c>.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -210,15 +211,15 @@
         <Parameter Name="fd" Type="PCSC.Iso7816.FileDescriptor" />
       </Parameters>
       <Docs>
-        <param name="fd">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="fd">The file descriptor.</param>
+        <summary>Implicitly converts a <see cref="T:PCSC.Iso7816.FileDescriptor" /> to a single byte.</summary>
+        <returns>A file descriptor as byte.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
-      <MemberSignature Language="C#" Value="public static PCSC.Iso7816.FileDescriptor op_Implicit (byte b);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class PCSC.Iso7816.FileDescriptor op_Implicit(unsigned int8 b) cil managed" />
+      <MemberSignature Language="C#" Value="public static PCSC.Iso7816.FileDescriptor op_Implicit (byte fd);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class PCSC.Iso7816.FileDescriptor op_Implicit(unsigned int8 fd) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -227,12 +228,12 @@
         <ReturnType>PCSC.Iso7816.FileDescriptor</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="b" Type="System.Byte" />
+        <Parameter Name="fd" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="fd">The file descriptor as byte.</param>
+        <summary>Implicitly converts a single byte to a <see cref="T:PCSC.Iso7816.FileDescriptor" />.</summary>
+        <returns>A <see cref="T:PCSC.Iso7816.FileDescriptor" /> instance as parsed result.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -247,7 +248,7 @@
         <ReturnType>PCSC.Iso7816.FileShareMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the file sharing mode.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -263,7 +264,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets file structure information.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -279,7 +280,7 @@
         <ReturnType>PCSC.Iso7816.FileType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the file type.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

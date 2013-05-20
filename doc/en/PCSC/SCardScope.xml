@@ -49,7 +49,7 @@
         <ReturnType>PCSC.SCardScope</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Scope in system. Services on the local machine.</summary>
+        <summary>Scope in system. Service on the local machine.</summary>
       </Docs>
     </Member>
     <Member MemberName="Terminal">

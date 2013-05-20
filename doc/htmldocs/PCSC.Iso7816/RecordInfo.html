@@ -206,18 +206,15 @@
       </p>
     </div>
     <h1 class="PageTitle" id="T:PCSC.Iso7816.RecordInfo">RecordInfo  Class</h1>
-    <p class="Summary" id="T:PCSC.Iso7816.RecordInfo:Summary">
-      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-    </p>
+    <p class="Summary" id="T:PCSC.Iso7816.RecordInfo:Summary">Record structure information.</p>
     <div id="T:PCSC.Iso7816.RecordInfo:Signature">
       <h2>Syntax</h2>
       <div class="Signature">public class  <b>RecordInfo</b></div>
     </div>
     <div class="Remarks" id="T:PCSC.Iso7816.RecordInfo:Docs">
       <h2 class="Section">Remarks</h2>
-      <div class="SectionBox" id="T:PCSC.Iso7816.RecordInfo:Docs:Remarks">
-        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-      </div>
+      <div class="SectionBox" id="T:PCSC.Iso7816.RecordInfo:Docs:Remarks">Elementary files (EF) that have a sequence of individually identifiable records should use one of the following methods for structuring:
+            <ul><li></li><li></li><li></li></ul></div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:PCSC.Iso7816.RecordInfo:Docs:Version Information">
         <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
@@ -242,9 +239,7 @@
                       <a href="#C:PCSC.Iso7816.RecordInfo(System.Byte)">RecordInfo</a>
                     </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>)</div>
                 </td>
-                <td>
-                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-                </td>
+                <td>Initializes a new instance of the <a href="../PCSC.Iso7816/RecordInfo.html">PCSC.Iso7816.RecordInfo</a> class.</td>
               </tr>
             </table>
           </div>
@@ -265,7 +260,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i> (6). <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i> (6). Cyclic bit.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -279,7 +274,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i> (2). <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i> (2). Linear fixed bit.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -293,7 +288,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i> (4). <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i> (4). Linear variable bit.</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -301,13 +296,13 @@
                 </td>
                 <td>
                   <b>
-                    <a href="#F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_MASK">FILE_STRUCTURE_IS_MASK</a>
+                    <a href="#F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURING_MASK">FILE_STRUCTURING_MASK</a>
                   </b>
                 </td>
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i> (134). <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i> (134). File structuring mask bits.</td>
               </tr>
             </table>
           </div>
@@ -326,7 +321,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets the file descriptor.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -338,7 +333,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets a value indicating whether the EF has cyclic records.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -350,7 +345,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets a value indicating whether the EF's record size is fixed.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -362,7 +357,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets a value indicating whether the EF has linear records.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -374,7 +369,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets a value indicating whether the EF contains simple TLV records.</td>
               </tr>
               <tr valign="top">
                 <td>[read-only]<div></div></td>
@@ -386,7 +381,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets a value indicating whether the EF's record size is variable.</td>
               </tr>
             </table>
           </div>
@@ -398,9 +393,7 @@
       <div class="SectionBox" id="_MemberDetails">
         <h3 id="C:PCSC.Iso7816.RecordInfo(System.Byte)">RecordInfo Constructor</h3>
         <blockquote id="C:PCSC.Iso7816.RecordInfo(System.Byte):member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Initializes a new instance of the <a href="../PCSC.Iso7816/RecordInfo.html">PCSC.Iso7816.RecordInfo</a> class.</p>
           <h2>Syntax</h2>
           <div class="Signature">public  <b>RecordInfo</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> fileDescriptor)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -409,9 +402,7 @@
               <dt>
                 <i>fileDescriptor</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The file descriptor.</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
@@ -425,9 +416,7 @@
         </blockquote>
         <h3 id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_CYCLIC">FILE_STRUCTURE_IS_CYCLIC Field</h3>
         <blockquote id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_CYCLIC:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Cyclic bit.</p>
           <p>
             <b>Value: </b>6</p>
           <h2>Syntax</h2>
@@ -443,9 +432,7 @@
         </blockquote>
         <h3 id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_LINEAR_FIXED">FILE_STRUCTURE_IS_LINEAR_FIXED Field</h3>
         <blockquote id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_LINEAR_FIXED:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Linear fixed bit.</p>
           <p>
             <b>Value: </b>2</p>
           <h2>Syntax</h2>
@@ -461,9 +448,7 @@
         </blockquote>
         <h3 id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_LINEAR_VARIABLE">FILE_STRUCTURE_IS_LINEAR_VARIABLE Field</h3>
         <blockquote id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_LINEAR_VARIABLE:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Linear variable bit.</p>
           <p>
             <b>Value: </b>4</p>
           <h2>Syntax</h2>
@@ -477,35 +462,29 @@
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_MASK">FILE_STRUCTURE_IS_MASK Field</h3>
-        <blockquote id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_MASK:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+        <h3 id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURING_MASK">FILE_STRUCTURING_MASK Field</h3>
+        <blockquote id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURING_MASK:member">
+          <p class="Summary">File structuring mask bits.</p>
           <p>
             <b>Value: </b>134</p>
           <h2>Syntax</h2>
-          <div class="Signature">public const <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> <b>FILE_STRUCTURE_IS_MASK</b> </div>
+          <div class="Signature">public const <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> <b>FILE_STRUCTURING_MASK</b> </div>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_MASK:Remarks">
+          <div class="SectionBox" id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURING_MASK:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURE_IS_MASK:Version Information">
+          <div class="SectionBox" id="F:PCSC.Iso7816.RecordInfo.FILE_STRUCTURING_MASK:Version Information">
             <b>Namespace: </b>PCSC.Iso7816<br /><b>Assembly: </b>pcsc-sharp (in pcsc-sharp.dll)<br /><b>Assembly Versions: </b>3.0.0.0</div>
           <hr size="1" />
         </blockquote>
         <h3 id="P:PCSC.Iso7816.RecordInfo.FileDescriptor">FileDescriptor Property</h3>
         <blockquote id="P:PCSC.Iso7816.RecordInfo.FileDescriptor:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets the file descriptor.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Byte">byte</a> <b>FileDescriptor</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
-          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.RecordInfo.FileDescriptor:Value">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.RecordInfo.FileDescriptor:Value">The file descriptor as byte.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.RecordInfo.FileDescriptor:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -517,15 +496,12 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.RecordInfo.IsCyclic">IsCyclic Property</h3>
         <blockquote id="P:PCSC.Iso7816.RecordInfo.IsCyclic:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets a value indicating whether the EF has cyclic records.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>IsCyclic</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.RecordInfo.IsCyclic:Value">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+            <tt>true</tt> if the EF is cyclic; otherwise, <tt>false</tt>.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.RecordInfo.IsCyclic:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -537,15 +513,12 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.RecordInfo.IsFixed">IsFixed Property</h3>
         <blockquote id="P:PCSC.Iso7816.RecordInfo.IsFixed:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets a value indicating whether the EF's record size is fixed.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>IsFixed</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.RecordInfo.IsFixed:Value">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+            <tt>true</tt> if the record's size is fixed; otherwise, <tt>false</tt>.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.RecordInfo.IsFixed:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -557,15 +530,12 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.RecordInfo.IsLinear">IsLinear Property</h3>
         <blockquote id="P:PCSC.Iso7816.RecordInfo.IsLinear:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets a value indicating whether the EF has linear records.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>IsLinear</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.RecordInfo.IsLinear:Value">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+            <tt>true</tt> if the EF is linear; otherwise, <tt>false</tt>.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.RecordInfo.IsLinear:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -577,15 +547,12 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.RecordInfo.IsSimpleTlv">IsSimpleTlv Property</h3>
         <blockquote id="P:PCSC.Iso7816.RecordInfo.IsSimpleTlv:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets a value indicating whether the EF contains simple TLV records.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>IsSimpleTlv</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.RecordInfo.IsSimpleTlv:Value">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+            <tt>true</tt> if the EF contains simple TLV records; otherwise, <tt>false</tt>.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.RecordInfo.IsSimpleTlv:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
@@ -597,15 +564,12 @@
         </blockquote>
         <h3 id="P:PCSC.Iso7816.RecordInfo.IsVariable">IsVariable Property</h3>
         <blockquote id="P:PCSC.Iso7816.RecordInfo.IsVariable:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          <p class="Summary">Gets a value indicating whether the EF's record size is variable.</p>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>IsVariable</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
           <blockquote class="SubsectionBox" id="P:PCSC.Iso7816.RecordInfo.IsVariable:Value">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+            <tt>true</tt> if the record's size is variable; otherwise, <tt>false</tt>.</blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="P:PCSC.Iso7816.RecordInfo.IsVariable:Remarks">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>

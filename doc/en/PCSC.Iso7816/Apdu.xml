@@ -10,7 +10,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Application Protocol Data Unit (APDU), defined by the ISO/IEC 7816 standards</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -38,7 +38,7 @@
         <ReturnType>PCSC.Iso7816.IsoCase</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The currently used ISO case.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -54,8 +54,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Indicates if the APDU is valid.</summary>
+        <value>
+          <see langword="true" /> if the APDU is valid.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -73,9 +74,9 @@
         <Parameter Name="apdu" Type="PCSC.Iso7816.Apdu" />
       </Parameters>
       <Docs>
-        <param name="apdu">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="apdu">The APDU.</param>
+        <summary>Converts the APDU structure to a transmittable byte array.</summary>
+        <returns>The supplied APDU as byte array.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -90,7 +91,7 @@
         <ReturnType>PCSC.SCardProtocol</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The currently used protocol.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -107,8 +108,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Converts the APDU structure to a transmittable byte array.</summary>
+        <returns>A byte array containing the APDU parameters and data in the correct order.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

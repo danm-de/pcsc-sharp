@@ -9,13 +9,13 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>TLV (tag-length-value) type.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="Ber">
-      <MemberSignature Language="C#" Value="Ber" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.TlvDataType Ber = int32(1)" />
+    <Member MemberName="BasicEncodingRules">
+      <MemberSignature Language="C#" Value="BasicEncodingRules" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.TlvDataType BasicEncodingRules = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -24,7 +24,7 @@
         <ReturnType>PCSC.Iso7816.TlvDataType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>ASN.1 (abstract syntax notation) structured using basic encoding rules defined in ISO/IEC8825.</summary>
       </Docs>
     </Member>
     <Member MemberName="Simple">
@@ -38,7 +38,7 @@
         <ReturnType>PCSC.Iso7816.TlvDataType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Simple</summary>
       </Docs>
     </Member>
   </Members>

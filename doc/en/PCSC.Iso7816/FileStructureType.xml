@@ -9,8 +9,9 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>File structure types</summary>
+    <remarks>The following structures of elementary files are defined:
+            <list type="bullet"><item><description>Transparent structure; the EF contains a sequence of data units.</description></item><item><description>Record structure; the EF contains a sequence of individually identifiable records.</description></item></list><para>When using a record structure, the size of the particular records is either fixed or variable. Furthermore records are organized as a sequence (linear) or as a ring (cyclic).</para></remarks>
   </Docs>
   <Members>
     <Member MemberName="Cyclic">
@@ -24,7 +25,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Cyclic, no further info </summary>
       </Docs>
     </Member>
     <Member MemberName="CyclicSimpleTlv">
@@ -38,7 +39,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Cyclic, SIMPLE-TLV (Type-length-value)</summary>
       </Docs>
     </Member>
     <Member MemberName="LinearFixed">
@@ -52,7 +53,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear fixed, no further info</summary>
       </Docs>
     </Member>
     <Member MemberName="LinearFixedSimpleTlv">
@@ -66,7 +67,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear fixed SIMPLE-TLV (Type-length-value)</summary>
       </Docs>
     </Member>
     <Member MemberName="LinearVariable">
@@ -80,7 +81,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear variable, no further info</summary>
       </Docs>
     </Member>
     <Member MemberName="LinearVariableSimpleTlv">
@@ -94,7 +95,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear variable SIMPLE-TLV (Type-length-value)</summary>
       </Docs>
     </Member>
     <Member MemberName="NoInformation">
@@ -108,7 +109,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>No information about file structure given</summary>
       </Docs>
     </Member>
     <Member MemberName="Transparent">
@@ -122,7 +123,7 @@
         <ReturnType>PCSC.Iso7816.FileStructureType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Transparent. The EF has a sequence of data units</summary>
       </Docs>
     </Member>
   </Members>

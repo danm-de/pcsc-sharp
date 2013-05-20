@@ -10,8 +10,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Record structure information.</summary>
+    <remarks>Elementary files (EF) that have a sequence of individually identifiable records should use one of the following methods for structuring:
+            <list type="bullet"><item><description>Linear elementary file (EF) with records of variable size.</description></item><item><description>Linear elementary file (EF) with records of fixed size.</description></item><item><description>Cyclic elementary file (EF) with records of fixed size.</description></item></list></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,8 +26,8 @@
         <Parameter Name="fileDescriptor" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="fileDescriptor">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="fileDescriptor">The file descriptor.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.RecordInfo" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -42,7 +43,7 @@
       </ReturnValue>
       <MemberValue>6</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Cyclic bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -58,7 +59,7 @@
       </ReturnValue>
       <MemberValue>2</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear fixed bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -74,13 +75,13 @@
       </ReturnValue>
       <MemberValue>4</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Linear variable bit.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FILE_STRUCTURE_IS_MASK">
-      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURE_IS_MASK = 134;" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURE_IS_MASK = (134)" />
+    <Member MemberName="FILE_STRUCTURING_MASK">
+      <MemberSignature Language="C#" Value="public const byte FILE_STRUCTURING_MASK = 134;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int8 FILE_STRUCTURING_MASK = (134)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -90,7 +91,7 @@
       </ReturnValue>
       <MemberValue>134</MemberValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>File structuring mask bits.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -105,8 +106,8 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets the file descriptor.</summary>
+        <value>The file descriptor as byte.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -121,8 +122,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether the EF has cyclic records.</summary>
+        <value>
+          <c>true</c> if the EF is cyclic; otherwise, <c>false</c>.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -137,8 +139,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether the EF's record size is fixed.</summary>
+        <value>
+          <c>true</c> if the record's size is fixed; otherwise, <c>false</c>.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -153,8 +156,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether the EF has linear records.</summary>
+        <value>
+          <c>true</c> if the EF is linear; otherwise, <c>false</c>.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -169,8 +173,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether the EF contains simple TLV records.</summary>
+        <value>
+          <c>true</c> if the EF contains simple TLV records; otherwise, <c>false</c>.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -185,8 +190,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether the EF's record size is variable.</summary>
+        <value>
+          <c>true</c> if the record's size is variable; otherwise, <c>false</c>.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

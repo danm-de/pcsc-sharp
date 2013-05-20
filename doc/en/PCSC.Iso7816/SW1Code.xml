@@ -9,7 +9,7 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Meaning for the first status word SW1 (ISO7816-4).</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -24,7 +24,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Error authorization.</summary>
       </Docs>
     </Member>
     <Member MemberName="ErrorClassNotSupported">
@@ -38,7 +38,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The Class is not supported.</summary>
       </Docs>
     </Member>
     <Member MemberName="ErrorCmdNotAllowed">
@@ -52,7 +52,9 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Error command not allowed</summary>
+        <remarks>SW2 could have one of the following values:
+            <list type="table"><listheader><term>SW2</term><description>Meaning</description></listheader><item><term>0x00</term><description>No information.</description></item><item><term>0x81</term><description>The command is not compatible with the file structure.</description></item><item><term>0x82</term><description>The security status is not satisfied.</description></item><item><term>0x83</term><description>The authentication method is blocked.</description></item><item><term>0x84</term><description>The referenced data has been invalidated.</description></item><item><term>0x85</term><description>The conditions are not satisfied.</description></item><item><term>0x86</term><description>The command is not allowed. No current elementary file (EF).</description></item><item><term>0x87</term><description>Expected secure messaging data objects are missing.</description></item><item><term>0x88</term><description>Secure messaging data objects are incorrect.</description></item></list></remarks>
       </Docs>
     </Member>
     <Member MemberName="ErrorFile">
@@ -66,7 +68,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>File error.</summary>
       </Docs>
     </Member>
     <Member MemberName="ErrorFunctionNotSupported">
@@ -80,7 +82,9 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The function defined in CLA is not supported.</summary>
+        <remarks>SW2 could have one of the following values:
+            <list type="table"><listheader><term>SW2</term><description>Meaning</description></listheader><item><term>0x00</term><description>No information.</description></item><item><term>0x81</term><description>Logical channel not supported</description></item><item><term>0x82</term><description>Secure messaging not supported</description></item></list></remarks>
       </Docs>
     </Member>
     <Member MemberName="ErrorInsNotSupported">
@@ -94,7 +98,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The instruction code is invalid or not supported.</summary>
       </Docs>
     </Member>
     <Member MemberName="ErrorLengthIncorrect">
@@ -108,7 +112,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Error wrong length.</summary>
       </Docs>
     </Member>
     <Member MemberName="ErrorMemory">
@@ -122,7 +126,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Memory error.</summary>
       </Docs>
     </Member>
     <Member MemberName="ErrorNoPreciseDiagnostic">
@@ -136,7 +140,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>No precise diagnosis available.</summary>
       </Docs>
     </Member>
     <Member MemberName="ErrorNVDataChanged">
@@ -150,7 +154,9 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An error occurred. The state of non-volatile memory has been changed.</summary>
+        <remarks>SW2 could have one of the following values:
+            <list type="table"><listheader><term>SW2</term><description>Meaning</description></listheader><item><term>0x00</term><description>No information.</description></item><item><term>0x81</term><description>Memory failure.</description></item></list></remarks>
       </Docs>
     </Member>
     <Member MemberName="ErrorNVDataNotChanged">
@@ -164,7 +170,8 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An error occurred. The state of non-volatile memory has not been changed.</summary>
+        <remarks>SW2 should be 0x00.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ErrorP1P2Incorrect">
@@ -178,7 +185,9 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Error wrong parameters P1 and P2</summary>
+        <remarks>SW2 could have one of the following values:
+            <list type="table"><listheader><term>SW2</term><description>Meaning</description></listheader><item><term>0x00</term><description>No information.</description></item><item><term>0x80</term><description>The parameters in the data field are incorrect.</description></item><item><term>0x81</term><description>The requested function is not supported.</description></item><item><term>0x82</term><description>File not found.</description></item><item><term>0x83</term><description>Record not found.</description></item><item><term>0x84</term><description>The file has not enough free space.</description></item><item><term>0x85</term><description>The <see cref="P:PCSC.Iso7816.CommandApdu.Lc" /> parameter is inconsistent with the TLV structure.</description></item><item><term>0x86</term><description>The parameters <see cref="P:PCSC.Iso7816.CommandApdu.P1" /> and <see cref="P:PCSC.Iso7816.CommandApdu.P2" /> are incorrect.</description></item><item><term>0x87</term><description><see cref="P:PCSC.Iso7816.CommandApdu.Lc" /> is not consistent with <see cref="P:PCSC.Iso7816.CommandApdu.P1P2" />.</description></item><item><term>0x88</term><description />The referenced data was not found.</item></list></remarks>
       </Docs>
     </Member>
     <Member MemberName="ErrorP3Incorrect">
@@ -192,7 +201,9 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <see cref="P:PCSC.Iso7816.CommandApdu.Le" /> has the wrong length.</summary>
+        <remarks>SW2 contains the exact length.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ErrorParameterIncorrect">
@@ -206,7 +217,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Error wrong parameters P1 and P2</summary>
       </Docs>
     </Member>
     <Member MemberName="ErrorPurseBalance">
@@ -220,7 +231,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Error purse balance.</summary>
       </Docs>
     </Member>
     <Member MemberName="ErrorSecurity">
@@ -234,7 +245,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>An security error occurred.</summary>
       </Docs>
     </Member>
     <Member MemberName="Normal">
@@ -248,7 +259,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Normal data response.</summary>
       </Docs>
     </Member>
     <Member MemberName="NormalDataResponse">
@@ -262,7 +273,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Normal data response. SW2 indicates the number of remaining response bytes.</summary>
       </Docs>
     </Member>
     <Member MemberName="NormalGetResponse">
@@ -276,7 +287,7 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Normal GET response</summary>
       </Docs>
     </Member>
     <Member MemberName="WarningNVDataChanged">
@@ -290,7 +301,9 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Warning. The state of non-volatile memory has been changed.</summary>
+        <remarks>SW2 could have one of the following values:
+            <list type="table"><listheader><term>SW2</term><description>Meaning</description></listheader><item><term>0x00</term><description>No information.</description></item><item><term>0x81</term><description>File filled up.</description></item></list></remarks>
       </Docs>
     </Member>
     <Member MemberName="WarningNVDataNotChanged">
@@ -304,7 +317,9 @@
         <ReturnType>PCSC.Iso7816.SW1Code</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Warning. The state of non-volatile memory has not been changed.</summary>
+        <remarks>SW2 could have one of the following values:
+            <list type="table"><listheader><term>SW2</term><description>Meaning</description></listheader><item><term>0x00</term><description>No information.</description></item><item><term>0x81</term><description>Returned data may be corrupted.</description></item><item><term>0x82</term><description>End of file or end of record reached. The number of bytes read is less than specified in <see cref="P:PCSC.Iso7816.CommandApdu.Le" /></description></item><item><term>0x83</term><description>The selected file invalidated.</description></item><item><term>0x84</term><description>FCI is not correctly formatted.</description></item></list></remarks>
       </Docs>
     </Member>
   </Members>

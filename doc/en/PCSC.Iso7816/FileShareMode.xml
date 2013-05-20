@@ -9,7 +9,9 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            File share mode
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -24,7 +26,7 @@
         <ReturnType>PCSC.Iso7816.FileShareMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Non shareable file.</summary>
       </Docs>
     </Member>
     <Member MemberName="Shareable">
@@ -38,7 +40,7 @@
         <ReturnType>PCSC.Iso7816.FileShareMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Shareable file that supports at least concurrent access on different logical channels.</summary>
       </Docs>
     </Member>
   </Members>

@@ -14,7 +14,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>A response APDU</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -31,10 +31,10 @@
         <Parameter Name="protocol" Type="PCSC.SCardProtocol" />
       </Parameters>
       <Docs>
-        <param name="response">To be added.</param>
-        <param name="isoCase">To be added.</param>
-        <param name="protocol">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="response">The response as byte array that shall be parsed.</param>
+        <param name="isoCase">The ISO case that was used when sending the <see cref="T:PCSC.Iso7816.CommandApdu" />.</param>
+        <param name="protocol">The communication protocol.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApdu" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -52,11 +52,11 @@
         <Parameter Name="copy" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="response">To be added.</param>
-        <param name="isoCase">To be added.</param>
-        <param name="protocol">To be added.</param>
-        <param name="copy">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="response">The response as byte array that shall be parsed.</param>
+        <param name="isoCase">The ISO case that was used when sending the <see cref="T:PCSC.Iso7816.CommandApdu" />.</param>
+        <param name="protocol">The communication protocol.</param>
+        <param name="copy">If <see langword="true" /> the bytes of the supplied response will be copied.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApdu" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -74,12 +74,13 @@
         <Parameter Name="protocol" Type="PCSC.SCardProtocol" />
       </Parameters>
       <Docs>
-        <param name="response">To be added.</param>
-        <param name="length">To be added.</param>
-        <param name="isoCase">To be added.</param>
-        <param name="protocol">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="response">The response as byte array that shall be parsed.</param>
+        <param name="length">The size of the response.</param>
+        <param name="isoCase">The ISO case that was used when sending the <see cref="T:PCSC.Iso7816.CommandApdu" />.</param>
+        <param name="protocol">The communication protocol.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApdu" /> class.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="length" /> is greater than the <paramref name="response" /> size.</exception>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -97,13 +98,14 @@
         <Parameter Name="copy" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="response">To be added.</param>
-        <param name="length">To be added.</param>
-        <param name="isoCase">To be added.</param>
-        <param name="protocol">To be added.</param>
-        <param name="copy">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="response">The response as byte array that shall be parsed.</param>
+        <param name="length">The size of the response.</param>
+        <param name="isoCase">The ISO case that was used when sending the <see cref="T:PCSC.Iso7816.CommandApdu" />.</param>
+        <param name="protocol">The communication protocol.</param>
+        <param name="copy">If <see langword="true" /> the bytes of the supplied response will be copied.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ResponseApdu" /> class.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">If <paramref name="length" /> is greater than the <paramref name="response" /> size.</exception>
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -118,8 +120,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Creates a clone.
+            </summary>
+        <returns>A clone of the current instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -134,7 +138,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets the size of the data.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -150,8 +156,12 @@
         <ReturnType>System.Byte[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>
+            Gets the full response APDU.
+            </summary>
+        <value>
+            The full APDU as byte array.
+            </value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -167,9 +177,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Gets the data.
+            </summary>
+        <returns>The data.</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:PCSC.Iso7816.InvalidApduException">The response APDU is invalid.</exception>
       </Docs>
     </Member>
     <Member MemberName="HasData">
@@ -183,8 +196,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets a value indicating whether this response has data.</summary>
+        <value>
+          <c>true</c> if this response has data; otherwise, <c>false</c>.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -199,8 +213,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Indicates if the response APDU is valid.</summary>
+        <value>
+          <see langword="true" /> if the response APDU is valid.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -215,7 +230,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets the length of the response APDU
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -231,9 +248,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the combination of SW1 and SW2 as 16bit status word.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:PCSC.Iso7816.InvalidApduException">The response APDU is invalid.</exception>
       </Docs>
     </Member>
     <Member MemberName="SW1">
@@ -247,9 +265,10 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the SW1 status byte.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:PCSC.Iso7816.InvalidApduException">The response APDU is invalid.</exception>
       </Docs>
     </Member>
     <Member MemberName="SW2">
@@ -263,9 +282,10 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the SW1 status byte.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:PCSC.Iso7816.InvalidApduException">The response APDU is invalid.</exception>
       </Docs>
     </Member>
     <Member MemberName="ToArray">
@@ -280,8 +300,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Converts the APDU structure to a transmittable byte array.</summary>
+        <returns>A byte array containing the APDU parameters and data in the correct order.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

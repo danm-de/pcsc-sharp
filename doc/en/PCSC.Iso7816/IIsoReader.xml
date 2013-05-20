@@ -11,7 +11,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>A ISO/IEC 7816 compliant reader.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -26,7 +26,7 @@
         <ReturnType>PCSC.SCardProtocol</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the active protocol.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -47,10 +47,10 @@
         <Parameter Name="protocol" Type="PCSC.SCardProtocol" />
       </Parameters>
       <Docs>
-        <param name="readerName">To be added.</param>
-        <param name="mode">To be added.</param>
-        <param name="protocol">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="readerName">Name of the reader.</param>
+        <param name="mode">The share mode.</param>
+        <param name="protocol">The communication protocol. <seealso cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" /></param>
+        <summary>Connects the specified reader.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -68,9 +68,9 @@
         <Parameter Name="isoCase" Type="PCSC.Iso7816.IsoCase" />
       </Parameters>
       <Docs>
-        <param name="isoCase">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="isoCase">The ISO case that shall be used for this command.</param>
+        <summary>Constructs a command APDU using the active protocol of the reader.</summary>
+        <returns>An empty command APDU.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -85,7 +85,7 @@
         <ReturnType>PCSC.ISCardContext</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the current context.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -101,7 +101,7 @@
         <ReturnType>PCSC.SCardShareMode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the current share mode.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -120,8 +120,8 @@
         <Parameter Name="disposition" Type="PCSC.SCardReaderDisposition" />
       </Parameters>
       <Docs>
-        <param name="disposition">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="disposition">The action that shall be executed after disconnect.</param>
+        <summary>Disconnects the currently connected reader.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -136,7 +136,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the maximum number of bytes that can be received.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -152,7 +152,7 @@
         <ReturnType>PCSC.ISCardReader</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the current reader.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -168,7 +168,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets the name of the reader.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -184,7 +184,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets or sets the wait time in milliseconds that is used if an APDU needs to be retransmitted.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -203,9 +203,9 @@
         <Parameter Name="commandApdu" Type="PCSC.Iso7816.CommandApdu" />
       </Parameters>
       <Docs>
-        <param name="commandApdu">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="commandApdu">The command APDU.</param>
+        <summary>Transmits the specified command APDU.</summary>
+        <returns>A response containing one ore more <see cref="T:PCSC.Iso7816.ResponseApdu" />.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

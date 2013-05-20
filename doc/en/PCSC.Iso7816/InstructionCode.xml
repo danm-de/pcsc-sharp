@@ -9,7 +9,9 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Basic instruction codes defined in ISO/IEC 7816-4
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -29,7 +31,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Append record</summary>
       </Docs>
     </Member>
     <Member MemberName="Envelope">
@@ -48,7 +50,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Envelope</summary>
       </Docs>
     </Member>
     <Member MemberName="EraseBinary">
@@ -67,7 +69,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Erase binary</summary>
       </Docs>
     </Member>
     <Member MemberName="ExternalAuthenticate">
@@ -86,7 +88,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>External authenticate</summary>
       </Docs>
     </Member>
     <Member MemberName="GetChallenge">
@@ -105,7 +107,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Get challenge</summary>
       </Docs>
     </Member>
     <Member MemberName="GetData">
@@ -124,7 +126,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Get data</summary>
       </Docs>
     </Member>
     <Member MemberName="GetResponse">
@@ -143,7 +145,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Get response</summary>
       </Docs>
     </Member>
     <Member MemberName="InternalAuthenticate">
@@ -162,7 +164,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Internal authenticate</summary>
       </Docs>
     </Member>
     <Member MemberName="ManageChannel">
@@ -181,7 +183,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Manage channel</summary>
       </Docs>
     </Member>
     <Member MemberName="PutData">
@@ -200,7 +202,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Put data</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadBinary">
@@ -219,7 +221,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Read binary</summary>
       </Docs>
     </Member>
     <Member MemberName="ReadRecord">
@@ -238,7 +240,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Read record(s)</summary>
       </Docs>
     </Member>
     <Member MemberName="SelectFile">
@@ -257,7 +259,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Select file</summary>
       </Docs>
     </Member>
     <Member MemberName="UpdateBinary">
@@ -276,7 +278,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Update binary</summary>
       </Docs>
     </Member>
     <Member MemberName="UpdateData">
@@ -295,7 +297,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Update data</summary>
       </Docs>
     </Member>
     <Member MemberName="Verify">
@@ -314,7 +316,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Verify</summary>
       </Docs>
     </Member>
     <Member MemberName="WriteBinary">
@@ -333,7 +335,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Write binary</summary>
       </Docs>
     </Member>
     <Member MemberName="WriteRecord">
@@ -352,7 +354,7 @@
         <ReturnType>PCSC.Iso7816.InstructionCode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Write record</summary>
       </Docs>
     </Member>
   </Members>

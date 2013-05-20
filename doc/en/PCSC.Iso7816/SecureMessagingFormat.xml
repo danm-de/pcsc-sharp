@@ -9,13 +9,15 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Secure messaging (SM) format
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="CmdHeaderAuthenticated">
-      <MemberSignature Language="C#" Value="CmdHeaderAuthenticated" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SecureMessagingFormat CmdHeaderAuthenticated = unsigned int8(12)" />
+    <Member MemberName="CommandHeaderAuthenticated">
+      <MemberSignature Language="C#" Value="CommandHeaderAuthenticated" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SecureMessagingFormat CommandHeaderAuthenticated = unsigned int8(12)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -24,12 +26,12 @@
         <ReturnType>PCSC.Iso7816.SecureMessagingFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Command header authenticated</summary>
       </Docs>
     </Member>
-    <Member MemberName="CmdHeaderNotAuthenticated">
-      <MemberSignature Language="C#" Value="CmdHeaderNotAuthenticated" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SecureMessagingFormat CmdHeaderNotAuthenticated = unsigned int8(8)" />
+    <Member MemberName="CommandHeaderNotAuthenticated">
+      <MemberSignature Language="C#" Value="CommandHeaderNotAuthenticated" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype PCSC.Iso7816.SecureMessagingFormat CommandHeaderNotAuthenticated = unsigned int8(8)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -38,7 +40,7 @@
         <ReturnType>PCSC.Iso7816.SecureMessagingFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Command header not authenticated</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -52,7 +54,7 @@
         <ReturnType>PCSC.Iso7816.SecureMessagingFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>No secure messaging</summary>
       </Docs>
     </Member>
     <Member MemberName="Proprietary">
@@ -66,7 +68,7 @@
         <ReturnType>PCSC.Iso7816.SecureMessagingFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Proprietary secure messaging format</summary>
       </Docs>
     </Member>
   </Members>

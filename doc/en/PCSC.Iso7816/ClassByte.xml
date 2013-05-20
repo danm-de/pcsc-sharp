@@ -10,7 +10,7 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>A class the can be used to build or parse the CLA (Class byte) of a APDU.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -25,29 +25,30 @@
         <Parameter Name="cla" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="cla">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="cla">The CLA as byte that will be parsed.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ClassByte" /> class.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ClassByte (PCSC.Iso7816.ClaHighPart highPart, PCSC.Iso7816.SecureMessagingFormat secMsgFmt, int logChannel);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype PCSC.Iso7816.ClaHighPart highPart, valuetype PCSC.Iso7816.SecureMessagingFormat secMsgFmt, int32 logChannel) cil managed" />
+      <MemberSignature Language="C#" Value="public ClassByte (PCSC.Iso7816.ClaHighPart highPart, PCSC.Iso7816.SecureMessagingFormat secureMessagingFormat, int logicalChannelNumber);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype PCSC.Iso7816.ClaHighPart highPart, valuetype PCSC.Iso7816.SecureMessagingFormat secureMessagingFormat, int32 logicalChannelNumber) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="highPart" Type="PCSC.Iso7816.ClaHighPart" />
-        <Parameter Name="secMsgFmt" Type="PCSC.Iso7816.SecureMessagingFormat" />
-        <Parameter Name="logChannel" Type="System.Int32" />
+        <Parameter Name="secureMessagingFormat" Type="PCSC.Iso7816.SecureMessagingFormat" />
+        <Parameter Name="logicalChannelNumber" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="highPart">To be added.</param>
-        <param name="secMsgFmt">To be added.</param>
-        <param name="logChannel">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="highPart">The high part of the CLA</param>
+        <param name="secureMessagingFormat">The secure messaging format.</param>
+        <param name="logicalChannelNumber">The logical channel number.</param>
+        <summary>Initializes a new instance of the <see cref="T:PCSC.Iso7816.ClassByte" /> class.</summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">logicalChannelNumber;Logical channels must be in the range between 0 and 3.</exception>
       </Docs>
     </Member>
     <Member MemberName="HighPart">
@@ -61,8 +62,8 @@
         <ReturnType>PCSC.Iso7816.ClaHighPart</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the high part of the CLA </summary>
+        <value>The high part of the CLA.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -77,14 +78,15 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Gets or sets the logical channel number.</summary>
+        <value>The logical channel number.</value>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">value;Logical channels must be in the range between 0 and 3.</exception>
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
-      <MemberSignature Language="C#" Value="public static byte op_Implicit (PCSC.Iso7816.ClassByte bInfo);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname unsigned int8 op_Implicit(class PCSC.Iso7816.ClassByte bInfo) cil managed" />
+      <MemberSignature Language="C#" Value="public static byte op_Implicit (PCSC.Iso7816.ClassByte classByte);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname unsigned int8 op_Implicit(class PCSC.Iso7816.ClassByte classByte) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -93,18 +95,19 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="bInfo" Type="PCSC.Iso7816.ClassByte" />
+        <Parameter Name="classByte" Type="PCSC.Iso7816.ClassByte" />
       </Parameters>
       <Docs>
-        <param name="bInfo">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="classByte">
+        </param>
+        <summary>Implicitly converts a <see cref="T:PCSC.Iso7816.ClassByte" /> to a <see cref="T:System.Byte" />.</summary>
+        <returns>The CLA as byte</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
-      <MemberSignature Language="C#" Value="public static PCSC.Iso7816.ClassByte op_Implicit (byte b);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class PCSC.Iso7816.ClassByte op_Implicit(unsigned int8 b) cil managed" />
+      <MemberSignature Language="C#" Value="public static PCSC.Iso7816.ClassByte op_Implicit (byte byte);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class PCSC.Iso7816.ClassByte op_Implicit(unsigned int8 byte) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>3.0.0.0</AssemblyVersion>
@@ -113,12 +116,12 @@
         <ReturnType>PCSC.Iso7816.ClassByte</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="b" Type="System.Byte" />
+        <Parameter Name="byte" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="byte">CLA as byte.</param>
+        <summary>Implicitly converts a <see cref="T:System.Byte" /> to an <see cref="T:PCSC.Iso7816.ClassByte" /> instance.</summary>
+        <returns>The parsed CLA.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -133,7 +136,7 @@
         <ReturnType>PCSC.Iso7816.SecureMessagingFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Gets or sets the secure messaging (SM) format. </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -149,7 +152,7 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the CLA as byte.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
