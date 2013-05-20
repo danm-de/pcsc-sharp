@@ -150,9 +150,11 @@
     </Content>
     <None Include="..\AUTHORS">
       <Link>AUTHORS</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\COPYING">
       <Link>COPYING</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="pcsc-sharp.png" />
   </ItemGroup>
