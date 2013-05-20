@@ -1,6 +1,6 @@
 <Namespace Name="PCSC.Iso7816">
   <Docs>
-    <summary>ISO7816 standard</summary>
+    <summary>Contains types that work ISO/IEC 7816-4 compliant (Organization, security and commands for interchange)</summary>
     <remarks></remarks>
   </Docs>
 </Namespace>

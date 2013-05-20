@@ -192,7 +192,6 @@
       <Docs>
         <param name="index">The index.</param>
         <summary>Gets the <see cref="T:PCSC.Iso7816.ResponseApdu" /> at the specified index.</summary>
-        <value>The <see cref="T:PCSC.Iso7816.ResponseApdu" /> at the specified index.</value>
         <value>The <see cref="T:PCSC.Iso7816.ResponseApdu" />.</value>
         <value>The <see cref="T:PCSC.Iso7816.ResponseApdu" /> at the specified index.</value>
         <remarks>To be added.</remarks>
