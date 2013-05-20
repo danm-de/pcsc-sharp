@@ -5,9 +5,9 @@
     /// </summary>
     public enum FileShareMode : byte
     {
-        /// <summary>Shareable file</summary>
+        /// <summary>Shareable file that supports at least concurrent access on different logical channels.</summary>
         Shareable                   = 0x40,
-        /// <summary>Not shareable file</summary>
+        /// <summary>Non shareable file.</summary>
         NotShareable                = 0x0
     }
 }
