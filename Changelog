@@ -5,50 +5,52 @@ c = Feature enhancement
 d = Bug fix
 
 2013-05-09	Daniel Mueller <daniel@danm.de>
-	* Start working on version 3.0.0.0
-	  WARNING major API changes! 
-	* Changed license to BSD 2-Clause
-	* Update to .Net Framework 4.0 (die Windows XP, die)
-	* Removed Iso8825 completely. I hope nobody besides me was using it :-)
-	* Code cleanup (using the awesome Resharper 
-	  http://www.jetbrains.com/resharper/)
-	* SCardContext: implemented the correct IDisposable pattern.
-	  GC will release the context during finalize! If you access/use the 
-	  SCardContext.Handle in your own managed/unmanaged libraries calls make
-	  sure that you keep a reference to the context instance.
-	  Changed the static properties "Infinite" and "MaxAtrSize" to instance
-	  properties.
-	* New interface ISCardContext to ease unit testing.
-	* SCardReader: implemented the correct IDisposable pattern.
-	  Changed type of property "CurrentContext" to ISCardContext.
-	  Changed constructor to accept ISCardContext instead of SCardContext.
-	  Removed static property "Infinite" (duplicate of ISCardContext.Infinite)
-	* SCardMonitor: implemented the correct IDisposable pattern.
-	  Constructor got new parameter "releaseContextOnDispose".
-	  Changed constructor to accept ISCardContext instead of SCardContext.
-	* New interface ISCardMonitor to ease unit testing.
-	* Apdu: Apdu.Case and Apdu.Protocol are not longer virtual, removed 
-	  protected variables proto and isocase.
-	* CommandApdu: removed protected variables cla, ins, p1, p2, lc, le 
-	  and data (use property setter!).
-	* IsoCard: constructor got new parameter "disconnectReaderOnDispose".
-	* SCardReaderState: implemented the correct IDisposable pattern.
-	  Renamed property ATR to Atr.
-	* CardStatusEventArgs & StatusChangeEventArgs: renamed property ATR to Atr.
-	  Both inherit from CardEventArgs.
-	* SCardAttr: renamed to SCardAttribute
-	* SCardAttribute: Renamed various enum member names (replaced C-style 
-	  abbreviation with full name).
-	* SCardClass: Renamed various enum member names (replaced C-style 
-	  abbreviation with full name).
-	* SCardError: Renamed various enum member names (replaced C-style 
-	  abbreviation with full name).
-	* ResponseApduList: Renamed to ResponseApduEnumerator.
-	* Response: Removed property ResponseApduList.
-	* ResponseApdu: Fixed a bug in ResponseApdu.ToArray().
-	  Removed protected variables response and length.
-	* IsoCard: renamed to IsoReader (which is an appropriate name)
-	* New interface IIsoReader
+    * New version 3.0.0.0 WARNING: major API changes! 
+    * Changed license to BSD 2-Clause
+    * Update to .Net Framework 4.0 (die Windows XP, die)
+    * Removed Iso8825 completely. I hope nobody besides me was using it :-)
+    * Code cleanup (using the awesome Resharper 
+      http://www.jetbrains.com/resharper/)
+    * SCardContext: implemented the correct IDisposable pattern.
+      GC will release the context during finalize! If you access/use the 
+      SCardContext.Handle in your own managed/unmanaged libraries calls make
+      sure that you keep a reference to the context instance.
+      Changed the static properties "Infinite" and "MaxAtrSize" to instance
+      properties.
+    * New interface ISCardContext to ease unit testing.
+    * SCardReader: implemented the correct IDisposable pattern.
+      Changed type of property "CurrentContext" to ISCardContext.
+      Changed constructor to accept ISCardContext instead of SCardContext.
+      Removed static property "Infinite" (duplicate of ISCardContext.Infinite)
+    * SCardMonitor: implemented the correct IDisposable pattern.
+      Constructor got new parameter "releaseContextOnDispose".
+      Changed constructor to accept ISCardContext instead of SCardContext.
+    * New interface ISCardMonitor to ease unit testing.
+    * Apdu: Apdu.Case and Apdu.Protocol are not longer virtual, removed 
+      protected variables proto and isocase.
+    * CommandApdu: removed protected variables cla, ins, p1, p2, lc, le 
+      and data (use property setter!).
+    * IsoCard: constructor got new parameter "disconnectReaderOnDispose".
+    * SCardReaderState: implemented the correct IDisposable pattern.
+      Renamed property ATR to Atr.
+    * CardStatusEventArgs & StatusChangeEventArgs: renamed property ATR to Atr.
+      Both inherit from CardEventArgs.
+    * SCardAttr: renamed to SCardAttribute
+    * SCardAttribute: Renamed various enum member names (replaced C-style 
+      abbreviation with full name).
+    * SCardClass: Renamed various enum member names (replaced C-style 
+      abbreviation with full name).
+    * SCardError: Renamed various enum member names (replaced C-style 
+      abbreviation with full name).
+    * ResponseApduList: Renamed to ResponseApduEnumerator.
+    * Response: Removed property ResponseApduList.
+    * ResponseApdu: Fixed a bug in ResponseApdu.ToArray().
+      Removed protected variables response and length.
+    * IsoCard: renamed to IsoReader (which is an appropriate name)
+    * New interface IIsoReader
+    * InstructionByte: removed protected variable "ins". Use the property
+      setter instead.
+    * RecordInfo: renamed const FILE_STRUCTURE_IS_MASK to FILE_STRUCTURING_MASK
 	
 
 2012-05-06  Daniel Mueller <daniel@danm.de>
