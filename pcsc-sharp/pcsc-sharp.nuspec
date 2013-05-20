@@ -27,7 +27,5 @@
 		<file src="bin\$configuration$\pcsc-sharp.xml" target="lib\net40\" />
 		<file src="bin\$configuration$\pcsc-sharp.dll" target="lib\net40\" />
 		<file src="bin\$configuration$\pcsc-sharp.dll.config" target="lib\net40\" />
-		<file src="bin\$configuration$\AUTHORS" target="content\docs\AUTHORS" />
-		<file src="bin\$configuration$\COPYING" target="content\docs\COPYING" />
   </files>
 </package>

@@ -331,7 +331,7 @@ namespace PCSC
         /// 		    + " EventStateValue: " + state.EventStateValue);
         /// 	    Console.WriteLine("UserData: " + state.UserData.ToString()
         /// 		    + " CardChangeEventCnt: " + state.CardChangeEventCnt);
-        /// 	    Console.WriteLine("ATR: " + StringAtr(state.ATR));
+        /// 	    Console.WriteLine("ATR: " + BitConverter.ToString(state.Atr));
         ///     }
         /// }
         ///   </code>
