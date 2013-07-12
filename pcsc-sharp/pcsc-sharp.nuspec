@@ -23,9 +23,9 @@
     </frameworkAssemblies>
   </metadata>
   <files>
-		<file src="bin\$configuration$\pcsc-sharp.pdb" target="lib\net40\" />
-		<file src="bin\$configuration$\pcsc-sharp.xml" target="lib\net40\" />
-		<file src="bin\$configuration$\pcsc-sharp.dll" target="lib\net40\" />
-		<file src="bin\$configuration$\pcsc-sharp.dll.config" target="lib\net40\" />
+		<file src="bin\$configuration$\pcsc-sharp.pdb" target="lib\net35\" />
+		<file src="bin\$configuration$\pcsc-sharp.xml" target="lib\net35\" />
+		<file src="bin\$configuration$\pcsc-sharp.dll" target="lib\net35\" />
+		<file src="bin\$configuration$\pcsc-sharp.dll.config" target="lib\net35\" />
   </files>
 </package>
