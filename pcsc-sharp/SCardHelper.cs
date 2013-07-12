@@ -56,7 +56,7 @@ namespace PCSC
             var lst = new List<byte>();
 
             foreach (var s in array) {
-                if (string.IsNullOrWhiteSpace(s)) {
+                if (s.IsNullOrWhiteSpace()) {
                     continue;
                 }
 

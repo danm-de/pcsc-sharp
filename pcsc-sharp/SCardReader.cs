@@ -236,7 +236,7 @@ namespace PCSC
                 throw new ArgumentNullException("readerName");
             }
 
-            if (string.IsNullOrWhiteSpace(readerName)) {
+            if (readerName.IsNullOrWhiteSpace()) {
                 throw new UnknownReaderException(SCardError.InvalidValue, "Invalid card reader name.");
             }
 
