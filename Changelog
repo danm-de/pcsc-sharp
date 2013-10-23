@@ -4,6 +4,11 @@ b = Minor API change (subcomponents like Iso7816)
 c = Feature enhancement
 d = Bug fix
 
+2013-10-23	Daniel Mueller <daniel@danm.de>
+	* New version 3.1.0.2
+	* Bugfix: Added new internal authenticate instruction code.
+	  (Michael Kuenzli)
+
 2013-05-09	Daniel Mueller <daniel@danm.de>
     * New version 3.1.0.1
 	* Decreased .Net Framework version from 4.0 to .Net 3.5.
