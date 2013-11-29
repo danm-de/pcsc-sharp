@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListReaders", "ListReaders\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApduTest.GET_CHALLENGE", "ISO7816-4\ApduTest.GET_CHALLENGE\ApduTest.GET_CHALLENGE.csproj", "{656702E2-3621-428B-AE93-6CC508E5E701}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mifare1kTest", "Mifare1kTest\Mifare1kTest.csproj", "{18FCF9AD-3AC3-4BCA-879F-183B94D56170}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{656702E2-3621-428B-AE93-6CC508E5E701}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{656702E2-3621-428B-AE93-6CC508E5E701}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{656702E2-3621-428B-AE93-6CC508E5E701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18FCF9AD-3AC3-4BCA-879F-183B94D56170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18FCF9AD-3AC3-4BCA-879F-183B94D56170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18FCF9AD-3AC3-4BCA-879F-183B94D56170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18FCF9AD-3AC3-4BCA-879F-183B94D56170}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

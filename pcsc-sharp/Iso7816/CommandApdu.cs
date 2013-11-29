@@ -57,7 +57,11 @@ namespace PCSC.Iso7816
 
         /// <summary>Sets the instruction.</summary>
         public InstructionCode Instruction {
-            set { _ins = (byte) value; }
+            set {
+                unchecked {
+                    _ins = (byte) value;
+                }
+            }
         }
 
         /// <summary>The first parameter (P1)</summary>

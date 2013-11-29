@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("ListReaders")]
@@ -7,7 +6,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ListReaders")]
-[assembly: AssemblyCopyright("Copyright © 2010 by Daniel Mueller <daniel@danm.de>")]
+[assembly: AssemblyCopyright("Copyright © 2013 by Daniel Mueller <daniel@danm.de>")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
