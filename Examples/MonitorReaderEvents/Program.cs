@@ -25,26 +25,28 @@ namespace MonitorReaderEvents
 
             // Create a monitor object with its own PC/SC context. 
             // The context will be released after monitor.Dispose()
-            using (var monitor = new SCardMonitor(new SCardContext(), SCardScope.System)) {
-                // Point the callback function(s) to the anonymous & static defined methods below.
-                monitor.CardInserted += (sender, args) => DisplayEvent("CardInserted", args);
-                monitor.CardRemoved += (sender, args) => DisplayEvent("CardRemoved", args);
-                monitor.Initialized += (sender, args) => DisplayEvent("Initialized", args);
-                monitor.StatusChanged += StatusChanged;
-                monitor.MonitorException += MonitorException;
+            var monitor = new SCardMonitor(new SCardContext(), SCardScope.System);
+            // Point the callback function(s) to the anonymous & static defined methods below.
+            monitor.CardInserted += (sender, args) => DisplayEvent("CardInserted", args);
+            monitor.CardRemoved += (sender, args) => DisplayEvent("CardRemoved", args);
+            monitor.Initialized += (sender, args) => DisplayEvent("Initialized", args);
+            monitor.StatusChanged += StatusChanged;
+            monitor.MonitorException += MonitorException;
 
-                foreach (string reader in readerNames) {
-                    Console.WriteLine("Start monitoring for reader " + reader + ".");
-                }
-
-                monitor.Start(readerNames);
-
-                // Let the program run until the user presses a key
-                Console.ReadKey();
-
-                // Stop monitoring
-                monitor.Cancel();
+            foreach (var reader in readerNames) {
+                Console.WriteLine("Start monitoring for reader " + reader + ".");
             }
+
+            monitor.Start(readerNames);
+
+            // Let the program run until the user presses a key
+            Console.ReadKey();
+
+            // Stop monitoring
+            monitor.Cancel();
+
+            // Dispose monitor resources (SCardContext)
+            monitor.Dispose();
         }
 
         private static void DisplayEvent(string eventName, CardStatusEventArgs unknown) {

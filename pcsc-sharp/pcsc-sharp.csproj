@@ -95,6 +95,7 @@
     <Compile Include="Exceptions\UnpoweredCardException.cs" />
     <Compile Include="Exceptions\UnresponsiveCardException.cs" />
     <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
+    <Compile Include="ExtensionMethods\SCRStateExtensionMethods.cs" />
     <Compile Include="ExtensionMethods\StringExtensionMethods.cs" />
     <Compile Include="Interop\Unix\DLOPEN_FLAGS.cs" />
     <Compile Include="Interop\Unix\SCARD_IO_REQUEST.cs" />
