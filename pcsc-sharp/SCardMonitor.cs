@@ -432,6 +432,8 @@ namespace PCSC
                         break;
                     }
 
+                    var cancelledDuringEvent = false;
+
                     for (var i = 0; i < readerStates.Length; i++) {
                         var newState = readerStates[i].EventState;
                         newState &= (~(SCRState.Changed)); // remove "Changed"
@@ -472,8 +474,19 @@ namespace PCSC
                             }
                         }
 
+                        if (!_monitoring) //Cancel was called in event handler
+                        {
+                            cancelledDuringEvent = true;
+                            break;
+                        }
+
                         _previousState[i] = newState;
                         _previousStateValue[i] = readerStates[i].EventStateValue;
+                    }
+
+                    if (cancelledDuringEvent)
+                    {
+                        break;
                     }
                 }
             }
