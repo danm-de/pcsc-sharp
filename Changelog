@@ -4,6 +4,12 @@ b = Minor API change (subcomponents like Iso7816)
 c = Feature enhancement
 d = Bug fix
 
+2015-03-17	Daniel Mueller <daniel@danm.de>
+    * New version 3.1.0.4
+    * Refactored SCardMonitor to be "more" thread safe
+    * Bugfix: https://github.com/danm-de/pcsc-sharp/pull/7
+      (https://github.com/EmptySamurai)
+
 2013-11-29	Daniel Mueller <daniel@danm.de>
     * Start working on new version 3.1.0.3
     * CommandApdu: Instruction property -> added unchecked statement
