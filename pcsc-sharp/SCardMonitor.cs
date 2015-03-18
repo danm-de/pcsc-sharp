@@ -469,17 +469,17 @@ namespace PCSC
 
                             // Status change
                             if (previousState != newState) {
-                                OnStatusChanged(atr, readerName, previousState, newState);
+                               new Thread(() => OnStatusChanged(atr, readerName, previousState, newState)).Start();
                             }
 
                             // Card inserted
                             if (newState.CardIsPresent() && previousState.CardIsAbsent()) {
-                                OnCardInserted(atr, readerName, newState);
+                                new Thread(() => OnCardInserted(atr, readerName, newState)).Start();
                             }
 
                             // Card removed
                             if (newState.CardIsAbsent() && previousState.CardIsPresent()) {
-                                OnCardRemoved(atr, readerName, newState);
+                                new Thread(() => OnCardRemoved(atr, readerName, newState));
                             }
 
                             _previousStates[i] = newState;
