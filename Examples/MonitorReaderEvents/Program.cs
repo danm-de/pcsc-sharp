@@ -5,6 +5,7 @@ namespace MonitorReaderEvents
 {
     public class Program
     {
+
         public static void Main() {
             Console.WriteLine("This program will monitor all SmartCard readers and display all status changes.");
             Console.WriteLine("Press a key to continue.");

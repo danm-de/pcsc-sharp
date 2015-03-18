@@ -18,6 +18,7 @@ namespace PCSC
         private volatile IntPtr[] _previousStateValues;
         private volatile string[] _readernames;
         private volatile bool _monitoring;
+        private volatile bool _is_disposed;
 
         /// <summary>A general reader status change.</summary>
         /// <remarks>
@@ -271,39 +272,31 @@ namespace PCSC
         /// <summary>Disposes the object.</summary>
         /// <param name="disposing">Ignored. It will call <see cref="Cancel()" /> in order to stop the background thread. The application context will be disposed if the user configured the monitor to do so at construction time.</param>
         protected virtual void Dispose(bool disposing) {
+            if (_is_disposed) {
+                return;
+            }
+
             if (disposing) {
-                CancelAndWait();
-            } else {
                 Cancel();
             }
 
             if (disposing && _releaseContextOnDispose && _context != null) {
                 _context.Dispose();
             }
+
+            _is_disposed = true;
         }
 
         /// <summary>Cancels the monitoring of all readers that are currently being monitored.</summary>
         /// <remarks>This will end the monitoring. The method calls the <see cref="ISCardContext.Cancel()" /> method of its Application Context to the PC/SC Resource Manager.</remarks>
         public void Cancel() {
             lock (_sync) {
-                if (!_monitoring) {
-                    return;
+                if (_monitoring && _context.IsValid()) {
+                    _context.Cancel();
                 }
-
-                _context.Cancel();
             }
         }
-
-        private void CancelAndWait() {
-            lock (_sync) {
-                if (!_monitoring) {
-                    return;
-                }
-
-                StopPreviousMonitoringThread();
-            }
-        }
-
+        
         /// <param name="readerName">The Smart Card reader that shall be monitored.</param>
         /// <summary>Starts to monitor a single Smart Card reader for status changes.</summary>
         /// <remarks>
@@ -381,15 +374,18 @@ namespace PCSC
             if (readerNames.Length == 0) {
                 throw new ArgumentException("Empty list of reader names.", "readerNames");
             }
+            if (_is_disposed) {
+                throw new ObjectDisposedException(GetType().FullName);
+            }
 
             lock (_sync) {
                 if (_monitoring) {
                     StopPreviousMonitoringThread();    
                 }
                 
-                if (_context == null || !_context.IsValid()) {
+                if (!_context.IsValid()) {
                     throw new InvalidContextException(SCardError.InvalidHandle,
-                        "No connection context object specified.");
+                        "Connection context object is invalid.");
                 }
 
                 _readernames = readerNames;
@@ -411,6 +407,13 @@ namespace PCSC
 
             if (oldThread == null) {
                 return;
+            }
+
+            if (oldThread == Thread.CurrentThread) {
+                const string MESSAGE = "Cannot (re-)start monitor within its own thread. " 
+                                       + "Hint: Check if your code tries to start the monitor inside of StatusChanged, " 
+                                       + "CardInserted, CardRemoved, Initialized or MonitorException. This is not allowed!";
+                throw new InvalidOperationException(MESSAGE);
             }
 
             if (oldThread.Join(CANCEL_MAX_WAIT_TIME)) {
@@ -446,14 +449,14 @@ namespace PCSC
                         _previousStateValues[i] = readerStates[i].EventStateValue;
                     }
 
-                    while (true) {
+                    while (!_is_disposed) {
                         for (var i = 0; i < readerStates.Length; i++) {
                             readerStates[i].CurrentStateValue = _previousStateValues[i];
                         }
 
                         // block until status change occurs                    
                         rc = _context.GetStatusChange(_context.Infinite, readerStates);
-
+                        
                         // Cancel?
                         if (rc != SCardError.Success) {
                             break;
@@ -492,7 +495,7 @@ namespace PCSC
                     state.Dispose();
                 }
 
-                if (rc != SCardError.Cancelled) {
+                if (!_is_disposed && (rc != SCardError.Cancelled)) {
                     OnMonitorException(rc, "An error occured during SCardGetStatusChange(..).");
                 }
 
@@ -502,6 +505,7 @@ namespace PCSC
                 _previousStates = null;
 
                 _monitoring = false;
+                _monitorthread = null;
             }
         }
 
