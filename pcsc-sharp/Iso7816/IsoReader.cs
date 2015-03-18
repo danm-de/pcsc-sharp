@@ -314,8 +314,8 @@ namespace PCSC.Iso7816
                  * Le = min(Le,SW2) 
                  */
                 var le = (commandApdu.Le < responseApdu.SW2)
-                    ? commandApdu.Le
-                    : responseApdu.SW2;
+                    ? responseApdu.SW2
+                    : commandApdu.Le;
 
                 do {
                     // add the last ResponseAPDU to the Response object
