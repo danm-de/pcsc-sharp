@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Threading;
 
 namespace PCSC
@@ -9,6 +10,8 @@ namespace PCSC
     {
         private static readonly TimeSpan CANCEL_MAX_WAIT_TIME = TimeSpan.FromSeconds(30);
         private readonly object _sync = new object();
+
+        private static int _monitor_count;
 
         private readonly ISCardContext _context;
         private readonly bool _releaseContextOnDispose;
@@ -392,8 +395,15 @@ namespace PCSC
                 _previousStates = new SCRState[readerNames.Length];
                 _previousStateValues = new IntPtr[readerNames.Length];
 
+                var monitorNumber = Interlocked
+                    .Increment(ref _monitor_count)
+                    .ToString(CultureInfo.InvariantCulture);
+
+                var threadName = string.Concat(GetType().FullName, " #", monitorNumber);
+
                 _monitorthread = new Thread(StartMonitor) {
-                    IsBackground = true
+                    IsBackground = true,
+                    Name = threadName
                 };
 
                 _monitorthread.Start();
