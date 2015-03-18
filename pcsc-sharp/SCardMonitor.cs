@@ -479,7 +479,7 @@ namespace PCSC
 
                             // Card removed
                             if (newState.CardIsAbsent() && previousState.CardIsPresent()) {
-                                new Thread(() => OnCardRemoved(atr, readerName, newState));
+                                new Thread(() => OnCardRemoved(atr, readerName, newState)).Start();
                             }
 
                             _previousStates[i] = newState;
