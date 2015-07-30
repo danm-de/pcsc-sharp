@@ -193,10 +193,10 @@ namespace PCSC
                 var es = (long) EventState; // save EventState
                 if (Platform.IsWindows) {
                     _winscardRstate.dwEventState = unchecked((Int32)
-                        (((value & CHCOUNT_RANGE) << 16) | es));
+                        (((value & EVENTSTATE_RANGE) << 16) | es));
                 } else {
                     _pcscliteRstate.dwEventState = unchecked((IntPtr)
-                        (((value & CHCOUNT_RANGE) << 16) | es));
+                        (((value & EVENTSTATE_RANGE) << 16) | es));
                 }
             }
         }
