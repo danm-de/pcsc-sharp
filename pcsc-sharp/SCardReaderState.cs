@@ -190,6 +190,8 @@ namespace PCSC
                     : (int) ((((long) _pcscliteRstate.dwEventState) & CHCOUNT_RANGE) >> 16);
             }
             set {
+				if ((value < 0) || (value > 0xFFFF))
+					throw new ArgumentOutOfRangeException ("value");
                 var es = (long) EventState; // save EventState
                 if (Platform.IsWindows) {
                     _winscardRstate.dwEventState = unchecked((Int32)
