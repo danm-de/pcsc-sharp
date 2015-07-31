@@ -4,10 +4,20 @@ b = Minor API change (subcomponents like Iso7816)
 c = Feature enhancement
 d = Bug fix
 
+2015-07-31	Daniel Mueller <daniel@danm.de>
+    * New version 3.2.0.0
+    * Bugfix: https://github.com/danm-de/pcsc-sharp/pull/14
+      Thanks to Mat!
+      (https://github.com/mtausig)
+    * Raised .Net framework to version 4.0.0
+    * Introduction "paket" and FAKE as NuGet and psake replacements
+    * New folder structure for solution / project files.
+
 2015-03-17	Daniel Mueller <daniel@danm.de>
     * New version 3.1.0.4
     * Refactored SCardMonitor to be "more" thread safe
     * Bugfix: https://github.com/danm-de/pcsc-sharp/pull/7
+      Thanks to EmptySamurai!
       (https://github.com/EmptySamurai)
 
 2013-11-29	Daniel Mueller <daniel@danm.de>

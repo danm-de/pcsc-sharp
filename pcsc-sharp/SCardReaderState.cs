@@ -190,16 +190,17 @@ namespace PCSC
                     : (int) ((((long) _pcscliteRstate.dwEventState) & CHCOUNT_RANGE) >> 16);
             }
             set {
-				if ((value < 0) || (value > 0xFFFF))
-					throw new ArgumentOutOfRangeException ("value");
+                if ((value < 0) || (value > 0xFFFF))
+                    throw new ArgumentOutOfRangeException ("value");
                 var es = (long) EventState; // save EventState
-				//The upper 2 bytes of the EventStateValue hold the CardChangeEventCounter, the lower 2 bytes the EventState
+                
+                //The upper 2 bytes of the EventStateValue hold the CardChangeEventCounter, the lower 2 bytes the EventState
                 if (Platform.IsWindows) {
                     _winscardRstate.dwEventState = unchecked((Int32)
-						(((value << 16) & CHCOUNT_RANGE) | es));
+                        (((value << 16) & CHCOUNT_RANGE) | es));
                 } else {
                     _pcscliteRstate.dwEventState = unchecked((IntPtr)
-						(((value << 16) & CHCOUNT_RANGE) | es));
+                        (((value << 16) & CHCOUNT_RANGE) | es));
                 }
             }
         }

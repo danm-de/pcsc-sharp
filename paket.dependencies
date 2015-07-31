@@ -1,0 +1,7 @@
+source https://nuget.org/api/v2
+
+nuget FAKE
+nuget FakeItEasy
+nuget FluentAssertions
+nuget NUnit
+nuget NUnit.Runners
