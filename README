@@ -10,7 +10,7 @@ Tested on:
 ==========
 
 - Windows (winscard.dll) 
-  * Windows 8 (64bit) Professional
+  * Windows 10 (64bit) Professional
 
 - Linux (PC/SC lite)
   * Ubuntu Linux 13.04 (64bit)
