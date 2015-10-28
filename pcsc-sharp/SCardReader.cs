@@ -1851,11 +1851,8 @@ namespace PCSC
             int attrlen;
 
             // receive needed size for attribute
-            var rc = GetAttrib(attributeId, null, out attrlen);
-
-            if (rc != SCardError.Success) {
-                throw new PCSCException(rc, SCardHelper.StringifyError(rc));
-            }
+            GetAttrib(attributeId, null, out attrlen)
+				.ThrowIfNotSuccess();
 
             attribute = new byte[attrlen];
             return GetAttrib(attributeId, attribute, out attrlen);

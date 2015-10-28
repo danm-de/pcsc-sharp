@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace PCSC
 {
-    /// <summary>
-    /// One or more arguments contain invalid parameters.
-    /// </summary>
-    public class InvalidParameterException : PCSCException
+	/// <summary>
+	/// One or more arguments contain invalid parameters.
+	/// </summary>
+	[Serializable]
+	public class InvalidParameterException : PCSCException
     {
         /// <summary>
         /// Creates a new instance.
@@ -30,5 +32,14 @@ namespace PCSC
         /// <param name="innerException">Inner exception</param>
         public InvalidParameterException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) {}
+
+		/// <summary>
+		/// Serialization constructor
+		/// </summary>
+		/// <param name="info"></param>
+		/// <param name="context"></param>
+		protected InvalidParameterException(SerializationInfo info, StreamingContext context) : base(info, context)
+	    {
+	    }
     }
 }

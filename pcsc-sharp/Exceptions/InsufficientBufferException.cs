@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace PCSC
 {
-    /// <summary>
-    /// A supplied buffer is insufficient.
-    /// </summary>
-    public class InsufficientBufferException : PCSCException
+	/// <summary>
+	/// A supplied buffer is insufficient.
+	/// </summary>
+	[Serializable]
+	public class InsufficientBufferException : PCSCException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InsufficientBufferException"/> class.
@@ -30,5 +32,14 @@ namespace PCSC
         /// <param name="innerException">The inner exception.</param>
         public InsufficientBufferException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
+
+		/// <summary>
+		/// Serialization constructor
+		/// </summary>
+		/// <param name="info"></param>
+		/// <param name="context"></param>
+		protected InsufficientBufferException(SerializationInfo info, StreamingContext context) : base(info, context)
+	    {
+	    }
     }
 }

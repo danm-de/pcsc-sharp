@@ -10,7 +10,13 @@ namespace ReaderStatus
                 ctx.Establish(SCardScope.System);
 
                 var readerNames = ctx.GetReaders();
-                var readerStates = ctx.GetReaderStatus(readerNames);
+	            if (readerNames == null || readerNames.Length < 1) {
+		            Console.WriteLine("No reader connected.");
+		            Console.ReadKey();
+		            return;
+	            }
+
+	            var readerStates = ctx.GetReaderStatus(readerNames);
 
                 foreach (var state in readerStates) {
                     Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");

@@ -1,7 +1,7 @@
 type file
 id PCSC
 authors Daniel Mueller
-version 3.2.0.0
+version 3.3.0.0
 owners Daniel Mueller
 licenseUrl https://github.com/danm-de/pcsc-sharp/blob/master/COPYING
 projectUrl https://github.com/danm-de/pcsc-sharp

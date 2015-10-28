@@ -78,7 +78,9 @@
     <Compile Include="Exceptions\InvalidParameterException.cs" />
     <Compile Include="Exceptions\InvalidProtocolException.cs" />
     <Compile Include="Exceptions\InvalidValueException.cs" />
+    <Compile Include="Exceptions\NoReadersAvailableException.cs" />
     <Compile Include="Exceptions\RemovedCardException.cs" />
+    <Compile Include="Exceptions\SuccessException.cs" />
     <Compile Include="Exceptions\UnknownReaderException.cs" />
     <Compile Include="Exceptions\InvalidShareModeException.cs" />
     <Compile Include="Exceptions\NotReadyException.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Exceptions\UnpoweredCardException.cs" />
     <Compile Include="Exceptions\UnresponsiveCardException.cs" />
     <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
+    <Compile Include="ExtensionMethods\SCardErrorExtensionMethods.cs" />
     <Compile Include="ExtensionMethods\SCRStateExtensionMethods.cs" />
     <Compile Include="ExtensionMethods\StringExtensionMethods.cs" />
     <Compile Include="Interop\Unix\DLOPEN_FLAGS.cs" />
@@ -148,10 +151,14 @@
       <Link>AUTHORS</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="..\Changelog">
+      <Link>Changelog</Link>
+    </None>
     <None Include="..\COPYING">
       <Link>COPYING</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="pcsc-sharp.csproj.paket.template" />
     <None Include="pcsc-sharp.png" />
   </ItemGroup>
   <ItemGroup>
@@ -165,11 +172,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="pcsc-sharp.nuspec">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

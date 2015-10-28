@@ -14,7 +14,7 @@ namespace CardStatus
                 // retrieve all reader names
                 var readerNames = context.GetReaders();
 
-                if (readerNames == null) {
+                if (readerNames == null || readerNames.Length < 1) {
                     Console.WriteLine("No readers found.");
                     Console.ReadKey();
                     return;

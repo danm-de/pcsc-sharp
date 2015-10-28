@@ -19,7 +19,7 @@ namespace MonitorReaderEvents
                 context.Release();
             }
 
-            if (readerNames == null || readerNames.Length == 0) {
+            if (readerNames == null || readerNames.Length < 1) {
                 Console.WriteLine("There are currently no readers installed.");
                 return;
             }

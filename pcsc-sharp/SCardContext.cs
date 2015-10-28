@@ -19,19 +19,21 @@ namespace PCSC
             Dispose(false);
         }
 
-        /// <summary>Creates an Application Context to the PC/SC Resource Manager.</summary>
-        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
-        /// <remarks>
-        ///     <para>Creates an Application Context for a client. This must be the first WinSCard function called in a PC/SC application. Each thread of an application shall use its own <see cref="T:PCSC.SCardContext" />.</para>
-        ///     <para>This method calls the API function SCardEstablishContext().</para>
-        ///     <example>
-        ///         <code lang="C#">
-        /// var context = new SCardContext();
-        /// context.Establish(SCardScope.System);
-        ///   </code>
-        ///     </example>
-        /// </remarks>
-        public void Establish(SCardScope scope) {
+		/// <summary>Creates an Application Context to the PC/SC Resource Manager.</summary>
+		/// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
+		/// <remarks>
+		///     <para>Creates an Application Context for a client. This must be the first WinSCard function called in a PC/SC application. Each thread of an application shall use its own <see cref="T:PCSC.SCardContext" />.</para>
+		///     <para>This method calls the API function SCardEstablishContext().</para>
+		///     <example>
+		///         <code lang="C#">
+		/// var context = new SCardContext();
+		/// context.Establish(SCardScope.System);
+		///   </code>
+		///     </example>
+		/// </remarks>
+		/// <exception cref="InvalidScopeTypeException">If an invalid scope type has been passed</exception>
+		/// <exception cref="NoServiceException">If the smart card service is not running</exception>
+		public void Establish(SCardScope scope) {
             if (_hasContext && IsValid()) {
                 Release();
             }
@@ -52,8 +54,9 @@ namespace PCSC
                     break;
                 case SCardError.InvalidValue:
                     throw new InvalidScopeTypeException(rc, "Invalid scope type passed");
-                default:
-                    throw new PCSCException(rc, SCardHelper.StringifyError(rc));
+				default:
+		            rc.Throw();
+		            break;
             }
         }
 
@@ -88,7 +91,8 @@ namespace PCSC
                 case SCardError.InvalidHandle:
                     throw new InvalidContextException(rc, "Invalid Context handle");
                 default:
-                    throw new PCSCException(rc, SCardHelper.StringifyError(rc));
+		            rc.Throw();
+		            break;
             }
         }
 
@@ -159,36 +163,37 @@ namespace PCSC
             }
         }
 
-        /// <summary>Returns a list of currently available readers on the system.</summary>
-        /// <param name="groups">List of groups to list readers.</param>
-        /// <returns>An array of <see cref="T:System.String" />s containing all Smart Card readers found by the PC/SC Resource Manager.</returns>
-        /// <remarks>
-        ///     <para>Groups are not used on Linux/UNIX machines using the PC/SC Lite daemon.</para>
-        ///     <para>This method calls the API function SCardListReaders().</para>
-        ///     <example>
-        ///         <code lang="C#">
-        /// using (var context = new SCardContext()) {
-        ///     context.Establish(SCardScope.System);
-        /// 
-        ///     // list all configured reader groups
-        ///     Console.WriteLine("\nCurrently configured readers groups: ");
-        ///     var groups = context.GetReaderGroups();
-        ///     foreach (string group in groups) {
-        /// 	    Console.WriteLine("\t" + group);
-        ///     }
-        /// 
-        ///     // list readers for each group
-        ///     foreach (string group in groups) {
-        /// 	    Console.WriteLine("\nGroup " + group + " contains ");
-        /// 	    foreach (string reader in context.GetReaders(new string[] {group})) {
-        /// 		    Console.WriteLine("\t" + reader);
-        ///         }
-        ///     }
-        /// }
-        ///   </code>
-        ///     </example>
-        /// </remarks>
-        public string[] GetReaders(string[] groups) {
+		/// <summary>Returns a list of currently available readers on the system.</summary>
+		/// <param name="groups">List of groups to list readers.</param>
+		/// <returns>An array of <see cref="T:System.String" />s containing all Smart Card readers found by the PC/SC Resource Manager.</returns>
+		/// <remarks>
+		///     <para>Groups are not used on Linux/UNIX machines using the PC/SC Lite daemon.</para>
+		///     <para>This method calls the API function SCardListReaders().</para>
+		///     <example>
+		///         <code lang="C#">
+		/// using (var context = new SCardContext()) {
+		///     context.Establish(SCardScope.System);
+		/// 
+		///     // list all configured reader groups
+		///     Console.WriteLine("\nCurrently configured readers groups: ");
+		///     var groups = context.GetReaderGroups();
+		///     foreach (string group in groups) {
+		/// 	    Console.WriteLine("\t" + group);
+		///     }
+		/// 
+		///     // list readers for each group
+		///     foreach (string group in groups) {
+		/// 	    Console.WriteLine("\nGroup " + group + " contains ");
+		/// 	    foreach (string reader in context.GetReaders(new string[] {group})) {
+		/// 		    Console.WriteLine("\t" + reader);
+		///         }
+		///     }
+		/// }
+		///   </code>
+		///     </example>
+		/// </remarks>
+		/// <exception cref="ReaderUnavailableException">Specified reader is not currently available for use</exception>
+		public string[] GetReaders(string[] groups) {
             if (_contextPtr.Equals(IntPtr.Zero)) {
                 throw new InvalidContextException(SCardError.InvalidHandle);
             }
@@ -202,33 +207,37 @@ namespace PCSC
             switch (rc) {
                 case SCardError.Success:
                     return readers;
+				case SCardError.NoReadersAvailable:
+		            return new string[0]; // Service running, no reader connected
                 case SCardError.InvalidHandle:
                     throw new InvalidContextException(rc, "Invalid Scope Handle");
                 default:
-                    throw new PCSCException(rc, SCardHelper.StringifyError(rc));
+		            rc.Throw();
+		            return null;
             }
         }
 
-        /// <summary>Returns a list of currently available readers on the system.</summary>
-        /// <returns>An array of <see cref="T:System.String" />s containing all Smart Card readers found by the PC/SC Resource Manager.</returns>
-        /// <remarks>
-        ///     <para>This method calls the API function SCardListReaders().</para>
-        ///     <example>
-        ///         <code lang="C#">
-        /// using (var context = new SCardContext()) {
-        ///     context.Establish(SCardScope.System);
-        /// 
-        ///     // list all (smart card) readers
-        ///     Console.WriteLine("Currently connected readers: ");
-        ///     var readers = context.GetReaders();
-        ///     foreach (string reader in readers) {
-        /// 	    Console.WriteLine("\t" + reader);
-        ///     }
-        /// }
-        ///   </code>
-        ///     </example>
-        /// </remarks>
-        public string[] GetReaders() {
+		/// <summary>Returns a list of currently available readers on the system.</summary>
+		/// <returns>An array of <see cref="T:System.String" />s containing all Smart Card readers found by the PC/SC Resource Manager.</returns>
+		/// <remarks>
+		///     <para>This method calls the API function SCardListReaders().</para>
+		///     <example>
+		///         <code lang="C#">
+		/// using (var context = new SCardContext()) {
+		///     context.Establish(SCardScope.System);
+		/// 
+		///     // list all (smart card) readers
+		///     Console.WriteLine("Currently connected readers: ");
+		///     var readers = context.GetReaders();
+		///     foreach (string reader in readers) {
+		/// 	    Console.WriteLine("\t" + reader);
+		///     }
+		/// }
+		///   </code>
+		///     </example>
+		/// </remarks>
+		/// <exception cref="ReaderUnavailableException">Specified reader is not currently available for use</exception>
+		public string[] GetReaders() {
             return GetReaders(null);
         }
 
@@ -267,8 +276,11 @@ namespace PCSC
                     return groups;
                 case SCardError.InvalidHandle:
                     throw new InvalidContextException(sc, "Invalid Scope Handle");
-                default:
-                    throw new PCSCException(sc, SCardHelper.StringifyError(sc));
+				case SCardError.NoReadersAvailable:
+		            return new string[0]; // Service running, no reader connected
+				default:
+		            sc.Throw();
+		            return null;
             }
         }
 
@@ -353,11 +365,8 @@ namespace PCSC
                 };
             }
 
-            var rc = GetStatusChange(IntPtr.Zero, states);
-
-            if (rc != SCardError.Success) {
-                throw new PCSCException(rc, SCardHelper.StringifyError(rc));
-            }
+            GetStatusChange(IntPtr.Zero, states)
+				.ThrowIfNotSuccess();
 
             return states;
         }

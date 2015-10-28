@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace PCSC
 {
-    /// <summary>
-    /// A communication error occurred.
-    /// </summary>
-    public class CommunicationErrorException : PCSCException
+	/// <summary>
+	/// A communication error occurred.
+	/// </summary>
+	[Serializable]
+	public class CommunicationErrorException : PCSCException
     {
         /// <summary>
         /// Creates a new instance.
@@ -30,5 +32,14 @@ namespace PCSC
         /// <param name="innerException">Inner exception.</param>
         public CommunicationErrorException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
+
+	    /// <summary>
+	    /// Serialization constructor
+	    /// </summary>
+	    /// <param name="info"></param>
+	    /// <param name="context"></param>
+	    protected CommunicationErrorException(SerializationInfo info, StreamingContext context) : base(info, context)
+	    {
+	    }
     }
 }

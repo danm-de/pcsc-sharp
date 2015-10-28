@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace PCSC
 {
-    /// <summary>
-    /// Invalid PC/SC scope exception.
-    /// </summary>
-    public class InvalidScopeTypeException : PCSCException
+	/// <summary>
+	/// Invalid PC/SC scope exception.
+	/// </summary>
+	[Serializable]
+	public class InvalidScopeTypeException : PCSCException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InvalidScopeTypeException"/> class.
@@ -30,5 +32,14 @@ namespace PCSC
         /// <param name="innerException">The inner exception.</param>
         public InvalidScopeTypeException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) {}
+
+		/// <summary>
+		/// Serialization constructor
+		/// </summary>
+		/// <param name="info"></param>
+		/// <param name="context"></param>
+		protected InvalidScopeTypeException(SerializationInfo info, StreamingContext context) : base(info, context)
+	    {
+	    }
     }
 }

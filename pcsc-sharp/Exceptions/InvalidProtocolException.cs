@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace PCSC
 {
-    /// <summary>
-    /// An invalid protocol has been requested.
-    /// </summary>
-    public class InvalidProtocolException : PCSCException
+	/// <summary>
+	/// An invalid protocol has been requested.
+	/// </summary>
+	[Serializable]
+	public class InvalidProtocolException : PCSCException
     {
 
         /// <summary>
@@ -31,5 +33,14 @@ namespace PCSC
         /// <param name="innerException">The inner exception.</param>
         public InvalidProtocolException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) {}
+
+		/// <summary>
+		/// Serialization constructor
+		/// </summary>
+		/// <param name="info"></param>
+		/// <param name="context"></param>
+		protected InvalidProtocolException(SerializationInfo info, StreamingContext context) : base(info, context)
+	    {
+	    }
     }
 }

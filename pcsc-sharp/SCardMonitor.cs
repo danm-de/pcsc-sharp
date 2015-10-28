@@ -587,8 +587,11 @@ namespace PCSC
                 return;
             }
 
-            var exception = new PCSCException(rc, message);
-            handler(this, exception);
+	        try {
+		        rc.ThrowIfNotSuccess();
+	        } catch (Exception exception) {
+		        handler(this, new PCSCException(rc, message, exception));
+	        }
         }
     }
 }

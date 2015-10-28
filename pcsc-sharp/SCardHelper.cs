@@ -110,43 +110,23 @@ namespace PCSC
         }
 
         internal static SCardError ToSCardError(IntPtr result) {
-            try {
-                return (SCardError) result;
-            } catch {
-                return SCardError.UnknownError;
-            }
+			return (SCardError) result;
         }
 
         internal static SCardError ToSCardError(Int32 result) {
-            try {
-                return (SCardError) result;
-            } catch {
-                return SCardError.UnknownError;
-            }
+            return (SCardError) result;
         }
 
         internal static SCardProtocol ToProto(IntPtr proto) {
-            try {
-                return (SCardProtocol) proto;
-            } catch {
-                return SCardProtocol.Unset;
-            }
+			return (SCardProtocol) proto;
         }
 
         internal static SCardState ToState(IntPtr state) {
-            try {
-                return (SCardState) state;
-            } catch {
-                return SCardState.Unknown;
-            }
+			return (SCardState) state;
         }
 
         internal static SCRState ToSCRState(long state) {
-            try {
-                return (SCRState) state;
-            } catch {
-                return (SCRState.Unknown | SCRState.Changed | SCRState.Ignore);
-            }
+			return (SCRState) state;
         }
 
         internal static bool IsSet(byte value, byte mask, byte bits) {

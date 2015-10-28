@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace PCSC
 {
-    /// <summary>
-    /// The requested reader is unavailable.
-    /// </summary>
-    public class ReaderUnavailableException : PCSCException
+	/// <summary>
+	/// The requested reader is unavailable.
+	/// </summary>
+	[Serializable]
+	public class ReaderUnavailableException : PCSCException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ReaderUnavailableException"/> class.
@@ -30,5 +32,14 @@ namespace PCSC
         /// <param name="innerException">The inner exception.</param>
         public ReaderUnavailableException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) {}
+
+		/// <summary>
+		/// Serialization constructor
+		/// </summary>
+		/// <param name="info"></param>
+		/// <param name="context"></param>
+		protected ReaderUnavailableException(SerializationInfo info, StreamingContext context) : base(info, context)
+	    {
+	    }
     }
 }

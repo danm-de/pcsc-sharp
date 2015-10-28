@@ -133,7 +133,7 @@ namespace PCSC.Iso7816
             var sc = _reader.Connect(readerName, mode, protocol);
 
             // Throws an exception if sc != SCardError.Success
-            ThrowExceptionOnSCardError(sc);
+	        sc.ThrowIfNotSuccess();
         }
 
         /// <summary>Disconnects the currently connected reader.</summary>
@@ -144,53 +144,7 @@ namespace PCSC.Iso7816
             }
         }
 
-        /// <summary>Throws an exception if <paramref name="sc" /> is not <see cref="F:PCSC.SCardError.Success" />.</summary>
-        /// <param name="sc">The error code returned from the native PC/SC library.</param>
-        protected virtual void ThrowExceptionOnSCardError(SCardError sc) {
-            if (sc == SCardError.Success) {
-                return;
-            }
-
-            // An error occurred during connect attempt.
-            switch (sc) {
-                case SCardError.InvalidHandle:
-                    throw new InvalidContextException(sc);
-                case SCardError.InvalidParameter:
-                    throw new InvalidProtocolException(sc);
-                case SCardError.InvalidValue:
-                    throw new InvalidValueException(sc);
-                case SCardError.NoService:
-                    throw new NoServiceException(sc);
-                case SCardError.NoSmartcard:
-                    throw new NoSmartcardException(sc);
-                case SCardError.NotReady:
-                    throw new NotReadyException(sc);
-                case SCardError.ReaderUnavailable:
-                    throw new ReaderUnavailableException(sc);
-                case SCardError.SharingViolation:
-                    throw new SharingViolationException(sc);
-                case SCardError.UnknownReader:
-                    throw new UnknownReaderException(sc);
-                case SCardError.UnsupportedCard:
-                    throw new UnsupportedFeatureException(sc);
-                case SCardError.CommunicationError:
-                    throw new CommunicationErrorException(sc);
-                case SCardError.InternalError:
-                    throw new InternalErrorException(sc);
-                case SCardError.UnpoweredCard:
-                    throw new UnpoweredCardException(sc);
-                case SCardError.UnresponsiveCard:
-                    throw new UnresponsiveCardException(sc);
-                case SCardError.RemovedCard:
-                    throw new RemovedCardException(sc);
-                case SCardError.InsufficientBuffer:
-                    throw new InsufficientBufferException(sc);
-                default:
-                    throw new PCSCException(sc); // unexpected error
-            }
-        }
-
-        private ResponseApdu SimpleTransmit(byte[] commandApdu, int commandApduLength, IsoCase isoCase,
+	    private ResponseApdu SimpleTransmit(byte[] commandApdu, int commandApduLength, IsoCase isoCase,
             SCardProtocol protocol, SCardPCI receivePci, ref byte[] receiveBuffer, ref int receiveBufferLength) {
             SCardError sc;
             var cmdSent = false;
@@ -225,8 +179,8 @@ namespace PCSC.Iso7816
             }
 
             // An error occurred, throw exception..
-            ThrowExceptionOnSCardError(sc);
-            return null;
+		    sc.Throw();
+		    return null;
         }
 
         /// <summary>Transmits the specified command APDU.</summary>
