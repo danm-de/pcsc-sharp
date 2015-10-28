@@ -5,17 +5,17 @@ c = Feature enhancement
 d = Bug fix
 
 2015-10-28	Daniel Mueller <daniel@danm.de>
-	* New version 3.3.0.0
-	* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/11
-	  Thanks to EmptySamurai!
-	* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/15
-	  Thanks to anzun!
-	* WARNING: API change:
-	  SCardContext.GetReaders(), SCardContext.GetReaders(string[]) and 
-	  SCardContextGetReaderGroups() do not throw PCSCException anymore on
-	  SCARD_E_NO_READERS_AVAILABLE (Group contains no readers)
-	* SCardContext and SCardMonitor throw more specific exceptions
-	* Exceptions are serializable
+    * New version 3.3.0.0
+    * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/11
+      Thanks to EmptySamurai!
+    * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/15
+      Thanks to anzun!
+    * WARNING: API change:
+      SCardContext.GetReaders(), SCardContext.GetReaders(string[]) and 
+      SCardContextGetReaderGroups() do not throw PCSCException anymore on
+      SCARD_E_NO_READERS_AVAILABLE (Group contains no readers)
+    * SCardContext and SCardMonitor throw more specific exceptions
+    * Exceptions are serializable
 
 2015-07-31	Daniel Mueller <daniel@danm.de>
     * New version 3.2.0.0
