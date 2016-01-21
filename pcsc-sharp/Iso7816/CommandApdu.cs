@@ -525,7 +525,7 @@ namespace PCSC.Iso7816
                         apdu[pos++] = (byte) (_lc >> 8); // B1 = higher bits
                         apdu[pos++] = (byte) (_lc & 0xFF); // B2 = lower bits
                     }
-                    Array.Copy(_data, 0, apdu, pos, 255);
+                    Array.Copy(_data, 0, apdu, pos, _lc);
                     pos += _lc;
 
                     if (Protocol != SCardProtocol.T0) {
