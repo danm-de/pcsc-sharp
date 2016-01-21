@@ -17,19 +17,11 @@ namespace PCSC.Interop.Unix
         public const int MAX_ATR_SIZE = 33;
 
         private IntPtr _libHandle = IntPtr.Zero;
-        private Encoding _textEncoding;
 
-        public int MaxAtrSize {
-            get { return MAX_ATR_SIZE; }
-        }
-        public Encoding TextEncoding {
-            get { return _textEncoding; }
-            set { _textEncoding = value; }
-        }
+        public int MaxAtrSize => MAX_ATR_SIZE;
+        public Encoding TextEncoding { get; set; }
 
-        public int CharSize {
-            get { return CHARSIZE; }
-        }
+        public int CharSize => CHARSIZE;
 
         [DllImport(PCSC_LIB)]
         private static extern IntPtr SCardEstablishContext(
@@ -78,7 +70,7 @@ namespace PCSC.Interop.Unix
             // initialize groups array
             byte[] mszGroups = null;
             if (groups != null)
-                mszGroups = SCardHelper.ConvertToByteArray(groups, _textEncoding);
+                mszGroups = SCardHelper.ConvertToByteArray(groups, TextEncoding);
 
             // determine the needed buffer size
             var rc = SCardHelper.ToSCardError(
@@ -93,7 +85,7 @@ namespace PCSC.Interop.Unix
             }
 
             // initialize array for returning reader names
-            byte[] mszReaders = new byte[(int) dwReaders];
+            var mszReaders = new byte[(int) dwReaders];
 
             rc = SCardHelper.ToSCardError(
                 SCardListReaders(hContext,
@@ -102,7 +94,7 @@ namespace PCSC.Interop.Unix
                     ref dwReaders));
 
             readers = (rc == SCardError.Success)
-                ? SCardHelper.ConvertToStringArray(mszReaders, _textEncoding)
+                ? SCardHelper.ConvertToStringArray(mszReaders, TextEncoding)
                 : null;
 
             return rc;
@@ -130,7 +122,7 @@ namespace PCSC.Interop.Unix
             }
 
             // initialize array for returning group names
-            byte[] mszGroups = new byte[(int) dwGroups];
+            var mszGroups = new byte[(int) dwGroups];
 
             rc = SCardHelper.ToSCardError(
                 SCardListReaderGroups(
@@ -139,7 +131,7 @@ namespace PCSC.Interop.Unix
                     ref dwGroups));
 
             groups = (rc == SCardError.Success)
-                ? SCardHelper.ConvertToStringArray(mszGroups, _textEncoding)
+                ? SCardHelper.ConvertToStringArray(mszGroups, TextEncoding)
                 : null;
 
             return rc;
@@ -155,7 +147,7 @@ namespace PCSC.Interop.Unix
             [Out] out IntPtr pdwActiveProtocol);
 
         public SCardError Connect(IntPtr hContext, string szReader, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
-            var readername = SCardHelper.ConvertToByteArray(szReader, _textEncoding, Platform.Lib.CharSize);
+            var readername = SCardHelper.ConvertToByteArray(szReader, TextEncoding, Platform.Lib.CharSize);
             IntPtr activeproto;
 
             var result = SCardConnect(hContext,
@@ -253,23 +245,23 @@ namespace PCSC.Interop.Unix
             var recvlen = IntPtr.Zero;
             if (pbRecvBuffer != null) {
                 if (pcbRecvLength > pbRecvBuffer.Length || pcbRecvLength < 0) {
-                    throw new ArgumentOutOfRangeException("pcbRecvLength");
+                    throw new ArgumentOutOfRangeException(nameof(pcbRecvLength));
                 }
                 recvlen = (IntPtr) pcbRecvLength;
             } else {
                 if (pcbRecvLength != 0)
-                    throw new ArgumentOutOfRangeException("pcbRecvLength");
+                    throw new ArgumentOutOfRangeException(nameof(pcbRecvLength));
             }
 
             var sendbuflen = IntPtr.Zero;
             if (pbSendBuffer != null) {
                 if (pcbSendLength > pbSendBuffer.Length || pcbSendLength < 0) {
-                    throw new ArgumentOutOfRangeException("pcbSendLength");
+                    throw new ArgumentOutOfRangeException(nameof(pcbSendLength));
                 }
                 sendbuflen = (IntPtr) pcbSendLength;
             } else {
                 if (pcbSendLength != 0) {
-                    throw new ArgumentOutOfRangeException("pcbSendLength");
+                    throw new ArgumentOutOfRangeException(nameof(pcbSendLength));
                 }
             }
 
@@ -335,10 +327,10 @@ namespace PCSC.Interop.Unix
 
         public SCardError Status(IntPtr hCard, out string[] szReaderName, out IntPtr pdwState, out IntPtr pdwProtocol, out byte[] pbAtr) {
             var readerName = new byte[MAX_READER_NAME * CharSize];
-            IntPtr readerNameSize = (IntPtr)MAX_READER_NAME;
+            var readerNameSize = (IntPtr)MAX_READER_NAME;
 
             pbAtr = new byte[MAX_ATR_SIZE];
-            IntPtr atrlen = (IntPtr) pbAtr.Length;
+            var atrlen = (IntPtr) pbAtr.Length;
 
             IntPtr state, proto;
 
@@ -386,7 +378,7 @@ namespace PCSC.Interop.Unix
                     Array.Resize(ref readerName, (int) readerNameSize * CharSize);
                 }
 
-                szReaderName = SCardHelper.ConvertToStringArray(readerName, _textEncoding);
+                szReaderName = SCardHelper.ConvertToStringArray(readerName, TextEncoding);
             } else {
                 szReaderName = null;
             }
@@ -474,7 +466,7 @@ namespace PCSC.Interop.Unix
 
             if (pbAttr != null) {
                 if (attrSize > pbAttr.Length || attrSize < 0) {
-                    throw new ArgumentOutOfRangeException("attrSize");
+                    throw new ArgumentOutOfRangeException(nameof(attrSize));
                 }
                 cbAttrLen = (IntPtr) attrSize;
             } else {

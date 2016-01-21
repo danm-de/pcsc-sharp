@@ -3,31 +3,26 @@
     /// <summary>A class that describes the instruction of a command APDU.</summary>
     public class InstructionByte
     {
-        private byte _instruction;
-
         /// <summary>Initializes a new instance of the <see cref="InstructionByte" /> class.</summary>
         /// <param name="code">The instruction code.</param>
         public InstructionByte(InstructionCode code) {
-            _instruction = (byte) code;
+            Value = (byte) code;
         }
 
         /// <summary>Initializes a new instance of the <see cref="InstructionByte" /> class.</summary>
         /// <param name="instruction">The instruction as byte.</param>
         protected internal InstructionByte(byte instruction) {
-            this._instruction = instruction;
+            Value = instruction;
         }
 
         /// <summary>Gets or sets the instruction code.</summary>
         public InstructionCode Code {
-            get { return (InstructionCode) _instruction; }
-            set { _instruction = (byte) value; }
+            get { return (InstructionCode) Value; }
+            set { Value = (byte) value; }
         }
 
         /// <summary>Gets or sets the instruction as value.</summary>
-        public byte Value {
-            get { return _instruction; }
-            set { _instruction = value; }
-        }
+        public byte Value { get; set; }
 
         /// <summary>Implicitly converts a <see cref="InstructionByte" /> to a single INS byte.</summary>
         /// <returns>A byte containing INS.</returns>

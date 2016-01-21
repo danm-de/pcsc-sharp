@@ -7,36 +7,23 @@ namespace PCSC.Iso7816
     public class IsoReader : IIsoReader
     {
         private readonly ISCardContext _context;
-        private readonly ISCardReader _reader;
         private readonly bool _releaseContextOnDispose;
         private readonly bool _disconnectReaderOnDispose;
 
-        private int _maxReceiveSize = 128;
-
         /// <summary>Gets the current context.</summary>
-        public ISCardContext CurrentContext {
-            get { return _context ?? _reader.CurrentContext; }
-        }
+        public ISCardContext CurrentContext => _context ?? Reader.CurrentContext;
 
         /// <summary>Gets the current reader.</summary>
-        public ISCardReader Reader {
-            get { return _reader; }
-        }
+        public ISCardReader Reader { get; }
 
         /// <summary>Gets the name of the reader.</summary>
-        public string ReaderName {
-            get { return _reader.ReaderName; }
-        }
+        public string ReaderName => Reader.ReaderName;
 
         /// <summary>Gets the active protocol.</summary>
-        public virtual SCardProtocol ActiveProtocol {
-            get { return _reader.ActiveProtocol; }
-        }
+        public virtual SCardProtocol ActiveProtocol => Reader.ActiveProtocol;
 
         /// <summary>Gets the current share mode.</summary>
-        public virtual SCardShareMode CurrentShareMode {
-            get { return _reader.CurrentShareMode; }
-        }
+        public virtual SCardShareMode CurrentShareMode => Reader.CurrentShareMode;
 
         /// <summary>Gets or sets the wait time in milliseconds that is used if an APDU needs to be retransmitted.</summary>
         /// <value>Default is 0 ms</value>
@@ -44,10 +31,7 @@ namespace PCSC.Iso7816
 
         /// <summary>Gets the maximum number of bytes that can be received.</summary>
         /// <value>Default is 128 bytes.</value>
-        public virtual int MaxReceiveSize {
-            get { return _maxReceiveSize; }
-            protected set { _maxReceiveSize = value; }
-        }
+        public virtual int MaxReceiveSize { get; protected set; } = 128;
 
         /// <summary>Finalizes an instance of the <see cref="IsoReader" /> class.</summary>
         ~IsoReader() {
@@ -60,10 +44,10 @@ namespace PCSC.Iso7816
         /// <exception cref="System.ArgumentNullException">If reader is <see langword="null" /></exception>
         public IsoReader(ISCardReader reader, bool disconnectReaderOnDispose = false) {
             if (reader == null) {
-                throw new ArgumentNullException("reader");
+                throw new ArgumentNullException(nameof(reader));
             }
 
-            _reader = reader;
+            Reader = reader;
             _disconnectReaderOnDispose = disconnectReaderOnDispose;
         }
 
@@ -85,11 +69,11 @@ namespace PCSC.Iso7816
         /// <exception cref="System.ArgumentNullException">If <paramref name="context" /> is <see langword="null" /></exception>
         public IsoReader(ISCardContext context, bool releaseContextOnDispose = false) {
             if (context == null) {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
             }
 
             _context = context;
-            _reader = new SCardReader(context);
+            Reader = new SCardReader(context);
             _releaseContextOnDispose = releaseContextOnDispose;
             _disconnectReaderOnDispose = true;
         }
@@ -119,7 +103,7 @@ namespace PCSC.Iso7816
         /// <param name="protocol">The communication protocol. <seealso cref="ISCardReader.Connect(string,SCardShareMode,SCardProtocol)" /></param>
         public virtual void Connect(string readerName, SCardShareMode mode, SCardProtocol protocol) {
             if (readerName == null) {
-                throw new ArgumentNullException("readerName");
+                throw new ArgumentNullException(nameof(readerName));
             }
 
             if (protocol == SCardProtocol.Unset) {
@@ -130,7 +114,7 @@ namespace PCSC.Iso7816
                 throw new InvalidShareModeException(SCardError.InvalidValue);
             }
 
-            var sc = _reader.Connect(readerName, mode, protocol);
+            var sc = Reader.Connect(readerName, mode, protocol);
 
             // Throws an exception if sc != SCardError.Success
 	        sc.ThrowIfNotSuccess();
@@ -138,21 +122,20 @@ namespace PCSC.Iso7816
 
         /// <summary>Disconnects the currently connected reader.</summary>
         /// <param name="disposition">The action that shall be executed after disconnect.</param>
-        public virtual void Disconnect(SCardReaderDisposition disposition) {
-            if (_reader != null) {
-                _reader.Disconnect(disposition);
-            }
+        public virtual void Disconnect(SCardReaderDisposition disposition)
+        {
+            Reader?.Disconnect(disposition);
         }
 
-	    private ResponseApdu SimpleTransmit(byte[] commandApdu, int commandApduLength, IsoCase isoCase,
+        private ResponseApdu SimpleTransmit(byte[] commandApdu, int commandApduLength, IsoCase isoCase,
             SCardProtocol protocol, SCardPCI receivePci, ref byte[] receiveBuffer, ref int receiveBufferLength) {
             SCardError sc;
             var cmdSent = false;
 
             do {
                 // send Command APDU to the card
-                sc = _reader.Transmit(
-                    SCardPCI.GetPci(_reader.ActiveProtocol),
+                sc = Reader.Transmit(
+                    SCardPCI.GetPci(Reader.ActiveProtocol),
                     commandApdu,
                     commandApduLength,
                     receivePci,
@@ -188,7 +171,7 @@ namespace PCSC.Iso7816
         /// <returns>A response containing one ore more <see cref="ResponseApdu" />.</returns>
         public virtual Response Transmit(CommandApdu commandApdu) {
             if (commandApdu == null) {
-                throw new ArgumentNullException("commandApdu");
+                throw new ArgumentNullException(nameof(commandApdu));
             }
 
             // prepare send buffer (Check Command APDU and convert it to an byte array)
@@ -328,7 +311,7 @@ namespace PCSC.Iso7816
             var commandApdu = ConstructCommandApdu(IsoCase.Case2Short);
 
             if (le > 255 || le < 0) {
-                throw new ArgumentOutOfRangeException("le");
+                throw new ArgumentOutOfRangeException(nameof(le));
             }
 
             // Does the card/reader support the requested receiveLength?
@@ -359,8 +342,8 @@ namespace PCSC.Iso7816
         /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         protected virtual void Dispose(bool disposing) {
             if (disposing) {
-                if (_disconnectReaderOnDispose && _reader != null && _reader.IsConnected) {
-                    _reader.Dispose();
+                if (_disconnectReaderOnDispose && Reader != null && Reader.IsConnected) {
+                    Reader.Dispose();
                 }
 
                 if (_releaseContextOnDispose && _context != null && _context.IsValid()) {

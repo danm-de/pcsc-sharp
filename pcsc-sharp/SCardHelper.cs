@@ -56,7 +56,7 @@ namespace PCSC
             var lst = new List<byte>();
 
             foreach (var s in array) {
-                if (s.IsNullOrWhiteSpace()) {
+                if (string.IsNullOrWhiteSpace(s)) {
                     continue;
                 }
 
@@ -113,7 +113,7 @@ namespace PCSC
 			return (SCardError) result;
         }
 
-        internal static SCardError ToSCardError(Int32 result) {
+        internal static SCardError ToSCardError(int result) {
             return (SCardError) result;
         }
 

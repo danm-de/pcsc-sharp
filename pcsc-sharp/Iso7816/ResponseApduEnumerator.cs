@@ -9,7 +9,7 @@ namespace PCSC.Iso7816
     /// </summary>
     public class ResponseApduEnumerator : IEnumerable<ResponseApdu>, IEnumerator<ResponseApdu>
     {
-        private readonly List<ResponseApdu> _lstRespApdu = new List<ResponseApdu>();
+        private readonly List<ResponseApdu> _lstRespApdu;
         private int _position = -1;
 
         /// <summary>
@@ -32,9 +32,7 @@ namespace PCSC.Iso7816
         /// </summary>
         /// <returns>The current element.</returns>
         /// <exception cref="System.InvalidOperationException"> if the enumerator reaches the end and therefore <see cref="Current"/> is invalid.</exception>
-        object IEnumerator.Current {
-            get { return Current; }
-        }
+        object IEnumerator.Current => Current;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseApduEnumerator"/> class.

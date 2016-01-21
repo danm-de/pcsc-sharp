@@ -18,8 +18,7 @@ namespace PCSC.Iso7816
     {
         // see http://www.cardwerk.com/smartcards/smartcard_standard_Iso7816-4_5_basic_organizations.aspx
 
-        private byte _cla, _ins, _p1, _p2;
-        private int _lc, _le;
+        private int _le;
         private byte[] _data;
 
         /// <summary>Initializes a new instance of the <see cref="CommandApdu" /> class.</summary>
@@ -32,61 +31,49 @@ namespace PCSC.Iso7816
 
         /// <summary>Gets or sets the CLA byte.</summary>
         /// <remarks>You can use the <see cref="ClassByte" /> class to build a well formed CLA byte.</remarks>
-        public byte CLA {
-            get { return _cla; }
-            set { _cla = value; }
-        }
+        public byte CLA { get; set; }
 
         /// <summary>Gets the CLA.</summary>
         /// <returns>The <see cref="CLA" /> as <see cref="ClassByte" /> instance.</returns>
         public ClassByte GetClassByteInfo() {
-            return new ClassByte(_cla);
+            return new ClassByte(CLA);
         }
 
         /// <summary>Gets the instruction byte info.</summary>
         /// <returns>The <see cref="INS" /> as <see cref="InstructionByte" /> instance.</returns>
         public InstructionByte GetInstructionByteInfo() {
-            return new InstructionByte(_ins);
+            return new InstructionByte(INS);
         }
 
         /// <summary>Gets or sets the instruction.</summary>
-        public byte INS {
-            get { return _ins; }
-            set { _ins = value; }
-        }
+        public byte INS { get; set; }
 
         /// <summary>Sets the instruction.</summary>
         public InstructionCode Instruction {
             set {
                 unchecked {
-                    _ins = (byte) value;
+                    INS = (byte) value;
                 }
             }
         }
 
         /// <summary>The first parameter (P1)</summary>
-        public byte P1 {
-            get { return _p1; }
-            set { _p1 = value; }
-        }
+        public byte P1 { get; set; }
 
         /// <summary>The second parameter (P2)</summary>
-        public byte P2 {
-            get { return _p2; }
-            set { _p2 = value; }
-        }
+        public byte P2 { get; set; }
 
         /// <summary>A combination of parameter P1 and P2</summary>
         public int P1P2 {
-            get { return (_p1 << 8) | _p2; }
+            get { return (P1 << 8) | P2; }
             set {
                 if (value < 0 || value > 0xFFFF) {
                     throw new ArgumentException(
                         "Must be a value between 0x00 and 0xFFFF.",
                         new OverflowException());
                 }
-                _p2 = (byte) (0xFF & value);
-                _p1 = (byte) ((0xFF00 & value) >> 8);
+                P2 = (byte) (0xFF & value);
+                P1 = (byte) ((0xFF00 & value) >> 8);
             }
         }
 
@@ -107,7 +94,7 @@ namespace PCSC.Iso7816
                                 " expects 1 to 255 bytes of data.");
                         }
                         _data = value;
-                        _lc = _data.Length;
+                        Lc = _data.Length;
                         break;
 
                     case IsoCase.Case3Extended:
@@ -126,7 +113,7 @@ namespace PCSC.Iso7816
                                 " expects 1 to 65535 bytes of data.");
                         }
                         _data = value;
-                        _lc = _data.Length;
+                        Lc = _data.Length;
                         break;
 
                     default:
@@ -137,9 +124,7 @@ namespace PCSC.Iso7816
         }
 
         /// <summary>Length command</summary>
-        public int Lc {
-            get { return _lc; }
-        }
+        public int Lc { get; private set; }
 
         /// <summary>The third parameter (P3 or Le)</summary>
         public int P3 {
@@ -378,7 +363,7 @@ namespace PCSC.Iso7816
                     }
 
                     /* 1 byte for Lc + Num(Lc) bytes */
-                    size += 1 + _lc;
+                    size += 1 + Lc;
                     break;
 
                 case IsoCase.Case4Short:
@@ -386,7 +371,7 @@ namespace PCSC.Iso7816
                         throw new InvalidOperationException("No data has been set.");
                     }
 
-                    size += _lc; /* Num(Lc) bytes */
+                    size += Lc; /* Num(Lc) bytes */
                     if (Protocol == SCardProtocol.T0) {
                         size += 1; /* 1 byte for Lc.
                                      * Regarding to OpenSC: T0 has no byte for Le */
@@ -408,7 +393,7 @@ namespace PCSC.Iso7816
                         throw new InvalidOperationException("No data has been set.");
                     }
 
-                    size += _lc; /* Num(Lc) bytes */
+                    size += Lc; /* Num(Lc) bytes */
                     if (Protocol == SCardProtocol.T0) {
                         size++; /* Regarding to OpenSC: T0 needs only one byte for Lc */
                     } else {
@@ -422,7 +407,7 @@ namespace PCSC.Iso7816
                         throw new InvalidOperationException("No data has been set.");
                     }
 
-                    size += _lc; /* Num(Lc) bytes */
+                    size += Lc; /* Num(Lc) bytes */
                     if (Protocol == SCardProtocol.T0) {
                         size++; /* Regarding to OpenSC: T0 has only 1 byte for Lc
                                      * and no byte for Le */
@@ -451,10 +436,10 @@ namespace PCSC.Iso7816
             var pos = 0;
 
             // APDU header
-            apdu[pos++] = _cla;
-            apdu[pos++] = _ins;
-            apdu[pos++] = _p1;
-            apdu[pos++] = _p2;
+            apdu[pos++] = CLA;
+            apdu[pos++] = INS;
+            apdu[pos++] = P1;
+            apdu[pos++] = P2;
 
             switch (Case) {
                 case IsoCase.Case1:
@@ -472,16 +457,16 @@ namespace PCSC.Iso7816
 
                 case IsoCase.Case3Short:
                     /* Body contains Num(Lc) followed by the data. */
-                    apdu[pos++] = (byte) _lc;
-                    Array.Copy(_data, 0, apdu, pos, _lc);
+                    apdu[pos++] = (byte) Lc;
+                    Array.Copy(_data, 0, apdu, pos, Lc);
                     break;
 
                 case IsoCase.Case4Short:
                     /* Body contains Num(Lc) followed by the data
                      * and Num(Le). */
-                    apdu[pos++] = (byte) _lc;
-                    Array.Copy(_data, 0, apdu, pos, _lc);
-                    pos += _lc;
+                    apdu[pos++] = (byte) Lc;
+                    Array.Copy(_data, 0, apdu, pos, Lc);
+                    pos += Lc;
                     /* Regarding to OpenSC: T0 has no Le */
                     if (Protocol != SCardProtocol.T0) {
                         apdu[pos] = (byte) _le;
@@ -505,13 +490,13 @@ namespace PCSC.Iso7816
                      * Regarding to OpenSC: T0 has only 1 byte for Lc and
                      * therefore Num(Lc) cannot be greater then 255. */
                     if (Protocol == SCardProtocol.T0) {
-                        apdu[pos++] = (byte) _lc;
+                        apdu[pos++] = (byte) Lc;
                     } else {
                         apdu[pos++] = 0; // B0 = 0x00
-                        apdu[pos++] = (byte) (_lc >> 8); // B1 = higher bits
-                        apdu[pos++] = (byte) (_lc & 0xFF); // B2 = lower bits
+                        apdu[pos++] = (byte) (Lc >> 8); // B1 = higher bits
+                        apdu[pos++] = (byte) (Lc & 0xFF); // B2 = lower bits
                     }
-                    Array.Copy(_data, 0, apdu, pos, _lc);
+                    Array.Copy(_data, 0, apdu, pos, Lc);
                     break;
 
                 case IsoCase.Case4Extended:
@@ -519,14 +504,14 @@ namespace PCSC.Iso7816
                      * Regarding to OpenSC: T0 has only 1 byte for Lc and
                      * no Le */
                     if (Protocol == SCardProtocol.T0) {
-                        apdu[pos++] = (byte) _lc;
+                        apdu[pos++] = (byte) Lc;
                     } else {
                         apdu[pos++] = 0; // B0 = 0x00
-                        apdu[pos++] = (byte) (_lc >> 8); // B1 = higher bits
-                        apdu[pos++] = (byte) (_lc & 0xFF); // B2 = lower bits
+                        apdu[pos++] = (byte) (Lc >> 8); // B1 = higher bits
+                        apdu[pos++] = (byte) (Lc & 0xFF); // B2 = lower bits
                     }
-                    Array.Copy(_data, 0, apdu, pos, _lc);
-                    pos += _lc;
+                    Array.Copy(_data, 0, apdu, pos, Lc);
+                    pos += Lc;
 
                     if (Protocol != SCardProtocol.T0) {
                         /* Case4Extended uses two bytes to "encode"
@@ -562,11 +547,11 @@ namespace PCSC.Iso7816
         /// <returns>A clone of the current instance.</returns>
         public virtual object Clone() {
             return new CommandApdu(Case, Protocol) {
-                _cla = _cla,
-                _ins = _ins,
-                _p1 = _p1,
-                _p2 = _p2,
-                _lc = _lc,
+                CLA = CLA,
+                INS = INS,
+                P1 = P1,
+                P2 = P2,
+                Lc = Lc,
                 _le = _le,
                 _data = _data
             };

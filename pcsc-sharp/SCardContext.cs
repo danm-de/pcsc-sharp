@@ -351,7 +351,7 @@ namespace PCSC
         /// </remarks>
         public SCardReaderState[] GetReaderStatus(string[] readerNames) {
             if (readerNames == null) {
-                throw new ArgumentNullException("readerNames");
+                throw new ArgumentNullException(nameof(readerNames));
             }
             if (readerNames.Length == 0) {
                 throw new ArgumentException("You must specify at least one reader.");
@@ -463,9 +463,7 @@ namespace PCSC
         /// <summary>A pointer (Application Context) that can be used for C API calls.</summary>
         /// <value>The returned Application Context handle. Is <see cref="IntPtr.Zero" /> if not context has been established.</value>
         /// <remarks>This is the Application Context handle that is returned when calling the C API function SCardEstablishContext().</remarks>
-        public IntPtr Handle {
-            get { return _contextPtr; }
-        }
+        public IntPtr Handle => _contextPtr;
 
         /// <summary>Maximum ATR size.</summary>
         /// <value>
@@ -482,15 +480,11 @@ namespace PCSC
         ///     </list>
         /// </value>
         /// <remarks>Attention: Size depends on platform.</remarks>
-        public int MaxAtrSize {
-            get { return MAX_ATR_SIZE; }
-        }
+        public int MaxAtrSize => MAX_ATR_SIZE;
 
         /// <summary>Infinite timeout.</summary>
         /// <value>0xFFFFFFFF</value>
-        public IntPtr Infinite {
-            get { return INFINITE; }
-        }
+        public IntPtr Infinite => INFINITE;
 
         //// ReSharper disable InconsistentNaming
         
@@ -509,9 +503,7 @@ namespace PCSC
         ///     </list>
         /// </value>
         /// <remarks>Attention: Size depends on platform.</remarks>
-        public static int MAX_ATR_SIZE {
-            get { return Platform.Lib.MaxAtrSize; }
-        }
+        public static int MAX_ATR_SIZE => Platform.Lib.MaxAtrSize;
 
         /// <summary>Infinite timeout.</summary>
         /// <value>0xFFFFFFFF</value>
@@ -519,7 +511,7 @@ namespace PCSC
             get {
                 // Hack to avoid Overflow exception on Windows 7 32bit
                 if (Marshal.SizeOf(typeof(IntPtr)) == 4) {
-                    return unchecked((IntPtr) (Int32) 0xFFFFFFFF);
+                    return unchecked((IntPtr) (int) 0xFFFFFFFF);
                 }
                 return unchecked((IntPtr) 0xFFFFFFFF);
             }

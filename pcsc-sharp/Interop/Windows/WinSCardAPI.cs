@@ -17,24 +17,16 @@ namespace PCSC.Interop.Windows
         public const int MAX_ATR_SIZE = 0x24;
 
         private IntPtr _dllHandle = IntPtr.Zero;
-        private Encoding _textEncoding;
 
-        public int MaxAtrSize {
-            get { return MAX_ATR_SIZE; }
-        }
+        public int MaxAtrSize => MAX_ATR_SIZE;
 
-        public Encoding TextEncoding {
-            get { return _textEncoding; }
-            set { _textEncoding = value; }
-        }
+        public Encoding TextEncoding { get; set; }
 
-        public int CharSize {
-            get { return CHARSIZE; }
-        }
+        public int CharSize => CHARSIZE;
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardEstablishContext(
-            [In] Int32 dwScope,
+        private static extern int SCardEstablishContext(
+            [In] int dwScope,
             [In] IntPtr pvReserved1,
             [In] IntPtr pvReserved2,
             [In, Out] ref IntPtr phContext);
@@ -43,7 +35,7 @@ namespace PCSC.Interop.Windows
             var ctx = IntPtr.Zero;
             var rc = SCardHelper.ToSCardError(
                 SCardEstablishContext(
-                    (Int32) dwScope,
+                    (int) dwScope,
                     pvReserved1,
                     pvReserved2,
                     ref ctx));
@@ -52,7 +44,7 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardReleaseContext(
+        private static extern int SCardReleaseContext(
             [In] IntPtr hContext);
 
         public SCardError ReleaseContext(IntPtr hContext) {
@@ -60,7 +52,7 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardIsValidContext(
+        private static extern int SCardIsValidContext(
             [In] IntPtr hContext);
 
         public SCardError IsValidContext(IntPtr hContext) {
@@ -68,11 +60,11 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardListReaders(
+        private static extern int SCardListReaders(
             [In] IntPtr hContext,
             [In] byte[] mszGroups,
             [Out] byte[] pmszReaders,
-            [In, Out] ref Int32 pcchReaders);
+            [In, Out] ref int pcchReaders);
 
         public SCardError ListReaders(IntPtr hContext, string[] groups, out string[] readers) {
             var dwReaders = 0;
@@ -80,7 +72,7 @@ namespace PCSC.Interop.Windows
             // initialize groups array
             byte[] mszGroups = null;
             if (groups != null)
-                mszGroups = SCardHelper.ConvertToByteArray(groups, _textEncoding);
+                mszGroups = SCardHelper.ConvertToByteArray(groups, TextEncoding);
 
             // determine the needed buffer size
             var rc = SCardHelper.ToSCardError(
@@ -95,7 +87,7 @@ namespace PCSC.Interop.Windows
             }
 
             // initialize array
-            byte[] mszReaders = new byte[dwReaders * sizeof(char)];
+            var mszReaders = new byte[dwReaders * sizeof(char)];
 
             rc = SCardHelper.ToSCardError(
                 SCardListReaders(hContext,
@@ -104,17 +96,17 @@ namespace PCSC.Interop.Windows
                     ref dwReaders));
 
             readers = (rc == SCardError.Success)
-                ? SCardHelper.ConvertToStringArray(mszReaders, _textEncoding)
+                ? SCardHelper.ConvertToStringArray(mszReaders, TextEncoding)
                 : null;
 
             return rc;
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardListReaderGroups(
+        private static extern int SCardListReaderGroups(
             [In] IntPtr hContext,
             [Out] byte[] mszGroups,
-            [In, Out] ref Int32 pcchGroups);
+            [In, Out] ref int pcchGroups);
 
         public SCardError ListReaderGroups(IntPtr hContext, out string[] groups) {
             var dwGroups = 0;
@@ -132,7 +124,7 @@ namespace PCSC.Interop.Windows
             }
 
             // initialize array
-            byte[] mszGroups = new byte[dwGroups * sizeof(char)];
+            var mszGroups = new byte[dwGroups * sizeof(char)];
 
             rc = SCardHelper.ToSCardError(
                 SCardListReaderGroups(
@@ -141,29 +133,29 @@ namespace PCSC.Interop.Windows
                     ref dwGroups));
 
             groups = (rc == SCardError.Success)
-                ? SCardHelper.ConvertToStringArray(mszGroups, _textEncoding)
+                ? SCardHelper.ConvertToStringArray(mszGroups, TextEncoding)
                 : null;
 
             return rc;
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardConnect(
+        private static extern int SCardConnect(
             [In] IntPtr hContext,
             [In] byte[] szReader,
-            [In] Int32 dwShareMode,
-            [In] Int32 dwPreferredProtocols,
+            [In] int dwShareMode,
+            [In] int dwPreferredProtocols,
             [Out] out IntPtr phCard,
-            [Out] out Int32 pdwActiveProtocol);
+            [Out] out int pdwActiveProtocol);
 
         public SCardError Connect(IntPtr hContext, string szReader, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
-            var readername = SCardHelper.ConvertToByteArray(szReader, _textEncoding, Platform.Lib.CharSize);
-            Int32 activeproto;
+            var readername = SCardHelper.ConvertToByteArray(szReader, TextEncoding, Platform.Lib.CharSize);
+            int activeproto;
 
             var result = SCardConnect(hContext,
                 readername,
-                (Int32) dwShareMode,
-                (Int32) dwPreferredProtocols,
+                (int) dwShareMode,
+                (int) dwPreferredProtocols,
                 out phCard,
                 out activeproto);
 
@@ -173,20 +165,20 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardReconnect(
+        private static extern int SCardReconnect(
             [In] IntPtr hCard,
-            [In] Int32 dwShareMode,
-            [In] Int32 dwPreferredProtocols,
-            [In] Int32 dwInitialization,
-            [Out] out Int32 pdwActiveProtocol);
+            [In] int dwShareMode,
+            [In] int dwPreferredProtocols,
+            [In] int dwInitialization,
+            [Out] out int pdwActiveProtocol);
 
         public SCardError Reconnect(IntPtr hCard, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols, SCardReaderDisposition dwInitialization, out SCardProtocol pdwActiveProtocol) {
-            Int32 activeproto;
+            int activeproto;
             var result = SCardReconnect(
                 hCard,
-                (Int32) dwShareMode,
-                (Int32) dwPreferredProtocols,
-                (Int32) dwInitialization,
+                (int) dwShareMode,
+                (int) dwPreferredProtocols,
+                (int) dwInitialization,
                 out activeproto);
 
             pdwActiveProtocol = (SCardProtocol) activeproto;
@@ -194,16 +186,16 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardDisconnect(
+        private static extern int SCardDisconnect(
             [In] IntPtr hCard,
-            [In] Int32 dwDisposition);
+            [In] int dwDisposition);
 
         public SCardError Disconnect(IntPtr hCard, SCardReaderDisposition dwDisposition) {
-            return SCardHelper.ToSCardError(SCardDisconnect(hCard, (Int32) dwDisposition));
+            return SCardHelper.ToSCardError(SCardDisconnect(hCard, (int) dwDisposition));
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardBeginTransaction(
+        private static extern int SCardBeginTransaction(
             [In] IntPtr hCard);
 
         public SCardError BeginTransaction(IntPtr hCard) {
@@ -211,23 +203,23 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardEndTransaction(
+        private static extern int SCardEndTransaction(
             [In] IntPtr hCard,
-            [In] Int32 dwDisposition);
+            [In] int dwDisposition);
 
         public SCardError EndTransaction(IntPtr hCard, SCardReaderDisposition dwDisposition) {
-            return SCardHelper.ToSCardError(SCardEndTransaction(hCard, (Int32) dwDisposition));
+            return SCardHelper.ToSCardError(SCardEndTransaction(hCard, (int) dwDisposition));
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardTransmit(
+        private static extern int SCardTransmit(
             [In] IntPtr hCard,
             [In] IntPtr pioSendPci,
             [In] byte[] pbSendBuffer,
-            [In] Int32 cbSendLength,
+            [In] int cbSendLength,
             [In, Out] IntPtr pioRecvPci,
             [Out] byte[] pbRecvBuffer,
-            [In, Out] ref Int32 pcbRecvLength);
+            [In, Out] ref int pcbRecvLength);
 
         public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, IntPtr pioRecvPci, byte[] pbRecvBuffer, out int pcbRecvLength) {
             pcbRecvLength = 0;
@@ -255,24 +247,24 @@ namespace PCSC.Interop.Windows
 
             if (pbRecvBuffer != null) {
                 if (pcbRecvLength > pbRecvBuffer.Length || pcbRecvLength < 0) {
-                    throw new ArgumentOutOfRangeException("pcbRecvLength");
+                    throw new ArgumentOutOfRangeException(nameof(pcbRecvLength));
                 }
                 recvlen = pcbRecvLength;
             } else {
                 if (pcbRecvLength != 0) {
-                    throw new ArgumentOutOfRangeException("pcbRecvLength");
+                    throw new ArgumentOutOfRangeException(nameof(pcbRecvLength));
                 }
             }
 
             var sendbuflen = 0;
             if (pbSendBuffer != null) {
                 if (pcbSendLength > pbSendBuffer.Length || pcbSendLength < 0) {
-                    throw new ArgumentOutOfRangeException("pcbSendLength");
+                    throw new ArgumentOutOfRangeException(nameof(pcbSendLength));
                 }
                 sendbuflen = pcbSendLength;
             } else {
                 if (pcbSendLength != 0) {
-                    throw new ArgumentOutOfRangeException("pcbSendLength");
+                    throw new ArgumentOutOfRangeException(nameof(pcbSendLength));
                 }
             }
 
@@ -291,14 +283,14 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardControl(
+        private static extern int SCardControl(
             [In] IntPtr hCard,
-            [In] Int32 dwControlCode,
+            [In] int dwControlCode,
             [In] byte[] lpInBuffer,
-            [In] Int32 nInBufferSize,
+            [In] int nInBufferSize,
             [In, Out] byte[] lpOutBuffer,
-            [In] Int32 nOutBufferSize,
-            [Out] out Int32 lpBytesReturned);
+            [In] int nOutBufferSize,
+            [Out] out int lpBytesReturned);
 
         public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, byte[] pbRecvBuffer, out int lpBytesReturned) {
             var sendbuflen = 0;
@@ -311,11 +303,11 @@ namespace PCSC.Interop.Windows
                 recvbuflen = pbRecvBuffer.Length;
             }
 
-            Int32 bytesret;
+            int bytesret;
 
             var rc = SCardHelper.ToSCardError(SCardControl(
                 hCard,
-                unchecked((Int32)dwControlCode.ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException 
+                unchecked((int)dwControlCode.ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException 
                 pbSendBuffer,
                 sendbuflen,
                 pbRecvBuffer,
@@ -328,14 +320,14 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardStatus(
+        private static extern int SCardStatus(
             [In] IntPtr hCard,
             [Out] byte[] szReaderName,
-            [In, Out] ref Int32 pcchReaderLen,
-            [Out] out Int32 pdwState,
-            [Out] out Int32 pdwProtocol,
+            [In, Out] ref int pcchReaderLen,
+            [Out] out int pdwState,
+            [Out] out int pdwProtocol,
             [Out] byte[] pbAtr,
-            [In, Out] ref Int32 pcbAtrLen);
+            [In, Out] ref int pcbAtrLen);
 
         public SCardError Status(IntPtr hCard, out string[] szReaderName, out IntPtr pdwState, out IntPtr pdwProtocol, out byte[] pbAtr) {
             var readerName = new byte[MAX_READER_NAME * CharSize];
@@ -344,7 +336,7 @@ namespace PCSC.Interop.Windows
             pbAtr = new byte[MAX_ATR_SIZE];
             var atrlen = pbAtr.Length;
 
-            Int32 state, proto;
+            int state, proto;
 
             var rc = SCardHelper.ToSCardError(SCardStatus(
                 hCard,
@@ -390,7 +382,7 @@ namespace PCSC.Interop.Windows
                     Array.Resize(ref readerName, readerNameSize * CharSize);
                 }
 
-                szReaderName = SCardHelper.ConvertToStringArray(readerName, _textEncoding);
+                szReaderName = SCardHelper.ConvertToStringArray(readerName, TextEncoding);
             } else {
                 szReaderName = null;
             }
@@ -399,12 +391,12 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardGetStatusChange(
+        private static extern int SCardGetStatusChange(
             [In] IntPtr hContext,
-            [In] Int32 dwTimeout,
+            [In] int dwTimeout,
             [In, Out,
              MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] SCARD_READERSTATE[] rgReaderStates,
-            [In] Int32 cReaders);
+            [In] int cReaders);
 
         public SCardError GetStatusChange(IntPtr hContext, IntPtr dwTimeout, SCardReaderState[] rgReaderStates) {
             SCARD_READERSTATE[] readerstates = null;
@@ -420,7 +412,7 @@ namespace PCSC.Interop.Windows
             }
 
             // On a 64-bit platforms .ToInt32() will throw an OverflowException 
-            var timeout = unchecked((Int32) dwTimeout.ToInt64());
+            var timeout = unchecked((int) dwTimeout.ToInt64());
             var rc = SCardHelper.ToSCardError(
                 SCardGetStatusChange(
                     hContext,
@@ -442,7 +434,7 @@ namespace PCSC.Interop.Windows
 
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardCancel(
+        private static extern int SCardCancel(
             [In] IntPtr hContext);
 
         public SCardError Cancel(IntPtr hContext) {
@@ -450,11 +442,11 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardGetAttrib(
+        private static extern int SCardGetAttrib(
             [In] IntPtr hCard,
-            [In] Int32 dwAttrId,
+            [In] int dwAttrId,
             [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] pbAttr,
-            [In, Out] ref Int32 pcbAttrLen);
+            [In, Out] ref int pcbAttrLen);
 
         public SCardError GetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, out int pcbAttrLen) {
             var attrlen = (pbAttr != null) 
@@ -463,7 +455,7 @@ namespace PCSC.Interop.Windows
 
             var rc = SCardHelper.ToSCardError(SCardGetAttrib(
                 hCard,
-                unchecked((Int32)dwAttrId.ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException 
+                unchecked((int)dwAttrId.ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException 
                 pbAttr,
                 ref attrlen));
 
@@ -472,20 +464,20 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardSetAttrib(
+        private static extern int SCardSetAttrib(
             [In] IntPtr hCard,
-            [In] Int32 dwAttrId,
+            [In] int dwAttrId,
             [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] pbAttr,
-            [In] Int32 cbAttrLen);
+            [In] int cbAttrLen);
 
         public SCardError SetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, int attrSize) {
             // On a 64-bit platforms IntPtr.ToInt32() will throw an OverflowException 
-            var attrid = unchecked((Int32) dwAttrId.ToInt64());
+            var attrid = unchecked((int) dwAttrId.ToInt64());
             var cbAttrLen = 0;
             
             if (pbAttr != null) {
                 if (attrSize > pbAttr.Length || attrSize < 0) {
-                    throw new ArgumentOutOfRangeException("attrSize");
+                    throw new ArgumentOutOfRangeException(nameof(attrSize));
                 }
                 cbAttrLen = attrSize;
             }
@@ -499,17 +491,17 @@ namespace PCSC.Interop.Windows
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Auto)]
-        private static extern Int32 SCardFreeMemory(
+        private static extern int SCardFreeMemory(
             [In] IntPtr hContext,
             [In] IntPtr pvMem);
 
         // Windows specific DLL imports
 
         [DllImport(KERNEL_DLL, CharSet = CharSet.Auto)]
-        private static extern IntPtr LoadLibrary(String lpFileName);
+        private static extern IntPtr LoadLibrary(string lpFileName);
 
         [DllImport(KERNEL_DLL, CharSet = CharSet.Ansi, ExactSpelling = true, EntryPoint = "GetProcAddress")]
-        private static extern IntPtr GetProcAddress(IntPtr hModule, String lpProcName);
+        private static extern IntPtr GetProcAddress(IntPtr hModule, string lpProcName);
 
         public IntPtr GetSymFromLib(string symName) {
             // Step 1. load dynamic link library

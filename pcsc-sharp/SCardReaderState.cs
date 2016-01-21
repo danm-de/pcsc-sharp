@@ -133,7 +133,7 @@ namespace PCSC
             set {
                 if (Platform.IsWindows) {
                     // On a 64-bit platform .ToInt32() will throw an OverflowException 
-                    _winscardRstate.dwCurrentState = unchecked((Int32) value.ToInt64());
+                    _winscardRstate.dwCurrentState = unchecked((int) value.ToInt64());
                 } else {
                     _pcscliteRstate.dwCurrentState = value;
                 }
@@ -173,7 +173,7 @@ namespace PCSC
             set {
                 if (Platform.IsWindows) {
                     // On a 64-bit platforms .ToInt32() will throw an OverflowException 
-                    _winscardRstate.dwEventState = unchecked((Int32) value.ToInt64());
+                    _winscardRstate.dwEventState = unchecked((int) value.ToInt64());
                 } else {
                     _pcscliteRstate.dwEventState = value;
                 }
@@ -191,12 +191,12 @@ namespace PCSC
             }
             set {
                 if ((value < 0) || (value > 0xFFFF))
-                    throw new ArgumentOutOfRangeException ("value");
+                    throw new ArgumentOutOfRangeException (nameof(value));
                 var es = (long) EventState; // save EventState
                 
                 //The upper 2 bytes of the EventStateValue hold the CardChangeEventCounter, the lower 2 bytes the EventState
                 if (Platform.IsWindows) {
-                    _winscardRstate.dwEventState = unchecked((Int32)
+                    _winscardRstate.dwEventState = unchecked((int)
                         (((value << 16) & CHCOUNT_RANGE) | es));
                 } else {
                     _pcscliteRstate.dwEventState = unchecked((IntPtr)
@@ -231,7 +231,7 @@ namespace PCSC
                     _pReaderName = Marshal.AllocCoTaskMem(tmp.Length + Platform.Lib.CharSize);
                     _pReaderNameSize = tmp.Length;
                     Marshal.Copy(tmp, 0, _pReaderName, tmp.Length);
-                    for (int i = 0; i < (Platform.Lib.CharSize); i++) {
+                    for (var i = 0; i < (Platform.Lib.CharSize); i++) {
                         Marshal.WriteByte(_pReaderName, tmp.Length + i, 0); // String ends with \0 (or 0x00 0x00)
                     }
                 }

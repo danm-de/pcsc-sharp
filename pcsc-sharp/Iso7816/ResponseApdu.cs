@@ -5,9 +5,6 @@ namespace PCSC.Iso7816
     /// <summary>A response APDU</summary>
     public class ResponseApdu : Apdu, ICloneable
     {
-        private byte[] _response;
-        private int _length;
-
         private ResponseApdu() {}
 
         /// <summary>Initializes a new instance of the <see cref="ResponseApdu" /> class.</summary>
@@ -15,10 +12,10 @@ namespace PCSC.Iso7816
         /// <param name="isoCase">The ISO case that was used when sending the <see cref="CommandApdu" />.</param>
         /// <param name="protocol">The communication protocol.</param>
         public ResponseApdu(byte[] response, IsoCase isoCase, SCardProtocol protocol) {
-            _response = response;
+            FullApdu = response;
 
             if (response != null) {
-                _length = response.Length;
+                Length = response.Length;
             }
 
             Case = isoCase;
@@ -39,12 +36,12 @@ namespace PCSC.Iso7816
             }
 
             if (copy) {
-                _length = response.Length;
-                _response = new byte[_length];
-                Array.Copy(response, _response, _length);
+                Length = response.Length;
+                FullApdu = new byte[Length];
+                Array.Copy(response, FullApdu, Length);
             } else {
-                _response = response;
-                _length = response.Length;
+                FullApdu = response;
+                Length = response.Length;
             }
         }
 
@@ -58,11 +55,11 @@ namespace PCSC.Iso7816
             if (length < 0 ||
                 (response == null && length > 0) ||
                 (response != null && response.Length < length)) {
-                throw new ArgumentOutOfRangeException("length");
+                throw new ArgumentOutOfRangeException(nameof(length));
             }
 
-            _response = response;
-            _length = length;
+            FullApdu = response;
+            Length = length;
             Case = isoCase;
             Protocol = protocol;
         }
@@ -78,18 +75,18 @@ namespace PCSC.Iso7816
             if (length < 0 ||
                 (response == null && length > 0) ||
                 (response != null && response.Length < length)) {
-                throw new ArgumentOutOfRangeException("length");
+                throw new ArgumentOutOfRangeException(nameof(length));
             }
 
             if (copy) {
                 if (response != null) {
-                    _response = new byte[length];
-                    Array.Copy(response, _response, length);
+                    FullApdu = new byte[length];
+                    Array.Copy(response, FullApdu, length);
                 }
             } else {
-                _response = response;
+                FullApdu = response;
             }
-            _length = length;
+            Length = length;
             Case = isoCase;
             Protocol = protocol;
         }
@@ -97,19 +94,17 @@ namespace PCSC.Iso7816
         /// <summary>Gets a value indicating whether this response has data.</summary>
         /// <value>
         ///     <c>true</c> if this response has data; otherwise, <c>false</c>.</value>
-        public bool HasData {
-            get { return _response != null && _response.Length > 2 && _length > 2; }
-        }
+        public bool HasData => FullApdu != null && FullApdu.Length > 2 && Length > 2;
 
         /// <summary>Indicates if the response APDU is valid.</summary>
         /// <value>
         ///     <see langword="true" /> if the response APDU is valid.</value>
         public override bool IsValid {
             get {
-                if (_response == null) {
+                if (FullApdu == null) {
                     return false;
                 }
-                return _response.Length >= 2 && _length >= 2;
+                return FullApdu.Length >= 2 && Length >= 2;
             }
         }
 
@@ -117,10 +112,10 @@ namespace PCSC.Iso7816
         /// <exception cref="InvalidApduException">The response APDU is invalid.</exception>
         public byte SW1 {
             get {
-                if (_response == null || _response.Length < _length || _length <= 1) {
+                if (FullApdu == null || FullApdu.Length < Length || Length <= 1) {
                     throw new InvalidApduException("The response APDU is invalid.");
                 }
-                return _response[_length - 2];
+                return FullApdu[Length - 2];
             }
         }
 
@@ -128,35 +123,31 @@ namespace PCSC.Iso7816
         /// <exception cref="InvalidApduException">The response APDU is invalid.</exception>
         public byte SW2 {
             get {
-                if (_response == null || _response.Length < _length || _length <= 0) {
+                if (FullApdu == null || FullApdu.Length < Length || Length <= 0) {
                     throw new InvalidApduException("The response APDU is invalid.");
                 }
-                return _response[_length - 1];
+                return FullApdu[Length - 1];
             }
         }
 
         /// <summary>Gets the combination of SW1 and SW2 as 16bit status word.</summary>
         /// <exception cref="InvalidApduException">The response APDU is invalid.</exception>
-        public int StatusWord {
-            get { return (SW1 << 8) | SW2; }
-        }
+        public int StatusWord => (SW1 << 8) | SW2;
 
         /// <summary>
         /// Gets the length of the response APDU
         /// </summary>
-        public int Length {
-            get { return _length; }
-        }
+        public int Length { get; private set; }
 
         /// <summary>
         /// Gets the size of the data.
         /// </summary>
         public int DataSize {
             get {
-                if (_response == null || _response.Length <= 2 || _length <= 2) {
+                if (FullApdu == null || FullApdu.Length <= 2 || Length <= 2) {
                     return 0;
                 }
-                return _length - 2;
+                return Length - 2;
             }
         }
 
@@ -166,9 +157,7 @@ namespace PCSC.Iso7816
         /// <value>
         /// The full APDU as byte array.
         /// </value>
-        public byte[] FullApdu {
-            get { return _response; }
-        }
+        public byte[] FullApdu { get; private set; }
 
         /// <summary>
         /// Gets the data.
@@ -176,33 +165,33 @@ namespace PCSC.Iso7816
         /// <returns>The data.</returns>
         /// <exception cref="InvalidApduException">The response APDU is invalid.</exception>
         public byte[] GetData() {
-            if (_response == null) {
+            if (FullApdu == null) {
                 throw new InvalidApduException("The response APDU is invalid.");
             }
 
-            if (_response.Length <= 2 ||
-                _length <= 2) {
+            if (FullApdu.Length <= 2 ||
+                Length <= 2) {
                 return null;
             }
 
-            var tmp = new byte[_length - 2];
-            Array.Copy(_response, tmp, _length - 2);
+            var tmp = new byte[Length - 2];
+            Array.Copy(FullApdu, tmp, Length - 2);
             return tmp;
         }
 
         /// <summary>Converts the APDU structure to a transmittable byte array.</summary>
         /// <returns>A byte array containing the APDU parameters and data in the correct order.</returns>
         public override byte[] ToArray() {
-            if (_response == null) {
+            if (FullApdu == null) {
                 return null;
             }
 
-            if (_response.Length < _length) {
+            if (FullApdu.Length < Length) {
                 throw new InvalidApduException("The response APDU is invalid.");
             }
 
-            var tmp = new byte[_length];
-            Array.Copy(_response, tmp, _length);
+            var tmp = new byte[Length];
+            Array.Copy(FullApdu, tmp, Length);
             return tmp;
         }
 
@@ -212,8 +201,8 @@ namespace PCSC.Iso7816
         /// <returns>A clone of the current instance.</returns>
         public virtual object Clone() {
             var tmp = new ResponseApdu {
-                _response = _response,
-                _length = _length
+                FullApdu = FullApdu,
+                Length = Length
             };
             return tmp;
         }

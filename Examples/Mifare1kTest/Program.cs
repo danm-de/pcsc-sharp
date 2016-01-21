@@ -6,7 +6,7 @@ namespace Mifare1kTest
 {
     class Program
     {
-        private static readonly byte[] _data_to_write = { 0x0F, 0x0E, 0x0D, 0x0C, 0x0B, 0x0A, 0x09, 0x08, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01, 0x00};
+        private static readonly byte[] DATA_TO_WRITE = { 0x0F, 0x0E, 0x0D, 0x0C, 0x0B, 0x0A, 0x09, 0x08, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01, 0x00};
         const byte MSB = 0x00;
         const byte LSB = 0x08;
 
@@ -51,7 +51,7 @@ namespace Mifare1kTest
                         ? BitConverter.ToString(result) 
                         : null);
 
-                    var updateSuccessful = card.UpdateBinary(MSB, LSB, _data_to_write);
+                    var updateSuccessful = card.UpdateBinary(MSB, LSB, DATA_TO_WRITE);
 
                     if (!updateSuccessful) {
                         throw new Exception("UPDATE BINARY failed.");

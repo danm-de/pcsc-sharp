@@ -22,63 +22,53 @@
         /// <summary>Cyclic TLV bit.</summary>
         public const byte FILE_STRUCTURE_CYCLIC_TLV             = (1 << 2) + (1 << 1) + (1 << 0);
 
-        private readonly byte _fileDescriptor;
-
-        private readonly FileStructureType _structureType;
-        private readonly bool _isTransparent;
-        private readonly bool _isRecord;
-
         private RecordInfo _recordInfoCache;
 
         /// <summary>Initializes a new instance of the <see cref="FileStructureInfo" /> class.</summary>
         /// <param name="fileDescriptor">The file descriptor containing the file structure information.</param>
         public FileStructureInfo(byte fileDescriptor) {
-            _fileDescriptor = fileDescriptor;
-            _isTransparent = false;
-            _isRecord = false;
+            FileDescriptor = fileDescriptor;
+            IsTransparent = false;
+            IsRecord = false;
 
             // StructureType
-            if (_IsSet(_fileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_NO_INFO)) {
-                _structureType = FileStructureType.NoInformation;
-            } else if (_IsSet(_fileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_TRANSPARENT)) {
-                _structureType = FileStructureType.Transparent;
-            } else if (_IsSet(_fileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_LINEAR_FIXED)) {
-                _structureType = FileStructureType.LinearFixed;
-            } else if (_IsSet(_fileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_LINEAR_FIXED_TLV)) {
-                _structureType = FileStructureType.LinearFixedSimpleTlv;
-            } else if (_IsSet(_fileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_LINEAR_VARIABLE)) {
-                _structureType = FileStructureType.LinearVariable;
-            } else if (_IsSet(_fileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_LINEAR_VARIABLE_TLV)) {
-                _structureType = FileStructureType.LinearFixedSimpleTlv;
-            } else if (_IsSet(_fileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_CYCLIC)) {
-                _structureType = FileStructureType.Cyclic;
-            } else if (_IsSet(_fileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_CYCLIC_TLV)) {
-                _structureType = FileStructureType.CyclicSimpleTlv;
+            if (_IsSet(FileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_NO_INFO)) {
+                Type = FileStructureType.NoInformation;
+            } else if (_IsSet(FileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_TRANSPARENT)) {
+                Type = FileStructureType.Transparent;
+            } else if (_IsSet(FileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_LINEAR_FIXED)) {
+                Type = FileStructureType.LinearFixed;
+            } else if (_IsSet(FileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_LINEAR_FIXED_TLV)) {
+                Type = FileStructureType.LinearFixedSimpleTlv;
+            } else if (_IsSet(FileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_LINEAR_VARIABLE)) {
+                Type = FileStructureType.LinearVariable;
+            } else if (_IsSet(FileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_LINEAR_VARIABLE_TLV)) {
+                Type = FileStructureType.LinearFixedSimpleTlv;
+            } else if (_IsSet(FileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_CYCLIC)) {
+                Type = FileStructureType.Cyclic;
+            } else if (_IsSet(FileDescriptor, FILE_STRUCTURE_MASK, FILE_STRUCTURE_CYCLIC_TLV)) {
+                Type = FileStructureType.CyclicSimpleTlv;
             }
 
-            if (_structureType == FileStructureType.Transparent) {
-                _isTransparent = true;
-            } else if (_structureType != FileStructureType.NoInformation) {
-                _isRecord = true;
+            if (Type == FileStructureType.Transparent) {
+                IsTransparent = true;
+            } else if (Type != FileStructureType.NoInformation) {
+                IsRecord = true;
             }
         }
 
         /// <summary>Gets the file structure type.</summary>
-        public FileStructureType Type {
-            get { return _structureType; }
-        }
+        public FileStructureType Type { get; }
 
         /// <summary>Gets a value indicating whether the structuring method is a transparent EF.</summary>
-        public bool IsTransparent {
-            get { return _isTransparent; }
-        }
+        public bool IsTransparent { get; }
 
         /// <summary>Gets the record information.</summary>
         /// <remarks>Returns a <see cref="RecordInfo" /> instance if the file structuring method is a record EF. Otherwise <see langword="null" />.</remarks>
         public RecordInfo RecordInfo {
             get {
-                if (_recordInfoCache == null && _isRecord) {
-                    _recordInfoCache = new RecordInfo(_fileDescriptor);
+                if (_recordInfoCache == null && IsRecord) {
+                    _recordInfoCache = new RecordInfo(FileDescriptor);
                 }
                 return _recordInfoCache;
             }
@@ -86,18 +76,14 @@
 
         /// <summary>Gets the file descriptor.</summary>
         /// <value>The file descriptor as byte.</value>
-        public byte FileDescriptor {
-            get { return _fileDescriptor; }
-        }
+        public byte FileDescriptor { get; }
 
         /// <summary>Gets a value indicating whether the structuring method is a record EF.</summary>
         /// <value>
         ///     <c>true</c> if the EF is record; otherwise, <c>false</c>.</value>
-        public bool IsRecord {
-            get { return _isRecord; }
-        }
+        public bool IsRecord { get; }
 
-        private bool _IsSet(byte value, byte mask, byte bits) {
+        private static bool _IsSet(byte value, byte mask, byte bits) {
             return ((value & mask) == bits);
         }
     }

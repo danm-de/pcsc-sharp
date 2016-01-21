@@ -11,7 +11,7 @@ namespace Mifare1kTest
 
         public MifareCard(IIsoReader isoReader) {
             if (isoReader == null) {
-                throw new ArgumentNullException("isoReader");
+                throw new ArgumentNullException(nameof(isoReader));
             }
             _isoReader = isoReader;
         }
@@ -27,9 +27,9 @@ namespace Mifare1kTest
                     Data = key
                 };
 
-                Debug.WriteLine(string.Format("Load Authentication Keys: {0}", BitConverter.ToString(loadKeyCmd.ToArray())));
+                Debug.WriteLine("Load Authentication Keys: {0}", BitConverter.ToString(loadKeyCmd.ToArray()));
                 var response = _isoReader.Transmit(loadKeyCmd);
-                Debug.WriteLine(string.Format("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2));
+                Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
 
                 return Success(response);
             }
@@ -58,9 +58,9 @@ namespace Mifare1kTest
                     Data = authBlock.ToArray()
                 };
 
-                Debug.WriteLine(string.Format("General Authenticate: {0}", BitConverter.ToString(authKeyCmd.ToArray())));
+                Debug.WriteLine("General Authenticate: {0}", BitConverter.ToString(authKeyCmd.ToArray()));
                 var response = _isoReader.Transmit(authKeyCmd);
-                Debug.WriteLine(string.Format("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2));
+                Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
 
                 return (response.SW1 == 0x90) && (response.SW2 == 0x00);
             }
@@ -76,12 +76,12 @@ namespace Mifare1kTest
                     Le = size
                 };
 
-                Debug.WriteLine(string.Format("Read Binary (before update): {0}", BitConverter.ToString(readBinaryCmd.ToArray())));
+                Debug.WriteLine("Read Binary (before update): {0}", BitConverter.ToString(readBinaryCmd.ToArray()));
                 var response = _isoReader.Transmit(readBinaryCmd);
-                Debug.WriteLine(string.Format("SW1 SW2 = {0:X2} {1:X2} Data: {2}",
+                Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2} Data: {2}",
                     response.SW1,
                     response.SW2,
-                    BitConverter.ToString(response.GetData())));
+                    BitConverter.ToString(response.GetData()));
 
                 return Success(response)
                     ? response.GetData() ?? new byte[0]
@@ -99,9 +99,9 @@ namespace Mifare1kTest
                     Data = data
                 };
 
-                Debug.WriteLine(string.Format("Update Binary: {0}", BitConverter.ToString(updateBinaryCmd.ToArray())));
+                Debug.WriteLine("Update Binary: {0}", BitConverter.ToString(updateBinaryCmd.ToArray()));
                 var response = _isoReader.Transmit(updateBinaryCmd);
-                Debug.WriteLine(string.Format("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2));
+                Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
 
                 return Success(response);
             }

@@ -158,9 +158,7 @@ namespace PCSC
         ///         </item>
         ///     </list>
         /// </value>
-        public bool Monitoring {
-            get { return _monitoring; }
-        }
+        public bool Monitoring => _monitoring;
 
         /// <summary>
         /// Releases unmanaged resources and stops the background thread (if running).
@@ -177,7 +175,7 @@ namespace PCSC
         /// </remarks>
         public SCardMonitor(ISCardContext context, bool releaseContextOnDispose = false) {
             if (context == null) {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
             }
 
             _context = context;
@@ -210,7 +208,7 @@ namespace PCSC
             }
             
             if (index < 0 || (index > currentStateValues.Length)) {
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));
             }
 
             return currentStateValues[index];
@@ -229,7 +227,7 @@ namespace PCSC
             lock (_previousStates) {
                 // "previousState" contains the last known value.
                 if (index < 0 || (index > _previousStates.Length)) {
-                    throw new ArgumentOutOfRangeException("index");
+                    throw new ArgumentOutOfRangeException(nameof(index));
                 }
                 return _previousStates[index];
             }
@@ -248,7 +246,7 @@ namespace PCSC
             }
 
             if (index < 0 || (index > currentReaderNames.Length)) {
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));
             }
             return currentReaderNames[index];
         }
@@ -283,8 +281,8 @@ namespace PCSC
                 Cancel();
             }
 
-            if (disposing && _releaseContextOnDispose && _context != null) {
-                _context.Dispose();
+            if (disposing && _releaseContextOnDispose) {
+                _context?.Dispose();
             }
 
             _is_disposed = true;
@@ -326,8 +324,8 @@ namespace PCSC
         ///         </list></para>
         /// </remarks>
         public void Start(string readerName) {
-            if (readerName.IsNullOrWhiteSpace()) {
-                throw new ArgumentNullException("readerName");
+            if (string.IsNullOrWhiteSpace(readerName)) {
+                throw new ArgumentNullException(nameof(readerName));
             }
 
             Start(new[] {readerName});
@@ -372,10 +370,10 @@ namespace PCSC
         /// </remarks>
         public void Start(string[] readerNames) {
             if (readerNames == null) {
-                throw new ArgumentNullException("readerNames");
+                throw new ArgumentNullException(nameof(readerNames));
             }
             if (readerNames.Length == 0) {
-                throw new ArgumentException("Empty list of reader names.", "readerNames");
+                throw new ArgumentException("Empty list of reader names.", nameof(readerNames));
             }
             if (_is_disposed) {
                 throw new ObjectDisposedException(GetType().FullName);

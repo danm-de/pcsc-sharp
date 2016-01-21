@@ -29,7 +29,6 @@ namespace PCSC
         private static IntPtr _pciRaw = IntPtr.Zero;
         private SCARD_IO_REQUEST_WINDOWS _winscardIoRequest = new SCARD_IO_REQUEST_WINDOWS();
         private SCARD_IO_REQUEST_UNIX _pcscliteIoRequest = new SCARD_IO_REQUEST_UNIX();
-        private IntPtr _iomem = IntPtr.Zero;
 
         /// <summary>Destroys the object and frees unmanaged memory.</summary>
         ~SCardPCI() {
@@ -60,32 +59,32 @@ namespace PCSC
             : this() {
             if (bufLength < 0) {
                 throw new ArgumentOutOfRangeException(
-                    "bufLength");
+                    nameof(bufLength));
             }
 
             if (Platform.IsWindows) {
                 // Windows
-                _iomem = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
+                MemoryPtr = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
                     + Marshal.SizeOf(typeof(SCARD_IO_REQUEST_WINDOWS)))));
 
-                _winscardIoRequest.dwProtocol = (Int32) protocol;
+                _winscardIoRequest.dwProtocol = (int) protocol;
                 _winscardIoRequest.cbPciLength = bufLength;
-                if (_iomem != IntPtr.Zero) {
-                    Marshal.StructureToPtr(_winscardIoRequest, _iomem, false);
+                if (MemoryPtr != IntPtr.Zero) {
+                    Marshal.StructureToPtr(_winscardIoRequest, MemoryPtr, false);
                 }
                 return;
             }
 
             // Unix
-            _iomem = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
+            MemoryPtr = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
                 + Marshal.SizeOf(typeof(Interop.Unix.SCARD_IO_REQUEST)))));
 
             _pcscliteIoRequest.dwProtocol = (IntPtr) protocol;
             _pcscliteIoRequest.cbPciLength = (IntPtr) bufLength;
-            if (_iomem != IntPtr.Zero) {
+            if (MemoryPtr != IntPtr.Zero) {
                 Marshal.StructureToPtr(
                     _pcscliteIoRequest,
-                    _iomem,
+                    MemoryPtr,
                     false);
             }
         }
@@ -103,10 +102,10 @@ namespace PCSC
         public SCardPCI(SCardProtocol protocol, byte[] pciData)
             : this(protocol, pciData.Length) {
             if (pciData == null) {
-                throw new ArgumentNullException("pciData");
+                throw new ArgumentNullException(nameof(pciData));
             }
 
-            if (pciData.Length <= 0 || _iomem == IntPtr.Zero) {
+            if (pciData.Length <= 0 || MemoryPtr == IntPtr.Zero) {
                 return;
             }
 
@@ -137,10 +136,10 @@ namespace PCSC
         /// <param name="disposing">Ignored</param>
         protected virtual void Dispose(bool disposing) {
             // The MUST free unmanaged memory
-            if (_iomem != IntPtr.Zero) {
+            if (MemoryPtr != IntPtr.Zero) {
                 Marshal.FreeCoTaskMem(
-                    _iomem);
-                _iomem = IntPtr.Zero;
+                    MemoryPtr);
+                MemoryPtr = IntPtr.Zero;
             }
         }
 
@@ -156,7 +155,7 @@ namespace PCSC
         [DescriptionAttribute("Protocol identifier")]
         public SCardProtocol Protocol {
             get {
-                if (_iomem != IntPtr.Zero) {
+                if (MemoryPtr != IntPtr.Zero) {
                     UpdateIoRequestHeader();
                 }
 
@@ -171,7 +170,7 @@ namespace PCSC
         [DescriptionAttribute("Protocol Control Inf Length")]
         public int PciLength {
             get {
-                if (_iomem != IntPtr.Zero) {
+                if (MemoryPtr != IntPtr.Zero) {
                     UpdateIoRequestHeader();
                 }
 
@@ -186,14 +185,14 @@ namespace PCSC
             if (Platform.IsWindows) {
                 // Windows
                 _winscardIoRequest = (SCARD_IO_REQUEST_WINDOWS) Marshal.PtrToStructure(
-                    _iomem,
+                    MemoryPtr,
                     typeof(SCARD_IO_REQUEST_WINDOWS));
                 return;
             }
 
             // Unix
             _pcscliteIoRequest = (Interop.Unix.SCARD_IO_REQUEST) Marshal.PtrToStructure(
-                _iomem,
+                MemoryPtr,
                 typeof(Interop.Unix.SCARD_IO_REQUEST));
         }
 
@@ -203,7 +202,7 @@ namespace PCSC
             get {
                 byte[] data = null;
 
-                if (_iomem == IntPtr.Zero) {
+                if (MemoryPtr == IntPtr.Zero) {
                     return null;
                 }
 
@@ -239,11 +238,11 @@ namespace PCSC
         private IntPtr BufferStartAddr {
             get {
                 if (Platform.IsWindows) {
-                    return unchecked((IntPtr) ((long) _iomem +
+                    return unchecked((IntPtr) ((long) MemoryPtr +
                         Marshal.SizeOf(typeof(SCARD_IO_REQUEST_WINDOWS))));
                 }
 
-                return unchecked((IntPtr) ((long) _iomem +
+                return unchecked((IntPtr) ((long) MemoryPtr +
                     Marshal.SizeOf(typeof(Interop.Unix.SCARD_IO_REQUEST))));
             }
         }
@@ -300,8 +299,6 @@ namespace PCSC
             }
         }
 
-        internal IntPtr MemoryPtr {
-            get { return _iomem; }
-        }
+        internal IntPtr MemoryPtr { get; private set; } = IntPtr.Zero;
     }
 }

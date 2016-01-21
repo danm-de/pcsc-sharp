@@ -93,7 +93,6 @@
     <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
     <Compile Include="ExtensionMethods\SCardErrorExtensionMethods.cs" />
     <Compile Include="ExtensionMethods\SCRStateExtensionMethods.cs" />
-    <Compile Include="ExtensionMethods\StringExtensionMethods.cs" />
     <Compile Include="Interop\Unix\DLOPEN_FLAGS.cs" />
     <Compile Include="Interop\Unix\SCARD_IO_REQUEST.cs" />
     <Compile Include="Interop\Unix\SCARD_READERSTATE.cs" />
@@ -181,4 +180,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\.paket\paket.targets" />
 </Project>

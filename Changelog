@@ -4,6 +4,14 @@ b = Minor API change
 c = Feature enhancement
 d = Bug fix
 
+2016-01-21	Daniel Mueller <daniel@danm.de>
+	* New version 3.3.1.0
+	* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/19
+	  Thanks to andrew7webb!
+	* Removed public IsNullOrWhiteSpace extension method for string.
+	* Made InvalidApduException public.
+	* Code cleanups.
+
 2015-10-28	Daniel Mueller <daniel@danm.de>
     * New version 3.3.0.0
     * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/11

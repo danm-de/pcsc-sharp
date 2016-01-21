@@ -7,54 +7,34 @@ namespace PCSC
     /// <remarks>It will use the system's native PC/SC API.</remarks>
     public class SCardReader : ISCardReader
     {
-        private SCardShareMode _sharemode;
-        private ISCardContext _context;
         private IntPtr _cardHandle;
-        private SCardProtocol _activeprot;
-        private string _readername;
 
         /// <summary>The connected reader's friendly name.</summary>
         /// <value>A human readable string of the reader name or <see langword="null" /> if the reader object is currently not connected.</value>
-        public string ReaderName {
-            get { return _readername; }
-            protected set { _readername = value; }
-        }
+        public string ReaderName { get; protected set; }
 
         /// <summary>The Smart Card context that will be used for this connection.</summary>
         /// <value><see langword="null" /> if the reader is not connected.</value>
-        public ISCardContext CurrentContext {
-            get { return _context; }
-            protected set { _context = value; }
-        }
+        public ISCardContext CurrentContext { get; protected set; }
 
         /// <summary>The current mode of connection type: exclusive or shared.</summary>
-        public SCardShareMode CurrentShareMode {
-            get { return _sharemode; }
-            protected set { _sharemode = value; }
-        }
+        public SCardShareMode CurrentShareMode { get; protected set; }
 
         /// <summary>The currently used protocol to communicate with the card.</summary>
         /// <value>
         ///     <see cref="F:PCSC.SCardProtocol.Unset" /> if not connected.</value>
-        public SCardProtocol ActiveProtocol {
-            get { return _activeprot; }
-            protected set { _activeprot = value; }
-        }
+        public SCardProtocol ActiveProtocol { get; protected set; }
 
         /// <summary>A pointer (Card Handle) that can be used for C API calls.</summary>
         /// <value>0 if not connected.</value>
         /// <remarks>
         ///     <para>This is the card handle that is returned when calling the C API function SCardConnect().</para>
         /// </remarks>
-        public IntPtr CardHandle {
-            get { return _cardHandle; }
-        }
+        public IntPtr CardHandle => _cardHandle;
 
         /// <summary>The current connection state of the reader.</summary>
         /// <value><see langword="true" /> if the reader is connected. Otherwise <see langword="false" />.</value>
-        public bool IsConnected {
-            get { return _cardHandle != IntPtr.Zero; }
-        }
+        public bool IsConnected => _cardHandle != IntPtr.Zero;
 
         /// <summary>Unmanaged resources (card handle) are released!</summary>
         ~SCardReader() {
@@ -82,9 +62,9 @@ namespace PCSC
         /// <exception cref="ArgumentNullException">If <paramref name="context"/> is <see langword="null" /></exception>
         public SCardReader(ISCardContext context) {
             if (context == null) {
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
             }
-            _context = context;
+            CurrentContext = context;
         }
 
         /// <summary>Establishes a connection to the Smart Card reader.</summary>
@@ -233,21 +213,21 @@ namespace PCSC
         /// </remarks>
         public SCardError Connect(string readerName, SCardShareMode mode, SCardProtocol preferredProtocol) {
             if (readerName == null) {
-                throw new ArgumentNullException("readerName");
+                throw new ArgumentNullException(nameof(readerName));
             }
 
-            if (readerName.IsNullOrWhiteSpace()) {
+            if (string.IsNullOrWhiteSpace(readerName)) {
                 throw new UnknownReaderException(SCardError.InvalidValue, "Invalid card reader name.");
             }
 
-            if (_context == null || _context.Handle.Equals(IntPtr.Zero)) {
+            if (CurrentContext == null || CurrentContext.Handle.Equals(IntPtr.Zero)) {
                 throw new InvalidContextException(SCardError.InvalidHandle, "Invalid connection context.");
             }
 
             IntPtr hCard;
             SCardProtocol dwActiveProtocol;
 
-            var rc = Platform.Lib.Connect(_context.Handle,
+            var rc = Platform.Lib.Connect(CurrentContext.Handle,
                 readerName,
                 mode,
                 preferredProtocol,
@@ -259,9 +239,9 @@ namespace PCSC
             }
 
             _cardHandle = hCard;
-            _activeprot = dwActiveProtocol;
-            _readername = readerName;
-            _sharemode = mode;
+            ActiveProtocol = dwActiveProtocol;
+            ReaderName = readerName;
+            CurrentShareMode = mode;
 
             return rc;
         }
@@ -346,10 +326,10 @@ namespace PCSC
             }
 
             // reset local variables
-            _readername = null;
+            ReaderName = null;
             _cardHandle = IntPtr.Zero;
-            _activeprot = SCardProtocol.Unset;
-            _sharemode = SCardShareMode.Shared;
+            ActiveProtocol = SCardProtocol.Unset;
+            CurrentShareMode = SCardShareMode.Shared;
 
             return rc;
         }
@@ -497,8 +477,8 @@ namespace PCSC
                 return rc;
             }
 
-            _activeprot = dwActiveProtocol;
-            _sharemode = mode;
+            ActiveProtocol = dwActiveProtocol;
+            CurrentShareMode = mode;
 
             return rc;
         }
@@ -728,7 +708,7 @@ namespace PCSC
         /// </remarks>
         public SCardError Transmit(SCardPCI sendPci, byte[] sendBuffer, SCardPCI receivePci, ref byte[] receiveBuffer) {
             if (sendPci == null) {
-                throw new ArgumentNullException("sendPci");
+                throw new ArgumentNullException(nameof(sendPci));
             }
             if (sendPci.MemoryPtr == IntPtr.Zero) {
                 throw new ArgumentException("sendPci");
@@ -1245,7 +1225,7 @@ namespace PCSC
             ref int receiveBufferLength) {
             var iorecvpci = new SCardPCI(); // will be discarded
             return Transmit(
-                SCardPCI.GetPci(_activeprot),
+                SCardPCI.GetPci(ActiveProtocol),
                 sendBuffer,
                 sendBufferLength,
                 iorecvpci,
@@ -1685,9 +1665,9 @@ namespace PCSC
                 state = SCardHelper.ToState(dwState);
 
                 // update local copies 
-                _activeprot = protocol;
+                ActiveProtocol = protocol;
                 if (readerName.Length >= 1) {
-                    _readername = readerName[0];
+                    ReaderName = readerName[0];
                 }
             } else {
                 protocol = SCardProtocol.Unset;

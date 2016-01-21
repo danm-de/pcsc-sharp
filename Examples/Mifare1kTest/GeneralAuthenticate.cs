@@ -2,12 +2,7 @@
 {
     public class GeneralAuthenticate
     {
-        private byte _version = 0x01;
-
-        public byte Version {
-            get { return _version; }
-            set { _version = value; }
-        }
+        public byte Version { get; set; } = 0x01;
 
         public byte MSB { get; set; }
         public byte LSB { get; set; }
@@ -16,7 +11,7 @@
 
         public byte[] ToArray() {
             unchecked {
-                return new[] {_version, MSB, LSB, (byte) KeyType, KeyNumber };
+                return new[] {Version, MSB, LSB, (byte) KeyType, KeyNumber };
             }
         }
     }

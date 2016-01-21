@@ -16,43 +16,27 @@ namespace PCSC.Iso7816
         /// <value>The <see cref="ResponseApdu" />.</value>
         /// <param name="index">The index.</param>
         /// <returns>The <see cref="ResponseApdu" /> at the specified index.</returns>
-        public ResponseApdu this[int index] {
-            get { return _lstResponseApdu[index]; }
-        }
+        public ResponseApdu this[int index] => _lstResponseApdu[index];
 
         /// <summary>The SW1 status of the last received <see cref="ResponseApdu" />.</summary>
-        public virtual byte SW1 {
-            get {
-                return (_lstResponseApdu.Count > 0)
-                    ? _lstResponseApdu[_lstResponseApdu.Count - 1].SW1
-                    : (byte) 0;
-            }
-        }
+        public virtual byte SW1 => (_lstResponseApdu.Count > 0)
+            ? _lstResponseApdu[_lstResponseApdu.Count - 1].SW1
+            : (byte) 0;
 
         /// <summary>The SW2 status of the last received <see cref="ResponseApdu" />.</summary>
-        public virtual byte SW2 {
-            get {
-                return (_lstResponseApdu.Count > 0)
-                    ? _lstResponseApdu[_lstResponseApdu.Count - 1].SW2
-                    : (byte) 0;
-            }
-        }
+        public virtual byte SW2 => (_lstResponseApdu.Count > 0)
+            ? _lstResponseApdu[_lstResponseApdu.Count - 1].SW2
+            : (byte) 0;
 
         /// <summary>Gets the number of received <see cref="ResponseApdu" />.</summary>
-        public virtual int Count {
-            get { return _lstResponseApdu.Count; }
-        }
+        public virtual int Count => _lstResponseApdu.Count;
 
         /// <summary>Gets the number of received <see cref="SCardPCI" />.</summary>
-        public virtual int PciCount {
-            get { return _lstReceivePci.Count; }
-        }
+        public virtual int PciCount => _lstReceivePci.Count;
 
         /// <summary>A combination of SW1 and SW2 as 16bit status word.</summary>
         /// <remarks>It contains the status word of the last received <see cref="ResponseApdu" />.</remarks>
-        public virtual int StatusWord {
-            get { return (SW1 << 8) | SW2; }
-        }
+        public virtual int StatusWord => (SW1 << 8) | SW2;
 
         /// <summary>
         ///     <see langword="true" /> if at least one <see cref="ResponseApdu" /> contains data bytes.</summary>
