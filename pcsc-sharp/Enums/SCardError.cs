@@ -35,6 +35,9 @@ namespace PCSC
         /// <summary>The data buffer to receive returned data is too small for the returned data. (SCARD_E_INSUFFICIENT_BUFFER)</summary>
         [Description("The data buffer to receive returned data is too small for the returned data.")]
         InsufficientBuffer = unchecked((int) 0x80100008),
+        /// <summary>Windows error ERROR_INSUFFICIENT_BUFFER: The data area passed to a system call is too small.</summary>
+        [Description("The data area passed to a system call is too small.")]
+        WinErrorInsufficientBuffer = 122,
         /// <summary>The specified reader name is not recognized. (SCARD_E_UNKNOWN_READER)</summary>
         [Description("The specified reader name is not recognized.")]
         UnknownReader = unchecked((int) 0x80100009),

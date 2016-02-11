@@ -73,6 +73,7 @@
     <Compile Include="EventArgs\CardStatusEventArgs.cs" />
     <Compile Include="EventArgs\StatusChangeEventArgs.cs" />
     <Compile Include="Exceptions\CommunicationErrorException.cs" />
+    <Compile Include="Exceptions\WinErrorInsufficientBufferException.cs" />
     <Compile Include="Exceptions\InsufficientBufferException.cs" />
     <Compile Include="Exceptions\InternalErrorException.cs" />
     <Compile Include="Exceptions\InvalidParameterException.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Iso7816\Enums\SW1Code.cs" />
     <Compile Include="Iso7816\Enums\TlvDataType.cs" />
     <Compile Include="Iso7816\Exceptions\InvalidApduException.cs" />
+    <Compile Include="Iso7816\ExtensionMethods\SCardErrorExtensionMethods.cs" />
     <Compile Include="Iso7816\FileDescriptor.cs" />
     <Compile Include="Iso7816\FileStructureInfo.cs" />
     <Compile Include="Iso7816\IIsoReader.cs" />

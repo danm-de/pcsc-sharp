@@ -48,7 +48,9 @@
 					throw new RemovedCardException(sc);
 				case SCardError.InsufficientBuffer:
 					throw new InsufficientBufferException(sc);
-				default:
+                case SCardError.WinErrorInsufficientBuffer:
+                    throw new WinErrorInsufficientBufferException(sc);
+                default:
 					throw new PCSCException(sc); // Unexpected / unknown error
 			}
 		}
