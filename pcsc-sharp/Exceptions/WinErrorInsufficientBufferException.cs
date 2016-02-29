@@ -7,7 +7,7 @@ namespace PCSC
 	/// A supplied buffer is insufficient.
 	/// </summary>
 	[Serializable]
-	public class WinErrorInsufficientBufferException : PCSCException
+	public class WinErrorInsufficientBufferException : InsufficientBufferException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WinErrorInsufficientBufferException"/> class.
