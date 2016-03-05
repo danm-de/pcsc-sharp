@@ -127,11 +127,9 @@ namespace PCSC.Iso7816
         }
 
         private ResponseApdu SimpleTransmit(byte[] commandApdu, int commandApduLength, IsoCase isoCase,
-            SCardProtocol protocol, SCardPCI receivePci, ref byte[] receiveBuffer, ref int receiveBufferLength) 
+            SCardProtocol protocol, SCardPCI receivePci, byte[] receiveBuffer, int receiveBufferLength) 
         {
             SCardError sc;
-            var cmdSent = false;
-
             do {
                 // send Command APDU to the card
                 sc = Reader.Transmit(
@@ -152,17 +150,15 @@ namespace PCSC.Iso7816
                         Thread.Sleep(RetransmitWaitTime);
                     }
                 } else {
-                    cmdSent = true;
+                    break;
                 }
-            } while (cmdSent == false);
+            } while (true);
 
-            if (sc == SCardError.Success) {
-                return new ResponseApdu(receiveBuffer, receiveBufferLength, isoCase, protocol);
+            if (sc != SCardError.Success) {
+                sc.Throw();
             }
 
-            // An error occurred, throw exception..
-		    sc.Throw();
-		    return null;
+            return new ResponseApdu(receiveBuffer, receiveBufferLength, isoCase, protocol);
         }
 
         /// <summary>Transmits the specified command APDU.</summary>
@@ -195,8 +191,8 @@ namespace PCSC.Iso7816
                     commandApdu.Case, // ISO case used by the Command APDU
                     commandApdu.Protocol, // Protocol used by the Command APDU
                     receivePci,
-                    ref receiveBuffer,
-                    ref receiveBufferLength);
+                    receiveBuffer,
+                    receiveBufferLength);
             } catch (WinErrorInsufficientBufferException ex) {
                 throw new InvalidApduException($"Unsufficient buffer: check Le size (Le={commandApdu.Le})", ex);
             }
@@ -206,7 +202,6 @@ namespace PCSC.Iso7816
              * 1. 0x6cxx -> Set response buffer size Le <- SW2
              * 2. AND/OR 0x61xx -> More data can be read with GET RESPONSE
              */
-
             if (responseApdu.SW1 == (byte) SW1Code.ErrorP3Incorrect) {
                 // Case 1: SW1=0x6c, Previous Le/P3 not accepted -> Set le = SW2
                 responseApdu = RetransmitOnInsufficientBuffer(commandApdu, responseApdu, out receivePci);
@@ -243,12 +238,10 @@ namespace PCSC.Iso7816
 
                 var getResponseApdu = ConstructGetResponseApdu(ref le);
 
-                int receiveBufferLength;
-                if (le == 0) {
-                    receiveBufferLength = 256 + 2; // 2 bytes for status word
-                } else {
-                    receiveBufferLength = le + 2; // 2 bytes for status word
-                }
+                // +2 bytes for status word
+                var receiveBufferLength = le == 0 
+                    ? 256 + 2 
+                    : le + 2;
 
                 var receiveBuffer = new byte[receiveBufferLength];
 
@@ -267,8 +260,8 @@ namespace PCSC.Iso7816
                         getResponseApdu.Case,
                         getResponseApdu.Protocol,
                         receivePci,
-                        ref receiveBuffer,
-                        ref receiveBufferLength);
+                        receiveBuffer,
+                        receiveBufferLength);
                 } catch (WinErrorInsufficientBufferException ex) {
                     throw new InvalidApduException($"GET RESPONSE command failed because of unsufficient buffer (Le={getResponseApdu.Le})", 
                         getResponseApdu, ex);
@@ -294,8 +287,7 @@ namespace PCSC.Iso7816
             if (responseApdu.SW2 == 0) {
                 resendCmdApdu.Le = 0; // 256
                 receiveBufferLength = 256 + 2; // 2 bytes for status word
-            }
-            else {
+            } else {
                 resendCmdApdu.Le = responseApdu.SW2;
                 receiveBufferLength = responseApdu.SW2 + 2; // 2 bytes for status word
             }
@@ -318,8 +310,8 @@ namespace PCSC.Iso7816
                     resendCmdApdu.Case,
                     resendCmdApdu.Protocol,
                     receivePci,
-                    ref receiveBuffer,
-                    ref receiveBufferLength);
+                    receiveBuffer,
+                    receiveBufferLength);
             } catch (WinErrorInsufficientBufferException ex) {
                 throw new InvalidApduException($"Retransmission failed because of unsufficient buffer. Le={resendCmdApdu.Le}", ex);
             } catch (InvalidOperationException ex) {
