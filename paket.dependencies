@@ -5,3 +5,4 @@ nuget FakeItEasy
 nuget FluentAssertions
 nuget NUnit
 nuget NUnit.Runners
+nuget Rx-Main

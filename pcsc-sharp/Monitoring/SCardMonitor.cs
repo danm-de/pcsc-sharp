@@ -11,7 +11,7 @@ namespace PCSC
         private static readonly TimeSpan CANCEL_MAX_WAIT_TIME = TimeSpan.FromSeconds(30);
         private readonly object _sync = new object();
 
-        private static int _monitor_count;
+        private static int _monitorCount;
 
         private readonly ISCardContext _context;
         private readonly bool _releaseContextOnDispose;
@@ -21,7 +21,7 @@ namespace PCSC
         private volatile IntPtr[] _previousStateValues;
         private volatile string[] _readernames;
         private volatile bool _monitoring;
-        private volatile bool _is_disposed;
+        private volatile bool _isDisposed;
 
         /// <summary>A general reader status change.</summary>
         /// <remarks>
@@ -257,9 +257,7 @@ namespace PCSC
             get {
                 var currentReaderNames = _readernames;
                 
-                return (currentReaderNames == null)
-                    ? 0
-                    : currentReaderNames.Length;
+                return currentReaderNames?.Length ?? 0;
             }
         }
 
@@ -273,7 +271,7 @@ namespace PCSC
         /// <summary>Disposes the object.</summary>
         /// <param name="disposing">Ignored. It will call <see cref="Cancel()" /> in order to stop the background thread. The application context will be disposed if the user configured the monitor to do so at construction time.</param>
         protected virtual void Dispose(bool disposing) {
-            if (_is_disposed) {
+            if (_isDisposed) {
                 return;
             }
 
@@ -285,7 +283,7 @@ namespace PCSC
                 _context?.Dispose();
             }
 
-            _is_disposed = true;
+            _isDisposed = true;
         }
 
         /// <summary>Cancels the monitoring of all readers that are currently being monitored.</summary>
@@ -375,7 +373,7 @@ namespace PCSC
             if (readerNames.Length == 0) {
                 throw new ArgumentException("Empty list of reader names.", nameof(readerNames));
             }
-            if (_is_disposed) {
+            if (_isDisposed) {
                 throw new ObjectDisposedException(GetType().FullName);
             }
 
@@ -394,7 +392,7 @@ namespace PCSC
                 _previousStateValues = new IntPtr[readerNames.Length];
 
                 var monitorNumber = Interlocked
-                    .Increment(ref _monitor_count)
+                    .Increment(ref _monitorCount)
                     .ToString(CultureInfo.InvariantCulture);
 
                 var threadName = string.Concat(GetType().FullName, " #", monitorNumber);
@@ -457,7 +455,7 @@ namespace PCSC
                         _previousStateValues[i] = readerStates[i].EventStateValue;
                     }
 
-                    while (!_is_disposed) {
+                    while (!_isDisposed) {
                         for (var i = 0; i < readerStates.Length; i++) {
                             readerStates[i].CurrentStateValue = _previousStateValues[i];
                         }
@@ -503,7 +501,7 @@ namespace PCSC
                     state.Dispose();
                 }
 
-                if (!_is_disposed && (rc != SCardError.Cancelled)) {
+                if (!_isDisposed && (rc != SCardError.Cancelled)) {
                     OnMonitorException(rc, "An error occured during SCardGetStatusChange(..).");
                 }
 

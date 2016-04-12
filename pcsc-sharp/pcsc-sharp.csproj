@@ -58,6 +58,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\AssemblyInfo\Common.AssemblyInfo.cs">
+      <Link>Properties\Common.AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Context\ContextFactory.cs" />
     <Compile Include="Delegates\CardInitializedEvent.cs" />
     <Compile Include="Delegates\CardInsertedEvent.cs" />
     <Compile Include="Delegates\CardRemovedEvent.cs" />
@@ -94,13 +98,15 @@
     <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
     <Compile Include="ExtensionMethods\SCardErrorExtensionMethods.cs" />
     <Compile Include="ExtensionMethods\SCRStateExtensionMethods.cs" />
+    <Compile Include="Context\IContextFactory.cs" />
     <Compile Include="Interop\Unix\DLOPEN_FLAGS.cs" />
     <Compile Include="Interop\Unix\SCARD_IO_REQUEST.cs" />
     <Compile Include="Interop\Unix\SCARD_READERSTATE.cs" />
     <Compile Include="Interop\Windows\SCARD_IO_REQUEST.cs" />
     <Compile Include="Interop\Windows\SCARD_READERSTATE.cs" />
-    <Compile Include="ISCardContext.cs" />
-    <Compile Include="ISCardMonitor.cs" />
+    <Compile Include="Context\ISCardContext.cs" />
+    <Compile Include="Monitoring\IMonitorFactory.cs" />
+    <Compile Include="Monitoring\ISCardMonitor.cs" />
     <Compile Include="Iso7816\ClassByte.cs" />
     <Compile Include="Exceptions\InvalidContextException.cs" />
     <Compile Include="Exceptions\InvalidScopeTypeException.cs" />
@@ -109,7 +115,8 @@
     <Compile Include="Interop\Windows\WinSCardAPI.cs" />
     <Compile Include="Interop\Unix\PCSCliteAPI.cs" />
     <Compile Include="Interop\Platform.cs" />
-    <Compile Include="ISCardReader.cs" />
+    <Compile Include="Monitoring\MonitorFactory.cs" />
+    <Compile Include="Reader\ISCardReader.cs" />
     <Compile Include="Iso7816\Enums\ClaHighPart.cs" />
     <Compile Include="Iso7816\Enums\ExtendedFileType.cs" />
     <Compile Include="Iso7816\Enums\FileShareMode.cs" />
@@ -130,12 +137,12 @@
     <Compile Include="Iso7816\Response.cs" />
     <Compile Include="Iso7816\IsoReader.cs" />
     <Compile Include="Iso7816\ResponseApduEnumerator.cs" />
-    <Compile Include="SCardContext.cs" />
-    <Compile Include="SCardHelper.cs" />
-    <Compile Include="SCardMonitor.cs" />
-    <Compile Include="SCardPCI.cs" />
-    <Compile Include="SCardReader.cs" />
-    <Compile Include="SCardReaderState.cs" />
+    <Compile Include="Context\SCardContext.cs" />
+    <Compile Include="Utils\SCardHelper.cs" />
+    <Compile Include="Monitoring\SCardMonitor.cs" />
+    <Compile Include="Reader\SCardPCI.cs" />
+    <Compile Include="Reader\SCardReader.cs" />
+    <Compile Include="Reader\SCardReaderState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Iso7816\Apdu.cs" />
     <Compile Include="Iso7816\CommandApdu.cs" />
@@ -159,7 +166,7 @@
       <Link>COPYING</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="pcsc-sharp.csproj.paket.template" />
+    <None Include="paket.template" />
     <None Include="pcsc-sharp.png" />
   </ItemGroup>
   <ItemGroup>
