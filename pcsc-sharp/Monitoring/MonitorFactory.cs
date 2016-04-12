@@ -30,7 +30,7 @@ namespace PCSC
         /// </summary>
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <param name="readerName">Name of the smart card reader that shall be monitored.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="ISCardMonitor"/></returns>
         public ISCardMonitor Start(SCardScope scope, string readerName) {
             if (readerName == null) {
                 throw new ArgumentNullException(nameof(readerName));
@@ -43,8 +43,20 @@ namespace PCSC
         /// </summary>
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <param name="readerNames">Names of the smart card readers that shall be monitored.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="ISCardMonitor"/></returns>
         public ISCardMonitor Start(SCardScope scope, IEnumerable<string> readerNames) {
+            return Start(scope, readerNames, null);
+        }
+
+
+        /// <summary>
+        /// Creates and starts a smart card event monitor for one or more readers.
+        /// </summary>
+        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
+        /// <param name="readerNames">Names of the smart card readers that shall be monitored.</param>
+        /// <param name="preStartAction">Action that will be invoked prior monitor start</param>
+        /// <returns>A <see cref="ISCardMonitor"/></returns>
+        public ISCardMonitor Start(SCardScope scope, IEnumerable<string> readerNames, Action<ISCardMonitor> preStartAction) {
             if (readerNames == null) {
                 throw new ArgumentNullException(nameof(readerNames));
             }
@@ -55,15 +67,16 @@ namespace PCSC
 
             var context = _contextFactory.Establish(scope);
             try {
-                return CreateAndStartMonitor(context, readers);
+                return CreateAndStartMonitor(context, readers, preStartAction);
             } catch {
                 context.Dispose();
                 throw;
             }
         }
 
-        private static ISCardMonitor CreateAndStartMonitor(ISCardContext context, string[] readers) {
+        private static ISCardMonitor CreateAndStartMonitor(ISCardContext context, string[] readers, Action<ISCardMonitor> preStartAction) {
             var monitor = new SCardMonitor(context, true);
+            preStartAction?.Invoke(monitor);
             monitor.Start(readers);
             return monitor;
         }

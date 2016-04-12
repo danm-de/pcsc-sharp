@@ -63,6 +63,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\..\.paket\paket.targets" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETCore'">
       <ItemGroup>
@@ -222,5 +223,4 @@
       <Paket>True</Paket>
     </Reference>
   </ItemGroup>
-  <Import Project="..\..\.paket\paket.targets" />
 </Project>

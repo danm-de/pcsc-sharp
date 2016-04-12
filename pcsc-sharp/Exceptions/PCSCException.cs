@@ -9,6 +9,9 @@ namespace PCSC
     [Serializable]
     public class PCSCException : Exception
     {
+        /// <summary>
+        /// Serialization name for property <see cref="SCardError"/>
+        /// </summary>
 	    protected const string SCARD_ERROR_SERIALIZATION_NAME = "SCardError";
 
 	    /// <summary>
