@@ -6,9 +6,8 @@ namespace ReaderStatus
     public class Program
     {
         public static void Main() {
-            using (var ctx = new SCardContext()) {
-                ctx.Establish(SCardScope.System);
-
+            var contextFactory = ContextFactory.Instance;
+            using (var ctx = contextFactory.Establish(SCardScope.System)) {
                 var readerNames = ctx.GetReaders();
 	            if (readerNames == null || readerNames.Length < 1) {
 		            Console.WriteLine("No reader connected.");
@@ -19,31 +18,25 @@ namespace ReaderStatus
 	            var readerStates = ctx.GetReaderStatus(readerNames);
 
                 foreach (var state in readerStates) {
-                    Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-                    Console.WriteLine("Reader: {0}\n" +
-                        "CurrentState: {1}\n" +
-                        "EventState: {2}\n" +
-                        "CurrentStateValue: {3}\n" +
-                        "EventStateValue: {4}\n" +
-                        "UserData: {5}\n" +
-                        "CardChangeEventCnt: {6}\n" +
-                        "ATR: {7}",
-                        
-                        state.ReaderName, 
-                        state.CurrentState, 
-                        state.EventState, 
-                        state.CurrentStateValue,
-                        state.EventStateValue, 
-                        state.UserData, 
-                        state.CardChangeEventCnt,
-                        BitConverter.ToString(state.Atr ?? new byte[0]));
+                    PrintReaderState(state);
 
                     state.Dispose();
                 }
-
-                ctx.Release();
             }
             Console.ReadKey();
+        }
+
+        private static void PrintReaderState(SCardReaderState state) {
+            Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            var atr = BitConverter.ToString(state.Atr ?? new byte[0]);
+            Console.WriteLine($"Reader: {state.ReaderName}\n" +
+                              $"CurrentState: {state.CurrentState}\n" +
+                              $"EventState: {state.EventState}\n" +
+                              $"CurrentStateValue: {state.CurrentStateValue}\n" +
+                              $"EventStateValue: {state.EventStateValue}\n" +
+                              $"UserData: {state.UserData}\n" +
+                              $"CardChangeEventCnt: {state.CardChangeEventCnt}\n" +
+                              $"ATR: {atr}");
         }
     }
 }

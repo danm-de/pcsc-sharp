@@ -8,19 +8,24 @@ namespace PCSC
     /// <remarks>Creates a new thread and calls the <see cref="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])" /> of the given <see cref="T:PCSC.ISCardContext" /> object.</remarks>
     public class SCardMonitor : ISCardMonitor
     {
-        private static readonly TimeSpan CANCEL_MAX_WAIT_TIME = TimeSpan.FromSeconds(30);
-        private readonly object _sync = new object();
+        private class Monitor
+        {
+            public Thread Thread;
+            public ISCardContext Context;
+            public string[] ReaderNames;
+            public volatile SCRState[] PreviousStates;
+            public volatile IntPtr[] PreviousStateValues;
+            public volatile bool CancelRequested;
+        }
+
+        private readonly object _gate = new object();
 
         private static int _monitorCount;
 
         private readonly ISCardContext _context;
         private readonly bool _releaseContextOnDispose;
-        private Thread _monitorthread;
-        
-        private volatile SCRState[] _previousStates;
-        private volatile IntPtr[] _previousStateValues;
-        private volatile string[] _readernames;
-        private volatile bool _monitoring;
+
+        private Monitor _monitor;
         private volatile bool _isDisposed;
 
         /// <summary>A general reader status change.</summary>
@@ -124,16 +129,8 @@ namespace PCSC
         /// <value>A <see cref="T:System.String" /> array of reader names. <see langword="null" /> if no readers is being monitored.</value>
         public string[] ReaderNames {
             get {
-                var currentReaderNames = _readernames;
-
-                if (currentReaderNames == null) {
-                    return null;
-                }
-
-                var tmp = new string[currentReaderNames.Length];
-                Array.Copy(currentReaderNames, tmp, currentReaderNames.Length);
-
-                return tmp;
+                var currentMonitor = _monitor;
+                return currentMonitor?.ReaderNames;
             }
         }
 
@@ -158,7 +155,7 @@ namespace PCSC
         ///         </item>
         ///     </list>
         /// </value>
-        public bool Monitoring => _monitoring;
+        public bool Monitoring => _monitor != null;
 
         /// <summary>
         /// Releases unmanaged resources and stops the background thread (if running).
@@ -173,11 +170,11 @@ namespace PCSC
         /// <remarks>The monitor object should use its own application context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.
         ///     <para>Warning: You MUST dispose the monitor instance otherwise the background thread will run forever!</para>
         /// </remarks>
+        [Obsolete("Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
         public SCardMonitor(ISCardContext context, bool releaseContextOnDispose = false) {
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
             }
-
             _context = context;
             _releaseContextOnDispose = releaseContextOnDispose;
         }
@@ -189,9 +186,26 @@ namespace PCSC
         /// <remarks>The monitor object should use its own application context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.
         ///     <para>Warning: You MUST dispose the monitor instance otherwise the background thread will run forever!</para>
         /// </remarks>
-        public SCardMonitor(ISCardContext context, SCardScope scope, bool releaseContextOnDispose = true)
-            : this(context, releaseContextOnDispose) {
+        [Obsolete("Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
+        public SCardMonitor(ISCardContext context, SCardScope scope, bool releaseContextOnDispose = true) {
+            if (context == null) {
+                throw new ArgumentNullException(nameof(context));
+            }
+            _context = context;
             _context.Establish(scope);
+            _releaseContextOnDispose = releaseContextOnDispose;
+        }
+
+        /// <summary>Creates a new SCardMonitor object that is able to listen for certain smart card / reader changes.</summary>
+        /// <param name="contextFactory">A smartcard context factory</param>
+        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
+        public SCardMonitor(IContextFactory contextFactory, SCardScope scope) {
+            if (contextFactory == null) {
+                throw new ArgumentNullException(nameof(contextFactory));
+            }
+
+            _context = contextFactory.Establish(scope);
+            _releaseContextOnDispose = true;
         }
 
         /// <summary>Returns the current state of a reader that is currently being monitored.</summary>
@@ -201,13 +215,13 @@ namespace PCSC
         /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         public IntPtr GetCurrentStateValue(int index) {
             // actually "previousStateValue" contains the last known value.
-            var currentStateValues = _previousStateValues;
+            var currentStateValues = _monitor?.PreviousStateValues;
             
             if (currentStateValues == null) {
                 throw new InvalidOperationException("Monitor object is not initialized.");
             }
             
-            if (index < 0 || (index > currentStateValues.Length)) {
+            if (index < 0 || (index >= currentStateValues.Length)) {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
@@ -220,17 +234,17 @@ namespace PCSC
         /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.SCardMonitor.ReaderNames" /> property.</remarks>
         /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         public SCRState GetCurrentState(int index) {
-            if (_previousStates == null) {
+            var previousStates = _monitor?.PreviousStates;
+
+            if (previousStates == null) {
                 throw new InvalidOperationException("Monitor object is not initialized.");
             }
 
-            lock (_previousStates) {
-                // "previousState" contains the last known value.
-                if (index < 0 || (index > _previousStates.Length)) {
-                    throw new ArgumentOutOfRangeException(nameof(index));
-                }
-                return _previousStates[index];
+            // "previousState" contains the last known value.
+            if (index < 0 || (index >= previousStates.Length)) {
+                throw new ArgumentOutOfRangeException(nameof(index));
             }
+            return previousStates[index];
         }
 
         /// <summary>Returns the reader name of a given <paramref name="index" />.</summary>
@@ -239,13 +253,13 @@ namespace PCSC
         /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.SCardMonitor.ReaderNames" /> property.</remarks>
         /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         public string GetReaderName(int index) {
-            var currentReaderNames = _readernames;
+            var currentReaderNames = _monitor?.ReaderNames;
 
             if (currentReaderNames == null) {
                 throw new InvalidOperationException("Monitor object is not initialized.");
             }
 
-            if (index < 0 || (index > currentReaderNames.Length)) {
+            if (index < 0 || (index >= currentReaderNames.Length)) {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
             return currentReaderNames[index];
@@ -253,13 +267,9 @@ namespace PCSC
 
         /// <summary>The number of readers that currently being monitored.</summary>
         /// <value>Return 0 if no reader is being monitored.</value>
-        public int ReaderCount {
-            get {
-                var currentReaderNames = _readernames;
-                
-                return currentReaderNames?.Length ?? 0;
-            }
-        }
+        public int ReaderCount => _monitor?
+            .ReaderNames?
+            .Length ?? 0;
 
         /// <summary>Disposes the object.</summary>
         /// <remarks>Dispose will call <see cref="Cancel()" /> in order to stop the background thread. The application context will be disposed if you configured the monitor to do so at construction time.</remarks>
@@ -289,13 +299,15 @@ namespace PCSC
         /// <summary>Cancels the monitoring of all readers that are currently being monitored.</summary>
         /// <remarks>This will end the monitoring. The method calls the <see cref="ISCardContext.Cancel()" /> method of its Application Context to the PC/SC Resource Manager.</remarks>
         public void Cancel() {
-            lock (_sync) {
-                if (_monitoring && _context.IsValid()) {
-                    _context.Cancel();
+            lock (_gate) {
+                var monitor = Interlocked.Exchange(ref _monitor, null);
+                if (monitor != null && monitor.Context.IsValid()) {
+                    monitor.CancelRequested = true;
+                    monitor.Context.Cancel();
                 }
             }
         }
-        
+
         /// <param name="readerName">The Smart Card reader that shall be monitored.</param>
         /// <summary>Starts to monitor a single Smart Card reader for status changes.</summary>
         /// <remarks>
@@ -370,149 +382,123 @@ namespace PCSC
             if (readerNames == null) {
                 throw new ArgumentNullException(nameof(readerNames));
             }
-            if (readerNames.Length == 0) {
+
+            var numberOfReaders = readerNames.Length;
+            if (numberOfReaders == 0) {
                 throw new ArgumentException("Empty list of reader names.", nameof(readerNames));
             }
+
             if (_isDisposed) {
                 throw new ObjectDisposedException(GetType().FullName);
             }
 
-            lock (_sync) {
-                if (_monitoring) {
-                    StopPreviousMonitoringThread();    
-                }
-                
-                if (!_context.IsValid()) {
+            lock (_gate) {
+                Cancel();
+
+                var context = _context;
+                if (!context.IsValid()) {
                     throw new InvalidContextException(SCardError.InvalidHandle,
                         "Connection context object is invalid.");
                 }
-
-                _readernames = readerNames;
-                _previousStates = new SCRState[readerNames.Length];
-                _previousStateValues = new IntPtr[readerNames.Length];
 
                 var monitorNumber = Interlocked
                     .Increment(ref _monitorCount)
                     .ToString(CultureInfo.InvariantCulture);
 
-                var threadName = string.Concat(GetType().FullName, " #", monitorNumber);
+                var threadName = string.Concat(GetType().FullName, " #", 
+                    monitorNumber);
 
-                _monitorthread = new Thread(StartMonitor) {
-                    IsBackground = true,
-                    Name = threadName
+                var monitor = new Monitor {
+                    ReaderNames = readerNames,
+                    PreviousStates = new SCRState[numberOfReaders],
+                    PreviousStateValues = new IntPtr[numberOfReaders],
+                    Context = context,
+                    Thread = new Thread(arg => StartMonitor((Monitor)arg)) {
+                        IsBackground = true,
+                        Name = threadName
+                    }
                 };
 
-                _monitorthread.Start();
+                monitor.Thread.Start(monitor);
+                _monitor = monitor;
             }
         }
 
-        private void StopPreviousMonitoringThread() {
-            var oldThread = _monitorthread;
-            
-            Cancel();
+        private void StartMonitor(Monitor monitor) {
 
-            if (oldThread == null) {
-                return;
+            var readerStates = new SCardReaderState[monitor.ReaderNames.Length];
+
+            for (var i = 0; i < monitor.ReaderNames.Length; i++) {
+                readerStates[i] = new SCardReaderState {
+                    ReaderName = monitor.ReaderNames[i],
+                    CurrentState = SCRState.Unaware
+                };
             }
 
-            if (oldThread == Thread.CurrentThread) {
-                const string MESSAGE = "Cannot (re-)start monitor within its own thread. " 
-                                       + "Hint: Check if your code tries to start the monitor inside of StatusChanged, " 
-                                       + "CardInserted, CardRemoved, Initialized or MonitorException. This is not allowed!";
-                throw new InvalidOperationException(MESSAGE);
-            }
+            var rc = monitor.Context.GetStatusChange(IntPtr.Zero, readerStates);
 
-            if (oldThread.Join(CANCEL_MAX_WAIT_TIME)) {
-                return;
-            }
+            if (rc == SCardError.Success) {
+                // initialize event
+                for (var i = 0; i < readerStates.Length; i++) {
+                    var initState = readerStates[i].EventState & (~(SCRState.Changed));
 
-            throw new TimeoutException("Could not stop monitor thread.");
-        }
+                    OnInitialized(readerStates[i].Atr, monitor.ReaderNames[i], initState);
 
-        private void StartMonitor() {
-            try {
-                _monitoring = true;
-
-                var readerStates = new SCardReaderState[_readernames.Length];
-
-                for (var i = 0; i < _readernames.Length; i++) {
-                    readerStates[i] = new SCardReaderState {
-                        ReaderName = _readernames[i],
-                        CurrentState = SCRState.Unaware
-                    };
+                    monitor.PreviousStates[i] = initState; // remove "Changed"
+                    monitor.PreviousStateValues[i] = readerStates[i].EventStateValue;
                 }
 
-                var rc = _context.GetStatusChange(IntPtr.Zero, readerStates);
-
-                if (rc == SCardError.Success) {
-                    // initialize event
+                while (!_isDisposed && !monitor.CancelRequested) {
                     for (var i = 0; i < readerStates.Length; i++) {
-                        var initState = readerStates[i].EventState & (~(SCRState.Changed));
-                        
-                        OnInitialized(readerStates[i].Atr, _readernames[i], initState);
-
-                        _previousStates[i] = initState; // remove "Changed"
-                        _previousStateValues[i] = readerStates[i].EventStateValue;
+                        readerStates[i].CurrentStateValue = monitor.PreviousStateValues[i];
                     }
 
-                    while (!_isDisposed) {
-                        for (var i = 0; i < readerStates.Length; i++) {
-                            readerStates[i].CurrentStateValue = _previousStateValues[i];
+                    // block until status change occurs                    
+                    rc = monitor.Context.GetStatusChange(monitor.Context.Infinite, readerStates);
+
+                    // Cancel?
+                    if (rc != SCardError.Success) {
+                        break;
+                    }
+
+                    for (var i = 0; i < readerStates.Length; i++) {
+                        var newState = readerStates[i].EventState;
+                        newState &= (~(SCRState.Changed)); // remove "Changed"
+
+                        var atr = readerStates[i].Atr;
+                        var previousState = monitor.PreviousStates[i];
+                        var readerName = monitor.ReaderNames[i];
+
+                        // Status change
+                        if (previousState != newState) {
+                            OnStatusChanged(atr, readerName, previousState, newState);
                         }
 
-                        // block until status change occurs                    
-                        rc = _context.GetStatusChange(_context.Infinite, readerStates);
-                        
-                        // Cancel?
-                        if (rc != SCardError.Success) {
-                            break;
+                        // Card inserted
+                        if (newState.CardIsPresent() && previousState.CardIsAbsent()) {
+                            OnCardInserted(atr, readerName, newState);
                         }
 
-                        for (var i = 0; i < readerStates.Length; i++) {
-                            var newState = readerStates[i].EventState;
-                            newState &= (~(SCRState.Changed)); // remove "Changed"
-
-                            var atr = readerStates[i].Atr;
-                            var previousState = _previousStates[i];
-                            var readerName = _readernames[i];
-
-                            // Status change
-                            if (previousState != newState) {
-                                OnStatusChanged(atr, readerName, previousState, newState);
-                            }
-
-                            // Card inserted
-                            if (newState.CardIsPresent() && previousState.CardIsAbsent()) {
-                                OnCardInserted(atr, readerName, newState);
-                            }
-
-                            // Card removed
-                            if (newState.CardIsAbsent() && previousState.CardIsPresent()) {
-                                OnCardRemoved(atr, readerName, newState);
-                            }
-
-                            _previousStates[i] = newState;
-                            _previousStateValues[i] = readerStates[i].EventStateValue;
+                        // Card removed
+                        if (newState.CardIsAbsent() && previousState.CardIsPresent()) {
+                            OnCardRemoved(atr, readerName, newState);
                         }
+
+                        monitor.PreviousStates[i] = newState;
+                        monitor.PreviousStateValues[i] = readerStates[i].EventStateValue;
                     }
                 }
-
-                foreach (var state in readerStates) {
-                    state.Dispose();
-                }
-
-                if (!_isDisposed && (rc != SCardError.Cancelled)) {
-                    OnMonitorException(rc, "An error occured during SCardGetStatusChange(..).");
-                }
-
-            } finally {
-                _readernames = null;
-                _previousStateValues = null;
-                _previousStates = null;
-
-                _monitoring = false;
-                _monitorthread = null;
             }
+
+            foreach (var state in readerStates) {
+                state.Dispose();
+            }
+
+            if (_isDisposed || monitor.CancelRequested || rc == SCardError.Cancelled) {
+                return;
+            }
+
+            OnMonitorException(rc, "An error occured during SCardGetStatusChange(..).");
         }
 
         private void OnInitialized(byte[] atr, string readerName, SCRState initState) {

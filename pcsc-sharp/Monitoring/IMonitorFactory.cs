@@ -9,11 +9,18 @@ namespace PCSC
     public interface IMonitorFactory
     {
         /// <summary>
+        ///  Creates a smart card event monitor 
+        /// </summary>
+        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
+        /// <returns>A <see cref="ISCardMonitor"/></returns>
+        ISCardMonitor Create(SCardScope scope);
+
+        /// <summary>
         /// Creates and starts a smart card event monitor for a specific reader
         /// </summary>
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <param name="readerName">Name of the smart card reader that shall be monitored.</param>
-        /// <returns>A <see cref="ISCardMonitor"/></returns>
+        /// <returns>A started <see cref="ISCardMonitor"/></returns>
         ISCardMonitor Start(SCardScope scope, string readerName);
 
         /// <summary>
@@ -21,7 +28,7 @@ namespace PCSC
         /// </summary>
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <param name="readerNames">Names of the smart card readers that shall be monitored.</param>
-        /// <returns>A <see cref="ISCardMonitor"/></returns>
+        /// <returns>A started <see cref="ISCardMonitor"/></returns>
         ISCardMonitor Start(SCardScope scope, IEnumerable<string> readerNames);
 
         /// <summary>
@@ -30,7 +37,7 @@ namespace PCSC
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <param name="readerNames">Names of the smart card readers that shall be monitored.</param>
         /// <param name="preStartAction">Action that will be invoked prior monitor start</param>
-        /// <returns>A <see cref="ISCardMonitor"/></returns>
+        /// <returns>A started <see cref="ISCardMonitor"/></returns>
         ISCardMonitor Start(SCardScope scope, IEnumerable<string> readerNames, Action<ISCardMonitor> preStartAction);
 
         /// <summary>

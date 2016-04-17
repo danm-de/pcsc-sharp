@@ -42,8 +42,18 @@ namespace RxEventsTestWpf
                 _subscription = _monitorFactory
                     .CreateObservable(SCardScope.System, Readers)
                     .ObserveOn(_uiScheduler) // Important! Monitor does not run on UI thread.
-                    .Subscribe(EventHistory.Add);
+                    .Subscribe(OnNext, OnError);
             }
+        }
+
+        private void OnNext(MonitorEvent ev) {
+            EventHistory.Add(ev);
+        }
+
+        private void OnError(Exception exception) {
+            Debug.Print(exception.Message);
+            Readers.Clear();
+            EventHistory.Clear();
         }
 
         public void Dispose() {

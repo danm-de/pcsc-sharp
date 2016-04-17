@@ -28,6 +28,7 @@ namespace CardStatus
                         var sc = reader.Connect(readerName, SCardShareMode.Shared, SCardProtocol.Any);
                         if (sc == SCardError.Success) {
                             DisplayReaderStatus(reader);
+                            reader.Disconnect(SCardReaderDisposition.Reset);
                         } else {
                             Console.WriteLine("No card inserted or reader is reserved exclusively by another application.");
                             Console.WriteLine("Error message: {0}\n", SCardHelper.StringifyError(sc));

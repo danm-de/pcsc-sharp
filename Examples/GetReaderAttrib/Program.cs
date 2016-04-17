@@ -27,22 +27,23 @@ namespace GetReaderAttrib
 
                 if (rc != SCardError.Success) {
                     Console.WriteLine(" failed. No smart card present? " + SCardHelper.StringifyError(rc) + "\n");
-                } else {
-                    Console.WriteLine(" done.");
-
-                    // receive ATR string attribute
-                    byte[] atr;
-                    rc = reader.GetAttrib(SCardAttribute.AtrString, out atr);
-
-                    if (rc != SCardError.Success) {
-                        // ATR not supported?
-                        Console.WriteLine("Error by trying to receive the ATR. {0}\n", SCardHelper.StringifyError(rc));
-                    } else {
-                        Console.WriteLine("ATR: {0}\n", BitConverter.ToString(atr ?? new byte[] {}));
-                    }
-
-                    reader.Disconnect(SCardReaderDisposition.Leave);
+                    continue;
                 }
+
+                Console.WriteLine(" done.");
+
+                // receive ATR string attribute
+                byte[] atr;
+                rc = reader.GetAttrib(SCardAttribute.AtrString, out atr);
+
+                if (rc != SCardError.Success) {
+                    // ATR not supported?
+                    Console.WriteLine("Error by trying to receive the ATR. {0}\n", SCardHelper.StringifyError(rc));
+                } else {
+                    Console.WriteLine("ATR: {0}\n", BitConverter.ToString(atr ?? new byte[] {}));
+                }
+
+                reader.Disconnect(SCardReaderDisposition.Leave);
             }
 
             // We MUST release here since we didn't use the 'using(..)' statement

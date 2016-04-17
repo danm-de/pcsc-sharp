@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PCSC
+﻿namespace PCSC
 {
     /// <summary>
     /// Smart card context factory

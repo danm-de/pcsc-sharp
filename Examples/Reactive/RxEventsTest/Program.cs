@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reactive.Linq;
 using PCSC;
 using PCSC.Reactive;
+using PCSC.Reactive.Events;
 
 namespace RxEventsTest
 {
@@ -22,11 +23,18 @@ namespace RxEventsTest
             var monitorFactory = MonitorFactory.Instance;
             var subscription = monitorFactory
                 .CreateObservable(SCardScope.System, readers)
-                .Do(ev => Console.WriteLine($"Event type {ev.GetType()}, reader: {ev.ReaderName}"))
-                .Subscribe();
+                .Subscribe(OnNext, OnError);
 
             Console.ReadKey();
             subscription.Dispose();
+        }
+
+        private static void OnError(Exception exception) {
+            Console.WriteLine("ERROR: {0}", exception.Message);
+        }
+
+        private static void OnNext(MonitorEvent ev) {
+            Console.WriteLine($"Event type {ev.GetType()}, reader: {ev.ReaderName}");
         }
 
         private static string[] GetReaders() {

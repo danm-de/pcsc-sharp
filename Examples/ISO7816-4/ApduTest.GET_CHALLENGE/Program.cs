@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace ApduTest.GetChallenge
+namespace APDUTest
 {
     public class Program
     {
@@ -50,10 +51,10 @@ namespace ApduTest.GetChallenge
             Console.ReadKey();
         }
 
-        private static string ChooseReader(string[] readerNames) {
+        private static string ChooseReader(IList<string> readerNames) {
             // Show available readers.
             Console.WriteLine("Available readers: ");
-            for (var i = 0; i < readerNames.Length; i++) {
+            for (var i = 0; i < readerNames.Count; i++) {
                 Console.WriteLine("[" + i + "] " + readerNames[i]);
             }
 
@@ -62,7 +63,7 @@ namespace ApduTest.GetChallenge
             var line = Console.ReadLine();
             int choice;
 
-            if (int.TryParse(line, out choice) && (choice >= 0) && (choice <= readerNames.Length)) {
+            if (int.TryParse(line, out choice) && (choice >= 0) && (choice <= readerNames.Count)) {
                 return readerNames[choice];
             }
 
