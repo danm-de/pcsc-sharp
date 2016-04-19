@@ -1,7 +1,6 @@
-type file
+type project
 id PCSC.Reactive
 authors Daniel Mueller
-version 3.5.0
 owners Daniel Mueller
 licenseUrl https://github.com/danm-de/pcsc-sharp/blob/master/COPYING
 projectUrl https://github.com/danm-de/pcsc-sharp
@@ -13,7 +12,3 @@ tags PC/SC smartcard apdu pcsc-sharp
 copyright Copyright 2016 Daniel Mueller
 description
     Creates observables from smart card monitor events.
-files
-    ../.build/pcsc-sharp-rx.pdb ==> lib/net45/
-    ../.build/pcsc-sharp-rx.xml ==> lib/net45/
-    ../.build/pcsc-sharp-rx.dll ==> lib/net45/

@@ -6,6 +6,9 @@ using PCSC.Reactive.Events;
 
 namespace PCSC.Reactive
 {
+    /// <summary>
+    /// Smart card monitor extension methods
+    /// </summary>
     public static class SCardMonitorExtensionMethods
     {
         /// <summary>

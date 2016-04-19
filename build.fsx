@@ -4,22 +4,27 @@ open Fake
 
 // Properties
 let buildDir = "./.build/"
+let binaryOutDir = ""
 let testDir = "./.build/"
 let packagingDir = buildDir + "/package"
+let buildConfig = environVarOrDefault "build_configuration" "Release"
 
 // Targets
 Target "Clean" (fun _ ->
     CleanDir buildDir
+    !! "*.sln"
+      |> MSBuild binaryOutDir "Clean"  ["Configuration", buildConfig; "Platform", "Any CPU"] 
+      |> Log "MSBuild-Clean: "
 )
 
-Target "BuildApp" (fun _ ->
+Target "Build" (fun _ ->
     !! "*.sln"
-      |> MSBuildRelease buildDir "Build"
-      |> Log "AppBuild-Output: "
+      |> MSBuild binaryOutDir "Build" ["Configuration", buildConfig; "Platform", "Any CPU"]
+      |> Log "MSBuild: "
 )
 
 Target "Test" (fun _ ->
-    !! (testDir + "/*.Test.dll")
+    !! (sprintf "Tests/**/bin/%s/*.Test.dll" buildConfig)
       |> NUnit (fun p ->
           {p with
              DisableShadowCopy = true;
@@ -29,6 +34,7 @@ Target "Test" (fun _ ->
 Target "NuGet" (fun _ ->
     Paket.Pack(fun p ->
         {p with
+           Symbols = true;
            OutputPath = buildDir })
 )
 
@@ -44,12 +50,10 @@ Target "Default" (fun _ ->
 
 // Dependencies
 "Clean"
-  ==> "BuildApp"
+  ==> "Build"
+  ==> "NuGet"
   ==> "Test"
   ==> "Default"
-
-"BuildApp"
-  ==> "NuGet"
 
 "NuGet"
   ==> "NuGetPush"

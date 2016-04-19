@@ -16,6 +16,10 @@ namespace RxEventsTestWpf
             _action(parameter);
         }
 
+        public void RaiseCanExecuteChanged() {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
+
         public SimpleDelegateCommand(Action<object> action) {
             if (action == null) {
                 throw new ArgumentNullException(nameof(action));

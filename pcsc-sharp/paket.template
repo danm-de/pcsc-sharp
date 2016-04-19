@@ -1,7 +1,6 @@
-type file
+type project
 id PCSC
 authors Daniel Mueller
-version 3.5.0
 owners Daniel Mueller
 licenseUrl https://github.com/danm-de/pcsc-sharp/blob/master/COPYING
 projectUrl https://github.com/danm-de/pcsc-sharp
@@ -15,8 +14,4 @@ description
     Contains classes to access the Personal Computer/Smart Card Resource Manager using
     the system's native PC/SC API. Implements partial ISO7816 support (APDU etc.).
     The library is written to run on both, Windows and Unix (Linux with Mono using PCSC Lite).
-files
-    ../.build/pcsc-sharp.pdb ==> lib/net40/
-    ../.build/pcsc-sharp.xml ==> lib/net40/
-    ../.build/pcsc-sharp.dll ==> lib/net40/
-    ../.build/pcsc-sharp.dll.config ==> lib/net40/
+files    pcsc-sharp.dll.config ==> lib/net40/
