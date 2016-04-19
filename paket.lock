@@ -1,7 +1,7 @@
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    FAKE (4.0.2)
+    FAKE (4.25.4)
     FakeItEasy (1.25.3)
     FluentAssertions (3.4.1)
     NUnit (2.6.4)
