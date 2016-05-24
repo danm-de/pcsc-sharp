@@ -224,9 +224,10 @@ namespace PCSC.Iso7816
         private ResponseApdu IssueGetResponseCommand(CommandApdu commandApdu, ResponseApdu lastResponseApdu, Response response, SCardPCI receivePci) {
             /* The transmission system shall issue a GET RESPONSE command APDU (or TPDU)
              * to the card by assigning the minimum of SW2 and Le to parameter Le (or P3)). 
-             * Le = min(Le,SW2) 
+             * Le = Le > 0 ? min(Le,SW2) : SW2
+             * http://www.cardwerk.com/smartcards/smartcard_standard_ISO7816-4_annex-a.aspx#AnnexA_4
              */
-            var le = (commandApdu.Le < lastResponseApdu.SW2)
+            var le = (commandApdu.Le > 0) && (commandApdu.Le < lastResponseApdu.SW2)
                 ? commandApdu.Le
                 : lastResponseApdu.SW2;
 
