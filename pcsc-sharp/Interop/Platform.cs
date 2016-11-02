@@ -23,7 +23,7 @@ namespace PCSC.Interop
         static Platform() {
             var platform = Environment.OSVersion.Platform.ToString();
 
-            if (platform.Contains("Win32") || platform.Contains("Win64")) {
+            if (platform.Contains("Win32") || platform.Contains("Win64") || platform.Contains("WinCE")) {
                 IsWindows = true;
                 Lib = new WinSCardAPI {
                     TextEncoding = new UnicodeEncoding()
