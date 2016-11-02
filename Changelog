@@ -3,6 +3,12 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2016-11-02  Daniel Mueller <daniel@danm.de>
+* New version 3.5.2
+* Pull request https://github.com/danm-de/pcsc-sharp/pull/36
+  Added platform check for Windows CE (tested by Erik Kralj)
+  Thanks to Erik Kralj
+
 2016-05-24	Daniel Mueller <daniel@danm.de>
 * New version 3.5.1
 * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/28
