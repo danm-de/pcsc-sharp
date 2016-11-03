@@ -3,6 +3,13 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2016-11-03  Daniel Mueller <daniel@danm.de>
+* New version 3.5.3
+* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/37
+  Dispose() or finalizer should not throw if SCardContext.Release()
+  returns ERROR_INVALID_HANDLE.
+  Thanks to SGN-JSE
+
 2016-11-02  Daniel Mueller <daniel@danm.de>
 * New version 3.5.2
 * Pull request https://github.com/danm-de/pcsc-sharp/pull/36
