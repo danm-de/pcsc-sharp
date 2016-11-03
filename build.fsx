@@ -4,6 +4,8 @@ open Fake
 
 // Properties
 let buildDir = "./.build/"
+let nugetDir = buildDir @@ "nuget"
+let symbolDir = buildDir @@ "symbols"
 let binaryOutDir = ""
 let testDir = "./.build/"
 let packagingDir = buildDir + "/package"
@@ -36,12 +38,29 @@ Target "NuGet" (fun _ ->
         {p with
            Symbols = true;
            OutputPath = buildDir })
+    
+    ensureDirectory nugetDir
+    ensureDirectory symbolDir
+    !! (buildDir @@ "*.nupkg")
+        |> Seq.iter (fun file -> MoveFile nugetDir file)
+    
+    !! (nugetDir @@ "*.symbols.nupkg")
+        |> Seq.iter (fun file -> MoveFile symbolDir file)
 )
 
 Target "NuGetPush" (fun _ ->
     Paket.Push(fun p -> 
         {p with
-           WorkingDir = buildDir })
+           DegreeOfParallelism = 1
+           WorkingDir = nugetDir 
+        })
+
+    Paket.Push(fun p -> 
+        {p with
+           PublishUrl = "https://nuget.smbsrc.net/"
+           DegreeOfParallelism = 1
+           WorkingDir = symbolDir
+        })
 )
 
 Target "Default" (fun _ ->
