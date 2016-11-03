@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using PCSC.Interop;
 
@@ -16,7 +17,7 @@ namespace PCSC
         /// Destroys application context to the PC/SC Resource Manager.
         /// </summary>
         ~SCardContext() {
-            Dispose(false);
+	        Dispose(false);
         }
 
 		/// <summary>Creates an Application Context to the PC/SC Resource Manager.</summary>
@@ -90,7 +91,9 @@ namespace PCSC
                     break;
                 case SCardError.InvalidHandle:
                     throw new InvalidContextException(rc, "Invalid Context handle");
-                default:
+				case SCardError.InvalidHandleWindows:
+					throw new InvalidContextException(rc, "Invalid Context handle");
+				default:
 		            rc.Throw();
 		            break;
             }
@@ -157,10 +160,15 @@ namespace PCSC
         /// <summary>Disposes a PC/SC application context.</summary>
         /// <param name="disposing">Ignored. If an application context to the PC/SC Resource Manager has been established it will call the <see cref="Release()" /> method.</param>
         protected virtual void Dispose(bool disposing) {
-            // we must free unmanaged resources in order to avoid memleeks.
-            if (_hasContext) {
-                Release();
-            }
+	        if (!_hasContext) return;
+
+			try {
+				// free unmanaged resources in order to avoid memleeks.
+				Release();
+	        } catch (InvalidContextException) {
+		        // RDP connection disconnected?
+		        // See https://github.com/danm-de/pcsc-sharp/issues/37
+	        }
         }
 
 		/// <summary>Returns a list of currently available readers on the system.</summary>

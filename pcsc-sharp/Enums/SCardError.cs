@@ -20,6 +20,9 @@ namespace PCSC
         /// <summary>The supplied handle was invalid. (SCARD_E_INVALID_HANDLE)</summary>
         [Description("The supplied handle was invalid. ")]
         InvalidHandle = unchecked((int) 0x80100003),
+		/// <summary>The supplied handle was invalid. (ERROR_INVALID_HANDLE)</summary>
+		[Description("The supplied handle was invalid. (Windows only)")]
+		InvalidHandleWindows = 6,
         /// <summary>One or more of the supplied parameters could not be properly interpreted. (SCARD_E_INVALID_PARAMETER)</summary>
         [Description("One or more of the supplied parameters could not be properly interpreted.")]
         InvalidParameter = unchecked((int) 0x80100004),
@@ -210,6 +213,6 @@ namespace PCSC
 
         /// <summary>No PIN was presented to the smart card. (SCARD_W_CARD_NOT_AUTHENTICATED)</summary>
         [Description("No PIN was presented to the smart card.")]
-        CardNotAuthenticated = unchecked((int) 0x8010006F)
+        CardNotAuthenticated = unchecked((int) 0x8010006F),
     }
 }
