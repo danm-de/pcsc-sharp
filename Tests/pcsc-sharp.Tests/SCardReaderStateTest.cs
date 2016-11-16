@@ -2,7 +2,7 @@
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace PCSC.Test
+namespace PCSC.Tests
 {
     [TestFixture]
     public class SCardReaderStateTest

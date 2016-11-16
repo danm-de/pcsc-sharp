@@ -9,17 +9,17 @@ namespace PCSC
         /// <summary>
         /// All connected smartcard reader devices
         /// </summary>
-        public IEnumerable<string> All { get; }
+        public IEnumerable<string> AllReaders { get; }
         
         /// <summary>
-        /// Recently attached/added smartcard reader devices
+        /// Recently attached (added) smartcard reader devices
         /// </summary>
-        public IEnumerable<string> Attached { get; }
+        public IEnumerable<string> AttachedReaders { get; }
 
         /// <summary>
-        /// Recently detached/removed smartcard reader devices
+        /// Recently detached (removed) smartcard reader devices
         /// </summary>
-        public IEnumerable<string> Detached { get; }
+        public IEnumerable<string> DetachedReaders { get; }
 
         /// <summary>
         /// Creates a new instance
@@ -28,9 +28,9 @@ namespace PCSC
         /// <param name="attachedReaders">Attached/added smartcard reader devices</param>
         /// <param name="detachedReaders">Detached/removed smartcard reader devices</param>
         public DeviceChangeEventArgs(IEnumerable<string> allReaders, IEnumerable<string> attachedReaders, IEnumerable<string> detachedReaders) {
-            All = allReaders;
-            Attached = attachedReaders;
-            Detached = detachedReaders;
+            AllReaders = allReaders;
+            AttachedReaders = attachedReaders;
+            DetachedReaders = detachedReaders;
         }
     }
 }

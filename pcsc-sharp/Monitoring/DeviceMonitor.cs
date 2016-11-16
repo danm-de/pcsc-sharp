@@ -45,7 +45,7 @@ namespace PCSC
 
         private string GetInstanceName() {
             var count = Interlocked.Increment(ref _instanceCounter);
-            return $"{GetType().Name}#{count}";
+            return $"{GetType().Name} #{count}";
         }
 
         /// <summary>
@@ -73,7 +73,8 @@ namespace PCSC
                 }
 
                 _thread = new Thread(() => StartMonitor(ctx)) {
-                    Name = _instanceName
+                    Name = _instanceName,
+                    IsBackground = true
                 };
                 _thread.Start();
             }

@@ -1,37 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace PCSC.Test.Monitoring.DeviceMonitorFactorySpecs
+namespace PCSC.Tests.Monitoring.MonitorFactorySpecs
 {
     [TestFixture]
-    public class If_the_user_starts_the_device_monitor : Spec
+    public class If_the_user_starts_a_monitor_for_a_single_smart_card_reader : Spec
     {
-        private const string READER_A = "READER_A";
+        private const string REQUESTED_READER = "MY_READER";
         private readonly IContextFactory _contextFactory = A.Fake<IContextFactory>();
         private readonly ISCardContext _context = A.Fake<ISCardContext>();
         private readonly AutoResetEvent _getStatusChangeCall = new AutoResetEvent(false);
 
-        private DeviceMonitorFactory _sut;
+        private MonitorFactory _sut;
+        private ISCardMonitor _monitor;
         private bool _monitorHasBeenStarted;
-        private IDeviceMonitor _monitor;
 
         protected override void EstablishContext() {
-            A.CallTo(() => _contextFactory.Establish(SCardScope.System))
+			A.CallTo(() => _contextFactory.Establish(SCardScope.System))
                 .Returns(_context);
 
-            A.CallTo(() => _context.IsValid())
-                .Returns(true);
+			A.CallTo(() => _context.IsValid())
+				.Returns(true);
 
-            A.CallTo(() => _context.GetReaders())
-                .Returns(new[] {READER_A});
-
-            A.CallTo(() => _context.GetStatusChange(SCardContext.INFINITE, A<SCardReaderState[]>.That.Matches(
-                    states => Match(states))))
+			A.CallTo(() => _context.GetStatusChange(IntPtr.Zero, A<SCardReaderState[]>.That.Matches(
+                    states => states.Any(s => s.ReaderName == REQUESTED_READER))))
                 .Invokes(call => {
                     _getStatusChangeCall.Set();
                     _monitorHasBeenStarted = true;
@@ -39,14 +35,7 @@ namespace PCSC.Test.Monitoring.DeviceMonitorFactorySpecs
                 })
                 .Returns(SCardError.Success);
 
-            _sut = new DeviceMonitorFactory(_contextFactory);
-        }
-
-        private static bool Match(IEnumerable<SCardReaderState> states) {
-            var state = states.Single();
-            return state.ReaderName == "\\\\?PnP?\\Notification"
-                && state.CurrentStateValue == (IntPtr)(1 << 16)
-                && state.EventStateValue == (IntPtr)SCRState.Unknown;
+            _sut = new MonitorFactory(_contextFactory);
         }
 
         protected override void Cleanup() {
@@ -54,15 +43,20 @@ namespace PCSC.Test.Monitoring.DeviceMonitorFactorySpecs
         }
 
         protected override void BecauseOf() {
-            _monitor = _sut.Start(SCardScope.System);
+            _monitor = _sut.Start(SCardScope.System, REQUESTED_READER);
 
             // Give the monitor thread 5 seconds (until we fail this test)
             _getStatusChangeCall.WaitOne(TimeSpan.FromSeconds(5));
         }
 
         [Test]
-        public void Shall_it_start_the_monitor_thread() {
+        public void Shall_it_start_the_monitor() {
             _monitorHasBeenStarted.Should().BeTrue();
+        }
+
+        [Test]
+        public void Shall_the_requested_reader_listed_as_monitored_device() {
+            _monitor.ReaderNames.Should().Contain(REQUESTED_READER);
         }
     }
 }

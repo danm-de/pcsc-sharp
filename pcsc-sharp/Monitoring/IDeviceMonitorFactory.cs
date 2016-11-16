@@ -8,6 +8,13 @@ namespace PCSC
     public interface IDeviceMonitorFactory
     {
         /// <summary>
+        /// Creates a device monitor
+        /// </summary>
+        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
+        /// <returns>A <see cref="IDeviceMonitor"/></returns>
+        IDeviceMonitor Create(SCardScope scope);
+
+        /// <summary>
         /// Starts device monitoring
         /// </summary>
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>

@@ -65,7 +65,7 @@ namespace PCSC.Reactive
             var monitorException = Observable.FromEventPattern<MonitorExceptionEvent, PCSCException>(
                 handler => monitor.MonitorException += handler,
                 handler => monitor.MonitorException -= handler,
-                scheduler)
+                useScheduler)
                 .Select(ev => ev.EventArgs);
 
             return Observable.Create<MonitorEvent>(obs => {

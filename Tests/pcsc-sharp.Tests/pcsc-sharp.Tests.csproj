@@ -7,8 +7,8 @@
     <ProjectGuid>{F39FC685-9FB2-490D-9DDD-AE64379D7545}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PCSC.Test</RootNamespace>
-    <AssemblyName>pcsc-sharp.Test</AssemblyName>
+    <RootNamespace>PCSC.Tests</RootNamespace>
+    <AssemblyName>pcsc-sharp.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Iso7816\CommandApduTests.cs" />
+    <Compile Include="Iso7816\CommandApduSpecs\CommandApduTests.cs" />
     <Compile Include="Monitoring\DeviceMonitorFactorySpecs\DeviceMonitorFactorySpecs.cs" />
     <Compile Include="Monitoring\DeviceMonitorSpecs\DeviceMonitorSpecs.cs" />
     <Compile Include="Monitoring\MonitorFactorySpecs\MonitorFactorySpecs.cs" />
@@ -56,7 +56,6 @@
   <ItemGroup>
     <None Include="paket.references" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

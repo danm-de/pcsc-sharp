@@ -24,6 +24,15 @@ namespace PCSC
         }
 
         /// <summary>
+        /// Creates a device monitor
+        /// </summary>
+        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
+        /// <returns>A <see cref="IDeviceMonitor"/></returns>
+        public IDeviceMonitor Create(SCardScope scope) {
+            return new DeviceMonitor(_contextFactory, scope);
+        }
+
+        /// <summary>
         /// Starts device monitoring
         /// </summary>
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
@@ -39,7 +48,7 @@ namespace PCSC
         /// <param name="preStartAction">Action that will be invoked prior monitor start</param>
         /// <returns>A started <see cref="IDeviceMonitor"/></returns>
         public IDeviceMonitor Start(SCardScope scope, Action<IDeviceMonitor> preStartAction) {
-            var monitor = new DeviceMonitor(_contextFactory, scope);
+            var monitor = Create(scope);
 
             try {
                 preStartAction?.Invoke(monitor);
