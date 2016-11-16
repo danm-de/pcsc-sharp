@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Linq;
-using System.Reactive.Linq;
 using PCSC;
 using PCSC.Reactive;
 using PCSC.Reactive.Events;
 
 namespace RxEventsTest
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args) {
+        public static void Main() {
             var readers = GetReaders();
 
             if (!readers.Any()) {
