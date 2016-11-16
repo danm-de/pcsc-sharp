@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RxEventsTest", "Examples\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RxEventsTestWpf", "Examples\Reactive\RxEventsTestWpf\RxEventsTestWpf.csproj", "{CA1903C2-A86A-4181-A900-D9B8AA733353}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListReaderEventsNative", "Examples\ListReaderEventsNative\ListReaderEventsNative.csproj", "{91F9C99E-CB50-4128-ACEF-B22B743BABBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,6 +102,10 @@ Global
 		{CA1903C2-A86A-4181-A900-D9B8AA733353}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA1903C2-A86A-4181-A900-D9B8AA733353}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA1903C2-A86A-4181-A900-D9B8AA733353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F9C99E-CB50-4128-ACEF-B22B743BABBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F9C99E-CB50-4128-ACEF-B22B743BABBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F9C99E-CB50-4128-ACEF-B22B743BABBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F9C99E-CB50-4128-ACEF-B22B743BABBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,5 +124,6 @@ Global
 		{5CC8F301-1496-4255-9AE2-1B734C9E9571} = {15E67B9D-5F21-4F82-8741-B067F1C7C9A3}
 		{8209EDFD-FA5F-4016-861E-35E3F4928DDF} = {5CC8F301-1496-4255-9AE2-1B734C9E9571}
 		{CA1903C2-A86A-4181-A900-D9B8AA733353} = {5CC8F301-1496-4255-9AE2-1B734C9E9571}
+		{91F9C99E-CB50-4128-ACEF-B22B743BABBA} = {15E67B9D-5F21-4F82-8741-B067F1C7C9A3}
 	EndGlobalSection
 EndGlobal
