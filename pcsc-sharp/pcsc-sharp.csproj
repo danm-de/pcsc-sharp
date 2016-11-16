@@ -65,7 +65,9 @@
     <Compile Include="Delegates\CardInitializedEvent.cs" />
     <Compile Include="Delegates\CardInsertedEvent.cs" />
     <Compile Include="Delegates\CardRemovedEvent.cs" />
+    <Compile Include="Delegates\DeviceMonitorExceptionEvent.cs" />
     <Compile Include="Delegates\MonitorExceptionEvent.cs" />
+    <Compile Include="Delegates\DeviceChangeEvent.cs" />
     <Compile Include="Delegates\StatusChangeEvent.cs" />
     <Compile Include="Enums\SCardAttribute.cs" />
     <Compile Include="Enums\SCardClass.cs" />
@@ -75,6 +77,8 @@
     <Compile Include="Enums\SCardState.cs" />
     <Compile Include="EventArgs\CardEventArgs.cs" />
     <Compile Include="EventArgs\CardStatusEventArgs.cs" />
+    <Compile Include="EventArgs\DeviceChangeEventArgs.cs" />
+    <Compile Include="EventArgs\DeviceMonitorExceptionEventArgs.cs" />
     <Compile Include="EventArgs\StatusChangeEventArgs.cs" />
     <Compile Include="Exceptions\CommunicationErrorException.cs" />
     <Compile Include="Exceptions\WinErrorInsufficientBufferException.cs" />
@@ -105,6 +109,10 @@
     <Compile Include="Interop\Windows\SCARD_IO_REQUEST.cs" />
     <Compile Include="Interop\Windows\SCARD_READERSTATE.cs" />
     <Compile Include="Context\ISCardContext.cs" />
+    <Compile Include="Monitoring\DeviceMonitor.cs" />
+    <Compile Include="Monitoring\DeviceMonitorFactory.cs" />
+    <Compile Include="Monitoring\IDeviceMonitor.cs" />
+    <Compile Include="Monitoring\IDeviceMonitorFactory.cs" />
     <Compile Include="Monitoring\IMonitorFactory.cs" />
     <Compile Include="Monitoring\ISCardMonitor.cs" />
     <Compile Include="Iso7816\ClassByte.cs" />

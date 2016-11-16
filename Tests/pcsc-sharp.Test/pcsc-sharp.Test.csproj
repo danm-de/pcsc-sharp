@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Iso7816\CommandApduTests.cs" />
-    <Compile Include="Monitoring\MonitorFactorySpecs.cs" />
+    <Compile Include="Monitoring\DeviceMonitorFactorySpecs\DeviceMonitorFactorySpecs.cs" />
+    <Compile Include="Monitoring\DeviceMonitorSpecs\DeviceMonitorSpecs.cs" />
+    <Compile Include="Monitoring\MonitorFactorySpecs\MonitorFactorySpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SCardReaderStateTest.cs" />
     <Compile Include="Spec.cs" />
@@ -54,6 +56,7 @@
   <ItemGroup>
     <None Include="paket.references" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

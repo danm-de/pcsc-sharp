@@ -1,0 +1,65 @@
+﻿using System;
+
+namespace PCSC
+{
+    /// <summary>
+    /// Smartcard reader device monitoring factory
+    /// </summary>
+    public sealed class DeviceMonitorFactory : IDeviceMonitorFactory
+    {
+        private static readonly Lazy<IDeviceMonitorFactory> _instance = new Lazy<IDeviceMonitorFactory>(() => new DeviceMonitorFactory(ContextFactory.Instance));
+        private readonly IContextFactory _contextFactory;
+
+        /// <summary>
+        /// Default factory instance. Uses <see cref="ContextFactory.Instance"/> for context creation.
+        /// </summary>
+        public static IDeviceMonitorFactory Instance => _instance.Value;
+
+        /// <summary>
+        /// Creates a monitor instance
+        /// </summary>
+        /// <param name="contextFactory">Context factory to use</param>
+        public DeviceMonitorFactory(IContextFactory contextFactory) {
+            _contextFactory = contextFactory;
+        }
+
+        /// <summary>
+        /// Starts device monitoring
+        /// </summary>
+        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
+        /// <returns>A started <see cref="IDeviceMonitor"/></returns>
+        public IDeviceMonitor Start(SCardScope scope) {
+            return Start(scope, null);
+        }
+
+        /// <summary>
+        /// Starts device monitoring
+        /// </summary>
+        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
+        /// <param name="preStartAction">Action that will be invoked prior monitor start</param>
+        /// <returns>A started <see cref="IDeviceMonitor"/></returns>
+        public IDeviceMonitor Start(SCardScope scope, Action<IDeviceMonitor> preStartAction) {
+            var monitor = new DeviceMonitor(_contextFactory, scope);
+
+            try {
+                preStartAction?.Invoke(monitor);
+                monitor.Start();
+                return monitor;
+            } catch {
+                monitor.Dispose();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Releases the smartcard device monitor and its dependencies using the <see cref="IDisposable.Dispose"/> method.
+        /// </summary>
+        /// <param name="monitor">Smartcard device monitor that shall be stopped and disposed.</param>
+        public void Release(IDeviceMonitor monitor) {
+            if (monitor == null) {
+                throw new ArgumentNullException(nameof(monitor));
+            }
+            monitor.Dispose();
+        }
+    }
+}
