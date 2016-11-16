@@ -5,5 +5,4 @@ nuget FakeItEasy
 nuget FluentAssertions
 nuget NUnit
 nuget NUnit.Runners
-nuget Rx-Main
-nuget Rx-Wpf
+nuget System.Reactive

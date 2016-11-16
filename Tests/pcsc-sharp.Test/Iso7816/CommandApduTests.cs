@@ -10,7 +10,7 @@ namespace PCSC.Test.Iso7816.CommandApduTests
     [TestFixture]
     public class If_the_user_calls_ToArray_on_a_command_APDU
     {
-        public IEnumerable<TestCaseData> TestCases
+	    private static IEnumerable<TestCaseData> TestCases
         {
             get
             {

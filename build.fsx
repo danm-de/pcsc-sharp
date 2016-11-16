@@ -1,13 +1,13 @@
 // include Fake lib
 #r "packages/FAKE/tools/FakeLib.dll"
 open Fake
+open Fake.Testing.NUnit3
 
 // Properties
 let buildDir = "./.build/"
 let nugetDir = buildDir @@ "nuget"
 let symbolDir = buildDir @@ "symbols"
 let binaryOutDir = ""
-let testDir = "./.build/"
 let packagingDir = buildDir + "/package"
 let buildConfig = environVarOrDefault "build_configuration" "Release"
 
@@ -27,10 +27,10 @@ Target "Build" (fun _ ->
 
 Target "Test" (fun _ ->
     !! (sprintf "Tests/**/bin/%s/*.Test.dll" buildConfig)
-      |> NUnit (fun p ->
+      |> NUnit3 (fun p ->
           {p with
-             DisableShadowCopy = true;
-             OutputFile = testDir + "TestResults.xml" })
+             ShadowCopy = false
+          })
 )
 
 Target "NuGet" (fun _ ->

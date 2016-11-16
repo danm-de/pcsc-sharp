@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using FakeItEasy;
-using FakeItEasy.ExtensionSyntax.Full;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -22,13 +21,13 @@ namespace PCSC.Test.Monitoring.MonitorFactorySpecs
         private bool _monitor_has_been_started;
 
         protected override void EstablishContext() {
-            _contextFactory
-                .CallsTo(f => f.Establish(SCardScope.System))
+			A.CallTo(() => _contextFactory.Establish(SCardScope.System))
                 .Returns(_context);
 
-            _context.CallsTo(f => f.IsValid()).Returns(true);
-            _context
-                .CallsTo(f => f.GetStatusChange(IntPtr.Zero, A<SCardReaderState[]>.That.Matches(
+			A.CallTo(() => _context.IsValid())
+				.Returns(true);
+
+			A.CallTo(() => _context.GetStatusChange(IntPtr.Zero, A<SCardReaderState[]>.That.Matches(
                     states => states.Any(s => s.ReaderName == REQUESTED_READER))))
                 .Invokes(call => {
                     _get_status_change_call.Set();
