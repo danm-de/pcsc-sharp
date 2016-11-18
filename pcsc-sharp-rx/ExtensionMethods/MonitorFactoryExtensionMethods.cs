@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reactive.Concurrency;
+using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using PCSC.Reactive.Events;
 
@@ -26,7 +28,7 @@ namespace PCSC.Reactive
             if (readerName == null) {
                 throw new ArgumentNullException(nameof(readerName));
             }
-            return factory.CreateObservable(scope, new[] {readerName}, scheduler);
+            return factory.CreateObservable(scope, new[] { readerName }, scheduler);
         }
 
         /// <summary>
@@ -45,15 +47,22 @@ namespace PCSC.Reactive
                 throw new ArgumentNullException(nameof(readerNames));
             }
 
-            var useScheduler = scheduler ?? Scheduler.ForCurrentContext();
+            return Observable.Create<MonitorEvent>(obs => {
+                var monitor = factory.Create(scope);
+                var useScheduler = scheduler ?? Scheduler.ForCurrentContext();
 
-            IObservable<MonitorEvent> events = null;
-            var monitor = factory.Start(
-                scope, 
-                readerNames, 
-                preStartMonitor => events = preStartMonitor.ObserveEvents(useScheduler)
-            );
-            return Observable.Using(() => monitor, _ => events);
+                var readers = readerNames
+                    .Where(name => !string.IsNullOrWhiteSpace(name))
+                    .ToArray();
+
+                var subscription = monitor
+                    .ObserveEvents(useScheduler)
+                    .Subscribe(obs);
+
+                monitor.Start(readers);
+
+                return new CompositeDisposable(subscription, monitor);
+            });
         }
     }
 }

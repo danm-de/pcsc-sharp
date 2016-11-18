@@ -31,10 +31,7 @@ namespace PCSC.Reactive
                     handler => monitor.Initialized -= handler,
                     useScheduler)
                 .Select(ev => ev.EventArgs)
-                .Select(args => new DeviceMonitorInitialized(args))
-                .Replay();
-
-            var initializedConnected = initialized.Connect();
+                .Select(args => new DeviceMonitorInitialized(args));
 
             var statusChanged = Observable.FromEventPattern<DeviceChangeEvent, DeviceChangeEventArgs>(
                     handler => monitor.StatusChanged += handler,
@@ -54,16 +51,17 @@ namespace PCSC.Reactive
                 .Merge(statusChanged);
 
             return Observable.Create<DeviceMonitorEvent>(obs => {
-                var normalEvents = monitorEvents.Subscribe(obs.OnNext);
+                var subscription = monitorEvents.Subscribe(obs);
+                var exceptionSubscription = monitorException
+                    .Take(1)
+                    .Subscribe(args => {
+                        subscription.Dispose();
+                        obs.OnError(args.Exception);
+                    });
 
                 return new CompositeDisposable(
-                    normalEvents,
-                    initializedConnected,
-                    monitorException.Take(1).Subscribe(args => {
-                        normalEvents.Dispose();
-                        initializedConnected.Dispose();
-                        obs.OnError(args.Exception);
-                    }));
+                    subscription,
+                    exceptionSubscription);
             });
         }
 

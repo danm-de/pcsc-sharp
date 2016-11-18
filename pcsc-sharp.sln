@@ -48,6 +48,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pcsc-sharp-rx.Tests", "Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pcsc-sharp.Tests", "Tests\pcsc-sharp.Tests\pcsc-sharp.Tests.csproj", "{F39FC685-9FB2-490D-9DDD-AE64379D7545}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RxDeviceEventsTests", "Examples\Reactive\RxDeviceEventsTests\RxDeviceEventsTests.csproj", "{D611B7BA-35A2-4B06-AA77-25762B1DBAFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +120,10 @@ Global
 		{F39FC685-9FB2-490D-9DDD-AE64379D7545}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F39FC685-9FB2-490D-9DDD-AE64379D7545}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F39FC685-9FB2-490D-9DDD-AE64379D7545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D611B7BA-35A2-4B06-AA77-25762B1DBAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D611B7BA-35A2-4B06-AA77-25762B1DBAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D611B7BA-35A2-4B06-AA77-25762B1DBAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D611B7BA-35A2-4B06-AA77-25762B1DBAFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -139,5 +145,6 @@ Global
 		{7DDF4224-5212-45C4-A04E-2E4568A241DC} = {15E67B9D-5F21-4F82-8741-B067F1C7C9A3}
 		{CBCFD4A6-694B-4089-8B0F-2C158214BE02} = {D3253E47-228E-4C58-930E-A26849AEC371}
 		{F39FC685-9FB2-490D-9DDD-AE64379D7545} = {D3253E47-228E-4C58-930E-A26849AEC371}
+		{D611B7BA-35A2-4B06-AA77-25762B1DBAFF} = {5CC8F301-1496-4255-9AE2-1B734C9E9571}
 	EndGlobalSection
 EndGlobal

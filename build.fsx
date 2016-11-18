@@ -26,7 +26,7 @@ Target "Build" (fun _ ->
 )
 
 Target "Test" (fun _ ->
-    !! (sprintf "Tests/**/bin/%s/*.Test.dll" buildConfig)
+    !! (sprintf "Tests/**/bin/%s/*.Tests.dll" buildConfig)
       |> NUnit3 (fun p ->
           {p with
              ShadowCopy = false

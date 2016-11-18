@@ -7,14 +7,19 @@ c = Bug fix
 * New version 3.6.0
 * Update build & test toolset (NUnit,Fake,..)
 * Update System.Reactive (.netstandard)
-* Removed empty test project
+* Added DeviceMonitor & DeviceMonitorFactory as requested in #31
+  Thanks to @olegsavelos for providing valid sample code in
+  https://github.com/danm-de/pcsc-sharp/issues/31
+* IMonitorFactory: marked .Start(..) as obsolete (it encouraged
+  users doing bad things - it's a factory anyway, not a Starter)
+* pcsc-sharp-rx: corrected observable creation (removed .Replay)
 
 2016-11-03  Daniel Mueller <daniel@danm.de>
 * New version 3.5.3
 * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/37
   Dispose() or finalizer should not throw if SCardContext.Release()
   returns ERROR_INVALID_HANDLE.
-  Thanks to SGN-JSE
+  Thanks to @SGN-JSE
 
 2016-11-02  Daniel Mueller <daniel@danm.de>
 * New version 3.5.2
@@ -49,7 +54,7 @@ c = Bug fix
 2016-01-21	Daniel Mueller <daniel@danm.de>
 * New version 3.3.1.0
 * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/19
-  Thanks to andrew7webb!
+  Thanks to @andrew7webb!
 * Removed public IsNullOrWhiteSpace extension method for string.
 * Made InvalidApduException public.
 * Code cleanups.
@@ -57,9 +62,9 @@ c = Bug fix
 2015-10-28	Daniel Mueller <daniel@danm.de>
     * New version 3.3.0.0
     * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/11
-      Thanks to EmptySamurai!
+      Thanks to @EmptySamurai!
     * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/15
-      Thanks to anzun!
+      Thanks to @anzun!
     * WARNING: API change:
       SCardContext.GetReaders(), SCardContext.GetReaders(string[]) and 
       SCardContextGetReaderGroups() do not throw PCSCException anymore on
@@ -80,7 +85,7 @@ c = Bug fix
     * New version 3.1.0.4
     * Refactored SCardMonitor to be "more" thread safe
     * Bugfix: https://github.com/danm-de/pcsc-sharp/pull/7
-      Thanks to EmptySamurai!
+      Thanks to @EmptySamurai!
       (https://github.com/EmptySamurai)
 
 2013-11-29	Daniel Mueller <daniel@danm.de>

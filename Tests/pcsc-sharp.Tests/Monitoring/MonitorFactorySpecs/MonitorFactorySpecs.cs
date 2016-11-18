@@ -8,12 +8,10 @@ using NUnit.Framework;
 namespace PCSC.Tests.Monitoring.MonitorFactorySpecs
 {
     [TestFixture]
-    public class If_the_user_starts_a_monitor_for_a_single_smart_card_reader : Spec
+    public class If_the_user_creates_a_monitor : Spec
     {
-        private const string REQUESTED_READER = "MY_READER";
         private readonly IContextFactory _contextFactory = A.Fake<IContextFactory>();
         private readonly ISCardContext _context = A.Fake<ISCardContext>();
-        private readonly AutoResetEvent _getStatusChangeCall = new AutoResetEvent(false);
 
         private MonitorFactory _sut;
         private ISCardMonitor _monitor;
@@ -26,13 +24,8 @@ namespace PCSC.Tests.Monitoring.MonitorFactorySpecs
 			A.CallTo(() => _context.IsValid())
 				.Returns(true);
 
-			A.CallTo(() => _context.GetStatusChange(IntPtr.Zero, A<SCardReaderState[]>.That.Matches(
-                    states => states.Any(s => s.ReaderName == REQUESTED_READER))))
-                .Invokes(call => {
-                    _getStatusChangeCall.Set();
-                    _monitorHasBeenStarted = true;
-                    Thread.Sleep(TimeSpan.FromMilliseconds(100));
-                })
+			A.CallTo(() => _context.GetStatusChange(A<IntPtr>.Ignored, A<SCardReaderState[]>.Ignored))
+                .Invokes(call => { _monitorHasBeenStarted = true; })
                 .Returns(SCardError.Success);
 
             _sut = new MonitorFactory(_contextFactory);
@@ -43,20 +36,15 @@ namespace PCSC.Tests.Monitoring.MonitorFactorySpecs
         }
 
         protected override void BecauseOf() {
-            _monitor = _sut.Start(SCardScope.System, REQUESTED_READER);
+            _monitor = _sut.Create(SCardScope.System);
 
-            // Give the monitor thread 5 seconds (until we fail this test)
-            _getStatusChangeCall.WaitOne(TimeSpan.FromSeconds(5));
+            // Give the monitor thread 1 seconds (until we fail this test)
+            Thread.Sleep(TimeSpan.FromSeconds(1));
         }
 
         [Test]
-        public void Shall_it_start_the_monitor() {
-            _monitorHasBeenStarted.Should().BeTrue();
-        }
-
-        [Test]
-        public void Shall_the_requested_reader_listed_as_monitored_device() {
-            _monitor.ReaderNames.Should().Contain(REQUESTED_READER);
+        public void Shall_it_not_start_the_monitor() {
+            _monitorHasBeenStarted.Should().BeFalse();
         }
     }
 }

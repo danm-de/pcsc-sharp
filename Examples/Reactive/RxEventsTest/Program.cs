@@ -20,6 +20,7 @@ namespace RxEventsTest
             Console.WriteLine("Listen to all reader events. Press any key to stop.");
 
             var monitorFactory = MonitorFactory.Instance;
+
             var subscription = monitorFactory
                 .CreateObservable(SCardScope.System, readers)
                 .Subscribe(OnNext, OnError);
