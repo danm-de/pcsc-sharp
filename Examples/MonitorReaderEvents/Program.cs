@@ -14,7 +14,7 @@ namespace MonitorReaderEvents
             // Retrieve the names of all installed readers.
             var readerNames = GetReaderNames();
 
-            if (readerNames == null || readerNames.Length < 1) {
+            if (NoReaderFound(readerNames)) {
                 Console.WriteLine("There are currently no readers installed.");
                 Console.ReadKey();
                 return;
@@ -30,7 +30,7 @@ namespace MonitorReaderEvents
                 monitor.Start(readerNames);
 
                 // Let the program run until the user presses CTRL-Q
-                while(true) {
+                while (true) {
                     var key = Console.ReadKey();
                     if (ExitRequested(key)) {
                         break;
@@ -42,13 +42,13 @@ namespace MonitorReaderEvents
                         monitor.Start(readerNames);
                         Console.WriteLine("Monitoring started. (Press CTRL-Q to quit)");
                     }
-                } 
+                }
             }
         }
 
         private static bool ExitRequested(ConsoleKeyInfo key) {
-            return key.Modifiers == ConsoleModifiers.Control 
-                && key.Key == ConsoleKey.Q;
+            return key.Modifiers == ConsoleModifiers.Control
+                   && key.Key == ConsoleKey.Q;
         }
 
         private static void ShowUserInfo(IEnumerable<string> readerNames) {
@@ -67,12 +67,6 @@ namespace MonitorReaderEvents
             monitor.MonitorException += MonitorException;
         }
 
-        private static string[] GetReaderNames() {
-            using (var context = _contextFactory.Establish(SCardScope.System)) {
-                return context.GetReaders();
-            }
-        }
-
         private static void DisplayEvent(string eventName, CardStatusEventArgs unknown) {
             Console.WriteLine(">> {0} Event for reader: {1}", eventName, unknown.ReaderName);
             Console.WriteLine("ATR: {0}", BitConverter.ToString(unknown.Atr ?? new byte[0]));
@@ -88,6 +82,16 @@ namespace MonitorReaderEvents
         private static void MonitorException(object sender, PCSCException ex) {
             Console.WriteLine("Monitor exited due an error:");
             Console.WriteLine(SCardHelper.StringifyError(ex.SCardError));
+        }
+
+        private static string[] GetReaderNames() {
+            using (var context = _contextFactory.Establish(SCardScope.System)) {
+                return context.GetReaders();
+            }
+        }
+
+        private static bool NoReaderFound(ICollection<string> readerNames) {
+            return readerNames == null || readerNames.Count < 1;
         }
     }
 }

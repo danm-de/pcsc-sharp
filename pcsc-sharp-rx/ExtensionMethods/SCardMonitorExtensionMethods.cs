@@ -26,14 +26,11 @@ namespace PCSC.Reactive
             var useScheduler = scheduler ?? Scheduler.ForCurrentContext();
 
             var initialized = Observable.FromEventPattern<CardInitializedEvent, CardStatusEventArgs>(
-                handler => monitor.Initialized += handler,
-                handler => monitor.Initialized -= handler,
-                useScheduler)
+                    handler => monitor.Initialized += handler,
+                    handler => monitor.Initialized -= handler,
+                    useScheduler)
                 .Select(ev => ev.EventArgs)
-                .Select(args => new MonitorInitialized(args.ReaderName, args.Atr, args.State))
-                .Replay();
-                
-            var initializedConnected = initialized.Connect();
+                .Select(args => new MonitorInitialized(args.ReaderName, args.Atr, args.State));
 
             var cardInserted = Observable.FromEventPattern<CardInsertedEvent, CardStatusEventArgs>(
                 handler => monitor.CardInserted += handler,
@@ -65,21 +62,23 @@ namespace PCSC.Reactive
             var monitorException = Observable.FromEventPattern<MonitorExceptionEvent, PCSCException>(
                 handler => monitor.MonitorException += handler,
                 handler => monitor.MonitorException -= handler,
-                scheduler)
+                useScheduler)
                 .Select(ev => ev.EventArgs);
 
             return Observable.Create<MonitorEvent>(obs => {
-                var normalEvents = monitorEvents
-                    .Subscribe(obs.OnNext);
+                var subscription = monitorEvents
+                    .Subscribe(obs);
+
+                var exceptionSubscription = monitorException
+                    .Take(1)
+                    .Subscribe(ex => {
+                        subscription.Dispose();
+                        obs.OnError(ex);
+                    });
 
                 return new CompositeDisposable(
-                    normalEvents,
-                    initializedConnected,
-                    monitorException.Take(1).Subscribe(ex => {
-                        normalEvents.Dispose();
-                        initializedConnected.Dispose();
-                        obs.OnError(ex);
-                    }));
+                    subscription,
+                    exceptionSubscription);
             });
         }
     }

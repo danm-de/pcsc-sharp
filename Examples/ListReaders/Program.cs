@@ -6,8 +6,8 @@ namespace ListReaders
     public class Program
     {
         public static void Main() {
-            using (var context = new SCardContext()) {
-                context.Establish(SCardScope.System);
+            var contextFactory = ContextFactory.Instance;
+            using (var context = contextFactory.Establish(SCardScope.System)) {
 
                 Console.WriteLine("Context is valid? -> " + context.IsValid());
 
@@ -28,7 +28,7 @@ namespace ListReaders
                 // list readers for each group
                 foreach (var groupName in groupNames) {
                     Console.WriteLine("\nGroup " + groupName + " contains ");
-                    foreach (var readerName in context.GetReaders(new[] { groupName })) {
+                    foreach (var readerName in context.GetReaders(new[] {groupName})) {
                         Console.WriteLine("\t" + readerName);
                     }
                 }

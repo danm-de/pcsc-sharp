@@ -7,6 +7,7 @@ namespace Mifare1kTest
 {
     public class MifareCard
     {
+        private const byte CUSTOM_CLA = 0xFF;
         private readonly IIsoReader _isoReader;
 
         public MifareCard(IIsoReader isoReader) {
@@ -16,63 +17,53 @@ namespace Mifare1kTest
             _isoReader = isoReader;
         }
 
-        public bool LoadKey(KeyStructure keyStructure, int keyNumber, byte[] key) {
-            unchecked {
+        public bool LoadKey(KeyStructure keyStructure, byte keyNumber, byte[] key) {
+            var loadKeyCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
+                CLA = CUSTOM_CLA,
+                Instruction = InstructionCode.ExternalAuthenticate,
+                P1 = (byte) keyStructure,
+                P2 = keyNumber,
+                Data = key
+            };
 
-                var loadKeyCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
-                    CLA = 0xFF,
-                    Instruction = InstructionCode.ExternalAuthenticate,
-                    P1 = (byte) keyStructure,
-                    P2 = (byte) keyNumber,
-                    Data = key
-                };
+            Debug.WriteLine("Load Authentication Keys: {0}", BitConverter.ToString(loadKeyCmd.ToArray()));
+            var response = _isoReader.Transmit(loadKeyCmd);
+            Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
 
-                Debug.WriteLine("Load Authentication Keys: {0}", BitConverter.ToString(loadKeyCmd.ToArray()));
-                var response = _isoReader.Transmit(loadKeyCmd);
-                Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
-
-                return Success(response);
-            }
+            return IsSuccess(response);
         }
 
-        private static bool Success(Response response) {
-            unchecked {
-                return (response.SW1 == (byte) SW1Code.Normal) && (response.SW2 == 0x00);
-            }
+
+        public bool Authenticate(byte msb, byte lsb, KeyType keyType, byte keyNumber) {
+            var authBlock = new GeneralAuthenticate {
+                MSB = msb,
+                LSB = lsb,
+                KeyNumber = keyNumber,
+                KeyType = keyType
+            };
+
+            var authKeyCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
+                CLA = CUSTOM_CLA,
+                Instruction = InstructionCode.InternalAuthenticate,
+                P1 = 0x00,
+                P2 = 0x00,
+                Data = authBlock.ToArray()
+            };
+
+            Debug.WriteLine("General Authenticate: {0}", BitConverter.ToString(authKeyCmd.ToArray()));
+            var response = _isoReader.Transmit(authKeyCmd);
+            Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
+
+            return (response.SW1 == 0x90) && (response.SW2 == 0x00);
         }
 
-        public bool Authenticate(int msb, int lsb, KeyType keyType, int keyNumber) {
-            unchecked {
-                var authBlock = new GeneralAuthenticate {
-                    MSB = (byte)msb,
-                    LSB = (byte)lsb,
-                    KeyNumber = (byte)keyNumber,
-                    KeyType = keyType
-                };
-
-                var authKeyCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
-                    CLA = 0xFF,
-                    Instruction = InstructionCode.InternalAuthenticate,
-                    P1 = 0x00,
-                    P2 = 0x00,
-                    Data = authBlock.ToArray()
-                };
-
-                Debug.WriteLine("General Authenticate: {0}", BitConverter.ToString(authKeyCmd.ToArray()));
-                var response = _isoReader.Transmit(authKeyCmd);
-                Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
-
-                return (response.SW1 == 0x90) && (response.SW2 == 0x00);
-            }
-        }
-
-        public byte[] ReadBinary(int msb, int lsb, int size) {
+        public byte[] ReadBinary(byte msb, byte lsb, int size) {
             unchecked {
                 var readBinaryCmd = new CommandApdu(IsoCase.Case2Short, SCardProtocol.Any) {
-                    CLA = 0xFF,
+                    CLA = CUSTOM_CLA,
                     Instruction = InstructionCode.ReadBinary,
-                    P1 = (byte) msb,
-                    P2 = (byte) lsb,
+                    P1 = msb,
+                    P2 = lsb,
                     Le = size
                 };
 
@@ -83,28 +74,29 @@ namespace Mifare1kTest
                     response.SW2,
                     BitConverter.ToString(response.GetData()));
 
-                return Success(response)
+                return IsSuccess(response)
                     ? response.GetData() ?? new byte[0]
                     : null;
             }
         }
 
-        public bool UpdateBinary(int msb, int lsb, byte[] data) {
-            unchecked {
-                var updateBinaryCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
-                    CLA = 0xFF,
-                    Instruction = InstructionCode.UpdateBinary,
-                    P1 = (byte)msb,
-                    P2 = (byte)lsb,
-                    Data = data
-                };
+        public bool UpdateBinary(byte msb, byte lsb, byte[] data) {
+            var updateBinaryCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
+                CLA = CUSTOM_CLA,
+                Instruction = InstructionCode.UpdateBinary,
+                P1 = msb,
+                P2 = lsb,
+                Data = data
+            };
 
-                Debug.WriteLine("Update Binary: {0}", BitConverter.ToString(updateBinaryCmd.ToArray()));
-                var response = _isoReader.Transmit(updateBinaryCmd);
-                Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
+            Debug.WriteLine("Update Binary: {0}", BitConverter.ToString(updateBinaryCmd.ToArray()));
+            var response = _isoReader.Transmit(updateBinaryCmd);
+            Debug.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
 
-                return Success(response);
-            }
+            return IsSuccess(response);
         }
+
+        private static bool IsSuccess(Response response) => 
+            (response.SW1 == (byte) SW1Code.Normal) && (response.SW2 == 0x00);
     }
 }

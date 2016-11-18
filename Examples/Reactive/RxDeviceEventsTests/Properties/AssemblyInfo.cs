@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
-[assembly: AssemblyTitle("pcsc-sharp-rx.Test")]
+[assembly: AssemblyTitle("RxDeviceEventsTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("pcsc-sharp-rx.Test")]
+[assembly: AssemblyProduct("RxDeviceEventsTests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
-[assembly: Guid("97e2549c-f46b-4856-a332-4e4dda8c90eb")]
+[assembly: Guid("d611b7ba-35a2-4b06-aa77-25762b1dbaff")]
 
 // Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
 //
