@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,11 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\pcsc-sharp-rx\pcsc-sharp-rx.csproj">
-      <Project>{9a5b987d-db36-4f8a-a62e-642deef51f7d}</Project>
+      <Project>{9A5B987D-DB36-4F8A-A62E-642DEEF51F7D}</Project>
       <Name>pcsc-sharp-rx</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\pcsc-sharp\pcsc-sharp.csproj">
-      <Project>{459e0fb4-af42-4123-9923-7ea68ca01b09}</Project>
+      <Project>{459E0FB4-AF42-4123-9923-7EA68CA01B09}</Project>
       <Name>pcsc-sharp</Name>
     </ProjectReference>
   </ItemGroup>
