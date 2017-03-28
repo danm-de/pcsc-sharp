@@ -3,6 +3,12 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2017-03-28  Daniel Mueller <daniel@danm.de>
+* New version 3.6.1
+* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/44
+  ISCardReader.Status(..) returns wrong state value on Windows.
+  Thanks to Mark @mkeldridge
+
 2016-11-16  Daniel Mueller <daniel@danm.de>
 * New version 3.6.0
 * Update build & test toolset (NUnit,Fake,..)
