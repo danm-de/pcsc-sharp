@@ -106,6 +106,8 @@
     <Compile Include="Interop\Unix\DLOPEN_FLAGS.cs" />
     <Compile Include="Interop\Unix\SCARD_IO_REQUEST.cs" />
     <Compile Include="Interop\Unix\SCARD_READERSTATE.cs" />
+    <Compile Include="Interop\Windows\Extensions\IntExt.cs" />
+    <Compile Include="Interop\Windows\SCardStateWindows.cs" />
     <Compile Include="Interop\Windows\SCARD_IO_REQUEST.cs" />
     <Compile Include="Interop\Windows\SCARD_READERSTATE.cs" />
     <Compile Include="Context\ISCardContext.cs" />
@@ -199,7 +201,5 @@
   </Target>
   -->
   <Import Project="..\.paket\paket.targets" />
-  <ItemGroup>
-    <Folder Include="Interop\Unix\ExtensionMethods\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

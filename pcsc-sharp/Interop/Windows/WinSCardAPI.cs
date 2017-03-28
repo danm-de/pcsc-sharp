@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using PCSC.Interop.Windows.Extensions;
 
 namespace PCSC.Interop.Windows
 {
@@ -369,11 +370,11 @@ namespace PCSC.Interop.Windows
                     pbAtr,
                     ref atrlen));
             }
-
-            pdwState = (IntPtr)state;
+            
             pdwProtocol = (IntPtr)proto;
 
             if (rc == SCardError.Success) {
+                pdwState = (IntPtr)state.ConvertToSCardState();
                 if (atrlen < pbAtr.Length) {
                     Array.Resize(ref pbAtr, atrlen);
                 }
@@ -384,6 +385,7 @@ namespace PCSC.Interop.Windows
 
                 szReaderName = SCardHelper.ConvertToStringArray(readerName, TextEncoding);
             } else {
+                pdwState = (IntPtr) SCardState.Unknown;
                 szReaderName = null;
             }
             
