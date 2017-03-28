@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using PCSC.Interop.Unix.ExtensionMethods;
 
 namespace PCSC.Interop.Unix
 {
@@ -13,6 +14,13 @@ namespace PCSC.Interop.Unix
         private const string PCSC_LIB = "libpcsclite.so.1";
         private const string DL_LIB = "libdl.so.2";
         private const int CHARSIZE = sizeof(byte);
+		private const int STATUS_MASK = (int)(SCardState.Absent
+			| SCardState.Negotiable
+			| SCardState.Powered
+			| SCardState.Present
+			| SCardState.Specific
+			| SCardState.Swallowed
+			| SCardState.Unknown);
 
         public const int MAX_ATR_SIZE = 33;
 
@@ -370,6 +378,7 @@ namespace PCSC.Interop.Unix
             pdwProtocol = proto;
 
             if (rc == SCardError.Success) {
+				state = state.Mask(STATUS_MASK);
                 if ((int) atrlen < pbAtr.Length) {
                     Array.Resize(ref pbAtr, (int) atrlen);
                 }

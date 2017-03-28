@@ -158,6 +158,7 @@
     <Compile Include="Enums\SCardScope.cs" />
     <Compile Include="Enums\SCRState.cs" />
     <Compile Include="Enums\SCardShareMode.cs" />
+    <Compile Include="Interop\Unix\ExtensionMethods\IntPtrExt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="pcsc-sharp.dll.config">
@@ -198,4 +199,7 @@
   </Target>
   -->
   <Import Project="..\.paket\paket.targets" />
+  <ItemGroup>
+    <Folder Include="Interop\Unix\ExtensionMethods\" />
+  </ItemGroup>
 </Project>
