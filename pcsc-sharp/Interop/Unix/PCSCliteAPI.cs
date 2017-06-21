@@ -11,7 +11,11 @@ namespace PCSC.Interop.Unix
     internal sealed class PCSCliteAPI : ISCardAPI
     {
         private const int MAX_READER_NAME = 255;
+        private const string C_LIB = "libc";
+        private const string OS_NAME_OSX = "Darwin";
         private const string PCSC_LIB = "libpcsclite.so.1";
+        private const string PCSC_LIB_UNIX = PCSC_LIB;
+        private const string PCSC_LIB_OSX = "PCSC.framework/PCSC";
         private const string DL_LIB = "libdl.so.2";
         private const int CHARSIZE = sizeof(byte);
 		private const int STATUS_MASK = (int)(SCardState.Absent
@@ -25,11 +29,50 @@ namespace PCSC.Interop.Unix
         public const int MAX_ATR_SIZE = 33;
 
         private IntPtr _libHandle = IntPtr.Zero;
+        private string pcsc_lib = PCSC_LIB;
 
         public int MaxAtrSize => MAX_ATR_SIZE;
         public Encoding TextEncoding { get; set; }
 
         public int CharSize => CHARSIZE;
+
+        public PCSCliteAPI()
+        {
+            pcsc_lib = DeterminePcscLibName();
+        }
+
+        private static string DeterminePcscLibName()
+        {
+            if (GetUnameSysName() == OS_NAME_OSX)
+            {
+                return PCSC_LIB_OSX;
+            }
+            else
+            {
+                return PCSC_LIB_UNIX;
+            }
+        }
+
+        private static string GetUnameSysName()
+        {
+            byte[] utsNameBuffer = new byte[1000];
+
+            if (uname(utsNameBuffer) == 0)
+            {
+                int terminator;
+
+                // Find the null terminator of the first string in struct utsname.
+                for (terminator = 0; terminator < utsNameBuffer.Length && utsNameBuffer[terminator] != 0; terminator++);
+
+                return Encoding.ASCII.GetString(utsNameBuffer, 0, terminator);
+            }
+
+            return null;
+        }
+
+        [DllImport(C_LIB, CharSet = CharSet.Ansi)]
+        private static extern int uname(
+            [Out] byte[] buffer);
 
         [DllImport(PCSC_LIB)]
         private static extern IntPtr SCardEstablishContext(
@@ -514,7 +557,7 @@ namespace PCSC.Interop.Unix
         public IntPtr GetSymFromLib(string symName) {
             // Step 1. load dynamic link library
             if (_libHandle == IntPtr.Zero) {
-                _libHandle = dlopen(PCSC_LIB, (int) DLOPEN_FLAGS.RTLD_LAZY);
+                _libHandle = dlopen(pcsc_lib, (int) DLOPEN_FLAGS.RTLD_LAZY);
                 if (_libHandle.Equals(IntPtr.Zero)) {
                     throw new Exception("PInvoke call dlopen() failed");
                 }
