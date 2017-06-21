@@ -11,7 +11,7 @@ namespace PCSC.Interop
         IntPtr GetSymFromLib(string symName);
 
         int MaxAtrSize { get; }
-        Encoding TextEncoding { get; set; }
+        Encoding TextEncoding { get; }
         int CharSize { get; }
 
         SCardError EstablishContext(SCardScope dwScope, IntPtr pvReserved1, IntPtr pvReserved2, out IntPtr phContext);

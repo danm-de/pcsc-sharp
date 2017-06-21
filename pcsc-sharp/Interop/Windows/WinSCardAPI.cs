@@ -14,6 +14,8 @@ namespace PCSC.Interop.Windows
         private const string WINSCARD_DLL = "winscard.dll";
         private const string KERNEL_DLL = "KERNEL32.DLL";
         private const int CHARSIZE = sizeof(char);
+
+        private readonly Encoding _textEncoding = Encoding.Unicode;
         
         public const int MAX_ATR_SIZE = 0x24;
 
@@ -21,7 +23,7 @@ namespace PCSC.Interop.Windows
 
         public int MaxAtrSize => MAX_ATR_SIZE;
 
-        public Encoding TextEncoding { get; set; }
+        public Encoding TextEncoding => _textEncoding;
 
         public int CharSize => CHARSIZE;
 

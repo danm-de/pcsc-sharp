@@ -13,8 +13,7 @@ namespace PCSC.Interop.Unix
         private const int MAX_READER_NAME = 255;
         private const string C_LIB = "libc";
         private const string OS_NAME_OSX = "Darwin";
-        private const string PCSC_LIB = "libpcsclite.so.1";
-        private const string PCSC_LIB_UNIX = PCSC_LIB;
+        private const string PCSC_LIB_UNIX = "libpcsclite.so.1";
         private const string PCSC_LIB_OSX = "PCSC.framework/PCSC";
         private const string DL_LIB = "libdl.so.2";
         private const int CHARSIZE = sizeof(byte);
@@ -26,19 +25,20 @@ namespace PCSC.Interop.Unix
 			| SCardState.Swallowed
 			| SCardState.Unknown);
 
-        public const int MAX_ATR_SIZE = 33;
+        private readonly string _pcsc_lib_dlopen_name;
+        private readonly Encoding _textEncoding = Encoding.UTF8;
 
         private IntPtr _libHandle = IntPtr.Zero;
-        private string pcsc_lib = PCSC_LIB;
+
+        public const int MAX_ATR_SIZE = 33;
 
         public int MaxAtrSize => MAX_ATR_SIZE;
-        public Encoding TextEncoding { get; set; }
-
+        public Encoding TextEncoding => _textEncoding;
         public int CharSize => CHARSIZE;
 
         public PCSCliteAPI()
         {
-            pcsc_lib = DeterminePcscLibName();
+            this._pcsc_lib_dlopen_name = DeterminePcscLibName();
         }
 
         private static string DeterminePcscLibName()
@@ -74,7 +74,7 @@ namespace PCSC.Interop.Unix
         private static extern int uname(
             [Out] byte[] buffer);
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardEstablishContext(
             [In] IntPtr dwScope,
             [In] IntPtr pvReserved1,
@@ -92,7 +92,7 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardReleaseContext(
             [In] IntPtr hContext);
 
@@ -100,7 +100,7 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(SCardReleaseContext(hContext));
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardIsValidContext(
             [In] IntPtr hContext);
 
@@ -108,7 +108,7 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(SCardIsValidContext(hContext));
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardListReaders(
             [In] IntPtr hContext,
             [In] byte[] mszGroups,
@@ -151,7 +151,7 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardListReaderGroups(
             [In] IntPtr hContext,
             [Out] byte[] mszGroups,
@@ -188,7 +188,7 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardConnect(
             [In] IntPtr hContext,
             [In] byte[] szReader,
@@ -213,7 +213,7 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(result);
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardReconnect(
             [In] IntPtr hCard,
             [In] IntPtr dwShareMode,
@@ -234,7 +234,7 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(result);
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardDisconnect(
             [In] IntPtr hCard,
             [In] IntPtr dwDisposition);
@@ -243,7 +243,7 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(SCardDisconnect(hCard, (IntPtr) dwDisposition));
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardBeginTransaction(
             [In] IntPtr hCard);
 
@@ -252,7 +252,7 @@ namespace PCSC.Interop.Unix
         }
 
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardEndTransaction(
             [In] IntPtr hCard,
             [In] IntPtr dwDisposition);
@@ -261,7 +261,7 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(SCardEndTransaction(hCard, (IntPtr) dwDisposition));
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardTransmit(
             [In] IntPtr hCard,
             [In] IntPtr pioSendPci,
@@ -329,7 +329,7 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardControl(
             [In] IntPtr hCard,
             [In] IntPtr dwControlCode,
@@ -366,7 +366,7 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardStatus(
             [In] IntPtr hCard,
             [Out] byte[] szReaderName,
@@ -438,7 +438,7 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardGetStatusChange(
             [In] IntPtr hContext,
             [In] IntPtr dwTimeout,
@@ -475,7 +475,7 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardCancel(
             [In] IntPtr hContext);
 
@@ -483,7 +483,7 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(SCardCancel(hContext));
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardGetAttrib(
             [In] IntPtr hCard,
             [In] IntPtr dwAttrId,
@@ -505,7 +505,7 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardSetAttrib(
             [In] IntPtr hCard,
             [In] IntPtr dwAttrId,
@@ -533,7 +533,7 @@ namespace PCSC.Interop.Unix
                     cbAttrLen));
         }
 
-        [DllImport(PCSC_LIB)]
+        [DllImport(PCSC_LIB_UNIX)]
         private static extern IntPtr SCardFreeMemory(
             [In] IntPtr hContext,
             [In] IntPtr pvMem);
@@ -557,7 +557,7 @@ namespace PCSC.Interop.Unix
         public IntPtr GetSymFromLib(string symName) {
             // Step 1. load dynamic link library
             if (_libHandle == IntPtr.Zero) {
-                _libHandle = dlopen(pcsc_lib, (int) DLOPEN_FLAGS.RTLD_LAZY);
+                _libHandle = dlopen(_pcsc_lib_dlopen_name, (int) DLOPEN_FLAGS.RTLD_LAZY);
                 if (_libHandle.Equals(IntPtr.Zero)) {
                     throw new Exception("PInvoke call dlopen() failed");
                 }
