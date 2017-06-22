@@ -6,6 +6,14 @@ PCSC Lite).
 
 Author: Daniel Mueller
 
+Source code
+===========
+Run 
+ > paket.cmd restore (Windows)
+ $ ./paket restore   (Unix)
+to download NuGet dependencies before open the solution in Visual Studio or
+MonoDevelop.
+
 Tested on:
 ==========
 
