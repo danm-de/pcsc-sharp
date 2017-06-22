@@ -201,5 +201,4 @@
   </Target>
   -->
   <Import Project="..\.paket\paket.targets" />
-  <ItemGroup />
 </Project>
