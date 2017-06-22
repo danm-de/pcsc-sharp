@@ -21,20 +21,21 @@ namespace PCSC.Interop
         internal static ISCardAPI Lib { get; }
 
         static Platform() {
-            var platform = Environment.OSVersion.Platform.ToString();
+            var platform = Environment.OSVersion.Platform;
 
-            if (platform.Contains("Win32") || platform.Contains("Win64") || platform.Contains("WinCE")) {
+            if (
+                platform == PlatformID.Win32S ||
+                platform == PlatformID.Win32Windows ||
+                platform == PlatformID.Win32NT ||
+                platform == PlatformID.WinCE
+            ) {
                 IsWindows = true;
-                Lib = new WinSCardAPI {
-                    TextEncoding = new UnicodeEncoding()
-                };
+                Lib = new WinSCardAPI();
                 return;
             }
 
             IsWindows = false;
-            Lib = new PCSCliteAPI {
-                TextEncoding = new UTF8Encoding()
-            };
+            Lib = new PCSCliteAPI();
         }
     }
 }
