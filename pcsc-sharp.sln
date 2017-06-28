@@ -50,6 +50,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pcsc-sharp.Tests", "Tests\p
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RxDeviceEventsTests", "Examples\Reactive\RxDeviceEventsTests\RxDeviceEventsTests.csproj", "{D611B7BA-35A2-4B06-AA77-25762B1DBAFF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CB59DC8C-5A87-4E74-B1E2-AE89E9D3B1FD}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
