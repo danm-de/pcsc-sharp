@@ -90,10 +90,8 @@ using (var ctx = contextFactory.Establish(SCardScope.System)) {
 ```csharp
 var contextFactory = ContextFactory.Instance;
 var monitor = new SCardMonitor(contextFactory, SCardScope.System);
-// connect events here..
 
-/* Attention: In order to avoid memory leaks, do not use anonymous methods
- * as event handlers. */
+// connect events here..
 monitor.StatusChanged += (sender, args) => 
     Console.WriteLine($"New state: {args.NewState}");
 
