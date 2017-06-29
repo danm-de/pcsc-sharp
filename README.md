@@ -3,15 +3,15 @@
 <!-- toc -->
 
 ## Introduction
-The _pcsc-sharp_ library is wrapper that gives you access to the 
+The _pcsc-sharp_ library is wrapper that provides access to the 
 _**P**ersonal **C**omputer/**S**mart **C**ard Resource Manager_
 using the system's native PC/SC API. It implements partial ISO7816 
-support and is written to run on both, Windows and Unix (Mono using
+support and is written to run on both Windows and Unix (Mono using
 PCSC Lite).
 
-_pcsc-sharp_ **is not** a fully featured library to access vendor specific 
-protocols. You have to implement those protocols / applications by yourself. 
-For example: You can use _pcsc-sharp_ to access NXP's Mirfare RFID chips 
+_pcsc-sharp_ **is not** a fully featured library for accessing vendor specific protocols. 
+You must implement those protocols / applications yourself. 
+For example: You can use _pcsc-sharp_ to access NXP's Mirfare RFID chips, 
 but _pcsc-sharp_ does not provide any APDUs to request KEYs, authorize, etc.
 
 You can find PC/SC specific documentation here:
@@ -20,14 +20,14 @@ You can find PC/SC specific documentation here:
 
 ## Supported Operating systems
 - Windows (winscard.dll) 
-  * Windows 10 64bit Professional (_confirmed_)
-  * Windows 10 32bit Professional
-  * Windows 7 64bit
-  * Windows 7 32bit
+  * Windows 10 64-bit Professional (_confirmed_)
+  * Windows 10 32-bit Professional
+  * Windows 7 64-bit
+  * Windows 7 32-bit
 
 - Linux (PC/SC lite)
-  * Ubuntu Linux 64bit (_confirmed_)
-  * Ubuntu Linux 32bit
+  * Ubuntu Linux 64-bit (_confirmed_)
+  * Ubuntu Linux 32-bit
 
 - MacOS X (_unconfirmed_, _software prerequisites unclear_)
 
@@ -46,8 +46,8 @@ using (var context = contextFactory.Establish(SCardScope.System)) {
 Basic rules / best practices:
 - One context per smartcard / reader.
 - One context per ```SCardMonitor ```.
-- The context must be disposed after usage to free system resources.
-- The context must not be disposed if your application still accesses the smartcard / reader.
+- The context must be disposed of after usage to free system resources.
+- The context must not be disposed of if your application still accesses the smartcard / reader.
 
 ### List all connected smartcard readers
 See [SCardListReaders](https://msdn.microsoft.com/en-us/library/windows/desktop/aa379793(v=vs.85).aspx).
@@ -92,8 +92,8 @@ var contextFactory = ContextFactory.Instance;
 var monitor = new SCardMonitor(contextFactory, SCardScope.System);
 // connect events here..
 
-/* Attention: this is an example, please do not use anonymous methods
- * as event handlers to avoid memory leaks. */
+/* Attention: In order to avoid memory leaks, do not use anonymous methods
+ * as event handlers. */
 monitor.StatusChanged += (sender, args) => 
     Console.WriteLine($"New state: {args.NewState}");
 
@@ -116,7 +116,7 @@ package management. To build the solution, simply start the ```build.cmd```
 on Windows or the ```build``` shell script on Unix. Add ```NuGet``` as command 
 line argument to create NuGet packages.
 
-If you want to open the solution with your favorite IDE, please restore the NuGet packages first.
+If you want to open the solution with your favorite IDE, restore the NuGet packages first.
 
 On Windows run
 ```shell
@@ -127,6 +127,6 @@ On Unix/Linux run
  ./paket restore
 ```
 on Unix/Linux.
-to download NuGet dependencies before open the solution in Visual Studio or
+to download NuGet dependencies before opening the solution in Visual Studio or
 MonoDevelop.
 
