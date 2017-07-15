@@ -23,10 +23,22 @@ namespace PCSC.Tests
                 .Be(1);
 
             //Set the maximum value
-            state.EventStateValue = unchecked(new IntPtr(0xFFFF0000));
-            state.CardChangeEventCnt
-                .Should()
-                .Be(65535);
+            //The maximum value depends on the architecture.
+            //If the process is running 32-bit, IntPtr(long) throws an exception.
+            if (IntPtr.Size == sizeof(Int64))
+            {
+                state.EventStateValue = unchecked(new IntPtr(0xFFFF0000));
+                state.CardChangeEventCnt
+                    .Should()
+                    .Be(0xFFFF);
+            }
+            else
+            {
+                state.EventStateValue = unchecked(new IntPtr(0x7FFF0000));
+                state.CardChangeEventCnt
+                    .Should()
+                    .Be(0x7FFF);
+            }
         }
 
         [Test]
