@@ -45,17 +45,17 @@ namespace PCSC.Iso7816
         }
 
         /// <summary>Initializes a new instance of the <see cref="Response" /> class.</summary>
-        protected internal Response() {}
+        public Response() {}
 
         /// <summary>Adds the specified response APDU.</summary>
         /// <param name="responseApdu">The response APDU.</param>
-        protected internal void Add(ResponseApdu responseApdu) {
+        public void Add(ResponseApdu responseApdu) {
             _lstResponseApdu.Add(responseApdu);
         }
 
         /// <summary>Adds the specified PCI.</summary>
         /// <param name="receivePci">The PCI.</param>
-        protected internal void Add(SCardPCI receivePci) {
+        public void Add(SCardPCI receivePci) {
             _lstReceivePci.Add(receivePci);
         }
 
