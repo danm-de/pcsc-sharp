@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Iso7816\CommandApduSpecs\CommandApduTests.cs" />
+    <Compile Include="Iso7816\ResponseSpecs\ResponseTests.cs" />
     <Compile Include="Monitoring\DeviceMonitorFactorySpecs\DeviceMonitorFactorySpecs.cs" />
     <Compile Include="Monitoring\DeviceMonitorSpecs\DeviceMonitorSpecs.cs" />
     <Compile Include="Monitoring\MonitorFactorySpecs\MonitorFactorySpecs.cs" />
