@@ -43,11 +43,7 @@ namespace PCSC.Iso7816
         /// <param name="disconnectReaderOnDispose">if set to <c>true</c> the supplied <paramref name="reader" /> will be disconnected on <see cref="Dispose()" />.</param>
         /// <exception cref="System.ArgumentNullException">If reader is <see langword="null" /></exception>
         public IsoReader(ISCardReader reader, bool disconnectReaderOnDispose = false) {
-            if (reader == null) {
-                throw new ArgumentNullException(nameof(reader));
-            }
-
-            Reader = reader;
+            Reader = reader ?? throw new ArgumentNullException(nameof(reader));
             _disconnectReaderOnDispose = disconnectReaderOnDispose;
         }
 
@@ -68,11 +64,7 @@ namespace PCSC.Iso7816
         /// <param name="releaseContextOnDispose">if set to <c>true</c> the <paramref name="context" /> will be released on <see cref="Dispose()" />.</param>
         /// <exception cref="System.ArgumentNullException">If <paramref name="context" /> is <see langword="null" /></exception>
         public IsoReader(ISCardContext context, bool releaseContextOnDispose = false) {
-            if (context == null) {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
             Reader = new SCardReader(context);
             _releaseContextOnDispose = releaseContextOnDispose;
             _disconnectReaderOnDispose = true;
@@ -176,7 +168,7 @@ namespace PCSC.Iso7816
             } catch (InvalidOperationException exception) {
                 throw new InvalidApduException("Invalid APDU.", commandApdu, exception);
             }
-            
+
             // prepare receive buffer (Response APDU)
             var receiveBufferLength = commandApdu.ExpectedResponseLength; // expected size that shall be returned
             var receiveBuffer = new byte[receiveBufferLength];

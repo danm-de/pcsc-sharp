@@ -153,14 +153,13 @@ namespace PCSC.Interop.Windows
 
         public SCardError Connect(IntPtr hContext, string szReader, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
             var readername = SCardHelper.ConvertToByteArray(szReader, TextEncoding, Platform.Lib.CharSize);
-            int activeproto;
 
             var result = SCardConnect(hContext,
                 readername,
                 (int) dwShareMode,
                 (int) dwPreferredProtocols,
                 out phCard,
-                out activeproto);
+                out var activeproto);
 
             pdwActiveProtocol = (SCardProtocol) activeproto;
 
@@ -176,13 +175,12 @@ namespace PCSC.Interop.Windows
             [Out] out int pdwActiveProtocol);
 
         public SCardError Reconnect(IntPtr hCard, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols, SCardReaderDisposition dwInitialization, out SCardProtocol pdwActiveProtocol) {
-            int activeproto;
             var result = SCardReconnect(
                 hCard,
                 (int) dwShareMode,
                 (int) dwPreferredProtocols,
                 (int) dwInitialization,
-                out activeproto);
+                out var activeproto);
 
             pdwActiveProtocol = (SCardProtocol) activeproto;
             return SCardHelper.ToSCardError(result);
@@ -306,8 +304,6 @@ namespace PCSC.Interop.Windows
                 recvbuflen = pbRecvBuffer.Length;
             }
 
-            int bytesret;
-
             var rc = SCardHelper.ToSCardError(SCardControl(
                 hCard,
                 unchecked((int)dwControlCode.ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException 
@@ -315,7 +311,7 @@ namespace PCSC.Interop.Windows
                 sendbuflen,
                 pbRecvBuffer,
                 recvbuflen,
-                out bytesret));
+                out var bytesret));
 
             lpBytesReturned = bytesret;
 
@@ -339,14 +335,12 @@ namespace PCSC.Interop.Windows
             pbAtr = new byte[MAX_ATR_SIZE];
             var atrlen = pbAtr.Length;
 
-            int state, proto;
-
             var rc = SCardHelper.ToSCardError(SCardStatus(
                 hCard,
                 readerName,
                 ref readerNameSize,
-                out state,
-                out proto,
+                out var state,
+                out var proto,
                 pbAtr,
                 ref atrlen));
 
