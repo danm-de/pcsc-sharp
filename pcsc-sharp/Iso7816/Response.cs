@@ -47,6 +47,16 @@ namespace PCSC.Iso7816
         /// <summary>Initializes a new instance of the <see cref="Response" /> class.</summary>
         protected internal Response() {}
 
+        /// <summary>
+        /// Creates a new instance.
+        /// </summary>
+        /// <param name="apdus">The <see cref="ResponseApdu"/>s in correct order.</param>
+        /// <param name="pcis">The <see cref="SCardPCI"/> in correct order.</param>
+        public Response(IEnumerable<ResponseApdu> apdus, IEnumerable<SCardPCI> pcis) {
+            _lstResponseApdu.AddRange(apdus ?? Enumerable.Empty<ResponseApdu>());
+            _lstReceivePci.AddRange(pcis ?? Enumerable.Empty<SCardPCI>());
+        }
+
         /// <summary>Adds the specified response APDU.</summary>
         /// <param name="responseApdu">The response APDU.</param>
         protected internal void Add(ResponseApdu responseApdu) {
@@ -101,14 +111,12 @@ namespace PCSC.Iso7816
             return _lstReceivePci[index];
         }
 
-        /// <summary>Returns an enumerator.</summary>
-        /// <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1" />, that enumerates all received <see cref="ResponseApdu" /> instance.</returns>
+        /// <inheritdoc />
         public IEnumerator<ResponseApdu> GetEnumerator() {
             return new ResponseApduEnumerator(_lstResponseApdu);
         }
 
-        /// <summary>Returns an enumerator.</summary>
-        /// <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1" />, that enumerates all received <see cref="ResponseApdu" /> instance.</returns>
+        /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator() {
             return GetEnumerator();
         }
