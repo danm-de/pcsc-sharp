@@ -3,11 +3,14 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
-xxxx-xx-xx  Daniel Mueller <daniel@danm.de>
-* New version x.x.x
+2017-10-08  Daniel Mueller <daniel@danm.de>
+* New version 3.8.0
 * Merged pull request https://github.com/danm-de/pcsc-sharp/pull/55
   Corrected tests (32/64 bit issue), code cleanup.
   Thanks to @glenebob
+* Feature request https://github.com/danm-de/pcsc-sharp/pull/57
+  New constructor for Iso7816.Response opened by Scott Stephens
+  (Thanks for the pull request @scottstephens)
 
 2017-06-22  Daniel Mueller <daniel@danm.de>
 * New version 3.7.0
