@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>PCSC-netStandard</PackageId>
+    <Version>3.8.0.0</Version>
+    <Description>Contains classes to access the Personal Computer/Smart Card Resource Manager using
+the system's native PC/SC API. Implements partial ISO7816 support (APDU etc.).
+The library is written to run on both, Windows and Unix (Linux with Mono using PCSC Lite).</Description>
+    <Product />
+    <Company />
+    <Authors>Daniel Mueller</Authors>
+    <Copyright>Copyright 2017 Daniel Mueller</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseUrl>https://github.com/danm-de/pcsc-sharp/blob/master/COPYING</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/danm-de/pcsc-sharp</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp/pcsc-sharp.png</PackageIconUrl>
+    <PackageTags>PC/SC smartcard apdu pcsc-sharp</PackageTags>
+    <PackageReleaseNotes>Version 3.8.0 recompiled for .NET Standard 2.0</PackageReleaseNotes>
+    <AssemblyName>pcsc-sharp</AssemblyName>
+    <RootNamespace>PCSC</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\pcsc-sharp.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\pcsc-sharp.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>
