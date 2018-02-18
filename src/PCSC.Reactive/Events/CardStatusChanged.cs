@@ -49,8 +49,7 @@
         /// <param name="previousState">The previous state</param>
         /// <param name="newState">The new state</param>
         public CardStatusChanged(string readerName, byte[] atr, SCRState previousState, SCRState newState)
-            : base(readerName, atr) 
-        {
+            : base(readerName, atr) {
             PreviousState = previousState;
             NewState = newState;
         }

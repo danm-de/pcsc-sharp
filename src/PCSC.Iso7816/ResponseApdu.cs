@@ -5,7 +5,7 @@ namespace PCSC.Iso7816
     /// <summary>A response APDU</summary>
     public class ResponseApdu : Apdu, ICloneable
     {
-        private ResponseApdu() {}
+        private ResponseApdu() { }
 
         /// <summary>Initializes a new instance of the <see cref="ResponseApdu" /> class.</summary>
         /// <param name="response">The response as byte array that shall be parsed.</param>
@@ -86,6 +86,7 @@ namespace PCSC.Iso7816
             } else {
                 FullApdu = response;
             }
+
             Length = length;
             Case = isoCase;
             Protocol = protocol;
@@ -104,6 +105,7 @@ namespace PCSC.Iso7816
                 if (FullApdu == null) {
                     return false;
                 }
+
                 return FullApdu.Length >= 2 && Length >= 2;
             }
         }
@@ -115,6 +117,7 @@ namespace PCSC.Iso7816
                 if (FullApdu == null || FullApdu.Length < Length || Length <= 1) {
                     throw new InvalidApduException("The response APDU is invalid.");
                 }
+
                 return FullApdu[Length - 2];
             }
         }
@@ -126,6 +129,7 @@ namespace PCSC.Iso7816
                 if (FullApdu == null || FullApdu.Length < Length || Length <= 0) {
                     throw new InvalidApduException("The response APDU is invalid.");
                 }
+
                 return FullApdu[Length - 1];
             }
         }
@@ -147,6 +151,7 @@ namespace PCSC.Iso7816
                 if (FullApdu == null || FullApdu.Length <= 2 || Length <= 2) {
                     return 0;
                 }
+
                 return Length - 2;
             }
         }

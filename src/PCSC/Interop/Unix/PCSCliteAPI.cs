@@ -18,13 +18,14 @@ namespace PCSC.Interop.Unix
         private const string PCSC_LIB_OSX = "PCSC.framework/PCSC";
         private const string DL_LIB = "libdl.so.2";
         private const int CHARSIZE = sizeof(byte);
-		private const int STATUS_MASK = (int)(SCardState.Absent
-			| SCardState.Negotiable
-			| SCardState.Powered
-			| SCardState.Present
-			| SCardState.Specific
-			| SCardState.Swallowed
-			| SCardState.Unknown);
+
+        private const int STATUS_MASK = (int) (SCardState.Absent
+                                               | SCardState.Negotiable
+                                               | SCardState.Powered
+                                               | SCardState.Present
+                                               | SCardState.Specific
+                                               | SCardState.Swallowed
+                                               | SCardState.Unknown);
 
         private readonly string _pcsc_lib_dlopen_name;
         private readonly Encoding _textEncoding = Encoding.UTF8;
@@ -37,33 +38,28 @@ namespace PCSC.Interop.Unix
         public Encoding TextEncoding => _textEncoding;
         public int CharSize => CHARSIZE;
 
-        public PCSCliteAPI()
-        {
+        public PCSCliteAPI() {
             this._pcsc_lib_dlopen_name = DeterminePcscLibName();
         }
 
-        private static string DeterminePcscLibName()
-        {
-            if (GetUnameSysName() == OS_NAME_OSX)
-            {
+        private static string DeterminePcscLibName() {
+            if (GetUnameSysName() == OS_NAME_OSX) {
                 return PCSC_LIB_OSX;
-            }
-            else
-            {
+            } else {
                 return PCSC_LIB_UNIX;
             }
         }
 
-        private static string GetUnameSysName()
-        {
+        private static string GetUnameSysName() {
             byte[] utsNameBuffer = new byte[1000];
 
-            if (uname(utsNameBuffer) == 0)
-            {
+            if (uname(utsNameBuffer) == 0) {
                 int terminator;
 
                 // Find the null terminator of the first string in struct utsname.
-                for (terminator = 0; terminator < utsNameBuffer.Length && utsNameBuffer[terminator] != 0; terminator++);
+                for (terminator = 0;
+                    terminator < utsNameBuffer.Length && utsNameBuffer[terminator] != 0;
+                    terminator++) ;
 
                 return Encoding.ASCII.GetString(utsNameBuffer, 0, terminator);
             }
@@ -82,7 +78,8 @@ namespace PCSC.Interop.Unix
             [In] IntPtr pvReserved2,
             [In, Out] ref IntPtr phContext);
 
-        public SCardError EstablishContext(SCardScope dwScope, IntPtr pvReserved1, IntPtr pvReserved2, out IntPtr phContext) {
+        public SCardError EstablishContext(SCardScope dwScope, IntPtr pvReserved1, IntPtr pvReserved2,
+            out IntPtr phContext) {
             var ctx = IntPtr.Zero;
             var rc = SCardHelper.ToSCardError(SCardEstablishContext(
                 (IntPtr) dwScope,
@@ -198,7 +195,8 @@ namespace PCSC.Interop.Unix
             [Out] out IntPtr phCard,
             [Out] out IntPtr pdwActiveProtocol);
 
-        public SCardError Connect(IntPtr hContext, string szReader, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
+        public SCardError Connect(IntPtr hContext, string szReader, SCardShareMode dwShareMode,
+            SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
             var readername = SCardHelper.ConvertToByteArray(szReader, TextEncoding, Platform.Lib.CharSize);
             IntPtr activeproto;
 
@@ -222,7 +220,8 @@ namespace PCSC.Interop.Unix
             [In] IntPtr dwInitialization,
             [Out] out IntPtr pdwActiveProtocol);
 
-        public SCardError Reconnect(IntPtr hCard, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols, SCardReaderDisposition dwInitialization, out SCardProtocol pdwActiveProtocol) {
+        public SCardError Reconnect(IntPtr hCard, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols,
+            SCardReaderDisposition dwInitialization, out SCardProtocol pdwActiveProtocol) {
             IntPtr activeproto;
             var result = SCardReconnect(
                 hCard,
@@ -272,7 +271,8 @@ namespace PCSC.Interop.Unix
             [Out] byte[] pbRecvBuffer,
             [In, Out] ref IntPtr pcbRecvLength);
 
-        public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, IntPtr pioRecvPci, byte[] pbRecvBuffer, out int pcbRecvLength) {
+        public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, IntPtr pioRecvPci,
+            byte[] pbRecvBuffer, out int pcbRecvLength) {
             pcbRecvLength = 0;
             if (pbRecvBuffer != null) {
                 pcbRecvLength = pbRecvBuffer.Length;
@@ -293,12 +293,14 @@ namespace PCSC.Interop.Unix
                 ref pcbRecvLength);
         }
 
-        public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, int pcbSendLength, IntPtr pioRecvPci, byte[] pbRecvBuffer, ref int pcbRecvLength) {
+        public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, int pcbSendLength,
+            IntPtr pioRecvPci, byte[] pbRecvBuffer, ref int pcbRecvLength) {
             var recvlen = IntPtr.Zero;
             if (pbRecvBuffer != null) {
                 if (pcbRecvLength > pbRecvBuffer.Length || pcbRecvLength < 0) {
                     throw new ArgumentOutOfRangeException(nameof(pcbRecvLength));
                 }
+
                 recvlen = (IntPtr) pcbRecvLength;
             } else {
                 if (pcbRecvLength != 0)
@@ -310,6 +312,7 @@ namespace PCSC.Interop.Unix
                 if (pcbSendLength > pbSendBuffer.Length || pcbSendLength < 0) {
                     throw new ArgumentOutOfRangeException(nameof(pcbSendLength));
                 }
+
                 sendbuflen = (IntPtr) pcbSendLength;
             } else {
                 if (pcbSendLength != 0) {
@@ -340,7 +343,8 @@ namespace PCSC.Interop.Unix
             [In] IntPtr pcbRecvLength,
             [Out] out IntPtr lpBytesReturned);
 
-        public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, byte[] pbRecvBuffer, out int lpBytesReturned) {
+        public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, byte[] pbRecvBuffer,
+            out int lpBytesReturned) {
             var sendbuflen = IntPtr.Zero;
             if (pbSendBuffer != null) {
                 sendbuflen = (IntPtr) pbSendBuffer.Length;
@@ -377,9 +381,10 @@ namespace PCSC.Interop.Unix
             [Out] byte[] pbAtr,
             [In, Out] ref IntPtr pcbAtrLen);
 
-        public SCardError Status(IntPtr hCard, out string[] szReaderName, out IntPtr pdwState, out IntPtr pdwProtocol, out byte[] pbAtr) {
+        public SCardError Status(IntPtr hCard, out string[] szReaderName, out IntPtr pdwState, out IntPtr pdwProtocol,
+            out byte[] pbAtr) {
             var readerName = new byte[MAX_READER_NAME * CharSize];
-            var readerNameSize = (IntPtr)MAX_READER_NAME;
+            var readerNameSize = (IntPtr) MAX_READER_NAME;
 
             pbAtr = new byte[MAX_ATR_SIZE];
             var atrlen = (IntPtr) pbAtr.Length;
@@ -395,12 +400,13 @@ namespace PCSC.Interop.Unix
                 pbAtr,
                 ref atrlen));
 
-            if (rc == SCardError.InsufficientBuffer || (MAX_READER_NAME < ((int)readerNameSize)) || (pbAtr.Length < (int)atrlen)) {
+            if (rc == SCardError.InsufficientBuffer || (MAX_READER_NAME < ((int) readerNameSize)) ||
+                (pbAtr.Length < (int) atrlen)) {
                 // second try
 
-                if (MAX_READER_NAME < ((int)readerNameSize)) {
+                if (MAX_READER_NAME < ((int) readerNameSize)) {
                     // readername byte array was too short
-                    readerName = new byte[(int)readerNameSize * CharSize];
+                    readerName = new byte[(int) readerNameSize * CharSize];
                 }
 
                 if (pbAtr.Length < (int) atrlen) {
@@ -422,7 +428,7 @@ namespace PCSC.Interop.Unix
             pdwProtocol = proto;
 
             if (rc == SCardError.Success) {
-				state = state.Mask(STATUS_MASK);
+                state = state.Mask(STATUS_MASK);
                 if ((int) atrlen < pbAtr.Length) {
                     Array.Resize(ref pbAtr, (int) atrlen);
                 }
@@ -488,11 +494,12 @@ namespace PCSC.Interop.Unix
         private static extern IntPtr SCardGetAttrib(
             [In] IntPtr hCard,
             [In] IntPtr dwAttrId,
-            [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] pbAttr,
+            [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
+            byte[] pbAttr,
             [In, Out] ref IntPtr pcbAttrLen);
 
         public SCardError GetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, out int pcbAttrLen) {
-            var attrlen = (pbAttr != null) 
+            var attrlen = (pbAttr != null)
                 ? (IntPtr) pbAttr.Length
                 : IntPtr.Zero;
 
@@ -510,7 +517,8 @@ namespace PCSC.Interop.Unix
         private static extern IntPtr SCardSetAttrib(
             [In] IntPtr hCard,
             [In] IntPtr dwAttrId,
-            [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] pbAttr,
+            [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
+            byte[] pbAttr,
             [In] IntPtr cbAttrLen);
 
         public SCardError SetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, int attrSize) {
@@ -521,6 +529,7 @@ namespace PCSC.Interop.Unix
                 if (attrSize > pbAttr.Length || attrSize < 0) {
                     throw new ArgumentOutOfRangeException(nameof(attrSize));
                 }
+
                 cbAttrLen = (IntPtr) attrSize;
             } else {
                 cbAttrLen = IntPtr.Zero;

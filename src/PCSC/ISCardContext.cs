@@ -177,7 +177,7 @@ namespace PCSC
         /// <value>The returned Application Context handle. Is <see cref="IntPtr.Zero" /> if not context has been established.</value>
         /// <remarks>This is the Application Context handle that is returned when calling the C API function SCardEstablishContext().</remarks>
         IntPtr Handle { get; }
-        
+
         /// <summary>Maximum ATR size.</summary>
         /// <value>
         ///     <list type="table">
@@ -194,7 +194,7 @@ namespace PCSC
         /// </value>
         /// <remarks>Attention: Size depends on platform.</remarks>
         int MaxAtrSize { get; }
-        
+
         /// <summary>Infinite timeout.</summary>
         /// <value>0xFFFFFFFF</value>
         IntPtr Infinite { get; }

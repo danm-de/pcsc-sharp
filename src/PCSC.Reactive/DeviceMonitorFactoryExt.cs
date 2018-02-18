@@ -19,7 +19,8 @@ namespace PCSC.Reactive
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <param name="scheduler">The scheduler to run the add and remove event handler logic on.</param>
         /// <returns></returns>
-        public static IObservable<DeviceMonitorEvent> CreateObservable(this IDeviceMonitorFactory factory, SCardScope scope, IScheduler scheduler = null) {
+        public static IObservable<DeviceMonitorEvent> CreateObservable(this IDeviceMonitorFactory factory,
+            SCardScope scope, IScheduler scheduler = null) {
             if (factory == null) {
                 throw new ArgumentNullException(nameof(factory));
             }

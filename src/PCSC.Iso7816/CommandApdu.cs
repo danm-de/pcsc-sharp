@@ -72,6 +72,7 @@ namespace PCSC.Iso7816
                         "Must be a value between 0x00 and 0xFFFF.",
                         new OverflowException());
                 }
+
                 P2 = (byte) (0xFF & value);
                 P1 = (byte) ((0xFF00 & value) >> 8);
             }
@@ -87,12 +88,14 @@ namespace PCSC.Iso7816
                     case IsoCase.Case4Short:
                         if (value == null) {
                             throw new ArgumentNullException("Iso7816-4 " + Case +
-                                " expects 1 to 255 bytes of data.");
+                                                            " expects 1 to 255 bytes of data.");
                         }
+
                         if (value.Length > 255) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " expects 1 to 255 bytes of data.");
+                                                                  " expects 1 to 255 bytes of data.");
                         }
+
                         _data = value;
                         Lc = _data.Length;
                         break;
@@ -101,24 +104,27 @@ namespace PCSC.Iso7816
                     case IsoCase.Case4Extended:
                         if (value == null) {
                             throw new ArgumentNullException("Iso7816-4 " + Case +
-                                " expects 1 to 65535 bytes of data.");
+                                                            " expects 1 to 65535 bytes of data.");
                         }
+
                         if (Protocol == SCardProtocol.T0 && value.Length > 255) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " with protocol " + Protocol +
-                                " accepts only 255 bytes of data.");
+                                                                  " with protocol " + Protocol +
+                                                                  " accepts only 255 bytes of data.");
                         }
+
                         if (value.Length > 65535) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " expects 1 to 65535 bytes of data.");
+                                                                  " expects 1 to 65535 bytes of data.");
                         }
+
                         _data = value;
                         Lc = _data.Length;
                         break;
 
                     default:
                         throw new ArgumentException("Iso7816-4 " + Case +
-                            " does not expect any data in its APDU command.");
+                                                    " does not expect any data in its APDU command.");
                 }
             }
         }
@@ -142,21 +148,24 @@ namespace PCSC.Iso7816
                     case IsoCase.Case2Short:
                         if (value < 0 || value > 255) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " accepts only values from 0 - 255 in Le.");
+                                                                  " accepts only values from 0 - 255 in Le.");
                         }
+
                         _le = value;
                         break;
 
                     case IsoCase.Case4Short:
                         if (Protocol == SCardProtocol.T0) {
                             throw new ArgumentException("Iso7816-4 " + Case +
-                                " with protocol " + Protocol +
-                                " requires data to be transferred by using GET RESPONSE.");
+                                                        " with protocol " + Protocol +
+                                                        " requires data to be transferred by using GET RESPONSE.");
                         }
+
                         if (value < 0 || value > 255) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " accepts only values from 0 - 255 in Le.");
+                                                                  " accepts only values from 0 - 255 in Le.");
                         }
+
                         _le = value;
                         break;
 
@@ -164,34 +173,38 @@ namespace PCSC.Iso7816
                         if (Protocol == SCardProtocol.T0) {
                             if (value < 0 || value > 255) {
                                 throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                    " with protocol " + Protocol +
-                                    " accepts only values from 0 - 255 in Le.");
+                                                                      " with protocol " + Protocol +
+                                                                      " accepts only values from 0 - 255 in Le.");
                             }
                         }
+
                         if (value < 0 || value > 65535) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " accepts only values from 0 - 65535 in Le.");
+                                                                  " accepts only values from 0 - 65535 in Le.");
                         }
+
                         _le = value;
                         break;
 
                     case IsoCase.Case4Extended:
                         if (Protocol == SCardProtocol.T0) {
                             throw new ArgumentException("Iso7816-4 " + Case +
-                                " with protocol " + Protocol +
-                                " requires data to be transferred by using GET RESPONSE.");
+                                                        " with protocol " + Protocol +
+                                                        " requires data to be transferred by using GET RESPONSE.");
                         }
+
                         if (value < 0 || value > 65535) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " accepts only values from 0 - 65535 in Le.");
+                                                                  " accepts only values from 0 - 65535 in Le.");
                         }
+
                         _le = value;
                         break;
 
                     default:
                         throw new ArgumentException("Iso7816-4 " + Case +
-                            " does not expect any data fields in its return value and" +
-                            " therefore has no bytes for Le.");
+                                                    " does not expect any data fields in its return value and" +
+                                                    " therefore has no bytes for Le.");
                 }
             }
         }
@@ -223,6 +236,7 @@ namespace PCSC.Iso7816
                             if (_le == 0) {
                                 return 256 + 2;
                             }
+
                             return _le + 2;
                         }
 
@@ -256,8 +270,9 @@ namespace PCSC.Iso7816
                     case IsoCase.Case2Short:
                         if (datavalue < 1 || datavalue > 256) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " accepts only values from 1(+2) - 256(+2).");
+                                                                  " accepts only values from 1(+2) - 256(+2).");
                         }
+
                         _le = (datavalue == 256)
                             ? 0
                             : datavalue;
@@ -267,13 +282,13 @@ namespace PCSC.Iso7816
                     case IsoCase.Case4Short:
                         if (Protocol == SCardProtocol.T0 && value != 2) {
                             throw new ArgumentException("Iso7816-4 " + Case +
-                                " with protocol " + Protocol +
-                                " requires data to be transferred by using GET RESPONSE.");
+                                                        " with protocol " + Protocol +
+                                                        " requires data to be transferred by using GET RESPONSE.");
                         }
 
                         if (datavalue < 1 || datavalue > 256) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " accepts only values from 1(+2) - 256(+2).");
+                                                                  " accepts only values from 1(+2) - 256(+2).");
                         }
 
                         _le = (datavalue == 256)
@@ -286,14 +301,14 @@ namespace PCSC.Iso7816
                         if (Protocol == SCardProtocol.T0) {
                             if (datavalue < 1 || datavalue > 256) {
                                 throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                    " with protocol " + Protocol +
-                                    " accepts only values from 1(+2) - 256(+2).");
+                                                                      " with protocol " + Protocol +
+                                                                      " accepts only values from 1(+2) - 256(+2).");
                             }
                         }
 
                         if (datavalue < 1 || datavalue > 65536) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " accepts only values from 1(+2)- 65536(+2).");
+                                                                  " accepts only values from 1(+2)- 65536(+2).");
                         }
 
                         if (Protocol == SCardProtocol.T0) {
@@ -311,13 +326,13 @@ namespace PCSC.Iso7816
                     case IsoCase.Case4Extended:
                         if (Protocol == SCardProtocol.T0 && value != 2) {
                             throw new ArgumentException("Iso7816-4 " + Case +
-                                " with protocol " + Protocol +
-                                " requires data to be transferred by using GET RESPONSE.");
+                                                        " with protocol " + Protocol +
+                                                        " requires data to be transferred by using GET RESPONSE.");
                         }
 
                         if (datavalue < 1 || datavalue > 65536) {
                             throw new ArgumentOutOfRangeException("Iso7816-4 " + Case +
-                                " accepts only values from 1(+2) - 65536(+2).");
+                                                                  " accepts only values from 1(+2) - 65536(+2).");
                         }
 
                         _le = (datavalue == 65536)
@@ -329,8 +344,8 @@ namespace PCSC.Iso7816
                     default:
                         if (value != 2) {
                             throw new ArgumentException("Iso7816-4 " + Case +
-                                " does not expect any data fields in its return value and" +
-                                " therefore has no bytes for Le.");
+                                                        " does not expect any data fields in its return value and" +
+                                                        " therefore has no bytes for Le.");
                         }
 
                         _le = 0;
@@ -350,6 +365,7 @@ namespace PCSC.Iso7816
                     if (Protocol == SCardProtocol.T0) {
                         size++;
                     }
+
                     break;
 
                 case IsoCase.Case2Short:
@@ -378,6 +394,7 @@ namespace PCSC.Iso7816
                     } else {
                         size += 2; /* 1 byte for Lc AND 1 byte for Le */
                     }
+
                     break;
 
                 case IsoCase.Case2Extended:
@@ -386,6 +403,7 @@ namespace PCSC.Iso7816
                     } else {
                         size += 3; /* 3 bytes for Le */
                     }
+
                     break;
 
                 case IsoCase.Case3Extended:
@@ -414,6 +432,7 @@ namespace PCSC.Iso7816
                     } else {
                         size += 5; /* 3 bytes for Lc AND 2 bytes for Le */
                     }
+
                     break;
 
                 default:
@@ -448,6 +467,7 @@ namespace PCSC.Iso7816
                     if (Protocol == SCardProtocol.T0) {
                         apdu[pos] = 0;
                     }
+
                     break;
 
                 case IsoCase.Case2Short:
@@ -471,6 +491,7 @@ namespace PCSC.Iso7816
                     if (Protocol != SCardProtocol.T0) {
                         apdu[pos] = (byte) _le;
                     }
+
                     break;
 
                 case IsoCase.Case2Extended:
@@ -483,6 +504,7 @@ namespace PCSC.Iso7816
                         apdu[pos++] = (byte) (_le >> 8); // B1 = higher bits
                         apdu[pos] = (byte) (_le & 0xFF); // B2 = lower bits
                     }
+
                     break;
 
                 case IsoCase.Case3Extended:
@@ -496,6 +518,7 @@ namespace PCSC.Iso7816
                         apdu[pos++] = (byte) (Lc >> 8); // B1 = higher bits
                         apdu[pos++] = (byte) (Lc & 0xFF); // B2 = lower bits
                     }
+
                     Array.Copy(_data, 0, apdu, pos, Lc);
                     break;
 
@@ -510,6 +533,7 @@ namespace PCSC.Iso7816
                         apdu[pos++] = (byte) (Lc >> 8); // B1 = higher bits
                         apdu[pos++] = (byte) (Lc & 0xFF); // B2 = lower bits
                     }
+
                     Array.Copy(_data, 0, apdu, pos, Lc);
                     pos += Lc;
 
@@ -519,6 +543,7 @@ namespace PCSC.Iso7816
                         apdu[pos++] = (byte) (_le >> 8); // Bl-1 = higher bits
                         apdu[pos] = (byte) (_le & 0xff); // Bl = lower bits
                     }
+
                     break;
 
                 default:

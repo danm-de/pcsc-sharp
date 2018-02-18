@@ -17,7 +17,7 @@ namespace RxEventsTestWpf
         private readonly IMonitorFactory _monitorFactory = MonitorFactory.Instance;
 
         public ObservableCollection<MonitorEvent> EventHistory { get; }
-        public ObservableCollection<string> Readers { get; } 
+        public ObservableCollection<string> Readers { get; }
         public ICommand RefreshReaderList { get; }
 
         private readonly IScheduler _uiScheduler;
@@ -38,6 +38,7 @@ namespace RxEventsTestWpf
                     Readers.Add(reader);
                 }
             }
+
             _subscription?.Dispose();
             if (Readers.Count > 0) {
                 _subscription = _monitorFactory

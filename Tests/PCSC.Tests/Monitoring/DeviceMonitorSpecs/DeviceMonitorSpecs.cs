@@ -39,7 +39,6 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
             A.CallTo(() => _context.GetStatusChange(SCardContext.INFINITE, A<SCardReaderState[]>.That.Matches(
                     states => MatchFirstCall(states))))
                 .ReturnsLazily(call => {
-
                     // second call -> two attached readers
                     A.CallTo(() => _context.GetReaders())
                         .Returns(new[] {READER_A, READER_B});
@@ -56,7 +55,7 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
             _sut = new DeviceMonitor(_contextFactory, SCardScope.System);
             _monitorEvents = _sut.Monitor();
         }
-        
+
         private static bool MatchFirstCall(IEnumerable<SCardReaderState> states) {
             var state = states.Single();
             return state.ReaderName == "\\\\?PnP?\\Notification"
@@ -111,7 +110,7 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
         private readonly IContextFactory _contextFactory = A.Fake<IContextFactory>();
         private readonly ISCardContext _context = A.Fake<ISCardContext>();
         private readonly AutoResetEvent _getStatusChangeCall = new AutoResetEvent(false);
-        
+
         private IDeviceMonitor _sut;
         private IMonitor<IDeviceMonitor> _monitorEvents;
 
@@ -127,15 +126,14 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
 
             // first call -> two attached readers
             A.CallTo(() => _context.GetReaders())
-                .Returns(new[] { READER_A, READER_B });
+                .Returns(new[] {READER_A, READER_B});
 
             A.CallTo(() => _context.GetStatusChange(SCardContext.INFINITE, A<SCardReaderState[]>.That.Matches(
                     states => MatchFirstCall(states))))
                 .ReturnsLazily(call => {
-
                     // second call -> one attached reader
                     A.CallTo(() => _context.GetReaders())
-                        .Returns(new[] { READER_A });
+                        .Returns(new[] {READER_A});
 
                     _getStatusChangeCall.Set();
 
@@ -153,15 +151,15 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
         private static bool MatchFirstCall(IEnumerable<SCardReaderState> states) {
             var state = states.Single();
             return state.ReaderName == "\\\\?PnP?\\Notification"
-                   && state.CurrentStateValue == (IntPtr)(2 << 16) // two connected readers
-                   && state.EventStateValue == (IntPtr)SCRState.Unknown;
+                   && state.CurrentStateValue == (IntPtr) (2 << 16) // two connected readers
+                   && state.EventStateValue == (IntPtr) SCRState.Unknown;
         }
 
         private static bool MatchSecondCall(IEnumerable<SCardReaderState> states) {
             var state = states.Single();
             return state.ReaderName == "\\\\?PnP?\\Notification"
-                   && state.CurrentStateValue == (IntPtr)(1 << 16) // one connected reader
-                   && state.EventStateValue == (IntPtr)SCRState.Unknown;
+                   && state.CurrentStateValue == (IntPtr) (1 << 16) // one connected reader
+                   && state.EventStateValue == (IntPtr) SCRState.Unknown;
         }
 
         protected override void Cleanup() {
@@ -181,8 +179,8 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
         public void Should_it_raise_a_StatusChanged_event_containing_READER_B_as_detached() {
             _monitorEvents.Should().Raise(nameof(_sut.StatusChanged))
                 .WithArgs<DeviceChangeEventArgs>(
-                    args => args.AllReaders.SequenceEqual(new[] { READER_A })
-                            && args.DetachedReaders.SequenceEqual(new[] { READER_B })
+                    args => args.AllReaders.SequenceEqual(new[] {READER_A})
+                            && args.DetachedReaders.SequenceEqual(new[] {READER_B})
                             && args.AttachedReaders.SequenceEqual(Enumerable.Empty<string>()));
         }
 
@@ -190,7 +188,7 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
         public void Should_it_raise_an_Initialized_event() {
             _monitorEvents.Should().Raise(nameof(_sut.Initialized))
                 .WithArgs<DeviceChangeEventArgs>(
-                    args => args.AllReaders.SequenceEqual(new[] { READER_A, READER_B })
+                    args => args.AllReaders.SequenceEqual(new[] {READER_A, READER_B})
                             && args.AttachedReaders.SequenceEqual(Enumerable.Empty<string>())
                             && args.DetachedReaders.SequenceEqual(Enumerable.Empty<string>()));
         }

@@ -9,7 +9,9 @@ namespace PCSC.Monitoring
     /// </summary>
     public class MonitorFactory : IMonitorFactory
     {
-        private static readonly Lazy<IMonitorFactory> _instance = new Lazy<IMonitorFactory>(() => new MonitorFactory(ContextFactory.Instance));
+        private static readonly Lazy<IMonitorFactory> _instance =
+            new Lazy<IMonitorFactory>(() => new MonitorFactory(ContextFactory.Instance));
+
         private readonly IContextFactory _contextFactory;
 
         /// <summary>
@@ -31,11 +33,14 @@ namespace PCSC.Monitoring
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <param name="readerName">Name of the smart card reader that shall be monitored.</param>
         /// <returns>A started <see cref="ISCardMonitor"/></returns>
-        [Obsolete("Will be removed in release 3.7.0. Please use the 'Create' method and start the returned monitor by yourself.", true)]
+        [Obsolete(
+            "Will be removed in release 3.7.0. Please use the 'Create' method and start the returned monitor by yourself.",
+            true)]
         public ISCardMonitor Start(SCardScope scope, string readerName) {
             if (readerName == null) {
                 throw new ArgumentNullException(nameof(readerName));
             }
+
             return Start(scope, new[] {readerName});
         }
 
@@ -45,7 +50,9 @@ namespace PCSC.Monitoring
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <param name="readerNames">Names of the smart card readers that shall be monitored.</param>
         /// <returns>A started <see cref="ISCardMonitor"/></returns>
-        [Obsolete("Will be removed in release 3.7.0. Please use the 'Create' method and start the returned monitor by yourself.", true)]
+        [Obsolete(
+            "Will be removed in release 3.7.0. Please use the 'Create' method and start the returned monitor by yourself.",
+            true)]
         public ISCardMonitor Start(SCardScope scope, IEnumerable<string> readerNames) {
             return Start(scope, readerNames, null);
         }
@@ -58,8 +65,11 @@ namespace PCSC.Monitoring
         /// <param name="readerNames">Names of the smart card readers that shall be monitored.</param>
         /// <param name="preStartAction">Action that will be invoked prior monitor start</param>
         /// <returns>A started <see cref="ISCardMonitor"/></returns>
-        [Obsolete("Will be removed in release 3.7.0. Please use the 'Create' method and start the returned monitor by yourself.", true)]
-        public ISCardMonitor Start(SCardScope scope, IEnumerable<string> readerNames, Action<ISCardMonitor> preStartAction) {
+        [Obsolete(
+            "Will be removed in release 3.7.0. Please use the 'Create' method and start the returned monitor by yourself.",
+            true)]
+        public ISCardMonitor Start(SCardScope scope, IEnumerable<string> readerNames,
+            Action<ISCardMonitor> preStartAction) {
             if (readerNames == null) {
                 throw new ArgumentNullException(nameof(readerNames));
             }
@@ -96,6 +106,7 @@ namespace PCSC.Monitoring
             if (monitor == null) {
                 throw new ArgumentNullException(nameof(monitor));
             }
+
             monitor.Dispose();
         }
     }

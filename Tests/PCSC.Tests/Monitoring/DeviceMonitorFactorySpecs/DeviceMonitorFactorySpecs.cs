@@ -28,7 +28,7 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorFactorySpecs
                 .Returns(true);
 
             A.CallTo(() => _context.GetReaders())
-                .Returns(new[] { READER_A });
+                .Returns(new[] {READER_A});
 
             A.CallTo(() => _context.GetStatusChange(A<IntPtr>.Ignored, A<SCardReaderState[]>.Ignored))
                 .ReturnsLazily(call => {
@@ -51,7 +51,7 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorFactorySpecs
         protected override void BecauseOf() {
             _monitor = _sut.Create(SCardScope.System);
         }
-        
+
         [Test]
         public void Should_it_not_start_the_monitor_thread() {
             _monitorHasBeenStarted.Should().BeFalse();

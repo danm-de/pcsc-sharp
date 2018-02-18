@@ -7,7 +7,9 @@ namespace PCSC.Monitoring
     /// </summary>
     public sealed class DeviceMonitorFactory : IDeviceMonitorFactory
     {
-        private static readonly Lazy<IDeviceMonitorFactory> _instance = new Lazy<IDeviceMonitorFactory>(() => new DeviceMonitorFactory(ContextFactory.Instance));
+        private static readonly Lazy<IDeviceMonitorFactory> _instance =
+            new Lazy<IDeviceMonitorFactory>(() => new DeviceMonitorFactory(ContextFactory.Instance));
+
         private readonly IContextFactory _contextFactory;
 
         /// <summary>
@@ -31,7 +33,7 @@ namespace PCSC.Monitoring
         public IDeviceMonitor Create(SCardScope scope) {
             return new DeviceMonitor(_contextFactory, scope);
         }
-        
+
         /// <summary>
         /// Releases the smartcard device monitor and its dependencies using the <see cref="IDisposable.Dispose"/> method.
         /// </summary>
@@ -40,6 +42,7 @@ namespace PCSC.Monitoring
             if (monitor == null) {
                 throw new ArgumentNullException(nameof(monitor));
             }
+
             monitor.Dispose();
         }
     }

@@ -64,6 +64,7 @@ namespace PCSC.Utils
                 lst.AddRange(encstr);
                 lst.Add(0);
             }
+
             lst.Add(0);
 
             return lst.ToArray();
@@ -73,13 +74,14 @@ namespace PCSC.Utils
             if (str == null) {
                 return null;
             }
+
             if (suffixByteCount == 0) {
                 return encoder.GetBytes(str);
             }
 
             var count = encoder.GetByteCount(str);
             var tmp = new byte[count + suffixByteCount];
-            
+
             encoder.GetBytes(str, 0, str.Length, tmp, 0);
             return tmp;
         }
@@ -110,7 +112,7 @@ namespace PCSC.Utils
         }
 
         internal static SCardError ToSCardError(IntPtr result) {
-			return (SCardError) result;
+            return (SCardError) result;
         }
 
         internal static SCardError ToSCardError(int result) {
@@ -118,15 +120,15 @@ namespace PCSC.Utils
         }
 
         internal static SCardProtocol ToProto(IntPtr proto) {
-			return (SCardProtocol) proto;
+            return (SCardProtocol) proto;
         }
 
         internal static SCardState ToState(IntPtr state) {
-			return (SCardState) state;
+            return (SCardState) state;
         }
 
         internal static SCRState ToSCRState(long state) {
-			return (SCRState) state;
+            return (SCRState) state;
         }
     }
 }

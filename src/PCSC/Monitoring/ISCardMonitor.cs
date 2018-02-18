@@ -24,6 +24,7 @@ namespace PCSC.Monitoring
         ///     </example>
         /// </remarks>
         event StatusChangeEvent StatusChanged;
+
         /// <summary>A new card has been inserted.</summary>
         /// <remarks>
         ///     <example>
@@ -42,6 +43,7 @@ namespace PCSC.Monitoring
         ///     </example>
         /// </remarks>
         event CardInsertedEvent CardInserted;
+
         /// <summary>A card has been removed.</summary>
         /// <remarks>
         ///     <example>
@@ -60,6 +62,7 @@ namespace PCSC.Monitoring
         ///     </example>
         /// </remarks>
         event CardRemovedEvent CardRemoved;
+
         /// <summary>The monitor object has been initialized.</summary>
         /// <remarks>
         ///     <para>This event appears only once for each reader after calling <see cref="SCardMonitor.Start(string)" /> or <see cref="SCardMonitor.Start(string[])" />.</para>
@@ -79,6 +82,7 @@ namespace PCSC.Monitoring
         ///     </example>
         /// </remarks>
         event CardInitializedEvent Initialized;
+
         /// <summary>An PC/SC error occurred during monitoring.</summary>
         /// <remarks>
         ///     <example>
@@ -97,9 +101,11 @@ namespace PCSC.Monitoring
         ///     </example>
         /// </remarks>
         event MonitorExceptionEvent MonitorException;
+
         /// <summary>All readers that are currently being monitored.</summary>
         /// <value>A <see cref="T:System.String" /> array of reader names. <see langword="null" /> if no readers is being monitored.</value>
         string[] ReaderNames { get; }
+
         /// <summary>Indicates if there are readers currently monitored.</summary>
         /// <value>
         ///     <list type="table">
@@ -122,6 +128,7 @@ namespace PCSC.Monitoring
         ///     </list>
         /// </value>
         bool Monitoring { get; }
+
         /// <summary>The number of readers that currently being monitored.</summary>
         /// <value>Return 0 if no reader is being monitored.</value>
         int ReaderCount { get; }

@@ -38,6 +38,7 @@ namespace MonitorReaderEvents
                     if (ExitRequested(key)) {
                         break;
                     }
+
                     if (monitor.Monitoring) {
                         monitor.Cancel();
                         Console.WriteLine("Monitoring paused. (Press CTRL-Q to quit)");
@@ -58,6 +59,7 @@ namespace MonitorReaderEvents
             foreach (var reader in readerNames) {
                 Console.WriteLine($"Start monitoring for reader {reader}.");
             }
+
             Console.WriteLine("Press Ctrl-Q to exit or any key to toggle monitor.");
         }
 

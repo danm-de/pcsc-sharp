@@ -19,36 +19,36 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <ListBox Grid.Column="0" ItemsSource="{Binding Readers}" />
-                <Button Grid.Column="1" Content="Refresh reader list" Command="{Binding RefreshReaderList}"/>
+                <Button Grid.Column="1" Content="Refresh reader list" Command="{Binding RefreshReaderList}" />
             </Grid>
             <ListBox Grid.Row="1" ItemsSource="{Binding EventHistory}" Grid.ColumnSpan="2">
                 <ListBox.Resources>
                     <DataTemplate DataType="{x:Type events:MonitorInitialized}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock>Monitor has been initialized for reader:</TextBlock>
-                            <TextBox IsReadOnly="True" Text="{Binding ReaderName, Mode=OneWay}"></TextBox>
+                            <TextBox IsReadOnly="True" Text="{Binding ReaderName, Mode=OneWay}" />
                         </StackPanel>
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type events:CardInserted}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock>Card has been inserted into reader:</TextBlock>
-                            <TextBox IsReadOnly="True" Text="{Binding ReaderName, Mode=OneWay}"></TextBox>
+                            <TextBox IsReadOnly="True" Text="{Binding ReaderName, Mode=OneWay}" />
                         </StackPanel>
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type events:CardRemoved}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock>Card has been removed from reader:</TextBlock>
-                            <TextBox IsReadOnly="True" Text="{Binding ReaderName, Mode=OneWay}"></TextBox>
+                            <TextBox IsReadOnly="True" Text="{Binding ReaderName, Mode=OneWay}" />
                         </StackPanel>
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type events:CardStatusChanged}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock>Card status has been changed in reader:</TextBlock>
-                            <TextBox IsReadOnly="True" Text="{Binding ReaderName, Mode=OneWay}"></TextBox>
+                            <TextBox IsReadOnly="True" Text="{Binding ReaderName, Mode=OneWay}" />
                             <TextBlock>Previous:</TextBlock>
-                            <TextBox IsReadOnly="True" Text="{Binding PreviousState, Mode=OneWay}"/>
+                            <TextBox IsReadOnly="True" Text="{Binding PreviousState, Mode=OneWay}" />
                             <TextBlock>New:</TextBlock>
-                            <TextBox IsReadOnly="True" Text="{Binding NewState, Mode=OneWay}"/>
+                            <TextBox IsReadOnly="True" Text="{Binding NewState, Mode=OneWay}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.Resources>

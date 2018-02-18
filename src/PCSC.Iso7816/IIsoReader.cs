@@ -7,16 +7,22 @@ namespace PCSC.Iso7816
     {
         /// <summary>Gets the current context.</summary>
         ISCardContext CurrentContext { get; }
+
         /// <summary>Gets the current reader.</summary>
         ISCardReader Reader { get; }
+
         /// <summary>Gets the name of the reader.</summary>
         string ReaderName { get; }
+
         /// <summary>Gets the active protocol.</summary>
         SCardProtocol ActiveProtocol { get; }
+
         /// <summary>Gets the current share mode.</summary>
         SCardShareMode CurrentShareMode { get; }
+
         /// <summary>Gets or sets the wait time in milliseconds that is used if an APDU needs to be retransmitted.</summary>
         int RetransmitWaitTime { get; set; }
+
         /// <summary>Gets the maximum number of bytes that can be received.</summary>
         int MaxReceiveSize { get; }
 

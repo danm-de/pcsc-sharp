@@ -47,7 +47,7 @@ namespace ListReaderEvents
         }
 
         private static void WaitUntilSpacebarPressed() {
-            while (Console.ReadKey().Key != ConsoleKey.Spacebar) {}
+            while (Console.ReadKey().Key != ConsoleKey.Spacebar) { }
         }
     }
 }

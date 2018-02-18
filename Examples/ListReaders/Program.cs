@@ -8,7 +8,6 @@ namespace ListReaders
         public static void Main() {
             var contextFactory = ContextFactory.Instance;
             using (var context = contextFactory.Establish(SCardScope.System)) {
-
                 Console.WriteLine("Context is valid? -> " + context.IsValid());
 
                 // list all (smart card) readers

@@ -25,6 +25,7 @@ namespace PCSC.Iso7816
                     nameof(logicalChannelNumber),
                     "Logical channels must be in the range between 0 and 3.");
             }
+
             Value = (byte) ((int) highPart | (int) secureMessagingFormat | logicalChannelNumber);
         }
 
@@ -61,6 +62,7 @@ namespace PCSC.Iso7816
                 unchecked {
                     inversemask = (byte) (~(SECURE_MESSAGING_MASK));
                 }
+
                 // save old settings
                 var tmp = (byte) (Value & inversemask);
 
@@ -87,6 +89,7 @@ namespace PCSC.Iso7816
                 unchecked {
                     inversemask = (byte) (~(LOGICAL_CHANNEL_NUMBER_MASK));
                 }
+
                 // save old settings
                 var tmp = (byte) (Value & inversemask);
 

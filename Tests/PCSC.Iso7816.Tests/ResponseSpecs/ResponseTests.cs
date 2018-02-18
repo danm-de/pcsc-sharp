@@ -10,7 +10,7 @@ namespace PCSC.Iso7816.Tests.ResponseSpecs
         private ResponseApdu[] _expectedApdus;
         private SCardPCI[] _expectedPcis;
         private Response _sut;
-        
+
         protected override void EstablishContext() {
             _expectedApdus = new[] {
                 new ResponseApdu(new byte[] {0x1, 0x2}, 2, IsoCase.Case1, SCardProtocol.T0),

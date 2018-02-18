@@ -5,6 +5,7 @@
     {
         /// <summary>Simple</summary>
         Simple,
+
         /// <summary>ASN.1 (abstract syntax notation) structured using basic encoding rules defined in ISO/IEC8825.</summary>
         BasicEncodingRules
     }

@@ -35,23 +35,23 @@ namespace PCSC.Reactive
                 .Select(args => new MonitorInitialized(args.ReaderName, args.Atr, args.State));
 
             var cardInserted = Observable.FromEventPattern<CardInsertedEvent, CardStatusEventArgs>(
-                handler => monitor.CardInserted += handler,
-                handler => monitor.CardInserted -= handler,
-                useScheduler)
+                    handler => monitor.CardInserted += handler,
+                    handler => monitor.CardInserted -= handler,
+                    useScheduler)
                 .Select(ev => ev.EventArgs)
                 .Select(args => new CardInserted(args.ReaderName, args.Atr, args.State));
 
             var cardRemoved = Observable.FromEventPattern<CardRemovedEvent, CardStatusEventArgs>(
-                handler => monitor.CardRemoved += handler,
-                handler => monitor.CardRemoved -= handler,
-                useScheduler)
+                    handler => monitor.CardRemoved += handler,
+                    handler => monitor.CardRemoved -= handler,
+                    useScheduler)
                 .Select(ev => ev.EventArgs)
                 .Select(args => new CardRemoved(args.ReaderName, args.Atr, args.State));
 
             var statusChanged = Observable.FromEventPattern<StatusChangeEvent, StatusChangeEventArgs>(
-                handler => monitor.StatusChanged += handler,
-                handler => monitor.StatusChanged -= handler,
-                useScheduler)
+                    handler => monitor.StatusChanged += handler,
+                    handler => monitor.StatusChanged -= handler,
+                    useScheduler)
                 .Select(ev => ev.EventArgs)
                 .Select(args => new CardStatusChanged(args.ReaderName, args.Atr, args.LastState, args.NewState));
 
@@ -60,11 +60,11 @@ namespace PCSC.Reactive
                 .Merge(cardInserted)
                 .Merge(cardRemoved)
                 .Merge(statusChanged);
-                
+
             var monitorException = Observable.FromEventPattern<MonitorExceptionEvent, PCSCException>(
-                handler => monitor.MonitorException += handler,
-                handler => monitor.MonitorException -= handler,
-                useScheduler)
+                    handler => monitor.MonitorException += handler,
+                    handler => monitor.MonitorException -= handler,
+                    useScheduler)
                 .Select(ev => ev.EventArgs);
 
             return Observable.Create<MonitorEvent>(obs => {

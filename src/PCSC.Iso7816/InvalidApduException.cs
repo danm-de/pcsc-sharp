@@ -24,21 +24,20 @@ namespace PCSC.Iso7816
         /// <summary>Initializes a new instance of the <see cref="InvalidApduException" /> class.</summary>
         /// <param name="message">The error message.</param>
         public InvalidApduException(string message)
-            : base(message) {}
+            : base(message) { }
 
         /// <summary>Initializes a new instance of the <see cref="InvalidApduException" /> class.</summary>
         /// <param name="message">The error message.</param>
         /// <param name="innerException">The inner exception.</param>
         public InvalidApduException(string message, Exception innerException)
-            : base(message, innerException) {}
+            : base(message, innerException) { }
 
         /// <summary>Initializes a new instance of the <see cref="InvalidApduException" /> class.</summary>
         /// <param name="message">The error message.</param>
         /// <param name="apdu">The APDU.</param>
         /// <param name="innerException">The inner exception.</param>
         public InvalidApduException(string message, Apdu apdu, Exception innerException)
-            : base(message, innerException)
-        {
+            : base(message, innerException) {
             _apdu = apdu;
             try {
                 ApduBytes = apdu.ToArray();
@@ -53,7 +52,6 @@ namespace PCSC.Iso7816
         /// <param name="info"></param>
         /// <param name="context"></param>
         protected InvalidApduException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {}
+            : base(info, context) { }
     }
 }

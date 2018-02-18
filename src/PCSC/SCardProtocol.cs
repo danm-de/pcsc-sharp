@@ -13,15 +13,19 @@ namespace PCSC
         /// </summary>
         [Description("Protocol not set")]
         Unset = 0x0000,
+
         /// <summary>T=0 active protocol.</summary>
         [Description("T=0 active protocol")]
         T0 = 0x0001,
+
         /// <summary>T=1 active protocol.</summary>
         [Description("T=1 active protocol")]
         T1 = 0x0002,
+
         /// <summary>Raw active protocol. Use with memory type cards.</summary>
         [Description("Raw active protocol")]
         Raw = 0x0004,
+
         /// <summary>T=15 protocol.</summary>
         [Description("T=15 protocol")]
         T15 = 0x0008,

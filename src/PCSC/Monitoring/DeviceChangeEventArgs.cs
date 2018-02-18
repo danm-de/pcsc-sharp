@@ -10,7 +10,7 @@ namespace PCSC.Monitoring
         /// All connected smartcard reader devices
         /// </summary>
         public IEnumerable<string> AllReaders { get; }
-        
+
         /// <summary>
         /// Recently attached (added) smartcard reader devices
         /// </summary>
@@ -27,7 +27,8 @@ namespace PCSC.Monitoring
         /// <param name="allReaders">All connected smartcard reader devices</param>
         /// <param name="attachedReaders">Attached/added smartcard reader devices</param>
         /// <param name="detachedReaders">Detached/removed smartcard reader devices</param>
-        public DeviceChangeEventArgs(IEnumerable<string> allReaders, IEnumerable<string> attachedReaders, IEnumerable<string> detachedReaders) {
+        public DeviceChangeEventArgs(IEnumerable<string> allReaders, IEnumerable<string> attachedReaders,
+            IEnumerable<string> detachedReaders) {
             AllReaders = allReaders;
             AttachedReaders = attachedReaders;
             DetachedReaders = detachedReaders;

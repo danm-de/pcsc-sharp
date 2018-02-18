@@ -13,9 +13,9 @@ namespace PCSC.Exceptions
         /// <summary>
         /// Serialization name for property <see cref="SCardError"/>
         /// </summary>
-	    protected const string SCARD_ERROR_SERIALIZATION_NAME = "SCardError";
+        protected const string SCARD_ERROR_SERIALIZATION_NAME = "SCardError";
 
-	    /// <summary>
+        /// <summary>
         /// The system's error code.
         /// </summary>
         public SCardError SCardError { get; protected set; }
@@ -51,26 +51,24 @@ namespace PCSC.Exceptions
             SCardError = serr;
         }
 
-		/// <summary>
-		/// Serialization constructor
-		/// </summary>
-		/// <param name="info"></param>
-		/// <param name="context"></param>
-	    protected PCSCException(SerializationInfo info, StreamingContext context) 
-			: base(info, context)
-	    {
-		    SCardError = (SCardError)info.GetValue(SCARD_ERROR_SERIALIZATION_NAME, typeof (SCardError));
-	    }
+        /// <summary>
+        /// Serialization constructor
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
+        protected PCSCException(SerializationInfo info, StreamingContext context)
+            : base(info, context) {
+            SCardError = (SCardError) info.GetValue(SCARD_ERROR_SERIALIZATION_NAME, typeof(SCardError));
+        }
 
-	    /// <summary>
-		/// Gets data for serialization
-		/// </summary>
-		/// <param name="info"></param>
-		/// <param name="context"></param>
-	    public override void GetObjectData(SerializationInfo info, StreamingContext context)
-	    {
-		    base.GetObjectData(info, context);
-		    info.AddValue(SCARD_ERROR_SERIALIZATION_NAME, SCardError, typeof (SCardError));
-	    }
+        /// <summary>
+        /// Gets data for serialization
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
+        public override void GetObjectData(SerializationInfo info, StreamingContext context) {
+            base.GetObjectData(info, context);
+            info.AddValue(SCARD_ERROR_SERIALIZATION_NAME, SCardError, typeof(SCardError));
+        }
     }
 }

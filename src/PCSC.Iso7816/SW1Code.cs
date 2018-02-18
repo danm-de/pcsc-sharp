@@ -94,20 +94,20 @@
         ///     </list>
         /// </remarks>
         ErrorP1P2Incorrect = 0x6A,
-        
+
         /// <summary>Error wrong parameters P1 and P2</summary>
         ErrorParameterIncorrect = 0x6B,
-        
+
         /// <summary><see cref="CommandApdu.Le"/> has the wrong length.</summary>
         /// <remarks>SW2 contains the exact length.</remarks>
         ErrorP3Incorrect = 0x6C,
-        
+
         /// <summary>The instruction code is invalid or not supported.</summary>
         ErrorInsNotSupported = 0x6D,
-        
+
         /// <summary>The Class is not supported.</summary>
         ErrorClassNotSupported = 0x6E,
-        
+
         /// <summary>No precise diagnosis available.</summary>
         ErrorNoPreciseDiagnostic = 0x6F,
 
@@ -119,13 +119,13 @@
 
         /// <summary>Memory error.</summary>
         ErrorMemory = 0x92,
-        
+
         /// <summary>File error.</summary>
         ErrorFile = 0x94,
 
         /// <summary>Error authorization.</summary>
         ErrorAuthorization = 0x98,
-        
+
         /// <summary>Normal GET response</summary>
         NormalGetResponse = 0x9F
     }

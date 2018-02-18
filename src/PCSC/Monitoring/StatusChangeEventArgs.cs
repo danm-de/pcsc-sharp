@@ -44,7 +44,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="StatusChangeEventArgs"/> class.
         /// </summary>
-        public StatusChangeEventArgs() {}
+        public StatusChangeEventArgs() { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StatusChangeEventArgs"/> class.

@@ -22,14 +22,17 @@ namespace PCSC.Reactive
         /// <param name="readerName">Name of the smart card reader that shall be monitored.</param>
         /// <param name="scheduler">The scheduler to run the add and remove event handler logic on.</param>
         /// <returns></returns>
-        public static IObservable<MonitorEvent> CreateObservable(this IMonitorFactory factory, SCardScope scope, string readerName, IScheduler scheduler = null) {
+        public static IObservable<MonitorEvent> CreateObservable(this IMonitorFactory factory, SCardScope scope,
+            string readerName, IScheduler scheduler = null) {
             if (factory == null) {
                 throw new ArgumentNullException(nameof(factory));
             }
+
             if (readerName == null) {
                 throw new ArgumentNullException(nameof(readerName));
             }
-            return factory.CreateObservable(scope, new[] { readerName }, scheduler);
+
+            return factory.CreateObservable(scope, new[] {readerName}, scheduler);
         }
 
         /// <summary>
@@ -40,10 +43,12 @@ namespace PCSC.Reactive
         /// <param name="readerNames">Name of the smart card reader that shall be monitored.</param>
         /// <param name="scheduler">The scheduler to run the add and remove event handler logic on.</param>
         /// <returns></returns>
-        public static IObservable<MonitorEvent> CreateObservable(this IMonitorFactory factory, SCardScope scope, IEnumerable<string> readerNames, IScheduler scheduler = null) {
+        public static IObservable<MonitorEvent> CreateObservable(this IMonitorFactory factory, SCardScope scope,
+            IEnumerable<string> readerNames, IScheduler scheduler = null) {
             if (factory == null) {
                 throw new ArgumentNullException(nameof(factory));
             }
+
             if (readerNames == null) {
                 throw new ArgumentNullException(nameof(readerNames));
             }

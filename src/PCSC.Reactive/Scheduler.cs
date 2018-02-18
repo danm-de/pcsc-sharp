@@ -8,7 +8,7 @@ namespace PCSC.Reactive
         public static IScheduler ForCurrentContext() {
             var current = SynchronizationContext.Current;
             return current != null
-                ? (IScheduler)new SynchronizationContextScheduler(current, false)
+                ? (IScheduler) new SynchronizationContextScheduler(current, false)
                 : ImmediateScheduler.Instance;
         }
     }

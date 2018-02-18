@@ -26,6 +26,7 @@ namespace ReaderStatus
                     state.Dispose();
                 }
             }
+
             Console.ReadKey();
         }
 

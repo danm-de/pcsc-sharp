@@ -11,7 +11,6 @@ namespace Transmit
         public static void Main() {
             var contextFactory = ContextFactory.Instance;
             using (var context = contextFactory.Establish(SCardScope.System)) {
-
                 var readerNames = context.GetReaders();
                 if (NoReaderFound(readerNames)) {
                     Console.WriteLine("You need at least one reader in order to run this example.");
@@ -93,8 +92,7 @@ namespace Transmit
             Console.Write("Which reader is an RFID reader? ");
             var line = Console.ReadLine();
 
-            if (int.TryParse(line, out var choice) && (choice >= 0) && (choice <= readerNames.Count))
-            {
+            if (int.TryParse(line, out var choice) && (choice >= 0) && (choice <= readerNames.Count)) {
                 return readerNames[choice];
             }
 

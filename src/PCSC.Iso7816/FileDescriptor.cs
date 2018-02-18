@@ -6,19 +6,25 @@ namespace PCSC.Iso7816
     public class FileDescriptor
     {
         /// <summary>File type bit mask.</summary>
-        public const byte FILE_TYPE_MASK                = (1 << 7) + (1 << 5) + (1 << 4) + (1 << 3);
+        public const byte FILE_TYPE_MASK = (1 << 7) + (1 << 5) + (1 << 4) + (1 << 3);
+
         /// <summary>Dedicated file (DF) bit.</summary>
-        public const byte FILE_TYPE_DF                  = (1 << 5) + (1 << 4) + (1 << 3);
+        public const byte FILE_TYPE_DF = (1 << 5) + (1 << 4) + (1 << 3);
+
         /// <summary>Working elementary file (EF) bit.</summary>
-        public const byte FILE_TYPE_WORKING_EF          = (0 << 5) + (0 << 4) + (0 << 3);
+        public const byte FILE_TYPE_WORKING_EF = (0 << 5) + (0 << 4) + (0 << 3);
+
         /// <summary>Internal elementary file (EF) bit.</summary>
-        public const byte FILE_TYPE_INTERNAL_EF         = (0 << 5) + (0 << 4) + (1 << 3);
+        public const byte FILE_TYPE_INTERNAL_EF = (0 << 5) + (0 << 4) + (1 << 3);
+
         /// <summary>Sharemode bit mask.</summary>
-        public const byte FILE_SHARE_MODE_MASK          = (1 << 7) + (1 << 6);
+        public const byte FILE_SHARE_MODE_MASK = (1 << 7) + (1 << 6);
+
         /// <summary>Shareable bit.</summary>
-        public const byte FILE_SHARE_MODE_SHAREABLE     = (1 << 6);
+        public const byte FILE_SHARE_MODE_SHAREABLE = (1 << 6);
+
         /// <summary>Non shareable bit.</summary>
-        public const byte FILE_SHARE_MODE_NOTSHAREABLE  = (0 << 6);
+        public const byte FILE_SHARE_MODE_NOTSHAREABLE = (0 << 6);
 
         private FileStructureInfo _fileStructureInfoCache;
 
@@ -43,6 +49,7 @@ namespace PCSC.Iso7816
                         _fileStructureInfoCache = new FileStructureInfo(Descriptor);
                     }
                 }
+
                 return _fileStructureInfoCache;
             }
         }

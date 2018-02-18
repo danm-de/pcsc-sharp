@@ -18,13 +18,13 @@ namespace PCSC.Tests.Monitoring.MonitorFactorySpecs
         private bool _monitorHasBeenStarted;
 
         protected override void EstablishContext() {
-			A.CallTo(() => _contextFactory.Establish(SCardScope.System))
+            A.CallTo(() => _contextFactory.Establish(SCardScope.System))
                 .Returns(_context);
 
-			A.CallTo(() => _context.IsValid())
-				.Returns(true);
+            A.CallTo(() => _context.IsValid())
+                .Returns(true);
 
-			A.CallTo(() => _context.GetStatusChange(A<IntPtr>.Ignored, A<SCardReaderState[]>.Ignored))
+            A.CallTo(() => _context.GetStatusChange(A<IntPtr>.Ignored, A<SCardReaderState[]>.Ignored))
                 .Invokes(call => { _monitorHasBeenStarted = true; })
                 .Returns(SCardError.Success);
 

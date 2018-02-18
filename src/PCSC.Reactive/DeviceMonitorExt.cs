@@ -20,7 +20,8 @@ namespace PCSC.Reactive
         /// <param name="monitor">The device monitor to listen on.</param>
         /// <param name="scheduler">The scheduler to run the add and remove event handler logic on.</param>
         /// <returns>An observable of reader attached/detached events.</returns>
-        public static IObservable<DeviceMonitorEvent> ObserveEvents(this IDeviceMonitor monitor, IScheduler scheduler = null) {
+        public static IObservable<DeviceMonitorEvent> ObserveEvents(this IDeviceMonitor monitor,
+            IScheduler scheduler = null) {
             if (monitor == null) {
                 throw new ArgumentNullException(nameof(monitor));
             }
@@ -41,7 +42,8 @@ namespace PCSC.Reactive
                 .Select(ev => ev.EventArgs)
                 .SelectMany(CreateEvents);
 
-            var monitorException = Observable.FromEventPattern<DeviceMonitorExceptionEvent, DeviceMonitorExceptionEventArgs>(
+            var monitorException = Observable
+                .FromEventPattern<DeviceMonitorExceptionEvent, DeviceMonitorExceptionEventArgs>(
                     handler => monitor.MonitorException += handler,
                     handler => monitor.MonitorException -= handler,
                     useScheduler)

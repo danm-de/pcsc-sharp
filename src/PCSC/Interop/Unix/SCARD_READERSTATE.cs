@@ -11,7 +11,7 @@ namespace PCSC.Interop.Unix
         internal IntPtr dwCurrentState;
         internal IntPtr dwEventState;
         internal IntPtr cbAtr;
-        
+
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = PCSCliteAPI.MAX_ATR_SIZE)]
         internal byte[] rgbAtr;
     }

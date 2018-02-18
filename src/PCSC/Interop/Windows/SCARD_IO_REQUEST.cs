@@ -7,8 +7,8 @@ namespace PCSC.Interop.Windows
     {
         internal int dwProtocol;
         internal int cbPciLength;
-        internal SCARD_IO_REQUEST()
-        {
+
+        internal SCARD_IO_REQUEST() {
             dwProtocol = 0;
         }
     }

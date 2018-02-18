@@ -35,7 +35,8 @@ namespace PCSC.Interop.Windows
             [In] IntPtr pvReserved2,
             [In, Out] ref IntPtr phContext);
 
-        public SCardError EstablishContext(SCardScope dwScope, IntPtr pvReserved1, IntPtr pvReserved2, out IntPtr phContext) {
+        public SCardError EstablishContext(SCardScope dwScope, IntPtr pvReserved1, IntPtr pvReserved2,
+            out IntPtr phContext) {
             var ctx = IntPtr.Zero;
             var rc = SCardHelper.ToSCardError(
                 SCardEstablishContext(
@@ -152,7 +153,8 @@ namespace PCSC.Interop.Windows
             [Out] out IntPtr phCard,
             [Out] out int pdwActiveProtocol);
 
-        public SCardError Connect(IntPtr hContext, string szReader, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
+        public SCardError Connect(IntPtr hContext, string szReader, SCardShareMode dwShareMode,
+            SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
             var readername = SCardHelper.ConvertToByteArray(szReader, TextEncoding, Platform.Lib.CharSize);
 
             var result = SCardConnect(hContext,
@@ -175,7 +177,8 @@ namespace PCSC.Interop.Windows
             [In] int dwInitialization,
             [Out] out int pdwActiveProtocol);
 
-        public SCardError Reconnect(IntPtr hCard, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols, SCardReaderDisposition dwInitialization, out SCardProtocol pdwActiveProtocol) {
+        public SCardError Reconnect(IntPtr hCard, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols,
+            SCardReaderDisposition dwInitialization, out SCardProtocol pdwActiveProtocol) {
             var result = SCardReconnect(
                 hCard,
                 (int) dwShareMode,
@@ -223,7 +226,8 @@ namespace PCSC.Interop.Windows
             [Out] byte[] pbRecvBuffer,
             [In, Out] ref int pcbRecvLength);
 
-        public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, IntPtr pioRecvPci, byte[] pbRecvBuffer, out int pcbRecvLength) {
+        public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, IntPtr pioRecvPci,
+            byte[] pbRecvBuffer, out int pcbRecvLength) {
             pcbRecvLength = 0;
             if (pbRecvBuffer != null) {
                 pcbRecvLength = pbRecvBuffer.Length;
@@ -244,13 +248,15 @@ namespace PCSC.Interop.Windows
                 ref pcbRecvLength);
         }
 
-        public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, int pcbSendLength, IntPtr pioRecvPci, byte[] pbRecvBuffer, ref int pcbRecvLength) {
+        public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, int pcbSendLength,
+            IntPtr pioRecvPci, byte[] pbRecvBuffer, ref int pcbRecvLength) {
             var recvlen = 0;
 
             if (pbRecvBuffer != null) {
                 if (pcbRecvLength > pbRecvBuffer.Length || pcbRecvLength < 0) {
                     throw new ArgumentOutOfRangeException(nameof(pcbRecvLength));
                 }
+
                 recvlen = pcbRecvLength;
             } else {
                 if (pcbRecvLength != 0) {
@@ -263,6 +269,7 @@ namespace PCSC.Interop.Windows
                 if (pcbSendLength > pbSendBuffer.Length || pcbSendLength < 0) {
                     throw new ArgumentOutOfRangeException(nameof(pcbSendLength));
                 }
+
                 sendbuflen = pcbSendLength;
             } else {
                 if (pcbSendLength != 0) {
@@ -294,7 +301,8 @@ namespace PCSC.Interop.Windows
             [In] int nOutBufferSize,
             [Out] out int lpBytesReturned);
 
-        public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, byte[] pbRecvBuffer, out int lpBytesReturned) {
+        public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, byte[] pbRecvBuffer,
+            out int lpBytesReturned) {
             var sendbuflen = 0;
             if (pbSendBuffer != null) {
                 sendbuflen = pbSendBuffer.Length;
@@ -307,7 +315,8 @@ namespace PCSC.Interop.Windows
 
             var rc = SCardHelper.ToSCardError(SCardControl(
                 hCard,
-                unchecked((int)dwControlCode.ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException
+                unchecked((int) dwControlCode
+                    .ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException
                 pbSendBuffer,
                 sendbuflen,
                 pbRecvBuffer,
@@ -329,7 +338,8 @@ namespace PCSC.Interop.Windows
             [Out] byte[] pbAtr,
             [In, Out] ref int pcbAtrLen);
 
-        public SCardError Status(IntPtr hCard, out string[] szReaderName, out IntPtr pdwState, out IntPtr pdwProtocol, out byte[] pbAtr) {
+        public SCardError Status(IntPtr hCard, out string[] szReaderName, out IntPtr pdwState, out IntPtr pdwProtocol,
+            out byte[] pbAtr) {
             var readerName = new byte[MAX_READER_NAME * CharSize];
             var readerNameSize = MAX_READER_NAME;
 
@@ -368,10 +378,10 @@ namespace PCSC.Interop.Windows
                     ref atrlen));
             }
 
-            pdwProtocol = (IntPtr)proto;
+            pdwProtocol = (IntPtr) proto;
 
             if (rc == SCardError.Success) {
-                pdwState = (IntPtr)state.ConvertToSCardState();
+                pdwState = (IntPtr) state.ConvertToSCardState();
                 if (atrlen < pbAtr.Length) {
                     Array.Resize(ref pbAtr, atrlen);
                 }
@@ -394,7 +404,8 @@ namespace PCSC.Interop.Windows
             [In] IntPtr hContext,
             [In] int dwTimeout,
             [In, Out,
-             MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] SCARD_READERSTATE[] rgReaderStates,
+             MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
+            SCARD_READERSTATE[] rgReaderStates,
             [In] int cReaders);
 
         public SCardError GetStatusChange(IntPtr hContext, IntPtr dwTimeout, SCardReaderState[] rgReaderStates) {
@@ -444,7 +455,8 @@ namespace PCSC.Interop.Windows
         private static extern int SCardGetAttrib(
             [In] IntPtr hCard,
             [In] int dwAttrId,
-            [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] pbAttr,
+            [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
+            byte[] pbAttr,
             [In, Out] ref int pcbAttrLen);
 
         public SCardError GetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, out int pcbAttrLen) {
@@ -454,7 +466,8 @@ namespace PCSC.Interop.Windows
 
             var rc = SCardHelper.ToSCardError(SCardGetAttrib(
                 hCard,
-                unchecked((int)dwAttrId.ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException
+                unchecked((int) dwAttrId
+                    .ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException
                 pbAttr,
                 ref attrlen));
 
@@ -466,7 +479,8 @@ namespace PCSC.Interop.Windows
         private static extern int SCardSetAttrib(
             [In] IntPtr hCard,
             [In] int dwAttrId,
-            [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)] byte[] pbAttr,
+            [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
+            byte[] pbAttr,
             [In] int cbAttrLen);
 
         public SCardError SetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, int attrSize) {
@@ -478,6 +492,7 @@ namespace PCSC.Interop.Windows
                 if (attrSize > pbAttr.Length || attrSize < 0) {
                     throw new ArgumentOutOfRangeException(nameof(attrSize));
                 }
+
                 cbAttrLen = attrSize;
             }
 
@@ -510,6 +525,7 @@ namespace PCSC.Interop.Windows
                     throw new Exception("PInvoke call LoadLibrary() failed");
                 }
             }
+
             // Step 2. search symbol name in memory
             var symPtr = GetProcAddress(_dllHandle, symName);
 

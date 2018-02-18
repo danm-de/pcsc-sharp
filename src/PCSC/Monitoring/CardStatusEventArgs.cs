@@ -100,7 +100,7 @@
         /// <summary>
         ///     Creates a new instance.
         /// </summary>
-        public CardStatusEventArgs() {}
+        public CardStatusEventArgs() { }
 
         /// <summary>
         ///     Creates a new instance.

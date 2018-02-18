@@ -17,7 +17,7 @@ namespace RxEventsTest
                 Console.ReadKey();
                 return;
             }
-            
+
             Console.WriteLine("Listen to all reader events. Press any key to stop.");
 
             var monitorFactory = MonitorFactory.Instance;

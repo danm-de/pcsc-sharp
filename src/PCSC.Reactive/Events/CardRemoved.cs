@@ -12,6 +12,6 @@
         /// <param name="atr">The card's ATR</param>
         /// <param name="state">The reader's state</param>
         public CardRemoved(string readerName, byte[] atr, SCRState state)
-            : base(readerName, atr, state) {}
+            : base(readerName, atr, state) { }
     }
 }

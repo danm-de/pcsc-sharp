@@ -24,7 +24,6 @@ namespace ListReaderEventsNative
                             CurrentStateValue = (IntPtr) (readers.Count << 16),
                             EventStateValue = (IntPtr) SCRState.Unknown,
                         }
-
                     };
 
                     var rc = ctx.GetStatusChange(ctx.Infinite, scannerStates);
@@ -55,7 +54,7 @@ namespace ListReaderEventsNative
         private static HashSet<string> GetReaders(ISCardContext ctx) {
             return new HashSet<string>(ctx.GetReaders() ?? Enumerable.Empty<string>());
         }
-        
+
         private static void PrintReaders(IEnumerable<string> readers) {
             Console.WriteLine("Current connected readers:");
             foreach (var name in readers) {

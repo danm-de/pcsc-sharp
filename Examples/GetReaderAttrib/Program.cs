@@ -32,7 +32,6 @@ namespace GetReaderAttrib
         private static void DisplayAtrs(ISCardContext context, IEnumerable<string> readerNames) {
             foreach (var readerName in readerNames) {
                 using (var reader = new SCardReader(context)) {
-
                     if (!ConnectReader(reader, readerName)) {
                         // error while connecting ..
                         continue;
@@ -74,7 +73,7 @@ namespace GetReaderAttrib
                 // ATR not supported?
                 Console.WriteLine("Error by trying to receive the ATR. {0}\n", SCardHelper.StringifyError(rc));
             } else {
-                Console.WriteLine("ATR: {0}\n", BitConverter.ToString(atr ?? new byte[] {}));
+                Console.WriteLine("ATR: {0}\n", BitConverter.ToString(atr ?? new byte[] { }));
             }
         }
 

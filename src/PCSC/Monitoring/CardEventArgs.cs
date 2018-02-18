@@ -5,13 +5,14 @@ namespace PCSC.Monitoring
     /// <summary>
     /// Smart card event.
     /// </summary>
-    public abstract class CardEventArgs : EventArgs {
+    public abstract class CardEventArgs : EventArgs
+    {
         /// <summary>
         /// Name of the reader that has raised the event.
         /// </summary>
         /// <remarks>A human readable string of the reader name.</remarks>
         public string ReaderName { get; private set; }
-        
+
         /// <summary>
         /// The card's ATR (if present), otherwise <c>null</c>.
         /// </summary>
@@ -20,7 +21,7 @@ namespace PCSC.Monitoring
         /// <summary>
         /// Creates a new instance.
         /// </summary>
-        protected CardEventArgs() {}
+        protected CardEventArgs() { }
 
         /// <summary>
         /// Creates a new instance.

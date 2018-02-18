@@ -45,7 +45,7 @@ namespace PCSC.Iso7816
         }
 
         /// <summary>Initializes a new instance of the <see cref="Response" /> class.</summary>
-        protected internal Response() {}
+        protected internal Response() { }
 
         /// <summary>
         /// Creates a new instance.
@@ -94,6 +94,7 @@ namespace PCSC.Iso7816
                     position += currentApduSize;
                 }
             }
+
             return data;
         }
 

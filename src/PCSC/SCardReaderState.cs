@@ -140,6 +140,7 @@ namespace PCSC
                 }
             }
         }
+
         /// <summary>
         /// Reader state after a state change.
         /// </summary>
@@ -192,9 +193,9 @@ namespace PCSC
             }
             set {
                 if ((value < 0) || (value > 0xFFFF))
-                    throw new ArgumentOutOfRangeException (nameof(value));
+                    throw new ArgumentOutOfRangeException(nameof(value));
                 var es = (long) EventState; // save EventState
-                
+
                 //The upper 2 bytes of the EventStateValue hold the CardChangeEventCounter, the lower 2 bytes the EventState
                 if (Platform.IsWindows) {
                     _winscardRstate.dwEventState = unchecked((int)
@@ -260,6 +261,7 @@ namespace PCSC
                         tmp = new byte[WinSCardAPI.MAX_ATR_SIZE];
                         _winscardRstate.cbAtr = WinSCardAPI.MAX_ATR_SIZE;
                     }
+
                     Array.Copy(_winscardRstate.rgbAtr, tmp, _winscardRstate.cbAtr);
                 } else {
                     if ((int) _pcscliteRstate.cbAtr <= PCSCliteAPI.MAX_ATR_SIZE) {
@@ -269,6 +271,7 @@ namespace PCSC
                         tmp = new byte[PCSCliteAPI.MAX_ATR_SIZE];
                         _pcscliteRstate.cbAtr = (IntPtr) PCSCliteAPI.MAX_ATR_SIZE;
                     }
+
                     Array.Copy(_pcscliteRstate.rgbAtr, tmp, (int) _pcscliteRstate.cbAtr);
                 }
 
@@ -281,12 +284,14 @@ namespace PCSC
                     if (tmp.Length != WinSCardAPI.MAX_ATR_SIZE) {
                         Array.Resize(ref tmp, WinSCardAPI.MAX_ATR_SIZE);
                     }
+
                     _winscardRstate.rgbAtr = tmp;
                     _winscardRstate.cbAtr = value.Length;
                 } else {
                     if (tmp.Length != PCSCliteAPI.MAX_ATR_SIZE) {
                         Array.Resize(ref tmp, PCSCliteAPI.MAX_ATR_SIZE);
                     }
+
                     _pcscliteRstate.rgbAtr = tmp;
                     _pcscliteRstate.cbAtr = (IntPtr) value.Length;
                 }

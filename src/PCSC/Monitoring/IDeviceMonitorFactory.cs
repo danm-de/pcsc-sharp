@@ -13,7 +13,7 @@ namespace PCSC.Monitoring
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         /// <returns>A <see cref="IDeviceMonitor"/></returns>
         IDeviceMonitor Create(SCardScope scope);
-        
+
         /// <summary>
         /// Releases the smartcard device monitor and its dependencies using the <see cref="IDisposable.Dispose"/> method.
         /// </summary>

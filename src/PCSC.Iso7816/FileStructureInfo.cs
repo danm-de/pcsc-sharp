@@ -4,23 +4,31 @@
     public class FileStructureInfo
     {
         /// <summary>File structure mask bits.</summary>
-        public const byte FILE_STRUCTURE_MASK                   = (1 << 7) + (1 << 2) + (1 << 1) + (1 << 0);
+        public const byte FILE_STRUCTURE_MASK = (1 << 7) + (1 << 2) + (1 << 1) + (1 << 0);
+
         /// <summary>File has not structure information bit.</summary>
-        public const byte FILE_STRUCTURE_NO_INFO                = (0 << 2) + (0 << 1) + (0 << 0);
+        public const byte FILE_STRUCTURE_NO_INFO = (0 << 2) + (0 << 1) + (0 << 0);
+
         /// <summary>Transparent bit.</summary>
-        public const byte FILE_STRUCTURE_TRANSPARENT            = (0 << 2) + (0 << 1) + (1 << 0);
+        public const byte FILE_STRUCTURE_TRANSPARENT = (0 << 2) + (0 << 1) + (1 << 0);
+
         /// <summary>Linear fixed bit.</summary>
-        public const byte FILE_STRUCTURE_LINEAR_FIXED           = (0 << 2) + (1 << 1) + (0 << 0);
+        public const byte FILE_STRUCTURE_LINEAR_FIXED = (0 << 2) + (1 << 1) + (0 << 0);
+
         /// <summary>Linear fixed TLV bit.</summary>
-        public const byte FILE_STRUCTURE_LINEAR_FIXED_TLV       = (0 << 2) + (1 << 1) + (1 << 0);
+        public const byte FILE_STRUCTURE_LINEAR_FIXED_TLV = (0 << 2) + (1 << 1) + (1 << 0);
+
         /// <summary>Linear variable bit.</summary>
-        public const byte FILE_STRUCTURE_LINEAR_VARIABLE        = (1 << 2) + (0 << 1) + (0 << 0);
+        public const byte FILE_STRUCTURE_LINEAR_VARIABLE = (1 << 2) + (0 << 1) + (0 << 0);
+
         /// <summary>Linear variable TLV bit.</summary>
-        public const byte FILE_STRUCTURE_LINEAR_VARIABLE_TLV    = (1 << 2) + (0 << 1) + (1 << 0);
+        public const byte FILE_STRUCTURE_LINEAR_VARIABLE_TLV = (1 << 2) + (0 << 1) + (1 << 0);
+
         /// <summary>Cyclic bit.</summary>
-        public const byte FILE_STRUCTURE_CYCLIC                 = (1 << 2) + (1 << 1) + (0 << 0);
+        public const byte FILE_STRUCTURE_CYCLIC = (1 << 2) + (1 << 1) + (0 << 0);
+
         /// <summary>Cyclic TLV bit.</summary>
-        public const byte FILE_STRUCTURE_CYCLIC_TLV             = (1 << 2) + (1 << 1) + (1 << 0);
+        public const byte FILE_STRUCTURE_CYCLIC_TLV = (1 << 2) + (1 << 1) + (1 << 0);
 
         private RecordInfo _recordInfoCache;
 
@@ -70,6 +78,7 @@
                 if (_recordInfoCache == null && IsRecord) {
                     _recordInfoCache = new RecordInfo(FileDescriptor);
                 }
+
                 return _recordInfoCache;
             }
         }

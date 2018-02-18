@@ -67,6 +67,7 @@ namespace PCSC
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
             }
+
             CurrentContext = context;
         }
 
@@ -713,6 +714,7 @@ namespace PCSC
             if (sendPci == null) {
                 throw new ArgumentNullException(nameof(sendPci));
             }
+
             if (sendPci.MemoryPtr == IntPtr.Zero) {
                 throw new ArgumentException("sendPci");
             }
@@ -1835,7 +1837,7 @@ namespace PCSC
 
             // receive needed size for attribute
             GetAttrib(attributeId, null, out attrlen)
-				.ThrowIfNotSuccess();
+                .ThrowIfNotSuccess();
 
             attribute = new byte[attrlen];
             return GetAttrib(attributeId, attribute, out attrlen);

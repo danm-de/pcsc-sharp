@@ -18,16 +18,16 @@ namespace PCSC
         /// Destroys application context to the PC/SC Resource Manager.
         /// </summary>
         ~SCardContext() {
-	        Dispose(false);
+            Dispose(false);
         }
 
-		/// <inheritdoc />
-		public void Establish(SCardScope scope) {
+        /// <inheritdoc />
+        public void Establish(SCardScope scope) {
             if (_hasContext && IsValid()) {
                 Release();
             }
 
-		    var rc = Platform.Lib.EstablishContext(
+            var rc = Platform.Lib.EstablishContext(
                 scope,
                 IntPtr.Zero,
                 IntPtr.Zero,
@@ -41,9 +41,9 @@ namespace PCSC
                     break;
                 case SCardError.InvalidValue:
                     throw new InvalidScopeTypeException(rc, "Invalid scope type passed");
-				default:
-		            rc.Throw();
-		            break;
+                default:
+                    rc.Throw();
+                    break;
             }
         }
 
@@ -62,11 +62,11 @@ namespace PCSC
                     break;
                 case SCardError.InvalidHandle:
                     throw new InvalidContextException(rc, "Invalid Context handle");
-				case SCardError.InvalidHandleWindows:
-					throw new InvalidContextException(rc, "Invalid Context handle");
-				default:
-		            rc.Throw();
-		            break;
+                case SCardError.InvalidHandleWindows:
+                    throw new InvalidContextException(rc, "Invalid Context handle");
+                default:
+                    rc.Throw();
+                    break;
             }
         }
 
@@ -94,24 +94,24 @@ namespace PCSC
         /// <summary>Disposes a PC/SC application context.</summary>
         /// <param name="disposing">Ignored. If an application context to the PC/SC Resource Manager has been established it will call the <see cref="Release()" /> method.</param>
         protected virtual void Dispose(bool disposing) {
-	        if (!_hasContext) return;
+            if (!_hasContext) return;
 
-			try {
-				// free unmanaged resources in order to avoid memleeks.
-				Release();
-	        } catch (InvalidContextException) {
-		        // RDP connection disconnected?
-		        // See https://github.com/danm-de/pcsc-sharp/issues/37
-	        }
+            try {
+                // free unmanaged resources in order to avoid memleeks.
+                Release();
+            } catch (InvalidContextException) {
+                // RDP connection disconnected?
+                // See https://github.com/danm-de/pcsc-sharp/issues/37
+            }
         }
 
-		/// <inheritdoc />
-		public string[] GetReaders(string[] groups) {
+        /// <inheritdoc />
+        public string[] GetReaders(string[] groups) {
             if (_contextPtr.Equals(IntPtr.Zero)) {
                 throw new InvalidContextException(SCardError.InvalidHandle);
             }
 
-		    var rc = Platform.Lib.ListReaders(
+            var rc = Platform.Lib.ListReaders(
                 _contextPtr,
                 groups,
                 out var readers);
@@ -119,18 +119,18 @@ namespace PCSC
             switch (rc) {
                 case SCardError.Success:
                     return readers;
-				case SCardError.NoReadersAvailable:
-		            return new string[0]; // Service running, no reader connected
+                case SCardError.NoReadersAvailable:
+                    return new string[0]; // Service running, no reader connected
                 case SCardError.InvalidHandle:
                     throw new InvalidContextException(rc, "Invalid Scope Handle");
                 default:
-		            rc.Throw();
-		            return null;
+                    rc.Throw();
+                    return null;
             }
         }
 
-		/// <inheritdoc />
-		public string[] GetReaders() {
+        /// <inheritdoc />
+        public string[] GetReaders() {
             return GetReaders(null);
         }
 
@@ -149,11 +149,11 @@ namespace PCSC
                     return groups;
                 case SCardError.InvalidHandle:
                     throw new InvalidContextException(sc, "Invalid Scope Handle");
-				case SCardError.NoReadersAvailable:
-		            return new string[0]; // Service running, no reader connected
-				default:
-		            sc.Throw();
-		            return null;
+                case SCardError.NoReadersAvailable:
+                    return new string[0]; // Service running, no reader connected
+                default:
+                    sc.Throw();
+                    return null;
             }
         }
 
@@ -171,6 +171,7 @@ namespace PCSC
             if (readerNames == null) {
                 throw new ArgumentNullException(nameof(readerNames));
             }
+
             if (readerNames.Length == 0) {
                 throw new ArgumentException("You must specify at least one reader.");
             }
@@ -184,13 +185,13 @@ namespace PCSC
             }
 
             GetStatusChange(IntPtr.Zero, states)
-				.ThrowIfNotSuccess();
+                .ThrowIfNotSuccess();
 
             return states;
         }
 
         /// <inheritdoc />
-       public SCardError GetStatusChange(IntPtr timeout, SCardReaderState[] readerStates) {
+        public SCardError GetStatusChange(IntPtr timeout, SCardReaderState[] readerStates) {
             if (_contextPtr.Equals(IntPtr.Zero)) {
                 throw new InvalidContextException(SCardError.InvalidHandle);
             }
@@ -216,7 +217,7 @@ namespace PCSC
 
         /// <inheritdoc />
         public IntPtr Infinite => INFINITE;
-       
+
         /// <summary>Maximum ATR size.</summary>
         /// <value>
         ///     <list type="table">
@@ -244,6 +245,7 @@ namespace PCSC
                 if (Marshal.SizeOf(typeof(IntPtr)) == 4) {
                     return unchecked((IntPtr) (int) 0xFFFFFFFF);
                 }
+
                 return unchecked((IntPtr) 0xFFFFFFFF);
             }
         }

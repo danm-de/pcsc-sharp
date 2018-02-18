@@ -93,7 +93,7 @@ namespace Mifare1kTest
             return IsSuccess(response);
         }
 
-        private static bool IsSuccess(Response response) => 
+        private static bool IsSuccess(Response response) =>
             (response.SW1 == (byte) SW1Code.Normal) && (response.SW2 == 0x00);
     }
 }

@@ -3,11 +3,11 @@ using System.Runtime.Serialization;
 
 namespace PCSC.Exceptions
 {
-	/// <summary>
-	/// A supplied buffer is insufficient.
-	/// </summary>
-	[Serializable]
-	public class WinErrorInsufficientBufferException : InsufficientBufferException
+    /// <summary>
+    /// A supplied buffer is insufficient.
+    /// </summary>
+    [Serializable]
+    public class WinErrorInsufficientBufferException : InsufficientBufferException
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WinErrorInsufficientBufferException"/> class.
@@ -33,12 +33,12 @@ namespace PCSC.Exceptions
         public WinErrorInsufficientBufferException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
 
-		/// <summary>
-		/// Serialization constructor
-		/// </summary>
-		/// <param name="info"></param>
-		/// <param name="context"></param>
-		protected WinErrorInsufficientBufferException(SerializationInfo info, StreamingContext context) 
+        /// <summary>
+        /// Serialization constructor
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
+        protected WinErrorInsufficientBufferException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
     }
 }

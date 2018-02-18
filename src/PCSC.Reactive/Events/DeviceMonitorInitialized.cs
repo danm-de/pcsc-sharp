@@ -13,7 +13,7 @@ namespace PCSC.Reactive.Events
         /// Currently attached readers
         /// </summary>
         public override IEnumerable<string> Readers { get; }
-        
+
         /// <summary>
         /// Original event arguments
         /// </summary>

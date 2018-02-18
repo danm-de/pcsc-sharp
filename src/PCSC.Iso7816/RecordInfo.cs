@@ -13,13 +13,16 @@ namespace PCSC.Iso7816
     public class RecordInfo
     {
         /// <summary>File structuring mask bits.</summary>
-        public const byte FILE_STRUCTURING_MASK             = (1 << 7) + (1 << 2) + (1 << 1);
+        public const byte FILE_STRUCTURING_MASK = (1 << 7) + (1 << 2) + (1 << 1);
+
         /// <summary>Linear fixed bit.</summary>
-        public const byte FILE_STRUCTURE_IS_LINEAR_FIXED    = (0 << 2) + (1 << 1);
+        public const byte FILE_STRUCTURE_IS_LINEAR_FIXED = (0 << 2) + (1 << 1);
+
         /// <summary>Linear variable bit.</summary>
         public const byte FILE_STRUCTURE_IS_LINEAR_VARIABLE = (1 << 2) + (0 << 1);
+
         /// <summary>Cyclic bit.</summary>
-        public const byte FILE_STRUCTURE_IS_CYCLIC          = (1 << 2) + (1 << 1);
+        public const byte FILE_STRUCTURE_IS_CYCLIC = (1 << 2) + (1 << 1);
 
         /// <summary>Initializes a new instance of the <see cref="RecordInfo" /> class.</summary>
         /// <param name="fileDescriptor">The file descriptor.</param>

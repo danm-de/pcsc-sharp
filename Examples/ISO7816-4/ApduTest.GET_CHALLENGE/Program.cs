@@ -28,7 +28,6 @@ namespace ApduTest.GET_CHALLENGE
                     mode: SCardShareMode.Shared,
                     protocol: SCardProtocol.Any,
                     releaseContextOnDispose: false)) {
-
                     // Build a GET CHALLENGE command 
                     var apdu = new CommandApdu(IsoCase.Case2Short, isoReader.ActiveProtocol) {
                         CLA = 0x00, // Class
@@ -43,7 +42,7 @@ namespace ApduTest.GET_CHALLENGE
 
                     var response = isoReader.Transmit(apdu);
 
-                    Console.WriteLine("SW1 SW2 = {0:X2} {1:X2}", 
+                    Console.WriteLine("SW1 SW2 = {0:X2} {1:X2}",
                         response.SW1, response.SW2);
 
                     if (!response.HasData) {
@@ -54,6 +53,7 @@ namespace ApduTest.GET_CHALLENGE
                     }
                 }
             }
+
             Console.ReadKey();
         }
 

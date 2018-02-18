@@ -26,7 +26,7 @@ namespace RxDeviceEventsTests
         }
 
         private static void OnNext(DeviceMonitorEvent ev) {
-            Console.WriteLine($"Event type {ev.GetType()}, (readers: {string.Join(", ",ev.Readers)})");
+            Console.WriteLine($"Event type {ev.GetType()}, (readers: {string.Join(", ", ev.Readers)})");
         }
     }
 }

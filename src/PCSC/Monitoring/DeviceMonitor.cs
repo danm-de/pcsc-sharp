@@ -85,8 +85,8 @@ namespace PCSC.Monitoring
             try {
                 var readers = GetReaders(ctx);
                 OnInitialized(new DeviceChangeEventArgs(
-                    readers, 
-                    Enumerable.Empty<string>(), 
+                    readers,
+                    Enumerable.Empty<string>(),
                     Enumerable.Empty<string>()));
 
                 while (true) {
@@ -112,8 +112,8 @@ namespace PCSC.Monitoring
                     var detached = GetDetachedReaders(readers, newReaderList);
 
                     OnStatusChanged(new DeviceChangeEventArgs(
-                        newReaderList.ToList(), 
-                        attached.ToList(), 
+                        newReaderList.ToList(),
+                        attached.ToList(),
                         detached.ToList()));
 
                     readers = newReaderList;

@@ -3,11 +3,11 @@ using System.Runtime.Serialization;
 
 namespace PCSC.Exceptions
 {
-	/// <summary>
-	/// An internal error occurred.
-	/// </summary>
-	[Serializable]
-	public class InternalErrorException: PCSCException
+    /// <summary>
+    /// An internal error occurred.
+    /// </summary>
+    [Serializable]
+    public class InternalErrorException : PCSCException
     {
         /// <summary>
         /// Creates a new instance.
@@ -33,13 +33,11 @@ namespace PCSC.Exceptions
         public InternalErrorException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
 
-		/// <summary>
-		/// Serialization constructor
-		/// </summary>
-		/// <param name="info"></param>
-		/// <param name="context"></param>
-		protected InternalErrorException(SerializationInfo info, StreamingContext context) : base(info, context)
-	    {
-	    }
+        /// <summary>
+        /// Serialization constructor
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
+        protected InternalErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }

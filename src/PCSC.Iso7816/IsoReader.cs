@@ -112,7 +112,7 @@ namespace PCSC.Iso7816
             var sc = Reader.Connect(readerName, mode, protocol);
 
             // Throws an exception if sc != SCardError.Success
-	        sc.ThrowIfNotSuccess();
+            sc.ThrowIfNotSuccess();
         }
 
         /// <summary>Disconnects the currently connected reader.</summary>
@@ -122,8 +122,7 @@ namespace PCSC.Iso7816
         }
 
         private ResponseApdu SimpleTransmit(byte[] commandApdu, int commandApduLength, IsoCase isoCase,
-            SCardProtocol protocol, SCardPCI receivePci, byte[] receiveBuffer, int receiveBufferLength) 
-        {
+            SCardProtocol protocol, SCardPCI receivePci, byte[] receiveBuffer, int receiveBufferLength) {
             SCardError sc;
             do {
                 // send Command APDU to the card
@@ -216,7 +215,8 @@ namespace PCSC.Iso7816
             return response;
         }
 
-        private ResponseApdu IssueGetResponseCommand(CommandApdu commandApdu, ResponseApdu lastResponseApdu, Response response, SCardPCI receivePci) {
+        private ResponseApdu IssueGetResponseCommand(CommandApdu commandApdu, ResponseApdu lastResponseApdu,
+            Response response, SCardPCI receivePci) {
             /* The transmission system shall issue a GET RESPONSE command APDU (or TPDU)
              * to the card by assigning the minimum of SW2 and Le to parameter Le (or P3)). 
              * Le = Le > 0 ? min(Le,SW2) : SW2
@@ -235,8 +235,8 @@ namespace PCSC.Iso7816
                 var getResponseApdu = ConstructGetResponseApdu(ref le);
 
                 // +2 bytes for status word
-                var receiveBufferLength = le == 0 
-                    ? 256 + 2 
+                var receiveBufferLength = le == 0
+                    ? 256 + 2
                     : le + 2;
 
                 var receiveBuffer = new byte[receiveBufferLength];
@@ -259,7 +259,8 @@ namespace PCSC.Iso7816
                         receiveBuffer,
                         receiveBufferLength);
                 } catch (WinErrorInsufficientBufferException ex) {
-                    throw new InvalidApduException($"GET RESPONSE command failed because of unsufficient buffer (Le={getResponseApdu.Le})", 
+                    throw new InvalidApduException(
+                        $"GET RESPONSE command failed because of unsufficient buffer (Le={getResponseApdu.Le})",
                         getResponseApdu, ex);
                 } catch (InvalidOperationException ex) {
                     throw new InvalidApduException(
@@ -274,10 +275,12 @@ namespace PCSC.Iso7816
                 responseApdu.SW1 == (byte) SW1Code.NormalDataResponse ||
                 // Warning condition: data may be corrupted. Iso7816-4 7.1.5
                 (responseApdu.SW1 == (byte) SW1Code.WarningNVDataNotChanged && responseApdu.SW2 == 0x81));
+
             return responseApdu;
         }
 
-        private ResponseApdu RetransmitOnInsufficientBuffer(CommandApdu commandApdu, ResponseApdu responseApdu, out SCardPCI receivePci) {
+        private ResponseApdu RetransmitOnInsufficientBuffer(CommandApdu commandApdu, ResponseApdu responseApdu,
+            out SCardPCI receivePci) {
             int receiveBufferLength;
             var resendCmdApdu = (CommandApdu) commandApdu.Clone();
             if (responseApdu.SW2 == 0) {
@@ -309,9 +312,11 @@ namespace PCSC.Iso7816
                     receiveBuffer,
                     receiveBufferLength);
             } catch (WinErrorInsufficientBufferException ex) {
-                throw new InvalidApduException($"Retransmission failed because of unsufficient buffer. Le={resendCmdApdu.Le}", ex);
+                throw new InvalidApduException(
+                    $"Retransmission failed because of unsufficient buffer. Le={resendCmdApdu.Le}", ex);
             } catch (InvalidOperationException ex) {
-                throw new InvalidApduException($"Got SW1={responseApdu.SW1:X}. Retransmission failed because of an invalid APDU.",
+                throw new InvalidApduException(
+                    $"Got SW1={responseApdu.SW1:X}. Retransmission failed because of an invalid APDU.",
                     resendCmdApdu, ex);
             }
         }

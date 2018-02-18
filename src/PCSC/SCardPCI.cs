@@ -66,19 +66,22 @@ namespace PCSC
             if (Platform.IsWindows) {
                 // Windows
                 MemoryPtr = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
-                    + Marshal.SizeOf(typeof(SCARD_IO_REQUEST_WINDOWS)))));
+                                                                              + Marshal.SizeOf(
+                                                                                  typeof(SCARD_IO_REQUEST_WINDOWS)))));
 
                 _winscardIoRequest.dwProtocol = (int) protocol;
                 _winscardIoRequest.cbPciLength = bufLength;
                 if (MemoryPtr != IntPtr.Zero) {
                     Marshal.StructureToPtr(_winscardIoRequest, MemoryPtr, false);
                 }
+
                 return;
             }
 
             // Unix
             MemoryPtr = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
-                + Marshal.SizeOf(typeof(Interop.Unix.SCARD_IO_REQUEST)))));
+                                                                          + Marshal.SizeOf(
+                                                                              typeof(Interop.Unix.SCARD_IO_REQUEST)))));
 
             _pcscliteIoRequest.dwProtocol = (IntPtr) protocol;
             _pcscliteIoRequest.cbPciLength = (IntPtr) bufLength;
@@ -163,6 +166,7 @@ namespace PCSC
                 if (Platform.IsWindows) {
                     return (SCardProtocol) _winscardIoRequest.dwProtocol;
                 }
+
                 return (SCardProtocol) _pcscliteIoRequest.dwProtocol;
             }
         }
@@ -178,6 +182,7 @@ namespace PCSC
                 if (Platform.IsWindows) {
                     return _winscardIoRequest.cbPciLength;
                 }
+
                 return (int) _pcscliteIoRequest.cbPciLength;
             }
         }
@@ -220,6 +225,7 @@ namespace PCSC
                             0,
                             _winscardIoRequest.cbPciLength);
                     }
+
                     return data;
                 }
 
@@ -232,6 +238,7 @@ namespace PCSC
                         0,
                         (int) _pcscliteIoRequest.cbPciLength);
                 }
+
                 return data;
             }
         }
@@ -240,11 +247,11 @@ namespace PCSC
             get {
                 if (Platform.IsWindows) {
                     return unchecked((IntPtr) ((long) MemoryPtr +
-                        Marshal.SizeOf(typeof(SCARD_IO_REQUEST_WINDOWS))));
+                                               Marshal.SizeOf(typeof(SCARD_IO_REQUEST_WINDOWS))));
                 }
 
                 return unchecked((IntPtr) ((long) MemoryPtr +
-                    Marshal.SizeOf(typeof(Interop.Unix.SCARD_IO_REQUEST))));
+                                           Marshal.SizeOf(typeof(Interop.Unix.SCARD_IO_REQUEST))));
             }
         }
 
@@ -256,6 +263,7 @@ namespace PCSC
                 if (_pciT0 == IntPtr.Zero) {
                     _pciT0 = Platform.Lib.GetSymFromLib("g_rgSCardT0Pci");
                 }
+
                 return _pciT0;
             }
         }
@@ -268,6 +276,7 @@ namespace PCSC
                 if (_pciT1 == IntPtr.Zero) {
                     _pciT1 = Platform.Lib.GetSymFromLib("g_rgSCardT1Pci");
                 }
+
                 return _pciT1;
             }
         }
@@ -280,6 +289,7 @@ namespace PCSC
                 if (_pciRaw == IntPtr.Zero) {
                     _pciRaw = Platform.Lib.GetSymFromLib("g_rgSCardRawPci");
                 }
+
                 return _pciRaw;
             }
         }

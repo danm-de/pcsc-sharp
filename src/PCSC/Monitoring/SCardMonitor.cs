@@ -172,11 +172,13 @@ namespace PCSC.Monitoring
         /// <remarks>The monitor object should use its own application context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.
         ///     <para>Warning: You MUST dispose the monitor instance otherwise the background thread will run forever!</para>
         /// </remarks>
-        [Obsolete("Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
+        [Obsolete(
+            "Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
         public SCardMonitor(ISCardContext context, bool releaseContextOnDispose = false) {
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
             }
+
             _context = context;
             _releaseContextOnDispose = releaseContextOnDispose;
         }
@@ -188,11 +190,13 @@ namespace PCSC.Monitoring
         /// <remarks>The monitor object should use its own application context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.
         ///     <para>Warning: You MUST dispose the monitor instance otherwise the background thread will run forever!</para>
         /// </remarks>
-        [Obsolete("Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
+        [Obsolete(
+            "Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
         public SCardMonitor(ISCardContext context, SCardScope scope, bool releaseContextOnDispose = true) {
             if (context == null) {
                 throw new ArgumentNullException(nameof(context));
             }
+
             _context = context;
             _context.Establish(scope);
             _releaseContextOnDispose = releaseContextOnDispose;
@@ -218,11 +222,11 @@ namespace PCSC.Monitoring
         public IntPtr GetCurrentStateValue(int index) {
             // actually "previousStateValue" contains the last known value.
             var currentStateValues = _monitor?.PreviousStateValues;
-            
+
             if (currentStateValues == null) {
                 throw new InvalidOperationException("Monitor object is not initialized.");
             }
-            
+
             if (index < 0 || (index >= currentStateValues.Length)) {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
@@ -246,6 +250,7 @@ namespace PCSC.Monitoring
             if (index < 0 || (index >= previousStates.Length)) {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
+
             return previousStates[index];
         }
 
@@ -264,14 +269,15 @@ namespace PCSC.Monitoring
             if (index < 0 || (index >= currentReaderNames.Length)) {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
+
             return currentReaderNames[index];
         }
 
         /// <summary>The number of readers that currently being monitored.</summary>
         /// <value>Return 0 if no reader is being monitored.</value>
         public int ReaderCount => _monitor?
-            .ReaderNames?
-            .Length ?? 0;
+                                      .ReaderNames?
+                                      .Length ?? 0;
 
         /// <summary>Disposes the object.</summary>
         /// <remarks>Dispose will call <see cref="Cancel()" /> in order to stop the background thread. The application context will be disposed if you configured the monitor to do so at construction time.</remarks>
@@ -407,7 +413,7 @@ namespace PCSC.Monitoring
                     .Increment(ref _monitorCount)
                     .ToString(CultureInfo.InvariantCulture);
 
-                var threadName = string.Concat(GetType().FullName, " #", 
+                var threadName = string.Concat(GetType().FullName, " #",
                     monitorNumber);
 
                 var monitor = new Monitor {
@@ -415,7 +421,7 @@ namespace PCSC.Monitoring
                     PreviousStates = new SCRState[numberOfReaders],
                     PreviousStateValues = new IntPtr[numberOfReaders],
                     Context = context,
-                    Thread = new Thread(arg => StartMonitor((Monitor)arg)) {
+                    Thread = new Thread(arg => StartMonitor((Monitor) arg)) {
                         IsBackground = true,
                         Name = threadName
                     }
@@ -427,7 +433,6 @@ namespace PCSC.Monitoring
         }
 
         private void StartMonitor(Monitor monitor) {
-
             var readerStates = new SCardReaderState[monitor.ReaderNames.Length];
 
             for (var i = 0; i < monitor.ReaderNames.Length; i++) {
@@ -509,7 +514,7 @@ namespace PCSC.Monitoring
             if (handler == null) {
                 return;
             }
-            
+
             var args = new CardStatusEventArgs(
                 readerName,
                 initState,
@@ -520,7 +525,7 @@ namespace PCSC.Monitoring
 
         private void OnCardRemoved(byte[] atr, string readerName, SCRState newState) {
             var handler = CardRemoved;
-            
+
             if (handler == null) {
                 return;
             }
@@ -535,7 +540,7 @@ namespace PCSC.Monitoring
 
         private void OnCardInserted(byte[] atr, string readerName, SCRState newState) {
             var handler = CardInserted;
-            
+
             if (handler == null) {
                 return;
             }
@@ -550,7 +555,7 @@ namespace PCSC.Monitoring
 
         private void OnStatusChanged(byte[] atr, string readerName, SCRState previousState, SCRState newState) {
             var handler = StatusChanged;
-            
+
             if (handler == null) {
                 return;
             }
@@ -566,16 +571,16 @@ namespace PCSC.Monitoring
 
         private void OnMonitorException(SCardError rc, string message) {
             var handler = MonitorException;
-            
+
             if (handler == null) {
                 return;
             }
 
-	        try {
-		        rc.ThrowIfNotSuccess();
-	        } catch (Exception exception) {
-		        handler(this, new PCSCException(rc, message, exception));
-	        }
+            try {
+                rc.ThrowIfNotSuccess();
+            } catch (Exception exception) {
+                handler(this, new PCSCException(rc, message, exception));
+            }
         }
     }
 }

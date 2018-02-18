@@ -25,15 +25,12 @@ namespace PCSC.Tests
             //Set the maximum value
             //The maximum value depends on the architecture.
             //If the process is running 32-bit, IntPtr(long) throws an exception.
-            if (IntPtr.Size == sizeof(long))
-            {
+            if (IntPtr.Size == sizeof(long)) {
                 state.EventStateValue = new IntPtr(0xFFFF0000);
                 state.CardChangeEventCnt
                     .Should()
                     .Be(0xFFFF);
-            }
-            else
-            {
+            } else {
                 state.EventStateValue = new IntPtr(0x7FFF0000);
                 state.CardChangeEventCnt
                     .Should()
@@ -71,7 +68,7 @@ namespace PCSC.Tests
             state.EventState
                 .Should()
                 .Be(SCRState.Empty, "EventState should not change by setting the Counter");
-            
+
             //Set the maximum value
             state.CardChangeEventCnt = 65535;
             state.CardChangeEventCnt
@@ -79,15 +76,14 @@ namespace PCSC.Tests
                 .Be(65535);
             ((uint) state.EventStateValue.ToInt32())
                 .Should().Be(0xFFFF0010);
-            
+
             //try to set a value that is too high
             ((Action) (() => state.CardChangeEventCnt = 65536))
                 .Should().Throw<ArgumentException>();
-            
+
             //try to set a negative value
             ((Action) (() => state.CardChangeEventCnt = -1))
                 .Should().Throw<ArgumentException>();
         }
     }
 }
-

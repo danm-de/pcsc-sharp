@@ -8,7 +8,8 @@ using NUnit.Framework;
 using PCSC.Monitoring;
 using PCSC.Reactive.Events;
 
-namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
+namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs
+{
     [TestFixture]
     public class If_a_device_monitor_signals_initialization : Spec
     {
@@ -50,7 +51,7 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
                         rec.Value.Kind == NotificationKind.OnNext
                         && rec.Value.Value is DeviceMonitorInitialized
                         && rec.Value.Value.EventArgs == _eventArgs
-                        && rec.Value.Value.Readers.SequenceEqual(new[] { READER_A, READER_B }));
+                        && rec.Value.Value.Readers.SequenceEqual(new[] {READER_A, READER_B}));
         }
     }
 
@@ -67,8 +68,8 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
 
         protected override void EstablishContext() {
             _eventArgs = new DeviceChangeEventArgs(
-                new[] { READER_A, READER_B },
-                new[] { READER_B },
+                new[] {READER_A, READER_B},
+                new[] {READER_B},
                 Enumerable.Empty<string>());
 
             _observer = _scheduler.CreateObserver<DeviceMonitorEvent>();
@@ -95,7 +96,7 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
                         rec.Value.Kind == NotificationKind.OnNext
                         && rec.Value.Value is ReadersAttached
                         && rec.Value.Value.EventArgs == _eventArgs
-                        && rec.Value.Value.Readers.SequenceEqual(new [] {READER_B}));
+                        && rec.Value.Value.Readers.SequenceEqual(new[] {READER_B}));
         }
     }
 
@@ -112,12 +113,12 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
 
         protected override void EstablishContext() {
             _eventArgs = new DeviceChangeEventArgs(
-                new[] { READER_A },
+                new[] {READER_A},
                 Enumerable.Empty<string>(),
-                new[] { READER_B });
+                new[] {READER_B});
 
             _observer = _scheduler.CreateObserver<DeviceMonitorEvent>();
-            
+
             _subscription = _monitor
                 .ObserveEvents()
                 .Subscribe(_observer);
@@ -140,7 +141,7 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
                         rec.Value.Kind == NotificationKind.OnNext
                         && rec.Value.Value is ReadersDetached
                         && rec.Value.Value.EventArgs == _eventArgs
-                        && rec.Value.Value.Readers.SequenceEqual(new[] { READER_B }));
+                        && rec.Value.Value.Readers.SequenceEqual(new[] {READER_B}));
         }
     }
 
@@ -157,7 +158,7 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
             _eventArgs = new DeviceMonitorExceptionEventArgs(new Exception());
 
             _observer = _scheduler.CreateObserver<DeviceMonitorEvent>();
-            
+
             _subscription = _monitor
                 .ObserveEvents()
                 .Subscribe(_observer);

@@ -30,7 +30,8 @@ namespace Mifare1kTest
                     return;
                 }
 
-                using (var isoReader = new IsoReader(context, readerName, SCardShareMode.Shared, SCardProtocol.Any, false)) {
+                using (var isoReader =
+                    new IsoReader(context, readerName, SCardShareMode.Shared, SCardProtocol.Any, false)) {
                     var card = new MifareCard(isoReader);
 
                     var loadKeySuccessful = card.LoadKey(
@@ -67,6 +68,7 @@ namespace Mifare1kTest
                             : null);
                 }
             }
+
             Console.ReadKey();
         }
 
@@ -92,14 +94,13 @@ namespace Mifare1kTest
 
             var line = Console.ReadLine();
 
-            if (int.TryParse(line, out var choice) && (choice >= 0) && (choice <= readerNames.Count))
-            {
+            if (int.TryParse(line, out var choice) && (choice >= 0) && (choice <= readerNames.Count)) {
                 return readerNames[choice];
             }
 
             Console.WriteLine("An invalid number has been entered.");
             Console.ReadKey();
-            
+
             return null;
         }
 
