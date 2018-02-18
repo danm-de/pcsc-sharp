@@ -6,7 +6,6 @@ open Fake.Testing.NUnit3
 // Properties
 let buildDir = "./.build/"
 let nugetDir = buildDir @@ "nuget"
-let symbolDir = buildDir @@ "symbols"
 let binaryOutDir = ""
 let packagingDir = buildDir + "/package"
 let buildConfig = environVarOrDefault "build_configuration" "Release"
@@ -33,33 +32,11 @@ Target "Test" (fun _ ->
           })
 )
 
-Target "NuGet" (fun _ ->
-    Paket.Pack(fun p ->
-        {p with
-           Symbols = true;
-           OutputPath = buildDir })
-    
-    ensureDirectory nugetDir
-    ensureDirectory symbolDir
-    !! (buildDir @@ "*.nupkg")
-        |> Seq.iter (fun file -> MoveFile nugetDir file)
-    
-    !! (nugetDir @@ "*.symbols.nupkg")
-        |> Seq.iter (fun file -> MoveFile symbolDir file)
-)
-
 Target "NuGetPush" (fun _ ->
     Paket.Push(fun p -> 
         {p with
            DegreeOfParallelism = 1
            WorkingDir = nugetDir 
-        })
-
-    Paket.Push(fun p -> 
-        {p with
-           PublishUrl = "https://nuget.smbsrc.net/"
-           DegreeOfParallelism = 1
-           WorkingDir = symbolDir
         })
 )
 
@@ -70,11 +47,10 @@ Target "Default" (fun _ ->
 // Dependencies
 "Clean"
   ==> "Build"
-  ==> "NuGet"
   ==> "Test"
   ==> "Default"
 
-"NuGet"
+"Build"
   ==> "NuGetPush"
 
 // start build
