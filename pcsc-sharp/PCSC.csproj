@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <NeutralLanguage />
+    <PackageLicenseUrl>https://github.com/danm-de/pcsc-sharp/blob/master/COPYING</PackageLicenseUrl>
+    <Copyright>Copyright 2018 Daniel Mueller</Copyright>
+    <Description>Contains classes to access the Personal Computer/Smart Card Resource Manager using the system's native PC/SC API.</Description>
+    <Company />
+    <Authors>Daniel Mueller</Authors>
+    <Version>4.0.0</Version>
+    <PackageTags>PC/SC smartcard apdu pcsc-sharp</PackageTags>
+    <PackageProjectUrl>https://github.com/danm-de/pcsc-sharp</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp/pcsc-sharp.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\pcsc-sharp.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>
