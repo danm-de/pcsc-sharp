@@ -200,6 +200,8 @@ FakesAssemblies/
 
 # Paket executable
 .paket/paket.exe
+.paket/Paket.Restore.targets
+paket-files/*
 
 # Fake temporary files
 .fake

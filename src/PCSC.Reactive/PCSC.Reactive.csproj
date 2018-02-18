@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp.png</PackageIconUrl>
+    <Authors>Daniel Mueller</Authors>
+    <Company />
+    <Version>4.0.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Reactive extensions for PC/SC. Observables from smart card monitor events.</Description>
+    <Copyright>Copyright 2018 Daniel Mueller</Copyright>
+    <PackageLicenseUrl>https://github.com/danm-de/pcsc-sharp/blob/master/COPYING</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/danm-de/pcsc-sharp.git</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <NeutralLanguage />
+    <PackageProjectUrl>https://github.com/danm-de/pcsc-sharp</PackageProjectUrl>
+    <PackageTags>pcsc rx</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\PCSC.Reactive.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PCSC\PCSC.csproj" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>
