@@ -25,10 +25,4 @@
     <DocumentationFile>bin\Debug\netstandard2.0\PCSC.xml</DocumentationFile>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Update="pcsc-sharp.dll.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
