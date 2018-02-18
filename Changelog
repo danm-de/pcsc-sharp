@@ -3,6 +3,15 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2018-??-??  Daniel Mueller <daniel@danm.de>
+* New version 4.0.0
+* PCSC, PCSC.Reactive converted to .netstandard 2.0
+  https://github.com/danm-de/pcsc-sharp/pull/67
+  Thanks to Christoph Fink @chrfin
+  Closes https://github.com/danm-de/pcsc-sharp/issues/32
+* ISO7816 moved to PCSC.Iso7816
+
+
 2017-10-08  Daniel Mueller <daniel@danm.de>
 * New version 3.8.0
 * Merged pull request https://github.com/danm-de/pcsc-sharp/pull/55
