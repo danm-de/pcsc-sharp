@@ -18,6 +18,13 @@ Target "Clean" (fun _ ->
       |> Log "MSBuild-Clean: "
 )
 
+Target "DotNetRestore" (fun _ -> 
+    DotNetCli.Restore 
+        (fun p -> 
+             { p with 
+                 NoCache = true })
+)
+
 Target "Build" (fun _ ->
     !! "*.sln"
       |> MSBuild binaryOutDir "Build" ["Configuration", buildConfig; "Platform", "Any CPU"]
@@ -46,6 +53,7 @@ Target "Default" (fun _ ->
 
 // Dependencies
 "Clean"
+  ==> "DotNetRestore"
   ==> "Build"
   ==> "Test"
   ==> "Default"
