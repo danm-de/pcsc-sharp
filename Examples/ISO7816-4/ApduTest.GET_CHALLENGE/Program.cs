@@ -67,9 +67,8 @@ namespace ApduTest.GET_CHALLENGE
             // Ask the user which one to choose.
             Console.Write("Which reader has an inserted card that supports the GET CHALLENGE command? ");
             var line = Console.ReadLine();
-            int choice;
 
-            if (int.TryParse(line, out choice) && (choice >= 0) && (choice <= readerNames.Count)) {
+            if (int.TryParse(line, out var choice) && (choice >= 0) && (choice <= readerNames.Count)) {
                 return readerNames[choice];
             }
 

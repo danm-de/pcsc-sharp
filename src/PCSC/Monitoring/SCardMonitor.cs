@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.Threading;
 using PCSC.Exceptions;
@@ -175,11 +175,7 @@ namespace PCSC.Monitoring
         [Obsolete(
             "Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
         public SCardMonitor(ISCardContext context, bool releaseContextOnDispose = false) {
-            if (context == null) {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
             _releaseContextOnDispose = releaseContextOnDispose;
         }
 
@@ -193,11 +189,7 @@ namespace PCSC.Monitoring
         [Obsolete(
             "Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
         public SCardMonitor(ISCardContext context, SCardScope scope, bool releaseContextOnDispose = true) {
-            if (context == null) {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
             _context.Establish(scope);
             _releaseContextOnDispose = releaseContextOnDispose;
         }

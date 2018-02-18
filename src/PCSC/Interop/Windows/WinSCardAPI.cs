@@ -16,15 +16,13 @@ namespace PCSC.Interop.Windows
         private const string KERNEL_DLL = "KERNEL32.DLL";
         private const int CHARSIZE = sizeof(char);
 
-        private readonly Encoding _textEncoding = Encoding.Unicode;
-
         public const int MAX_ATR_SIZE = 0x24;
 
         private IntPtr _dllHandle = IntPtr.Zero;
 
         public int MaxAtrSize => MAX_ATR_SIZE;
 
-        public Encoding TextEncoding => _textEncoding;
+        public Encoding TextEncoding { get; } = Encoding.Unicode;
 
         public int CharSize => CHARSIZE;
 
