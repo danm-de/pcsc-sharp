@@ -17,7 +17,7 @@ namespace PCSC.Tests
                 .Be(0);
 
             //set the counter (upper 2 bytes of the event state) to 1
-            state.EventStateValue = unchecked (new IntPtr(0x00010000));
+            state.EventStateValue = new IntPtr(0x00010000);
             state.CardChangeEventCnt
                 .Should()
                 .Be(1);
@@ -25,16 +25,16 @@ namespace PCSC.Tests
             //Set the maximum value
             //The maximum value depends on the architecture.
             //If the process is running 32-bit, IntPtr(long) throws an exception.
-            if (IntPtr.Size == sizeof(Int64))
+            if (IntPtr.Size == sizeof(long))
             {
-                state.EventStateValue = unchecked(new IntPtr(0xFFFF0000));
+                state.EventStateValue = new IntPtr(0xFFFF0000);
                 state.CardChangeEventCnt
                     .Should()
                     .Be(0xFFFF);
             }
             else
             {
-                state.EventStateValue = unchecked(new IntPtr(0x7FFF0000));
+                state.EventStateValue = new IntPtr(0x7FFF0000);
                 state.CardChangeEventCnt
                     .Should()
                     .Be(0x7FFF);

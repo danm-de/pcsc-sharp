@@ -51,16 +51,11 @@ namespace CardStatus
         /// </summary>
         /// <param name="reader">Connected reader</param>
         private static void PrintReaderStatus(ISCardReader reader) {
-            string[] readerNames;
-            SCardProtocol proto;
-            SCardState state;
-            byte[] atr;
-
             var sc = reader.Status(
-                out readerNames, // contains the reader name(s)
-                out state, // contains the current state (flags)
-                out proto, // contains the currently used communication protocol
-                out atr); // contains the ATR
+                out var readerNames, // contains the reader name(s)
+                out var state, // contains the current state (flags)
+                out var proto, // contains the currently used communication protocol
+                out var atr); // contains the ATR
 
             if (sc != SCardError.Success) {
                 Console.WriteLine("Unable to retrieve card status.\nError message: {0}",

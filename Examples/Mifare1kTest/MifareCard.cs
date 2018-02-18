@@ -11,10 +11,7 @@ namespace Mifare1kTest
         private readonly IIsoReader _isoReader;
 
         public MifareCard(IIsoReader isoReader) {
-            if (isoReader == null) {
-                throw new ArgumentNullException(nameof(isoReader));
-            }
-            _isoReader = isoReader;
+            _isoReader = isoReader ?? throw new ArgumentNullException(nameof(isoReader));
         }
 
         public bool LoadKey(KeyStructure keyStructure, byte keyNumber, byte[] key) {
@@ -36,8 +33,8 @@ namespace Mifare1kTest
 
         public bool Authenticate(byte msb, byte lsb, KeyType keyType, byte keyNumber) {
             var authBlock = new GeneralAuthenticate {
-                MSB = msb,
-                LSB = lsb,
+                Msb = msb,
+                Lsb = lsb,
                 KeyNumber = keyNumber,
                 KeyType = keyType
             };

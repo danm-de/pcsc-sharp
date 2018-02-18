@@ -21,10 +21,7 @@ namespace RxEventsTestWpf
         }
 
         public SimpleDelegateCommand(Action<object> action) {
-            if (action == null) {
-                throw new ArgumentNullException(nameof(action));
-            }
-            _action = action;
+            _action = action ?? throw new ArgumentNullException(nameof(action));
         }
     }
 }
