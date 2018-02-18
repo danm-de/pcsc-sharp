@@ -26,13 +26,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="pcsc-sharp.dll.config" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="pcsc-sharp.dll.config">
+    <None Update="pcsc-sharp.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
 
 </Project>
