@@ -7,7 +7,6 @@ open Fake.Testing.NUnit3
 let buildDir = "./.build/"
 let nugetDir = buildDir @@ "nuget"
 let binaryOutDir = ""
-let packagingDir = buildDir + "/package"
 let buildConfig = environVarOrDefault "build_configuration" "Release"
 
 // Targets
@@ -40,6 +39,9 @@ Target "Test" (fun _ ->
 )
 
 Target "NuGetPush" (fun _ ->
+    CreateDir nugetDir
+    !! (sprintf "src/**/bin/%s/*.nupkg" buildConfig)
+        |> CopyFiles nugetDir
     Paket.Push(fun p -> 
         {p with
            DegreeOfParallelism = 1
