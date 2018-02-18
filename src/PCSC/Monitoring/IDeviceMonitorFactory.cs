@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PCSC
+namespace PCSC.Monitoring
 {
     /// <summary>
     /// Smartcard reader device monitoring factory

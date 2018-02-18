@@ -1,6 +1,7 @@
 using System;
+using PCSC.Context;
 
-namespace PCSC
+namespace PCSC.Monitoring
 {
     /// <summary>Monitors for attached and detached smartcard reader devices.</summary>
     public interface IDeviceMonitor : IDisposable

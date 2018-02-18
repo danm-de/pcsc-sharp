@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace PCSC
+namespace PCSC.Exceptions
 {
 	/// <summary>
 	/// No smart card is currently inserted.

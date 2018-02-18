@@ -1,8 +1,12 @@
 using System;
 using System.Globalization;
 using System.Threading;
+using PCSC.Context;
+using PCSC.Exceptions;
+using PCSC.Extensions;
+using PCSC.Reader;
 
-namespace PCSC
+namespace PCSC.Monitoring
 {
     /// <summary>Monitors a Smart Card reader and triggers events on status changes.</summary>
     /// <remarks>Creates a new thread and calls the <see cref="M:PCSC.SCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])" /> of the given <see cref="T:PCSC.ISCardContext" /> object.</remarks>
@@ -209,9 +213,9 @@ namespace PCSC
         }
 
         /// <summary>Returns the current state of a reader that is currently being monitored.</summary>
-        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.SCardMonitor.ReaderCount" /> - 1).</param>
+        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.Monitoring.SCardMonitor.ReaderCount" /> - 1).</param>
         /// <returns>The current state of reader with index number <paramref name="index" />.</returns>
-        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.SCardMonitor.ReaderNames" /> property.</remarks>
+        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.Monitoring.SCardMonitor.ReaderNames" /> property.</remarks>
         /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         public IntPtr GetCurrentStateValue(int index) {
             // actually "previousStateValue" contains the last known value.
@@ -229,9 +233,9 @@ namespace PCSC
         }
 
         /// <summary>Returns the current state of a reader that is currently being monitored.</summary>
-        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.SCardMonitor.ReaderCount" /> - 1).</param>
+        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.Monitoring.SCardMonitor.ReaderCount" /> - 1).</param>
         /// <returns>The current state of reader with index number <paramref name="index" />.</returns>
-        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.SCardMonitor.ReaderNames" /> property.</remarks>
+        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.Monitoring.SCardMonitor.ReaderNames" /> property.</remarks>
         /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         public SCRState GetCurrentState(int index) {
             var previousStates = _monitor?.PreviousStates;
@@ -248,9 +252,9 @@ namespace PCSC
         }
 
         /// <summary>Returns the reader name of a given <paramref name="index" />.</summary>
-        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.SCardMonitor.ReaderCount" /> - 1).</param>
+        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.Monitoring.SCardMonitor.ReaderCount" /> - 1).</param>
         /// <returns>A reader name.</returns>
-        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.SCardMonitor.ReaderNames" /> property.</remarks>
+        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.Monitoring.SCardMonitor.ReaderNames" /> property.</remarks>
         /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         public string GetReaderName(int index) {
             var currentReaderNames = _monitor?.ReaderNames;
@@ -326,11 +330,11 @@ namespace PCSC
         ///     <para>Do not forget to register for at least one event:
         ///         <list type="table">
         ///             <listheader><term>Event</term><description>Description</description></listheader>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.CardInserted" /></term><description>A new card has been inserted.</description></item>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.CardRemoved" /></term><description>A card has been removed.</description></item>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.Initialized" /></term><description>Initial status.</description></item>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.StatusChanged" /></term><description>A general status change.</description></item>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.MonitorException" /></term><description>An error occurred.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.CardInserted" /></term><description>A new card has been inserted.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.CardRemoved" /></term><description>A card has been removed.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.Initialized" /></term><description>Initial status.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.StatusChanged" /></term><description>A general status change.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.MonitorException" /></term><description>An error occurred.</description></item>
         ///         </list></para>
         /// </remarks>
         public void Start(string readerName) {
@@ -371,11 +375,11 @@ namespace PCSC
         ///     <para>Do not forget to register for at least one event:
         ///         <list type="table">
         ///             <listheader><term>Event</term><description>Description</description></listheader>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.CardInserted" /></term><description>A new card has been inserted.</description></item>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.CardRemoved" /></term><description>A card has been removed.</description></item>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.Initialized" /></term><description>Initial status.</description></item>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.StatusChanged" /></term><description>A general status change.</description></item>
-        ///             <item><term><see cref="E:PCSC.SCardMonitor.MonitorException" /></term><description>An error occurred.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.CardInserted" /></term><description>A new card has been inserted.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.CardRemoved" /></term><description>A card has been removed.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.Initialized" /></term><description>Initial status.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.StatusChanged" /></term><description>A general status change.</description></item>
+        ///             <item><term><see cref="E:PCSC.Monitoring.SCardMonitor.MonitorException" /></term><description>An error occurred.</description></item>
         ///         </list></para>
         /// </remarks>
         public void Start(string[] readerNames) {

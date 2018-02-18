@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace PCSC
+namespace PCSC.Exceptions
 {
 	/// <summary>
 	/// The reader or the smart card is not ready.

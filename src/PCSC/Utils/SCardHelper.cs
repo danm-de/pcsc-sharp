@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using PCSC.Reader;
 
-namespace PCSC
+namespace PCSC.Utils
 {
     /// <summary>
     /// Helper class that offers methods to convert various values into strings.
@@ -127,10 +128,6 @@ namespace PCSC
 
         internal static SCRState ToSCRState(long state) {
 			return (SCRState) state;
-        }
-
-        internal static bool IsSet(byte value, byte mask, byte bits) {
-            return ((value & mask) == bits);
         }
     }
 }

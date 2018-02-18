@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PCSC
+namespace PCSC.Monitoring
 {
     /// <summary>
     /// Smart card monitor factory

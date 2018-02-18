@@ -1,5 +1,4 @@
-using System;
-using System.Text;
+﻿using System;
 using PCSC.Interop.Unix;
 using PCSC.Interop.Windows;
 
@@ -8,12 +7,12 @@ namespace PCSC.Interop
     /// <summary>
     /// Platform selector (Windows or UNIX)
     /// </summary>
-    internal static class Platform
+    public static class Platform
     {
         /// <summary>
         /// Returns <c>true</c> if the operation system runs on Windows. <c>false</c> otherwise.
         /// </summary>
-        internal static bool IsWindows { get; }
+        public static bool IsWindows { get; }
 
         /// <summary>
         /// Platform smart card library.

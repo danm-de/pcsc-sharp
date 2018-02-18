@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reactive.Concurrency;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
+using PCSC.Monitoring;
 using PCSC.Reactive.Events;
 
 namespace PCSC.Reactive

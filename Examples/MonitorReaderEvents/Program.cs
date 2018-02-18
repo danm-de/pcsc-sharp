@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
 using PCSC;
+using PCSC.Context;
+using PCSC.Exceptions;
+using PCSC.Monitoring;
+using PCSC.Utils;
 
 namespace MonitorReaderEvents
 {

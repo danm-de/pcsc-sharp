@@ -49,6 +49,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\PCSC.Iso7816\PCSC.Iso7816.csproj">
+      <Project>{2a3a97c8-8ea0-4f31-8f28-4c97b912bd58}</Project>
+      <Name>PCSC.Iso7816</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\PCSC\PCSC.csproj">
       <Project>{d0bc6275-c71b-4987-a28d-f9e9bda861e7}</Project>
       <Name>PCSC</Name>

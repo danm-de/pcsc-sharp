@@ -5,6 +5,7 @@ using FakeItEasy;
 using FluentAssertions;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
+using PCSC.Monitoring;
 using PCSC.Reactive.Events;
 
 namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {

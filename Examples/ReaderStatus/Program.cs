@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using PCSC;
+using PCSC.Context;
+using PCSC.Reader;
 
 namespace ReaderStatus
 {

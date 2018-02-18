@@ -2,6 +2,8 @@
 using System.Runtime.InteropServices;
 using System.Text;
 using PCSC.Interop.Windows.Extensions;
+using PCSC.Reader;
+using PCSC.Utils;
 
 namespace PCSC.Interop.Windows
 {

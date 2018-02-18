@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using PCSC.Utils;
 
-namespace PCSC
+namespace PCSC.Exceptions
 {
 	/// <summary>
 	/// Invalid PC/SC context exception.

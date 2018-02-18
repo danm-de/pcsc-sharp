@@ -6,6 +6,9 @@ using FakeItEasy;
 using FluentAssertions;
 using FluentAssertions.Events;
 using NUnit.Framework;
+using PCSC.Context;
+using PCSC.Monitoring;
+using PCSC.Reader;
 
 namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
 {

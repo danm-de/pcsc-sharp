@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using PCSC;
+using PCSC.Context;
+using PCSC.Reader;
+using PCSC.Utils;
 
 namespace GetReaderAttrib
 {

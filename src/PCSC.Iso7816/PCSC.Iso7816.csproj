@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>4.0.0</Version>
+    <Authors>Daniel Mueller</Authors>
+    <Company>Daniel Mueller</Company>
+    <Description>Implements partial ISO7816 support (APDU etc.) for PCSC.</Description>
+    <Copyright>Copyright 2018 Daniel Mueller</Copyright>
+    <PackageLicenseUrl>https://github.com/danm-de/pcsc-sharp/blob/master/COPYING</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/danm-de/pcsc-sharp</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/danm-de/pcsc-sharp.git</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>pcsc apdu</PackageTags>
+    <NeutralLanguage />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PCSC\PCSC.csproj" />
+  </ItemGroup>
+
+</Project>

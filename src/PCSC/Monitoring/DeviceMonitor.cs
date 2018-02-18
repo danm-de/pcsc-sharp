@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using PCSC.Context;
+using PCSC.Exceptions;
+using PCSC.Reader;
 
-namespace PCSC
+namespace PCSC.Monitoring
 {
     /// <summary>Monitors for attached and detached smartcard reader devices.</summary>
     public sealed class DeviceMonitor : IDeviceMonitor
