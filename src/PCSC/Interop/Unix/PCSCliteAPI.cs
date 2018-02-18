@@ -2,7 +2,6 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using PCSC.Interop.Unix.ExtensionMethods;
-using PCSC.Reader;
 using PCSC.Utils;
 
 namespace PCSC.Interop.Unix

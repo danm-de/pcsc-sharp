@@ -1,6 +1,4 @@
 ﻿using System;
-using PCSC.Context;
-using PCSC.Reader;
 
 namespace PCSC.Iso7816
 {

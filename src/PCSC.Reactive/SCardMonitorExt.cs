@@ -11,7 +11,7 @@ namespace PCSC.Reactive
     /// <summary>
     /// Smart card monitor extension methods
     /// </summary>
-    public static class SCardMonitorExtensionMethods
+    public static class SCardMonitorExt
     {
         /// <summary>
         /// Listen to all smart card events of a given <see cref="ISCardMonitor"/>.

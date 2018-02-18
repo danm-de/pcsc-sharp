@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using PCSC.Context;
 using PCSC.Exceptions;
-using PCSC.Reader;
 
 namespace PCSC.Monitoring
 {

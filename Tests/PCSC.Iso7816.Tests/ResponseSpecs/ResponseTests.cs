@@ -1,10 +1,8 @@
 ﻿using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
-using PCSC.Iso7816;
-using PCSC.Reader;
 
-namespace PCSC.Tests.Iso7816.ResponseSpecs
+namespace PCSC.Iso7816.Tests.ResponseSpecs
 {
     [TestFixture]
     public class When_creating_a_Response_using_the_public_constructor : Spec

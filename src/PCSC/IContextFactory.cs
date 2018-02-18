@@ -1,4 +1,4 @@
-﻿namespace PCSC.Context
+﻿namespace PCSC
 {
     /// <summary>
     /// Smart card context factory

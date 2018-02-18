@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PCSC;
-using PCSC.Context;
 using PCSC.Iso7816;
-using PCSC.Reader;
 
 namespace Mifare1kTest
 {

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Threading;
-using PCSC.Context;
 using PCSC.Exceptions;
 using PCSC.Extensions;
 using PCSC.Iso7816.Extensions;
-using PCSC.Reader;
 
 namespace PCSC.Iso7816
 {

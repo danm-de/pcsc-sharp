@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace PCSC.Reader
+namespace PCSC
 {
     /// <summary>
     /// Smart card class

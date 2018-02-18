@@ -1,7 +1,6 @@
 ﻿using System;
-using PCSC.Reader;
 
-namespace PCSC.Context
+namespace PCSC
 {
     /// <summary>An application context to the PC/SC Resource Manager.</summary>
     /// <remarks>Each thread of an application shall use its own context.</remarks>

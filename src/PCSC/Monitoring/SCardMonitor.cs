@@ -1,10 +1,8 @@
 using System;
 using System.Globalization;
 using System.Threading;
-using PCSC.Context;
 using PCSC.Exceptions;
 using PCSC.Extensions;
-using PCSC.Reader;
 
 namespace PCSC.Monitoring
 {

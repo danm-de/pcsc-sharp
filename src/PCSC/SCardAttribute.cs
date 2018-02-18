@@ -1,12 +1,12 @@
-namespace PCSC.Reader
+namespace PCSC
 {
     ///  <summary>Smart card reader attribute enumeration.</summary>
     /// <remarks>Can be used as parameter for the following methods:
     /// <list type="bullet">
-    /// <item><term><see cref="M:PCSC.Reader.SCardReader.GetAttrib(PCSC.Reader.SCardAttribute,System.Byte[]@)" /></term></item>
-    /// <item><term><see cref="M:PCSC.Reader.SCardReader.GetAttrib(PCSC.Reader.SCardAttribute,System.Byte[],System.Int32@)" /></term></item>
-    /// <item><term><see cref="M:PCSC.Reader.SCardReader.SetAttrib(PCSC.Reader.SCardAttribute,System.Byte[])" /></term></item>
-    /// <item><term><see cref="M:PCSC.Reader.SCardReader.SetAttrib(PCSC.Reader.SCardAttribute,System.Byte[],System.Int32)" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32@)" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[])" /></term></item>
+    /// <item><term><see cref="M:PCSC.SCardReader.SetAttrib(PCSC.SCardAttribute,System.Byte[],System.Int32)" /></term></item>
     /// </list></remarks>
     public enum SCardAttribute
     {

@@ -1,6 +1,5 @@
 ﻿using System;
 using PCSC;
-using PCSC.Context;
 
 namespace ListReaders
 {

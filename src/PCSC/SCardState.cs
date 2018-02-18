@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace PCSC.Reader
+namespace PCSC
 {
     /// <summary>State of the smart card in the reader.</summary>
     /// <remarks>Is a bit mask that represents the current reader status.</remarks>

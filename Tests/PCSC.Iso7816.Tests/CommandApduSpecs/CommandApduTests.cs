@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using PCSC.Iso7816;
 
-namespace PCSC.Tests.Iso7816.CommandApduSpecs
+namespace PCSC.Iso7816.Tests.CommandApduSpecs
 {
     [TestFixture]
     public class If_the_user_calls_ToArray_on_a_command_APDU

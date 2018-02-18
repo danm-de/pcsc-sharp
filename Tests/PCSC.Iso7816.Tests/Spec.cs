@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NUnit.Framework;
 
-namespace PCSC.Tests
+namespace PCSC.Iso7816.Tests
 {
     /// <summary>
     /// Abstract helper class to make nunit tests more readable.

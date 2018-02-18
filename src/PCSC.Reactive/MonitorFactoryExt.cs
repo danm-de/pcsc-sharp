@@ -12,7 +12,7 @@ namespace PCSC.Reactive
     /// <summary>
     /// Extension methods for <see cref="IMonitorFactory"/>
     /// </summary>
-    public static class MonitorFactoryExtensionMethods
+    public static class MonitorFactoryExt
     {
         /// <summary>
         /// Creates an observable for smart card events.

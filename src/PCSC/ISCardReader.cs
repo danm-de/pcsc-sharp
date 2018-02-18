@@ -1,10 +1,9 @@
 using System;
-using PCSC.Context;
 
-namespace PCSC.Reader
+namespace PCSC
 {
     /// <summary>Common functions that are needed to operate on Smart Card readers.</summary>
-    /// <remarks>See <see cref="T:PCSC.Reader.SCardReader" />.</remarks>
+    /// <remarks>See <see cref="T:PCSC.SCardReader" />.</remarks>
     public interface ISCardReader : IDisposable
     {
         /// <summary>Establishes a connection to the Smart Card reader.</summary>
@@ -12,8 +11,8 @@ namespace PCSC.Reader
         /// <param name="mode">Mode of connection type: exclusive or shared.
         ///     <list type="table">
         ///         <listheader><term>Value</term><description>Description</description></listheader>
-        ///         <item><term><see cref="F:PCSC.Reader.SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item>
-        ///         <item><term><see cref="F:PCSC.Reader.SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item>
+        ///         <item><term><see cref="F:PCSC.SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item>
+        ///         <item><term><see cref="F:PCSC.SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item>
         ///     </list>
         /// </param>
         /// <param name="preferredProtocol">Desired protocol use.</param>
@@ -42,12 +41,12 @@ namespace PCSC.Reader
         /// </returns>
         /// <remarks>
         ///     <para>
-        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.Reader.ISCardReader.ActiveProtocol" />.</para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
         ///     <para>This method calls the API function SCardConnect().</para>
         /// </remarks>
         SCardError Connect(string readerName, SCardShareMode mode, SCardProtocol preferredProtocol);
 
-        /// <summary>Terminates a connection made through <see cref="M:PCSC.Reader.ISCardReader.Connect(System.String,PCSC.Reader.SCardShareMode,PCSC.SCardProtocol)" />.</summary>
+        /// <summary>Terminates a connection made through <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />.</summary>
         /// <param name="disconnectExecution">Reader function to execute.</param>
         /// <returns>
         ///     <list type="table">
@@ -100,7 +99,7 @@ namespace PCSC.Reader
 
         /// <summary>Reestablishes a connection to a reader that was previously connected to using
         ///     <see
-        ///         cref="M:PCSC.Reader.ISCardReader.Connect(System.String,PCSC.Reader.SCardShareMode,PCSC.SCardProtocol)" />
+        ///         cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />
         ///     .</summary>
         /// <param name="mode">Mode of connection type: exclusive/shared.
         ///     <list type="table">
@@ -109,13 +108,13 @@ namespace PCSC.Reader
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.Reader.SCardShareMode.Shared" />
+        ///                 <see cref="F:PCSC.SCardShareMode.Shared" />
         ///             </term>
         ///             <description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.Reader.SCardShareMode.Exclusive" />
+        ///                 <see cref="F:PCSC.SCardShareMode.Exclusive" />
         ///             </term>
         ///             <description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description>
         ///         </item>
@@ -223,7 +222,7 @@ namespace PCSC.Reader
         /// </returns>
         /// <remarks>
         ///     <para>
-        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.Reader.ISCardReader.ActiveProtocol" />.</para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
         ///     <para>This method calls the API function SCardReconnect().</para>
         /// </remarks>
         SCardError Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol,
@@ -276,7 +275,7 @@ namespace PCSC.Reader
         /// </returns>
         /// <remarks>
         ///     <para>You might want to use this when you are selecting a few files and then writing a large file so you can make sure that another application will not change the current file. If another application has a lock on this reader or this application is in
-        ///         <see cref="F:PCSC.Reader.SCardShareMode.Exclusive" /> there will be no action taken.</para>
+        ///         <see cref="F:PCSC.SCardShareMode.Exclusive" /> there will be no action taken.</para>
         ///     <para>This method calls the API function SCardBeginTransaction().</para>
         /// </remarks>
         SCardError BeginTransaction();
@@ -342,9 +341,9 @@ namespace PCSC.Reader
         /// </remarks>
         SCardError EndTransaction(SCardReaderDisposition disposition);
 
-        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.Reader.ISCardReader.Connect(System.String,PCSC.Reader.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
+        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
         /// <param name="sendPci">A pointer to a pre-defined Structure of Protocol Control Information. You can use one of the following:
-        ///     <list type="table"><listheader><term>Protocol Control Information</term><description>Description</description></listheader><item><term><see cref="P:PCSC.Reader.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item><item><term><see cref="P:PCSC.Reader.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item><item><term><see cref="P:PCSC.Reader.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item></list></param>
+        ///     <list type="table"><listheader><term>Protocol Control Information</term><description>Description</description></listheader><item><term><see cref="P:PCSC.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item><item><term><see cref="P:PCSC.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item><item><term><see cref="P:PCSC.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item></list></param>
         /// <param name="sendBuffer">APDU to send to the card. </param>
         /// <param name="sendBufferLength">The buffer size of <paramref name="sendBuffer" /> in bytes.</param>
         /// <param name="receivePci">Structure of protocol information. </param>
@@ -439,9 +438,9 @@ namespace PCSC.Reader
         SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci,
             byte[] receiveBuffer, ref int receiveBufferLength);
 
-        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.Reader.ISCardReader.Connect(System.String,PCSC.Reader.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
+        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
         /// <param name="sendPci">A pointer to a pre-defined Structure of Protocol Control Information. You can use one of the following:
-        ///     <list type="table"><listheader><term>Protocol Control Information</term><description>Description</description></listheader><item><term><see cref="P:PCSC.Reader.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item><item><term><see cref="P:PCSC.Reader.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item><item><term><see cref="P:PCSC.Reader.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item></list></param>
+        ///     <list type="table"><listheader><term>Protocol Control Information</term><description>Description</description></listheader><item><term><see cref="P:PCSC.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item><item><term><see cref="P:PCSC.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item><item><term><see cref="P:PCSC.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item></list></param>
         /// <param name="sendBuffer">APDU to send to the card. </param>
         /// <param name="receivePci">Structure of protocol information. </param>
         /// <param name="receiveBuffer">Response from the card. </param>
@@ -528,17 +527,17 @@ namespace PCSC.Reader
         ///     </list>
         /// </returns>
         /// <remarks>
-        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. <paramref name="receivePci" /> is a structure containing the following (implemented in <see cref="T:PCSC.Reader.SCardPCI" />)</para>
+        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. <paramref name="receivePci" /> is a structure containing the following (implemented in <see cref="T:PCSC.SCardPCI" />)</para>
         /// </remarks>
         SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, SCardPCI receivePci, ref byte[] receiveBuffer);
 
-        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.Reader.ISCardReader.Connect(System.String,PCSC.Reader.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
+        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
         /// <param name="sendPci">A pointer to a pre-defined Structure of Protocol Control Information. You can use one of the following:
         ///     <list type="table">
         ///         <listheader><term>Protocol Control Information</term><description>Description</description></listheader>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
         ///     </list></param>
         /// <param name="sendBuffer">APDU to send to the card. </param>
         /// <param name="receiveBuffer">Response from the card.</param>
@@ -630,7 +629,7 @@ namespace PCSC.Reader
         /// </remarks>
         SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, ref byte[] receiveBuffer);
 
-        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.Reader.ISCardReader.Connect(System.String,PCSC.Reader.SCardShareMode,PCSC.SCardProtocol)" />.</summary>
+        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />.</summary>
         /// <param name="sendPci">Structure of Protocol Control Information.</param>
         /// <param name="sendBuffer">APDU to send to the card.</param>
         /// <param name="receivePci">Structure of protocol information.</param>
@@ -718,7 +717,7 @@ namespace PCSC.Reader
         ///     </list>
         /// </returns>
         /// <remarks>
-        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. <paramref name="sendPci" /> and <paramref name="receivePci" /> are structures containing the following (implemented in <see cref="T:PCSC.Reader.SCardPCI" />):
+        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. <paramref name="sendPci" /> and <paramref name="receivePci" /> are structures containing the following (implemented in <see cref="T:PCSC.SCardPCI" />):
         ///         <example><code lang="C">
         /// typedef struct {
         /// 	DWORD dwProtocol;    // SCARD_PROTOCOL_T0 or SCARD_PROTOCOL_T1
@@ -728,13 +727,13 @@ namespace PCSC.Reader
         ///     </para>
         ///     <para>It is recommended to use pre-defined / built-in PCI structures by calling one of the following methods:
         ///         <list type="bullet">
-        ///             <item><term><see cref="M:PCSC.Reader.ISCardReader.Transmit(System.IntPtr,System.Byte[],PCSC.Reader.SCardPCI,System.Byte[]@)" /></term></item>
-        ///             <item><term><see cref="M:PCSC.Reader.ISCardReader.Transmit(System.IntPtr,System.Byte[],System.Byte[]@)" /></term></item></list></para>
+        ///             <item><term><see cref="M:PCSC.ISCardReader.Transmit(System.IntPtr,System.Byte[],PCSC.SCardPCI,System.Byte[]@)" /></term></item>
+        ///             <item><term><see cref="M:PCSC.ISCardReader.Transmit(System.IntPtr,System.Byte[],System.Byte[]@)" /></term></item></list></para>
         ///     <para>This method calls the API function SCardTransmit(). The pointers to the pre-defined / built-in PCI structures are determinated with dlsym() on UNIX/Linux hosts and GetProcAddress() on Windows hosts.</para>
         /// </remarks>
         SCardError Transmit(SCardPCI sendPci, byte[] sendBuffer, SCardPCI receivePci, ref byte[] receiveBuffer);
 
-        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.Reader.ISCardReader.Connect(System.String,PCSC.Reader.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
+        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
         /// <param name="sendBuffer">APDU to send to the card. </param>
         /// <param name="sendBufferLength">The buffer size of <paramref name="sendBuffer" /> in bytes.</param>
         /// <param name="receiveBuffer">Response from the card.</param>
@@ -836,7 +835,7 @@ namespace PCSC.Reader
         /// </remarks>
         SCardError Transmit(byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer, ref int receiveBufferLength);
 
-        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.Reader.ISCardReader.Connect(System.String,PCSC.Reader.SCardShareMode,PCSC.SCardProtocol)" />.</summary>
+        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />.</summary>
         /// <param name="sendBuffer">APDU to send to the card. </param>
         /// <param name="receiveBuffer">Response from the card.</param>
         /// <param name="receiveBufferLength">The buffer size of <paramref name="receiveBuffer" /> in bytes.</param>
@@ -932,7 +931,7 @@ namespace PCSC.Reader
         /// </remarks>
         SCardError Transmit(byte[] sendBuffer, byte[] receiveBuffer, ref int receiveBufferLength);
 
-        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.Reader.ISCardReader.Connect(System.String,PCSC.Reader.SCardShareMode,PCSC.SCardProtocol)" />.</summary>
+        /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />.</summary>
         /// <param name="sendBuffer">APDU to send to the card.</param>
         /// <param name="receiveBuffer">Response from the card.</param>
         /// <returns><list type="table">
@@ -1278,7 +1277,7 @@ namespace PCSC.Reader
         ///         <paramref
         ///             name="attribute" />
         ///         .</para>
-        ///     <para>For an example please see <see cref="M:PCSC.Reader.ISCardReader.GetAttrib(PCSC.Reader.SCardAttribute,System.Byte[]@)" />.</para>
+        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
         /// </returns>
         /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
         SCardError GetAttrib(IntPtr attributeId, byte[] attribute, out int attributeBufferLength);
@@ -1437,7 +1436,7 @@ namespace PCSC.Reader
         ///         <paramref
         ///             name="attribute" />
         ///         .</para>
-        ///     <para>For an example please see <see cref="M:PCSC.Reader.ISCardReader.GetAttrib(PCSC.Reader.SCardAttribute,System.Byte[]@)" />.</para>
+        ///     <para>For an example please see <see cref="M:PCSC.ISCardReader.GetAttrib(PCSC.SCardAttribute,System.Byte[]@)" />.</para>
         /// </returns>
         /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
         SCardError GetAttrib(SCardAttribute attributeId, byte[] attribute, out int attributeBufferLength);

@@ -10,7 +10,7 @@ namespace PCSC.Reactive
     /// <summary>
     /// Extension methods for <see cref="IDeviceMonitorFactory"/>
     /// </summary>
-    public static class DeviceMonitorFactoryExtensionMethods
+    public static class DeviceMonitorFactoryExt
     {
         /// <summary>
         /// Creates an observable for smartcard reader device events.

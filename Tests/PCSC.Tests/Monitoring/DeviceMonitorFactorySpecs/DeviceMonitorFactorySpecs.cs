@@ -3,9 +3,7 @@ using System.Threading;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
-using PCSC.Context;
 using PCSC.Monitoring;
-using PCSC.Reader;
 
 namespace PCSC.Tests.Monitoring.DeviceMonitorFactorySpecs
 {

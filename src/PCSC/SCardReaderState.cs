@@ -7,7 +7,7 @@ using PCSC.Utils;
 using WINDOWS_SCARD_READERSTATE = PCSC.Interop.Windows.SCARD_READERSTATE;
 using UNIX_SCARD_READERSTATE = PCSC.Interop.Unix.SCARD_READERSTATE;
 
-namespace PCSC.Reader
+namespace PCSC
 {
     /// <summary>A structures that contains the old and the new Smart Card reader status.</summary>
     /// <remarks>

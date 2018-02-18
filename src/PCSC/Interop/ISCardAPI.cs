@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using PCSC.Reader;
 
 namespace PCSC.Interop
 {

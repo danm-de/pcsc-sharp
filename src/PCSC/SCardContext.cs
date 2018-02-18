@@ -3,9 +3,8 @@ using System.Runtime.InteropServices;
 using PCSC.Exceptions;
 using PCSC.Extensions;
 using PCSC.Interop;
-using PCSC.Reader;
 
-namespace PCSC.Context
+namespace PCSC
 {
     /// <summary>Manages an application context to the PC/SC Resource Manager.</summary>
     /// <remarks>Each thread of an application shall use its own SCardContext.</remarks>

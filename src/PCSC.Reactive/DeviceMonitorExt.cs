@@ -12,7 +12,7 @@ namespace PCSC.Reactive
     /// <summary>
     /// Device monitor extension methods
     /// </summary>
-    public static class DeviceMonitorExtensionMethods
+    public static class DeviceMonitorExt
     {
         /// <summary>
         /// Listen to all device events of a given <see cref="IDeviceMonitor"/>.

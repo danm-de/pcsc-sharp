@@ -6,7 +6,7 @@ using PCSC.Interop;
 using SCARD_IO_REQUEST_WINDOWS = PCSC.Interop.Windows.SCARD_IO_REQUEST;
 using SCARD_IO_REQUEST_UNIX = PCSC.Interop.Unix.SCARD_IO_REQUEST;
 
-namespace PCSC.Reader
+namespace PCSC
 {
     /// <summary>Structure of protocol control information.</summary>
     /// <remarks>
@@ -50,9 +50,9 @@ namespace PCSC.Reader
         /// <summary>Creates a new SCardPCI object.</summary>
         /// <param name="protocol">
         ///     <list type="table"><listheader><term>Protocol Control Information</term><description>Description</description></listheader>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
         ///     </list>
         /// </param>
         /// <param name="bufLength">Size of this structure in bytes.</param>
@@ -94,9 +94,9 @@ namespace PCSC.Reader
         /// <param name="protocol">
         ///     <list type="table">
         ///         <listheader><term>Protocol Control Information</term><description>Description</description></listheader>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
         ///     </list>
         /// </param>
         /// <param name="pciData">User data.</param>
@@ -148,9 +148,9 @@ namespace PCSC.Reader
         /// <value>
         ///     <list type="table">
         ///         <listheader><term>Protocol Control Information</term><description>Description</description></listheader>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
-        ///         <item><term><see cref="P:PCSC.Reader.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
+        ///         <item><term><see cref="P:PCSC.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
         ///     </list>
         /// </value>
         [Description("Protocol identifier")]

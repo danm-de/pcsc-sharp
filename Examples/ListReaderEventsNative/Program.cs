@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PCSC;
-using PCSC.Context;
 using PCSC.Exceptions;
-using PCSC.Reader;
 
 namespace ListReaderEventsNative
 {

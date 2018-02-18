@@ -1,5 +1,4 @@
 ﻿using System;
-using PCSC.Reader;
 
 namespace PCSC.Interop.Windows.Extensions
 {
