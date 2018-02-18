@@ -91,9 +91,9 @@ namespace Mifare1kTest
             Console.Write("Which reader has an inserted Mifare 1k/4k card? ");
 
             var line = Console.ReadLine();
-            int choice;
 
-            if (int.TryParse(line, out choice) && (choice >= 0) && (choice <= readerNames.Count)) {
+            if (int.TryParse(line, out var choice) && (choice >= 0) && (choice <= readerNames.Count))
+            {
                 return readerNames[choice];
             }
 

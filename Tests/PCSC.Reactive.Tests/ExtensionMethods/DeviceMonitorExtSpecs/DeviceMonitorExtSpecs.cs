@@ -33,7 +33,7 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
         }
 
         protected override void BecauseOf() {
-            _monitor.Initialized += Raise.With<DeviceChangeEvent>(_monitor, _eventArgs);
+            _monitor.Initialized += Raise.FreeForm.With(_monitor, _eventArgs);
         }
 
         protected override void Cleanup() {
@@ -78,7 +78,7 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
         }
 
         protected override void BecauseOf() {
-            _monitor.StatusChanged += Raise.With<DeviceChangeEvent>(_monitor, _eventArgs);
+            _monitor.StatusChanged += Raise.FreeForm.With(_monitor, _eventArgs);
         }
 
         protected override void Cleanup() {
@@ -123,7 +123,7 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
         }
 
         protected override void BecauseOf() {
-            _monitor.StatusChanged += Raise.With<DeviceChangeEvent>(_monitor, _eventArgs);
+            _monitor.StatusChanged += Raise.FreeForm.With(_monitor, _eventArgs);
         }
 
         protected override void Cleanup() {
@@ -163,7 +163,7 @@ namespace PCSC.Reactive.Tests.ExtensionMethods.DeviceMonitorExtSpecs {
         }
 
         protected override void BecauseOf() {
-            _monitor.MonitorException += Raise.With<DeviceMonitorExceptionEvent>(_monitor, _eventArgs);
+            _monitor.MonitorException += Raise.FreeForm.With(_monitor, _eventArgs);
         }
 
         protected override void Cleanup() {

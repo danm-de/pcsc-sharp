@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using PCSC;
 using PCSC.Iso7816;
@@ -91,9 +91,9 @@ namespace Transmit
             // Ask the user which one to choose.
             Console.Write("Which reader is an RFID reader? ");
             var line = Console.ReadLine();
-            int choice;
 
-            if (int.TryParse(line, out choice) && (choice >= 0) && (choice <= readerNames.Count)) {
+            if (int.TryParse(line, out var choice) && (choice >= 0) && (choice <= readerNames.Count))
+            {
                 return readerNames[choice];
             }
 

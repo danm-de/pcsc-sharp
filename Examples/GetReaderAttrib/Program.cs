@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using PCSC;
 
@@ -67,8 +67,7 @@ namespace GetReaderAttrib
         /// </summary>
         /// <param name="reader">Connected smartcard reader instance</param>
         private static void DisplayCardAtr(ISCardReader reader) {
-            byte[] atr;
-            var rc = reader.GetAttrib(SCardAttribute.AtrString, out atr);
+            var rc = reader.GetAttrib(SCardAttribute.AtrString, out var atr);
 
             if (rc != SCardError.Success) {
                 // ATR not supported?
