@@ -78,10 +78,9 @@ namespace PCSC.Utils
             if (suffixByteCount == 0) {
                 return encoder.GetBytes(str);
             }
-
+            
             var count = encoder.GetByteCount(str);
             var tmp = new byte[count + suffixByteCount];
-
             encoder.GetBytes(str, 0, str.Length, tmp, 0);
             return tmp;
         }

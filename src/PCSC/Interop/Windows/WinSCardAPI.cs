@@ -155,7 +155,8 @@ namespace PCSC.Interop.Windows
             SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
             var readername = SCardHelper.ConvertToByteArray(szReader, TextEncoding, Platform.Lib.CharSize);
 
-            var result = SCardConnect(hContext,
+            var result = SCardConnect(
+                hContext,
                 readername,
                 (int) dwShareMode,
                 (int) dwPreferredProtocols,

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PCSC.Tests</RootNamespace>
-    <AssemblyName>pcsc-sharp.Tests</AssemblyName>
+    <AssemblyName>PCSC.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardHandleSpecs\CardHandleSpecs.cs" />
+    <Compile Include="CardReaderSpecs\CardReaderSpecs.cs" />
     <Compile Include="Monitoring\DeviceMonitorFactorySpecs\DeviceMonitorFactorySpecs.cs" />
     <Compile Include="Monitoring\DeviceMonitorSpecs\DeviceMonitorSpecs.cs" />
     <Compile Include="Monitoring\MonitorFactorySpecs\MonitorFactorySpecs.cs" />
