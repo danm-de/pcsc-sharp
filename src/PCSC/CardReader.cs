@@ -3,33 +3,88 @@ using PCSC.Interop;
 
 namespace PCSC
 {
-    /// <summary>A reader class that implements the most basic PC/SC functions to operate on smart cards, RFID tags and so on.</summary>
-    public class CardReader : IDisposable
+    /// <inheritdoc />
+    public class CardReader : ICardReader
     {
         private readonly ISCardApi _api;
-        private readonly ICardHandle _handle;
         private readonly bool _isOwner;
         private bool _disposed;
 
-        /// <summary>
-        /// Creates a <see cref="CardReader"/> instance
-        /// </summary>
-        /// <param name="connection">A connected card/reader handle</param>
-        public CardReader(ICardHandle connection)
-            : this(connection, true) { }
+        /// <inheritdoc />
+        public ICardHandle Handle { get; }
+
+        /// <inheritdoc />
+        public string ReaderName => Handle.ReaderName;
+
+        /// <inheritdoc />
+        public SCardShareMode Mode => Handle.Mode;
+
+        /// <inheritdoc />
+        public SCardProtocol Protocol => Handle.Protocol;
+
+        /// <inheritdoc />
+        public bool IsConnected => Handle.IsConnected;
+
+        /// <inheritdoc />
+        ~CardReader() {
+            Dispose(false);
+        }
 
         /// <summary>
         /// Creates a <see cref="CardReader"/> instance
         /// </summary>
-        /// <param name="connection">A connected card/reader handle</param>
-        /// <param name="isOwner">If set to <c>true</c>, the reader will destroy the <paramref name="connection"/> on <see cref="Dispose()"/></param>
-        public CardReader(ICardHandle connection, bool isOwner)
-            : this(Platform.Lib, connection, isOwner) { }
+        /// <param name="cardHandle">A connected card/reader handle</param>
+        public CardReader(ICardHandle cardHandle)
+            : this(cardHandle, true) { }
 
-        internal CardReader(ISCardApi api, ICardHandle connection, bool isOwner) {
+        /// <summary>
+        /// Creates a <see cref="CardReader"/> instance
+        /// </summary>
+        /// <param name="cardHandle">A connected card/reader handle</param>
+        /// <param name="isOwner">If set to <c>true</c>, the reader will destroy the <paramref name="cardHandle"/> on <see cref="Dispose()"/></param>
+        public CardReader(ICardHandle cardHandle, bool isOwner)
+            : this(Platform.Lib, cardHandle, isOwner) { }
+
+        internal CardReader(ISCardApi api, ICardHandle cardHandle, bool isOwner) {
             _api = api;
-            _handle = connection ?? throw new ArgumentNullException(nameof(connection));
+            Handle = cardHandle ?? throw new ArgumentNullException(nameof(cardHandle));
             _isOwner = isOwner;
+        }
+
+        /// <inheritdoc />
+        public void Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol, SCardReaderDisposition initialExecution) {
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public IDisposable Transaction() {
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci, byte[] receiveBuffer,
+            int receiveBufferLength) {
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public int Control(IntPtr controlCode, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer, int receiveBufferSize) {
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public ReaderStatus GetStatus() {
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public int GetAttrib(IntPtr attributeId, byte[] receiveBuffer, int receiveBufferSize) {
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public void SetAttrib(IntPtr attributeId, byte[] sendBuffer, int sendBufferLength) {
+            throw new NotImplementedException();
         }
 
         /// <inheritdoc />
@@ -46,8 +101,10 @@ namespace PCSC
             if (!disposing || _disposed) return;
 
             if (_isOwner) {
-                _handle.Dispose();
+                Handle.Dispose();
             }
+
+            _disposed = true;
         }
     }
 }

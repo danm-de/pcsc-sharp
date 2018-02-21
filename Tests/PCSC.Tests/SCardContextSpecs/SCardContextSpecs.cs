@@ -91,7 +91,7 @@ namespace PCSC.Tests.SCardContextSpecs
 
         [Test]
         public void It_should_have_the_protocol_T1() {
-            _cardHandle.ActiveProtocol.Should().Be(SCardProtocol.T1);
+            _cardHandle.Protocol.Should().Be(SCardProtocol.T1);
         }
 
         [Test]

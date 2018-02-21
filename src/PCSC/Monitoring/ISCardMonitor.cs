@@ -134,23 +134,23 @@ namespace PCSC.Monitoring
         int ReaderCount { get; }
 
         /// <summary>Returns the current state of a reader that is currently being monitored.</summary>
-        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.Monitoring.SCardMonitor.ReaderCount" /> - 1).</param>
+        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="Monitoring.SCardMonitor.ReaderCount" /> - 1).</param>
         /// <returns>The current state of reader with index number <paramref name="index" />.</returns>
-        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.Monitoring.SCardMonitor.ReaderNames" /> property.</remarks>
+        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="Monitoring.SCardMonitor.ReaderNames" /> property.</remarks>
         /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         IntPtr GetCurrentStateValue(int index);
 
         /// <summary>Returns the current state of a reader that is currently being monitored.</summary>
-        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.Monitoring.SCardMonitor.ReaderCount" /> - 1).</param>
+        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="Monitoring.SCardMonitor.ReaderCount" /> - 1).</param>
         /// <returns>The current state of reader with index number <paramref name="index" />.</returns>
-        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.Monitoring.SCardMonitor.ReaderNames" /> property.</remarks>
+        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="Monitoring.SCardMonitor.ReaderNames" /> property.</remarks>
         /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         SCRState GetCurrentState(int index);
 
         /// <summary>Returns the reader name of a given <paramref name="index" />.</summary>
-        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="P:PCSC.Monitoring.SCardMonitor.ReaderCount" /> - 1).</param>
+        /// <param name="index">The number of the desired reader. The index must be between 0 and (<see cref="Monitoring.SCardMonitor.ReaderCount" /> - 1).</param>
         /// <returns>A reader name.</returns>
-        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="P:PCSC.Monitoring.SCardMonitor.ReaderNames" /> property.</remarks>
+        /// <remarks>This method will throw an <see cref="T:System.ArgumentOutOfRangeException" /> if the specified <paramref name="index" /> is invalid. You can enumerate all readers currently monitored with the <see cref="Monitoring.SCardMonitor.ReaderNames" /> property.</remarks>
         /// <exception cref="ArgumentOutOfRangeException">If the specified <paramref name="index" /> is invalid.</exception>
         string GetReaderName(int index);
 

@@ -23,7 +23,7 @@ namespace PCSC
         public SCardShareMode Mode { get; private set; }
 
         /// <inheritdoc />
-        public SCardProtocol ActiveProtocol { get; private set; }
+        public SCardProtocol Protocol { get; private set; }
 
         /// <inheritdoc />
         public bool IsConnected => Handle != IntPtr.Zero;
@@ -72,7 +72,7 @@ namespace PCSC
                 .ThrowIfNotSuccess();
 
             Handle = cardHandle;
-            ActiveProtocol = activeProtocol;
+            Protocol = activeProtocol;
             Mode = mode;
             ReaderName = readerName;
         }
@@ -91,7 +91,7 @@ namespace PCSC
                     pdwActiveProtocol: out var dwActiveProtocol)
                 .ThrowIfNotSuccess();
 
-            ActiveProtocol = dwActiveProtocol;
+            Protocol = dwActiveProtocol;
             Mode = mode;
         }
 
@@ -107,7 +107,7 @@ namespace PCSC
 
             Handle = IntPtr.Zero;
             ReaderName = null;
-            ActiveProtocol = SCardProtocol.Unset;
+            Protocol = SCardProtocol.Unset;
             Mode = SCardShareMode.Shared;
         }
 

@@ -43,8 +43,8 @@ namespace PCSC.Interop.Unix
         }
 
         private static string DeterminePcscLibName() {
-            return GetUnameSysName() == OS_NAME_OSX 
-                ? PCSC_LIB_OSX 
+            return GetUnameSysName() == OS_NAME_OSX
+                ? PCSC_LIB_OSX
                 : PCSC_LIB_UNIX;
         }
 
@@ -57,7 +57,7 @@ namespace PCSC.Interop.Unix
                 // Find the null terminator of the first string in struct utsname.
                 for (terminator = 0;
                     terminator < utsNameBuffer.Length && utsNameBuffer[terminator] != 0;
-                    terminator++);
+                    terminator++) ;
 
                 return Encoding.ASCII.GetString(utsNameBuffer, 0, terminator);
             }
@@ -199,8 +199,8 @@ namespace PCSC.Interop.Unix
 
             var result = SCardConnect(hContext,
                 readername,
-                (IntPtr)dwShareMode,
-                (IntPtr)dwPreferredProtocols,
+                (IntPtr) dwShareMode,
+                (IntPtr) dwPreferredProtocols,
                 out phCard,
                 out var activeproto);
 
@@ -221,9 +221,9 @@ namespace PCSC.Interop.Unix
             SCardReaderDisposition dwInitialization, out SCardProtocol pdwActiveProtocol) {
             var result = SCardReconnect(
                 hCard,
-                (IntPtr)dwShareMode,
-                (IntPtr)dwPreferredProtocols,
-                (IntPtr)dwInitialization,
+                (IntPtr) dwShareMode,
+                (IntPtr) dwPreferredProtocols,
+                (IntPtr) dwInitialization,
                 out var activeproto);
 
             pdwActiveProtocol = (SCardProtocol) activeproto;
@@ -341,17 +341,39 @@ namespace PCSC.Interop.Unix
 
         public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, byte[] pbRecvBuffer,
             out int lpBytesReturned) {
-            var sendbuflen = IntPtr.Zero;
-            if (pbSendBuffer != null) {
-                sendbuflen = (IntPtr) pbSendBuffer.Length;
+            return Control(
+                hCard,
+                dwControlCode,
+                pbSendBuffer,
+                pbSendBuffer?.Length ?? 0,
+                pbRecvBuffer,
+                pbRecvBuffer?.Length ?? 0,
+                out lpBytesReturned);
+        }
+
+        public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, int sendBufferLength,
+            byte[] pbRecvBuffer, int recvBufferLength,
+            out int lpBytesReturned) {
+
+            if (pbSendBuffer == null && sendBufferLength > 0) {
+                throw new ArgumentException("send buffer is null", nameof(sendBufferLength));
             }
 
-            var recvbuflen = IntPtr.Zero;
-            if (pbRecvBuffer != null) {
-                recvbuflen = (IntPtr) pbRecvBuffer.Length;
+            if ((pbSendBuffer != null && pbSendBuffer.Length < sendBufferLength) || sendBufferLength < 0) {
+                throw new ArgumentOutOfRangeException(nameof(sendBufferLength));
             }
 
+            if (pbRecvBuffer == null && recvBufferLength > 0) {
+                throw new ArgumentException("receive buffer is null", nameof(recvBufferLength));
+            }
 
+            if ((pbRecvBuffer != null && pbRecvBuffer.Length < recvBufferLength) || recvBufferLength < 0) {
+                throw new ArgumentOutOfRangeException(nameof(recvBufferLength));
+            }
+
+            var sendbuflen = (IntPtr) sendBufferLength;
+            var recvbuflen = (IntPtr) recvBufferLength;
+            
             var rc = SCardHelper.ToSCardError(SCardControl(
                 hCard,
                 dwControlCode,

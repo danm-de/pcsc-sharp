@@ -12,7 +12,7 @@ namespace PCSC
     /// <summary>A structures that contains the old and the new Smart Card reader status.</summary>
     /// <remarks>
     ///     <para>Is used as parameter in <see cref="M:PCSC.ISCardContext.GetStatusChange(System.IntPtr,PCSC.SCardReaderState[])" />.</para>
-    ///     <para>The new event state will be contained in <see cref="P:PCSC.SCardReaderState.EventState" />. A status change might be a card insertion or removal event, a change in ATR, etc. To wait for a reader event (reader added or removed) you may use the special reader name "\\?PnP?\Notification". If a reader event occurs the state of this reader will change and the bit <see cref="F:PCSC.SCRState.Changed" /> will be set.</para>
+    ///     <para>The new event state will be contained in <see cref="SCardReaderState.EventState" />. A status change might be a card insertion or removal event, a change in ATR, etc. To wait for a reader event (reader added or removed) you may use the special reader name "\\?PnP?\Notification". If a reader event occurs the state of this reader will change and the bit <see cref="F:PCSC.SCRState.Changed" /> will be set.</para>
     /// </remarks>
     public class SCardReaderState : IDisposable
     {

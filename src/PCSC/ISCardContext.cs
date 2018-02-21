@@ -187,7 +187,7 @@ namespace PCSC
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="P:PCSC.SCardReaderState.EventState" />
+        ///                 <see cref="SCardReaderState.EventState" />
         ///             </term>
         ///             <description>The user-specified timeout value has expired (SCARD_E_TIMEOUT)</description>
         ///         </item>
@@ -195,7 +195,7 @@ namespace PCSC
         /// </returns>
         /// <remarks>
         ///     <para>This method receives a structure or list of structures containing reader names. It then blocks for a change in state to occur for a maximum blocking time of <paramref name="timeout" /> or forever if <see cref="SCardContext.INFINITE" /> is used.</para>
-        ///     <para>The new event state will be contained in <see cref="P:PCSC.SCardContext.Infinite" />. A status change might be a card insertion or removal event, a change in ATR, etc.</para>
+        ///     <para>The new event state will be contained in <see cref="SCardContext.Infinite" />. A status change might be a card insertion or removal event, a change in ATR, etc.</para>
         ///     <para>To wait for a reader event (reader added or removed) you may use the special reader name "\\?PnP?\Notification". If a reader event occurs the state of this reader will change and the bit <see cref="T:PCSC.SCardContext" /> will be set.</para>
         ///     <para>This method calls the API function SCardGetStatusChange().</para>
         /// </remarks>

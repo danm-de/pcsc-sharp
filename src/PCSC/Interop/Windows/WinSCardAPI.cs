@@ -302,29 +302,46 @@ namespace PCSC.Interop.Windows
 
         public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, byte[] pbRecvBuffer,
             out int lpBytesReturned) {
-            var sendbuflen = 0;
-            if (pbSendBuffer != null) {
-                sendbuflen = pbSendBuffer.Length;
-            }
-
-            var recvbuflen = 0;
-            if (pbRecvBuffer != null) {
-                recvbuflen = pbRecvBuffer.Length;
-            }
-
-            var rc = SCardHelper.ToSCardError(SCardControl(
+            return Control(
                 hCard,
-                unchecked((int) dwControlCode
-                    .ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException
+                dwControlCode,
                 pbSendBuffer,
-                sendbuflen,
+                pbSendBuffer?.Length ?? 0,
                 pbRecvBuffer,
-                recvbuflen,
-                out var bytesret));
+                pbRecvBuffer?.Length ?? 0,
+                out lpBytesReturned);
+        }
 
-            lpBytesReturned = bytesret;
+        public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, int sendBufferLength,
+            byte[] pbRecvBuffer, int recvBufferLength,
+            out int lpBytesReturned) {
+            if (pbSendBuffer == null && sendBufferLength > 0) {
+                throw new ArgumentException("send buffer is null", nameof(sendBufferLength));
+            }
 
-            return rc;
+            if ((pbSendBuffer != null && pbSendBuffer.Length < sendBufferLength) || sendBufferLength < 0) {
+                throw new ArgumentOutOfRangeException(nameof(sendBufferLength));
+            }
+
+            if (pbRecvBuffer == null && recvBufferLength > 0) {
+                throw new ArgumentException("receive buffer is null", nameof(recvBufferLength));
+            }
+
+            if ((pbRecvBuffer != null && pbRecvBuffer.Length < recvBufferLength) || recvBufferLength < 0) {
+                throw new ArgumentOutOfRangeException(nameof(recvBufferLength));
+            }
+
+            // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException
+            var controlCode = unchecked((int) dwControlCode.ToInt64());
+
+            return SCardHelper.ToSCardError(SCardControl(
+                hCard,
+                controlCode,
+                pbSendBuffer,
+                sendBufferLength,
+                pbRecvBuffer,
+                recvBufferLength,
+                out lpBytesReturned));
         }
 
         [DllImport(WINSCARD_DLL, CharSet = CharSet.Unicode)]

@@ -22,7 +22,7 @@ namespace PCSC
         /// <summary>The currently used protocol to communicate with the card.</summary>
         /// <value>
         ///     <see cref="SCardProtocol.Unset" /> if not connected.</value>
-        SCardProtocol ActiveProtocol { get; }
+        SCardProtocol Protocol { get; }
 
         /// <summary>The current connection state of the reader.</summary>
         /// <value><see langword="true" /> if the reader is connected. Otherwise <see langword="false" />.</value>
@@ -79,7 +79,7 @@ namespace PCSC
         /// <param name="initialExecution">Desired action taken on the card/reader before reconnect.</param>
         /// <remarks>
         ///     <para>
-        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="ISCardReader.ActiveProtocol" />.</para>
         ///     <para>This method calls the API function SCardReconnect().</para>
         /// </remarks>
         void Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol, SCardReaderDisposition initialExecution);

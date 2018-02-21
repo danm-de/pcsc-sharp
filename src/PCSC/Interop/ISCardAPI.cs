@@ -41,6 +41,9 @@ namespace PCSC.Interop
         SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, byte[] pbRecvBuffer,
             out int lpBytesReturned);
 
+        SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, int sendBufferLength, byte[] pbRecvBuffer, int recvBufferLen,
+            out int lpBytesReturned);
+
         SCardError Status(IntPtr hCard, out string[] szReaderName, out IntPtr pdwState, out IntPtr pdwProtocol,
             out byte[] pbAtr);
 

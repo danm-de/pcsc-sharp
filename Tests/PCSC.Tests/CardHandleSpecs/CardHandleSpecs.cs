@@ -116,7 +116,7 @@ namespace PCSC.Tests.CardHandleSpecs
 
         [Test]
         public void It_should_have_the_active_protocol_set() {
-            _sut.ActiveProtocol
+            _sut.Protocol
                 .Should()
                 .Be(SCardProtocol.T1);
         }
@@ -182,7 +182,7 @@ namespace PCSC.Tests.CardHandleSpecs
 
         [Test]
         public void It_should_have_the_no_protocol_set() {
-            _sut.ActiveProtocol
+            _sut.Protocol
                 .Should()
                 .Be(SCardProtocol.Unset);
         }
@@ -247,7 +247,7 @@ namespace PCSC.Tests.CardHandleSpecs
 
         [Test]
         public void It_should_have_the_no_protocol_set() {
-            _sut.ActiveProtocol
+            _sut.Protocol
                 .Should()
                 .Be(SCardProtocol.Unset);
         }
@@ -315,7 +315,7 @@ namespace PCSC.Tests.CardHandleSpecs
 
         [Test]
         public void It_should_have_the_active_protocol_set() {
-            _sut.ActiveProtocol
+            _sut.Protocol
                 .Should()
                 .Be(SCardProtocol.T15);
         }

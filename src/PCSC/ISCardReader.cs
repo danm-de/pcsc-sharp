@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace PCSC
 {
@@ -41,7 +41,7 @@ namespace PCSC
         /// </returns>
         /// <remarks>
         ///     <para>
-        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="ISCardReader.ActiveProtocol" />.</para>
         ///     <para>This method calls the API function SCardConnect().</para>
         /// </remarks>
         SCardError Connect(string readerName, SCardShareMode mode, SCardProtocol preferredProtocol);
@@ -222,7 +222,7 @@ namespace PCSC
         /// </returns>
         /// <remarks>
         ///     <para>
-        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="ISCardReader.ActiveProtocol" />.</para>
         ///     <para>This method calls the API function SCardReconnect().</para>
         /// </remarks>
         SCardError Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol,
@@ -343,7 +343,7 @@ namespace PCSC
 
         /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
         /// <param name="sendPci">A pointer to a pre-defined Structure of Protocol Control Information. You can use one of the following:
-        ///     <list type="table"><listheader><term>Protocol Control Information</term><description>Description</description></listheader><item><term><see cref="P:PCSC.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item><item><term><see cref="P:PCSC.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item><item><term><see cref="P:PCSC.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item></list></param>
+        ///     <list type="table"><listheader><term>Protocol Control Information</term><description>Description</description></listheader><item><term><see cref="SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item><item><term><see cref="SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item><item><term><see cref="SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item></list></param>
         /// <param name="sendBuffer">APDU to send to the card. </param>
         /// <param name="sendBufferLength">The buffer size of <paramref name="sendBuffer" /> in bytes.</param>
         /// <param name="receivePci">Structure of protocol information. </param>
@@ -440,7 +440,7 @@ namespace PCSC
 
         /// <summary>Sends an APDU to the smart card that was previously connected by <see cref="M:PCSC.ISCardReader.Connect(System.String,PCSC.SCardShareMode,PCSC.SCardProtocol)" />. </summary>
         /// <param name="sendPci">A pointer to a pre-defined Structure of Protocol Control Information. You can use one of the following:
-        ///     <list type="table"><listheader><term>Protocol Control Information</term><description>Description</description></listheader><item><term><see cref="P:PCSC.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item><item><term><see cref="P:PCSC.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item><item><term><see cref="P:PCSC.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item></list></param>
+        ///     <list type="table"><listheader><term>Protocol Control Information</term><description>Description</description></listheader><item><term><see cref="SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item><item><term><see cref="SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item><item><term><see cref="SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item></list></param>
         /// <param name="sendBuffer">APDU to send to the card. </param>
         /// <param name="receivePci">Structure of protocol information. </param>
         /// <param name="receiveBuffer">Response from the card. </param>
@@ -535,9 +535,9 @@ namespace PCSC
         /// <param name="sendPci">A pointer to a pre-defined Structure of Protocol Control Information. You can use one of the following:
         ///     <list type="table">
         ///         <listheader><term>Protocol Control Information</term><description>Description</description></listheader>
-        ///         <item><term><see cref="P:PCSC.SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
-        ///         <item><term><see cref="P:PCSC.SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
-        ///         <item><term><see cref="P:PCSC.SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
+        ///         <item><term><see cref="SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description></item>
+        ///         <item><term><see cref="SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description></item>
+        ///         <item><term><see cref="SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description></item>
         ///     </list></param>
         /// <param name="sendBuffer">APDU to send to the card. </param>
         /// <param name="receiveBuffer">Response from the card.</param>
