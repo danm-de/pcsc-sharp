@@ -5,9 +5,9 @@ namespace PCSC
     /// <summary>Scope of the establishment.</summary>
     /// <remarks>The following scopes are not used on Linux/UNIX machines using the PC/SC Lite daemon:
     ///     <list type="bullet">
-    ///         <item><term><see cref="F:PCSC.SCardScope.User" /></term></item>
-    ///         <item><term><see cref="F:PCSC.SCardScope.Terminal" /></term></item>
-    ///         <item><term><see cref="F:PCSC.SCardScope.Global" /></term></item>
+    ///         <item><term><see cref="SCardScope.User" /></term></item>
+    ///         <item><term><see cref="SCardScope.Terminal" /></term></item>
+    ///         <item><term><see cref="SCardScope.Global" /></term></item>
     ///     </list></remarks>
     public enum SCardScope
     {

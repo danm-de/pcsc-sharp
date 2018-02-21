@@ -17,7 +17,7 @@ namespace PCSC.Interop
         /// <summary>
         /// Platform smart card library.
         /// </summary>
-        internal static ISCardAPI Lib { get; }
+        internal static ISCardApi Lib { get; }
 
         static Platform() {
             var platform = Environment.OSVersion.Platform;

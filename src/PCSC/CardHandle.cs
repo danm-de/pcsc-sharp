@@ -7,9 +7,9 @@ using PCSC.Interop;
 namespace PCSC
 {
     /// <inheritdoc />
-    public sealed class CardHandle : ICardHandle
+    public class CardHandle : ICardHandle
     {
-        private readonly ISCardAPI _api;
+        private readonly ISCardApi _api;
         private readonly ISCardContext _context;
         private bool _disposed;
 
@@ -40,7 +40,7 @@ namespace PCSC
         public CardHandle(ISCardContext context)
             : this(Platform.Lib, context) { }
 
-        internal CardHandle(ISCardAPI api, ISCardContext context) {
+        internal CardHandle(ISCardApi api, ISCardContext context) {
             _api = api ?? throw new ArgumentNullException(nameof(api));
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
@@ -135,7 +135,11 @@ namespace PCSC
             if (_disposed) throw new ObjectDisposedException(nameof(CardHandle));
         }
 
-        private void Dispose(bool disposing) {
+        /// <summary>
+        /// Dispose this instance
+        /// </summary>
+        /// <param name="disposing"><c>true</c> if the user called <see cref="Dispose()"/> otherwise <c>false</c> if called from GC finalizer.</param>
+        protected virtual void Dispose(bool disposing) {
             if (_disposed) return;
 
             var handle = Handle;

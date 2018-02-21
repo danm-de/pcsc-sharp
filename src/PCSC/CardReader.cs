@@ -6,7 +6,7 @@ namespace PCSC
     /// <summary>A reader class that implements the most basic PC/SC functions to operate on smart cards, RFID tags and so on.</summary>
     public class CardReader : IDisposable
     {
-        private readonly ISCardAPI _api;
+        private readonly ISCardApi _api;
         private readonly ICardHandle _handle;
         private readonly bool _isOwner;
         private bool _disposed;
@@ -26,7 +26,7 @@ namespace PCSC
         public CardReader(ICardHandle connection, bool isOwner)
             : this(Platform.Lib, connection, isOwner) { }
 
-        internal CardReader(ISCardAPI api, ICardHandle connection, bool isOwner) {
+        internal CardReader(ISCardApi api, ICardHandle connection, bool isOwner) {
             _api = api;
             _handle = connection ?? throw new ArgumentNullException(nameof(connection));
             _isOwner = isOwner;

@@ -4,7 +4,7 @@ using System.ComponentModel;
 namespace PCSC
 {
     /// <summary>Communication protocol use with the Smart Card.</summary>
-    /// <remarks>This is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. </remarks>
+    /// <remarks>This is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. </remarks>
     [Flags]
     public enum SCardProtocol
     {
@@ -30,7 +30,7 @@ namespace PCSC
         [Description("T=15 protocol")]
         T15 = 0x0008,
 
-        /// <summary>(<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />). IFD (Interface device) determines protocol.</summary>
+        /// <summary>(<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />). IFD (Interface device) determines protocol.</summary>
         [Description("IFD determines protocol")]
         Any = (T0 | T1)
     }

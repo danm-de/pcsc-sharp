@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using PCSC.Interop.Unix.ExtensionMethods;
@@ -9,7 +9,7 @@ namespace PCSC.Interop.Unix
     /// <summary>
     /// PC/SC API for most Unix and Unix-like systems (x86/x64/IA64) 
     /// </summary>
-    internal sealed class PCSCliteAPI : ISCardAPI
+    internal sealed class PCSCliteAPI : ISCardApi
     {
         private const int MAX_READER_NAME = 255;
         private const string C_LIB = "libc";
@@ -27,31 +27,29 @@ namespace PCSC.Interop.Unix
                                                | SCardState.Swallowed
                                                | SCardState.Unknown);
 
-        private readonly string _pcsc_lib_dlopen_name;
-        private readonly Encoding _textEncoding = Encoding.UTF8;
+        private readonly string _pcscLibDlopenName;
 
         private IntPtr _libHandle = IntPtr.Zero;
 
         public const int MAX_ATR_SIZE = 33;
 
         public int MaxAtrSize => MAX_ATR_SIZE;
-        public Encoding TextEncoding => _textEncoding;
+        public Encoding TextEncoding { get; } = Encoding.UTF8;
+
         public int CharSize => CHARSIZE;
 
         public PCSCliteAPI() {
-            this._pcsc_lib_dlopen_name = DeterminePcscLibName();
+            _pcscLibDlopenName = DeterminePcscLibName();
         }
 
         private static string DeterminePcscLibName() {
-            if (GetUnameSysName() == OS_NAME_OSX) {
-                return PCSC_LIB_OSX;
-            } else {
-                return PCSC_LIB_UNIX;
-            }
+            return GetUnameSysName() == OS_NAME_OSX 
+                ? PCSC_LIB_OSX 
+                : PCSC_LIB_UNIX;
         }
 
         private static string GetUnameSysName() {
-            byte[] utsNameBuffer = new byte[1000];
+            var utsNameBuffer = new byte[1000];
 
             if (uname(utsNameBuffer) == 0) {
                 int terminator;
@@ -59,7 +57,7 @@ namespace PCSC.Interop.Unix
                 // Find the null terminator of the first string in struct utsname.
                 for (terminator = 0;
                     terminator < utsNameBuffer.Length && utsNameBuffer[terminator] != 0;
-                    terminator++) ;
+                    terminator++);
 
                 return Encoding.ASCII.GetString(utsNameBuffer, 0, terminator);
             }
@@ -561,7 +559,7 @@ namespace PCSC.Interop.Unix
         public IntPtr GetSymFromLib(string symName) {
             // Step 1. load dynamic link library
             if (_libHandle == IntPtr.Zero) {
-                _libHandle = dlopen(_pcsc_lib_dlopen_name, (int) DLOPEN_FLAGS.RTLD_LAZY);
+                _libHandle = dlopen(_pcscLibDlopenName, (int) DLOPEN_FLAGS.RTLD_LAZY);
                 if (_libHandle.Equals(IntPtr.Zero)) {
                     throw new Exception("PInvoke call dlopen() failed");
                 }

@@ -11,8 +11,8 @@ namespace PCSC
         /// <param name="mode">Mode of connection type: exclusive or shared.
         ///     <list type="table">
         ///         <listheader><term>Value</term><description>Description</description></listheader>
-        ///         <item><term><see cref="F:PCSC.SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item>
-        ///         <item><term><see cref="F:PCSC.SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item>
+        ///         <item><term><see cref="SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item>
+        ///         <item><term><see cref="SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item>
         ///     </list>
         /// </param>
         /// <param name="preferredProtocol">Desired protocol use.</param>
@@ -20,28 +20,28 @@ namespace PCSC
         ///     <para>
         ///         <list type="table">
         ///             <listheader><term>Error code</term><description>Description</description></listheader>
-        ///             <item><term><see cref="F:PCSC.SCardError.Success" /></term><description>Successful (SCARD_S_SUCCESS)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.InvalidHandle" /></term><description>Invalid context handle (SCARD_E_INVALID_HANDLE)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.InvalidParameter" /></term><description><paramref name="preferredProtocol" /> is invalid or <see langword="null" />  (SCARD_E_INVALID_PARAMETER)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.InvalidValue" /></term><description>Invalid sharing mode, requested protocol, or reader name (SCARD_E_INVALID_VALUE)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.NoService" /></term><description>The server is not runing (SCARD_E_NO_SERVICE)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.NoSmartcard" /></term><description>No smart card present (SCARD_E_NO_SMARTCARD)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.NotReady" /></term><description>Could not allocate the desired port (SCARD_E_NOT_READY)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.ProtocolMismatch" /></term><description>Requested protocol is unknown (SCARD_E_PROTO_MISMATCH)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.ReaderUnavailable" /></term><description>Could not power up the reader or card (SCARD_E_READER_UNAVAILABLE)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.SharingViolation" /></term><description>Someone else has exclusive rights (SCARD_E_SHARING_VIOLATION)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.UnknownReader" /></term><description>The reader name is <see langword="null" /> (SCARD_E_UNKNOWN_READER)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.UnsupportedFeature" /></term><description>Protocol not supported (SCARD_E_UNSUPPORTED_FEATURE)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.CommunicationError" /></term><description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.InternalError" /></term><description>An internal consistency check failed (SCARD_F_INTERNAL_ERROR)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.UnpoweredCard" /></term><description>Card is not powered (SCARD_W_UNPOWERED_CARD)</description></item>
-        ///             <item><term><see cref="F:PCSC.SCardError.UnresponsiveCard" /></term><description>Card is mute (SCARD_W_UNRESPONSIVE_CARD)</description></item>
+        ///             <item><term><see cref="SCardError.Success" /></term><description>Successful (SCARD_S_SUCCESS)</description></item>
+        ///             <item><term><see cref="SCardError.InvalidHandle" /></term><description>Invalid context handle (SCARD_E_INVALID_HANDLE)</description></item>
+        ///             <item><term><see cref="SCardError.InvalidParameter" /></term><description><paramref name="preferredProtocol" /> is invalid or <see langword="null" />  (SCARD_E_INVALID_PARAMETER)</description></item>
+        ///             <item><term><see cref="SCardError.InvalidValue" /></term><description>Invalid sharing mode, requested protocol, or reader name (SCARD_E_INVALID_VALUE)</description></item>
+        ///             <item><term><see cref="SCardError.NoService" /></term><description>The server is not runing (SCARD_E_NO_SERVICE)</description></item>
+        ///             <item><term><see cref="SCardError.NoSmartcard" /></term><description>No smart card present (SCARD_E_NO_SMARTCARD)</description></item>
+        ///             <item><term><see cref="SCardError.NotReady" /></term><description>Could not allocate the desired port (SCARD_E_NOT_READY)</description></item>
+        ///             <item><term><see cref="SCardError.ProtocolMismatch" /></term><description>Requested protocol is unknown (SCARD_E_PROTO_MISMATCH)</description></item>
+        ///             <item><term><see cref="SCardError.ReaderUnavailable" /></term><description>Could not power up the reader or card (SCARD_E_READER_UNAVAILABLE)</description></item>
+        ///             <item><term><see cref="SCardError.SharingViolation" /></term><description>Someone else has exclusive rights (SCARD_E_SHARING_VIOLATION)</description></item>
+        ///             <item><term><see cref="SCardError.UnknownReader" /></term><description>The reader name is <see langword="null" /> (SCARD_E_UNKNOWN_READER)</description></item>
+        ///             <item><term><see cref="SCardError.UnsupportedFeature" /></term><description>Protocol not supported (SCARD_E_UNSUPPORTED_FEATURE)</description></item>
+        ///             <item><term><see cref="SCardError.CommunicationError" /></term><description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description></item>
+        ///             <item><term><see cref="SCardError.InternalError" /></term><description>An internal consistency check failed (SCARD_F_INTERNAL_ERROR)</description></item>
+        ///             <item><term><see cref="SCardError.UnpoweredCard" /></term><description>Card is not powered (SCARD_W_UNPOWERED_CARD)</description></item>
+        ///             <item><term><see cref="SCardError.UnresponsiveCard" /></term><description>Card is mute (SCARD_W_UNRESPONSIVE_CARD)</description></item>
         ///         </list>
         ///     </para>
         /// </returns>
         /// <remarks>
         ///     <para>
-        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
         ///     <para>This method calls the API function SCardConnect().</para>
         /// </remarks>
         SCardError Connect(string readerName, SCardShareMode mode, SCardProtocol preferredProtocol);
@@ -56,37 +56,37 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid <paramref name="disconnectExecution" /> (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoSmartcard" />
+        ///                 <see cref="SCardError.NoSmartcard" />
         ///             </term>
         ///             <description>No smart card present (SCARD_E_NO_SMARTCARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
@@ -108,13 +108,13 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardShareMode.Shared" />
+        ///                 <see cref="SCardShareMode.Shared" />
         ///             </term>
         ///             <description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardShareMode.Exclusive" />
+        ///                 <see cref="SCardShareMode.Exclusive" />
         ///             </term>
         ///             <description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description>
         ///         </item>
@@ -129,92 +129,92 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid context handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="preferredProtocol" /> is invalid or <see langword="null" />  (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid sharing mode, requested protocol, or reader name (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoSmartcard" />
+        ///                 <see cref="SCardError.NoSmartcard" />
         ///             </term>
         ///             <description>No smart card present (SCARD_E_NO_SMARTCARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotReady" />
+        ///                 <see cref="SCardError.NotReady" />
         ///             </term>
         ///             <description>Could not allocate the desired port (SCARD_E_NOT_READY)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ProtocolMismatch" />
+        ///                 <see cref="SCardError.ProtocolMismatch" />
         ///             </term>
         ///             <description>Requested protocol is unknown (SCARD_E_PROTO_MISMATCH)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>Could not power up the reader or card (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.SharingViolation" />
+        ///                 <see cref="SCardError.SharingViolation" />
         ///             </term>
         ///             <description>Someone else has exclusive rights (SCARD_E_SHARING_VIOLATION)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.UnsupportedFeature" />
+        ///                 <see cref="SCardError.UnsupportedFeature" />
         ///             </term>
         ///             <description>Protocol not supported (SCARD_E_UNSUPPORTED_FEATURE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InternalError" />
+        ///                 <see cref="SCardError.InternalError" />
         ///             </term>
         ///             <description>An internal consistency check failed (SCARD_F_INTERNAL_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The smart card has been removed (SCARD_W_REMOVED_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.UnresponsiveCard" />
+        ///                 <see cref="SCardError.UnresponsiveCard" />
         ///             </term>
         ///             <description>Card is mute (SCARD_W_UNRESPONSIVE_CARD)</description>
         ///         </item>
@@ -222,7 +222,7 @@ namespace PCSC
         /// </returns>
         /// <remarks>
         ///     <para>
-        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
         ///     <para>This method calls the API function SCardReconnect().</para>
         /// </remarks>
         SCardError Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol,
@@ -237,37 +237,37 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.SharingViolation" />
+        ///                 <see cref="SCardError.SharingViolation" />
         ///             </term>
         ///             <description>Someone else has exclusive rights (SCARD_E_SHARING_VIOLATION)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
@@ -275,7 +275,7 @@ namespace PCSC
         /// </returns>
         /// <remarks>
         ///     <para>You might want to use this when you are selecting a few files and then writing a large file so you can make sure that another application will not change the current file. If another application has a lock on this reader or this application is in
-        ///         <see cref="F:PCSC.SCardShareMode.Exclusive" /> there will be no action taken.</para>
+        ///         <see cref="SCardShareMode.Exclusive" /> there will be no action taken.</para>
         ///     <para>This method calls the API function SCardBeginTransaction().</para>
         /// </remarks>
         SCardError BeginTransaction();
@@ -290,43 +290,43 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid value for <paramref name="disposition" /> (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.SharingViolation" />
+        ///                 <see cref="SCardError.SharingViolation" />
         ///             </term>
         ///             <description>Someone else has exclusive rights (SCARD_E_SHARING_VIOLATION)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
@@ -357,82 +357,82 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description> 	Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> are too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> or <paramref name="sendPci" /> is <see langword="null" /> (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid Protocol, reader name, etc (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>APDU exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ProtocolMismatch" />
+        ///                 <see cref="SCardError.ProtocolMismatch" />
         ///             </term>
         ///             <description>Connect protocol is different than desired (SCARD_E_PROTO_MISMATCH)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ResetCard" />
+        ///                 <see cref="SCardError.ResetCard" />
         ///             </term>
         ///             <description>The card has been reset by another application (SCARD_W_RESET_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The card has been removed from the reader (SCARD_W_REMOVED_CARD)</description>
         ///         </item>
         ///     </list>
         /// </returns>
         /// <remarks>
-        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. The size of the returned data will be stored in <paramref name="receiveBufferLength" />. This method will return with error code <see cref="F:PCSC.SCardError.InsufficientBuffer" /> if the buffer size of <paramref name="receiveBuffer" /> is too small for the result. If one of the parameters <paramref name="sendBufferLength" /> or <paramref name="receiveBufferLength" /> is invalid, the method will throw an <see cref="T:System.ArgumentOutOfRangeException" />.</para>
+        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. The size of the returned data will be stored in <paramref name="receiveBufferLength" />. This method will return with error code <see cref="SCardError.InsufficientBuffer" /> if the buffer size of <paramref name="receiveBuffer" /> is too small for the result. If one of the parameters <paramref name="sendBufferLength" /> or <paramref name="receiveBufferLength" /> is invalid, the method will throw an <see cref="T:System.ArgumentOutOfRangeException" />.</para>
         ///     <para>This method calls the API function SCardTransmit(). The pointers to the pre-defined / built-in PCI structures are determinated with dlsym() on UNIX/Linux hosts and GetProcAddress() on Windows hosts.</para>
         /// </remarks>
         SCardError Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci,
@@ -452,75 +452,75 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description> 	Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> are too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> or <paramref name="sendPci" /> is <see langword="null" /> (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid Protocol, reader name, etc (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>APDU exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ProtocolMismatch" />
+        ///                 <see cref="SCardError.ProtocolMismatch" />
         ///             </term>
         ///             <description>Connect protocol is different than desired (SCARD_E_PROTO_MISMATCH)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ResetCard" />
+        ///                 <see cref="SCardError.ResetCard" />
         ///             </term>
         ///             <description>The card has been reset by another application (SCARD_W_RESET_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The card has been removed from the reader (SCARD_W_REMOVED_CARD)</description>
         ///         </item>
@@ -549,75 +549,75 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description> 	Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> are too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> or <paramref name="sendPci" /> is <see langword="null" /> (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid Protocol, reader name, etc (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>APDU exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ProtocolMismatch" />
+        ///                 <see cref="SCardError.ProtocolMismatch" />
         ///             </term>
         ///             <description>Connect protocol is different than desired (SCARD_E_PROTO_MISMATCH)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ResetCard" />
+        ///                 <see cref="SCardError.ResetCard" />
         ///             </term>
         ///             <description>The card has been reset by another application (SCARD_W_RESET_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The card has been removed from the reader (SCARD_W_REMOVED_CARD)</description>
         ///         </item>
@@ -642,75 +642,75 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description> 	Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> are too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> or <paramref name="sendPci" /> is <see langword="null" /> (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid Protocol, reader name, etc (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>APDU exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ProtocolMismatch" />
+        ///                 <see cref="SCardError.ProtocolMismatch" />
         ///             </term>
         ///             <description>Connect protocol is different than desired (SCARD_E_PROTO_MISMATCH)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ResetCard" />
+        ///                 <see cref="SCardError.ResetCard" />
         ///             </term>
         ///             <description>The card has been reset by another application (SCARD_W_RESET_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The card has been removed from the reader (SCARD_W_REMOVED_CARD)</description>
         ///         </item>
@@ -746,90 +746,90 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description> 	Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> are too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> is <see langword="null" /> (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid Protocol, reader name, etc (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>APDU exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ProtocolMismatch" />
+        ///                 <see cref="SCardError.ProtocolMismatch" />
         ///             </term>
         ///             <description>Connect protocol is different than desired (SCARD_E_PROTO_MISMATCH)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ResetCard" />
+        ///                 <see cref="SCardError.ResetCard" />
         ///             </term>
         ///             <description>The card has been reset by another application (SCARD_W_RESET_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The card has been removed from the reader (SCARD_W_REMOVED_CARD)</description>
         ///         </item>
         ///     </list>
         /// </returns>
         /// <remarks>
-        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />.  The buffer <paramref name="receiveBuffer" /> must be initialized. The size of the returned data will be stored in <paramref name="receiveBufferLength" />. This method will return with error code <see cref="F:PCSC.SCardError.InsufficientBuffer" /> if the buffer size of <paramref name="receiveBuffer" /> is too small for the result. If one of the parameters <paramref name="sendBufferLength" /> or <paramref name="receiveBufferLength" /> is invalid, the method will throw an <see cref="T:System.ArgumentOutOfRangeException" />.</para>
+        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />.  The buffer <paramref name="receiveBuffer" /> must be initialized. The size of the returned data will be stored in <paramref name="receiveBufferLength" />. This method will return with error code <see cref="SCardError.InsufficientBuffer" /> if the buffer size of <paramref name="receiveBuffer" /> is too small for the result. If one of the parameters <paramref name="sendBufferLength" /> or <paramref name="receiveBufferLength" /> is invalid, the method will throw an <see cref="T:System.ArgumentOutOfRangeException" />.</para>
         ///     <para>This method calls the API function SCardTransmit().</para>
         ///     <block subset="none" type="note">
         ///         <para>This method will only work if the reader has been connected with one of the following protocols:
         ///             <list type="table">
         ///                 <listheader><term>Protocol</term><description>Description</description></listheader>
-        ///                 <item><term><see cref="F:PCSC.SCardProtocol.T0" /></term><description>T=0 active protocol.</description></item>
-        ///                 <item><term><see cref="F:PCSC.SCardProtocol.T1" /></term><description>T=1 active protocol.</description></item>
-        ///                 <item><term><see cref="F:PCSC.SCardProtocol.Raw" /></term><description>Raw active protocol.</description></item>
+        ///                 <item><term><see cref="SCardProtocol.T0" /></term><description>T=0 active protocol.</description></item>
+        ///                 <item><term><see cref="SCardProtocol.T1" /></term><description>T=1 active protocol.</description></item>
+        ///                 <item><term><see cref="SCardProtocol.Raw" /></term><description>Raw active protocol.</description></item>
         ///             </list></para>
         ///     </block>
         /// </remarks>
@@ -847,75 +847,75 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description> 	Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> are too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> is <see langword="null" /> (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid Protocol, reader name, etc (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>APDU exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ProtocolMismatch" />
+        ///                 <see cref="SCardError.ProtocolMismatch" />
         ///             </term>
         ///             <description>Connect protocol is different than desired (SCARD_E_PROTO_MISMATCH)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ResetCard" />
+        ///                 <see cref="SCardError.ResetCard" />
         ///             </term>
         ///             <description>The card has been reset by another application (SCARD_W_RESET_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The card has been removed from the reader (SCARD_W_REMOVED_CARD)</description>
         ///         </item>
@@ -926,7 +926,7 @@ namespace PCSC
         ///     <para>This method calls the API function SCardTransmit().</para>
         ///     <block subset="none" type="note">
         ///         <para>This method will only work if the reader has been connected with one of the following protocols:
-        ///             <list type="table"><listheader><term>Protocol</term><description>Description</description></listheader><item><term><see cref="F:PCSC.SCardProtocol.T0" /></term><description>T=0 active protocol.</description></item><item><term><see cref="F:PCSC.SCardProtocol.T1" /></term><description>T=1 active protocol.</description></item><item><term><see cref="F:PCSC.SCardProtocol.Raw" /></term><description>Raw active protocol.</description></item></list></para>
+        ///             <list type="table"><listheader><term>Protocol</term><description>Description</description></listheader><item><term><see cref="SCardProtocol.T0" /></term><description>T=0 active protocol.</description></item><item><term><see cref="SCardProtocol.T1" /></term><description>T=1 active protocol.</description></item><item><term><see cref="SCardProtocol.Raw" /></term><description>Raw active protocol.</description></item></list></para>
         ///     </block>
         /// </remarks>
         SCardError Transmit(byte[] sendBuffer, byte[] receiveBuffer, ref int receiveBufferLength);
@@ -936,66 +936,66 @@ namespace PCSC
         /// <param name="receiveBuffer">Response from the card.</param>
         /// <returns><list type="table">
         ///         <listheader><term>Return value</term><description>Description</description></listheader>
-        ///         <item><term><see cref="F:PCSC.SCardError.Success" /></term><description>Successful (SCARD_S_SUCCESS)</description></item>
-        ///         <item><term><see cref="F:PCSC.SCardError.InsufficientBuffer" /></term><description><paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> are too big (SCARD_E_INSUFFICIENT_BUFFER)</description></item>
+        ///         <item><term><see cref="SCardError.Success" /></term><description>Successful (SCARD_S_SUCCESS)</description></item>
+        ///         <item><term><see cref="SCardError.InsufficientBuffer" /></term><description><paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> are too big (SCARD_E_INSUFFICIENT_BUFFER)</description></item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> is <see langword="null" /> (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid Protocol, reader name, etc (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>APDU exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ProtocolMismatch" />
+        ///                 <see cref="SCardError.ProtocolMismatch" />
         ///             </term>
         ///             <description>Connect protocol is different than desired (SCARD_E_PROTO_MISMATCH)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ResetCard" />
+        ///                 <see cref="SCardError.ResetCard" />
         ///             </term>
         ///             <description>The card has been reset by another application (SCARD_W_RESET_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The card has been removed from the reader (SCARD_W_REMOVED_CARD)</description>
         ///         </item>
@@ -1008,9 +1008,9 @@ namespace PCSC
         ///         <para>This method will only work if the reader has been connected with one of the following protocols:
         ///             <list type="table">
         ///                 <listheader><term>Protocol</term><description>Description</description></listheader>
-        ///                 <item><term><see cref="F:PCSC.SCardProtocol.T0" /></term><description>T=0 active protocol.</description></item>
-        ///                 <item><term><see cref="F:PCSC.SCardProtocol.T1" /></term><description>T=1 active protocol.</description></item>
-        ///                 <item><term><see cref="F:PCSC.SCardProtocol.Raw" /></term><description>Raw active protocol.</description></item>
+        ///                 <item><term><see cref="SCardProtocol.T0" /></term><description>T=0 active protocol.</description></item>
+        ///                 <item><term><see cref="SCardProtocol.T1" /></term><description>T=1 active protocol.</description></item>
+        ///                 <item><term><see cref="SCardProtocol.Raw" /></term><description>Raw active protocol.</description></item>
         ///             </list></para>
         ///     </block>
         /// </remarks>
@@ -1028,26 +1028,26 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> or <paramref name="receiveBuffer" /> are too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="sendBuffer" /> is <see langword="null" /> and the IFDHandler is version 2.0 (without
@@ -1057,49 +1057,49 @@ namespace PCSC
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidValue" />
+        ///                 <see cref="SCardError.InvalidValue" />
         ///             </term>
         ///             <description>Invalid value was presented (SCARD_E_INVALID_VALUE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>Data exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed(SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.UnsupportedFeature" />
+        ///                 <see cref="SCardError.UnsupportedFeature" />
         ///             </term>
         ///             <description>Driver does not support (SCARD_E_UNSUPPORTED_FEATURE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The card has been removed from the reader(SCARD_W_REMOVED_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ResetCard" />
+        ///                 <see cref="SCardError.ResetCard" />
         ///             </term>
         ///             <description>The card has been reset by another application (SCARD_W_RESET_CARD)</description>
         ///         </item>
@@ -1126,67 +1126,67 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>The reader object did not allocate enough memory for <paramref name="readerName" /> or for <paramref name="atr" /> (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>The reader object got invalid. Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>The reader object passed a size of null for <paramref name="readerName" /> or <paramref name="atr" />  (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoMemory" />
+        ///                 <see cref="SCardError.NoMemory" />
         ///             </term>
         ///             <description>Memory allocation failed (SCARD_E_NO_MEMORY)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description> The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InternalError" />
+        ///                 <see cref="SCardError.InternalError" />
         ///             </term>
         ///             <description>An internal consistency check failed (SCARD_F_INTERNAL_ERROR)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.RemovedCard" />
+        ///                 <see cref="SCardError.RemovedCard" />
         ///             </term>
         ///             <description>The smart card has been removed (SCARD_W_REMOVED_CARD)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ResetCard" />
+        ///                 <see cref="SCardError.ResetCard" />
         ///             </term>
         ///             <description>The smart card has been reset (SCARD_W_RESET_CARD)</description>
         ///         </item>
@@ -1210,70 +1210,70 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="attribute" /> is too big  - indicates an error in the PC/SC class library. (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>Reader buffer <paramref name="attribute" /> not large enough  - indicates an error in the PC/SC class library. (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>A parameter is <see langword="null" /> and should not (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoMemory" />
+        ///                 <see cref="SCardError.NoMemory" />
         ///             </term>
         ///             <description>Memory allocation failed (SCARD_E_NO_MEMORY)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>Data exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///     </list>
-        ///     <para>The method will return <see cref="F:PCSC.SCardError.InsufficientBuffer" /> if <paramref name="attribute" /> is
+        ///     <para>The method will return <see cref="SCardError.InsufficientBuffer" /> if <paramref name="attribute" /> is
         ///         <see langword="null" /> or if the buffer size is not sufficient.
         ///         <paramref name="attributeBufferLength" /> contains the required amount of bytes (size).</para>
-        ///     <para>If the method returned with <see cref="F:PCSC.SCardError.Success" /> then <paramref name="attributeBufferLength" /> contains the exact size of the result in
+        ///     <para>If the method returned with <see cref="SCardError.Success" /> then <paramref name="attributeBufferLength" /> contains the exact size of the result in
         ///         <paramref
         ///             name="attribute" />
         ///         .</para>
@@ -1293,62 +1293,62 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="attribute" /> is too big  - indicates an error in the PC/SC class library. (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>Reader buffer <paramref name="attribute" /> not large enough  - indicates an error in the PC/SC class library. (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>A parameter is <see langword="null" /> and should not (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoMemory" />
+        ///                 <see cref="SCardError.NoMemory" />
         ///             </term>
         ///             <description>Memory allocation failed (SCARD_E_NO_MEMORY)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>Data exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
@@ -1369,70 +1369,70 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="attribute" /> is too big  - indicates an error in the PC/SC class library. (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>Reader buffer <paramref name="attribute" /> not large enough  - indicates an error in the PC/SC class library. (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>A parameter is <see langword="null" /> and should not (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoMemory" />
+        ///                 <see cref="SCardError.NoMemory" />
         ///             </term>
         ///             <description>Memory allocation failed (SCARD_E_NO_MEMORY)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>Data exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
         ///     </list>
-        ///     <para>The method will return <see cref="F:PCSC.SCardError.InsufficientBuffer" /> if <paramref name="attribute" /> is
+        ///     <para>The method will return <see cref="SCardError.InsufficientBuffer" /> if <paramref name="attribute" /> is
         ///         <see langword="null" /> or if the buffer size is not sufficient.
         ///         <paramref name="attributeBufferLength" /> contains the required amount of bytes (size).</para>
-        ///     <para>If the method returned with <see cref="F:PCSC.SCardError.Success" /> then <paramref name="attributeBufferLength" /> contains the exact size of the result in
+        ///     <para>If the method returned with <see cref="SCardError.Success" /> then <paramref name="attributeBufferLength" /> contains the exact size of the result in
         ///         <paramref
         ///             name="attribute" />
         ///         .</para>
@@ -1452,62 +1452,62 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>
         ///                 <paramref name="attribute" /> is too big  - indicates an error in the PC/SC class library. (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>Reader buffer <paramref name="attribute" /> not large enough  - indicates an error in the PC/SC class library. (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>A parameter is <see langword="null" /> and should not (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoMemory" />
+        ///                 <see cref="SCardError.NoMemory" />
         ///             </term>
         ///             <description>Memory allocation failed (SCARD_E_NO_MEMORY)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>Data exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
@@ -1528,49 +1528,49 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>attribute is too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>A parameter is <see langword="null" /> and should not (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>Data exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
@@ -1593,49 +1593,49 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>attribute is too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>A parameter is <see langword="null" /> and should not (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>Data exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
@@ -1658,49 +1658,49 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>attribute is too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>A parameter is <see langword="null" /> and should not (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>Data exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
@@ -1723,49 +1723,49 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.Success" />
+        ///                 <see cref="SCardError.Success" />
         ///             </term>
         ///             <description>Successful (SCARD_S_SUCCESS)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InsufficientBuffer" />
+        ///                 <see cref="SCardError.InsufficientBuffer" />
         ///             </term>
         ///             <description>attribute is too big (SCARD_E_INSUFFICIENT_BUFFER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidHandle" />
+        ///                 <see cref="SCardError.InvalidHandle" />
         ///             </term>
         ///             <description>Invalid card handle (SCARD_E_INVALID_HANDLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.InvalidParameter" />
+        ///                 <see cref="SCardError.InvalidParameter" />
         ///             </term>
         ///             <description>A parameter is <see langword="null" /> and should not (SCARD_E_INVALID_PARAMETER)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NoService" />
+        ///                 <see cref="SCardError.NoService" />
         ///             </term>
         ///             <description>The server is not runing (SCARD_E_NO_SERVICE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.NotTransacted" />
+        ///                 <see cref="SCardError.NotTransacted" />
         ///             </term>
         ///             <description>Data exchange not successful (SCARD_E_NOT_TRANSACTED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.ReaderUnavailable" />
+        ///                 <see cref="SCardError.ReaderUnavailable" />
         ///             </term>
         ///             <description>The reader has been removed (SCARD_E_READER_UNAVAILABLE)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardError.CommunicationError" />
+        ///                 <see cref="SCardError.CommunicationError" />
         ///             </term>
         ///             <description>An internal communications error has been detected (SCARD_F_COMM_ERROR)</description>
         ///         </item>
@@ -1791,7 +1791,7 @@ namespace PCSC
 
         /// <summary>The currently used protocol to communicate with the card.</summary>
         /// <value>
-        ///     <see cref="F:PCSC.SCardProtocol.Unset" /> if not connected.</value>
+        ///     <see cref="SCardProtocol.Unset" /> if not connected.</value>
         SCardProtocol ActiveProtocol { get; }
 
         /// <summary>A pointer (Card Handle) that can be used for C API calls.</summary>

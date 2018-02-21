@@ -6,7 +6,7 @@ namespace PCSC.Interop
     /// <summary>
     /// Gives access to the system's smart card API
     /// </summary>
-    internal interface ISCardAPI
+    internal interface ISCardApi
     {
         IntPtr GetSymFromLib(string symName);
 

@@ -9,7 +9,7 @@ namespace PCSC.Interop.Windows
     /// <summary>
     /// PC/SC API for Microsoft Win32/Win64 (x86/x64/IA64)
     /// </summary>
-    internal sealed class WinSCardAPI : ISCardAPI
+    internal sealed class WinSCardAPI : ISCardApi
     {
         private const int MAX_READER_NAME = 255;
         private const string WINSCARD_DLL = "winscard.dll";

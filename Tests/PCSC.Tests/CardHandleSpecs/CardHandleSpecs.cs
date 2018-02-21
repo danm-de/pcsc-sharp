@@ -62,7 +62,7 @@ namespace PCSC.Tests.CardHandleSpecs
     public class If_the_connection_request_was_unsuccessful : Spec
     {
         private readonly ISCardContext _context = A.Fake<ISCardContext>();
-        private readonly ISCardAPI _api = A.Fake<ISCardAPI>();
+        private readonly ISCardApi _api = A.Fake<ISCardApi>();
         private CardHandle _sut;
 
         protected override void EstablishContext() {
@@ -92,7 +92,7 @@ namespace PCSC.Tests.CardHandleSpecs
     public class If_the_connection_request_was_successful : Spec
     {
         private readonly ISCardContext _context = A.Fake<ISCardContext>();
-        private readonly ISCardAPI _api = A.Fake<ISCardAPI>();
+        private readonly ISCardApi _api = A.Fake<ISCardApi>();
         private CardHandle _sut;
 
         protected override void EstablishContext() {
@@ -154,7 +154,7 @@ namespace PCSC.Tests.CardHandleSpecs
     public class If_the_user_disposes_a_reader_connection : Spec
     {
         private readonly ISCardContext _context = A.Fake<ISCardContext>();
-        private readonly ISCardAPI _api = A.Fake<ISCardAPI>();
+        private readonly ISCardApi _api = A.Fake<ISCardApi>();
         private CardHandle _sut;
 
         protected override void EstablishContext() {
@@ -219,7 +219,7 @@ namespace PCSC.Tests.CardHandleSpecs
     public class If_the_user_disconnects : Spec
     {
         private readonly ISCardContext _context = A.Fake<ISCardContext>();
-        private readonly ISCardAPI _api = A.Fake<ISCardAPI>();
+        private readonly ISCardApi _api = A.Fake<ISCardApi>();
         private CardHandle _sut;
 
         protected override void EstablishContext() {
@@ -284,7 +284,7 @@ namespace PCSC.Tests.CardHandleSpecs
     public class If_the_user_reconnects : Spec
     {
         private readonly ISCardContext _context = A.Fake<ISCardContext>();
-        private readonly ISCardAPI _api = A.Fake<ISCardAPI>();
+        private readonly ISCardApi _api = A.Fake<ISCardApi>();
         private CardHandle _sut;
 
         protected override void EstablishContext() {

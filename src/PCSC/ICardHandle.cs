@@ -21,7 +21,7 @@ namespace PCSC
 
         /// <summary>The currently used protocol to communicate with the card.</summary>
         /// <value>
-        ///     <see cref="F:PCSC.SCardProtocol.Unset" /> if not connected.</value>
+        ///     <see cref="SCardProtocol.Unset" /> if not connected.</value>
         SCardProtocol ActiveProtocol { get; }
 
         /// <summary>The current connection state of the reader.</summary>
@@ -33,14 +33,14 @@ namespace PCSC
         /// <param name="mode">Mode of connection type: exclusive or shared.
         ///     <list type="table">
         ///         <listheader><term>Value</term><description>Description</description></listheader>
-        ///         <item><term><see cref="F:PCSC.SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item>
-        ///         <item><term><see cref="F:PCSC.SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item>
+        ///         <item><term><see cref="SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item>
+        ///         <item><term><see cref="SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item>
         ///     </list>
         /// </param>
         /// <param name="preferredProtocol">Desired protocol use.</param>
         /// <remarks>
         ///     <para>
-        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol.</para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol.</para>
         ///     <para>This method calls the API function SCardConnect().</para>
         /// </remarks>
         void Connect(string readerName, SCardShareMode mode, SCardProtocol preferredProtocol);
@@ -63,13 +63,13 @@ namespace PCSC
         ///         </listheader>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardShareMode.Shared" />
+        ///                 <see cref="SCardShareMode.Shared" />
         ///             </term>
         ///             <description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description>
         ///         </item>
         ///         <item>
         ///             <term>
-        ///                 <see cref="F:PCSC.SCardShareMode.Exclusive" />
+        ///                 <see cref="SCardShareMode.Exclusive" />
         ///             </term>
         ///             <description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description>
         ///         </item>
@@ -79,7 +79,7 @@ namespace PCSC
         /// <param name="initialExecution">Desired action taken on the card/reader before reconnect.</param>
         /// <remarks>
         ///     <para>
-        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="F:PCSC.SCardProtocol.T0" /> | <see cref="F:PCSC.SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol. The protocol used with this connection will be stored in <see cref="P:PCSC.ISCardReader.ActiveProtocol" />.</para>
         ///     <para>This method calls the API function SCardReconnect().</para>
         /// </remarks>
         void Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol, SCardReaderDisposition initialExecution);
