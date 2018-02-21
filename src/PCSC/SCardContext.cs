@@ -10,9 +10,20 @@ namespace PCSC
     /// <remarks>Each thread of an application shall use its own SCardContext.</remarks>
     public class SCardContext : ISCardContext
     {
+        private readonly ISCardAPI _api;
         private bool _hasContext;
         private SCardScope _lastScope;
         private IntPtr _contextPtr;
+
+        /// <summary>
+        /// Creates a new context instance
+        /// </summary>
+        public SCardContext() 
+        :this (Platform.Lib) {}
+
+        internal SCardContext(ISCardAPI api) {
+            _api = api;
+        }
 
         /// <summary>
         /// Destroys application context to the PC/SC Resource Manager.
@@ -27,7 +38,7 @@ namespace PCSC
                 Release();
             }
 
-            var rc = Platform.Lib.EstablishContext(
+            var rc = _api.EstablishContext(
                 scope,
                 IntPtr.Zero,
                 IntPtr.Zero,
@@ -53,7 +64,7 @@ namespace PCSC
                 throw new InvalidContextException(SCardError.UnknownError, "Context was not established");
             }
 
-            var rc = Platform.Lib.ReleaseContext(_contextPtr);
+            var rc = _api.ReleaseContext(_contextPtr);
 
             switch (rc) {
                 case SCardError.Success:
@@ -72,17 +83,12 @@ namespace PCSC
 
         /// <inheritdoc />
         public SCardError CheckValidity() {
-            return Platform.Lib.IsValidContext(_contextPtr);
+            return _api.IsValidContext(_contextPtr);
         }
 
         /// <inheritdoc />
         public bool IsValid() {
             return CheckValidity() == SCardError.Success;
-        }
-
-        /// <inheritdoc />
-        public void ReEstablish() {
-            Establish(_lastScope);
         }
 
         /// <inheritdoc />
@@ -111,7 +117,7 @@ namespace PCSC
                 throw new InvalidContextException(SCardError.InvalidHandle);
             }
 
-            var rc = Platform.Lib.ListReaders(
+            var rc = _api.ListReaders(
                 _contextPtr,
                 groups,
                 out var readers);
@@ -140,7 +146,7 @@ namespace PCSC
                 throw new InvalidContextException(SCardError.InvalidHandle);
             }
 
-            var sc = Platform.Lib.ListReaderGroups(
+            var sc = _api.ListReaderGroups(
                 _contextPtr,
                 out var groups);
 
@@ -196,7 +202,7 @@ namespace PCSC
                 throw new InvalidContextException(SCardError.InvalidHandle);
             }
 
-            return Platform.Lib.GetStatusChange(_contextPtr, timeout, readerStates);
+            return _api.GetStatusChange(_contextPtr, timeout, readerStates);
         }
 
         /// <inheritdoc />
@@ -205,7 +211,7 @@ namespace PCSC
                 throw new InvalidContextException(SCardError.UnknownError, "Invalid connection context.");
             }
 
-            var rc = Platform.Lib.Cancel(_contextPtr);
+            var rc = _api.Cancel(_contextPtr);
             return rc;
         }
 

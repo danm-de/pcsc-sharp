@@ -54,10 +54,6 @@ namespace PCSC
         /// </remarks>
         bool IsValid();
 
-        /// <summary>Re-Establishes an Application Context to the PC/SC Resource Manager with the last used <see cref="T:PCSC.SCardScope" />.</summary>
-        /// <remarks>This method must not be called before <see cref="SCardContext.Establish" /></remarks>
-        void ReEstablish();
-
         /// <summary>Returns a list of currently available readers on the system.</summary>
         /// <param name="groups">List of groups to list readers.</param>
         /// <returns>An array of <see cref="T:System.String" />s containing all Smart Card readers found by the PC/SC Resource Manager.</returns>

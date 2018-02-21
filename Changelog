@@ -9,7 +9,9 @@ c = Bug fix
   https://github.com/danm-de/pcsc-sharp/pull/67
   Thanks to Christoph Fink @chrfin
   Closes https://github.com/danm-de/pcsc-sharp/issues/32
-* ISO7816 moved to PCSC.Iso7816
+* ISCardContext.ReEstablish() removed
+* new types: ICardHandle, CardHandle
+* ISO7816 moved to PCSC.Iso7816 (separate assemlby / nuget)
 
 
 2017-10-08  Daniel Mueller <daniel@danm.de>
