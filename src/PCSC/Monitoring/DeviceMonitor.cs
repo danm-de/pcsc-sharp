@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -17,8 +17,8 @@ namespace PCSC.Monitoring
         private readonly object _gate = new object();
 
         private bool _isDisposed;
-        private ISCardContext _ctx;
         private Thread _thread;
+        private ISCardContext _ctx;
 
         /// <summary>
         /// The monitor object has been initialized.
@@ -36,12 +36,19 @@ namespace PCSC.Monitoring
         /// <summary>
         /// Creates a new instance
         /// </summary>
+        /// <param name="scope"></param>
+        public DeviceMonitor(SCardScope scope)
+            : this(ContextFactory.Instance, scope) { }
+
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
         /// <param name="contextFactory">Context factory used for this monitor</param>
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         public DeviceMonitor(IContextFactory contextFactory, SCardScope scope) {
-            _instanceName = GetInstanceName();
-            _contextFactory = contextFactory;
+            _contextFactory = contextFactory ?? throw new ArgumentNullException(nameof(contextFactory));
             _scope = scope;
+            _instanceName = GetInstanceName();
         }
 
         private string GetInstanceName() {
@@ -65,15 +72,9 @@ namespace PCSC.Monitoring
             }
 
             lock (_gate) {
-                var ctx = _contextFactory.Establish(_scope);
-                var oldCtx = Interlocked.Exchange(ref _ctx, ctx);
+                if (_thread != null) return; // already started
 
-                if (oldCtx != null) {
-                    oldCtx.Cancel();
-                    oldCtx.Dispose();
-                }
-
-                _thread = new Thread(() => StartMonitor(ctx)) {
+                _thread = new Thread(StartMonitor) {
                     Name = _instanceName,
                     IsBackground = true
                 };
@@ -81,42 +82,60 @@ namespace PCSC.Monitoring
             }
         }
 
-        private void StartMonitor(ISCardContext ctx) {
+        private void StartMonitor() {
             try {
-                var readers = GetReaders(ctx);
+                lock (_gate) {
+                    _ctx = _contextFactory.Establish(_scope);
+                }
+
+                var readers = GetReaders(_ctx);
                 OnInitialized(new DeviceChangeEventArgs(
                     readers,
                     Enumerable.Empty<string>(),
                     Enumerable.Empty<string>()));
 
+                var noServiceCount = 0;
                 while (true) {
-                    var scannerStates = new[] {
-                        new SCardReaderState {
-                            ReaderName = "\\\\?PnP?\\Notification",
-                            CurrentStateValue = (IntPtr) (readers.Count << 16),
-                            EventStateValue = (IntPtr) SCRState.Unknown,
+                    try {
+                        var newReaderList = GetReaders(_ctx);
+                        var attached = GetAttachedReaders(readers, newReaderList).ToList();
+                        var detached = GetDetachedReaders(readers, newReaderList).ToList();
+
+                        if (attached.Any() || detached.Any()) {
+                            OnStatusChanged(new DeviceChangeEventArgs(
+                                newReaderList.ToList(),
+                                attached,
+                                detached));
                         }
-                    };
 
-                    var rc = ctx.GetStatusChange(ctx.Infinite, scannerStates);
-                    if (rc == SCardError.Cancelled) {
-                        return;
+                        readers = newReaderList;
+
+                        var scannerStates = new[] {
+                            new SCardReaderState {
+                                ReaderName = "\\\\?PnP?\\Notification",
+                                CurrentStateValue = (IntPtr) (readers.Count << 16),
+                                EventStateValue = (IntPtr) SCRState.Unknown,
+                            }
+                        };
+
+                        var rc = _ctx.GetStatusChange(SCardContext.INFINITE, scannerStates);
+                        if (rc == SCardError.Cancelled) {
+                            return;
+                        }
+
+                        if (rc != SCardError.Success) {
+                            throw new PCSCException(rc);
+                        }
+                    } catch (NoServiceException) {
+                        noServiceCount++;
+                        if (noServiceCount > 10) throw;
+                        // Windows 10, service will be restarted or is not available after the last reader has been disconnected
+                        Thread.Sleep(1000);
+                        lock (_gate) {
+                            _ctx?.Dispose();
+                            _ctx = _contextFactory.Establish(_scope);
+                        }
                     }
-
-                    if (rc != SCardError.Success) {
-                        throw new PCSCException(rc);
-                    }
-
-                    var newReaderList = GetReaders(ctx);
-                    var attached = GetAttachedReaders(readers, newReaderList);
-                    var detached = GetDetachedReaders(readers, newReaderList);
-
-                    OnStatusChanged(new DeviceChangeEventArgs(
-                        newReaderList.ToList(),
-                        attached.ToList(),
-                        detached.ToList()));
-
-                    readers = newReaderList;
                 }
             } catch (Exception exception) {
                 OnMonitorException(new DeviceMonitorExceptionEventArgs(exception));
@@ -142,13 +161,7 @@ namespace PCSC.Monitoring
             if (_isDisposed) return;
 
             lock (_gate) {
-                var oldCtx = Interlocked.Exchange(ref _ctx, null);
-                if (oldCtx == null) {
-                    return;
-                }
-
-                oldCtx.Cancel();
-                oldCtx.Dispose();
+                _ctx?.Cancel();
                 _thread = null;
             }
         }
