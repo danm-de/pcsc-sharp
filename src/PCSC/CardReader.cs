@@ -74,8 +74,8 @@ namespace PCSC
         /// <inheritdoc />
         public int Transmit(byte[] sendBuffer, byte[] receiveBuffer) {
             return Transmit(
-                sendPci: SCardPCI.GetPci(Protocol), 
-                sendBuffer: sendBuffer, 
+                sendPci: SCardPCI.GetPci(Protocol),
+                sendBuffer: sendBuffer,
                 receiveBuffer: receiveBuffer);
         }
 
@@ -84,10 +84,10 @@ namespace PCSC
             var sendBufferLength = sendBuffer?.Length ?? 0;
             var receiveBufferLength = receiveBuffer?.Length ?? 0;
             return Transmit(
-                sendPci: sendPci, 
-                sendBuffer: sendBuffer, 
-                sendBufferLength: sendBufferLength, 
-                receivePci: default(SCardPCI), 
+                sendPci: sendPci,
+                sendBuffer: sendBuffer,
+                sendBufferLength: sendBufferLength,
+                receivePci: default(SCardPCI),
                 receiveBuffer: receiveBuffer,
                 receiveBufferLength: receiveBufferLength);
         }
@@ -97,11 +97,11 @@ namespace PCSC
             var sendBufferLength = sendBuffer?.Length ?? 0;
             var receiveBufferLength = receiveBuffer?.Length ?? 0;
             return Transmit(
-                sendPci: sendPci, 
-                sendBuffer: sendBuffer, 
-                sendBufferLength: sendBufferLength, 
-                receivePci: IntPtr.Zero, 
-                receiveBuffer: receiveBuffer, 
+                sendPci: sendPci,
+                sendBuffer: sendBuffer,
+                sendBufferLength: sendBufferLength,
+                receivePci: IntPtr.Zero,
+                receiveBuffer: receiveBuffer,
                 receiveBufferLength: receiveBufferLength);
         }
 
@@ -137,7 +137,8 @@ namespace PCSC
         }
 
         /// <inheritdoc />
-        public int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer, int receiveBufferLength) {
+        public int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer,
+            int receiveBufferLength) {
             return Transmit(sendPci, sendBuffer, sendBufferLength, IntPtr.Zero, receiveBuffer, receiveBufferLength);
         }
 
@@ -162,9 +163,21 @@ namespace PCSC
         }
 
         /// <inheritdoc />
+        public int Control(IntPtr controlCode, byte[] sendBuffer, byte[] receiveBuffer) {
+            var sendBufferLength = sendBuffer?.Length ?? 0;
+            var receiveBufferLength = receiveBuffer?.Length ?? 0;
+            return Control(controlCode, sendBuffer, sendBufferLength, receiveBuffer, receiveBufferLength);
+        }
+
+        /// <inheritdoc />
         public int Control(IntPtr controlCode, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer,
-            int receiveBufferSize) {
-            throw new NotImplementedException();
+            int receiveBufferLength) {
+            var handle = CardHandle.Handle;
+            _api.Control(handle, controlCode, sendBuffer, sendBufferLength, receiveBuffer, receiveBufferLength,
+                    out var bytesReceived)
+                .ThrowIfNotSuccess();
+
+            return bytesReceived;
         }
 
         /// <inheritdoc />

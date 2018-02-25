@@ -167,7 +167,7 @@ namespace PCSC.Tests.CardReaderSpecs
         private readonly SCardPCI _receivePci = new SCardPCI();
 
         protected override void EstablishContext() {
-            int recvBufferLength = 10;
+            var recvBufferLength = 10;
             A.CallTo(() => Api.Transmit(CardHandle.Handle, SCardPCI.Raw, _sendBuffer, 3, _receivePci.MemoryPtr,
                     _receiveBuffer, ref recvBufferLength))
                 .Invokes(_ => {
@@ -176,7 +176,7 @@ namespace PCSC.Tests.CardReaderSpecs
                     _receiveBuffer[2] = 0xC;
                 })
                 .Returns(SCardError.Success)
-                .AssignsOutAndRefParametersLazily(_ => new object[] { 3 }); // recvBufferLength = 3
+                .AssignsOutAndRefParametersLazily(_ => new object[] {3}); // recvBufferLength = 3
         }
 
         protected override void BecauseOf() {
@@ -195,7 +195,7 @@ namespace PCSC.Tests.CardReaderSpecs
 
         [Test]
         public void Should_it_call_the_Transmit_API() {
-            int recvBufferLength = 10;
+            var recvBufferLength = 10;
             A.CallTo(() => Api.Transmit(CardHandle.Handle, SCardPCI.Raw, _sendBuffer, 3, _receivePci.MemoryPtr,
                     _receiveBuffer, ref recvBufferLength))
                 .MustHaveHappened(Repeated.Exactly.Once);
@@ -211,6 +211,53 @@ namespace PCSC.Tests.CardReaderSpecs
             _receiveBuffer.Take(_bytesReceived)
                 .Should()
                 .ContainInOrder(0xA, 0xB, 0xC);
+        }
+    }
+
+    [TestFixture]
+    public class If_the_user_sends_an_IO_control_to_the_reader : CardReaderSpec
+    {
+        private readonly IntPtr _controlCode = (IntPtr) 9999;
+        private readonly byte[] _sendBuffer = {0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0x0};
+        private readonly byte[] _receiveBuffer = new byte[10];
+        private int _bytesReceived;
+
+        protected override void EstablishContext() {
+            var recvBufferLength = 10;
+            A.CallTo(() => Api.Control(CardHandle.Handle, _controlCode, _sendBuffer, 3, _receiveBuffer,
+                    recvBufferLength, out recvBufferLength))
+                .Invokes(_ => {
+                    _receiveBuffer[0] = 0xA;
+                    _receiveBuffer[1] = 0xB;
+                    _receiveBuffer[2] = 0xC;
+                    _receiveBuffer[3] = 0xD;
+                })
+                .Returns(SCardError.Success)
+                .AssignsOutAndRefParametersLazily(_ => new object[] {4}); // recvBufferLength = 4
+        }
+
+        protected override void BecauseOf() {
+            _bytesReceived = Sut.Control(_controlCode, _sendBuffer, 3, _receiveBuffer, 10);
+        }
+
+        [Test]
+        public void Should_it_call_the_Control_API() {
+            var recvBufferLength = 10;
+            A.CallTo(() => Api.Control(CardHandle.Handle, _controlCode, _sendBuffer, 3, _receiveBuffer,
+                    recvBufferLength, out recvBufferLength))
+                .MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Test]
+        public void Should_it_receive_4_bytes() {
+            _bytesReceived.Should().Be(4);
+        }
+
+        [Test]
+        public void Should_the_receive_buffer_being_filled() {
+            _receiveBuffer.Take(_bytesReceived)
+                .Should()
+                .ContainInOrder(0xA, 0xB, 0xC, 0xD);
         }
     }
 }

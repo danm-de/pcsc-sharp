@@ -226,14 +226,25 @@ namespace PCSC
         /// <param name="sendBuffer">Command to send to the reader.</param>
         /// <param name="sendBufferLength"><paramref name="sendBuffer"/> size</param>
         /// <param name="receiveBuffer">Response from the reader.</param>
-        /// <param name="receiveBufferSize"><paramref name="receiveBuffer"/> size</param>
+        /// <param name="receiveBufferLength"><paramref name="receiveBuffer"/> size</param>
         /// <remarks>
         ///     <para>This method is useful for creating client side reader drivers for functions like PIN pads, biometrics, or other extensions to the normal smart card reader that are not normally handled by PC/SC.</para>
         ///     <para>This method calls the API function SCardControl().</para>
         /// </remarks>
         /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
-        int Control(IntPtr controlCode, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer, int receiveBufferSize);
-        
+        int Control(IntPtr controlCode, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer, int receiveBufferLength);
+
+        /// <summary>Sends a command directly to the IFD Handler (reader driver) to be processed by the reader.</summary>
+        /// <param name="controlCode">Control code for the operation.</param>
+        /// <param name="sendBuffer">Command to send to the reader.</param>
+        /// <param name="receiveBuffer">Response from the reader.</param>
+        /// <remarks>
+        ///     <para>This method is useful for creating client side reader drivers for functions like PIN pads, biometrics, or other extensions to the normal smart card reader that are not normally handled by PC/SC.</para>
+        ///     <para>This method calls the API function SCardControl().</para>
+        /// </remarks>
+        /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
+        int Control(IntPtr controlCode, byte[] sendBuffer, byte[] receiveBuffer);
+
         /// <summary>Returns the current status of the reader and the connected card.</summary>
         /// <returns>A reader status instance</returns>
         ReaderStatus GetStatus();
