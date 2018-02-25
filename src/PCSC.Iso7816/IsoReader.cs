@@ -12,21 +12,16 @@ namespace PCSC.Iso7816
         private readonly ISCardContext _context;
         private readonly bool _releaseContextOnDispose;
         private readonly bool _disconnectReaderOnDispose;
-
-        /// <summary>Gets the current context.</summary>
-        public ISCardContext CurrentContext => _context ?? Reader.CurrentContext;
-
-        /// <summary>Gets the current reader.</summary>
-        public ISCardReader Reader { get; }
+        private readonly ISCardReader _reader;
 
         /// <summary>Gets the name of the reader.</summary>
-        public string ReaderName => Reader.ReaderName;
+        public string ReaderName => _reader.ReaderName;
 
         /// <summary>Gets the active protocol.</summary>
-        public virtual SCardProtocol ActiveProtocol => Reader.ActiveProtocol;
+        public virtual SCardProtocol ActiveProtocol => _reader.ActiveProtocol;
 
         /// <summary>Gets the current share mode.</summary>
-        public virtual SCardShareMode CurrentShareMode => Reader.CurrentShareMode;
+        public virtual SCardShareMode CurrentShareMode => _reader.CurrentShareMode;
 
         /// <summary>Gets or sets the wait time in milliseconds that is used if an APDU needs to be retransmitted.</summary>
         /// <value>Default is 0 ms</value>
@@ -46,7 +41,7 @@ namespace PCSC.Iso7816
         /// <param name="disconnectReaderOnDispose">if set to <c>true</c> the supplied <paramref name="reader" /> will be disconnected on <see cref="Dispose()" />.</param>
         /// <exception cref="System.ArgumentNullException">If reader is <see langword="null" /></exception>
         public IsoReader(ISCardReader reader, bool disconnectReaderOnDispose = false) {
-            Reader = reader ?? throw new ArgumentNullException(nameof(reader));
+            _reader = reader ?? throw new ArgumentNullException(nameof(reader));
             _disconnectReaderOnDispose = disconnectReaderOnDispose;
         }
 
@@ -68,7 +63,7 @@ namespace PCSC.Iso7816
         /// <exception cref="System.ArgumentNullException">If <paramref name="context" /> is <see langword="null" /></exception>
         public IsoReader(ISCardContext context, bool releaseContextOnDispose = false) {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            Reader = new SCardReader(context);
+            _reader = new SCardReader(context);
             _releaseContextOnDispose = releaseContextOnDispose;
             _disconnectReaderOnDispose = true;
         }
@@ -109,7 +104,7 @@ namespace PCSC.Iso7816
                 throw new InvalidShareModeException(SCardError.InvalidValue);
             }
 
-            var sc = Reader.Connect(readerName, mode, protocol);
+            var sc = _reader.Connect(readerName, mode, protocol);
 
             // Throws an exception if sc != SCardError.Success
             sc.ThrowIfNotSuccess();
@@ -118,7 +113,7 @@ namespace PCSC.Iso7816
         /// <summary>Disconnects the currently connected reader.</summary>
         /// <param name="disposition">The action that shall be executed after disconnect.</param>
         public virtual void Disconnect(SCardReaderDisposition disposition) {
-            Reader?.Disconnect(disposition);
+            _reader?.Disconnect(disposition);
         }
 
         private ResponseApdu SimpleTransmit(byte[] commandApdu, int commandApduLength, IsoCase isoCase,
@@ -126,8 +121,8 @@ namespace PCSC.Iso7816
             SCardError sc;
             do {
                 // send Command APDU to the card
-                sc = Reader.Transmit(
-                    SCardPCI.GetPci(Reader.ActiveProtocol),
+                sc = _reader.Transmit(
+                    SCardPCI.GetPci(_reader.ActiveProtocol),
                     commandApdu,
                     commandApduLength,
                     receivePci,
@@ -359,8 +354,8 @@ namespace PCSC.Iso7816
                 return;
             }
 
-            if (_disconnectReaderOnDispose && Reader != null && Reader.IsConnected) {
-                Reader.Dispose();
+            if (_disconnectReaderOnDispose && _reader != null && _reader.IsConnected) {
+                _reader.Dispose();
             }
 
             if (_releaseContextOnDispose && _context != null && _context.IsValid()) {

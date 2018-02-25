@@ -230,12 +230,12 @@ namespace PCSC
 
         /// <inheritdoc />
         public void SetAttrib(SCardAttribute attributeId, byte[] sendBuffer, int sendBufferLength) {
-            SetAttrib((IntPtr)attributeId, sendBuffer, sendBufferLength);
+            SetAttrib((IntPtr) attributeId, sendBuffer, sendBufferLength);
         }
 
         /// <inheritdoc />
         public void SetAttrib(SCardAttribute attributeId, byte[] sendBuffer) {
-            SetAttrib((IntPtr)attributeId, sendBuffer);
+            SetAttrib((IntPtr) attributeId, sendBuffer);
         }
 
         /// <inheritdoc />

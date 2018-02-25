@@ -5,12 +5,6 @@ namespace PCSC.Iso7816
     /// <summary>A ISO/IEC 7816 compliant reader.</summary>
     public interface IIsoReader : IDisposable
     {
-        /// <summary>Gets the current context.</summary>
-        ISCardContext CurrentContext { get; }
-
-        /// <summary>Gets the current reader.</summary>
-        ISCardReader Reader { get; }
-
         /// <summary>Gets the name of the reader.</summary>
         string ReaderName { get; }
 
