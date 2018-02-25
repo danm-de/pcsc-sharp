@@ -182,7 +182,20 @@ namespace PCSC
 
         /// <inheritdoc />
         public ReaderStatus GetStatus() {
-            throw new NotImplementedException();
+            var handle = CardHandle.Handle;
+            _api.Status(
+                    hCard: handle,
+                    szReaderName: out var readerNames,
+                    pdwState: out var dwState,
+                    pdwProtocol: out var dwProtocol,
+                    pbAtr: out var atr)
+                .ThrowIfNotSuccess();
+
+            return new ReaderStatus(
+                readerNames: readerNames,
+                state: SCardHelper.ToState(dwState),
+                protocol: SCardHelper.ToProto(dwProtocol),
+                atr: atr);
         }
 
         /// <inheritdoc />

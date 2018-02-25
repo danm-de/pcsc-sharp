@@ -260,4 +260,50 @@ namespace PCSC.Tests.CardReaderSpecs
                 .ContainInOrder(0xA, 0xB, 0xC, 0xD);
         }
     }
+
+    [TestFixture]
+    public class If_the_user_requests_the_reader_status : CardReaderSpec
+    {
+        private ReaderStatus _readerStatus;
+
+        protected override void EstablishContext() {
+            string[] readerNames;
+            IntPtr state;
+            IntPtr protocol;
+            byte[] atr;
+            A.CallTo(() => Api.Status(CardHandle.Handle, out readerNames, out state, out protocol, out atr))
+                .WithAnyArguments()
+                .Returns(SCardError.Success)
+                .AssignsOutAndRefParametersLazily(_ => new object[] {
+                    new[]{"MyReader"},
+                    (IntPtr)(SCardState.Present |SCardState.Powered),
+                    (IntPtr)SCardProtocol.Raw,
+                    new byte[]{0x01, 0x02, 0x03, 0x04}
+                });
+        }
+
+        protected override void BecauseOf() {
+            _readerStatus = Sut.GetStatus();
+        }
+
+        [Test]
+        public void Should_the_protocol_be_Raw() {
+            _readerStatus.Protocol.Should().Be(SCardProtocol.Raw);
+        }
+
+        [Test]
+        public void Should_the_card_state_be_Present_and_Powered() {
+            _readerStatus.State.Should().Be(SCardState.Present | SCardState.Powered);
+        }
+
+        [Test]
+        public void Should_the_ATR_be_01_02_03_04() {
+            _readerStatus.GetAtr().Should().ContainInOrder(new byte[] {0x1, 0x2, 0x3, 0x4});
+        }
+
+        [Test]
+        public void Should_the_friendly_reader_name_be_MyReader() {
+            _readerStatus.GetReaderNames().Should().ContainSingle(name => name == "MyReader");
+        }
+    }
 }
