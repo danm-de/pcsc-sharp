@@ -18,7 +18,7 @@ namespace PCSC
         /// <summary>
         /// Card or reader handle. <see cref="ICardHandle.Handle"/> can be used for C API calls
         /// </summary>
-        ICardHandle Handle { get; }
+        ICardHandle CardHandle { get; }
 
         /// <summary>Connection state of the reader.</summary>
         /// <value><see langword="true" /> if the reader is connected. Otherwise <see langword="false" />.</value>
@@ -63,13 +63,14 @@ namespace PCSC
         void Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol, SCardReaderDisposition initialExecution);
 
         /// <summary>Establishes a temporary exclusive access mode for doing a serie of commands in a transaction.</summary>
+        /// <param name="disposition">Action to be taken on the reader if the user ends the transaction.</param>
         /// <remarks>
         ///     <para>You might want to use this when you are selecting a few files and then writing a large file so you can make sure that another application will not change the current file. If another application has a lock on this reader or this application is in
         ///         <see cref="SCardShareMode.Exclusive" /> there will be no action taken.</para>
         ///     <para>This method calls the API function SCardBeginTransaction(). SCardEndTransaction() will be called when you dispose the returned value</para>
         /// </remarks>
         /// <returns>An anonymous instance implementing <see cref="IDisposable"/> that must be disposed to end the transaction.</returns>
-        IDisposable Transaction();
+        IDisposable Transaction(SCardReaderDisposition disposition);
 
         /// <summary>Sends an APDU to the smart card. </summary>
         /// <param name="sendPci">A pointer to a pre-defined Structure of Protocol Control Information. You can use one of the following:

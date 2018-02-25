@@ -10,7 +10,7 @@ c = Bug fix
   Thanks to Christoph Fink @chrfin
   Closes https://github.com/danm-de/pcsc-sharp/issues/32
 * ISCardContext.ReEstablish() removed
-* new types: ICardHandle, CardHandle
+* new types: ICardHandle, CardHandle, ICardReader, CardReader
 * ISO7816 moved to PCSC.Iso7816 (separate assemlby / nuget)
 
 

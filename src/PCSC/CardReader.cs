@@ -1,5 +1,7 @@
 ﻿using System;
+using PCSC.Extensions;
 using PCSC.Interop;
+using PCSC.Utils;
 
 namespace PCSC
 {
@@ -11,19 +13,19 @@ namespace PCSC
         private bool _disposed;
 
         /// <inheritdoc />
-        public ICardHandle Handle { get; }
+        public ICardHandle CardHandle { get; }
 
         /// <inheritdoc />
-        public string ReaderName => Handle.ReaderName;
+        public string ReaderName => CardHandle.ReaderName;
 
         /// <inheritdoc />
-        public SCardShareMode Mode => Handle.Mode;
+        public SCardShareMode Mode => CardHandle.Mode;
 
         /// <inheritdoc />
-        public SCardProtocol Protocol => Handle.Protocol;
+        public SCardProtocol Protocol => CardHandle.Protocol;
 
         /// <inheritdoc />
-        public bool IsConnected => Handle.IsConnected;
+        public bool IsConnected => CardHandle.IsConnected;
 
         /// <inheritdoc />
         ~CardReader() {
@@ -47,18 +49,25 @@ namespace PCSC
 
         internal CardReader(ISCardApi api, ICardHandle cardHandle, bool isOwner) {
             _api = api;
-            Handle = cardHandle ?? throw new ArgumentNullException(nameof(cardHandle));
+            CardHandle = cardHandle ?? throw new ArgumentNullException(nameof(cardHandle));
             _isOwner = isOwner;
         }
 
         /// <inheritdoc />
         public void Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol, SCardReaderDisposition initialExecution) {
-            throw new NotImplementedException();
+            CardHandle.Reconnect(mode, preferredProtocol, initialExecution);
         }
 
         /// <inheritdoc />
-        public IDisposable Transaction() {
-            throw new NotImplementedException();
+        public IDisposable Transaction(SCardReaderDisposition disposition) {
+            var handle = CardHandle.Handle;
+
+            _api.BeginTransaction(handle)
+                .ThrowIfNotSuccess();
+
+            return DisposeAction.Create(() => _api
+                .EndTransaction(handle, disposition)
+                .ThrowIfNotSuccess());
         }
 
         /// <inheritdoc />
@@ -101,7 +110,7 @@ namespace PCSC
             if (!disposing || _disposed) return;
 
             if (_isOwner) {
-                Handle.Dispose();
+                CardHandle.Dispose();
             }
 
             _disposed = true;
