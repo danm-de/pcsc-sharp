@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mifare1kTest", "Examples\IS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transmit", "Examples\ISO7816-4\Transmit\Transmit.csproj", "{77DE4CDA-AA23-45A6-AF9F-63EC8F159A3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectedReaderStatus", "Examples\ConnectedReaderStatus\ConnectedReaderStatus.csproj", "{5E8D4452-E8F3-4160-BCD2-3C6EEE1B73C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{77DE4CDA-AA23-45A6-AF9F-63EC8F159A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77DE4CDA-AA23-45A6-AF9F-63EC8F159A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77DE4CDA-AA23-45A6-AF9F-63EC8F159A3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8D4452-E8F3-4160-BCD2-3C6EEE1B73C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8D4452-E8F3-4160-BCD2-3C6EEE1B73C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8D4452-E8F3-4160-BCD2-3C6EEE1B73C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8D4452-E8F3-4160-BCD2-3C6EEE1B73C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +170,7 @@ Global
 		{2DF55ED3-A5EF-4E4C-9C85-DBE689FEA746} = {D3253E47-228E-4C58-930E-A26849AEC371}
 		{849E30EE-E92A-4288-AFA0-C3719A20AB6B} = {0D1324BD-4BE9-41C0-820F-9E1ABE354D00}
 		{77DE4CDA-AA23-45A6-AF9F-63EC8F159A3B} = {0D1324BD-4BE9-41C0-820F-9E1ABE354D00}
+		{5E8D4452-E8F3-4160-BCD2-3C6EEE1B73C8} = {15E67B9D-5F21-4F82-8741-B067F1C7C9A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4ED2E311-686A-4CB1-8271-68EBBD5FDB8E}

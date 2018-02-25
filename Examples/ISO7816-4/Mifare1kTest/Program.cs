@@ -30,8 +30,12 @@ namespace Mifare1kTest
                     return;
                 }
 
-                using (var isoReader =
-                    new IsoReader(context, readerName, SCardShareMode.Shared, SCardProtocol.Any, false)) {
+                using (var isoReader = new IsoReader(
+                    context: context,
+                    readerName: readerName,
+                    mode: SCardShareMode.Shared,
+                    protocol: SCardProtocol.Any,
+                    releaseContextOnDispose: false)) {
                     var card = new MifareCard(isoReader);
 
                     var loadKeySuccessful = card.LoadKey(
@@ -86,7 +90,7 @@ namespace Mifare1kTest
             // Show available readers.
             Console.WriteLine("Available readers: ");
             for (var i = 0; i < readerNames.Count; i++) {
-                Console.WriteLine("[" + i + "] " + readerNames[i]);
+                Console.WriteLine($"[{i}] {readerNames[i]}");
             }
 
             // Ask the user which one to choose.
