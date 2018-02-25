@@ -3,13 +3,14 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
-2018-??-??  Daniel Mueller <daniel@danm.de>
+2018-02-25  Daniel Mueller <daniel@danm.de>
 * New version 4.0.0
 * PCSC, PCSC.Reactive converted to .netstandard 2.0
   https://github.com/danm-de/pcsc-sharp/pull/67
   Thanks to Christoph Fink @chrfin
   Closes https://github.com/danm-de/pcsc-sharp/issues/32
-* ISCardContext.ReEstablish() removed, Connect(..) and ConnectReader(..) added
+* ISCardContext.ReEstablish() removed; Connect(..) and ConnectReader(..) added
+  Closes https://github.com/danm-de/pcsc-sharp/issues/58
 * new types: ICardHandle, CardHandle, ICardReader, CardReader
 * MonitorFactory: removed obsolete methods
 * ISO7816 moved to PCSC.Iso7816 (separate assemlby / nuget)
