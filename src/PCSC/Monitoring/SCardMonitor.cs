@@ -167,34 +167,6 @@ namespace PCSC.Monitoring
         }
 
         /// <summary>Creates a new SCardMonitor object that is able to listen for certain smart card / reader changes.</summary>
-        /// <param name="context">A new Application Context to the PC/SC Resource Manager.</param>
-        /// <param name="releaseContextOnDispose">If <see langword="true" /> the supplied <paramref name="context" /> will be released (using <see cref="ISCardContext.Release()" />) on <see cref="Dispose()" /></param>
-        /// <remarks>The monitor object should use its own application context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.
-        ///     <para>Warning: You MUST dispose the monitor instance otherwise the background thread will run forever!</para>
-        /// </remarks>
-        [Obsolete(
-            "Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
-        public SCardMonitor(ISCardContext context, bool releaseContextOnDispose = false) {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
-            _releaseContextOnDispose = releaseContextOnDispose;
-        }
-
-        /// <summary>Creates a new SCardMonitor object that is able to listen for certain smart card / reader changes.</summary>
-        /// <param name="context">A new Application Context to the PC/SC Resource Manager.</param>
-        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
-        /// <param name="releaseContextOnDispose">If <see langword="true" /> the supplied <paramref name="context" /> will be released (using <see cref="ISCardContext.Release()" />) on <see cref="Dispose()" /></param>
-        /// <remarks>The monitor object should use its own application context to the PC/SC Resource Manager. It will create a (new) backgroud thread that will listen for status changes.
-        ///     <para>Warning: You MUST dispose the monitor instance otherwise the background thread will run forever!</para>
-        /// </remarks>
-        [Obsolete(
-            "Use SCardMonitor(IContextFactory, SCardScope) instead. If you do not want to implement your own context factory, use ContextFactory.Instance. This constructor will be removed in the next major release.")]
-        public SCardMonitor(ISCardContext context, SCardScope scope, bool releaseContextOnDispose = true) {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
-            _context.Establish(scope);
-            _releaseContextOnDispose = releaseContextOnDispose;
-        }
-
-        /// <summary>Creates a new SCardMonitor object that is able to listen for certain smart card / reader changes.</summary>
         /// <param name="contextFactory">A smartcard context factory</param>
         /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
         public SCardMonitor(IContextFactory contextFactory, SCardScope scope) {

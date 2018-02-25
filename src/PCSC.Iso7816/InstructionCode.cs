@@ -31,10 +31,6 @@ namespace PCSC.Iso7816
         [Description("INTERNAL AUTHENTICATE")]
         InternalAuthenticate = 0x86,
 
-        /// <summary>Internal authenticate (obsolete)</summary>
-        [Description("INTERNAL AUTHENTICATE")]
-        InternalAuthenticateObsolete = 0x88,
-
         /// <summary>Select file</summary>
         [Description("SELECT FILE")]
         SelectFile = 0xA4,

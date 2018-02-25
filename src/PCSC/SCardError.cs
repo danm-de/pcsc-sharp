@@ -169,11 +169,6 @@ namespace PCSC
         NoReadersAvailable = unchecked((int) 0x8010002E),
 
         /** PC/SC Lite specific extensions */
-        /// <summary>The smart card has been inserted. (Obsolete)</summary>
-        [Description("Card inserted.")]
-        [Obsolete("PC/SC Lite specific, value conflicts with SCardError.SecurityViolation")]
-        InsertedCard = unchecked((int) 0x8010006A),
-
         /// <summary>Feature not supported. (SCARD_E_UNSUPPORTED_FEATURE)</summary>
         [Description("Feature not supported")]
         UnsupportedFeature = unchecked((int) 0x8010001F),
