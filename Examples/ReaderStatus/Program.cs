@@ -43,8 +43,6 @@ namespace ReaderStatus
                               $"ATR: {atr}");
         }
 
-        private static bool NoReaderFound(ICollection<string> readerNames) {
-            return readerNames == null || readerNames.Count < 1;
-        }
+        private static bool NoReaderFound(ICollection<string> readerNames) => readerNames == null || readerNames.Count < 1;
     }
 }

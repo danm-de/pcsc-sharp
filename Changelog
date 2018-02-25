@@ -11,9 +11,9 @@ c = Bug fix
   Closes https://github.com/danm-de/pcsc-sharp/issues/32
 * ISCardContext.ReEstablish() removed, Connect(..) and ConnectReader(..) added
 * new types: ICardHandle, CardHandle, ICardReader, CardReader
+* MonitorFactory: removed obsolete methods
 * ISO7816 moved to PCSC.Iso7816 (separate assemlby / nuget)
 * IIsoReader: removed properties CurrentContext and Reader
-
 
 2017-10-08  Daniel Mueller <daniel@danm.de>
 * New version 3.8.0

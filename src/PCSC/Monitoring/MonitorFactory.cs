@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 
 namespace PCSC.Monitoring
 {
@@ -26,82 +24,13 @@ namespace PCSC.Monitoring
         public MonitorFactory(IContextFactory contextFactory) {
             _contextFactory = contextFactory;
         }
-
-        /// <summary>
-        /// Creates and starts a smart card event monitor for a specific reader
-        /// </summary>
-        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
-        /// <param name="readerName">Name of the smart card reader that shall be monitored.</param>
-        /// <returns>A started <see cref="ISCardMonitor"/></returns>
-        [Obsolete(
-            "Will be removed in release 3.7.0. Please use the 'Create' method and start the returned monitor by yourself.",
-            true)]
-        public ISCardMonitor Start(SCardScope scope, string readerName) {
-            if (readerName == null) {
-                throw new ArgumentNullException(nameof(readerName));
-            }
-
-            return Start(scope, new[] {readerName});
-        }
-
-        /// <summary>
-        /// Creates and starts a smart card event monitor for one or more readers.
-        /// </summary>
-        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
-        /// <param name="readerNames">Names of the smart card readers that shall be monitored.</param>
-        /// <returns>A started <see cref="ISCardMonitor"/></returns>
-        [Obsolete(
-            "Will be removed in release 3.7.0. Please use the 'Create' method and start the returned monitor by yourself.",
-            true)]
-        public ISCardMonitor Start(SCardScope scope, IEnumerable<string> readerNames) {
-            return Start(scope, readerNames, null);
-        }
-
-
-        /// <summary>
-        /// Creates and starts a smart card event monitor for one or more readers.
-        /// </summary>
-        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
-        /// <param name="readerNames">Names of the smart card readers that shall be monitored.</param>
-        /// <param name="preStartAction">Action that will be invoked prior monitor start</param>
-        /// <returns>A started <see cref="ISCardMonitor"/></returns>
-        [Obsolete(
-            "Will be removed in release 3.7.0. Please use the 'Create' method and start the returned monitor by yourself.",
-            true)]
-        public ISCardMonitor Start(SCardScope scope, IEnumerable<string> readerNames,
-            Action<ISCardMonitor> preStartAction) {
-            if (readerNames == null) {
-                throw new ArgumentNullException(nameof(readerNames));
-            }
-
-            var readers = readerNames
-                .Where(name => !string.IsNullOrWhiteSpace(name))
-                .ToArray();
-
-            var monitor = Create(scope);
-            try {
-                preStartAction?.Invoke(monitor);
-                monitor.Start(readers);
-                return monitor;
-            } catch {
-                monitor.Dispose();
-                throw;
-            }
-        }
-
-        /// <summary>
-        ///  Creates a smart card event monitor 
-        /// </summary>
-        /// <param name="scope">Scope of the establishment. This can either be a local or remote connection.</param>
-        /// <returns>A <see cref="ISCardMonitor"/></returns>
+        
+        /// <inheritdoc />
         public ISCardMonitor Create(SCardScope scope) {
             return new SCardMonitor(_contextFactory, scope);
         }
-
-        /// <summary>
-        /// Releases the smart card monitor and its dependencies using the <see cref="IDisposable.Dispose"/> method.
-        /// </summary>
-        /// <param name="monitor">Smart card monitor that shall be stopped and disposed.</param>
+        
+        /// <inheritdoc />
         public void Release(ISCardMonitor monitor) {
             if (monitor == null) {
                 throw new ArgumentNullException(nameof(monitor));

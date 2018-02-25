@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using PCSC;
 using PCSC.Exceptions;
@@ -25,8 +25,9 @@ namespace MonitorReaderEvents
 
             // Create smartcard monitor using a context factory. 
             // The context will be automatically released after monitor.Dispose()
-            using (var monitor = new SCardMonitor(_contextFactory, SCardScope.System)) {
-                AttachToAllEvents(monitor); // Remember to detach if you use this in production!
+            var monitorFactory = MonitorFactory.Instance;
+            using (var monitor = monitorFactory.Create(SCardScope.System)) {
+                AttachToAllEvents(monitor); // Remember to detach, if you use this in production!
 
                 ShowUserInfo(readerNames);
 
