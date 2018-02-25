@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using PCSC;
-using PCSC.Utils;
 
 namespace GetReaderAttrib
 {
@@ -31,49 +30,32 @@ namespace GetReaderAttrib
         /// <param name="readerNames">Readers from which the ATR should be requested</param>
         private static void DisplayAtrs(ISCardContext context, IEnumerable<string> readerNames) {
             foreach (var readerName in readerNames) {
-                using (var reader = new SCardReader(context)) {
-                    if (!ConnectReader(reader, readerName)) {
-                        // error while connecting ..
-                        continue;
+                try {
+                    using (var reader = context.ConnectReader(readerName, SCardShareMode.Shared, SCardProtocol.Any)) {
+                        DisplayAtr(reader);
                     }
-
-                    DisplayCardAtr(reader);
-                    reader.Disconnect(SCardReaderDisposition.Leave);
+                } catch (Exception exception) {
+                    Console.WriteLine("Could not connect to reader {0}. No smart card present? ({1})", readerName,
+                        exception.GetType());
                 }
             }
-        }
-
-        /// <summary>
-        /// Connect to reader using <paramref name="name"/>
-        /// </summary>
-        /// <param name="reader">Smartcard reader instance</param>
-        /// <param name="name">Requested reader name</param>
-        /// <returns><c>true</c> if connection attempt was successful</returns>
-        private static bool ConnectReader(ISCardReader reader, string name) {
-            Console.Write($"Trying to connect to reader.. {name}");
-            var rc = reader.Connect(name, SCardShareMode.Shared, SCardProtocol.Any);
-
-            if (rc == SCardError.Success) {
-                Console.WriteLine(" done.");
-                return true;
-            }
-
-            Console.WriteLine(" failed. No smart card present? " + SCardHelper.StringifyError(rc) + "\n");
-            return false;
         }
 
         /// <summary>
         /// Receive and print ATR string attribute
         /// </summary>
         /// <param name="reader">Connected smartcard reader instance</param>
-        private static void DisplayCardAtr(ISCardReader reader) {
-            var rc = reader.GetAttrib(SCardAttribute.AtrString, out var atr);
-
-            if (rc != SCardError.Success) {
-                // ATR not supported?
-                Console.WriteLine("Error by trying to receive the ATR. {0}\n", SCardHelper.StringifyError(rc));
-            } else {
-                Console.WriteLine("ATR: {0}\n", BitConverter.ToString(atr ?? new byte[] { }));
+        private static void DisplayAtr(ICardReader reader) {
+            try {
+                var atr = reader.GetAttrib(SCardAttribute.AtrString);
+                Console.WriteLine("Reader: {0}, ATR: {1}", 
+                    reader.Name,
+                    BitConverter.ToString(atr ?? new byte[] { }));
+            } catch (Exception exception) {
+                Console.WriteLine("Reader: {0}, Error by trying to receive the ATR. {1} ({2})\n", 
+                    reader.Name,
+                    exception.Message,
+                    exception.GetType());
             }
         }
 

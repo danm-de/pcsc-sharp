@@ -80,7 +80,7 @@ namespace PCSC.Tests.CardReaderSpecs
                     A.CallTo(() => CardHandle.Protocol).Returns(call.Arguments.Get<SCardProtocol>(1));
                 });
 
-            _oldReaderName = Sut.ReaderName;
+            _oldReaderName = Sut.Name;
             _isConnected = Sut.IsConnected;
         }
 
@@ -107,7 +107,7 @@ namespace PCSC.Tests.CardReaderSpecs
 
         [Test]
         public void Should_the_reader_name_the_same_as_before() {
-            Sut.ReaderName.Should().Be(_oldReaderName);
+            Sut.Name.Should().Be(_oldReaderName);
         }
 
         [Test]

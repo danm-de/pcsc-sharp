@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PCSC;
-using PCSC.Utils;
 
 namespace CardStatus
 {
@@ -15,10 +15,11 @@ namespace CardStatus
 
                 if (NoReaderFound(readerNames)) {
                     Console.WriteLine("No readers found.");
-                } else {
-                    DisplayReaderStatus(context, readerNames);
+                    Console.ReadKey();
+                    return;
                 }
 
+                DisplayReaderStatus(context, readerNames);
                 Console.ReadKey();
             }
         }
@@ -30,46 +31,39 @@ namespace CardStatus
         /// <param name="readerNames">Smartcard readers</param>
         private static void DisplayReaderStatus(ISCardContext context, IEnumerable<string> readerNames) {
             foreach (var readerName in readerNames) {
-                using (var reader = new SCardReader(context)) {
-                    Console.WriteLine("Trying to connect to reader {0}.", readerName);
-
-                    var sc = reader.Connect(readerName, SCardShareMode.Shared, SCardProtocol.Any);
-                    if (sc != SCardError.Success) {
-                        Console.WriteLine("No card inserted or reader is reserved exclusively by another application.");
-                        Console.WriteLine("Error message: {0}\n", SCardHelper.StringifyError(sc));
-                        continue;
+                try {
+                    using (var reader = context.ConnectReader(readerName, SCardShareMode.Shared, SCardProtocol.Any)) {
+                        PrintReaderStatus(reader);
+                        Console.WriteLine();
                     }
-
-                    PrintReaderStatus(reader);
-                    Console.WriteLine();
-                    reader.Disconnect(SCardReaderDisposition.Reset);
+                } catch (Exception exception) {
+                    Console.WriteLine(
+                        "No card inserted or reader '{0}' is reserved exclusively by another application.", readerName);
+                    Console.WriteLine("Error message: {0} ({1})\n", exception.Message, exception.GetType());
                 }
             }
         }
 
         /// <summary>
-        /// Queries the reader's status and prints it out
+        /// Prints the reader's status
         /// </summary>
         /// <param name="reader">Connected reader</param>
-        private static void PrintReaderStatus(ISCardReader reader) {
-            var sc = reader.Status(
-                out var readerNames, // contains the reader name(s)
-                out var state, // contains the current state (flags)
-                out var proto, // contains the currently used communication protocol
-                out var atr); // contains the ATR
-
-            if (sc != SCardError.Success) {
-                Console.WriteLine("Unable to retrieve card status.\nError message: {0}",
-                    SCardHelper.StringifyError(sc));
-                return;
+        private static void PrintReaderStatus(ICardReader reader) {
+            try {
+                var status = reader.GetStatus();
+                Console.WriteLine("Reader {0} connected with protocol {1} in state {2}",
+                    status.GetReaderNames().FirstOrDefault(),
+                    status.Protocol,
+                    status.State);
+                PrintCardAtr(status.GetAtr());
+            } catch (Exception exception) {
+                Console.WriteLine("Unable to retrieve card status.\nError message: {0} ({1}", exception,
+                    exception.GetType());
             }
-
-            Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
-            PrintCardAtr(atr);
         }
 
         /// <summary>
-        /// Prints the smart cards ATR as hex string
+        /// Prints the smartcard's ATR as hex string
         /// </summary>
         /// <param name="atr">ATR bytes</param>
         private static void PrintCardAtr(byte[] atr) {
@@ -81,12 +75,11 @@ namespace CardStatus
         }
 
         /// <summary>
-        /// Returns <c>true</c> if the supplied collection <paramref name="readerNames"/> does not contain any reader name.
+        /// Returns <c>true</c> if the supplied collection <paramref name="readerNames"/> does not contain any reader.
         /// </summary>
         /// <param name="readerNames">Collection of smartcard reader names</param>
         /// <returns><c>true</c> if no reader found</returns>
-        private static bool NoReaderFound(ICollection<string> readerNames) {
-            return readerNames == null || readerNames.Count < 1;
-        }
+        private static bool NoReaderFound(ICollection<string> readerNames) =>
+            readerNames == null || readerNames.Count < 1;
     }
 }

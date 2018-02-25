@@ -104,4 +104,46 @@ namespace PCSC.Tests.SCardContextSpecs
             _cardHandle.ReaderName.Should().Be("MyReader");
         }
     }
+
+    [TestFixture]
+    public class If_the_user_connects_to_a_smartcard_reader : SCardContextSpec
+    {
+        private ICardReader _reader;
+
+        protected override void EstablishContext() {
+            IntPtr handle;
+            SCardProtocol protocol;
+            A.CallTo(() => Api.Connect(A<IntPtr>._, A<string>._, A<SCardShareMode>._, A<SCardProtocol>._, out handle,
+                    out protocol))
+                .WithAnyArguments()
+                .Returns(SCardError.Success)
+                .AssignsOutAndRefParametersLazily(_ => new object[] { (IntPtr)123, SCardProtocol.T1 });
+
+            Sut.Establish(SCardScope.User);
+        }
+
+        protected override void BecauseOf() {
+            _reader = Sut.ConnectReader("MyReader", SCardShareMode.Direct, SCardProtocol.Any);
+        }
+        
+        [Test]
+        public void It_should_have_the_protocol_T1() {
+            _reader.Protocol.Should().Be(SCardProtocol.T1);
+        }
+
+        [Test]
+        public void It_should_have_the_same_ShareMode_as_requested() {
+            _reader.Mode.Should().Be(SCardShareMode.Direct);
+        }
+
+        [Test]
+        public void It_should_have_the_reader_name_set() {
+            _reader.Name.Should().Be("MyReader");
+        }
+
+        [Test]
+        public void It_should_have_the_card_handle_set() {
+            _reader.CardHandle.Handle.Should().Be((IntPtr) 123);
+        }
+    }
 }

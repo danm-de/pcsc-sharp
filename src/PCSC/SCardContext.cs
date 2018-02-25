@@ -129,6 +129,12 @@ namespace PCSC
         }
 
         /// <inheritdoc />
+        public ICardReader ConnectReader(string readerName, SCardShareMode mode, SCardProtocol preferredProtocol) {
+            var handle = Connect(readerName, mode, preferredProtocol);
+            return new CardReader(_api, handle, true);
+        }
+
+        /// <inheritdoc />
         public SCardError CheckValidity() {
             return _contextPtr == IntPtr.Zero 
                 ? SCardError.InvalidHandle 

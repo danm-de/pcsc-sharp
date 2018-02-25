@@ -103,7 +103,7 @@ namespace PCSC
         /// </remarks>
         string[] GetReaderGroups();
 
-        /// <summary>Establishes a connection to the Smart Card reader.</summary>
+        /// <summary>Establishes a connection to the Smart Card reader and returns a handle</summary>
         /// <param name="readerName">Reader name to connect to.</param>
         /// <param name="mode">Mode of connection type: exclusive or shared.
         ///     <list type="table">
@@ -121,6 +121,25 @@ namespace PCSC
         /// </remarks>
         /// <returns>A handle to the smartcard or reader</returns>
         ICardHandle Connect(string readerName, SCardShareMode mode, SCardProtocol preferredProtocol);
+
+        /// <summary>Establishes a connection to the Smart Card reader and returns a reader instance</summary>
+        /// <param name="readerName">Reader name to connect to.</param>
+        /// <param name="mode">Mode of connection type: exclusive or shared.
+        ///     <list type="table">
+        ///         <listheader><term>Value</term><description>Description</description></listheader>
+        ///         <item><term><see cref="SCardShareMode.Shared" /></term><description>This application will allow others to share the reader. (SCARD_SHARE_SHARED)</description></item>
+        ///         <item><term><see cref="SCardShareMode.Exclusive" /></term><description>This application will NOT allow others to share the reader. (SCARD_SHARE_EXCLUSIVE)</description></item>
+        ///         <item><term><see cref="SCardShareMode.Direct" /></term><description>Direct connection to the reader. (SCARD_SHARE_DIRECT)</description></item>
+        ///     </list>
+        /// </param>
+        /// <param name="preferredProtocol">Desired protocol use.</param>
+        /// <remarks>
+        ///     <para>
+        ///         <paramref name="preferredProtocol" />  is a bit mask of acceptable protocols for the connection. You can use (<see cref="SCardProtocol.T0" /> | <see cref="SCardProtocol.T1" />) if you do not have a preferred protocol.</para>
+        ///     <para>This method calls the API function SCardConnect().</para>
+        /// </remarks>
+        /// <returns>A reader instance</returns>
+        ICardReader ConnectReader(string readerName, SCardShareMode mode, SCardProtocol preferredProtocol);
 
         /// <summary>Returns the current reader status.</summary>
         /// <param name="readerName">The requested reader.</param>

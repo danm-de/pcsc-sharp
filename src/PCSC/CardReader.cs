@@ -16,7 +16,7 @@ namespace PCSC
         public ICardHandle CardHandle { get; }
 
         /// <inheritdoc />
-        public string ReaderName => CardHandle.ReaderName;
+        public string Name => CardHandle.ReaderName;
 
         /// <inheritdoc />
         public SCardShareMode Mode => CardHandle.Mode;
@@ -220,6 +220,24 @@ namespace PCSC
             _api.GetAttrib(handle, attributeId, receiveBuffer, receiveBufferSize, out var attributeLength)
                 .ThrowIfNotSuccess();
             return attributeLength;
+        }
+
+        /// <inheritdoc />
+        public byte[] GetAttrib(SCardAttribute attributeId) {
+            return GetAttrib((IntPtr) attributeId);
+        }
+
+        /// <inheritdoc />
+        public byte[] GetAttrib(IntPtr attributeId) {
+            var requiredBufferSize = GetAttrib(attributeId, null);
+            if (requiredBufferSize <= 0) {
+                return null;
+            }
+
+            var buffer = new byte[requiredBufferSize];
+            return GetAttrib(attributeId, buffer) == requiredBufferSize 
+                ? buffer 
+                : null;
         }
 
         /// <inheritdoc />
