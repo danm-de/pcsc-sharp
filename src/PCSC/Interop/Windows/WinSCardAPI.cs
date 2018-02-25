@@ -475,19 +475,28 @@ namespace PCSC.Interop.Windows
             byte[] pbAttr,
             [In, Out] ref int pcbAttrLen);
 
-        public SCardError GetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, out int pcbAttrLen) {
-            var attrlen = (pbAttr != null)
-                ? pbAttr.Length
-                : 0;
+        public SCardError GetAttrib(IntPtr hCard, IntPtr attributeId, byte[] receiveBuffer, out int attributeLength) {
+            var receiveBufferLength = receiveBuffer?.Length ?? 0;
+            return GetAttrib(hCard, attributeId, receiveBuffer, receiveBufferLength, out attributeLength);
+        }
 
+        public SCardError GetAttrib(IntPtr hCard, IntPtr attributeId, byte[] receiveBuffer, int receiveBufferLength, out int attributeLength) {
+            if (receiveBuffer == null && receiveBufferLength != 0) {
+                throw new ArgumentOutOfRangeException(nameof(receiveBufferLength));
+            }
+
+            if (receiveBuffer != null && (receiveBufferLength < 0 || receiveBufferLength > receiveBuffer.Length)) {
+                throw new ArgumentOutOfRangeException(nameof(receiveBufferLength));
+            }
+
+            attributeLength = receiveBufferLength;
             var rc = SCardHelper.ToSCardError(SCardGetAttrib(
                 hCard,
-                unchecked((int) dwAttrId
+                unchecked((int) attributeId
                     .ToInt64()), // On a 64-bit platform IntPtr.ToInt32() will throw an OverflowException
-                pbAttr,
-                ref attrlen));
+                receiveBuffer,
+                ref attributeLength));
 
-            pcbAttrLen = attrlen;
             return rc;
         }
 
@@ -499,24 +508,25 @@ namespace PCSC.Interop.Windows
             byte[] pbAttr,
             [In] int cbAttrLen);
 
-        public SCardError SetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, int attrSize) {
+
+        public SCardError SetAttrib(IntPtr hCard, IntPtr attributeId, byte[] sendBuffer, int sendBufferLength) {
             // On a 64-bit platforms IntPtr.ToInt32() will throw an OverflowException
-            var attrid = unchecked((int) dwAttrId.ToInt64());
+            var attrid = unchecked((int) attributeId.ToInt64());
             var cbAttrLen = 0;
 
-            if (pbAttr != null) {
-                if (attrSize > pbAttr.Length || attrSize < 0) {
-                    throw new ArgumentOutOfRangeException(nameof(attrSize));
+            if (sendBuffer != null) {
+                if (sendBufferLength > sendBuffer.Length || sendBufferLength < 0) {
+                    throw new ArgumentOutOfRangeException(nameof(sendBufferLength));
                 }
 
-                cbAttrLen = attrSize;
+                cbAttrLen = sendBufferLength;
             }
 
             return SCardHelper.ToSCardError(
                 SCardSetAttrib(
                     hCard,
                     attrid,
-                    pbAttr,
+                    sendBuffer,
                     cbAttrLen));
         }
 

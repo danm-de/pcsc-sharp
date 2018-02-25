@@ -354,7 +354,6 @@ namespace PCSC.Interop.Unix
         public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, int sendBufferLength,
             byte[] pbRecvBuffer, int recvBufferLength,
             out int lpBytesReturned) {
-
             if (pbSendBuffer == null && sendBufferLength > 0) {
                 throw new ArgumentException("send buffer is null", nameof(sendBufferLength));
             }
@@ -373,7 +372,7 @@ namespace PCSC.Interop.Unix
 
             var sendbuflen = (IntPtr) sendBufferLength;
             var recvbuflen = (IntPtr) recvBufferLength;
-            
+
             var rc = SCardHelper.ToSCardError(SCardControl(
                 hCard,
                 dwControlCode,
@@ -512,18 +511,30 @@ namespace PCSC.Interop.Unix
             byte[] pbAttr,
             [In, Out] ref IntPtr pcbAttrLen);
 
-        public SCardError GetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, out int pcbAttrLen) {
-            var attrlen = (pbAttr != null)
-                ? (IntPtr) pbAttr.Length
-                : IntPtr.Zero;
 
+        public SCardError GetAttrib(IntPtr hCard, IntPtr attributeId, byte[] receiveBuffer, out int attributeLength) {
+            var receiveBufferSize = receiveBuffer?.Length ?? 0;
+            return GetAttrib(hCard, attributeId, receiveBuffer, receiveBufferSize, out attributeLength);
+        }
+
+        public SCardError GetAttrib(IntPtr hCard, IntPtr attributeId, byte[] receiveBuffer, int receiveBufferLength,
+            out int attributeLength) {
+            if (receiveBuffer == null && receiveBufferLength != 0) {
+                throw new ArgumentOutOfRangeException(nameof(receiveBufferLength));
+            }
+
+            if (receiveBuffer != null && (receiveBufferLength < 0 || receiveBufferLength > receiveBuffer.Length)) {
+                throw new ArgumentOutOfRangeException(nameof(receiveBufferLength));
+            }
+
+            var attrlen = (IntPtr) receiveBufferLength;
             var rc = SCardHelper.ToSCardError(SCardGetAttrib(
                 hCard,
-                dwAttrId,
-                pbAttr,
+                attributeId,
+                receiveBuffer,
                 ref attrlen));
 
-            pcbAttrLen = (int) attrlen;
+            attributeLength = (int) attrlen;
             return rc;
         }
 
@@ -534,17 +545,16 @@ namespace PCSC.Interop.Unix
             [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
             byte[] pbAttr,
             [In] IntPtr cbAttrLen);
-
-        public SCardError SetAttrib(IntPtr hCard, IntPtr dwAttrId, byte[] pbAttr, int attrSize) {
-            var attrid = dwAttrId;
+        
+        public SCardError SetAttrib(IntPtr hCard, IntPtr attributeId, byte[] sendBuffer, int sendBufferLength) {
             IntPtr cbAttrLen;
 
-            if (pbAttr != null) {
-                if (attrSize > pbAttr.Length || attrSize < 0) {
-                    throw new ArgumentOutOfRangeException(nameof(attrSize));
+            if (sendBuffer != null) {
+                if (sendBufferLength > sendBuffer.Length || sendBufferLength < 0) {
+                    throw new ArgumentOutOfRangeException(nameof(sendBufferLength));
                 }
 
-                cbAttrLen = (IntPtr) attrSize;
+                cbAttrLen = (IntPtr) sendBufferLength;
             } else {
                 cbAttrLen = IntPtr.Zero;
             }
@@ -552,8 +562,8 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(
                 SCardSetAttrib(
                     hCard,
-                    attrid,
-                    pbAttr,
+                    attributeId,
+                    sendBuffer,
                     cbAttrLen));
         }
 

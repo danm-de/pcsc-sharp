@@ -199,13 +199,50 @@ namespace PCSC
         }
 
         /// <inheritdoc />
+        public int GetAttrib(IntPtr attributeId, byte[] receiveBuffer) {
+            var receiveBufferSize = receiveBuffer?.Length ?? 0;
+            return GetAttrib(attributeId, receiveBuffer, receiveBufferSize);
+        }
+
+        /// <inheritdoc />
+        public int GetAttrib(SCardAttribute attributeId, byte[] receiveBuffer, int receiveBufferSize) {
+            return GetAttrib((IntPtr) attributeId, receiveBuffer, receiveBufferSize);
+        }
+
+        /// <inheritdoc />
+        public int GetAttrib(SCardAttribute attributeId, byte[] receiveBuffer) {
+            return GetAttrib((IntPtr) attributeId, receiveBuffer);
+        }
+
+        /// <inheritdoc />
         public int GetAttrib(IntPtr attributeId, byte[] receiveBuffer, int receiveBufferSize) {
-            throw new NotImplementedException();
+            var handle = CardHandle.Handle;
+            _api.GetAttrib(handle, attributeId, receiveBuffer, receiveBufferSize, out var attributeLength)
+                .ThrowIfNotSuccess();
+            return attributeLength;
+        }
+
+        /// <inheritdoc />
+        public void SetAttrib(IntPtr attributeId, byte[] sendBuffer) {
+            var sendBufferLength = sendBuffer?.Length ?? 0;
+            SetAttrib(attributeId, sendBuffer, sendBufferLength);
+        }
+
+        /// <inheritdoc />
+        public void SetAttrib(SCardAttribute attributeId, byte[] sendBuffer, int sendBufferLength) {
+            SetAttrib((IntPtr)attributeId, sendBuffer, sendBufferLength);
+        }
+
+        /// <inheritdoc />
+        public void SetAttrib(SCardAttribute attributeId, byte[] sendBuffer) {
+            SetAttrib((IntPtr)attributeId, sendBuffer);
         }
 
         /// <inheritdoc />
         public void SetAttrib(IntPtr attributeId, byte[] sendBuffer, int sendBufferLength) {
-            throw new NotImplementedException();
+            var handle = CardHandle.Handle;
+            _api.SetAttrib(handle, attributeId, sendBuffer, sendBufferLength)
+                .ThrowIfNotSuccess();
         }
 
         /// <inheritdoc />

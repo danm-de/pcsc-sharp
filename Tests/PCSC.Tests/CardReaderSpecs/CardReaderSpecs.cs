@@ -306,4 +306,65 @@ namespace PCSC.Tests.CardReaderSpecs
             _readerStatus.GetReaderNames().Should().ContainSingle(name => name == "MyReader");
         }
     }
+
+    [TestFixture]
+    public class If_the_user_receives_a_reader_attribute : CardReaderSpec
+    {
+        private int _bytesReceived;
+        private readonly IntPtr _attributeId = (IntPtr) 4567;
+        private readonly byte[] _receiveBuffer = new byte[10];
+
+        protected override void EstablishContext() {
+            int receiveBufferLength;
+            A.CallTo(() => Api.GetAttrib(CardHandle.Handle, _attributeId, _receiveBuffer, 10, out receiveBufferLength))
+                .Invokes(_ => {
+                    _receiveBuffer[0] = 0xA;
+                    _receiveBuffer[1] = 0xB;
+                    _receiveBuffer[2] = 0xC;
+                    _receiveBuffer[3] = 0xD;
+                })
+                .Returns(SCardError.Success)
+                .AssignsOutAndRefParametersLazily(_ => new object[] {4});
+        }
+
+        protected override void BecauseOf() {
+            _bytesReceived = Sut.GetAttrib(_attributeId, _receiveBuffer, 10);
+        }
+        
+        [Test]
+        public void Should_it_receive_4_bytes() {
+            _bytesReceived.Should().Be(4);
+        }
+
+        [Test]
+        public void Should_the_receive_buffer_being_filled() {
+            _receiveBuffer.Take(_bytesReceived)
+                .Should()
+                .ContainInOrder(0xA, 0xB, 0xC, 0xD);
+        }
+    }
+
+    [TestFixture]
+    public class If_the_user_sets_a_reader_attribute : CardReaderSpec
+    {
+        private readonly IntPtr _attributeId = (IntPtr)4567;
+        private readonly byte[] _sendBuffer = {
+            0xA,0xB,0xC,0xD,0x0,0x0,0x0
+        };
+
+        protected override void EstablishContext() {
+            A.CallTo(() => Api.SetAttrib(CardHandle.Handle, _attributeId, _sendBuffer, 4))
+                .Returns(SCardError.Success);
+        }
+
+        protected override void BecauseOf() {
+            Sut.SetAttrib(_attributeId, _sendBuffer, 4);
+        }
+
+        [Test]
+        public void Should_it_call_the_SetAttrib_API() {
+            A.CallTo(() => Api.SetAttrib(CardHandle.Handle, _attributeId, _sendBuffer, 4))
+                .MustHaveHappened(Repeated.Exactly.Once);
+        }
+    }
 }

@@ -257,6 +257,28 @@ namespace PCSC
         /// <returns>The number of bytes written to the attributebuffer</returns>
         int GetAttrib(IntPtr attributeId, byte[] receiveBuffer, int receiveBufferSize);
 
+        /// <summary>Gets an attribute from the IFD Handler (reader driver).</summary>
+        /// <param name="attributeId">Identifier for the attribute to get.</param>
+        /// <param name="receiveBuffer">A buffer that receives the attribute.</param>
+        /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
+        /// <returns>The number of bytes written to the attributebuffer</returns>
+        int GetAttrib(IntPtr attributeId, byte[] receiveBuffer);
+
+        /// <summary>Gets an attribute from the IFD Handler (reader driver).</summary>
+        /// <param name="attributeId">Identifier for the attribute to get.</param>
+        /// <param name="receiveBuffer">A buffer that receives the attribute.</param>
+        /// <param name="receiveBufferSize"><paramref name="receiveBuffer"/> size.</param>
+        /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
+        /// <returns>The number of bytes written to the attributebuffer</returns>
+        int GetAttrib(SCardAttribute attributeId, byte[] receiveBuffer, int receiveBufferSize);
+
+        /// <summary>Gets an attribute from the IFD Handler (reader driver).</summary>
+        /// <param name="attributeId">Identifier for the attribute to get.</param>
+        /// <param name="receiveBuffer">A buffer that receives the attribute.</param>
+        /// <remarks>This method calls the API function SCardGetAttrib().</remarks>
+        /// <returns>The number of bytes written to the attributebuffer</returns>
+        int GetAttrib(SCardAttribute attributeId, byte[] receiveBuffer);
+
         /// <summary>Set an attribute of the IFD Handler.</summary>
         /// <param name="attributeId">Identifier for the attribute to set.</param>
         /// <param name="sendBuffer">Buffer that contains the new value of the attribute.</param>
@@ -266,5 +288,33 @@ namespace PCSC
         ///     <para>This method calls the API function SCardSetAttrib().</para>
         /// </remarks>
         void SetAttrib(IntPtr attributeId, byte[] sendBuffer, int sendBufferLength);
+
+        /// <summary>Set an attribute of the IFD Handler.</summary>
+        /// <param name="attributeId">Identifier for the attribute to set.</param>
+        /// <param name="sendBuffer">Buffer that contains the new value of the attribute.</param>
+        /// <remarks>
+        ///     <para>The list of attributes you can set depends on the IFD handler you are using.</para>
+        ///     <para>This method calls the API function SCardSetAttrib().</para>
+        /// </remarks>
+        void SetAttrib(IntPtr attributeId, byte[] sendBuffer);
+
+        /// <summary>Set an attribute of the IFD Handler.</summary>
+        /// <param name="attributeId">Identifier for the attribute to set.</param>
+        /// <param name="sendBuffer">Buffer that contains the new value of the attribute.</param>
+        /// <param name="sendBufferLength">Length of the <paramref name="sendBuffer" /> buffer in bytes.</param>
+        /// <remarks>
+        ///     <para>The list of attributes you can set depends on the IFD handler you are using.</para>
+        ///     <para>This method calls the API function SCardSetAttrib().</para>
+        /// </remarks>
+        void SetAttrib(SCardAttribute attributeId, byte[] sendBuffer, int sendBufferLength);
+
+        /// <summary>Set an attribute of the IFD Handler.</summary>
+        /// <param name="attributeId">Identifier for the attribute to set.</param>
+        /// <param name="sendBuffer">Buffer that contains the new value of the attribute.</param>
+        /// <remarks>
+        ///     <para>The list of attributes you can set depends on the IFD handler you are using.</para>
+        ///     <para>This method calls the API function SCardSetAttrib().</para>
+        /// </remarks>
+        void SetAttrib(SCardAttribute attributeId, byte[] sendBuffer);
     }
 }
