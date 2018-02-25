@@ -63,7 +63,7 @@ using (var context = contextFactory.Establish(SCardScope.System)) {
 }
 ```
 
-### Send APDUs
+### Send ISO7816 APDUs
 
 ```csharp
 var contextFactory = ContextFactory.Instance;
@@ -85,11 +85,23 @@ using (var ctx = contextFactory.Establish(SCardScope.System)) {
 }
 ```
 
+### Read reader attributes
+
+```csharp
+using (var ctx = ContextFactory.Instance.Establish(SCardScope.System)) {
+    using (var reader = ctx.ConnectReader("OMNIKEY CardMan 5x21 0", SCardShareMode.Shared, SCardProtocol.Any)) {
+        var cardAtr = reader.GetAttrib(SCardAttribute.AtrString);
+        Console.WriteLine("ATR: {0}", BitConverter.ToString(cardAtr));
+        Console.ReadKey();
+    }
+}
+```
+
 ### Monitor reader events
 
 ```csharp
-var contextFactory = ContextFactory.Instance;
-var monitor = new SCardMonitor(contextFactory, SCardScope.System);
+var monitorFactory = MonitorFactory.Instance;
+var monitor = monitorFactory.Create(SCardScope.System);
 
 // connect events here..
 monitor.StatusChanged += (sender, args) => 

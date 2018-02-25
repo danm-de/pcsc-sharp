@@ -8,7 +8,6 @@ namespace GetReaderAttrib
     {
         public static void Main() {
             var contextFactory = ContextFactory.Instance;
-
             using (var context = contextFactory.Establish(SCardScope.System)) {
                 var readerNames = context.GetReaders();
 
