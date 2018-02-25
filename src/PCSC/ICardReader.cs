@@ -328,5 +328,12 @@ namespace PCSC
         ///     <para>This method calls the API function SCardSetAttrib().</para>
         /// </remarks>
         void SetAttrib(SCardAttribute attributeId, byte[] sendBuffer);
+
+        /// <summary>Terminates a connection and invalidates the card handle." />.</summary>
+        /// <param name="disconnectExecution">Reader function to execute.</param>
+        /// <remarks>
+        ///     <para>This method calls the API function SCardDisconnect(). You cannot Reconnect after calling this method.</para>
+        /// </remarks>
+        void Disconnect(SCardReaderDisposition disconnectExecution);
     }
 }

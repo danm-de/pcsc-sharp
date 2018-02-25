@@ -275,10 +275,10 @@ namespace PCSC.Tests.CardReaderSpecs
                 .WithAnyArguments()
                 .Returns(SCardError.Success)
                 .AssignsOutAndRefParametersLazily(_ => new object[] {
-                    new[]{"MyReader"},
-                    (IntPtr)(SCardState.Present |SCardState.Powered),
-                    (IntPtr)SCardProtocol.Raw,
-                    new byte[]{0x01, 0x02, 0x03, 0x04}
+                    new[] {"MyReader"},
+                    (IntPtr) (SCardState.Present | SCardState.Powered),
+                    (IntPtr) SCardProtocol.Raw,
+                    new byte[] {0x01, 0x02, 0x03, 0x04}
                 });
         }
 
@@ -330,7 +330,7 @@ namespace PCSC.Tests.CardReaderSpecs
         protected override void BecauseOf() {
             _bytesReceived = Sut.GetAttrib(_attributeId, _receiveBuffer, 10);
         }
-        
+
         [Test]
         public void Should_it_receive_4_bytes() {
             _bytesReceived.Should().Be(4);
@@ -347,9 +347,10 @@ namespace PCSC.Tests.CardReaderSpecs
     [TestFixture]
     public class If_the_user_sets_a_reader_attribute : CardReaderSpec
     {
-        private readonly IntPtr _attributeId = (IntPtr)4567;
+        private readonly IntPtr _attributeId = (IntPtr) 4567;
+
         private readonly byte[] _sendBuffer = {
-            0xA,0xB,0xC,0xD,0x0,0x0,0x0
+            0xA, 0xB, 0xC, 0xD, 0x0, 0x0, 0x0
         };
 
         protected override void EstablishContext() {
@@ -365,6 +366,30 @@ namespace PCSC.Tests.CardReaderSpecs
         public void Should_it_call_the_SetAttrib_API() {
             A.CallTo(() => Api.SetAttrib(CardHandle.Handle, _attributeId, _sendBuffer, 4))
                 .MustHaveHappened(Repeated.Exactly.Once);
+        }
+    }
+
+    [TestFixture]
+    public class If_user_disconnects_the_reader : CardReaderSpec
+    {
+        protected override void EstablishContext() {
+            A.CallTo(() => CardHandle.Disconnect(A<SCardReaderDisposition>.Ignored))
+                .Invokes(_ => A.CallTo(() => CardHandle.IsConnected).Returns(false));
+        }
+
+        protected override void BecauseOf() {
+            Sut.Disconnect(SCardReaderDisposition.Eject);
+        }
+
+        [Test]
+        public void Should_the_card_handle_be_disconnected() {
+            A.CallTo(() => CardHandle.Disconnect(SCardReaderDisposition.Eject))
+                .MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Test]
+        public void Should_the_reader_not_longer_be_connected() {
+            Sut.IsConnected.Should().BeFalse();
         }
     }
 }

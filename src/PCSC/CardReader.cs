@@ -264,6 +264,11 @@ namespace PCSC
         }
 
         /// <inheritdoc />
+        public void Disconnect(SCardReaderDisposition disconnectExecution) {
+            CardHandle.Disconnect(disconnectExecution);
+        }
+
+        /// <inheritdoc />
         public void Dispose() {
             Dispose(true);
             GC.SuppressFinalize(this);
