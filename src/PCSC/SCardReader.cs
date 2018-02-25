@@ -159,7 +159,7 @@ namespace PCSC
             }
 
             if (sendPci.MemoryPtr == IntPtr.Zero) {
-                throw new ArgumentException("sendPci");
+                throw new ArgumentException("Valid sendPci required", nameof(sendPci));
             }
 
             return Transmit(

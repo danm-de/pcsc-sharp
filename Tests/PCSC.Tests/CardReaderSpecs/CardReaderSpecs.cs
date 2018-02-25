@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
@@ -139,7 +140,6 @@ namespace PCSC.Tests.CardReaderSpecs
             A.CallTo(() => Api.EndTransaction(A<IntPtr>.Ignored, A<SCardReaderDisposition>.Ignored))
                 .MustNotHaveHappened();
         }
-
     }
 
     [TestFixture]
@@ -156,6 +156,61 @@ namespace PCSC.Tests.CardReaderSpecs
             A.CallTo(() => Api.EndTransaction(CardHandle.Handle, SCardReaderDisposition.Leave))
                 .MustHaveHappened(Repeated.Exactly.Once);
         }
+    }
 
+    [TestFixture]
+    public class If_the_user_transmits_data_to_the_reader : CardReaderSpec
+    {
+        private int _bytesReceived;
+        private readonly byte[] _sendBuffer = {0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0x0};
+        private readonly byte[] _receiveBuffer = new byte[10];
+        private readonly SCardPCI _receivePci = new SCardPCI();
+
+        protected override void EstablishContext() {
+            int recvBufferLength = 10;
+            A.CallTo(() => Api.Transmit(CardHandle.Handle, SCardPCI.Raw, _sendBuffer, 3, _receivePci.MemoryPtr,
+                    _receiveBuffer, ref recvBufferLength))
+                .Invokes(_ => {
+                    _receiveBuffer[0] = 0xA;
+                    _receiveBuffer[1] = 0xB;
+                    _receiveBuffer[2] = 0xC;
+                })
+                .Returns(SCardError.Success)
+                .AssignsOutAndRefParametersLazily(_ => new object[] { 3 }); // recvBufferLength = 3
+        }
+
+        protected override void BecauseOf() {
+            _bytesReceived = Sut.Transmit(
+                sendPci: SCardPCI.Raw,
+                sendBuffer: _sendBuffer,
+                sendBufferLength: 3,
+                receivePci: _receivePci,
+                receiveBuffer: _receiveBuffer,
+                receiveBufferLength: 10);
+        }
+
+        protected override void Cleanup() {
+            _receivePci.Dispose();
+        }
+
+        [Test]
+        public void Should_it_call_the_Transmit_API() {
+            int recvBufferLength = 10;
+            A.CallTo(() => Api.Transmit(CardHandle.Handle, SCardPCI.Raw, _sendBuffer, 3, _receivePci.MemoryPtr,
+                    _receiveBuffer, ref recvBufferLength))
+                .MustHaveHappened(Repeated.Exactly.Once);
+        }
+
+        [Test]
+        public void Should_it_receive_3_bytes() {
+            _bytesReceived.Should().Be(3);
+        }
+
+        [Test]
+        public void Should_the_receive_buffer_being_filled() {
+            _receiveBuffer.Take(_bytesReceived)
+                .Should()
+                .ContainInOrder(0xA, 0xB, 0xC);
+        }
     }
 }

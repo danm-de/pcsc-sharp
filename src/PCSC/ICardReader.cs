@@ -73,7 +73,55 @@ namespace PCSC
         IDisposable Transaction(SCardReaderDisposition disposition);
 
         /// <summary>Sends an APDU to the smart card. </summary>
-        /// <param name="sendPci">A pointer to a pre-defined Structure of Protocol Control Information. You can use one of the following:
+        /// <param name="sendBuffer">APDU to send to the card. </param>
+        /// <param name="receiveBuffer">Response from the card.</param>
+        /// <remarks>
+        ///     <block subset="none" type="note">
+        ///         <para>This method will only work if the reader has been connected with one of the following protocols:
+        ///             <list type="table">
+        ///                 <listheader><term>Protocol</term><description>Description</description></listheader>
+        ///                 <item><term><see cref="SCardProtocol.T0" /></term><description>T=0 active protocol.</description></item>
+        ///                 <item><term><see cref="SCardProtocol.T1" /></term><description>T=1 active protocol.</description></item>
+        ///                 <item><term><see cref="SCardProtocol.Raw" /></term><description>Raw active protocol.</description></item>
+        ///             </list>
+        ///         </para>
+        ///     </block>
+        /// </remarks>
+        /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
+        int Transmit(byte[] sendBuffer, byte[] receiveBuffer);
+
+        /// <summary>Sends an APDU to the smart card. </summary>
+        /// <param name="sendPci">A pointer to the protocol header structure for the instruction. This buffer is in the format of an SCARD_IO_REQUEST structure, followed by the specific protocol control information (PCI). You can use one of the following:
+        ///     <list type="table">
+        ///         <listheader>
+        ///             <term>Protocol Control Information</term>
+        ///             <description>Description</description>
+        ///         </listheader>
+        ///         <item>
+        ///             <term><see cref="SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description>
+        ///         </item>
+        ///         <item>
+        ///             <term><see cref="SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description>
+        ///         </item>
+        ///         <item>
+        ///             <term><see cref="SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description>
+        ///         </item>
+        ///     </list>
+        /// </param>
+        /// <param name="sendBuffer">APDU to send to the card. </param>
+        /// <param name="receiveBuffer">Response from the card.</param>
+        /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
+        int Transmit(IntPtr sendPci, byte[] sendBuffer, byte[] receiveBuffer);
+
+        /// <summary>Sends an APDU to the smart card. </summary>
+        /// <param name="sendPci">Protocol Control Information in the format of an SCARD_IO_REQUEST structure, followed by the specific protocol control information (PCI)</param>
+        /// <param name="sendBuffer">APDU to send to the card. </param>
+        /// <param name="receiveBuffer">Response from the card.</param>
+        /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
+        int Transmit(SCardPCI sendPci, byte[] sendBuffer, byte[] receiveBuffer);
+
+        /// <summary>Sends an APDU to the smart card. </summary>
+        /// <param name="sendPci">A pointer to the protocol header structure for the instruction. This buffer is in the format of an SCARD_IO_REQUEST structure, followed by the specific protocol control information (PCI). You can use one of the following:
         ///     <list type="table">
         ///         <listheader>
         ///             <term>Protocol Control Information</term>
@@ -92,15 +140,85 @@ namespace PCSC
         /// </param>
         /// <param name="sendBuffer">APDU to send to the card. </param>
         /// <param name="sendBufferLength">The buffer size of <paramref name="sendBuffer" /> in bytes.</param>
-        /// <param name="receivePci">Structure of protocol information. </param>
+        /// <param name="receivePci">Pointer to the protocol header structure for the instruction, followed by a buffer in which to receive any returned protocol control information (PCI) specific to the protocol in use. This parameter can be NULL if no PCI is returned.</param>
         /// <param name="receiveBuffer">Response from the card.</param>
         /// <param name="receiveBufferLength">The buffer size of <paramref name="receiveBuffer" /> in bytes.</param>
-        /// <remarks>
-        ///     <para>The card responds from the APDU and stores this response in <paramref name="receiveBuffer" />. The size of the returned data will be stored in <paramref name="receiveBufferLength" />. This method will return with error code <see cref="SCardError.InsufficientBuffer" /> if the buffer size of <paramref name="receiveBuffer" /> is too small for the result. If one of the parameters <paramref name="sendBufferLength" /> or <paramref name="receiveBufferLength" /> is invalid, the method will throw an <see cref="T:System.ArgumentOutOfRangeException" />.</para>
-        ///     <para>This method calls the API function SCardTransmit(). The pointers to the pre-defined / built-in PCI structures are determinated with dlsym() on UNIX/Linux hosts and GetProcAddress() on Windows hosts.</para>
-        /// </remarks>
+        /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
+        int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, IntPtr receivePci, byte[] receiveBuffer,
+            int receiveBufferLength);
+
+        /// <summary>Sends an APDU to the smart card. </summary>
+        /// <param name="sendPci">A pointer to the protocol header structure for the instruction. This buffer is in the format of an SCARD_IO_REQUEST structure, followed by the specific protocol control information (PCI). You can use one of the following:
+        ///     <list type="table">
+        ///         <listheader>
+        ///             <term>Protocol Control Information</term>
+        ///             <description>Description</description>
+        ///         </listheader>
+        ///         <item>
+        ///             <term><see cref="SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description>
+        ///         </item>
+        ///         <item>
+        ///             <term><see cref="SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description>
+        ///         </item>
+        ///         <item>
+        ///             <term><see cref="SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description>
+        ///         </item>
+        ///     </list>
+        /// </param>
+        /// <param name="sendBuffer">APDU to send to the card. </param>
+        /// <param name="sendBufferLength">The buffer size of <paramref name="sendBuffer" /> in bytes.</param>
+        /// <param name="receiveBuffer">Response from the card.</param>
+        /// <param name="receiveBufferLength">The buffer size of <paramref name="receiveBuffer" /> in bytes.</param>
+        /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
+        int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer,
+            int receiveBufferLength);
+
+        /// <summary>Sends an APDU to the smart card. </summary>
+        /// <param name="sendPci">A pointer to the protocol header structure for the instruction. This buffer is in the format of an SCARD_IO_REQUEST structure, followed by the specific protocol control information (PCI). You can use one of the following:
+        ///     <list type="table">
+        ///         <listheader>
+        ///             <term>Protocol Control Information</term>
+        ///             <description>Description</description>
+        ///         </listheader>
+        ///         <item>
+        ///             <term><see cref="SCardPCI.T0" /></term><description>Pre-defined T=0 PCI structure. (SCARD_PCI_T0)</description>
+        ///         </item>
+        ///         <item>
+        ///             <term><see cref="SCardPCI.T1" /></term><description>Pre-defined T=1 PCI structure. (SCARD_PCI_T1)</description>
+        ///         </item>
+        ///         <item>
+        ///             <term><see cref="SCardPCI.Raw" /></term><description>Pre-defined RAW PCI structure. (SCARD_PCI_RAW)</description>
+        ///         </item>
+        ///     </list>
+        /// </param>
+        /// <param name="sendBuffer">APDU to send to the card. </param>
+        /// <param name="sendBufferLength">The buffer size of <paramref name="sendBuffer" /> in bytes.</param>
+        /// <param name="receivePci">Structure of Protocol Header Information followed by a buffer in which to receive any returned protocol control information (PCI) specific to the protocol in use. This parameter can be <c>null</c> if no PCI is returned.</param>
+        /// <param name="receiveBuffer">Response from the card.</param>
+        /// <param name="receiveBufferLength">The buffer size of <paramref name="receiveBuffer" /> in bytes.</param>
         /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
         int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci, byte[] receiveBuffer,
+            int receiveBufferLength);
+
+        /// <summary>Sends an APDU to the smart card. </summary>
+        /// <param name="sendPci">Protocol Control Information in the format of an SCARD_IO_REQUEST structure, followed by the specific protocol control information (PCI)</param>
+        /// <param name="sendBuffer">APDU to send to the card. </param>
+        /// <param name="sendBufferLength">The buffer size of <paramref name="sendBuffer" /> in bytes.</param>
+        /// <param name="receivePci">Structure of Protocol Header Information followed by a buffer in which to receive any returned protocol control information (PCI) specific to the protocol in use. This parameter can be <c>null</c> if no PCI is returned.</param>
+        /// <param name="receiveBuffer">Response from the card.</param>
+        /// <param name="receiveBufferLength">The buffer size of <paramref name="receiveBuffer" /> in bytes.</param>
+        /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
+        int Transmit(SCardPCI sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci, byte[] receiveBuffer,
+            int receiveBufferLength);
+
+        /// <summary>Sends an APDU to the smart card. </summary>
+        /// <param name="sendPci">Protocol Control Information in the format of an SCARD_IO_REQUEST structure, followed by the specific protocol control information (PCI)</param>
+        /// <param name="sendBuffer">APDU to send to the card. </param>
+        /// <param name="sendBufferLength">The buffer size of <paramref name="sendBuffer" /> in bytes.</param>
+        /// <param name="receiveBuffer">Response from the card.</param>
+        /// <param name="receiveBufferLength">The buffer size of <paramref name="receiveBuffer" /> in bytes.</param>
+        /// <returns>The number of bytes written to the <paramref name="receiveBuffer"/></returns>
+        int Transmit(SCardPCI sendPci, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer,
             int receiveBufferLength);
 
         /// <summary>Sends a command directly to the IFD Handler (reader driver) to be processed by the reader.</summary>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using PCSC.Exceptions;
@@ -306,7 +306,7 @@ namespace PCSC
                 case SCardProtocol.Raw:
                     return Raw;
                 default:
-                    throw new InvalidProtocolException(SCardError.InvalidValue, "Protocol not supported.");
+                    throw new InvalidProtocolException(SCardError.InvalidValue, $"Protocol '{protocol}' not supported.");
             }
         }
 

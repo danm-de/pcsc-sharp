@@ -54,7 +54,8 @@ namespace PCSC
         }
 
         /// <inheritdoc />
-        public void Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol, SCardReaderDisposition initialExecution) {
+        public void Reconnect(SCardShareMode mode, SCardProtocol preferredProtocol,
+            SCardReaderDisposition initialExecution) {
             CardHandle.Reconnect(mode, preferredProtocol, initialExecution);
         }
 
@@ -71,13 +72,98 @@ namespace PCSC
         }
 
         /// <inheritdoc />
-        public int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci, byte[] receiveBuffer,
-            int receiveBufferLength) {
-            throw new NotImplementedException();
+        public int Transmit(byte[] sendBuffer, byte[] receiveBuffer) {
+            return Transmit(
+                sendPci: SCardPCI.GetPci(Protocol), 
+                sendBuffer: sendBuffer, 
+                receiveBuffer: receiveBuffer);
         }
 
         /// <inheritdoc />
-        public int Control(IntPtr controlCode, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer, int receiveBufferSize) {
+        public int Transmit(SCardPCI sendPci, byte[] sendBuffer, byte[] receiveBuffer) {
+            var sendBufferLength = sendBuffer?.Length ?? 0;
+            var receiveBufferLength = receiveBuffer?.Length ?? 0;
+            return Transmit(
+                sendPci: sendPci, 
+                sendBuffer: sendBuffer, 
+                sendBufferLength: sendBufferLength, 
+                receivePci: default(SCardPCI), 
+                receiveBuffer: receiveBuffer,
+                receiveBufferLength: receiveBufferLength);
+        }
+
+        /// <inheritdoc />
+        public int Transmit(IntPtr sendPci, byte[] sendBuffer, byte[] receiveBuffer) {
+            var sendBufferLength = sendBuffer?.Length ?? 0;
+            var receiveBufferLength = receiveBuffer?.Length ?? 0;
+            return Transmit(
+                sendPci: sendPci, 
+                sendBuffer: sendBuffer, 
+                sendBufferLength: sendBufferLength, 
+                receivePci: IntPtr.Zero, 
+                receiveBuffer: receiveBuffer, 
+                receiveBufferLength: receiveBufferLength);
+        }
+
+        /// <inheritdoc />
+        public int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci,
+            byte[] receiveBuffer,
+            int receiveBufferLength) {
+            var receivePciPointer = receivePci?.MemoryPtr ?? IntPtr.Zero;
+            return Transmit(sendPci, sendBuffer, sendBufferLength, receivePciPointer, receiveBuffer,
+                receiveBufferLength);
+        }
+
+        /// <inheritdoc />
+        public int Transmit(SCardPCI sendPci, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer,
+            int receiveBufferLength) {
+            ThrowOnInvalidSendPci(sendPci);
+
+            var sendPciMemoryPtr = sendPci.MemoryPtr;
+            return Transmit(sendPciMemoryPtr, sendBuffer, sendBufferLength, IntPtr.Zero, receiveBuffer,
+                receiveBufferLength);
+        }
+
+        /// <inheritdoc />
+        public int Transmit(SCardPCI sendPci, byte[] sendBuffer, int sendBufferLength, SCardPCI receivePci,
+            byte[] receiveBuffer,
+            int receiveBufferLength) {
+            ThrowOnInvalidSendPci(sendPci);
+
+            var sendPciPointer = sendPci.MemoryPtr;
+            var receivePciPointer = receivePci?.MemoryPtr ?? IntPtr.Zero;
+            return Transmit(sendPciPointer, sendBuffer, sendBufferLength, receivePciPointer, receiveBuffer,
+                receiveBufferLength);
+        }
+
+        /// <inheritdoc />
+        public int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer, int receiveBufferLength) {
+            return Transmit(sendPci, sendBuffer, sendBufferLength, IntPtr.Zero, receiveBuffer, receiveBufferLength);
+        }
+
+        /// <inheritdoc />
+        public int Transmit(IntPtr sendPci, byte[] sendBuffer, int sendBufferLength, IntPtr receivePci,
+            byte[] receiveBuffer,
+            int receiveBufferLength) {
+            var handle = CardHandle.Handle;
+            var bytesReceived = receiveBufferLength;
+
+            _api.Transmit(
+                    hCard: handle,
+                    pioSendPci: sendPci,
+                    pbSendBuffer: sendBuffer,
+                    pcbSendLength: sendBufferLength,
+                    pioRecvPci: receivePci,
+                    pbRecvBuffer: receiveBuffer,
+                    pcbRecvLength: ref bytesReceived)
+                .ThrowIfNotSuccess();
+
+            return bytesReceived;
+        }
+
+        /// <inheritdoc />
+        public int Control(IntPtr controlCode, byte[] sendBuffer, int sendBufferLength, byte[] receiveBuffer,
+            int receiveBufferSize) {
             throw new NotImplementedException();
         }
 
@@ -114,6 +200,16 @@ namespace PCSC
             }
 
             _disposed = true;
+        }
+
+        private static void ThrowOnInvalidSendPci(SCardPCI sendPci) {
+            if (sendPci == null) {
+                throw new ArgumentNullException(nameof(sendPci));
+            }
+
+            if (sendPci.MemoryPtr == IntPtr.Zero) {
+                throw new ArgumentException("Valid sendPci required", nameof(sendPci));
+            }
         }
     }
 }
