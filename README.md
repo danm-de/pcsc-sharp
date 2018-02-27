@@ -136,7 +136,7 @@ On Unix/Linux run
 ```shell
  ./paket restore
 ```
-on Unix/Linux.
+
 to download NuGet dependencies before opening the solution in Visual Studio or
 MonoDevelop.
 
