@@ -16,7 +16,7 @@ but _pcsc-sharp_ does not provide any APDUs to request KEYs, authorize, etc.
 
 You can find PC/SC specific documentation here:
 * Windows: [Smart Card Resource Manager API](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380149(v=vs.85).aspx)
-* Linux: [PCSC lite project](https://pcsclite.alioth.debian.org/pcsclite.html)
+* Linux: [PCSC lite project](https://pcsclite.apdu.fr)
 
 ## Supported Operating systems
 - Windows (winscard.dll) 
