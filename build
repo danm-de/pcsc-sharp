@@ -1,0 +1,29 @@
+#!/bin/bash
+
+export root=$(dirname $0)
+export file_solution=$root/pcsc-sharp.sln
+export dir_packages=$root/packages
+export paket=$root/paket
+
+script_file_name=$(basename $0)
+export file_buildlog=$root/${script_file_name%.*}.log
+
+$paket restore
+
+if [ -f "$file_buildlog" ]; then
+  rm "$file_buildlog" > /dev/null
+fi
+
+maybe_mono=mono
+if [ "$OS" == "Windows_NT" ]; then
+  # Use .NET on Windows
+  maybe_mono=
+fi
+
+if [ -z "$1" ]; then
+  $maybe_mono "$dir_packages/FAKE/tools/FAKE.exe" "$root/build.fsx" --logfile "$file_buildlog"
+else
+  $maybe_mono "$dir_packages/FAKE/tools/FAKE.exe" "$root/build.fsx" $1 --logfile "$file_buildlog"
+fi
+
+exit_code=$?

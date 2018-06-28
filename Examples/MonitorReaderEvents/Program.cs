@@ -1,50 +1,76 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 using PCSC;
+using PCSC.Exceptions;
+using PCSC.Monitoring;
+using PCSC.Utils;
 
 namespace MonitorReaderEvents
 {
     public class Program
     {
+        private static readonly IContextFactory _contextFactory = ContextFactory.Instance;
+
         public static void Main() {
             Console.WriteLine("This program will monitor all SmartCard readers and display all status changes.");
-            Console.WriteLine("Press a key to continue.");
-            Console.ReadKey(); // Wait for user to press a key
 
             // Retrieve the names of all installed readers.
-            string[] readerNames;
-            using (var context = new SCardContext()) {
-                context.Establish(SCardScope.System);
-                readerNames = context.GetReaders();
-                context.Release();
-            }
+            var readerNames = GetReaderNames();
 
-            if (readerNames == null || readerNames.Length == 0) {
+            if (NoReaderFound(readerNames)) {
                 Console.WriteLine("There are currently no readers installed.");
+                Console.ReadKey();
                 return;
             }
 
-            // Create a monitor object with its own PC/SC context. 
-            // The context will be released after monitor.Dispose()
-            using (var monitor = new SCardMonitor(new SCardContext(), SCardScope.System)) {
-                // Point the callback function(s) to the anonymous & static defined methods below.
-                monitor.CardInserted += (sender, args) => DisplayEvent("CardInserted", args);
-                monitor.CardRemoved += (sender, args) => DisplayEvent("CardRemoved", args);
-                monitor.Initialized += (sender, args) => DisplayEvent("Initialized", args);
-                monitor.StatusChanged += StatusChanged;
-                monitor.MonitorException += MonitorException;
+            // Create smartcard monitor using a context factory. 
+            // The context will be automatically released after monitor.Dispose()
+            var monitorFactory = MonitorFactory.Instance;
+            using (var monitor = monitorFactory.Create(SCardScope.System)) {
+                AttachToAllEvents(monitor); // Remember to detach, if you use this in production!
 
-                foreach (string reader in readerNames) {
-                    Console.WriteLine("Start monitoring for reader " + reader + ".");
-                }
+                ShowUserInfo(readerNames);
 
                 monitor.Start(readerNames);
 
-                // Let the program run until the user presses a key
-                Console.ReadKey();
+                // Let the program run until the user presses CTRL-Q
+                while (true) {
+                    var key = Console.ReadKey();
+                    if (ExitRequested(key)) {
+                        break;
+                    }
 
-                // Stop monitoring
-                monitor.Cancel();
+                    if (monitor.Monitoring) {
+                        monitor.Cancel();
+                        Console.WriteLine("Monitoring paused. (Press CTRL-Q to quit)");
+                    } else {
+                        monitor.Start(readerNames);
+                        Console.WriteLine("Monitoring started. (Press CTRL-Q to quit)");
+                    }
+                }
             }
+        }
+
+        private static bool ExitRequested(ConsoleKeyInfo key) {
+            return key.Modifiers == ConsoleModifiers.Control
+                   && key.Key == ConsoleKey.Q;
+        }
+
+        private static void ShowUserInfo(IEnumerable<string> readerNames) {
+            foreach (var reader in readerNames) {
+                Console.WriteLine($"Start monitoring for reader {reader}.");
+            }
+
+            Console.WriteLine("Press Ctrl-Q to exit or any key to toggle monitor.");
+        }
+
+        private static void AttachToAllEvents(ISCardMonitor monitor) {
+            // Point the callback function(s) to the anonymous & static defined methods below.
+            monitor.CardInserted += (sender, args) => DisplayEvent("CardInserted", args);
+            monitor.CardRemoved += (sender, args) => DisplayEvent("CardRemoved", args);
+            monitor.Initialized += (sender, args) => DisplayEvent("Initialized", args);
+            monitor.StatusChanged += StatusChanged;
+            monitor.MonitorException += MonitorException;
         }
 
         private static void DisplayEvent(string eventName, CardStatusEventArgs unknown) {
@@ -62,6 +88,16 @@ namespace MonitorReaderEvents
         private static void MonitorException(object sender, PCSCException ex) {
             Console.WriteLine("Monitor exited due an error:");
             Console.WriteLine(SCardHelper.StringifyError(ex.SCardError));
+        }
+
+        private static string[] GetReaderNames() {
+            using (var context = _contextFactory.Establish(SCardScope.System)) {
+                return context.GetReaders();
+            }
+        }
+
+        private static bool NoReaderFound(ICollection<string> readerNames) {
+            return readerNames == null || readerNames.Count < 1;
         }
     }
 }

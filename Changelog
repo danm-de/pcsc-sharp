@@ -1,17 +1,140 @@
-Version numbering info: a.b.c.d
+Version numbering info: a.b.c
 a = Major API change
-b = Minor API change (subcomponents like Iso7816)
-c = Feature enhancement
-d = Bug fix
+b = New Feature
+c = Bug fix
+
+2018-02-25  Daniel Mueller <daniel@danm.de>
+* New version 4.0.0
+* PCSC, PCSC.Reactive converted to .netstandard 2.0
+  https://github.com/danm-de/pcsc-sharp/pull/67
+  Thanks to Christoph Fink @chrfin
+  Closes https://github.com/danm-de/pcsc-sharp/issues/32
+* ISCardContext.ReEstablish() removed; Connect(..) and ConnectReader(..) added
+  Closes https://github.com/danm-de/pcsc-sharp/issues/58
+* new types: ICardHandle, CardHandle, ICardReader, CardReader
+* MonitorFactory: removed obsolete methods
+* ISO7816 moved to PCSC.Iso7816 (separate assemlby / nuget)
+* IIsoReader: removed properties CurrentContext and Reader
+
+2017-10-08  Daniel Mueller <daniel@danm.de>
+* New version 3.8.0
+* Merged pull request https://github.com/danm-de/pcsc-sharp/pull/55
+  Corrected tests (32/64 bit issue), code cleanup.
+  Thanks to @glenebob
+* Feature request https://github.com/danm-de/pcsc-sharp/pull/57
+  New constructor for Iso7816.Response opened by Scott Stephens
+  (Thanks for the pull request @scottstephens)
+
+2017-06-22  Daniel Mueller <daniel@danm.de>
+* New version 3.7.0
+* Improvement: MacOS X support added by Glen Parker
+  https://github.com/danm-de/pcsc-sharp/pull/52/
+  Thanks to @glenebob
+
+2017-03-28  Daniel Mueller <daniel@danm.de>
+* New version 3.6.1
+* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/44
+  ISCardReader.Status(..) returns wrong state value on Windows.
+  Thanks to Mark @mkeldridge
+
+2016-11-16  Daniel Mueller <daniel@danm.de>
+* New version 3.6.0
+* Update build & test toolset (NUnit,Fake,..)
+* Update System.Reactive (.netstandard)
+* Added DeviceMonitor & DeviceMonitorFactory as requested in #31
+  Thanks to @olegsavelos for providing valid sample code in
+  https://github.com/danm-de/pcsc-sharp/issues/31
+* IMonitorFactory: marked .Start(..) as obsolete (it encouraged
+  users doing bad things - it's a factory anyway, not a Starter)
+* pcsc-sharp-rx: corrected observable creation (removed .Replay)
+
+2016-11-03  Daniel Mueller <daniel@danm.de>
+* New version 3.5.3
+* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/37
+  Dispose() or finalizer should not throw if SCardContext.Release()
+  returns ERROR_INVALID_HANDLE.
+  Thanks to @SGN-JSE
+
+2016-11-02  Daniel Mueller <daniel@danm.de>
+* New version 3.5.2
+* Pull request https://github.com/danm-de/pcsc-sharp/pull/36
+  Added platform check for Windows CE (tested by Erik Kralj)
+  Thanks to Erik Kralj
+
+2016-05-24	Daniel Mueller <daniel@danm.de>
+* New version 3.5.1
+* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/28
+  Thanks to Morne van der Westhuizen
+
+2016-04-19	Daniel Mueller <daniel@danm.de>
+* New version 3.5.0
+* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/25
+  Thanks to Paul McCay!
+* New nuget package for PCSC.Reactive
+  Adds reactive extensions (observables) to monitor smard card events.
+* API change: Factories for SCardContext and SCardMonitor
+  (IContextFactory and IMonitorFactory)
+* SCardMonitor new constructor for context factory usage.
+
+2016-02-29	Daniel Mueller <daniel@danm.de>
+* New version 3.4.1
+* Better error handling for insufficient buffers.
+  https://github.com/danm-de/pcsc-sharp/issues/20
+
+2016-02-11	Daniel Mueller <daniel@danm.de>
+* New version 3.4.0.0
+* Added better error handling in IsoReader.
+
+2016-01-21	Daniel Mueller <daniel@danm.de>
+* New version 3.3.1.0
+* Bugfix: https://github.com/danm-de/pcsc-sharp/issues/19
+  Thanks to @andrew7webb!
+* Removed public IsNullOrWhiteSpace extension method for string.
+* Made InvalidApduException public.
+* Code cleanups.
+
+2015-10-28	Daniel Mueller <daniel@danm.de>
+    * New version 3.3.0.0
+    * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/11
+      Thanks to @EmptySamurai!
+    * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/15
+      Thanks to @anzun!
+    * WARNING: API change:
+      SCardContext.GetReaders(), SCardContext.GetReaders(string[]) and 
+      SCardContextGetReaderGroups() do not throw PCSCException anymore on
+      SCARD_E_NO_READERS_AVAILABLE (Group contains no readers)
+    * SCardContext and SCardMonitor throw more specific exceptions
+    * Exceptions are serializable
+
+2015-07-31	Daniel Mueller <daniel@danm.de>
+    * New version 3.2.0.0
+    * Bugfix: https://github.com/danm-de/pcsc-sharp/pull/14
+      Thanks to Mat!
+      (https://github.com/mtausig)
+    * Raised .Net framework to version 4.0.0
+    * Introduction "paket" and FAKE as NuGet and psake replacements
+    * New folder structure for solution / project files.
+
+2015-03-17	Daniel Mueller <daniel@danm.de>
+    * New version 3.1.0.4
+    * Refactored SCardMonitor to be "more" thread safe
+    * Bugfix: https://github.com/danm-de/pcsc-sharp/pull/7
+      Thanks to @EmptySamurai!
+      (https://github.com/EmptySamurai)
+
+2013-11-29	Daniel Mueller <daniel@danm.de>
+    * Start working on new version 3.1.0.3
+    * CommandApdu: Instruction property -> added unchecked statement
+    * New example: Mifare1kTest (LoadKey, Auth, Read & Update Binary)
 
 2013-10-23	Daniel Mueller <daniel@danm.de>
-	* New version 3.1.0.2
-	* Bugfix: Added new internal authenticate instruction code.
-	  (Michael Kuenzli)
+    * New version 3.1.0.2
+    * Bugfix: Added new internal authenticate instruction code.
+      (Michael Kuenzli)
 
 2013-05-09	Daniel Mueller <daniel@danm.de>
     * New version 3.1.0.1
-	* Decreased .Net Framework version from 4.0 to .Net 3.5.
+    * Decreased .Net Framework version from 4.0 to .Net 3.5.
 
 2013-05-09	Daniel Mueller <daniel@danm.de>
     * New version 3.0.0.0 WARNING: major API changes! 

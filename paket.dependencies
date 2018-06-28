@@ -1,0 +1,11 @@
+source https://nuget.org/api/v2
+framework: auto-detect
+redirects: on
+
+nuget FAKE
+nuget FakeItEasy
+nuget FluentAssertions
+nuget Microsoft.Reactive.Testing
+nuget NUnit
+nuget NUnit.Runners
+nuget System.Reactive

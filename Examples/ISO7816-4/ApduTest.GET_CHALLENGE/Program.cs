@@ -1,43 +1,49 @@
 using System;
+using System.Collections.Generic;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace ApduTest.GetChallenge
+namespace ApduTest.GET_CHALLENGE
 {
     public class Program
     {
         private static void Main() {
-            // Establish Smartcard context
-            using (var context = new SCardContext()) {
-                context.Establish(SCardScope.System);
-
-                var readerNames = context.GetReaders();
-                if (readerNames == null || readerNames.Length < 1) {
+            var contextFactory = ContextFactory.Instance;
+            using (var ctx = contextFactory.Establish(SCardScope.System)) {
+                var readerNames = ctx.GetReaders();
+                if (NoReaderFound(readerNames)) {
                     Console.WriteLine("You need at least one reader in order to run this example.");
                     Console.ReadKey();
                     return;
                 }
 
-                var readerName = ChooseReader(readerNames);
-                if (readerName == null) {
+                var name = ChooseReader(readerNames);
+                if (name == null) {
                     return;
                 }
 
-                using (var isoReader = new IsoReader(context, readerName, SCardShareMode.Shared, SCardProtocol.Any, false)) {
-                    
+                using (var isoReader = new IsoReader(
+                    context: ctx,
+                    readerName: name,
+                    mode: SCardShareMode.Shared,
+                    protocol: SCardProtocol.Any,
+                    releaseContextOnDispose: false)) {
                     // Build a GET CHALLENGE command 
                     var apdu = new CommandApdu(IsoCase.Case2Short, isoReader.ActiveProtocol) {
                         CLA = 0x00, // Class
                         Instruction = InstructionCode.GetChallenge,
-                        P1 = 0x00,  // Parameter 1
-                        P2 = 0x00,  // Parameter 2
-                        Le = 0x08   // Expected length of the returned data
+                        P1 = 0x00, // Parameter 1
+                        P2 = 0x00, // Parameter 2
+                        Le = 0x08 // Expected length of the returned data
                     };
 
-                    Console.WriteLine("Send APDU with \"GET CHALLENGE\" command: {0}", BitConverter.ToString(apdu.ToArray()));
+                    Console.WriteLine("Send APDU with \"GET CHALLENGE\" command: {0}",
+                        BitConverter.ToString(apdu.ToArray()));
+
                     var response = isoReader.Transmit(apdu);
 
-                    Console.WriteLine("SW1 SW2 = {0:X2} {1:X2}", response.SW1, response.SW2);
+                    Console.WriteLine("SW1 SW2 = {0:X2} {1:X2}",
+                        response.SW1, response.SW2);
 
                     if (!response.HasData) {
                         Console.WriteLine("No data. (Card does not understand \"GET CHALLENGE\")");
@@ -47,28 +53,32 @@ namespace ApduTest.GetChallenge
                     }
                 }
             }
+
             Console.ReadKey();
         }
 
-        private static string ChooseReader(string[] readerNames) {
+        private static string ChooseReader(IList<string> readerNames) {
             // Show available readers.
             Console.WriteLine("Available readers: ");
-            for (var i = 0; i < readerNames.Length; i++) {
+            for (var i = 0; i < readerNames.Count; i++) {
                 Console.WriteLine("[" + i + "] " + readerNames[i]);
             }
 
             // Ask the user which one to choose.
             Console.Write("Which reader has an inserted card that supports the GET CHALLENGE command? ");
             var line = Console.ReadLine();
-            int choice;
 
-            if (int.TryParse(line, out choice) && (choice >= 0) && (choice <= readerNames.Length)) {
+            if (int.TryParse(line, out var choice) && (choice >= 0) && (choice <= readerNames.Count)) {
                 return readerNames[choice];
             }
 
             Console.WriteLine("An invalid number has been entered.");
             Console.ReadKey();
             return null;
+        }
+
+        private static bool NoReaderFound(ICollection<string> readerNames) {
+            return readerNames == null || readerNames.Count < 1;
         }
     }
 }

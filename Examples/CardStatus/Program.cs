@@ -1,72 +1,85 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using PCSC;
 
 namespace CardStatus
 {
     public class Program
     {
-        static void Main()
-        {
-            using (var context = new SCardContext()) {
+        public static void Main() {
+            var contextFactory = ContextFactory.Instance;
 
-                context.Establish(SCardScope.System);
-
-                // retrieve all reader names
+            using (var context = contextFactory.Establish(SCardScope.System)) {
                 var readerNames = context.GetReaders();
 
-                if (readerNames == null) {
+                if (NoReaderFound(readerNames)) {
                     Console.WriteLine("No readers found.");
                     Console.ReadKey();
                     return;
                 }
 
-                // get the card status of each reader that is currently connected
-                foreach (var readerName in readerNames) {
-                    using (var reader = new SCardReader(context)) {
-                        Console.WriteLine("Trying to connect to reader {0}.",  readerName);
-
-                        var sc = reader.Connect(readerName, SCardShareMode.Shared, SCardProtocol.Any);
-                        if (sc == SCardError.Success) {
-                            DisplayReaderStatus(reader);
-                        } else {
-                            Console.WriteLine("No card inserted or reader is reserved exclusively by another application.");
-                            Console.WriteLine("Error message: {0}\n", SCardHelper.StringifyError(sc));
-                        }
-                    }
-                }
-
+                DisplayReaderStatus(context, readerNames);
                 Console.ReadKey();
             }
         }
 
-        private static void DisplayReaderStatus(ISCardReader reader) {
-            string[] readerNames;
-            SCardProtocol proto;
-            SCardState state;
-            byte[] atr;
-
-            var sc = reader.Status(
-                out readerNames,    // contains the reader name(s)
-                out state,          // contains the current state (flags)
-                out proto,          // contains the currently used communication protocol
-                out atr);           // contains the ATR
-
-            if (sc == SCardError.Success) {
-                Console.WriteLine("Connected with protocol {0} in state {1}", proto, state);
-                DisplayCardAtr(atr);
-                Console.WriteLine();
-            } else {
-                Console.WriteLine("Unable to retrieve card status.\nError message: {0}", 
-                    SCardHelper.StringifyError(sc));
+        /// <summary>
+        /// Displays the card status of each reader in <paramref name="readerNames"/>
+        /// </summary>
+        /// <param name="context">Smartcard context to connect</param>
+        /// <param name="readerNames">Smartcard readers</param>
+        private static void DisplayReaderStatus(ISCardContext context, IEnumerable<string> readerNames) {
+            foreach (var readerName in readerNames) {
+                try {
+                    using (var reader = context.ConnectReader(readerName, SCardShareMode.Shared, SCardProtocol.Any)) {
+                        PrintReaderStatus(reader);
+                        Console.WriteLine();
+                    }
+                } catch (Exception exception) {
+                    Console.WriteLine(
+                        "No card inserted or reader '{0}' is reserved exclusively by another application.", readerName);
+                    Console.WriteLine("Error message: {0} ({1})\n", exception.Message, exception.GetType());
+                }
             }
         }
 
-        private static void DisplayCardAtr(byte[] atr) {
+        /// <summary>
+        /// Prints the reader's status
+        /// </summary>
+        /// <param name="reader">Connected reader</param>
+        private static void PrintReaderStatus(ICardReader reader) {
+            try {
+                var status = reader.GetStatus();
+                Console.WriteLine("Reader {0} connected with protocol {1} in state {2}",
+                    status.GetReaderNames().FirstOrDefault(),
+                    status.Protocol,
+                    status.State);
+                PrintCardAtr(status.GetAtr());
+            } catch (Exception exception) {
+                Console.WriteLine("Unable to retrieve card status.\nError message: {0} ({1}", exception,
+                    exception.GetType());
+            }
+        }
+
+        /// <summary>
+        /// Prints the smartcard's ATR as hex string
+        /// </summary>
+        /// <param name="atr">ATR bytes</param>
+        private static void PrintCardAtr(byte[] atr) {
             if (atr == null || atr.Length <= 0) {
                 return;
             }
 
             Console.WriteLine("Card ATR: {0}", BitConverter.ToString(atr));
         }
+
+        /// <summary>
+        /// Returns <c>true</c> if the supplied collection <paramref name="readerNames"/> does not contain any reader.
+        /// </summary>
+        /// <param name="readerNames">Collection of smartcard reader names</param>
+        /// <returns><c>true</c> if no reader found</returns>
+        private static bool NoReaderFound(ICollection<string> readerNames) =>
+            readerNames == null || readerNames.Count < 1;
     }
 }

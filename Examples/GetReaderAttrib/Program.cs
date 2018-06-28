@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 using PCSC;
 
 namespace GetReaderAttrib
@@ -6,48 +7,64 @@ namespace GetReaderAttrib
     public class Program
     {
         public static void Main() {
-            var context = new SCardContext();
-            context.Establish(SCardScope.System);
+            var contextFactory = ContextFactory.Instance;
+            using (var context = contextFactory.Establish(SCardScope.System)) {
+                var readerNames = context.GetReaders();
 
-            var readerNames = context.GetReaders();
-            if (readerNames == null || readerNames.Length < 1) {
-                Console.WriteLine("You need at least one reader in order to run this example.");
+                if (NoReaderFound(readerNames)) {
+                    Console.WriteLine("You need at least one reader in order to run this example.");
+                    Console.ReadKey();
+                    return;
+                }
+
+                DisplayAtrs(context, readerNames);
                 Console.ReadKey();
-                return;
             }
+        }
 
-            // Receive the ATR of each reader by using the GetAttrib function
+        /// <summary>
+        /// Receive the ATR of each reader in <paramref name="readerNames"/> by using the GetAttrib function
+        /// </summary>
+        /// <param name="context">Connection context</param>
+        /// <param name="readerNames">Readers from which the ATR should be requested</param>
+        private static void DisplayAtrs(ISCardContext context, IEnumerable<string> readerNames) {
             foreach (var readerName in readerNames) {
-                var reader = new SCardReader(context);
-
-                Console.Write("Trying to connect to reader.. " + readerName);
-
-                // Connect to the reader, error if no card present.
-                var rc = reader.Connect(readerName, SCardShareMode.Shared, SCardProtocol.Any);
-
-                if (rc != SCardError.Success) {
-                    Console.WriteLine(" failed. No smart card present? " + SCardHelper.StringifyError(rc) + "\n");
-                } else {
-                    Console.WriteLine(" done.");
-
-                    // receive ATR string attribute
-                    byte[] atr;
-                    rc = reader.GetAttrib(SCardAttribute.AtrString, out atr);
-
-                    if (rc != SCardError.Success) {
-                        // ATR not supported?
-                        Console.WriteLine("Error by trying to receive the ATR. {0}\n", SCardHelper.StringifyError(rc));
-                    } else {
-                        Console.WriteLine("ATR: {0}\n", BitConverter.ToString(atr ?? new byte[] {}));
+                try {
+                    using (var reader = context.ConnectReader(readerName, SCardShareMode.Shared, SCardProtocol.Any)) {
+                        DisplayAtr(reader);
                     }
-
-                    reader.Disconnect(SCardReaderDisposition.Leave);
+                } catch (Exception exception) {
+                    Console.WriteLine("Could not connect to reader {0}. No smart card present? ({1})", readerName,
+                        exception.GetType());
                 }
             }
+        }
 
-            // We MUST release here since we didn't use the 'using(..)' statement
-            context.Release();
-            Console.ReadKey();
+        /// <summary>
+        /// Receive and print ATR string attribute
+        /// </summary>
+        /// <param name="reader">Connected smartcard reader instance</param>
+        private static void DisplayAtr(ICardReader reader) {
+            try {
+                var atr = reader.GetAttrib(SCardAttribute.AtrString);
+                Console.WriteLine("Reader: {0}, ATR: {1}", 
+                    reader.Name,
+                    BitConverter.ToString(atr ?? new byte[] { }));
+            } catch (Exception exception) {
+                Console.WriteLine("Reader: {0}, Error by trying to receive the ATR. {1} ({2})\n", 
+                    reader.Name,
+                    exception.Message,
+                    exception.GetType());
+            }
+        }
+
+        /// <summary>
+        /// Checks if smartcard readers are available
+        /// </summary>
+        /// <param name="readerNames">Collection of reader names</param>
+        /// <returns><c>true</c> if the supplied collection of <paramref name="readerNames"/> does not contain any reader name.</returns>
+        private static bool NoReaderFound(ICollection<string> readerNames) {
+            return readerNames == null || readerNames.Count < 1;
         }
     }
 }
