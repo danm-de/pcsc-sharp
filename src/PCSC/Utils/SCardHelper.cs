@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -111,7 +111,7 @@ namespace PCSC.Utils
         }
 
         internal static SCardError ToSCardError(IntPtr result) {
-            return (SCardError) result;
+            return (SCardError)(long) result;
         }
 
         internal static SCardError ToSCardError(int result) {
@@ -119,11 +119,11 @@ namespace PCSC.Utils
         }
 
         internal static SCardProtocol ToProto(IntPtr proto) {
-            return (SCardProtocol) proto;
+            return (SCardProtocol)(long) proto;
         }
 
         internal static SCardState ToState(IntPtr state) {
-            return (SCardState) state;
+            return (SCardState)(long) state;
         }
 
         internal static SCRState ToSCRState(long state) {
