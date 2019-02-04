@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
-    <Version>4.0.1</Version>
+    <Version>4.0.3</Version>
     <Authors>Daniel Mueller</Authors>
     <Company>Daniel Mueller</Company>
     <Description>Implements partial ISO7816 support (APDU etc.) for PCSC.</Description>
