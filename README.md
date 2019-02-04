@@ -29,7 +29,7 @@ You can find PC/SC specific documentation here:
   * Ubuntu Linux 64-bit (_confirmed_)
   * Ubuntu Linux 32-bit
 
-- MacOS X (_unconfirmed_, _software prerequisites unclear_)
+- MacOS X (Tested by @pedromrpinto)
 
 ## Quick start
 

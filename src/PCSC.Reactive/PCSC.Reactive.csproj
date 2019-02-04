@@ -5,7 +5,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp.png</PackageIconUrl>
     <Authors>Daniel Mueller</Authors>
     <Company />
-    <Version>4.0.1</Version>
+    <Version>4.0.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Reactive extensions for PC/SC. Observables from smart card monitor events.</Description>
     <Copyright>Copyright 2018 Daniel Mueller</Copyright>
