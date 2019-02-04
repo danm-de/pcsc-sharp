@@ -3,6 +3,12 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2019-02-04  Daniel Mueller <daniel@danm.de>
+* New version 4.0.2
+* Added supported for Mac OS by Pedro Marinho Rodrigues Pinto
+  https://github.com/danm-de/pcsc-sharp/pull/85
+  Thanks to @pedromrpinto
+
 2018-09-24  Daniel Mueller <daniel@danm.de>
 * New version 4.0.1
 * Fix converting IntPtr to enum on .NET Core

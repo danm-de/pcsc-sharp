@@ -1,7 +1,10 @@
 pcsc-sharp:
 -----------------------------------------------------------
-Author:
+Main author:
 - Daniel Mueller <daniel@danm.de>
+
+Various contributors providing bugfixes and new features. 
+  Please see git log at github.com!
 
 Type and attribute description for pcsc-sharp
 -----------------------------------------------------------

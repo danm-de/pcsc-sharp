@@ -12,11 +12,7 @@ namespace PCSC.Interop.Unix
     internal sealed class PCSCliteAPI : ISCardApi
     {
         private const int MAX_READER_NAME = 255;
-        private const string C_LIB = "libc";
-        private const string OS_NAME_OSX = "Darwin";
-        private const string PCSC_LIB_UNIX = "libpcsclite.so.1";
-        private const string PCSC_LIB_OSX = "PCSC.framework/PCSC";
-        private const string DL_LIB = "libdl.so.2";
+
         private const int CHARSIZE = sizeof(byte);
 
         private const int STATUS_MASK = (int) (SCardState.Absent
@@ -27,10 +23,6 @@ namespace PCSC.Interop.Unix
                                                | SCardState.Swallowed
                                                | SCardState.Unknown);
 
-        private readonly string _pcscLibDlopenName;
-
-        private IntPtr _libHandle = IntPtr.Zero;
-
         public const int MAX_ATR_SIZE = 33;
 
         public int MaxAtrSize => MAX_ATR_SIZE;
@@ -38,48 +30,14 @@ namespace PCSC.Interop.Unix
 
         public int CharSize => CHARSIZE;
 
-        public PCSCliteAPI() {
-            _pcscLibDlopenName = DeterminePcscLibName();
+        public PCSCliteAPI()
+        {
         }
-
-        private static string DeterminePcscLibName() {
-            return GetUnameSysName() == OS_NAME_OSX
-                ? PCSC_LIB_OSX
-                : PCSC_LIB_UNIX;
-        }
-
-        private static string GetUnameSysName() {
-            var utsNameBuffer = new byte[1000];
-
-            if (uname(utsNameBuffer) == 0) {
-                int terminator;
-
-                // Find the null terminator of the first string in struct utsname.
-                for (terminator = 0;
-                    terminator < utsNameBuffer.Length && utsNameBuffer[terminator] != 0;
-                    terminator++) ;
-
-                return Encoding.ASCII.GetString(utsNameBuffer, 0, terminator);
-            }
-
-            return null;
-        }
-
-        [DllImport(C_LIB, CharSet = CharSet.Ansi)]
-        private static extern int uname(
-            [Out] byte[] buffer);
-
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardEstablishContext(
-            [In] IntPtr dwScope,
-            [In] IntPtr pvReserved1,
-            [In] IntPtr pvReserved2,
-            [In, Out] ref IntPtr phContext);
 
         public SCardError EstablishContext(SCardScope dwScope, IntPtr pvReserved1, IntPtr pvReserved2,
             out IntPtr phContext) {
             var ctx = IntPtr.Zero;
-            var rc = SCardHelper.ToSCardError(SCardEstablishContext(
+            var rc = SCardHelper.ToSCardError(UnixNativeMethods.SCardEstablishContext(
                 (IntPtr) dwScope,
                 pvReserved1,
                 pvReserved2,
@@ -87,29 +45,14 @@ namespace PCSC.Interop.Unix
             phContext = ctx;
             return rc;
         }
-
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardReleaseContext(
-            [In] IntPtr hContext);
-
+        
         public SCardError ReleaseContext(IntPtr hContext) {
-            return SCardHelper.ToSCardError(SCardReleaseContext(hContext));
+            return SCardHelper.ToSCardError(UnixNativeMethods.SCardReleaseContext(hContext));
         }
-
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardIsValidContext(
-            [In] IntPtr hContext);
 
         public SCardError IsValidContext(IntPtr hContext) {
-            return SCardHelper.ToSCardError(SCardIsValidContext(hContext));
+            return SCardHelper.ToSCardError(UnixNativeMethods.SCardIsValidContext(hContext));
         }
-
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardListReaders(
-            [In] IntPtr hContext,
-            [In] byte[] mszGroups,
-            [Out] byte[] mszReaders,
-            [In, Out] ref IntPtr pcchReaders);
 
         public SCardError ListReaders(IntPtr hContext, string[] groups, out string[] readers) {
             var dwReaders = IntPtr.Zero;
@@ -121,7 +64,7 @@ namespace PCSC.Interop.Unix
 
             // determine the needed buffer size
             var rc = SCardHelper.ToSCardError(
-                SCardListReaders(hContext,
+                UnixNativeMethods.SCardListReaders(hContext,
                     mszGroups,
                     null,
                     ref dwReaders));
@@ -135,7 +78,7 @@ namespace PCSC.Interop.Unix
             var mszReaders = new byte[(int) dwReaders];
 
             rc = SCardHelper.ToSCardError(
-                SCardListReaders(hContext,
+                UnixNativeMethods.SCardListReaders(hContext,
                     mszGroups,
                     mszReaders,
                     ref dwReaders));
@@ -147,18 +90,12 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardListReaderGroups(
-            [In] IntPtr hContext,
-            [Out] byte[] mszGroups,
-            [In, Out] ref IntPtr pcchGroups);
-
         public SCardError ListReaderGroups(IntPtr hContext, out string[] groups) {
             var dwGroups = IntPtr.Zero;
 
             // determine the needed buffer size
             var rc = SCardHelper.ToSCardError(
-                SCardListReaderGroups(
+                UnixNativeMethods.SCardListReaderGroups(
                     hContext,
                     null,
                     ref dwGroups));
@@ -172,7 +109,7 @@ namespace PCSC.Interop.Unix
             var mszGroups = new byte[(int) dwGroups];
 
             rc = SCardHelper.ToSCardError(
-                SCardListReaderGroups(
+                UnixNativeMethods.SCardListReaderGroups(
                     hContext,
                     mszGroups,
                     ref dwGroups));
@@ -184,20 +121,11 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardConnect(
-            [In] IntPtr hContext,
-            [In] byte[] szReader,
-            [In] IntPtr dwShareMode,
-            [In] IntPtr dwPreferredProtocols,
-            [Out] out IntPtr phCard,
-            [Out] out IntPtr pdwActiveProtocol);
-
         public SCardError Connect(IntPtr hContext, string szReader, SCardShareMode dwShareMode,
             SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
             var readername = SCardHelper.ConvertToByteArray(szReader, TextEncoding, Platform.Lib.CharSize);
 
-            var result = SCardConnect(hContext,
+            var result = UnixNativeMethods.SCardConnect(hContext,
                 readername,
                 (IntPtr) dwShareMode,
                 (IntPtr) dwPreferredProtocols,
@@ -209,17 +137,9 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(result);
         }
 
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardReconnect(
-            [In] IntPtr hCard,
-            [In] IntPtr dwShareMode,
-            [In] IntPtr dwPreferredProtocols,
-            [In] IntPtr dwInitialization,
-            [Out] out IntPtr pdwActiveProtocol);
-
         public SCardError Reconnect(IntPtr hCard, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols,
             SCardReaderDisposition dwInitialization, out SCardProtocol pdwActiveProtocol) {
-            var result = SCardReconnect(
+            var result = UnixNativeMethods.SCardReconnect(
                 hCard,
                 (IntPtr) dwShareMode,
                 (IntPtr) dwPreferredProtocols,
@@ -230,42 +150,17 @@ namespace PCSC.Interop.Unix
             return SCardHelper.ToSCardError(result);
         }
 
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardDisconnect(
-            [In] IntPtr hCard,
-            [In] IntPtr dwDisposition);
-
         public SCardError Disconnect(IntPtr hCard, SCardReaderDisposition dwDisposition) {
-            return SCardHelper.ToSCardError(SCardDisconnect(hCard, (IntPtr) dwDisposition));
+            return SCardHelper.ToSCardError(UnixNativeMethods.SCardDisconnect(hCard, (IntPtr) dwDisposition));
         }
-
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardBeginTransaction(
-            [In] IntPtr hCard);
 
         public SCardError BeginTransaction(IntPtr hCard) {
-            return SCardHelper.ToSCardError(SCardBeginTransaction(hCard));
+            return SCardHelper.ToSCardError(UnixNativeMethods.SCardBeginTransaction(hCard));
         }
-
-
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardEndTransaction(
-            [In] IntPtr hCard,
-            [In] IntPtr dwDisposition);
 
         public SCardError EndTransaction(IntPtr hCard, SCardReaderDisposition dwDisposition) {
-            return SCardHelper.ToSCardError(SCardEndTransaction(hCard, (IntPtr) dwDisposition));
+            return SCardHelper.ToSCardError(UnixNativeMethods.SCardEndTransaction(hCard, (IntPtr) dwDisposition));
         }
-
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardTransmit(
-            [In] IntPtr hCard,
-            [In] IntPtr pioSendPci,
-            [In] byte[] pbSendBuffer,
-            [In] IntPtr cbSendLength,
-            [In, Out] IntPtr pioRecvPci,
-            [Out] byte[] pbRecvBuffer,
-            [In, Out] ref IntPtr pcbRecvLength);
 
         public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, IntPtr pioRecvPci,
             byte[] pbRecvBuffer, out int pcbRecvLength) {
@@ -316,7 +211,7 @@ namespace PCSC.Interop.Unix
                 }
             }
 
-            var rc = SCardHelper.ToSCardError(SCardTransmit(
+            var rc = SCardHelper.ToSCardError(UnixNativeMethods.SCardTransmit(
                 hCard,
                 pioSendPci,
                 pbSendBuffer,
@@ -328,16 +223,6 @@ namespace PCSC.Interop.Unix
             pcbRecvLength = (int) recvlen;
             return rc;
         }
-
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardControl(
-            [In] IntPtr hCard,
-            [In] IntPtr dwControlCode,
-            [In] byte[] pbSendBuffer,
-            [In] IntPtr cbSendLength,
-            [Out] byte[] pbRecvBuffer,
-            [In] IntPtr pcbRecvLength,
-            [Out] out IntPtr lpBytesReturned);
 
         public SCardError Control(IntPtr hCard, IntPtr dwControlCode, byte[] pbSendBuffer, byte[] pbRecvBuffer,
             out int lpBytesReturned) {
@@ -373,7 +258,7 @@ namespace PCSC.Interop.Unix
             var sendbuflen = (IntPtr) sendBufferLength;
             var recvbuflen = (IntPtr) recvBufferLength;
 
-            var rc = SCardHelper.ToSCardError(SCardControl(
+            var rc = SCardHelper.ToSCardError(UnixNativeMethods.SCardControl(
                 hCard,
                 dwControlCode,
                 pbSendBuffer,
@@ -387,16 +272,6 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardStatus(
-            [In] IntPtr hCard,
-            [Out] byte[] szReaderName,
-            [In, Out] ref IntPtr pcchReaderLen,
-            [Out] out IntPtr pdwState,
-            [Out] out IntPtr pdwProtocol,
-            [Out] byte[] pbAtr,
-            [In, Out] ref IntPtr pcbAtrLen);
-
         public SCardError Status(IntPtr hCard, out string[] szReaderName, out IntPtr pdwState, out IntPtr pdwProtocol,
             out byte[] pbAtr) {
             var readerName = new byte[MAX_READER_NAME * CharSize];
@@ -404,7 +279,7 @@ namespace PCSC.Interop.Unix
 
             pbAtr = new byte[MAX_ATR_SIZE];
             var atrlen = (IntPtr) pbAtr.Length;
-            var rc = SCardHelper.ToSCardError(SCardStatus(
+            var rc = SCardHelper.ToSCardError(UnixNativeMethods.SCardStatus(
                 hCard,
                 readerName,
                 ref readerNameSize,
@@ -427,7 +302,7 @@ namespace PCSC.Interop.Unix
                     pbAtr = new byte[(int) atrlen];
                 }
 
-                rc = SCardHelper.ToSCardError(SCardStatus(
+                rc = SCardHelper.ToSCardError(UnixNativeMethods.SCardStatus(
                     hCard,
                     readerName,
                     ref readerNameSize,
@@ -458,13 +333,6 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardGetStatusChange(
-            [In] IntPtr hContext,
-            [In] IntPtr dwTimeout,
-            [In, Out] SCARD_READERSTATE[] rgReaderStates,
-            [In] IntPtr cReaders);
-
         public SCardError GetStatusChange(IntPtr hContext, IntPtr dwTimeout, SCardReaderState[] rgReaderStates) {
             SCARD_READERSTATE[] readerstates = null;
             var cReaders = 0;
@@ -478,7 +346,7 @@ namespace PCSC.Interop.Unix
                 }
             }
 
-            var rc = SCardHelper.ToSCardError(SCardGetStatusChange(
+            var rc = SCardHelper.ToSCardError(UnixNativeMethods.SCardGetStatusChange(
                 hContext,
                 dwTimeout,
                 readerstates,
@@ -495,22 +363,9 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardCancel(
-            [In] IntPtr hContext);
-
         public SCardError Cancel(IntPtr hContext) {
-            return SCardHelper.ToSCardError(SCardCancel(hContext));
+            return SCardHelper.ToSCardError(UnixNativeMethods.SCardCancel(hContext));
         }
-
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardGetAttrib(
-            [In] IntPtr hCard,
-            [In] IntPtr dwAttrId,
-            [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
-            byte[] pbAttr,
-            [In, Out] ref IntPtr pcbAttrLen);
-
 
         public SCardError GetAttrib(IntPtr hCard, IntPtr attributeId, byte[] receiveBuffer, out int attributeLength) {
             var receiveBufferSize = receiveBuffer?.Length ?? 0;
@@ -528,7 +383,7 @@ namespace PCSC.Interop.Unix
             }
 
             var attrlen = (IntPtr) receiveBufferLength;
-            var rc = SCardHelper.ToSCardError(SCardGetAttrib(
+            var rc = SCardHelper.ToSCardError(UnixNativeMethods.SCardGetAttrib(
                 hCard,
                 attributeId,
                 receiveBuffer,
@@ -538,14 +393,6 @@ namespace PCSC.Interop.Unix
             return rc;
         }
 
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardSetAttrib(
-            [In] IntPtr hCard,
-            [In] IntPtr dwAttrId,
-            [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
-            byte[] pbAttr,
-            [In] IntPtr cbAttrLen);
-        
         public SCardError SetAttrib(IntPtr hCard, IntPtr attributeId, byte[] sendBuffer, int sendBufferLength) {
             IntPtr cbAttrLen;
 
@@ -560,51 +407,18 @@ namespace PCSC.Interop.Unix
             }
 
             return SCardHelper.ToSCardError(
-                SCardSetAttrib(
+                UnixNativeMethods.SCardSetAttrib(
                     hCard,
                     attributeId,
                     sendBuffer,
                     cbAttrLen));
         }
 
-        [DllImport(PCSC_LIB_UNIX)]
-        private static extern IntPtr SCardFreeMemory(
-            [In] IntPtr hContext,
-            [In] IntPtr pvMem);
-
-        // Linux/Unix specific DLL imports
-
-        [DllImport(DL_LIB)]
-        private static extern IntPtr dlopen(
-            [In] string szFilename,
-            [In] int flag);
-
-        [DllImport(DL_LIB)]
-        private static extern IntPtr dlsym(
-            [In] IntPtr handle,
-            [In] string szSymbol);
-
-        [DllImport(DL_LIB)]
-        private static extern int dlclose(
-            [In] IntPtr handle);
-
-        public IntPtr GetSymFromLib(string symName) {
-            // Step 1. load dynamic link library
-            if (_libHandle == IntPtr.Zero) {
-                _libHandle = dlopen(_pcscLibDlopenName, (int) DLOPEN_FLAGS.RTLD_LAZY);
-                if (_libHandle.Equals(IntPtr.Zero)) {
-                    throw new Exception("PInvoke call dlopen() failed");
-                }
-            }
-
-            // Step 2. search symbol name in memory
-            var symPtr = dlsym(_libHandle, symName);
-
-            if (symPtr.Equals(IntPtr.Zero)) {
-                throw new Exception("PInvoke call dlsym() failed");
-            }
-
-            return symPtr;
+        public IntPtr GetSymFromLib(string symName)
+        {
+            return UnixNativeMethods.GetSymFromLib(symName);
         }
+
+
     }
 }
