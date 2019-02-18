@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 using PCSC.Interop;
 using PCSC.Interop.Unix;
@@ -78,7 +78,7 @@ namespace PCSC
         /// User defined data.
         /// </summary>
         public long UserData {
-            get { return (long) UserDataPointer; }
+            get { return UserDataPointer.ToInt64(); }
             set { UserDataPointer = unchecked((IntPtr) value); }
         }
 
@@ -107,8 +107,8 @@ namespace PCSC
         public SCRState CurrentState {
             get {
                 return Platform.IsWindows
-                    ? SCardHelper.ToSCRState((_winscardRstate.dwCurrentState & EVENTSTATE_RANGE))
-                    : SCardHelper.ToSCRState(((int) _pcscliteRstate.dwCurrentState & EVENTSTATE_RANGE));
+                    ? SCardHelper.ToSCRState(_winscardRstate.dwCurrentState & EVENTSTATE_RANGE)
+                    : SCardHelper.ToSCRState(_pcscliteRstate.dwCurrentState.ToInt64() & EVENTSTATE_RANGE);
             }
             set {
                 if (Platform.IsWindows) {
@@ -133,7 +133,6 @@ namespace PCSC
             }
             set {
                 if (Platform.IsWindows) {
-                    // On a 64-bit platform .ToInt32() will throw an OverflowException 
                     _winscardRstate.dwCurrentState = unchecked((int) value.ToInt64());
                 } else {
                     _pcscliteRstate.dwCurrentState = value;
@@ -147,10 +146,8 @@ namespace PCSC
         public SCRState EventState {
             get {
                 return Platform.IsWindows
-                    ? SCardHelper.ToSCRState(
-                        (_winscardRstate.dwEventState & EVENTSTATE_RANGE))
-                    : SCardHelper.ToSCRState(
-                        (((int) _pcscliteRstate.dwEventState) & EVENTSTATE_RANGE));
+                    ? SCardHelper.ToSCRState(_winscardRstate.dwEventState & EVENTSTATE_RANGE)
+                    : SCardHelper.ToSCRState(_pcscliteRstate.dwEventState.ToInt64() & EVENTSTATE_RANGE);
             }
             set {
                 long lng = CardChangeEventCnt; // save CardChangeEventCounter
@@ -174,7 +171,6 @@ namespace PCSC
             }
             set {
                 if (Platform.IsWindows) {
-                    // On a 64-bit platforms .ToInt32() will throw an OverflowException 
                     _winscardRstate.dwEventState = unchecked((int) value.ToInt64());
                 } else {
                     _pcscliteRstate.dwEventState = value;
@@ -189,7 +185,7 @@ namespace PCSC
             get {
                 return Platform.IsWindows
                     ? (int) ((_winscardRstate.dwEventState & CHCOUNT_RANGE) >> 16)
-                    : (int) ((((long) _pcscliteRstate.dwEventState) & CHCOUNT_RANGE) >> 16);
+                    : unchecked((int) ((_pcscliteRstate.dwEventState.ToInt64() & CHCOUNT_RANGE) >> 16));
             }
             set {
                 if ((value < 0) || (value > 0xFFFF))
@@ -264,7 +260,8 @@ namespace PCSC
 
                     Array.Copy(_winscardRstate.rgbAtr, tmp, _winscardRstate.cbAtr);
                 } else {
-                    if ((int) _pcscliteRstate.cbAtr <= PCSCliteAPI.MAX_ATR_SIZE) {
+                    var cbAtr = unchecked((int) _pcscliteRstate.cbAtr.ToInt64());
+                    if (cbAtr <= PCSCliteAPI.MAX_ATR_SIZE) {
                         tmp = new byte[(int) _pcscliteRstate.cbAtr];
                     } else {
                         // error occurred during SCardGetStatusChange()
@@ -272,7 +269,7 @@ namespace PCSC
                         _pcscliteRstate.cbAtr = (IntPtr) PCSCliteAPI.MAX_ATR_SIZE;
                     }
 
-                    Array.Copy(_pcscliteRstate.rgbAtr, tmp, (int) _pcscliteRstate.cbAtr);
+                    Array.Copy(_pcscliteRstate.rgbAtr, tmp, cbAtr);
                 }
 
                 return tmp;
