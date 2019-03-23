@@ -3,5 +3,15 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
 [assembly: Guid("8f2ed04d-e1d6-446d-a99f-357a366c33f4")]
-[assembly: InternalsVisibleTo("PCSC.Tests")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
+[assembly: InternalsVisibleTo("PCSC.Tests,PublicKey=" +
+"0024000004800000940000000602000000240000525341310004000001000100e531b26ff2201a" +
+"829af41ecdb4a0575b65bc5538c0fb498f0ee39a650549918580b5fd6422ef412b3b81388f0b34" +
+"3bb72715f4d82e3c0a259eff3e2457abf7b5c36ce409df3493a77250ba47e6f17588cbad7ea8cb" +
+"7a1d04cbf6ac65c49666f84f078c2225ccf5325475bdf9acdb3260036a17dffe31e731f5984a8c" +
+"d1a4bcc3")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2,PublicKey=" +
+"0024000004800000940000000602000000240000525341310004000001000100e531b26ff2201a" +
+"829af41ecdb4a0575b65bc5538c0fb498f0ee39a650549918580b5fd6422ef412b3b81388f0b34" +
+"3bb72715f4d82e3c0a259eff3e2457abf7b5c36ce409df3493a77250ba47e6f17588cbad7ea8cb" +
+"7a1d04cbf6ac65c49666f84f078c2225ccf5325475bdf9acdb3260036a17dffe31e731f5984a8c" +
+"d1a4bcc3")]
