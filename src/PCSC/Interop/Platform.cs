@@ -35,6 +35,11 @@ namespace PCSC.Interop
 
             switch (platform) {
                 case PlatformID.Unix:
+                    if (Unix.Native.GetUnameSysName() == Unix.Native.OS_NAME_OSX) {
+                        // Mono identifies MacOSX as Unix
+                        goto case PlatformID.MacOSX;
+                    }
+                    
                     Type = PlatformType.Linux;
                     Lib = new PCSCliteLinux();
                     break;

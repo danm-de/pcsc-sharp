@@ -6,9 +6,9 @@ namespace PCSC.Interop.MacOSX
 {
     internal static class MacOsxNativeMethods
     {
-        private const string C_LIB = "libc";
-        private const string OS_NAME_OSX = "Darwin";
         private static IntPtr _libHandle = IntPtr.Zero;
+        private const string PCSC_LIB = "PCSC.framework/PCSC";
+        private const string DL_LIB = "libdl.dylib";
 
         public static IntPtr GetSymFromLib(string symName) {
             // Step 1. load dynamic link library
@@ -28,31 +28,7 @@ namespace PCSC.Interop.MacOSX
 
             return symPtr;
         }
-
-        private static string GetUnameSysName() {
-            var utsNameBuffer = new byte[1000];
-
-            if (uname(utsNameBuffer) == 0) {
-                int terminator;
-
-                // Find the null terminator of the first string in struct utsname.
-                for (terminator = 0;
-                    terminator < utsNameBuffer.Length && utsNameBuffer[terminator] != 0;
-                    terminator++) ;
-
-                return Encoding.ASCII.GetString(utsNameBuffer, 0, terminator);
-            }
-
-            return null;
-        }
-
-        [DllImport(C_LIB, CharSet = CharSet.Ansi)]
-        private static extern int uname(
-            [Out] byte[] buffer);
-
-        private const string PCSC_LIB = "PCSC.framework/PCSC";
-        private const string DL_LIB = "libdl.dylib";
-
+        
         [DllImport(PCSC_LIB)]
         internal static extern IntPtr SCardEstablishContext(
             [In] IntPtr dwScope,

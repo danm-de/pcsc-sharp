@@ -29,10 +29,6 @@ namespace PCSC.Interop.MacOSX
 
         public int CharSize => CHARSIZE;
 
-        public PCSCliteMacOsX()
-        {
-        }
-
         public SCardError EstablishContext(SCardScope dwScope, IntPtr pvReserved1, IntPtr pvReserved2,
             out IntPtr phContext) {
             var ctx = IntPtr.Zero;
@@ -44,7 +40,7 @@ namespace PCSC.Interop.MacOSX
             phContext = ctx;
             return rc;
         }
-        
+
         public SCardError ReleaseContext(IntPtr hContext) {
             return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardReleaseContext(hContext));
         }
@@ -413,11 +409,8 @@ namespace PCSC.Interop.MacOSX
                     cbAttrLen));
         }
 
-        public IntPtr GetSymFromLib(string symName)
-        {
+        public IntPtr GetSymFromLib(string symName) {
             return MacOsxNativeMethods.GetSymFromLib(symName);
         }
-
-
     }
 }
