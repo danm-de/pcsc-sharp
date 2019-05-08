@@ -4,7 +4,8 @@ using System.Runtime.InteropServices;
 using PCSC.Exceptions;
 using PCSC.Interop;
 using SCARD_IO_REQUEST_WINDOWS = PCSC.Interop.Windows.SCARD_IO_REQUEST;
-using SCARD_IO_REQUEST_UNIX = PCSC.Interop.Unix.SCARD_IO_REQUEST;
+using SCARD_IO_REQUEST_UNIX = PCSC.Interop.Linux.SCARD_IO_REQUEST;
+using SCARD_IO_REQUEST_MACOSX = PCSC.Interop.MacOSX.SCARD_IO_REQUEST;
 
 namespace PCSC
 {
@@ -29,7 +30,8 @@ namespace PCSC
         private static IntPtr _pciT1 = IntPtr.Zero;
         private static IntPtr _pciRaw = IntPtr.Zero;
         private SCARD_IO_REQUEST_WINDOWS _winscardIoRequest = new SCARD_IO_REQUEST_WINDOWS();
-        private SCARD_IO_REQUEST_UNIX _pcscliteIoRequest = new SCARD_IO_REQUEST_UNIX();
+        private SCARD_IO_REQUEST_UNIX _linuxIoRequest = new SCARD_IO_REQUEST_UNIX();
+        private SCARD_IO_REQUEST_MACOSX _macosIoRequest = new SCARD_IO_REQUEST_MACOSX();
 
         /// <summary>Destroys the object and frees unmanaged memory.</summary>
         ~SCardPCI() {
@@ -38,12 +40,21 @@ namespace PCSC
 
         /// <summary>Initializes a new instance of the <see cref="SCardPCI" /> class.</summary>
         public SCardPCI() {
-            if (Platform.IsWindows) {
-                _winscardIoRequest.dwProtocol = 0;
-                _winscardIoRequest.cbPciLength = 0;
-            } else {
-                _pcscliteIoRequest.dwProtocol = IntPtr.Zero;
-                _pcscliteIoRequest.cbPciLength = IntPtr.Zero;
+            switch (Platform.Type) {
+                case PlatformType.Windows:
+                    _winscardIoRequest.dwProtocol = 0;
+                    _winscardIoRequest.cbPciLength = 0;
+                    break;
+                case PlatformType.Linux:
+                    _linuxIoRequest.dwProtocol = IntPtr.Zero;
+                    _linuxIoRequest.cbPciLength = IntPtr.Zero;
+                    break;
+                case PlatformType.MacOSX:
+                    _linuxIoRequest.dwProtocol = IntPtr.Zero;
+                    _linuxIoRequest.cbPciLength = IntPtr.Zero;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -63,33 +74,47 @@ namespace PCSC
                     nameof(bufLength));
             }
 
-            if (Platform.IsWindows) {
-                // Windows
-                MemoryPtr = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
-                                                                              + Marshal.SizeOf(
-                                                                                  typeof(SCARD_IO_REQUEST_WINDOWS)))));
+            switch (Platform.Type) {
+                case PlatformType.Windows:
+                    MemoryPtr = unchecked((IntPtr) ((long) Marshal
+                            .AllocCoTaskMem(bufLength + Marshal.SizeOf(typeof(SCARD_IO_REQUEST_WINDOWS)))
+                        ));
+                    _winscardIoRequest.dwProtocol = (int) protocol;
+                    _winscardIoRequest.cbPciLength = bufLength;
+                    if (MemoryPtr != IntPtr.Zero) {
+                        Marshal.StructureToPtr(_winscardIoRequest, MemoryPtr, false);
+                    }
 
-                _winscardIoRequest.dwProtocol = (int) protocol;
-                _winscardIoRequest.cbPciLength = bufLength;
-                if (MemoryPtr != IntPtr.Zero) {
-                    Marshal.StructureToPtr(_winscardIoRequest, MemoryPtr, false);
-                }
+                    break;
+                case PlatformType.Linux:
+                    MemoryPtr = unchecked((IntPtr) ((long) Marshal
+                        .AllocCoTaskMem(bufLength + Marshal.SizeOf(typeof(SCARD_IO_REQUEST_UNIX)))));
+                    _linuxIoRequest.dwProtocol = (IntPtr) protocol;
+                    _linuxIoRequest.cbPciLength = (IntPtr) bufLength;
+                    if (MemoryPtr != IntPtr.Zero) {
+                        Marshal.StructureToPtr(
+                            _linuxIoRequest,
+                            MemoryPtr,
+                            false);
+                    }
 
-                return;
-            }
+                    break;
+                case PlatformType.MacOSX:
+                    MemoryPtr = unchecked((IntPtr) ((long) Marshal
+                            .AllocCoTaskMem(bufLength + Marshal.SizeOf(typeof(SCARD_IO_REQUEST_MACOSX))))
+                    );
+                    _macosIoRequest.dwProtocol = (IntPtr) protocol;
+                    _macosIoRequest.cbPciLength = (IntPtr) bufLength;
+                    if (MemoryPtr != IntPtr.Zero) {
+                        Marshal.StructureToPtr(
+                            _macosIoRequest,
+                            MemoryPtr,
+                            false);
+                    }
 
-            // Unix
-            MemoryPtr = unchecked((IntPtr) ((long) Marshal.AllocCoTaskMem(bufLength
-                                                                          + Marshal.SizeOf(
-                                                                              typeof(Interop.Unix.SCARD_IO_REQUEST)))));
-
-            _pcscliteIoRequest.dwProtocol = (IntPtr) protocol;
-            _pcscliteIoRequest.cbPciLength = (IntPtr) bufLength;
-            if (MemoryPtr != IntPtr.Zero) {
-                Marshal.StructureToPtr(
-                    _pcscliteIoRequest,
-                    MemoryPtr,
-                    false);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -113,16 +138,6 @@ namespace PCSC
                 return;
             }
 
-            if (Platform.IsWindows) {
-                // Windows
-                Marshal.Copy(pciData, 0,
-                    BufferStartAddr,
-                    pciData.Length);
-
-                return;
-            }
-
-            // Unix
             Marshal.Copy(pciData, 0,
                 BufferStartAddr,
                 pciData.Length);
@@ -163,11 +178,16 @@ namespace PCSC
                     UpdateIoRequestHeader();
                 }
 
-                if (Platform.IsWindows) {
-                    return (SCardProtocol) _winscardIoRequest.dwProtocol;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        return (SCardProtocol) _winscardIoRequest.dwProtocol;
+                    case PlatformType.Linux:
+                        return (SCardProtocol) _linuxIoRequest.dwProtocol;
+                    case PlatformType.MacOSX:
+                        return (SCardProtocol) _macosIoRequest.dwProtocol;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
-
-                return (SCardProtocol) _pcscliteIoRequest.dwProtocol;
             }
         }
 
@@ -179,27 +199,39 @@ namespace PCSC
                     UpdateIoRequestHeader();
                 }
 
-                if (Platform.IsWindows) {
-                    return _winscardIoRequest.cbPciLength;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        return _winscardIoRequest.cbPciLength;
+                    case PlatformType.Linux:
+                        return unchecked((int) (long) _linuxIoRequest.cbPciLength);
+                    case PlatformType.MacOSX:
+                        return unchecked((int) (long) _macosIoRequest.cbPciLength);
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
-
-                return (int) _pcscliteIoRequest.cbPciLength;
             }
         }
 
         private void UpdateIoRequestHeader() {
-            if (Platform.IsWindows) {
-                // Windows
-                _winscardIoRequest = (SCARD_IO_REQUEST_WINDOWS) Marshal.PtrToStructure(
-                    MemoryPtr,
-                    typeof(SCARD_IO_REQUEST_WINDOWS));
-                return;
+            switch (Platform.Type) {
+                case PlatformType.Windows:
+                    _winscardIoRequest = (SCARD_IO_REQUEST_WINDOWS) Marshal.PtrToStructure(
+                        MemoryPtr,
+                        typeof(SCARD_IO_REQUEST_WINDOWS));
+                    break;
+                case PlatformType.Linux:
+                    _linuxIoRequest = (SCARD_IO_REQUEST_UNIX) Marshal.PtrToStructure(
+                        MemoryPtr,
+                        typeof(SCARD_IO_REQUEST_UNIX));
+                    break;
+                case PlatformType.MacOSX:
+                    _macosIoRequest = (SCARD_IO_REQUEST_MACOSX) Marshal.PtrToStructure(
+                        MemoryPtr,
+                        typeof(SCARD_IO_REQUEST_UNIX));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-
-            // Unix
-            _pcscliteIoRequest = (Interop.Unix.SCARD_IO_REQUEST) Marshal.PtrToStructure(
-                MemoryPtr,
-                typeof(Interop.Unix.SCARD_IO_REQUEST));
         }
 
         /// <summary>User data.</summary>
@@ -215,43 +247,61 @@ namespace PCSC
                 // Return PCI header from memory
                 UpdateIoRequestHeader();
 
-                if (Platform.IsWindows) {
-                    // Copy data buffer into managed byte-array.
-                    if (_winscardIoRequest.cbPciLength != 0) {
-                        data = new byte[_winscardIoRequest.cbPciLength];
-                        Marshal.Copy(
-                            BufferStartAddr,
-                            data,
-                            0,
-                            _winscardIoRequest.cbPciLength);
-                    }
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        if (_winscardIoRequest.cbPciLength != 0) {
+                            data = new byte[_winscardIoRequest.cbPciLength];
+                            Marshal.Copy(
+                                BufferStartAddr,
+                                data,
+                                0,
+                                _winscardIoRequest.cbPciLength);
+                        }
 
-                    return data;
+                        return data;
+                    case PlatformType.Linux:
+                        if (_linuxIoRequest.cbPciLength != IntPtr.Zero) {
+                            data = new byte[(int) _linuxIoRequest.cbPciLength];
+                            Marshal.Copy(
+                                BufferStartAddr, // ugly hack because Mono has problems with IntPtr & 64bit
+                                data,
+                                0,
+                                unchecked((int) (long) _linuxIoRequest.cbPciLength));
+                        }
+
+                        return data;
+                    case PlatformType.MacOSX:
+                        if (_macosIoRequest.cbPciLength != IntPtr.Zero) {
+                            data = new byte[(int) _macosIoRequest.cbPciLength];
+                            Marshal.Copy(
+                                BufferStartAddr, // ugly hack because Mono has problems with IntPtr & 64bit
+                                data,
+                                0,
+                                unchecked((int) (long) _macosIoRequest.cbPciLength));
+                        }
+
+                        return data;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
-
-                // Copy data buffer into managed byte-array.
-                if (_pcscliteIoRequest.cbPciLength != IntPtr.Zero) {
-                    data = new byte[(int) _pcscliteIoRequest.cbPciLength];
-                    Marshal.Copy(
-                        BufferStartAddr, // ugly hack because Mono has problems with IntPtr & 64bit
-                        data,
-                        0,
-                        (int) _pcscliteIoRequest.cbPciLength);
-                }
-
-                return data;
             }
         }
 
         private IntPtr BufferStartAddr {
             get {
-                if (Platform.IsWindows) {
-                    return unchecked((IntPtr) ((long) MemoryPtr +
-                                               Marshal.SizeOf(typeof(SCARD_IO_REQUEST_WINDOWS))));
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        return unchecked((IntPtr) (
+                            (long) MemoryPtr + Marshal.SizeOf(typeof(SCARD_IO_REQUEST_WINDOWS))));
+                    case PlatformType.Linux:
+                        return unchecked((IntPtr) (
+                            (long) MemoryPtr + Marshal.SizeOf(typeof(SCARD_IO_REQUEST_UNIX))));
+                    case PlatformType.MacOSX:
+                        return unchecked((IntPtr) (
+                            (long) MemoryPtr + Marshal.SizeOf(typeof(SCARD_IO_REQUEST_MACOSX))));
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
-
-                return unchecked((IntPtr) ((long) MemoryPtr +
-                                           Marshal.SizeOf(typeof(Interop.Unix.SCARD_IO_REQUEST))));
             }
         }
 
@@ -306,7 +356,8 @@ namespace PCSC
                 case SCardProtocol.Raw:
                     return Raw;
                 default:
-                    throw new InvalidProtocolException(SCardError.InvalidValue, $"Protocol '{protocol}' not supported.");
+                    throw new InvalidProtocolException(SCardError.InvalidValue,
+                        $"Protocol '{protocol}' not supported.");
             }
         }
 

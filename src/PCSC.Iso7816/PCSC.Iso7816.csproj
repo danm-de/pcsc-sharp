@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
@@ -15,6 +15,7 @@
     <PackageTags>pcsc apdu</PackageTags>
     <NeutralLanguage />
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageVersion>4.0.4</PackageVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\PCSC.Iso7816.xml</DocumentationFile>

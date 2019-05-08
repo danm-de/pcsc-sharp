@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using PCSC.Interop;
-using PCSC.Interop.Unix;
+using PCSC.Interop.Linux;
+using PCSC.Interop.MacOSX;
 using PCSC.Interop.Windows;
 using PCSC.Utils;
 using WINDOWS_SCARD_READERSTATE = PCSC.Interop.Windows.SCARD_READERSTATE;
-using UNIX_SCARD_READERSTATE = PCSC.Interop.Unix.SCARD_READERSTATE;
+using LINUX_SCARD_READERSTATE = PCSC.Interop.Linux.SCARD_READERSTATE;
+using MACOSX_SCARD_READERSTATE = PCSC.Interop.MacOSX.SCARD_READERSTATE;
 
 namespace PCSC
 {
@@ -21,7 +23,8 @@ namespace PCSC
         private const long CHCOUNT_RANGE = 0xFFFF0000;
 
         private WINDOWS_SCARD_READERSTATE _winscardRstate;
-        private UNIX_SCARD_READERSTATE _pcscliteRstate;
+        private LINUX_SCARD_READERSTATE _linuxRstate;
+        private MACOSX_SCARD_READERSTATE _macosxRstate;
 
         private IntPtr _pReaderName = IntPtr.Zero;
         private int _pReaderNameSize;
@@ -59,18 +62,30 @@ namespace PCSC
         /// Initializes a new instance of the <see cref="SCardReaderState"/> class.
         /// </summary>
         public SCardReaderState() {
-            if (Platform.IsWindows) {
-                _winscardRstate = new WINDOWS_SCARD_READERSTATE {
-                    // initialize embedded array
-                    rgbAtr = new byte[WinSCardAPI.MAX_ATR_SIZE],
-                    cbAtr = WinSCardAPI.MAX_ATR_SIZE
-                };
-            } else {
-                _pcscliteRstate = new Interop.Unix.SCARD_READERSTATE {
-                    // initialize embedded array
-                    rgbAtr = new byte[PCSCliteAPI.MAX_ATR_SIZE],
-                    cbAtr = (IntPtr) PCSCliteAPI.MAX_ATR_SIZE
-                };
+            switch (Platform.Type) {
+                case PlatformType.Windows:
+                    _winscardRstate = new WINDOWS_SCARD_READERSTATE {
+                        // initialize embedded array
+                        rgbAtr = new byte[WinSCardAPI.MAX_ATR_SIZE],
+                        cbAtr = WinSCardAPI.MAX_ATR_SIZE
+                    };
+                    break;
+                case PlatformType.Linux:
+                    _linuxRstate = new LINUX_SCARD_READERSTATE {
+                        // initialize embedded array
+                        rgbAtr = new byte[PCSCliteLinux.MAX_ATR_SIZE],
+                        cbAtr = (IntPtr) PCSCliteLinux.MAX_ATR_SIZE
+                    };
+                    break;
+                case PlatformType.MacOSX:
+                    _macosxRstate = new MACOSX_SCARD_READERSTATE {
+                        // initialize embedded array
+                        rgbAtr = new byte[PCSCliteLinux.MAX_ATR_SIZE],
+                        cbAtr = PCSCliteLinux.MAX_ATR_SIZE
+                    };
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -87,38 +102,67 @@ namespace PCSC
         /// </summary>
         public IntPtr UserDataPointer {
             get {
-                return Platform.IsWindows
-                    ? _winscardRstate.pvUserData
-                    : _pcscliteRstate.pvUserData;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        return _winscardRstate.pvUserData;
+                    case PlatformType.Linux:
+                        return _linuxRstate.pvUserData;
+                    case PlatformType.MacOSX:
+                        return _macosxRstate.pvUserData;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             set {
-                if (Platform.IsWindows) {
-                    _winscardRstate.pvUserData = value;
-                } else {
-                    _pcscliteRstate.pvUserData = value;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        _winscardRstate.pvUserData = value;
+                        break;
+                    case PlatformType.Linux:
+                        _linuxRstate.pvUserData = value;
+                        break;
+                    case PlatformType.MacOSX:
+                        _macosxRstate.pvUserData = value;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
-
 
         /// <summary>
         /// Current state of reader.
         /// </summary>
         public SCRState CurrentState {
             get {
-                return Platform.IsWindows
-                    ? SCardHelper.ToSCRState(_winscardRstate.dwCurrentState & EVENTSTATE_RANGE)
-                    : SCardHelper.ToSCRState(_pcscliteRstate.dwCurrentState.ToInt64() & EVENTSTATE_RANGE);
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        return SCardHelper.ToSCRState(_winscardRstate.dwCurrentState & EVENTSTATE_RANGE);
+                    case PlatformType.Linux:
+                        return SCardHelper.ToSCRState(_linuxRstate.dwCurrentState.ToInt64() & EVENTSTATE_RANGE);
+                    case PlatformType.MacOSX:
+                        return SCardHelper.ToSCRState(_macosxRstate.dwCurrentState & EVENTSTATE_RANGE);
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             set {
-                if (Platform.IsWindows) {
-                    _winscardRstate.dwCurrentState =
-                        (int) value & EVENTSTATE_RANGE;
-                    return;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        _winscardRstate.dwCurrentState =
+                            (int) value & EVENTSTATE_RANGE;
+                        break;
+                    case PlatformType.Linux:
+                        _linuxRstate.dwCurrentState =
+                            (IntPtr) ((int) value & EVENTSTATE_RANGE);
+                        break;
+                    case PlatformType.MacOSX:
+                        _macosxRstate.dwCurrentState =
+                            (int) value & EVENTSTATE_RANGE;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
-
-                _pcscliteRstate.dwCurrentState =
-                    (IntPtr) ((int) value & EVENTSTATE_RANGE);
             }
         }
 
@@ -127,15 +171,30 @@ namespace PCSC
         /// </summary>
         public IntPtr CurrentStateValue {
             get {
-                return Platform.IsWindows
-                    ? (IntPtr) _winscardRstate.dwCurrentState
-                    : _pcscliteRstate.dwCurrentState;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        return (IntPtr) _winscardRstate.dwCurrentState;
+                    case PlatformType.Linux:
+                        return _linuxRstate.dwCurrentState;
+                    case PlatformType.MacOSX:
+                        return (IntPtr) _macosxRstate.dwCurrentState;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             set {
-                if (Platform.IsWindows) {
-                    _winscardRstate.dwCurrentState = unchecked((int) value.ToInt64());
-                } else {
-                    _pcscliteRstate.dwCurrentState = value;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        _winscardRstate.dwCurrentState = unchecked((int) value.ToInt64());
+                        break;
+                    case PlatformType.Linux:
+                        _linuxRstate.dwCurrentState = value;
+                        break;
+                    case PlatformType.MacOSX:
+                        _macosxRstate.dwCurrentState = unchecked((int) value.ToInt64());
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -145,17 +204,34 @@ namespace PCSC
         /// </summary>
         public SCRState EventState {
             get {
-                return Platform.IsWindows
-                    ? SCardHelper.ToSCRState(_winscardRstate.dwEventState & EVENTSTATE_RANGE)
-                    : SCardHelper.ToSCRState(_pcscliteRstate.dwEventState.ToInt64() & EVENTSTATE_RANGE);
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        return SCardHelper.ToSCRState(_winscardRstate.dwEventState & EVENTSTATE_RANGE);
+                    case PlatformType.Linux:
+                        return SCardHelper.ToSCRState(_linuxRstate.dwEventState.ToInt64() & EVENTSTATE_RANGE);
+                    case PlatformType.MacOSX:
+                        return SCardHelper.ToSCRState(_macosxRstate.dwEventState & EVENTSTATE_RANGE);
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             set {
                 long lng = CardChangeEventCnt; // save CardChangeEventCounter
-                if (Platform.IsWindows) {
-                    _winscardRstate.dwEventState = ((int) value & EVENTSTATE_RANGE) | (int) lng;
-                } else {
-                    _pcscliteRstate.dwEventState = (IntPtr)
-                        (((int) value & EVENTSTATE_RANGE) | (int) lng);
+
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        _winscardRstate.dwEventState = ((int) value & EVENTSTATE_RANGE) | (int) lng;
+                        break;
+                    case PlatformType.Linux:
+                        _linuxRstate.dwEventState = (IntPtr)
+                            (((int) value & EVENTSTATE_RANGE) | (int) lng);
+                        break;
+                    case PlatformType.MacOSX:
+                        _macosxRstate.dwEventState = ((int) value & EVENTSTATE_RANGE) | (int) lng;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -165,15 +241,30 @@ namespace PCSC
         /// </summary>
         public IntPtr EventStateValue {
             get {
-                return Platform.IsWindows
-                    ? (IntPtr) _winscardRstate.dwEventState
-                    : _pcscliteRstate.dwEventState;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        return (IntPtr) _winscardRstate.dwEventState;
+                    case PlatformType.Linux:
+                        return _linuxRstate.dwEventState;
+                    case PlatformType.MacOSX:
+                        return (IntPtr) _macosxRstate.dwEventState;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             set {
-                if (Platform.IsWindows) {
-                    _winscardRstate.dwEventState = unchecked((int) value.ToInt64());
-                } else {
-                    _pcscliteRstate.dwEventState = value;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        _winscardRstate.dwEventState = unchecked((int) value.ToInt64());
+                        break;
+                    case PlatformType.Linux:
+                        _linuxRstate.dwEventState = value;
+                        break;
+                    case PlatformType.MacOSX:
+                        _macosxRstate.dwEventState = unchecked((int) value.ToInt64());
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -183,9 +274,16 @@ namespace PCSC
         /// </summary>
         public int CardChangeEventCnt {
             get {
-                return Platform.IsWindows
-                    ? (int) ((_winscardRstate.dwEventState & CHCOUNT_RANGE) >> 16)
-                    : unchecked((int) ((_pcscliteRstate.dwEventState.ToInt64() & CHCOUNT_RANGE) >> 16));
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        return (int) ((_winscardRstate.dwEventState & CHCOUNT_RANGE) >> 16);
+                    case PlatformType.Linux:
+                        return unchecked((int) ((_linuxRstate.dwEventState.ToInt64() & CHCOUNT_RANGE) >> 16));
+                    case PlatformType.MacOSX:
+                        return (int) ((_macosxRstate.dwEventState & CHCOUNT_RANGE) >> 16);
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             set {
                 if ((value < 0) || (value > 0xFFFF))
@@ -193,12 +291,21 @@ namespace PCSC
                 var es = (long) EventState; // save EventState
 
                 //The upper 2 bytes of the EventStateValue hold the CardChangeEventCounter, the lower 2 bytes the EventState
-                if (Platform.IsWindows) {
-                    _winscardRstate.dwEventState = unchecked((int)
-                        (((value << 16) & CHCOUNT_RANGE) | es));
-                } else {
-                    _pcscliteRstate.dwEventState = unchecked((IntPtr)
-                        (((value << 16) & CHCOUNT_RANGE) | es));
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        _winscardRstate.dwEventState = unchecked((int)
+                            (((value << 16) & CHCOUNT_RANGE) | es));
+                        break;
+                    case PlatformType.Linux:
+                        _linuxRstate.dwEventState = unchecked((IntPtr)
+                            (((value << 16) & CHCOUNT_RANGE) | es));
+                        break;
+                    case PlatformType.MacOSX:
+                        _macosxRstate.dwEventState = unchecked((int)
+                            (((value << 16) & CHCOUNT_RANGE) | es));
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -234,10 +341,18 @@ namespace PCSC
                     }
                 }
 
-                if (Platform.IsWindows) {
-                    _winscardRstate.pszReader = _pReaderName;
-                } else {
-                    _pcscliteRstate.pszReader = _pReaderName;
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        _winscardRstate.pszReader = _pReaderName;
+                        break;
+                    case PlatformType.Linux:
+                        _linuxRstate.pszReader = _pReaderName;
+                        break;
+                    case PlatformType.MacOSX:
+                        _macosxRstate.pszReader = _pReaderName;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -249,27 +364,43 @@ namespace PCSC
             get {
                 byte[] tmp;
 
-                if (Platform.IsWindows) {
-                    if (_winscardRstate.cbAtr <= WinSCardAPI.MAX_ATR_SIZE) {
-                        tmp = new byte[_winscardRstate.cbAtr];
-                    } else {
-                        // error occurred during SCardGetStatusChange()
-                        tmp = new byte[WinSCardAPI.MAX_ATR_SIZE];
-                        _winscardRstate.cbAtr = WinSCardAPI.MAX_ATR_SIZE;
-                    }
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        if (_winscardRstate.cbAtr <= WinSCardAPI.MAX_ATR_SIZE) {
+                            tmp = new byte[_winscardRstate.cbAtr];
+                        } else {
+                            // error occurred during SCardGetStatusChange()
+                            tmp = new byte[WinSCardAPI.MAX_ATR_SIZE];
+                            _winscardRstate.cbAtr = WinSCardAPI.MAX_ATR_SIZE;
+                        }
 
-                    Array.Copy(_winscardRstate.rgbAtr, tmp, _winscardRstate.cbAtr);
-                } else {
-                    var cbAtr = unchecked((int) _pcscliteRstate.cbAtr.ToInt64());
-                    if (cbAtr <= PCSCliteAPI.MAX_ATR_SIZE) {
-                        tmp = new byte[(int) _pcscliteRstate.cbAtr];
-                    } else {
-                        // error occurred during SCardGetStatusChange()
-                        tmp = new byte[PCSCliteAPI.MAX_ATR_SIZE];
-                        _pcscliteRstate.cbAtr = (IntPtr) PCSCliteAPI.MAX_ATR_SIZE;
-                    }
+                        Array.Copy(_winscardRstate.rgbAtr, tmp, _winscardRstate.cbAtr);
+                        break;
+                    case PlatformType.Linux:
+                        var cbAtr = unchecked((int) _linuxRstate.cbAtr.ToInt64());
+                        if (cbAtr <= PCSCliteLinux.MAX_ATR_SIZE) {
+                            tmp = new byte[(int) _linuxRstate.cbAtr];
+                        } else {
+                            // error occurred during SCardGetStatusChange()
+                            tmp = new byte[PCSCliteLinux.MAX_ATR_SIZE];
+                            _linuxRstate.cbAtr = (IntPtr) PCSCliteLinux.MAX_ATR_SIZE;
+                        }
 
-                    Array.Copy(_pcscliteRstate.rgbAtr, tmp, cbAtr);
+                        Array.Copy(_linuxRstate.rgbAtr, tmp, cbAtr);
+                        break;
+                    case PlatformType.MacOSX:
+                        if (_macosxRstate.cbAtr <= PCSCliteMacOsX.MAX_ATR_SIZE) {
+                            tmp = new byte[_macosxRstate.cbAtr];
+                        } else {
+                            // error occurred during SCardGetStatusChange()
+                            tmp = new byte[PCSCliteMacOsX.MAX_ATR_SIZE];
+                            _macosxRstate.cbAtr = PCSCliteMacOsX.MAX_ATR_SIZE;
+                        }
+
+                        Array.Copy(_macosxRstate.rgbAtr, tmp, _macosxRstate.cbAtr);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
 
                 return tmp;
@@ -277,32 +408,50 @@ namespace PCSC
             set {
                 var tmp = value;
                 // the size of rstate.rgbAtr MUST(!) be MAX_ATR_SIZE 
-                if (Platform.IsWindows) {
-                    if (tmp.Length != WinSCardAPI.MAX_ATR_SIZE) {
-                        Array.Resize(ref tmp, WinSCardAPI.MAX_ATR_SIZE);
-                    }
+                switch (Platform.Type) {
+                    case PlatformType.Windows:
+                        if (tmp.Length != WinSCardAPI.MAX_ATR_SIZE) {
+                            Array.Resize(ref tmp, WinSCardAPI.MAX_ATR_SIZE);
+                        }
 
-                    _winscardRstate.rgbAtr = tmp;
-                    _winscardRstate.cbAtr = value.Length;
-                } else {
-                    if (tmp.Length != PCSCliteAPI.MAX_ATR_SIZE) {
-                        Array.Resize(ref tmp, PCSCliteAPI.MAX_ATR_SIZE);
-                    }
+                        _winscardRstate.rgbAtr = tmp;
+                        _winscardRstate.cbAtr = value.Length;
+                        break;
+                    case PlatformType.Linux:
+                        if (tmp.Length != PCSCliteLinux.MAX_ATR_SIZE) {
+                            Array.Resize(ref tmp, PCSCliteLinux.MAX_ATR_SIZE);
+                        }
 
-                    _pcscliteRstate.rgbAtr = tmp;
-                    _pcscliteRstate.cbAtr = (IntPtr) value.Length;
+                        _linuxRstate.rgbAtr = tmp;
+                        _linuxRstate.cbAtr = (IntPtr) value.Length;
+                        break;
+                    case PlatformType.MacOSX:
+                        if (tmp.Length != PCSCliteMacOsX.MAX_ATR_SIZE) {
+                            Array.Resize(ref tmp, PCSCliteMacOsX.MAX_ATR_SIZE);
+                        }
+
+                        _macosxRstate.rgbAtr = tmp;
+                        _macosxRstate.cbAtr = value.Length;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
 
         internal WINDOWS_SCARD_READERSTATE WindowsReaderState {
-            get { return _winscardRstate; }
-            set { _winscardRstate = value; }
+            get => _winscardRstate;
+            set => _winscardRstate = value;
         }
 
-        internal UNIX_SCARD_READERSTATE UnixReaderState {
-            get { return _pcscliteRstate; }
-            set { _pcscliteRstate = value; }
+        internal LINUX_SCARD_READERSTATE LinuxReaderState {
+            get => _linuxRstate;
+            set => _linuxRstate = value;
+        }
+        
+        internal MACOSX_SCARD_READERSTATE MacOsXReaderState {
+            get => _macosxRstate;
+            set => _macosxRstate = value;
         }
     }
 }
