@@ -205,3 +205,6 @@ paket-files/*
 
 # Fake temporary files
 .fake
+
+# JetBrains Rider
+.idea/*
