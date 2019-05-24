@@ -103,8 +103,8 @@ namespace PCSC
                     MemoryPtr = unchecked((IntPtr) ((long) Marshal
                             .AllocCoTaskMem(bufLength + Marshal.SizeOf(typeof(SCARD_IO_REQUEST_MACOSX))))
                     );
-                    _macosIoRequest.dwProtocol = (IntPtr) protocol;
-                    _macosIoRequest.cbPciLength = (IntPtr) bufLength;
+                    _macosIoRequest.dwProtocol = (int) protocol;
+                    _macosIoRequest.cbPciLength = bufLength;
                     if (MemoryPtr != IntPtr.Zero) {
                         Marshal.StructureToPtr(
                             _macosIoRequest,
@@ -271,13 +271,13 @@ namespace PCSC
 
                         return data;
                     case PlatformType.MacOSX:
-                        if (_macosIoRequest.cbPciLength != IntPtr.Zero) {
-                            data = new byte[(int) _macosIoRequest.cbPciLength];
+                        if (_macosIoRequest.cbPciLength != 0) {
+                            data = new byte[_macosIoRequest.cbPciLength];
                             Marshal.Copy(
                                 BufferStartAddr, // ugly hack because Mono has problems with IntPtr & 64bit
                                 data,
                                 0,
-                                unchecked((int) (long) _macosIoRequest.cbPciLength));
+                                _macosIoRequest.cbPciLength);
                         }
 
                         return data;

@@ -30,125 +30,120 @@ namespace PCSC.Interop.MacOSX
         }
         
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardEstablishContext(
-            [In] IntPtr dwScope,
+        internal static extern int SCardEstablishContext(
+            [In] int dwScope,
             [In] IntPtr pvReserved1,
             [In] IntPtr pvReserved2,
-            [In, Out] ref IntPtr phContext);
+            [In, Out] ref int phContext);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardReleaseContext(
-            [In] IntPtr hContext);
+        internal static extern int SCardReleaseContext(
+            [In] int hContext);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardIsValidContext(
-            [In] IntPtr hContext);
+        internal static extern int SCardIsValidContext(
+            [In] int hContext);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardListReaders(
-            [In] IntPtr hContext,
+        internal static extern int SCardListReaders(
+            [In] int hContext,
             [In] byte[] mszGroups,
             [Out] byte[] mszReaders,
-            [In, Out] ref IntPtr pcchReaders);
+            [In, Out] ref int pcchReaders);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardListReaderGroups(
-            [In] IntPtr hContext,
+        internal static extern int SCardListReaderGroups(
+            [In] int hContext,
             [Out] byte[] mszGroups,
-            [In, Out] ref IntPtr pcchGroups);
+            [In, Out] ref int pcchGroups);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardConnect(
-            [In] IntPtr hContext,
+        internal static extern int SCardConnect(
+            [In] int hContext,
             [In] byte[] szReader,
-            [In] IntPtr dwShareMode,
-            [In] IntPtr dwPreferredProtocols,
-            [Out] out IntPtr phCard,
-            [Out] out IntPtr pdwActiveProtocol);
+            [In] int dwShareMode,
+            [In] int dwPreferredProtocols,
+            [Out] out int phCard,
+            [Out] out int pdwActiveProtocol);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardReconnect(
-            [In] IntPtr hCard,
-            [In] IntPtr dwShareMode,
-            [In] IntPtr dwPreferredProtocols,
-            [In] IntPtr dwInitialization,
-            [Out] out IntPtr pdwActiveProtocol);
+        internal static extern int SCardReconnect(
+            [In] int hCard,
+            [In] int dwShareMode,
+            [In] int dwPreferredProtocols,
+            [In] int dwInitialization,
+            [Out] out int pdwActiveProtocol);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardDisconnect(
-            [In] IntPtr hCard,
-            [In] IntPtr dwDisposition);
+        internal static extern int SCardDisconnect(
+            [In] int hCard,
+            [In] int dwDisposition);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardBeginTransaction(
-            [In] IntPtr hCard);
+        internal static extern int SCardBeginTransaction(
+            [In] int hCard);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardEndTransaction(
-            [In] IntPtr hCard,
-            [In] IntPtr dwDisposition);
+        internal static extern int SCardEndTransaction(
+            [In] int hCard,
+            [In] int dwDisposition);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardTransmit(
-            [In] IntPtr hCard,
+        internal static extern int SCardTransmit(
+            [In] int hCard,
             [In] IntPtr pioSendPci,
             [In] byte[] pbSendBuffer,
-            [In] IntPtr cbSendLength,
+            [In] int cbSendLength,
             [In, Out] IntPtr pioRecvPci,
             [Out] byte[] pbRecvBuffer,
-            [In, Out] ref IntPtr pcbRecvLength);
+            [In, Out] ref int pcbRecvLength);
 
-        [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardControl(
-            [In] IntPtr hCard,
-            [In] IntPtr dwControlCode,
+        [DllImport(PCSC_LIB, EntryPoint = "SCardControl132")]
+        internal static extern int SCardControl(
+            [In] int hCard,
+            [In] int dwControlCode,
             [In] byte[] pbSendBuffer,
-            [In] IntPtr cbSendLength,
+            [In] int cbSendLength,
             [Out] byte[] pbRecvBuffer,
-            [In] IntPtr pcbRecvLength,
-            [Out] out IntPtr lpBytesReturned);
+            [In] int pcbRecvLength,
+            [Out] out int lpBytesReturned);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardStatus(
-            [In] IntPtr hCard,
+        internal static extern int SCardStatus(
+            [In] int hCard,
             [Out] byte[] szReaderName,
-            [In, Out] ref IntPtr pcchReaderLen,
-            [Out] out IntPtr pdwState,
-            [Out] out IntPtr pdwProtocol,
+            [In, Out] ref int pcchReaderLen,
+            [Out] out int pdwState,
+            [Out] out int pdwProtocol,
             [Out] byte[] pbAtr,
-            [In, Out] ref IntPtr pcbAtrLen);
+            [In, Out] ref int pcbAtrLen);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardGetStatusChange(
-            [In] IntPtr hContext,
-            [In] IntPtr dwTimeout,
+        internal static extern int SCardGetStatusChange(
+            [In] int hContext,
+            [In] int dwTimeout,
             [In, Out] SCARD_READERSTATE[] rgReaderStates,
-            [In] IntPtr cReaders);
+            [In] int cReaders);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardCancel(
-            [In] IntPtr hContext);
+        internal static extern int SCardCancel(
+            [In] int hContext);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardGetAttrib(
-            [In] IntPtr hCard,
-            [In] IntPtr dwAttrId,
+        internal static extern int SCardGetAttrib(
+            [In] int hCard,
+            [In] int dwAttrId,
             [Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
             byte[] pbAttr,
-            [In, Out] ref IntPtr pcbAttrLen);
+            [In, Out] ref int pcbAttrLen);
 
         [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardSetAttrib(
-            [In] IntPtr hCard,
-            [In] IntPtr dwAttrId,
+        internal static extern int SCardSetAttrib(
+            [In] int hCard,
+            [In] int dwAttrId,
             [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
             byte[] pbAttr,
-            [In] IntPtr cbAttrLen);
-
-        [DllImport(PCSC_LIB)]
-        internal static extern IntPtr SCardFreeMemory(
-            [In] IntPtr hContext,
-            [In] IntPtr pvMem);
+            [In] int cbAttrLen);
 
         [DllImport(DL_LIB)]
         internal static extern IntPtr dlopen(

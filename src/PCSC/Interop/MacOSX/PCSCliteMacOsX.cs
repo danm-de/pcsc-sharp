@@ -2,25 +2,24 @@
 using System.Text;
 using PCSC.Utils;
 using PCSC.Interop.MacOSX.ExtensionMethods;
+using PCSC.Interop.Windows.Extensions;
 
-namespace PCSC.Interop.MacOSX
-{
+namespace PCSC.Interop.MacOSX {
     /// <summary>
     /// PC/SC API for MacOS X
     /// </summary>
-    internal sealed class PCSCliteMacOsX : ISCardApi
-    {
+    internal sealed class PCSCliteMacOsX : ISCardApi {
         private const int MAX_READER_NAME = 255;
 
         private const int CHARSIZE = sizeof(byte);
 
-        private const int STATUS_MASK = (int) (SCardState.Absent
-                                               | SCardState.Negotiable
-                                               | SCardState.Powered
-                                               | SCardState.Present
-                                               | SCardState.Specific
-                                               | SCardState.Swallowed
-                                               | SCardState.Unknown);
+        private const int STATUS_MASK = (int)(SCardState.Absent
+                                              | SCardState.Negotiable
+                                              | SCardState.Powered
+                                              | SCardState.Present
+                                              | SCardState.Specific
+                                              | SCardState.Swallowed
+                                              | SCardState.Unknown);
 
         public const int MAX_ATR_SIZE = 33;
 
@@ -31,26 +30,24 @@ namespace PCSC.Interop.MacOSX
 
         public SCardError EstablishContext(SCardScope dwScope, IntPtr pvReserved1, IntPtr pvReserved2,
             out IntPtr phContext) {
-            var ctx = IntPtr.Zero;
+            var ctx = 0;
             var rc = SCardHelper.ToSCardError(MacOsxNativeMethods.SCardEstablishContext(
-                (IntPtr) dwScope,
+                (int)dwScope,
                 pvReserved1,
                 pvReserved2,
                 ref ctx));
-            phContext = ctx;
+            phContext = (IntPtr)ctx;
             return rc;
         }
 
-        public SCardError ReleaseContext(IntPtr hContext) {
-            return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardReleaseContext(hContext));
-        }
+        public SCardError ReleaseContext(IntPtr hContext) =>
+            SCardHelper.ToSCardError(MacOsxNativeMethods.SCardReleaseContext(hContext.ToInt32()));
 
-        public SCardError IsValidContext(IntPtr hContext) {
-            return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardIsValidContext(hContext));
-        }
+        public SCardError IsValidContext(IntPtr hContext) =>
+            SCardHelper.ToSCardError(MacOsxNativeMethods.SCardIsValidContext(hContext.ToInt32()));
 
         public SCardError ListReaders(IntPtr hContext, string[] groups, out string[] readers) {
-            var dwReaders = IntPtr.Zero;
+            var dwReaders = 0;
 
             // initialize groups array
             byte[] mszGroups = null;
@@ -58,8 +55,11 @@ namespace PCSC.Interop.MacOSX
                 mszGroups = SCardHelper.ConvertToByteArray(groups, TextEncoding);
 
             // determine the needed buffer size
+
+            var ctx = hContext.ToInt32();
             var rc = SCardHelper.ToSCardError(
-                MacOsxNativeMethods.SCardListReaders(hContext,
+                MacOsxNativeMethods.SCardListReaders(
+                    ctx,
                     mszGroups,
                     null,
                     ref dwReaders));
@@ -70,10 +70,11 @@ namespace PCSC.Interop.MacOSX
             }
 
             // initialize array for returning reader names
-            var mszReaders = new byte[(int) dwReaders];
+            var mszReaders = new byte[(int)dwReaders];
 
             rc = SCardHelper.ToSCardError(
-                MacOsxNativeMethods.SCardListReaders(hContext,
+                MacOsxNativeMethods.SCardListReaders(
+                    ctx,
                     mszGroups,
                     mszReaders,
                     ref dwReaders));
@@ -86,12 +87,13 @@ namespace PCSC.Interop.MacOSX
         }
 
         public SCardError ListReaderGroups(IntPtr hContext, out string[] groups) {
-            var dwGroups = IntPtr.Zero;
+            var dwGroups = 0;
 
             // determine the needed buffer size
+            var ctx = hContext.ToInt32();
             var rc = SCardHelper.ToSCardError(
                 MacOsxNativeMethods.SCardListReaderGroups(
-                    hContext,
+                    ctx,
                     null,
                     ref dwGroups));
 
@@ -101,11 +103,11 @@ namespace PCSC.Interop.MacOSX
             }
 
             // initialize array for returning group names
-            var mszGroups = new byte[(int) dwGroups];
+            var mszGroups = new byte[(int)dwGroups];
 
             rc = SCardHelper.ToSCardError(
                 MacOsxNativeMethods.SCardListReaderGroups(
-                    hContext,
+                    ctx,
                     mszGroups,
                     ref dwGroups));
 
@@ -119,15 +121,16 @@ namespace PCSC.Interop.MacOSX
         public SCardError Connect(IntPtr hContext, string szReader, SCardShareMode dwShareMode,
             SCardProtocol dwPreferredProtocols, out IntPtr phCard, out SCardProtocol pdwActiveProtocol) {
             var readername = SCardHelper.ConvertToByteArray(szReader, TextEncoding, Platform.Lib.CharSize);
-
-            var result = MacOsxNativeMethods.SCardConnect(hContext,
+            var result = MacOsxNativeMethods.SCardConnect(
+                hContext.ToInt32(),
                 readername,
-                (IntPtr) dwShareMode,
-                (IntPtr) dwPreferredProtocols,
-                out phCard,
+                (int)dwShareMode,
+                (int)dwPreferredProtocols,
+                out var card,
                 out var activeproto);
 
-            pdwActiveProtocol = (SCardProtocol) activeproto;
+            phCard = (IntPtr)card;
+            pdwActiveProtocol = (SCardProtocol)activeproto;
 
             return SCardHelper.ToSCardError(result);
         }
@@ -135,26 +138,26 @@ namespace PCSC.Interop.MacOSX
         public SCardError Reconnect(IntPtr hCard, SCardShareMode dwShareMode, SCardProtocol dwPreferredProtocols,
             SCardReaderDisposition dwInitialization, out SCardProtocol pdwActiveProtocol) {
             var result = MacOsxNativeMethods.SCardReconnect(
-                hCard,
-                (IntPtr) dwShareMode,
-                (IntPtr) dwPreferredProtocols,
-                (IntPtr) dwInitialization,
+                hCard.ToInt32(),
+                (int)dwShareMode,
+                (int)dwPreferredProtocols,
+                (int)dwInitialization,
                 out var activeproto);
 
-            pdwActiveProtocol = (SCardProtocol) activeproto;
+            pdwActiveProtocol = (SCardProtocol)activeproto;
             return SCardHelper.ToSCardError(result);
         }
 
         public SCardError Disconnect(IntPtr hCard, SCardReaderDisposition dwDisposition) {
-            return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardDisconnect(hCard, (IntPtr) dwDisposition));
+            return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardDisconnect(hCard.ToInt32(), (int)dwDisposition));
         }
 
         public SCardError BeginTransaction(IntPtr hCard) {
-            return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardBeginTransaction(hCard));
+            return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardBeginTransaction(hCard.ToInt32()));
         }
 
         public SCardError EndTransaction(IntPtr hCard, SCardReaderDisposition dwDisposition) {
-            return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardEndTransaction(hCard, (IntPtr) dwDisposition));
+            return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardEndTransaction(hCard.ToInt32(), (int)dwDisposition));
         }
 
         public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, IntPtr pioRecvPci,
@@ -181,13 +184,13 @@ namespace PCSC.Interop.MacOSX
 
         public SCardError Transmit(IntPtr hCard, IntPtr pioSendPci, byte[] pbSendBuffer, int pcbSendLength,
             IntPtr pioRecvPci, byte[] pbRecvBuffer, ref int pcbRecvLength) {
-            var recvlen = IntPtr.Zero;
+            var recvlen = 0;
             if (pbRecvBuffer != null) {
                 if (pcbRecvLength > pbRecvBuffer.Length || pcbRecvLength < 0) {
                     throw new ArgumentOutOfRangeException(nameof(pcbRecvLength));
                 }
 
-                recvlen = (IntPtr) pcbRecvLength;
+                recvlen = pcbRecvLength;
             } else {
                 if (pcbRecvLength != 0)
                     throw new ArgumentOutOfRangeException(nameof(pcbRecvLength));
@@ -199,7 +202,7 @@ namespace PCSC.Interop.MacOSX
                     throw new ArgumentOutOfRangeException(nameof(pcbSendLength));
                 }
 
-                sendbuflen = (IntPtr) pcbSendLength;
+                sendbuflen = (IntPtr)pcbSendLength;
             } else {
                 if (pcbSendLength != 0) {
                     throw new ArgumentOutOfRangeException(nameof(pcbSendLength));
@@ -207,15 +210,15 @@ namespace PCSC.Interop.MacOSX
             }
 
             var rc = SCardHelper.ToSCardError(MacOsxNativeMethods.SCardTransmit(
-                hCard,
+                hCard.ToInt32(),
                 pioSendPci,
                 pbSendBuffer,
-                sendbuflen,
+                sendbuflen.ToInt32(),
                 pioRecvPci,
                 pbRecvBuffer,
                 ref recvlen));
 
-            pcbRecvLength = (int) recvlen;
+            pcbRecvLength = recvlen;
             return rc;
         }
 
@@ -250,19 +253,16 @@ namespace PCSC.Interop.MacOSX
                 throw new ArgumentOutOfRangeException(nameof(recvBufferLength));
             }
 
-            var sendbuflen = (IntPtr) sendBufferLength;
-            var recvbuflen = (IntPtr) recvBufferLength;
-
             var rc = SCardHelper.ToSCardError(MacOsxNativeMethods.SCardControl(
-                hCard,
-                dwControlCode,
+                hCard.ToInt32(),
+                dwControlCode.ToInt32(),
                 pbSendBuffer,
-                sendbuflen,
+                sendBufferLength,
                 pbRecvBuffer,
-                recvbuflen,
+                recvBufferLength,
                 out var bytesret));
 
-            lpBytesReturned = (int) bytesret;
+            lpBytesReturned = (int)bytesret;
 
             return rc;
         }
@@ -270,12 +270,12 @@ namespace PCSC.Interop.MacOSX
         public SCardError Status(IntPtr hCard, out string[] szReaderName, out IntPtr pdwState, out IntPtr pdwProtocol,
             out byte[] pbAtr) {
             var readerName = new byte[MAX_READER_NAME * CharSize];
-            var readerNameSize = (IntPtr) MAX_READER_NAME;
+            var readerNameSize = MAX_READER_NAME;
 
             pbAtr = new byte[MAX_ATR_SIZE];
-            var atrlen = (IntPtr) pbAtr.Length;
+            var atrlen = pbAtr.Length;
             var rc = SCardHelper.ToSCardError(MacOsxNativeMethods.SCardStatus(
-                hCard,
+                hCard.ToInt32(),
                 readerName,
                 ref readerNameSize,
                 out var state,
@@ -283,22 +283,22 @@ namespace PCSC.Interop.MacOSX
                 pbAtr,
                 ref atrlen));
 
-            if (rc == SCardError.InsufficientBuffer || (MAX_READER_NAME < ((int) readerNameSize)) ||
-                (pbAtr.Length < (int) atrlen)) {
+            if (rc == SCardError.InsufficientBuffer || (MAX_READER_NAME < ((int)readerNameSize)) ||
+                (pbAtr.Length < (int)atrlen)) {
                 // second try
 
-                if (MAX_READER_NAME < ((int) readerNameSize)) {
+                if (MAX_READER_NAME < ((int)readerNameSize)) {
                     // readername byte array was too short
-                    readerName = new byte[(int) readerNameSize * CharSize];
+                    readerName = new byte[(int)readerNameSize * CharSize];
                 }
 
-                if (pbAtr.Length < (int) atrlen) {
+                if (pbAtr.Length < (int)atrlen) {
                     // ATR byte array was too short
-                    pbAtr = new byte[(int) atrlen];
+                    pbAtr = new byte[(int)atrlen];
                 }
 
                 rc = SCardHelper.ToSCardError(MacOsxNativeMethods.SCardStatus(
-                    hCard,
+                    hCard.ToInt32(),
                     readerName,
                     ref readerNameSize,
                     out state,
@@ -307,21 +307,21 @@ namespace PCSC.Interop.MacOSX
                     ref atrlen));
             }
 
-            pdwState = state;
-            pdwProtocol = proto;
+            pdwProtocol = (IntPtr)proto;
 
             if (rc == SCardError.Success) {
-                state = state.Mask(STATUS_MASK);
-                if ((int) atrlen < pbAtr.Length) {
-                    Array.Resize(ref pbAtr, (int) atrlen);
+                pdwState = (IntPtr)state.ConvertToSCardState();
+                if (atrlen < pbAtr.Length) {
+                    Array.Resize(ref pbAtr, atrlen);
                 }
 
-                if (((int) readerNameSize) < (readerName.Length / CharSize)) {
-                    Array.Resize(ref readerName, (int) readerNameSize * CharSize);
+                if (readerNameSize < (readerName.Length / CharSize)) {
+                    Array.Resize(ref readerName, readerNameSize * CharSize);
                 }
 
                 szReaderName = SCardHelper.ConvertToStringArray(readerName, TextEncoding);
             } else {
+                pdwState = (IntPtr)SCardState.Unknown;
                 szReaderName = null;
             }
 
@@ -342,25 +342,25 @@ namespace PCSC.Interop.MacOSX
             }
 
             var rc = SCardHelper.ToSCardError(MacOsxNativeMethods.SCardGetStatusChange(
-                hContext,
-                dwTimeout,
+                hContext.ToInt32(),
+                dwTimeout.ToInt32(),
                 readerstates,
-                (IntPtr) cReaders));
+                cReaders));
 
             if (rc != SCardError.Success || rgReaderStates == null) {
                 return rc;
             }
 
-            for (var i = 0; i < cReaders; i++)
+            for (var i = 0; i < cReaders; i++) {
                 // replace with returned values 
                 rgReaderStates[i].MacOsXReaderState = readerstates[i];
+            }
 
             return rc;
         }
 
-        public SCardError Cancel(IntPtr hContext) {
-            return SCardHelper.ToSCardError(MacOsxNativeMethods.SCardCancel(hContext));
-        }
+        public SCardError Cancel(IntPtr hContext) =>
+            SCardHelper.ToSCardError(MacOsxNativeMethods.SCardCancel(hContext.ToInt32()));
 
         public SCardError GetAttrib(IntPtr hCard, IntPtr attributeId, byte[] receiveBuffer, out int attributeLength) {
             var receiveBufferSize = receiveBuffer?.Length ?? 0;
@@ -377,14 +377,14 @@ namespace PCSC.Interop.MacOSX
                 throw new ArgumentOutOfRangeException(nameof(receiveBufferLength));
             }
 
-            var attrlen = (IntPtr) receiveBufferLength;
+            var attrlen = receiveBufferLength;
             var rc = SCardHelper.ToSCardError(MacOsxNativeMethods.SCardGetAttrib(
-                hCard,
-                attributeId,
+                hCard.ToInt32(),
+                attributeId.ToInt32(),
                 receiveBuffer,
                 ref attrlen));
 
-            attributeLength = (int) attrlen;
+            attributeLength = attrlen;
             return rc;
         }
 
@@ -396,17 +396,17 @@ namespace PCSC.Interop.MacOSX
                     throw new ArgumentOutOfRangeException(nameof(sendBufferLength));
                 }
 
-                cbAttrLen = (IntPtr) sendBufferLength;
+                cbAttrLen = (IntPtr)sendBufferLength;
             } else {
                 cbAttrLen = IntPtr.Zero;
             }
 
             return SCardHelper.ToSCardError(
                 MacOsxNativeMethods.SCardSetAttrib(
-                    hCard,
-                    attributeId,
+                    hCard.ToInt32(),
+                    attributeId.ToInt32(),
                     sendBuffer,
-                    cbAttrLen));
+                    cbAttrLen.ToInt32()));
         }
 
         public IntPtr GetSymFromLib(string symName) {

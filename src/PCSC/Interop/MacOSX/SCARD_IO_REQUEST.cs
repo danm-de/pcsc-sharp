@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 
 namespace PCSC.Interop.MacOSX
@@ -6,11 +6,7 @@ namespace PCSC.Interop.MacOSX
     [StructLayout(LayoutKind.Sequential)]
     internal class SCARD_IO_REQUEST
     {
-        internal SCARD_IO_REQUEST() {
-            dwProtocol = IntPtr.Zero;
-        }
-
-        internal IntPtr dwProtocol; // Protocol identifier
-        internal IntPtr cbPciLength; // Protocol Control Inf Length
+        internal int dwProtocol; // Protocol identifier
+        internal int cbPciLength; // Protocol Control Inf Length
     }
 }
