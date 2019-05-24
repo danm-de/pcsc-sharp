@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Text;
 using PCSC;
 using PCSC.Monitoring;
 using PCSC.Reactive;
@@ -24,18 +26,42 @@ namespace RxEventsTest
 
             var subscription = monitorFactory
                 .CreateObservable(SCardScope.System, readers)
-                .Subscribe(OnNext, OnError);
+                .Select(GetEventText)
+                .Do(Console.WriteLine) 
+                .Subscribe(
+                    onNext: _ => {}, 
+                    onError: OnError);
 
             Console.ReadKey();
             subscription.Dispose();
         }
 
         private static void OnError(Exception exception) {
-            Console.WriteLine("ERROR: {0}", exception.Message);
+            Console.Error.WriteLine("ERROR: {0}", exception.Message);
         }
 
-        private static void OnNext(MonitorEvent ev) {
-            Console.WriteLine($"Event type {ev.GetType()}, reader: {ev.ReaderName}");
+        private static string GetEventText(MonitorEvent ev) {
+            var sb = new StringBuilder();
+            sb.Append($"{ev.GetType().Name} - reader: {ev.ReaderName}");
+            switch (ev) {
+                case CardStatusChanged changed:
+                    sb.AppendLine($", previous state: {changed.PreviousState}, new state: {changed.NewState}");
+                    break;
+                case CardRemoved removed:
+                    sb.AppendLine($", state: {removed.State}");
+                    break;
+                case CardInserted inserted:
+                    sb.AppendLine($", state: {inserted.State}, ATR: {BitConverter.ToString(inserted.Atr)}");
+                    break;
+                case MonitorInitialized initialized:
+                    sb.AppendLine($", state: {initialized.State}, ATR: {BitConverter.ToString(initialized.Atr)}");
+                    break;
+                case MonitorCardInfoEvent infoEvent:
+                    sb.AppendLine($", state: {infoEvent.State}, ATR: {BitConverter.ToString(infoEvent.Atr)}");
+                    break;
+            }
+
+            return sb.ToString();
         }
 
         private static string[] GetReaders() {
