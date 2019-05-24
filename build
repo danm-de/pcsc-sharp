@@ -4,6 +4,7 @@ export root=$(dirname $0)
 export file_solution=$root/pcsc-sharp.sln
 export dir_packages=$root/packages
 export paket=$root/paket
+export FAKE_NO_LEGACY_WARNING=true
 
 script_file_name=$(basename $0)
 export file_buildlog=$root/${script_file_name%.*}.log

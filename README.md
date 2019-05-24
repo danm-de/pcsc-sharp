@@ -1,4 +1,4 @@
-# PC/SC wrapper classes for .NET
+﻿# PC/SC wrapper classes for .NET
 
 <!-- toc -->
 
@@ -120,8 +120,15 @@ monitor.Dispose();
 Checkout the [Examples](https://github.com/danm-de/pcsc-sharp/tree/master/Examples) directory.
 
 ## Build from source
+
+### Required software
+
+* .Net Framework 4.0 targeting pack
+* .Net Core 2.2 SDK
+* .Net Framework 4.7.2 SDK (For Unit-Tests and example projects)
+
 _pcsc-sharp_ uses the great [FAKE](https://fake.build/) DSL for build tasks 
-and the awesome [Paket](https://fsprojects.github.io/Paket/) for NuGet 
+and [Paket](https://fsprojects.github.io/Paket/) for NuGet 
 package management. To build the solution, simply start the ```build.cmd``` 
 on Windows or the ```build``` shell script on Unix. Add ```NuGet``` as command 
 line argument to create NuGet packages.
@@ -136,7 +143,4 @@ On Unix/Linux run
 ```shell
  ./paket restore
 ```
-
-to download NuGet dependencies before opening the solution in Visual Studio or
-MonoDevelop.
 

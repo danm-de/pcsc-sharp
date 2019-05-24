@@ -4,6 +4,7 @@ set root=%~dp0
 set file_solution=%root%\pcsc-sharp.sln
 set dir_packages=%root%\packages
 set paket=%root%\paket.cmd
+set FAKE_NO_LEGACY_WARNING=true
 
 call %paket% restore
 if errorlevel 1 (
