@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
-    <Version>4.0.3</Version>
+    <TargetFrameworks>netstandard2.0;netcoreapp2.2;net40</TargetFrameworks>
+    <Version>4.0.4</Version>
     <Authors>Daniel Mueller</Authors>
     <Company>Daniel Mueller</Company>
     <Description>Implements partial ISO7816 support (APDU etc.) for PCSC.</Description>
@@ -22,6 +22,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\PCSC.Iso7816.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.2|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp2.2\PCSC.Iso7816.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.2|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.2\PCSC.Iso7816.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|AnyCPU'">
     <DocumentationFile>bin\Release\net40\PCSC.Iso7816.xml</DocumentationFile>

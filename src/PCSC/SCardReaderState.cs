@@ -49,7 +49,7 @@ namespace PCSC
         /// </summary>
         /// <param name="disposing">Ignored.</param>
         protected virtual void Dispose(bool disposing) {
-            // We must free unmanaged resources!
+            // Free unmanaged resources
             if (_pReaderName != IntPtr.Zero) {
                 // Free unmanaged memory
                 Marshal.FreeCoTaskMem(_pReaderName);

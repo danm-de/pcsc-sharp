@@ -8,4 +8,5 @@ nuget FluentAssertions
 nuget Microsoft.Reactive.Testing
 nuget NUnit
 nuget NUnit.Runners
-nuget System.Reactive
+nuget System.Reactive ~> 4.1.5
+nuget System.ValueTuple ~> 4.5.0

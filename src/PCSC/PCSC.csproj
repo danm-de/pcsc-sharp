@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netcoreapp2.2;net40</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage />
     <PackageLicenseUrl>https://github.com/danm-de/pcsc-sharp/blob/master/COPYING</PackageLicenseUrl>
@@ -9,7 +9,7 @@
     <Description>Contains classes to access the Personal Computer/Smart Card Resource Manager using the system's native PC/SC API.  The library is written to run on both, Windows and Unix (Linux with Mono using PCSC Lite).</Description>
     <Company />
     <Authors>Daniel Mueller</Authors>
-    <Version>4.0.3</Version>
+    <Version>4.0.4</Version>
     <PackageTags>pcsc smartcard pcsc-sharp pc/sc</PackageTags>
     <PackageProjectUrl>https://github.com/danm-de/pcsc-sharp</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp.png</PackageIconUrl>
@@ -22,6 +22,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\PCSC.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp2.2|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp2.2\PCSC.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.2|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.2\PCSC.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|AnyCPU'">
     <DocumentationFile>bin\Release\net40\PCSC.xml</DocumentationFile>
