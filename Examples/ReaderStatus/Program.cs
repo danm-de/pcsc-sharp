@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using PCSC;
 
-namespace ReaderStatus
-{
-    public class Program
-    {
+namespace ReaderStatus {
+    public class Program {
         public static void Main() {
             var contextFactory = ContextFactory.Instance;
             using (var ctx = contextFactory.Establish(SCardScope.System)) {
                 var readerNames = ctx.GetReaders();
 
-                if (NoReaderFound(readerNames)) {
+                if (IsEmpty(readerNames)) {
                     Console.WriteLine("No reader connected.");
                     Console.ReadKey();
                     return;
@@ -27,6 +25,7 @@ namespace ReaderStatus
                 }
             }
 
+            Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
         }
 
@@ -43,6 +42,7 @@ namespace ReaderStatus
                               $"ATR: {atr}");
         }
 
-        private static bool NoReaderFound(ICollection<string> readerNames) => readerNames == null || readerNames.Count < 1;
+        private static bool IsEmpty(ICollection<string> readerNames) =>
+            readerNames == null || readerNames.Count < 1;
     }
 }

@@ -2,10 +2,8 @@
 using System.Linq;
 using PCSC;
 
-namespace ConnectedReaderStatus
-{
-    class Program
-    {
+namespace ConnectedReaderStatus {
+    class Program {
         static void Main(string[] args) {
             using (var ctx = ContextFactory.Instance.Establish(SCardScope.User)) {
                 var firstReader = ctx
@@ -24,9 +22,10 @@ namespace ConnectedReaderStatus
                     Console.WriteLine($"Protocol: {status.Protocol}");
                     Console.WriteLine($"State: {status.State}");
                     Console.WriteLine($"ATR: {BitConverter.ToString(status.GetAtr() ?? new byte[0])}");
-
-                    Console.ReadKey();
                 }
+
+                Console.WriteLine("Press any key to exit.");
+                Console.ReadKey();
             }
         }
     }

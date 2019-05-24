@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using PCSC;
 
-namespace CardStatus
-{
-    public class Program
-    {
+namespace CardStatus {
+    public class Program {
         public static void Main() {
             var contextFactory = ContextFactory.Instance;
 
             using (var context = contextFactory.Establish(SCardScope.System)) {
                 var readerNames = context.GetReaders();
 
-                if (NoReaderFound(readerNames)) {
+                if (IsEmpty(readerNames)) {
                     Console.WriteLine("No readers found.");
                     Console.ReadKey();
                     return;
                 }
 
                 DisplayReaderStatus(context, readerNames);
+
+                Console.WriteLine("Press any key to exit.");
                 Console.ReadKey();
             }
         }
@@ -27,8 +27,8 @@ namespace CardStatus
         /// <summary>
         /// Displays the card status of each reader in <paramref name="readerNames"/>
         /// </summary>
-        /// <param name="context">Smartcard context to connect</param>
-        /// <param name="readerNames">Smartcard readers</param>
+        /// <param name="context">Smart-card context to connect</param>
+        /// <param name="readerNames">Smart-card readers</param>
         private static void DisplayReaderStatus(ISCardContext context, IEnumerable<string> readerNames) {
             foreach (var readerName in readerNames) {
                 try {
@@ -37,9 +37,9 @@ namespace CardStatus
                         Console.WriteLine();
                     }
                 } catch (Exception exception) {
-                    Console.WriteLine(
+                    Console.Error.WriteLine(
                         "No card inserted or reader '{0}' is reserved exclusively by another application.", readerName);
-                    Console.WriteLine("Error message: {0} ({1})\n", exception.Message, exception.GetType());
+                    Console.Error.WriteLine("Error message: {0} ({1})\n", exception.Message, exception.GetType());
                 }
             }
         }
@@ -57,13 +57,13 @@ namespace CardStatus
                     status.State);
                 PrintCardAtr(status.GetAtr());
             } catch (Exception exception) {
-                Console.WriteLine("Unable to retrieve card status.\nError message: {0} ({1}", exception,
+                Console.Error.WriteLine("Unable to retrieve card status.\nError message: {0} ({1}", exception,
                     exception.GetType());
             }
         }
 
         /// <summary>
-        /// Prints the smartcard's ATR as hex string
+        /// Prints the smart-card's ATR as hex string
         /// </summary>
         /// <param name="atr">ATR bytes</param>
         private static void PrintCardAtr(byte[] atr) {
@@ -77,9 +77,8 @@ namespace CardStatus
         /// <summary>
         /// Returns <c>true</c> if the supplied collection <paramref name="readerNames"/> does not contain any reader.
         /// </summary>
-        /// <param name="readerNames">Collection of smartcard reader names</param>
+        /// <param name="readerNames">Collection of smart-card reader names</param>
         /// <returns><c>true</c> if no reader found</returns>
-        private static bool NoReaderFound(ICollection<string> readerNames) =>
-            readerNames == null || readerNames.Count < 1;
+        private static bool IsEmpty(ICollection<string> readerNames) => readerNames == null || readerNames.Count < 1;
     }
 }

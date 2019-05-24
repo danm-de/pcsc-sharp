@@ -3,24 +3,20 @@ using System.Collections.Generic;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace Mifare1kTest
-{
-    public class Program
-    {
+namespace Mifare1kTest {
+    public class Program {
         private static readonly byte[] DATA_TO_WRITE = {
-            0x0F, 0x0E, 0x0D, 0x0C, 0x0B, 0x0A, 0x09, 0x08, 0x07, 0x06, 0x05,
-            0x04, 0x03, 0x02, 0x01, 0x00
+            0x0F, 0x0E, 0x0D, 0x0C, 0x0B, 0x0A, 0x09, 0x08, 0x07, 0x06, 0x05, 0x04, 0x03, 0x02, 0x01, 0x00
         };
 
         private const byte MSB = 0x00;
         private const byte LSB = 0x08;
 
         public static void Main() {
-            var contextFactory = ContextFactory.Instance;
-            using (var context = contextFactory.Establish(SCardScope.System)) {
+            using (var context = ContextFactory.Instance.Establish(SCardScope.System)) {
                 var readerNames = context.GetReaders();
-                if (NoReaderAvailable(readerNames)) {
-                    Console.WriteLine("You need at least one reader in order to run this example.");
+                if (IsEmpty(readerNames)) {
+                    Console.Error.WriteLine("You need at least one reader in order to run this example.");
                     Console.ReadKey();
                     return;
                 }
@@ -77,9 +73,9 @@ namespace Mifare1kTest
         }
 
         /// <summary>
-        /// Asks the user to select a smartcard reader containing the Mifare chip
+        /// Asks the user to select a smart-card reader containing the Mifare chip
         /// </summary>
-        /// <param name="readerNames">Collection of available smartcard readers</param>
+        /// <param name="readerNames">Collection of available smart-card readers</param>
         /// <returns>The selected reader name or <c>null</c> if none</returns>
         private static string ChooseReader(IList<string> readerNames) {
             Console.WriteLine(new string('=', 79));
@@ -108,8 +104,7 @@ namespace Mifare1kTest
             return null;
         }
 
-        private static bool NoReaderAvailable(ICollection<string> readerNames) {
-            return readerNames == null || readerNames.Count < 1;
-        }
+        private static bool IsEmpty(ICollection<string> readerNames) =>
+            readerNames == null || readerNames.Count < 1;
     }
 }

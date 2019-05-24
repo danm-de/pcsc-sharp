@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace Transmit
-{
-    public class Program
-    {
+namespace Transmit {
+    public class Program {
         public static void Main() {
-            var contextFactory = ContextFactory.Instance;
-            using (var context = contextFactory.Establish(SCardScope.System)) {
+            using (var context = ContextFactory.Instance.Establish(SCardScope.System)) {
                 var readerNames = context.GetReaders();
                 if (NoReaderFound(readerNames)) {
                     Console.WriteLine("You need at least one reader in order to run this example.");
@@ -22,7 +19,6 @@ namespace Transmit
                     return;
                 }
 
-                // 'using' statement to make sure the reader will be disposed (disconnected) on exit
                 using (var rfidReader = context.ConnectReader(readerName, SCardShareMode.Shared, SCardProtocol.Any)) {
                     var apdu = new CommandApdu(IsoCase.Case2Short, rfidReader.Protocol) {
                         CLA = 0xFF,
@@ -51,15 +47,16 @@ namespace Transmit
 
                         var responseApdu =
                             new ResponseApdu(receiveBuffer, bytesReceived, IsoCase.Case2Short, rfidReader.Protocol);
-                        Console.Write("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}",
+                        Console.WriteLine("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}",
                             responseApdu.SW1,
                             responseApdu.SW2,
                             responseApdu.HasData ? BitConverter.ToString(responseApdu.GetData()) : "No uid received");
                     }
-
-                    Console.ReadKey();
                 }
             }
+
+            Console.WriteLine("\nPress any key to exit.");
+            Console.ReadKey();
         }
 
         private static string ChooseRfidReader(IList<string> readerNames) {

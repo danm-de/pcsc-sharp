@@ -1,18 +1,15 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace ApduTest.GET_CHALLENGE
-{
-    public class Program
-    {
+namespace ApduTest.GET_CHALLENGE {
+    public class Program {
         private static void Main() {
-            var contextFactory = ContextFactory.Instance;
-            using (var ctx = contextFactory.Establish(SCardScope.System)) {
+            using (var ctx = ContextFactory.Instance.Establish(SCardScope.System)) {
                 var readerNames = ctx.GetReaders();
-                if (NoReaderFound(readerNames)) {
-                    Console.WriteLine("You need at least one reader in order to run this example.");
+                if (IsEmpty(readerNames)) {
+                    Console.Error.WriteLine("You need at least one reader in order to run this example.");
                     Console.ReadKey();
                     return;
                 }
@@ -68,7 +65,9 @@ namespace ApduTest.GET_CHALLENGE
             Console.Write("Which reader has an inserted card that supports the GET CHALLENGE command? ");
             var line = Console.ReadLine();
 
-            if (int.TryParse(line, out var choice) && (choice >= 0) && (choice <= readerNames.Count)) {
+            if (int.TryParse(line, out var choice) &&
+                choice >= 0 &&
+                choice <= readerNames.Count) {
                 return readerNames[choice];
             }
 
@@ -77,8 +76,7 @@ namespace ApduTest.GET_CHALLENGE
             return null;
         }
 
-        private static bool NoReaderFound(ICollection<string> readerNames) {
-            return readerNames == null || readerNames.Count < 1;
-        }
+        private static bool IsEmpty(ICollection<string> readerNames) =>
+            readerNames == null || readerNames.Count < 1;
     }
 }

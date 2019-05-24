@@ -9,13 +9,13 @@
     <Description>Contains classes to access the Personal Computer/Smart Card Resource Manager using the system's native PC/SC API.  The library is written to run on both, Windows and Unix (Linux with Mono using PCSC Lite).</Description>
     <Company />
     <Authors>Daniel Mueller</Authors>
-    <Version>4.0.4</Version>
+    <Version>4.1.0</Version>
     <PackageTags>pcsc smartcard pcsc-sharp pc/sc</PackageTags>
     <PackageProjectUrl>https://github.com/danm-de/pcsc-sharp</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/danm-de/pcsc-sharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageVersion>4.0.4</PackageVersion>
+    <PackageVersion>4.1.0</PackageVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\PCSC.xml</DocumentationFile>

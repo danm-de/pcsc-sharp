@@ -5,28 +5,23 @@ using PCSC.Exceptions;
 using PCSC.Monitoring;
 using PCSC.Utils;
 
-namespace MonitorReaderEvents
-{
-    public class Program
-    {
-        private static readonly IContextFactory _contextFactory = ContextFactory.Instance;
-
+namespace MonitorReaderEvents {
+    public class Program {
         public static void Main() {
             Console.WriteLine("This program will monitor all SmartCard readers and display all status changes.");
 
             // Retrieve the names of all installed readers.
             var readerNames = GetReaderNames();
 
-            if (NoReaderFound(readerNames)) {
+            if (IsEmpty(readerNames)) {
                 Console.WriteLine("There are currently no readers installed.");
                 Console.ReadKey();
                 return;
             }
 
-            // Create smartcard monitor using a context factory. 
+            // Create smart-card monitor using a context factory. 
             // The context will be automatically released after monitor.Dispose()
-            var monitorFactory = MonitorFactory.Instance;
-            using (var monitor = monitorFactory.Create(SCardScope.System)) {
+            using (var monitor = MonitorFactory.Instance.Create(SCardScope.System)) {
                 AttachToAllEvents(monitor); // Remember to detach, if you use this in production!
 
                 ShowUserInfo(readerNames);
@@ -49,11 +44,6 @@ namespace MonitorReaderEvents
                     }
                 }
             }
-        }
-
-        private static bool ExitRequested(ConsoleKeyInfo key) {
-            return key.Modifiers == ConsoleModifiers.Control
-                   && key.Key == ConsoleKey.Q;
         }
 
         private static void ShowUserInfo(IEnumerable<string> readerNames) {
@@ -91,13 +81,15 @@ namespace MonitorReaderEvents
         }
 
         private static string[] GetReaderNames() {
-            using (var context = _contextFactory.Establish(SCardScope.System)) {
+            using (var context = ContextFactory.Instance.Establish(SCardScope.System)) {
                 return context.GetReaders();
             }
         }
 
-        private static bool NoReaderFound(ICollection<string> readerNames) {
-            return readerNames == null || readerNames.Count < 1;
-        }
+        private static bool ExitRequested(ConsoleKeyInfo key) =>
+            key.Modifiers == ConsoleModifiers.Control &&
+            key.Key == ConsoleKey.Q;
+
+        private static bool IsEmpty(ICollection<string> readerNames) => readerNames == null || readerNames.Count < 1;
     }
 }

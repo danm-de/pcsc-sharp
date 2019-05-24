@@ -2,32 +2,31 @@
 using System.Collections.Generic;
 using PCSC;
 
-namespace GetReaderAttrib
-{
-    public class Program
-    {
+namespace GetReaderAttrib {
+    class Program {
         public static void Main() {
             var contextFactory = ContextFactory.Instance;
             using (var context = contextFactory.Establish(SCardScope.System)) {
                 var readerNames = context.GetReaders();
 
-                if (NoReaderFound(readerNames)) {
+                if (IsEmpty(readerNames)) {
                     Console.WriteLine("You need at least one reader in order to run this example.");
                     Console.ReadKey();
                     return;
                 }
 
-                DisplayAtrs(context, readerNames);
+                DisplayAtrForEachReader(context, readerNames);
                 Console.ReadKey();
             }
         }
 
         /// <summary>
-        /// Receive the ATR of each reader in <paramref name="readerNames"/> by using the GetAttrib function
+        /// Receive the ATR of each reader in <paramref name="readerNames"/>
+        /// by using the <see cref="ICardReader.GetAttrib(SCardAttribute)"/> function
         /// </summary>
         /// <param name="context">Connection context</param>
         /// <param name="readerNames">Readers from which the ATR should be requested</param>
-        private static void DisplayAtrs(ISCardContext context, IEnumerable<string> readerNames) {
+        private static void DisplayAtrForEachReader(ISCardContext context, IEnumerable<string> readerNames) {
             foreach (var readerName in readerNames) {
                 try {
                     using (var reader = context.ConnectReader(readerName, SCardShareMode.Shared, SCardProtocol.Any)) {
@@ -43,15 +42,15 @@ namespace GetReaderAttrib
         /// <summary>
         /// Receive and print ATR string attribute
         /// </summary>
-        /// <param name="reader">Connected smartcard reader instance</param>
+        /// <param name="reader">Connected smart-card reader instance</param>
         private static void DisplayAtr(ICardReader reader) {
             try {
                 var atr = reader.GetAttrib(SCardAttribute.AtrString);
-                Console.WriteLine("Reader: {0}, ATR: {1}", 
+                Console.WriteLine("Reader: {0}, ATR: {1}",
                     reader.Name,
                     BitConverter.ToString(atr ?? new byte[] { }));
             } catch (Exception exception) {
-                Console.WriteLine("Reader: {0}, Error by trying to receive the ATR. {1} ({2})\n", 
+                Console.WriteLine("Reader: {0}, Error by trying to receive the ATR. {1} ({2})\n",
                     reader.Name,
                     exception.Message,
                     exception.GetType());
@@ -63,8 +62,6 @@ namespace GetReaderAttrib
         /// </summary>
         /// <param name="readerNames">Collection of reader names</param>
         /// <returns><c>true</c> if the supplied collection of <paramref name="readerNames"/> does not contain any reader name.</returns>
-        private static bool NoReaderFound(ICollection<string> readerNames) {
-            return readerNames == null || readerNames.Count < 1;
-        }
+        private static bool IsEmpty(ICollection<string> readerNames) => readerNames == null || readerNames.Count == 0;
     }
 }

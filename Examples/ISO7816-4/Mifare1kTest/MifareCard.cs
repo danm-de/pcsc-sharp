@@ -3,10 +3,8 @@ using System.Diagnostics;
 using PCSC;
 using PCSC.Iso7816;
 
-namespace Mifare1kTest
-{
-    public class MifareCard
-    {
+namespace Mifare1kTest {
+    public class MifareCard {
         private const byte CUSTOM_CLA = 0xFF;
         private readonly IIsoReader _isoReader;
 
@@ -18,7 +16,7 @@ namespace Mifare1kTest
             var loadKeyCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
                 CLA = CUSTOM_CLA,
                 Instruction = InstructionCode.ExternalAuthenticate,
-                P1 = (byte) keyStructure,
+                P1 = (byte)keyStructure,
                 P2 = keyNumber,
                 Data = key
             };
@@ -47,7 +45,7 @@ namespace Mifare1kTest
                 Data = authBlock.ToArray()
             };
 
-            Debug.WriteLine($"General Authenticate: { BitConverter.ToString(authKeyCmd.ToArray())}");
+            Debug.WriteLine($"General Authenticate: {BitConverter.ToString(authKeyCmd.ToArray())}");
             var response = _isoReader.Transmit(authKeyCmd);
             Debug.WriteLine($"SW1 SW2 = {response.SW1:X2} {response.SW2:X2}");
 
@@ -91,6 +89,7 @@ namespace Mifare1kTest
         }
 
         private static bool IsSuccess(Response response) =>
-            (response.SW1 == (byte) SW1Code.Normal) && (response.SW2 == 0x00);
+            (response.SW1 == (byte)SW1Code.Normal) &&
+            (response.SW2 == 0x00);
     }
 }
