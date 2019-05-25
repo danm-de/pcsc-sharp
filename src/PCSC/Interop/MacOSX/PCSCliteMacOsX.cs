@@ -310,7 +310,7 @@ namespace PCSC.Interop.MacOSX {
             pdwProtocol = (IntPtr)proto;
 
             if (rc == SCardError.Success) {
-                pdwState = (IntPtr)state.ConvertToSCardState();
+                pdwState = (IntPtr)state.Mask(STATUS_MASK);
                 if (atrlen < pbAtr.Length) {
                     Array.Resize(ref pbAtr, atrlen);
                 }
@@ -352,7 +352,7 @@ namespace PCSC.Interop.MacOSX {
             }
 
             for (var i = 0; i < cReaders; i++) {
-                // replace with returned values 
+                // replace with returned values
                 rgReaderStates[i].MacOsXReaderState = readerstates[i];
             }
 
