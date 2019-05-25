@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D3253E47-228E-4C58-930E-A26849AEC371}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CB59DC8C-5A87-4E74-B1E2-AE89E9D3B1FD}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		AUTHORS = AUTHORS
+		Changelog = Changelog
+		COPYING = COPYING
+		pcsc-sharp.snk = pcsc-sharp.snk
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -49,11 +53,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RxMonitorDeviceEvents", "Ex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RxMonitorReaderEvents", "Examples\Reactive\RxMonitorReaderEvents\RxMonitorReaderEvents.csproj", "{8B7987A0-486F-4A4D-8488-BDECCB2F647D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCSC.Tests", "Tests\PCSC.Tests\PCSC.Tests.csproj", "{8A6366D0-DD02-41DA-9E64-D902E0521385}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCSC.Tests", "Tests\PCSC.Tests\PCSC.Tests.csproj", "{8A6366D0-DD02-41DA-9E64-D902E0521385}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCSC.Iso7816.Tests", "Tests\PCSC.Iso7816.Tests\PCSC.Iso7816.Tests.csproj", "{EFDDE824-1E88-47D9-A5C5-25C02811F34C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCSC.Iso7816.Tests", "Tests\PCSC.Iso7816.Tests\PCSC.Iso7816.Tests.csproj", "{EFDDE824-1E88-47D9-A5C5-25C02811F34C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCSC.Reactive.Tests", "Tests\PCSC.Reactive.Tests\PCSC.Reactive.Tests.csproj", "{DD42DDFD-4222-4351-B394-02A31A629821}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCSC.Reactive.Tests", "Tests\PCSC.Reactive.Tests\PCSC.Reactive.Tests.csproj", "{DD42DDFD-4222-4351-B394-02A31A629821}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
