@@ -121,7 +121,7 @@ Checkout the [Examples](https://github.com/danm-de/pcsc-sharp/tree/master/Exampl
 
 ## Build from source
 
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/pcsc-sharp)](https://ci.appveyor.com/project/danm-de/pcsc-sharp)
+[![Build status](https://ci.appveyor.com/api/projects/status/u598dohxli3a18t8?svg=true)](https://ci.appveyor.com/project/danm-de/pcsc-sharp)
 
 ### Required software
 
