@@ -15,7 +15,7 @@ namespace ConnectedReaderStatus {
                     return;
                 }
 
-                using (var reader = ctx.ConnectReader(firstReader, SCardShareMode.Direct, SCardProtocol.Unset)) {
+                using (var reader = ctx.ConnectReader(firstReader, SCardShareMode.Shared, SCardProtocol.Any)) {
                     var status = reader.GetStatus();
 
                     Console.WriteLine($"Reader names: {string.Join(", ", status.GetReaderNames())}");
