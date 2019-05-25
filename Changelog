@@ -3,6 +3,14 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2019-05-26  Daniel Mueller <daniel@danm.de>
+* New version 4.1.0
+* Fixes https://github.com/danm-de/pcsc-sharp/issues/87
+  Thanks to Jesse de Wit @JssDWt and @melihercan for reporting
+* Fixes https://github.com/danm-de/pcsc-sharp/issues/90
+* Fixes https://github.com/danm-de/pcsc-sharp/pull/88
+  Thanks to Alexander Gräf @graealex
+
 2019-02-18  Daniel Mueller <daniel@danm.de>
 * New version 4.0.3
 * Fixes https://github.com/danm-de/pcsc-sharp/issues/86
@@ -117,7 +125,7 @@ c = Bug fix
     * Bugfix: https://github.com/danm-de/pcsc-sharp/issues/15
       Thanks to @anzun!
     * WARNING: API change:
-      SCardContext.GetReaders(), SCardContext.GetReaders(string[]) and 
+      SCardContext.GetReaders(), SCardContext.GetReaders(string[]) and
       SCardContextGetReaderGroups() do not throw PCSCException anymore on
       SCARD_E_NO_READERS_AVAILABLE (Group contains no readers)
     * SCardContext and SCardMonitor throw more specific exceptions
@@ -154,14 +162,14 @@ c = Bug fix
     * Decreased .Net Framework version from 4.0 to .Net 3.5.
 
 2013-05-09	Daniel Mueller <daniel@danm.de>
-    * New version 3.0.0.0 WARNING: major API changes! 
+    * New version 3.0.0.0 WARNING: major API changes!
     * Changed license to BSD 2-Clause
     * Update to .Net Framework 4.0 (die Windows XP, die)
     * Removed Iso8825 completely. I hope nobody besides me was using it :-)
-    * Code cleanup (using the awesome Resharper 
+    * Code cleanup (using the awesome Resharper
       http://www.jetbrains.com/resharper/)
     * SCardContext: implemented the correct IDisposable pattern.
-      GC will release the context during finalize! If you access/use the 
+      GC will release the context during finalize! If you access/use the
       SCardContext.Handle in your own managed/unmanaged libraries calls make
       sure that you keep a reference to the context instance.
       Changed the static properties "Infinite" and "MaxAtrSize" to instance
@@ -175,9 +183,9 @@ c = Bug fix
       Constructor got new parameter "releaseContextOnDispose".
       Changed constructor to accept ISCardContext instead of SCardContext.
     * New interface ISCardMonitor to ease unit testing.
-    * Apdu: Apdu.Case and Apdu.Protocol are not longer virtual, removed 
+    * Apdu: Apdu.Case and Apdu.Protocol are not longer virtual, removed
       protected variables proto and isocase.
-    * CommandApdu: removed protected variables cla, ins, p1, p2, lc, le 
+    * CommandApdu: removed protected variables cla, ins, p1, p2, lc, le
       and data (use property setter!).
     * IsoCard: constructor got new parameter "disconnectReaderOnDispose".
     * SCardReaderState: implemented the correct IDisposable pattern.
@@ -185,11 +193,11 @@ c = Bug fix
     * CardStatusEventArgs & StatusChangeEventArgs: renamed property ATR to Atr.
       Both inherit from CardEventArgs.
     * SCardAttr: renamed to SCardAttribute
-    * SCardAttribute: Renamed various enum member names (replaced C-style 
+    * SCardAttribute: Renamed various enum member names (replaced C-style
       abbreviation with full name).
-    * SCardClass: Renamed various enum member names (replaced C-style 
+    * SCardClass: Renamed various enum member names (replaced C-style
       abbreviation with full name).
-    * SCardError: Renamed various enum member names (replaced C-style 
+    * SCardError: Renamed various enum member names (replaced C-style
       abbreviation with full name).
     * ResponseApduList: Renamed to ResponseApduEnumerator.
     * Response: Removed property ResponseApduList.
@@ -200,7 +208,7 @@ c = Bug fix
     * InstructionByte: removed protected variable "ins". Use the property
       setter instead.
     * RecordInfo: renamed const FILE_STRUCTURE_IS_MASK to FILE_STRUCTURING_MASK
-	
+
 
 2012-05-06  Daniel Mueller <daniel@danm.de>
     * New Version 2.0.0.4
