@@ -24,7 +24,7 @@ namespace PCSC.Tests.CardReaderSpecs
         [Test]
         public void Should_the_card_handle_be_disposed() {
             A.CallTo(() => _handle.Dispose())
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappenedOnceExactly();
         }
     }
 
@@ -132,7 +132,7 @@ namespace PCSC.Tests.CardReaderSpecs
         [Test]
         public void Should_it_call_the_BeginTransaction_API() {
             A.CallTo(() => Api.BeginTransaction(CardHandle.Handle))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappenedOnceExactly();
         }
 
         [Test]
@@ -154,7 +154,7 @@ namespace PCSC.Tests.CardReaderSpecs
         [Test]
         public void Should_it_call_the_EndTransaction_API() {
             A.CallTo(() => Api.EndTransaction(CardHandle.Handle, SCardReaderDisposition.Leave))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappenedOnceExactly();
         }
     }
 
@@ -198,7 +198,7 @@ namespace PCSC.Tests.CardReaderSpecs
             var recvBufferLength = 10;
             A.CallTo(() => Api.Transmit(CardHandle.Handle, SCardPCI.Raw, _sendBuffer, 3, _receivePci.MemoryPtr,
                     _receiveBuffer, ref recvBufferLength))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappenedOnceExactly();
         }
 
         [Test]
@@ -245,7 +245,7 @@ namespace PCSC.Tests.CardReaderSpecs
             var recvBufferLength = 10;
             A.CallTo(() => Api.Control(CardHandle.Handle, _controlCode, _sendBuffer, 3, _receiveBuffer,
                     recvBufferLength, out recvBufferLength))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappenedOnceExactly();
         }
 
         [Test]
@@ -365,7 +365,7 @@ namespace PCSC.Tests.CardReaderSpecs
         [Test]
         public void Should_it_call_the_SetAttrib_API() {
             A.CallTo(() => Api.SetAttrib(CardHandle.Handle, _attributeId, _sendBuffer, 4))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappenedOnceExactly();
         }
     }
 
@@ -384,7 +384,7 @@ namespace PCSC.Tests.CardReaderSpecs
         [Test]
         public void Should_the_card_handle_be_disconnected() {
             A.CallTo(() => CardHandle.Disconnect(SCardReaderDisposition.Eject))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappenedOnceExactly();
         }
 
         [Test]

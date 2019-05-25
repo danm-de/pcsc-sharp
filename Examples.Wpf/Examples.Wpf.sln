@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{7AF55DB6-812F-4748-A69C-346D8E66812D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RxMonitorReaderEventsWpf", "RxMonitorReaderEventsWpf\RxMonitorReaderEventsWpf.csproj", "{ACDF4ED6-5380-419C-98D4-F5A79CC40971}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PCSC", "PCSC", "{F91F567A-CF45-4BB1-BC03-5CBE6AD04EF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCSC", "..\src\PCSC\PCSC.csproj", "{A54F0733-517B-49D9-B4C6-3A11479AAA2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCSC.Iso7816", "..\src\PCSC.Iso7816\PCSC.Iso7816.csproj", "{2EA0C010-6EFD-4C09-B9F1-0BEAD311AF45}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PCSC.Reactive", "..\src\PCSC.Reactive\PCSC.Reactive.csproj", "{BADCE9B3-80AC-40C1-8172-7589A21A2B15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A54F0733-517B-49D9-B4C6-3A11479AAA2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A54F0733-517B-49D9-B4C6-3A11479AAA2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A54F0733-517B-49D9-B4C6-3A11479AAA2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A54F0733-517B-49D9-B4C6-3A11479AAA2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA0C010-6EFD-4C09-B9F1-0BEAD311AF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA0C010-6EFD-4C09-B9F1-0BEAD311AF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA0C010-6EFD-4C09-B9F1-0BEAD311AF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA0C010-6EFD-4C09-B9F1-0BEAD311AF45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BADCE9B3-80AC-40C1-8172-7589A21A2B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BADCE9B3-80AC-40C1-8172-7589A21A2B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BADCE9B3-80AC-40C1-8172-7589A21A2B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BADCE9B3-80AC-40C1-8172-7589A21A2B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACDF4ED6-5380-419C-98D4-F5A79CC40971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACDF4ED6-5380-419C-98D4-F5A79CC40971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACDF4ED6-5380-419C-98D4-F5A79CC40971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACDF4ED6-5380-419C-98D4-F5A79CC40971}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A54F0733-517B-49D9-B4C6-3A11479AAA2F} = {F91F567A-CF45-4BB1-BC03-5CBE6AD04EF2}
+		{2EA0C010-6EFD-4C09-B9F1-0BEAD311AF45} = {F91F567A-CF45-4BB1-BC03-5CBE6AD04EF2}
+		{BADCE9B3-80AC-40C1-8172-7589A21A2B15} = {F91F567A-CF45-4BB1-BC03-5CBE6AD04EF2}
+		{ACDF4ED6-5380-419C-98D4-F5A79CC40971} = {7AF55DB6-812F-4748-A69C-346D8E66812D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8566DE14-70F9-4058-B668-5A67BE2D22FE}
+	EndGlobalSection
+EndGlobal

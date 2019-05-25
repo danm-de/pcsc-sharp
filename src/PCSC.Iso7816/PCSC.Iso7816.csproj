@@ -38,5 +38,4 @@
   <ItemGroup>
     <ProjectReference Include="..\PCSC\PCSC.csproj" />
   </ItemGroup>
-
 </Project>

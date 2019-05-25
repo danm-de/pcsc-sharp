@@ -29,14 +29,16 @@ namespace PCSC.Iso7816.Tests.ResponseSpecs
         [Test]
         public void It_should_contain_all_ResponseApdus() {
             _sut.ToArray()
-                .Should().BeEquivalentTo(_expectedApdus);
+                .Should()
+                .BeEquivalentTo(_expectedApdus);
         }
 
         [Test]
         public void It_should_contain_all_SCardPCIs() {
             Enumerable.Range(0, _sut.PciCount)
                 .Select(i => _sut.GetPci(i))
-                .Should().BeEquivalentTo(_expectedPcis);
+                .Should()
+                .BeEquivalentTo(_expectedPcis);
         }
     }
 }

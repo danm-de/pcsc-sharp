@@ -195,7 +195,7 @@ namespace PCSC.Tests.CardHandleSpecs
         }
 
         [Test]
-        public void It_should_have_no_readername_set() {
+        public void It_should_have_no_reader_name_set() {
             _sut.ReaderName
                 .Should()
                 .BeNull();
@@ -211,7 +211,7 @@ namespace PCSC.Tests.CardHandleSpecs
         [Test]
         public void It_should_have_disconnected_the_reader() {
             A.CallTo(() => _api.Disconnect((IntPtr) 123, A<SCardReaderDisposition>.Ignored))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappenedOnceExactly();
         }
     }
 
@@ -260,7 +260,7 @@ namespace PCSC.Tests.CardHandleSpecs
         }
 
         [Test]
-        public void It_should_have_no_readername_set() {
+        public void It_should_have_no_reader_name_set() {
             _sut.ReaderName
                 .Should()
                 .BeNull();
@@ -276,7 +276,7 @@ namespace PCSC.Tests.CardHandleSpecs
         [Test]
         public void It_should_have_disconnected_the_reader() {
             A.CallTo(() => _api.Disconnect((IntPtr) 123, SCardReaderDisposition.Reset))
-                .MustHaveHappened(Repeated.Exactly.Once);
+                .MustHaveHappenedOnceExactly();
         }
     }
 
@@ -342,7 +342,7 @@ namespace PCSC.Tests.CardHandleSpecs
         }
 
         [Test]
-        public void It_should_have_the_readername_set() {
+        public void It_should_have_the_reader_name_set() {
             _sut.ReaderName
                 .Should()
                 .Be("MyReader");

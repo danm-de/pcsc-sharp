@@ -1,0 +1,78 @@
+﻿<Window x:Class="RxMonitorReaderEventsWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:events="clr-namespace:PCSC.Reactive.Events;assembly=PCSC.Reactive"
+        xmlns:local="clr-namespace:RxMonitorReaderEventsWpf"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="600"
+        Width="800"
+        d:DataContext="{d:DesignInstance local:MainWindowViewModel, IsDesignTimeCreatable=False }">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Margin="10,5,10,5"
+              Grid.Row="0"
+              Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ListBox Grid.Column="0"
+                     ItemsSource="{Binding Readers}" />
+            <StackPanel Grid.Column="1">
+                <Button Margin="10,0,0,0"
+                        Content="Refresh reader list"
+                        Command="{Binding RefreshReaderListCommand}" />
+                <Button Margin="10,10,0,0"
+                        Content="Clear event list"
+                        Command="{Binding ClearEventListCommand}" />
+            </StackPanel>
+        </Grid>
+        <ListBox Grid.Row="1"
+                 Grid.ColumnSpan="2"
+                 ItemsSource="{Binding EventHistory}"
+                 Margin="10,0,10,10">
+            <ListBox.Resources>
+                <DataTemplate DataType="{x:Type events:MonitorInitialized}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Monitor has been initialized for reader:</TextBlock>
+                        <TextBox IsReadOnly="True"
+                                 Text="{Binding ReaderName, Mode=OneWay}" />
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type events:CardInserted}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Card has been inserted into reader:</TextBlock>
+                        <TextBox IsReadOnly="True"
+                                 Text="{Binding ReaderName, Mode=OneWay}" />
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type events:CardRemoved}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Card has been removed from reader:</TextBlock>
+                        <TextBox IsReadOnly="True"
+                                 Text="{Binding ReaderName, Mode=OneWay}" />
+                    </StackPanel>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type events:CardStatusChanged}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>Card status has been changed in reader:</TextBlock>
+                        <TextBox IsReadOnly="True"
+                                 Text="{Binding ReaderName, Mode=OneWay}" />
+                        <TextBlock>Previous:</TextBlock>
+                        <TextBox IsReadOnly="True"
+                                 Text="{Binding PreviousState, Mode=OneWay}" />
+                        <TextBlock>New:</TextBlock>
+                        <TextBox IsReadOnly="True"
+                                 Text="{Binding NewState, Mode=OneWay}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.Resources>
+        </ListBox>
+    </Grid>
+</Window>
