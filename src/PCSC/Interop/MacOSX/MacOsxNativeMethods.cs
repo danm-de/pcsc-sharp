@@ -28,7 +28,7 @@ namespace PCSC.Interop.MacOSX
 
             return symPtr;
         }
-        
+
         [DllImport(PCSC_LIB)]
         internal static extern int SCardEstablishContext(
             [In] int dwScope,
@@ -122,7 +122,8 @@ namespace PCSC.Interop.MacOSX
         internal static extern int SCardGetStatusChange(
             [In] int hContext,
             [In] int dwTimeout,
-            [In, Out] SCARD_READERSTATE[] rgReaderStates,
+            [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
+            SCARD_READERSTATE[] rgReaderStates,
             [In] int cReaders);
 
         [DllImport(PCSC_LIB)]

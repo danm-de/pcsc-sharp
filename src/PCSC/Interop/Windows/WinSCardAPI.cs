@@ -419,8 +419,7 @@ namespace PCSC.Interop.Windows
         private static extern int SCardGetStatusChange(
             [In] IntPtr hContext,
             [In] int dwTimeout,
-            [In, Out,
-             MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
+            [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
             SCARD_READERSTATE[] rgReaderStates,
             [In] int cReaders);
 

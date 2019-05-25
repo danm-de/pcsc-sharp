@@ -7,7 +7,7 @@ namespace PCSC.Interop.Linux
     {
         private const string C_LIB = "libc";
         private static IntPtr _libHandle = IntPtr.Zero;
-        
+
         public static IntPtr GetSymFromLib(string symName) {
             // Step 1. load dynamic link library
             if (_libHandle == IntPtr.Zero) {
@@ -26,7 +26,7 @@ namespace PCSC.Interop.Linux
 
             return symPtr;
         }
-        
+
         internal const string PCSC_LIB = "libpcsclite.so.1";
         private const string DL_LIB = "libdl.so.2";
 
@@ -123,7 +123,8 @@ namespace PCSC.Interop.Linux
         internal static extern IntPtr SCardGetStatusChange(
             [In] IntPtr hContext,
             [In] IntPtr dwTimeout,
-            [In, Out] SCARD_READERSTATE[] rgReaderStates,
+            [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
+            SCARD_READERSTATE[] rgReaderStates,
             [In] IntPtr cReaders);
 
         [DllImport(PCSC_LIB)]

@@ -18,7 +18,7 @@ namespace PCSC
     /// </remarks>
     public class SCardReaderState : IDisposable
     {
-        // we're getting values greater than 0xFFFF back from SCardGetStatusChange 
+        // we're getting values greater than 0xFFFF back from SCardGetStatusChange
         private const int EVENTSTATE_RANGE = 0xFFFF;
         private const long CHCOUNT_RANGE = 0xFFFF0000;
 
@@ -80,8 +80,8 @@ namespace PCSC
                 case PlatformType.MacOSX:
                     _macosxRstate = new MACOSX_SCARD_READERSTATE {
                         // initialize embedded array
-                        rgbAtr = new byte[PCSCliteLinux.MAX_ATR_SIZE],
-                        cbAtr = PCSCliteLinux.MAX_ATR_SIZE
+                        rgbAtr = new byte[PCSCliteMacOsX.MAX_ATR_SIZE],
+                        cbAtr = PCSCliteMacOsX.MAX_ATR_SIZE
                     };
                     break;
                 default:
@@ -407,7 +407,7 @@ namespace PCSC
             }
             set {
                 var tmp = value;
-                // the size of rstate.rgbAtr MUST(!) be MAX_ATR_SIZE 
+                // the size of rstate.rgbAtr MUST(!) be MAX_ATR_SIZE
                 switch (Platform.Type) {
                     case PlatformType.Windows:
                         if (tmp.Length != WinSCardAPI.MAX_ATR_SIZE) {
@@ -448,7 +448,7 @@ namespace PCSC
             get => _linuxRstate;
             set => _linuxRstate = value;
         }
-        
+
         internal MACOSX_SCARD_READERSTATE MacOsXReaderState {
             get => _macosxRstate;
             set => _macosxRstate = value;

@@ -39,10 +39,10 @@ namespace PCSC.Monitoring
         /// 	new SCardContext(),
         /// 	SCardScope.System,
         ///     true);
-        /// 
+        ///
         /// // Point the callback function(s) to the pre-defined method MyStatusChangedMethod.
         /// monitor.StatusChanged += new StatusChangeEvent(MyStatusChangedMethod);
-        /// 
+        ///
         /// // Start to monitor the reader
         /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
         ///   </code>
@@ -59,9 +59,9 @@ namespace PCSC.Monitoring
         /// 	new SCardContext(),
         /// 	SCardScope.System,
         ///     true);
-        /// 
+        ///
         /// monitor.CardInserted += new CardInsertedEvent(MyCardInsertedMethod);
-        /// 
+        ///
         /// // Start to monitor the reader
         /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
         ///   </code>
@@ -78,9 +78,9 @@ namespace PCSC.Monitoring
         /// 	new SCardContext(),
         /// 	SCardScope.System,
         ///     true);
-        /// 
+        ///
         /// monitor.CardRemoved += new CardRemovedEvent(MyCardRemovedMethod);
-        /// 
+        ///
         /// // Start to monitor the reader
         /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
         ///   </code>
@@ -98,9 +98,9 @@ namespace PCSC.Monitoring
         /// 	new SCardContext(),
         /// 	SCardScope.System,
         ///     true);
-        /// 
+        ///
         /// monitor.Initialized += new CardInitializedEvent(MyCardInitializedMethod);
-        /// 
+        ///
         /// // Start to monitor the reader
         /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
         ///   </code>
@@ -117,9 +117,9 @@ namespace PCSC.Monitoring
         /// 	new SCardContext(),
         /// 	SCardScope.System,
         ///     true);
-        /// 
+        ///
         /// monitor.MonitorException += new MonitorExceptionEvent(MyMonitorExceptionMethod);
-        /// 
+        ///
         /// // Start to monitor the reader
         /// monitor.Start("OMNIKEY CardMan 5x21 00 01");
         ///   </code>
@@ -290,7 +290,7 @@ namespace PCSC.Monitoring
         /// 	new SCardContext(),
         /// 	SCardScope.System,
         ///     true);
-        /// 
+        ///
         /// // Start to monitor a single reader.
         /// monitor.Start("OMNIKEY CardMan 5x21 00 00");
         ///   </code>
@@ -325,17 +325,17 @@ namespace PCSC.Monitoring
         ///     readerNames = ctx.GetReaders();
         ///     ctx.Release();
         /// }
-        /// 
+        ///
         /// // Create a new monitor object with its own PC/SC context.
         /// var monitor = new SCardMonitor(
         /// 	new SCardContext(),
         /// 	SCardScope.System,
         ///     true);
-        /// 
+        ///
         /// foreach (string reader in readerNames) {
         /// 	Console.WriteLine("Start monitoring for reader {0}.", reader);
         /// }
-        ///         
+        ///
         /// // Start monitoring multiple readers.
         /// monitor.Start(readerNames);
         /// </code>
@@ -424,7 +424,7 @@ namespace PCSC.Monitoring
                         readerStates[i].CurrentStateValue = monitor.PreviousStateValues[i];
                     }
 
-                    // block until status change occurs                    
+                    // block until status change occurs
                     rc = monitor.Context.GetStatusChange(monitor.Context.Infinite, readerStates);
 
                     // Cancel?
