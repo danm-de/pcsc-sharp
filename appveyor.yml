@@ -1,0 +1,24 @@
+image: Visual Studio 2017
+install:
+  - cinst fake
+  # from https://stackoverflow.com/questions/33897161/appveyor-build-error-msb3774-could-not-find-sdk-microsoft-admediator-universal/33897162#33897162
+  - ps: |
+      Write-Host "Installing .NET SDK..."
+      $msiPath = "$($env:USERPROFILE)\dotnet-SDK.exe"
+      (New-Object Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/0d4f13a2-dd2f-4259-852e-58763d9ef303/cacb9821c492242072b0927dcb5808f5/dotnet-sdk-2.2.300-win-x64.exe', $msiPath)
+      cmd /c start /wait $msiPath /quiet /norestart
+      Write-Host "Installed" -ForegroundColor green
+build_script:
+  # See https://stackoverflow.com/a/12866669/1269722
+  - cmd: fake.exe run build.fsx --parallel 3
+test: off
+environment:
+  PAKET_BOOTSTRAPPER_TRACE: true
+
+artifacts:
+  - path: 'src\PCSC\bin\Release\*.nupkg'
+    type: NuGetPackage
+  - path: 'src\PCSC.Iso7816\bin\Release\*.nupkg'
+    type: NuGetPackage
+  - path: 'src\PCSC.Reactive\bin\Release\*.nupkg'
+    type: Zip
