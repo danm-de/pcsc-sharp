@@ -1,12 +1,7 @@
-source https://nuget.org/api/v2
-framework: auto-detect
-redirects: on
-
-nuget FAKE
-nuget FakeItEasy
-nuget FluentAssertions
-nuget Microsoft.Reactive.Testing
-nuget NUnit
-nuget NUnit.Runners
-nuget System.Reactive ~> 4.1.5
-nuget System.ValueTuple ~> 4.5.0
+// [ FAKE GROUP ]
+group Build
+    storage none
+    source https://api.nuget.org/v3/index.json
+    nuget Fake.DotNet.Cli
+    nuget Fake.IO.FileSystem
+    nuget Fake.Core.Target

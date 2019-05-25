@@ -20,7 +20,7 @@ You can find PC/SC specific documentation here:
 
 ## Supported Operating systems
 - Windows (winscard.dll) 
-  * Windows 10 64-bit Professional (_confirmed_)
+  * Windows 10 64-bit Professional (.Net Core 2.2 _confirmed_)
   * Windows 10 32-bit Professional
   * Windows 7 64-bit
   * Windows 7 32-bit
@@ -29,7 +29,7 @@ You can find PC/SC specific documentation here:
   * Ubuntu Linux 64-bit (_confirmed_)
   * Ubuntu Linux 32-bit
 
-- MacOS X (Tested by @pedromrpinto)
+- MacOS X (.Net Core 2.2 _confirmed_)
 
 ## Quick start
 
@@ -123,24 +123,20 @@ Checkout the [Examples](https://github.com/danm-de/pcsc-sharp/tree/master/Exampl
 
 ### Required software
 
-* .Net Framework 4.0 targeting pack
-* .Net Core 2.2 SDK
-* .Net Framework 4.7.2 SDK (For Unit-Tests and example projects)
+Required frameworks
+* .Net Framework 4.0 targeting pack 
+* .Net Framework 4.6 SDK / targeting pack
+* .Net Core 2.2 SDK 
+* .Net Core 3.0 Preview (WPF examples)
 
-_pcsc-sharp_ uses the great [FAKE](https://fake.build/) DSL for build tasks 
-and [Paket](https://fsprojects.github.io/Paket/) for NuGet 
-package management. To build the solution, simply start the ```build.cmd``` 
-on Windows or the ```build``` shell script on Unix. Add ```NuGet``` as command 
-line argument to create NuGet packages.
+Required build tools
+* Fake (https://fake.build/fake-dotnetcore.html), Please run:
+  ```
+   dotnet tool install fake-cli -g
+  ```
+  to install ```fake``` as global tool.
 
-If you want to open the solution with your favorite IDE, restore the NuGet packages first.
-
-On Windows run
-```shell
- paket.cmd restore 
-```
-On Unix/Linux run
-```shell
- ./paket restore
-```
+_pcsc-sharp_ uses the great [FAKE](https://fake.build/) DSL for build tasks.
+ To build the solution, simply start the ```build.cmd``` 
+on Windows or the ```build.sh``` shell script on Unix. 
 

@@ -1,67 +1,29 @@
-// include Fake lib
-#r "packages/FAKE/tools/FakeLib.dll"
-open Fake
-open Fake.Testing.NUnit3
+#load ".fake/build.fsx/intellisense.fsx"
+open Fake.Core
+open Fake.DotNet
+open Fake.IO
+open Fake.IO.FileSystemOperators
+open Fake.IO.Globbing.Operators
+open Fake.Core.TargetOperators
 
-// Properties
-let buildDir = "./.build/"
-let nugetDir = buildDir @@ "nuget"
-let binaryOutDir = ""
-let buildConfig = environVarOrDefault "build_configuration" "Release"
-
-// Targets
-Target "Clean" (fun _ ->
-    CleanDir buildDir
-    !! "*.sln"
-      |> MSBuild binaryOutDir "Clean"  ["Configuration", buildConfig; "Platform", "Any CPU"] 
-      |> Log "MSBuild-Clean: "
+Target.create "Clean" (fun _ ->
+    !! "src/**/bin"
+    ++ "src/**/obj"
+    ++ "Tests/**/bin"
+    ++ "Tests/**/obj"
+    |> Shell.cleanDirs
 )
 
-Target "DotNetRestore" (fun _ -> 
-    DotNetCli.Restore 
-        (fun p -> 
-             { p with 
-                 NoCache = true })
+Target.create "Build" (fun _ ->
+    !! "src/**/*.*proj"
+    ++ "Tests/**/*.*proj"
+    |> Seq.iter (DotNet.build id)
 )
 
-Target "Build" (fun _ ->
-    !! "*.sln"
-      |> MSBuild binaryOutDir "Build" ["Configuration", buildConfig; "Platform", "Any CPU"]
-      |> Log "MSBuild: "
-)
+Target.create "All" ignore
 
-Target "Test" (fun _ ->
-    !! (sprintf "Tests/**/bin/%s/*.Tests.dll" buildConfig)
-      |> NUnit3 (fun p ->
-          {p with
-             ShadowCopy = false
-          })
-)
-
-Target "NuGetPush" (fun _ ->
-    CreateDir nugetDir
-    !! (sprintf "src/**/bin/%s/*.nupkg" buildConfig)
-        |> CopyFiles nugetDir
-    Paket.Push(fun p -> 
-        {p with
-           DegreeOfParallelism = 1
-           WorkingDir = nugetDir 
-        })
-)
-
-Target "Default" (fun _ ->
-    trace "PC/SC wrapper classes for .NET"
-)
-
-// Dependencies
 "Clean"
-  ==> "DotNetRestore"
   ==> "Build"
-  ==> "Test"
-  ==> "Default"
+  ==> "All"
 
-"Build"
-  ==> "NuGetPush"
-
-// start build
-RunTargetOrDefault "Default"
+Target.runOrDefault "All"
