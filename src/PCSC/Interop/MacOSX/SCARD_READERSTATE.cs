@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace PCSC.Interop.MacOSX
 {
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct SCARD_READERSTATE
     {
         internal IntPtr pszReader;
@@ -12,7 +12,7 @@ namespace PCSC.Interop.MacOSX
         internal int dwEventState;
         internal int cbAtr;
 
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = PCSCliteMacOsX.MAX_ATR_SIZE, ArraySubType = UnmanagedType.U1)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = PCSCliteMacOsX.MAX_ATR_SIZE)]
         internal byte[] rgbAtr;
     }
 }

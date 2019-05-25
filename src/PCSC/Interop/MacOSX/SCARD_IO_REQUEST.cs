@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace PCSC.Interop.MacOSX
 {
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal class SCARD_IO_REQUEST
     {
         internal int dwProtocol; // Protocol identifier
