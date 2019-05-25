@@ -134,7 +134,12 @@ Required build tools
   ```
    dotnet tool install fake-cli -g
   ```
-  to install ```fake``` as global tool.
+  to install ```fake``` as global tool. On Linux you may have to add the following lines into your .profile or .bashrc file:
+  ```
+  if [ -d "$HOME/.dotnet/tools" ] ; then
+    PATH="$HOME/.dotnet/tools:$PATH"
+  fi
+  ```
 
 _pcsc-sharp_ uses the great [FAKE](https://fake.build/) DSL for build tasks.
  To build the solution, simply start the ```build.cmd``` 
