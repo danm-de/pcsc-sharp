@@ -341,9 +341,10 @@ namespace PCSC.Interop.MacOSX {
                 }
             }
 
+            var timeout = unchecked((int)dwTimeout.ToInt64());
             var rc = SCardHelper.ToSCardError(MacOsxNativeMethods.SCardGetStatusChange(
                 hContext.ToInt32(),
-                dwTimeout.ToInt32(),
+                timeout,
                 readerstates,
                 cReaders));
 
