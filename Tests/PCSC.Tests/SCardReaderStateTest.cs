@@ -74,7 +74,7 @@ namespace PCSC.Tests
             state.CardChangeEventCnt
                 .Should()
                 .Be(65535);
-            ((uint) state.EventStateValue.ToInt32())
+            (unchecked((uint) state.EventStateValue.ToInt64()))
                 .Should().Be(0xFFFF0010);
 
             //try to set a value that is too high
