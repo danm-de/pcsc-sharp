@@ -9,15 +9,19 @@
     <Description>Contains classes to access the Personal Computer/Smart Card Resource Manager using the system's native PC/SC API.  The library is written to run on both, Windows and Unix (Linux with Mono using PCSC Lite).</Description>
     <Company />
     <Authors>Daniel Mueller</Authors>
-    <Version>4.1.0</Version>
+    <Version>4.1.1</Version>
     <PackageTags>pcsc smartcard pcsc-sharp pc/sc</PackageTags>
     <PackageProjectUrl>https://github.com/danm-de/pcsc-sharp</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/danm-de/pcsc-sharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageVersion>4.1.0</PackageVersion>
+    <PackageVersion>4.1.1</PackageVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>../../pcsc-sharp.snk</AssemblyOriginatorKeyFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\PCSC.xml</DocumentationFile>
@@ -40,5 +44,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2" PrivateAssets="All" />
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19270-01" PrivateAssets="All"/>
   </ItemGroup>
 </Project>
