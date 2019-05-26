@@ -4,6 +4,10 @@ b = New Feature
 c = Bug fix
 
 2019-05-26  Daniel Mueller <daniel@danm.de>
+* New version 4.1.1
+* Added SourceLink supported
+
+2019-05-26  Daniel Mueller <daniel@danm.de>
 * New version 4.1.0
 * Fixes https://github.com/danm-de/pcsc-sharp/issues/87
   Thanks to Jesse de Wit @JssDWt and @melihercan for reporting
