@@ -125,13 +125,11 @@ Checkout the [Examples](https://github.com/danm-de/pcsc-sharp/tree/master/Exampl
 
 ### Required software
 
-Required frameworks
-* .Net Framework 4.0 targeting pack 
-* .Net Framework 4.6 SDK / targeting pack
+Frameworks
 * .Net Core 2.2 SDK 
 * .Net Core 3.0 Preview (WPF examples)
 
-Required build tools
+Build tools
 * Fake (https://fake.build/fake-dotnetcore.html), Please run:
   ```
    dotnet tool install fake-cli -g
