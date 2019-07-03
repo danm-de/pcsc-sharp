@@ -38,7 +38,6 @@ Target.create "NuGetPush" (fun _ ->
         }
 
     !! "src/**/bin/Release/*.nupkg"
-    ++ "src/**/bin/Release/*.snupkg"
       |> Seq.iter (fun file -> DotNet.nugetPush setParams file)
 
 
