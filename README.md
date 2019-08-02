@@ -26,10 +26,13 @@ You can find PC/SC specific documentation here:
   * Windows 7 32-bit
 
 - Linux (PC/SC lite)
-  * Ubuntu Linux 64-bit (_confirmed_)
+  * Ubuntu Linux 64-bit (.Net Core 2.2 _confirmed_)
   * Ubuntu Linux 32-bit
 
 - MacOS X (.Net Core 2.2 _confirmed_)
+
+- Raspberry Pi / Linux ARM
+  * linux-arm (.Net Core 2.2 _confirmed_)
 
 ## Quick start
 
@@ -145,3 +148,10 @@ _pcsc-sharp_ uses the great [FAKE](https://fake.build/) DSL for build tasks.
  To build the solution, simply start the ```build.cmd``` 
 on Windows or the ```build.sh``` shell script on Unix. 
 
+### Build instructions for Raspberry Pi
+
+Compile with
+
+```
+dotnet publish -r linux-arm
+```
