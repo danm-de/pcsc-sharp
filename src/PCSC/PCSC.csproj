@@ -6,7 +6,7 @@
     <NeutralLanguage />
     <PackageLicenseUrl>https://github.com/danm-de/pcsc-sharp/blob/master/COPYING</PackageLicenseUrl>
     <Copyright>Copyright 2019 Daniel Mueller</Copyright>
-    <Description>Contains classes to access the Personal Computer/Smart Card Resource Manager using the system's native PC/SC API.  The library is written to run on both, Windows and Unix (Linux with Mono using PCSC Lite).</Description>
+    <Description>Contains classes to access the Personal Computer/Smart Card Resource Manager using the system's native PC/SC API.  The library is written to run on multiple platforms (.Net Framework, .Net Core or Mono using PCSC Lite).</Description>
     <Company />
     <Authors>Daniel Mueller</Authors>
     <Version>4.2.0</Version>
