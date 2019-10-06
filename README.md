@@ -6,13 +6,16 @@
 The _pcsc-sharp_ library is wrapper that provides access to the 
 _**P**ersonal **C**omputer/**S**mart **C**ard Resource Manager_
 using the system's native PC/SC API. It implements partial ISO7816 
-support and is written to run on both Windows and Unix (Mono using
+support and is written to run on both Windows and Unix (.Net Core or Mono using
 PCSC Lite).
 
 _pcsc-sharp_ **is not** a fully featured library for accessing vendor specific protocols. 
 You must implement those protocols / applications yourself. 
 For example: You can use _pcsc-sharp_ to access NXP's Mirfare RFID chips, 
 but _pcsc-sharp_ does not provide any APDUs to request KEYs, authorize, etc.
+
+_pcsc-sharp_ **does not** contain any device drivers. A PC/SC compliant reader + driver 
+is mandatory.
 
 You can find PC/SC specific documentation here:
 * Windows: [Smart Card Resource Manager API](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380149(v=vs.85).aspx)
