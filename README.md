@@ -142,7 +142,8 @@ Checkout the [Examples](https://github.com/danm-de/pcsc-sharp/tree/master/Exampl
 Frameworks
 
 * .Net Core 2.2 SDK
-* .Net Core 3.1 (WPF examples)
+* .Net Core 3.0 SDK
+* .Net Core 3.1 SDK
 
 Build tools
 
