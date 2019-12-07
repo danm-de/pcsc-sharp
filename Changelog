@@ -3,6 +3,19 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2019-12-07  Daniel Mueller <daniel@danm.de>
+* New version 5.0.0
+* Update NuGet packages: all test projects (NUnit, FakeItEasy, ...)
+* Update NuGet packages: System.Reactive >= 4.3.0
+* Added new build targets: netstandard2.1, netcoreapp3.0, netcoreapp3.1,
+  net472, net48
+* PCSC.Iso7816: BREAKING CHANGE: if the card signals "more data available"
+  (GET RESPONSE required), it copies the CLA byte from the previous command.
+* PCSC.Iso7816: new method Transmit(CommandApdu, ConstructGetResponse)
+  Gives control on how to create a GET RESPONSE command.
+* Fixes https://github.com/danm-de/pcsc-sharp/issues/97
+  Thanks to @gjermund-stensrud for reporting
+
 2019-07-03  Daniel Mueller <daniel@danm.de>
 * New version 4.2.0
 * IsoReader: added new constructor to supply MaxReceiveSize for GET_RESPONSE
