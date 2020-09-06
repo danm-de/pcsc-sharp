@@ -18,6 +18,8 @@ but _pcsc-sharp_ does not provide any APDUs to request KEYs, authorize, etc.
 _pcsc-sharp_ **does not** contain any device drivers. A PC/SC compliant reader + driver
 is mandatory.
 
+ **The GitHub issue tracker is not a support forum.** Please contact your vendor for reader or card specific questions.
+
 You can find PC/SC specific documentation here:
 
 * Windows: [Smart Card Resource Manager API](https://msdn.microsoft.com/en-us/library/windows/desktop/aa380149(v=vs.85).aspx)
