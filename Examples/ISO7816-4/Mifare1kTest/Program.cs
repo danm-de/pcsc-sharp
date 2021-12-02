@@ -34,6 +34,12 @@ namespace Mifare1kTest {
                     releaseContextOnDispose: false)) {
                     var card = new MifareCard(isoReader);
 
+                    var uid = card.GetData();
+                    Console.WriteLine("UID: {0}",
+                        (uid != null)
+                            ? BitConverter.ToString(uid)
+                            : throw new Exception("GET DATA failed."));
+
                     var loadKeySuccessful = card.LoadKey(
                         KeyStructure.NonVolatileMemory,
                         0x00, // first key slot

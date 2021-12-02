@@ -12,6 +12,20 @@ namespace Mifare1kTest {
             _isoReader = isoReader ?? throw new ArgumentNullException(nameof(isoReader));
         }
 
+        public byte[] GetData() {
+            var getDataCmd = new CommandApdu(IsoCase.Case2Short, SCardProtocol.Any) {
+                CLA = CUSTOM_CLA,
+                Instruction = InstructionCode.GetData,
+                P1 = 0x00,
+                P2 = 0x00
+            };
+
+            var response = _isoReader.Transmit(getDataCmd);
+            return IsSuccess(response)
+                    ? response.GetData() ?? new byte[0]
+                    : null;
+        }
+
         public bool LoadKey(KeyStructure keyStructure, byte keyNumber, byte[] key) {
             var loadKeyCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
                 CLA = CUSTOM_CLA,
