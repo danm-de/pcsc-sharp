@@ -24,4 +24,4 @@ if ! [ -e "$FAKE" ]
 then
   dotnet tool install fake-cli --tool-path "$TOOL_PATH"
 fi
-"$FAKE" "$@"
+dotnet fake "$@"
