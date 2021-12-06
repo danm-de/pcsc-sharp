@@ -12,6 +12,20 @@ namespace Mifare1kTest {
             _isoReader = isoReader ?? throw new ArgumentNullException(nameof(isoReader));
         }
 
+        public byte[] GetData() {
+            var getDataCmd = new CommandApdu(IsoCase.Case2Short, SCardProtocol.Any) {
+                CLA = CUSTOM_CLA,
+                Instruction = InstructionCode.GetData,
+                P1 = 0x00,
+                P2 = 0x00
+            };
+
+            var response = _isoReader.Transmit(getDataCmd);
+            return IsSuccess(response)
+                    ? response.GetData() ?? new byte[0]
+                    : null;
+        }
+
         public bool LoadKey(KeyStructure keyStructure, byte keyNumber, byte[] key) {
             var loadKeyCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
                 CLA = CUSTOM_CLA,
@@ -83,6 +97,41 @@ namespace Mifare1kTest {
 
             Debug.WriteLine($"Update Binary: {BitConverter.ToString(updateBinaryCmd.ToArray())}");
             var response = _isoReader.Transmit(updateBinaryCmd);
+            Debug.WriteLine($"SW1 SW2 = {response.SW1:X2} {response.SW2:X2}");
+
+            return IsSuccess(response);
+        }
+
+        public bool Decrement(byte msb, byte lsb, byte[] data) {
+            var decrementCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
+                CLA = CUSTOM_CLA,
+                Instruction = InstructionCode.Decrement,
+                P1 = 0x00,
+                P2 = lsb,
+                Data = data,
+        };
+
+
+            Debug.WriteLine($"Decrement Binary: {BitConverter.ToString(decrementCmd.ToArray())}");
+            var response = _isoReader.Transmit(decrementCmd);
+            Debug.WriteLine($"SW1 SW2 = {response.SW1:X2} {response.SW2:X2}");
+
+            return IsSuccess(response);
+        }
+
+
+        public bool Increment(byte msb, byte lsb, byte[] data) {
+            var incrementCmd = new CommandApdu(IsoCase.Case3Short, SCardProtocol.Any) {
+                CLA = CUSTOM_CLA,
+                Instruction = InstructionCode.Increment,
+                P1 = 0x00,
+                P2 = lsb,
+                Data = data
+            };
+
+
+            Debug.WriteLine($"Increment Binary: {BitConverter.ToString(incrementCmd.ToArray())}");
+            var response = _isoReader.Transmit(incrementCmd);
             Debug.WriteLine($"SW1 SW2 = {response.SW1:X2} {response.SW2:X2}");
 
             return IsSuccess(response);
