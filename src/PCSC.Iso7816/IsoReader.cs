@@ -299,6 +299,11 @@ namespace PCSC.Iso7816
 
                 // In case there is more data available.
                 le = responseApdu.SW2;
+                if (responseApdu.SW1 == (byte)SW1Code.Normal) {
+                    // add the last ResponseAPDU to the Response object
+                    response.Add(responseApdu);
+                    response.Add(receivePci);
+                }
             } while (
                 // More data available.
                 responseApdu.SW1 == (byte) SW1Code.NormalDataResponse ||
