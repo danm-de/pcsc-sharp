@@ -11,4 +11,3 @@ pull_requests:
 nuget:
   disable_publish_on_pr: true
   disable_publish_octopus: true
-artifact: /.*(\.|\.s)nupkg/
