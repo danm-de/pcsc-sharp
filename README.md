@@ -157,7 +157,7 @@ Build tools
   fi
   ```
 
-_pcsc-sharp_ uses the [FAKE](https://fake.build/) DSL for build tasks. To build the solution, run ```fake build```.
+_pcsc-sharp_ uses the [FAKE](https://fake.build/) DSL for build tasks. To build the solution, run ```fake run build.fsx```.
 
 ### Build instructions for Raspberry Pi
 
