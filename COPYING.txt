@@ -1,4 +1,4 @@
-Copyright (c) 2007-2019 Daniel Mueller <daniel@danm.de>
+﻿Copyright (c) 2007-2022 Daniel Mueller <daniel@danm.de>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,

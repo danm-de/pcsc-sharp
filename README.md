@@ -29,20 +29,20 @@ You can find PC/SC specific documentation here:
 
 * Windows (winscard.dll)
 
-  * Windows 10 64-bit Professional (.Net Core 2.2, .Net Core 3.1 _confirmed_)
+  * Windows 10 64-bit Professional
   * Windows 10 32-bit Professional
   * Windows 7 64-bit
   * Windows 7 32-bit
 
 * Linux (PC/SC lite)
 
-  * Ubuntu Linux 64-bit (.Net Core 2.2 _confirmed_)
+  * Ubuntu Linux 64-bit
   * Ubuntu Linux 32-bit
 
-* MacOS X (.Net Core 2.2 _confirmed_)
+* MacOS X
 
 * Raspberry Pi / Linux ARM
-  * linux-arm (.Net Core 2.2 _confirmed_)
+  * linux-arm
 
 ## Quick start
 
@@ -140,12 +140,6 @@ Checkout the [Examples](https://github.com/danm-de/pcsc-sharp/tree/master/Exampl
 [![Build status](https://ci.appveyor.com/api/projects/status/u598dohxli3a18t8?svg=true)](https://ci.appveyor.com/project/danm-de/pcsc-sharp)
 
 ### Required software
-
-Frameworks
-
-* .Net Core 2.2 SDK
-* .Net Core 3.0 SDK
-* .Net Core 3.1 SDK
 
 Build tools
 

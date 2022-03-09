@@ -79,9 +79,11 @@ namespace PCSC.Iso7816
         [Description("APPEND RECORD")]
         AppendRecord = 0xE2,
 
+        /// <summary>Decrement value</summary>
         [Description("DECREMENT")]
         Decrement = 0xD8,
 
+        /// <summary>Increment value</summary>
         [Description("INCREMENT")]
         Increment = 0xD4
     }

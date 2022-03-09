@@ -2,11 +2,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\PCSC.Reactive\PCSC.Reactive.csproj" />
     <ProjectReference Include="..\..\..\src\PCSC\PCSC.csproj" />
-    <PackageReference Include="System.Reactive" Version="4.3.*" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
   </ItemGroup>
  </Project>

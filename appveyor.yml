@@ -1,14 +1,7 @@
-image: Visual Studio 2019
+﻿image: Visual Studio 2022
 install:
   - cinst fake
-  - ps: |
-      Write-Host "Installing .NET SDK 3.1 ..."
-      $msiPath = "$($env:USERPROFILE)\dotnet-SDK.exe"
-      (New-Object Net.WebClient).DownloadFile('https://download.visualstudio.microsoft.com/download/pr/639f7cfa-84f8-48e8-b6c9-82634314e28f/8eb04e1b5f34df0c840c1bffa363c101/dotnet-sdk-3.1.100-win-x64.exe', $msiPath)
-      cmd /c start /wait $msiPath /quiet /norestart
-      Write-Host "Installed" -ForegroundColor green
 build_script:
-  # See https://stackoverflow.com/a/12866669/1269722
   - cmd: fake.exe run build.fsx --parallel 3
 test: off
 environment:
@@ -18,10 +11,4 @@ pull_requests:
 nuget:
   disable_publish_on_pr: true
   disable_publish_octopus: true
-artifacts:
-  - path: 'src\PCSC\bin\Release\*.nupkg'
-    type: NuGetPackage
-  - path: 'src\PCSC.Iso7816\bin\Release\*.nupkg'
-    type: NuGetPackage
-  - path: 'src\PCSC.Reactive\bin\Release\*.nupkg'
-    type: Zip
+artifact: /.*(\.|\.s)nupkg/

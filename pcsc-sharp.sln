@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D3253E47-228E-4C58-930E-A26849AEC371}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CB59DC8C-5A87-4E74-B1E2-AE89E9D3B1FD}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		appveyor.yml = appveyor.yml
 		AUTHORS = AUTHORS
 		Changelog = Changelog
+		Changelog.txt = Changelog.txt
 		COPYING = COPYING
 		pcsc-sharp.snk = pcsc-sharp.snk
 		README.md = README.md
