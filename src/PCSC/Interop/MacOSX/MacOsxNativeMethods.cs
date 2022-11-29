@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -8,19 +9,18 @@ namespace PCSC.Interop.MacOSX
     {
         private static IntPtr _libHandle = IntPtr.Zero;
         private const string PCSC_LIB = "PCSC.framework/PCSC";
-        private const string DL_LIB = "libdl.dylib";
 
         public static IntPtr GetSymFromLib(string symName) {
+
             // Step 1. load dynamic link library
-            if (_libHandle == IntPtr.Zero) {
-                _libHandle = dlopen(PCSC_LIB, (int) DLOPEN_FLAGS.RTLD_LAZY);
-                if (_libHandle.Equals(IntPtr.Zero)) {
-                    throw new Exception("PInvoke call dlopen() failed");
+            if(_libHandle == IntPtr.Zero) {
+                if (!NativeLibrary.TryLoad(PCSC_LIB, out _libHandle)) {
+                    throw new Exception("PInvoke loading PCSC_LIB failed");
                 }
             }
 
             // Step 2. search symbol name in memory
-            var symPtr = dlsym(_libHandle, symName);
+            var symPtr = NativeLibrary.GetExport(_libHandle, symName);
 
             if (symPtr.Equals(IntPtr.Zero)) {
                 throw new Exception("PInvoke call dlsym() failed");
@@ -145,19 +145,5 @@ namespace PCSC.Interop.MacOSX
             [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 3)]
             byte[] pbAttr,
             [In] int cbAttrLen);
-
-        [DllImport(DL_LIB)]
-        internal static extern IntPtr dlopen(
-            [In] string szFilename,
-            [In] int flag);
-
-        [DllImport(DL_LIB)]
-        internal static extern IntPtr dlsym(
-            [In] IntPtr handle,
-            [In] string szSymbol);
-
-        [DllImport(DL_LIB)]
-        internal static extern int dlclose(
-            [In] IntPtr handle);
     }
 }
