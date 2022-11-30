@@ -8,6 +8,10 @@ c = Bug fix
 * Added suggestion from Stefan Seidler (Fresenius Medial Care): problem on
   Windows 10: during USB reader disconnect, DeviceMonitor will throw ShutDown
   & InvalidHandleWindows instead of NoService error code.
+* Multi-target Nuget package with support for .netstandard2.0, .net6 and .net7
+* Try to fix P/Invoke call in MacOsxNativeMethods.GetSymFromLib(string)
+  Thanks to @pazimor https://github.com/danm-de/pcsc-sharp/pull/110 and
+  Dmitry Kalinin for reporting.
 
 2022-03-09  Daniel Mueller <daniel@danm.de>
 * New version 6.0.0
