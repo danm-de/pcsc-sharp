@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using PCSC.Exceptions;
+using PCSC.Extensions;
 
 namespace PCSC.Monitoring
 {
