@@ -31,7 +31,7 @@ namespace PCSC.Interop.MacOSX
             // Step 1. load dynamic link library
             if(_libHandle == IntPtr.Zero) {
                 if (!NativeLibrary.TryLoad(PCSC_LIB, out _libHandle)) {
-                    throw new Exception("PInvoke loading PCSC_LIB failed");
+                    throw new Exception("NativeLibrary.TryLoad PCSC_LIB failed");
                 }
             }
 
@@ -39,7 +39,7 @@ namespace PCSC.Interop.MacOSX
             var symPtr = NativeLibrary.GetExport(_libHandle, symName);
 
             if (symPtr.Equals(IntPtr.Zero)) {
-                throw new Exception("PInvoke call dlsym() failed");
+                throw new Exception("NativeLibrary.GetExport() failed");
             }
 
             return symPtr;
