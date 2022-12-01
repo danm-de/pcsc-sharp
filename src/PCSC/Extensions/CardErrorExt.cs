@@ -33,7 +33,7 @@ namespace PCSC.Extensions
                     throw new InvalidProtocolException(sc);
                 case SCardError.InvalidValue:
                     throw new InvalidValueException(sc);
-                case SCardError.Shutdown | SCardError.InvalidValue:
+                case SCardError.Shutdown | SCardError.InvalidHandleWindows:
                     throw new NoServiceException(sc);
                 case SCardError.NoService:
                     throw new NoServiceException(sc);
