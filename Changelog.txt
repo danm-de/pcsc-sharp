@@ -4,6 +4,11 @@ b = New Feature
 c = Bug fix
 
 2022-12-01  Daniel Mueller <daniel@danm.de>
+* New version 6.1.2
+  Bugfix: fixes exception handling in DeviceMonitor
+  https://github.com/danm-de/pcsc-sharp/pull/114 by @DadOfTheDead
+
+2022-12-01  Daniel Mueller <daniel@danm.de>
 * New version 6.1.1
   Bugfix: fix typos (wrong enum value InvalidHandle->InvalidHandleWindows)
 * Adopted suggestion from Stefan Siedler: Remove counters in DeviceMonitor.
