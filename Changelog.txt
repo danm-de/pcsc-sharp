@@ -3,9 +3,16 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2022-12-01  Daniel Mueller <daniel@danm.de>
+* New version 6.1.1
+  Bugfix: fix typos (wrong enum value InvalidHandle->InvalidHandleWindows)
+* Adopted suggestion from Stefan Siedler: Remove counters in DeviceMonitor.
+  This is necessary to prevent a NoServiceException when the user continuously
+  connects and disconnects USB readers.
+
 2022-11-30  Daniel Mueller <daniel@danm.de>
 * New version 6.1.0
-* Added suggestion from Stefan Seidler (Fresenius Medial Care): problem on
+* Added suggestion from Stefan Siedler (Fresenius Medial Care): problem on
   Windows 10: during USB reader disconnect, DeviceMonitor will throw ShutDown
   & InvalidHandleWindows instead of NoService error code.
 * Multi-target Nuget package with support for .netstandard2.0, .net6 and .net7
