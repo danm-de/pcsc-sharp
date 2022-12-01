@@ -123,7 +123,7 @@ namespace PCSC.Monitoring
                         }
 
                         if (rc != SCardError.Success) {
-                            throw new PCSCException(rc);
+                            rc.Throw();
                         }
                     } catch (NoServiceException) {
                         // Windows 10, service will be restarted or is not available after the last reader has been disconnected
