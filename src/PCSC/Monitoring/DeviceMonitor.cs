@@ -94,7 +94,6 @@ namespace PCSC.Monitoring
                     Enumerable.Empty<string>(),
                     Enumerable.Empty<string>()));
 
-                var noServiceCount = 0;
                 while (true) {
                     try {
                         var newReaderList = GetReaders(_ctx);
@@ -127,12 +126,16 @@ namespace PCSC.Monitoring
                             throw new PCSCException(rc);
                         }
                     } catch (NoServiceException) {
-                        noServiceCount++;
-                        if (noServiceCount > 10) throw;
                         // Windows 10, service will be restarted or is not available after the last reader has been disconnected
                         Thread.Sleep(1000);
+                        
                         lock (_gate) {
                             _ctx?.Dispose();
+
+                            if (_isDisposed || _thread == null) {
+                                return;
+                            }
+
                             _ctx = _contextFactory.Establish(_scope);
                         }
                     }
