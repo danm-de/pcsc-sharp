@@ -24,12 +24,14 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageIcon>pcsc-sharp.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\COPYING.txt" Pack="true" Link="COPYING.txt" PackagePath="$(PackageLicenseFile)" />
+    <None Include="..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />
     <None Include="pcsc-sharp.png" Pack="true" PackagePath="" />
   </ItemGroup>
   <ItemGroup>
