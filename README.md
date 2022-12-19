@@ -29,6 +29,7 @@ You can find PC/SC specific documentation here:
 
 * Windows (winscard.dll)
 
+  * Windows 11 64-bit
   * Windows 10 64-bit Professional
   * Windows 10 32-bit Professional
   * Windows 7 64-bit
