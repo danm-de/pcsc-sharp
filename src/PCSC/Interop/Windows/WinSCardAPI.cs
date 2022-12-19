@@ -12,6 +12,7 @@ namespace PCSC.Interop.Windows
     internal sealed class WinSCardAPI : ISCardApi
     {
         private const int MAX_READER_NAME = 255;
+        private const int SCARD_AUTOALLOCATE = -1;
         private const string WINSCARD_DLL = "winscard.dll";
         private const string KERNEL_DLL = "KERNEL32.DLL";
         private const int CHARSIZE = sizeof(char);
@@ -62,7 +63,7 @@ namespace PCSC.Interop.Windows
             return SCardHelper.ToSCardError(SCardIsValidContext(hContext));
         }
 
-       [DllImport(WINSCARD_DLL, CharSet = CharSet.Unicode)]
+        [DllImport(WINSCARD_DLL, CharSet = CharSet.Unicode)]
         private static extern int SCardListReaders(
             [In] IntPtr hContext,
             [In] byte[] mszGroups,
@@ -70,7 +71,7 @@ namespace PCSC.Interop.Windows
             [In, Out] ref int pcchReaders);
 
         public SCardError ListReaders(IntPtr hContext, string[] groups, out string[] readers) {
-            var dwReaders = -1; // SCARD_AUTOALLOCATE
+            var dwReaders = SCARD_AUTOALLOCATE;
 
             // initialize groups array
             byte[] mszGroups = null;
