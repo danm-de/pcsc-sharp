@@ -12,6 +12,7 @@ namespace PCSC.Interop.Windows
     internal sealed class WinSCardAPI : ISCardApi
     {
         private const int MAX_READER_NAME = 255;
+        private const int SCARD_AUTOALLOCATE = -1;
         private const string WINSCARD_DLL = "winscard.dll";
         private const string KERNEL_DLL = "KERNEL32.DLL";
         private const int CHARSIZE = sizeof(char);
@@ -66,41 +67,37 @@ namespace PCSC.Interop.Windows
         private static extern int SCardListReaders(
             [In] IntPtr hContext,
             [In] byte[] mszGroups,
-            [Out] byte[] pmszReaders,
+            [Out] out IntPtr pmszReaders,
             [In, Out] ref int pcchReaders);
 
         public SCardError ListReaders(IntPtr hContext, string[] groups, out string[] readers) {
-            var dwReaders = 0;
+            var dwReaders = SCARD_AUTOALLOCATE;
 
             // initialize groups array
             byte[] mszGroups = null;
             if (groups != null)
                 mszGroups = SCardHelper.ConvertToByteArray(groups, TextEncoding);
 
-            // determine the needed buffer size
             var rc = SCardHelper.ToSCardError(
                 SCardListReaders(hContext,
                     mszGroups,
-                    null,
+                    out IntPtr pmszReaders,
                     ref dwReaders));
 
-            if (rc != SCardError.Success) {
+            if (rc == SCardError.Success) {
+                byte[] mszReaders = new byte[dwReaders * CharSize];
+                Marshal.Copy(pmszReaders, mszReaders, 0, mszReaders.Length);
+
+                readers = SCardHelper.ConvertToStringArray(mszReaders, TextEncoding);
+
+                // Free memory that was allocated by SCARD_AUTOALLOCATE
+                rc = SCardHelper.ToSCardError(
+                    SCardFreeMemory(
+                        hContext,
+                        pmszReaders));
+            } else {
                 readers = null;
-                return rc;
             }
-
-            // initialize array
-            var mszReaders = new byte[dwReaders * sizeof(char)];
-
-            rc = SCardHelper.ToSCardError(
-                SCardListReaders(hContext,
-                    mszGroups,
-                    mszReaders,
-                    ref dwReaders));
-
-            readers = (rc == SCardError.Success)
-                ? SCardHelper.ConvertToStringArray(mszReaders, TextEncoding)
-                : null;
 
             return rc;
         }

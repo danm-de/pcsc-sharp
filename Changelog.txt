@@ -3,6 +3,12 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2022-12-19  Daniel Mueller <daniel@danm.de>
+* New version 6.1.3
+  Bugfix: memory reservation problem when connecting a smart card reader
+  with 3 virtual readers. https://github.com/danm-de/pcsc-sharp/pull/115
+  by Stefan Siedler (@DadOfTheDead)
+
 2022-12-01  Daniel Mueller <daniel@danm.de>
 * New version 6.1.2
   Bugfix: fixes exception handling in DeviceMonitor
