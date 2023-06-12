@@ -113,7 +113,7 @@ namespace PCSC.Monitoring
                         var scannerStates = new[] {
                             new SCardReaderState {
                                 ReaderName = "\\\\?PnP?\\Notification",
-                                CurrentStateValue = (IntPtr) (readers.Count << 16),
+                                CurrentStateValue = (IntPtr) (50 << 16), //Make a count that doesn't exist
                                 EventStateValue = (IntPtr) SCRState.Unknown,
                             }
                         };
@@ -123,8 +123,26 @@ namespace PCSC.Monitoring
                             return;
                         }
 
-                        if (rc != SCardError.Success) {
-                            rc.Throw();
+                        if ((scannerStates[0].EventState & SCRState.Changed) == SCRState.Changed) {
+                            scannerStates[0].CurrentStateValue =(IntPtr)((uint)scannerStates[0].EventStateValue & ~(uint)SCRState.Changed);
+
+                            rc = _ctx.GetStatusChange(SCardContext.INFINITE, scannerStates);
+                            if (rc == SCardError.Cancelled) {
+                                return;
+                            }
+
+                            if (rc != SCardError.Success) {
+                                rc.Throw();
+                            }
+
+                            // If you pull out a reader and there are none left, you invalidate the context
+                            // Cancel any oustanding requests and release the context before establishing a new one
+                            if (((uint)scannerStates[0].EventStateValue >> 16) == 0) {
+                                _ctx?.Cancel();
+                                _ctx?.Release();
+                                _ctx = _contextFactory.Establish(_scope);
+                            }
+
                         }
                     } catch (NoServiceException) {
                         // Windows 10, service will be restarted or is not available after the last reader has been disconnected
