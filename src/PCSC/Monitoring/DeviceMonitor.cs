@@ -89,7 +89,23 @@ namespace PCSC.Monitoring
                     _ctx = _contextFactory.Establish(_scope);
                 }
 
+                var scannerStates = new[] {
+                    new SCardReaderState {
+                        ReaderName = "\\\\?PnP?\\Notification",
+                        CurrentStateValue = (IntPtr) 0,
+                        EventStateValue = (IntPtr) SCRState.Unknown,
+                    }
+                };
+
+                // get the (current) state known by the smart card resource manager
+                var rc = _ctx.GetStatusChange(IntPtr.Zero, scannerStates);
+                if (rc != SCardError.Success && rc != SCardError.Timeout) {
+                    rc.Throw();
+                }
+
+                // get all readers known by the smart card resource manager
                 var readers = GetReaders(_ctx);
+
                 OnInitialized(new DeviceChangeEventArgs(
                     readers,
                     Enumerable.Empty<string>(),
@@ -97,28 +113,12 @@ namespace PCSC.Monitoring
 
                 while (true) {
                     try {
-                        var newReaderList = GetReaders(_ctx);
-                        var attached = GetAttachedReaders(readers, newReaderList).ToList();
-                        var detached = GetDetachedReaders(readers, newReaderList).ToList();
+                        // set (this) application's state to the state known by the smart card resource manager
+                        scannerStates[0].CurrentStateValue = scannerStates[0].EventStateValue;
+                        scannerStates[0].EventStateValue= (IntPtr) SCRState.Unknown;
 
-                        if (attached.Any() || detached.Any()) {
-                            OnStatusChanged(new DeviceChangeEventArgs(
-                                newReaderList.ToList(),
-                                attached,
-                                detached));
-                        }
-
-                        readers = newReaderList;
-
-                        var scannerStates = new[] {
-                            new SCardReaderState {
-                                ReaderName = "\\\\?PnP?\\Notification",
-                                CurrentStateValue = (IntPtr) (readers.Count << 16),
-                                EventStateValue = (IntPtr) SCRState.Unknown,
-                            }
-                        };
-
-                        var rc = _ctx.GetStatusChange(SCardContext.INFINITE, scannerStates);
+                        // wait for state changes reported by SCardGetStatusChange
+                        rc = _ctx.GetStatusChange(SCardContext.INFINITE, scannerStates);
                         if (rc == SCardError.Cancelled) {
                             return;
                         }
@@ -126,6 +126,31 @@ namespace PCSC.Monitoring
                         if (rc != SCardError.Success) {
                             rc.Throw();
                         }
+
+                        var previousReaders = readers;
+
+                        /*
+                         * The following statement returns a snapshot of the readers currently seen.
+                         *
+                         * Some providers have USB devices that register more than one reader
+                         * (e.g. two readers, one for contact and one for contactless cards, as seen
+                         * on the OmniKey CardMan 5321).
+                         * There is an event for EACH connected/disconnected reader. The EventState
+                         * returned by SCardGetStatusChange may already be "deprecated" and
+                         * SCardListReaders returns a different reader list.
+                         */
+                        readers = GetReaders(_ctx);
+
+                        var attached = GetAttachedReaders(previousReaders, readers).ToList();
+                        var detached = GetDetachedReaders(previousReaders, readers).ToList();
+
+                        if (attached.Any() || detached.Any()) {
+                            OnStatusChanged(new DeviceChangeEventArgs(
+                                readers.ToList(),
+                                attached,
+                                detached));
+                        }
+
                     } catch (NoServiceException) {
                         // Windows 10, service will be restarted or is not available after the last reader has been disconnected
                         Thread.Sleep(1000);
@@ -138,6 +163,10 @@ namespace PCSC.Monitoring
                             }
 
                             _ctx = _contextFactory.Establish(_scope);
+
+                            // reset scanner state (assume we do not know the current state)
+                            scannerStates[0].CurrentStateValue = (IntPtr)SCRState.Unknown;
+                            scannerStates[0].EventStateValue = (IntPtr)SCRState.Unknown;
                         }
                     }
                 }
