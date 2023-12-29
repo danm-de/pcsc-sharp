@@ -65,6 +65,8 @@ namespace PCSC.Extensions
                     throw new InsufficientBufferException(sc);
                 case SCardError.WinErrorInsufficientBuffer:
                     throw new WinErrorInsufficientBufferException(sc);
+                case SCardError.Timeout:
+                    throw new UserTimeoutException(sc);
                 default:
                     throw new PCSCException(sc); // Unexpected / unknown error
             }
