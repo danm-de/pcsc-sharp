@@ -130,9 +130,10 @@ namespace PCSC.Monitoring
                         var previousReaders = readers;
 
                         /*
-                         * The following statement returns a snapshot of the readers currently seen.
+                         * The following statement returns a snapshot of the readers currently seen
+                         * by the smart card resource manager.
                          *
-                         * Some providers have USB devices that register more than one reader
+                         * Some vendors have USB devices that register more than one reader
                          * (e.g. two readers, one for contact and one for contactless cards, as seen
                          * on the OmniKey CardMan 5321).
                          * There is an event for EACH connected/disconnected reader. The EventState
