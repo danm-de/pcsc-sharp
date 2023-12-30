@@ -3,6 +3,19 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+2023-12-30  Daniel Mueller <daniel@danm.de>
+* New version 6.2.0
+  Bugfix "CPU Spike while Monitoring Devices where not all devices are part of
+  the user's SID" reported by @kevmoens
+  (https://github.com/danm-de/pcsc-sharp/pull/116)
+  SCardListReaders vs. SCardGetStatusChange - number of devices is different
+  when using Microsoft Windows Hello for Business 2.
+* Add .NET 8.0 support
+* Possible breaking change for .NET8 users: [Serializable] has been deprecated
+  Exceptions are not longer serializable when using .NET8 runtime.
+* Update nuget package dependencies
+* Remove FAKE/Paket for being to complicated / superfluous for this library
+
 2022-12-19  Daniel Mueller <daniel@danm.de>
 * New version 6.1.3
   Bugfix: memory reservation problem when connecting a smart card reader

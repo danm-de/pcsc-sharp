@@ -1,9 +1,10 @@
 ﻿image: Visual Studio 2022
-install:
-  - cinst fake
 build_script:
-  - cmd: fake.exe run build.fsx --parallel 3
-test: off
+  - cmd: dotnet build --configuration Release
+test:
+  assemblies:
+    only:
+      - '**\*.Tests.dll'
 environment:
   PAKET_BOOTSTRAPPER_TRACE: true
 pull_requests:
