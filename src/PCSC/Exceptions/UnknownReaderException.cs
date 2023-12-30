@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace PCSC.Exceptions
 {
     /// <summary>
     /// The requested reader name is unknown.
     /// </summary>
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
+    [Serializable]
+#endif
     public class UnknownReaderException : PCSCException
     {
         /// <summary>
@@ -32,11 +34,14 @@ namespace PCSC.Exceptions
         public UnknownReaderException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
 
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
         /// <summary>
         /// Serialization constructor
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        protected UnknownReaderException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected UnknownReaderException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+#endif
     }
 }

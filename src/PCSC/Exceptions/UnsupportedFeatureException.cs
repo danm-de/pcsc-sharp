@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace PCSC.Exceptions
 {
     /// <summary>
     /// The requested feature is unsupported.
     /// </summary>
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
+    [Serializable]
+#endif
     public class UnsupportedFeatureException : PCSCException
     {
         /// <summary>
@@ -32,12 +34,14 @@ namespace PCSC.Exceptions
         public UnsupportedFeatureException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
 
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
         /// <summary>
         /// Serialization constructor
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        protected UnsupportedFeatureException(SerializationInfo info, StreamingContext context) :
+        protected UnsupportedFeatureException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) :
             base(info, context) { }
+#endif
     }
 }

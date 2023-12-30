@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace PCSC.Exceptions
 {
     /// <summary>
     /// Operation exited successfully
     /// </summary>
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
     [Serializable]
+#endif
     public class SuccessException : PCSCException
     {
         /// <summary>
@@ -31,11 +32,14 @@ namespace PCSC.Exceptions
         public SuccessException(SCardError serr, string message, Exception innerException) : base(serr, message,
             innerException) { }
 
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
         /// <summary>
         /// Serialization constructor
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        protected SuccessException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected SuccessException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+#endif
     }
 }
