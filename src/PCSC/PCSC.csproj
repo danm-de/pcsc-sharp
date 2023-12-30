@@ -5,11 +5,11 @@
     <NeutralLanguage />
     <PackageLicenseFile>COPYING.txt</PackageLicenseFile>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
-    <Copyright>Copyright 2022 Daniel Mueller</Copyright>
+    <Copyright>Copyright 2024 Daniel Mueller</Copyright>
     <Description>Contains classes to access the Personal Computer/Smart Card Resource Manager using the system's native PC/SC API.  The library is written to run on multiple platforms (.Net Framework, .Net Core or Mono using PCSC Lite).</Description>
     <Company />
     <Authors>Daniel Mueller</Authors>
-    <Version>6.1.3</Version>
+    <Version>6.2.0</Version>
     <PackageTags>pcsc smartcard pcsc-sharp pc/sc</PackageTags>
     <PackageProjectUrl>https://github.com/danm-de/pcsc-sharp</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp.png</PackageIconUrl>
@@ -24,7 +24,7 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageIcon>pcsc-sharp.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <TargetFrameworks>net6.0;net7.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0;net8.0;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -37,6 +37,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 </Project>
