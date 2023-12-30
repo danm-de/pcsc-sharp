@@ -34,14 +34,25 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
 
             // first call -> only one attached reader
             A.CallTo(() => _context.GetReaders())
-                .Returns(new[] {READER_A});
+                .Returns([READER_A]);
+
+            A.CallTo(() => _context.GetStatusChange(IntPtr.Zero, A<SCardReaderState[]>.That.Matches(
+                    states => MatchFirstCall(states))))
+                .ReturnsLazily(call => {
+                    var states = call.Arguments.Get<SCardReaderState[]>(1)!;
+                    states[0].EventStateValue = (1 << 16); // tell the user that there is one reader
+                    return SCardError.Success;
+                });
 
             A.CallTo(() => _context.GetStatusChange(SCardContext.INFINITE, A<SCardReaderState[]>.That.Matches(
-                    states => MatchFirstCall(states))))
+                    states => MatchSecondCall(states))))
                 .ReturnsLazily(call => {
                     // second call -> two attached readers
                     A.CallTo(() => _context.GetReaders())
-                        .Returns(new[] {READER_A, READER_B});
+                        .Returns([READER_A, READER_B]);
+
+                    var states = call.Arguments.Get<SCardReaderState[]>(1)!;
+                    states[0].EventStateValue = (2 << 16); // tell the user that there two readers
 
                     _getStatusChangeCall.Set();
 
@@ -49,7 +60,7 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
                 });
 
             A.CallTo(() => _context.GetStatusChange(SCardContext.INFINITE, A<SCardReaderState[]>.That.Matches(
-                    states => MatchSecondCall(states))))
+                    states => MatchThirdCall(states))))
                 .Returns(SCardError.Cancelled);
 
             _sut = new DeviceMonitor(_contextFactory, SCardScope.System);
@@ -59,14 +70,21 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
         private static bool MatchFirstCall(IEnumerable<SCardReaderState> states) {
             var state = states.Single();
             return state.ReaderName == "\\\\?PnP?\\Notification"
-                   && state.CurrentStateValue == (IntPtr) (1 << 16) // only one connected reader
+                   && state.CurrentStateValue ==(IntPtr) SCRState.Unaware
                    && state.EventStateValue == (IntPtr) SCRState.Unknown;
         }
 
         private static bool MatchSecondCall(IEnumerable<SCardReaderState> states) {
             var state = states.Single();
             return state.ReaderName == "\\\\?PnP?\\Notification"
-                   && state.CurrentStateValue == (IntPtr) (2 << 16) // two connected readers
+                   && state.CurrentStateValue == (1 << 16) // one connected reader
+                   && state.EventStateValue == (IntPtr) SCRState.Unknown;
+        }
+
+        private static bool MatchThirdCall(IEnumerable<SCardReaderState> states) {
+            var state = states.Single();
+            return state.ReaderName == "\\\\?PnP?\\Notification"
+                   && state.CurrentStateValue == (2 << 16) // two connected readers
                    && state.EventStateValue == (IntPtr) SCRState.Unknown;
         }
 
@@ -124,16 +142,31 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
             A.CallTo(() => _context.Infinite)
                 .Returns(SCardContext.INFINITE);
 
-            // first call -> two attached readers
-            A.CallTo(() => _context.GetReaders())
-                .Returns(new[] {READER_A, READER_B});
+            A.CallTo(() => _context.GetStatusChange(IntPtr.Zero, A<SCardReaderState[]>.That.Matches(
+                    states => MatchFirstCall(states))))
+                .ReturnsLazily(call => {
+                    // first call -> two attached readers
+                    A.CallTo(() => _context.GetReaders())
+                        .Returns([READER_A, READER_B]);;
+
+                    var states = call.Arguments.Get<SCardReaderState[]>(1)!;
+                    states[0].EventStateValue = (2 << 16); // tell the user that there two readers
+
+                    _getStatusChangeCall.Set();
+
+                    return SCardError.Success;
+                });
+
 
             A.CallTo(() => _context.GetStatusChange(SCardContext.INFINITE, A<SCardReaderState[]>.That.Matches(
-                    states => MatchFirstCall(states))))
+                    states => MatchSecondCall(states))))
                 .ReturnsLazily(call => {
                     // second call -> one attached reader
                     A.CallTo(() => _context.GetReaders())
                         .Returns(new[] {READER_A});
+
+                    var states = call.Arguments.Get<SCardReaderState[]>(1)!;
+                    states[0].EventStateValue = (1 << 16); // tell the user that there is one reader
 
                     _getStatusChangeCall.Set();
 
@@ -141,7 +174,7 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
                 });
 
             A.CallTo(() => _context.GetStatusChange(SCardContext.INFINITE, A<SCardReaderState[]>.That.Matches(
-                    states => MatchSecondCall(states))))
+                    states => MatchThirdCall(states))))
                 .Returns(SCardError.Cancelled);
 
             _sut = new DeviceMonitor(_contextFactory, SCardScope.System);
@@ -151,14 +184,21 @@ namespace PCSC.Tests.Monitoring.DeviceMonitorSpecs
         private static bool MatchFirstCall(IEnumerable<SCardReaderState> states) {
             var state = states.Single();
             return state.ReaderName == "\\\\?PnP?\\Notification"
-                   && state.CurrentStateValue == (IntPtr) (2 << 16) // two connected readers
+                   && state.CurrentStateValue == (IntPtr) SCRState.Unaware
                    && state.EventStateValue == (IntPtr) SCRState.Unknown;
         }
 
         private static bool MatchSecondCall(IEnumerable<SCardReaderState> states) {
             var state = states.Single();
             return state.ReaderName == "\\\\?PnP?\\Notification"
-                   && state.CurrentStateValue == (IntPtr) (1 << 16) // one connected reader
+                   && state.CurrentStateValue == (2 << 16) // two connected readers
+                   && state.EventStateValue == (IntPtr) SCRState.Unknown;
+        }
+
+        private static bool MatchThirdCall(IEnumerable<SCardReaderState> states) {
+            var state = states.Single();
+            return state.ReaderName == "\\\\?PnP?\\Notification"
+                   && state.CurrentStateValue == (1 << 16) // one connected reader
                    && state.EventStateValue == (IntPtr) SCRState.Unknown;
         }
 
