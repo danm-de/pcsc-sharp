@@ -159,6 +159,10 @@ csharp_prefer_braces = true:warning
 # Organize usings
 # https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference#usings
 dotnet_sort_system_directives_first = true
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/dotnet-formatting-options#dotnet_separate_import_directive_groups
+dotnet_separate_import_directive_groups = false
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0065#csharp_using_directive_placement
+csharp_using_directive_placement = outside_namespace
 
 # Newline options
 # https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference?view=vs-2017#newline
