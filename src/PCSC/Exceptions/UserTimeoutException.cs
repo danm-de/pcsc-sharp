@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace PCSC.Exceptions
 {
     /// <summary>
     /// The user-specified time-out value has expired.
     /// </summary>
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
     [Serializable]
+#endif
     public class UserTimeoutException : PCSCException
     {
         /// <summary>
@@ -33,12 +34,14 @@ namespace PCSC.Exceptions
         public UserTimeoutException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
 
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
         /// <summary>
         /// Serialization constructor
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        protected UserTimeoutException(SerializationInfo info, StreamingContext context) :
+        protected UserTimeoutException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) :
             base(info, context) { }
+#endif
     }
 }

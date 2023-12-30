@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace PCSC.Exceptions
 {
     /// <summary>
     /// The smart card is unpowered.
     /// </summary>
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
+    [Serializable]
+#endif
     public class UnpoweredCardException : PCSCException
     {
         /// <summary>
@@ -32,11 +34,14 @@ namespace PCSC.Exceptions
         public UnpoweredCardException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
 
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
         /// <summary>
         /// Serialization constructor
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        protected UnpoweredCardException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected UnpoweredCardException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+#endif
     }
 }

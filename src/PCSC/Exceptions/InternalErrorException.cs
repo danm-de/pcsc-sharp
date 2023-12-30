@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace PCSC.Exceptions
 {
     /// <summary>
     /// An internal error occurred.
     /// </summary>
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
     [Serializable]
+#endif
     public class InternalErrorException : PCSCException
     {
         /// <summary>
@@ -33,11 +34,14 @@ namespace PCSC.Exceptions
         public InternalErrorException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
 
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
         /// <summary>
         /// Serialization constructor
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        protected InternalErrorException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected InternalErrorException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+#endif
     }
 }

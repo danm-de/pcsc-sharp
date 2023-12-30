@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.Serialization;
 
 namespace PCSC.Iso7816
 {
     /// <summary>The APDU is invalid.</summary>
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
     [Serializable]
+#endif
     public class InvalidApduException : Exception
     {
         [NonSerialized]
@@ -46,12 +47,14 @@ namespace PCSC.Iso7816
             }
         }
 
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
         /// <summary>
         /// Initializes a new instance of the <see cref="InvalidApduException" /> class.
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        protected InvalidApduException(SerializationInfo info, StreamingContext context)
+        protected InvalidApduException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
             : base(info, context) { }
+#endif
     }
 }

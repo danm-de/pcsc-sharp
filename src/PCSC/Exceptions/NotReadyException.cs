@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace PCSC.Exceptions
 {
     /// <summary>
     /// The reader or the smart card is not ready.
     /// </summary>
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
     [Serializable]
+#endif
     public class NotReadyException : PCSCException
     {
         /// <summary>
@@ -33,11 +34,14 @@ namespace PCSC.Exceptions
         public NotReadyException(SCardError serr, string message, Exception innerException)
             : base(serr, message, innerException) { }
 
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
         /// <summary>
         /// Serialization constructor
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        protected NotReadyException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected NotReadyException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+#endif
     }
 }

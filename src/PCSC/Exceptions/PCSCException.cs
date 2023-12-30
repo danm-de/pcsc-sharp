@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using PCSC.Utils;
 
 namespace PCSC.Exceptions
@@ -7,7 +6,9 @@ namespace PCSC.Exceptions
     /// <summary>
     /// A general PC/SC exception.
     /// </summary>
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
     [Serializable]
+#endif
     public class PCSCException : Exception
     {
         /// <summary>
@@ -51,12 +52,13 @@ namespace PCSC.Exceptions
             SCardError = serr;
         }
 
+#if NETSTANDARD2_0 || NET6_0 || NET7_0
         /// <summary>
         /// Serialization constructor
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        protected PCSCException(SerializationInfo info, StreamingContext context)
+        protected PCSCException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
             : base(info, context) {
             SCardError = (SCardError) info.GetValue(SCARD_ERROR_SERIALIZATION_NAME, typeof(SCardError));
         }
@@ -66,9 +68,10 @@ namespace PCSC.Exceptions
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        public override void GetObjectData(SerializationInfo info, StreamingContext context) {
+        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) {
             base.GetObjectData(info, context);
             info.AddValue(SCARD_ERROR_SERIALIZATION_NAME, SCardError, typeof(SCardError));
         }
+#endif
     }
 }
