@@ -5,8 +5,8 @@ test:
   assemblies:
     only:
       - '**\*.Tests.dll'
-environment:
-  PAKET_BOOTSTRAPPER_TRACE: true
+test_script:
+  - dotnet test --configuration Release --no-build
 pull_requests:
   do_not_increment_build_number: true
 nuget:
