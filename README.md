@@ -144,21 +144,14 @@ Checkout the [Examples](https://github.com/danm-de/pcsc-sharp/tree/master/Exampl
 
 Build tools
 
-* [Fake](https://fake.build/fake-dotnetcore.html), Please run:
-  
-  ```bash
-   dotnet tool install fake-cli -g
-  ```
+* .Net 6.0, 7.0, 8.0 SDKs (Multi target build)
 
-  to install ```fake``` as global tool. On Linux you may have to add the following lines into your .profile or .bashrc file:
-  
-  ```bash
-  if [ -d "$HOME/.dotnet/tools" ] ; then
-    PATH="$HOME/.dotnet/tools:$PATH"
-  fi
-  ```
+Compile with
 
-_pcsc-sharp_ uses the [FAKE](https://fake.build/) DSL for build tasks. To build the solution, run ```fake run build.fsx```.
+```bash
+dotnet build -c Release
+```
+
 
 ### Build instructions for Raspberry Pi
 
