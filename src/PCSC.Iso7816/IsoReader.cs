@@ -9,7 +9,7 @@ namespace PCSC.Iso7816
     /// <summary>A ISO/IEC 7816 compliant reader.</summary>
     public class IsoReader : IIsoReader
     {
-        private const int DefaultMaxReceiveSize = 128;
+        private const int DefaultMaxReceiveSize = 255;
 
         private readonly ISCardContext _context;
         private readonly bool _releaseContextOnDispose;
