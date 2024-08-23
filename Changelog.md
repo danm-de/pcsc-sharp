@@ -9,12 +9,12 @@ c = Bug fix
 
 2024-08-23  Daniel Mueller <daniel@danm.de>
 
-* New version 7.0.0
-* Changed target frameworks to: netstandard2.0, netstandard2.1 and net8.0
-* Refactor build process (use Directory.Build.props)
-* Updated NuGet dependencies
-* Breaking change in IsoReader: [Set DefaultMaxReceiveSize to 255](https://github.com/danm-de/pcsc-sharp/pull/118)
-  by [Ben Schoenfeld](https://github.com/bschoenfeld)
+* Changed target frameworks to: netstandard2.0, netstandard2.1 and net8.0.
+* Refactor build process (use Directory.Build.props).
+* Updated NuGet dependencies.
+* Breaking change in *IsoReader*: [Set DefaultMaxReceiveSize to 255](https://github.com/danm-de/pcsc-sharp/pull/118)
+  by [Ben Schoenfeld](https://github.com/bschoenfeld).
+* IsoReader.MaxReceiveSize changed property setter from *protected* to *public*.
 
 ## 6.2.0
 

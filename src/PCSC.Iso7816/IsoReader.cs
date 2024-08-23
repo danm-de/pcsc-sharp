@@ -32,10 +32,16 @@ namespace PCSC.Iso7816
         public virtual int RetransmitWaitTime { get; set; }
 
         /// <summary>Gets the maximum number of bytes that can be received (le) when using a <see cref="InstructionCode.GetResponse"/> command.</summary>
-        /// <value>Default is 128 bytes.</value>
+        /// <value>Default is 255 bytes.</value>
         public virtual int MaxReceiveSize {
             get => _maxReceiveSize;
-            protected set => _maxReceiveSize = value;
+            set {
+                if (value < 0) {
+                    throw new ArgumentOutOfRangeException(nameof(MaxReceiveSize), value, "MaxReceiveSize must be >= 0");
+                }
+
+                _maxReceiveSize = value;
+            }
         }
 
         /// <summary>Finalizes an instance of the <see cref="IsoReader" /> class.</summary>
@@ -95,6 +101,11 @@ namespace PCSC.Iso7816
         public IsoReader(ISCardContext context, string readerName, SCardShareMode mode, SCardProtocol protocol,
             bool releaseContextOnDispose, int maxReceiveSize)
             : this(context, releaseContextOnDispose) {
+
+            if (maxReceiveSize < 0) {
+                throw new ArgumentOutOfRangeException(nameof(maxReceiveSize), maxReceiveSize, "Argument must be >= 0");
+            }
+
             _maxReceiveSize = maxReceiveSize;
             Connect(readerName, mode, protocol);
         }
