@@ -8,6 +8,11 @@
   <PropertyGroup Condition="'$(TF_BUILD)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageReleaseNotes>
+      Breaking change introduced in 7.0.0: The *IsoReader.MaxReceiveSize* default value changed from 128 to 255. See [pull request #118](https://github.com/danm-de/pcsc-sharp/pull/118) for more information.
+    </PackageReleaseNotes>
+  </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\COPYING.txt" Pack="true" Link="COPYING.txt" PackagePath="$(PackageLicenseFile)" />
     <None Include="..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />
