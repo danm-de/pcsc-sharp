@@ -9,8 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\PCSC.Reactive\PCSC.Reactive.csproj" />
     <ProjectReference Include="..\..\src\PCSC\PCSC.csproj" />
-    <PackageReference Include="System.Reactive" Version="5.0.0" />
-    <PackageReference Include="ReactiveProperty" Version="8.0.4" />
+    <PackageReference Include="System.Reactive" Version="6.0.1" />
+    <PackageReference Include="ReactiveProperty" Version="9.6.0" />
   </ItemGroup>
 
 </Project>

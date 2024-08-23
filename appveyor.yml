@@ -1,14 +1,21 @@
 ﻿image: Visual Studio 2022
 build_script:
-  - cmd: dotnet build --configuration Release
+  - cmd: dotnet build --configuration Release -p:ContinuousIntegrationBuild=true
 test:
   assemblies:
     only:
       - '**\*.Tests.dll'
 test_script:
-  - dotnet test --configuration Release --no-build
+  - dotnet test --configuration Release --no-build --no-restore
 pull_requests:
   do_not_increment_build_number: true
 nuget:
   disable_publish_on_pr: true
   disable_publish_octopus: true
+artifacts:
+  - path: 'src\PCSC\bin\Release\*.*nupkg'
+    type: NuGetPackage
+  - path: 'src\PCSC.Iso7816\bin\Release\*.*nupkg'
+    type: NuGetPackage
+  - path: 'src\PCSC.Reactive\bin\Release\*.*nupkg'
+    type: NuGetPackage

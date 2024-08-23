@@ -1,0 +1,33 @@
+﻿<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+
+    <NeutralLanguage />
+    <Authors>Daniel Mueller</Authors>
+    <Copyright>Copyright 2013-2024 Daniel Mueller</Copyright>
+    <Version>6.2.0</Version>
+
+    <RepositoryUrl>https://github.com/danm-de/pcsc-sharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>../../pcsc-sharp.snk</AssemblyOriginatorKeyFile>
+
+    <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
+
+    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/danm-de/pcsc-sharp</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/danm-de/pcsc-sharp/master/pcsc-sharp.png</PackageIconUrl>
+
+    <PackageIcon>pcsc-sharp.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+  </PropertyGroup>
+</Project>
