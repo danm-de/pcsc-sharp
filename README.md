@@ -32,8 +32,6 @@ You can find PC/SC specific documentation here:
   * Windows 11 64-bit
   * Windows 10 64-bit Professional
   * Windows 10 32-bit Professional
-  * Windows 7 64-bit
-  * Windows 7 32-bit
 
 * Linux (PC/SC lite)
 
@@ -144,7 +142,7 @@ Checkout the [Examples](https://github.com/danm-de/pcsc-sharp/tree/master/Exampl
 
 Build tools
 
-* .Net 6.0, 7.0, 8.0 SDKs (Multi target build)
+* .Net 8.0 SDKs (Multi target build)
 
 Compile with
 
