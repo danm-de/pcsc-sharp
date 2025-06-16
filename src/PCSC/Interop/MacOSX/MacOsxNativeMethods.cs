@@ -7,7 +7,7 @@ namespace PCSC.Interop.MacOSX
     internal static class MacOsxNativeMethods
     {
         private static IntPtr _libHandle = IntPtr.Zero;
-        private const string PCSC_LIB = "PCSC.framework/PCSC";
+        private const string PCSC_LIB = "/System/Library/Frameworks/PCSC.framework/PCSC";
         private const string DL_LIB = "libdl.dylib";
 
         public static IntPtr GetSymFromLib(string symName) {
