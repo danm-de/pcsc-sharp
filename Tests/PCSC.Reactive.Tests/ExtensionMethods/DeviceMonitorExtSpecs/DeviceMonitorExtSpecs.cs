@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reactive;
 using FakeItEasy;
-using FluentAssertions;
+using AwesomeAssertions;
 using Microsoft.Reactive.Testing;
 using NUnit.Framework;
 using PCSC.Monitoring;

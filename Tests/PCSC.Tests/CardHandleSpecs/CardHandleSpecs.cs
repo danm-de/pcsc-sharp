@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FakeItEasy;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using PCSC.Exceptions;
 using PCSC.Interop;

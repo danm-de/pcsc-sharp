@@ -4,7 +4,7 @@
 
     <NeutralLanguage />
     <Authors>Daniel Mueller</Authors>
-    <Copyright>Copyright 2013-2024 Daniel Mueller</Copyright>
+    <Copyright>Copyright 2013-2025 Daniel Mueller</Copyright>
 
     <RepositoryUrl>https://github.com/danm-de/pcsc-sharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

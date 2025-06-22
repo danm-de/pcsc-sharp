@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -10,7 +10,7 @@
     <ProjectReference Include="..\..\src\PCSC.Reactive\PCSC.Reactive.csproj" />
     <ProjectReference Include="..\..\src\PCSC\PCSC.csproj" />
     <PackageReference Include="System.Reactive" Version="6.0.1" />
-    <PackageReference Include="ReactiveProperty" Version="9.6.0" />
+    <PackageReference Include="ReactiveProperty" Version="9.7.0" />
   </ItemGroup>
 
 </Project>

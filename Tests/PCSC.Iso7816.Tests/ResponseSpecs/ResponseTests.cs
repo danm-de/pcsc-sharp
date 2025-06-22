@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 
 namespace PCSC.Iso7816.Tests.ResponseSpecs

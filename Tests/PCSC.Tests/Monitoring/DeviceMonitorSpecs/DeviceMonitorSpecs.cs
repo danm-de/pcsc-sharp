@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using FakeItEasy;
-using FluentAssertions;
-using FluentAssertions.Events;
+using AwesomeAssertions;
+using AwesomeAssertions.Events;
 using NUnit.Framework;
 using PCSC.Monitoring;
 

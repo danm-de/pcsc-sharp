@@ -1,5 +1,5 @@
 ﻿using System;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 
 namespace PCSC.Tests

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using FakeItEasy;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using PCSC.Interop;
 

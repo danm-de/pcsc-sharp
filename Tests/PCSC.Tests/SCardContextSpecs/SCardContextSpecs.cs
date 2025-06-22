@@ -1,6 +1,6 @@
 ﻿using System;
 using FakeItEasy;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using PCSC.Interop;
 

@@ -5,6 +5,14 @@ a = Major API change
 b = New Feature
 c = Bug fix
 
+## 7.0.1
+
+2025-06-22  Daniel Mueller <daniel@danm.de>
+
+* Merged [pull request](https://github.com/danm-de/pcsc-sharp/pull/119) created by [Bruno Coelho](https://github.com/4brunu)
+* Updated NuGet packages
+* Replaced FluentAssertions with [AwesomeAssertions](https://awesomeassertions.org/)
+
 ## 7.0.0
 
 2024-08-23  Daniel Mueller <daniel@danm.de>
