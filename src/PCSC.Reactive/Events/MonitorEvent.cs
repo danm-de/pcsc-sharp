@@ -6,7 +6,7 @@
     public abstract class MonitorEvent
     {
         /// <summary>
-        /// Name of the smard card reader
+        /// Name of the smart card reader
         /// </summary>
         public string ReaderName { get; }
 
@@ -18,7 +18,7 @@
         /// <summary>
         /// Creates a new monitor event instance
         /// </summary>
-        /// <param name="readerName">Name of the smard card reader</param>
+        /// <param name="readerName">Name of the smart card reader</param>
         /// <param name="atr">The card's ATR</param>
         protected MonitorEvent(string readerName, byte[] atr) {
             ReaderName = readerName;
